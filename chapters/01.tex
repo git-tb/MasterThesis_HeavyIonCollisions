@@ -1541,13 +1541,22 @@ Start with the Lagrangian of the linear $\sigma$-model for the real-valued $O(4)
     \mathscr{L}=-\frac{1}{2}\partial_\mu\sigma\partial^\mu\sigma-\frac{1}{2}\partial_\mu\mathbf{\pi}\partial^\mu\mathbf{\pi}-\frac{1}{2}m^2(\sigma^2+\mathbf{\pi}^2)-\frac{\lambda}{4}(\sigma^2+\mathbf{\pi}^2)^2-\epsilon\sigma
 \end{equation}
 and from \ref{subsubsec:linearsigmamodel} we find, that if $m^2=-\mu^2<0$ SSB occurs (plus, $\epsilon\neq 0$ explicitly breaks the symmetry) with the VEV $v$ and masses of the $\sigma$ and $\mathbf{\pi}$ excitation in $\varphi_a=(v+\delta\sigma,\mathbf{\pi})$ are given by (note the difference in conventions $\lambda\to 6\lambda$ w.r.t. \ref{subsubsec:linearsigmamodel})
-\begin{subequations}
-    \begin{align}
+\begin{equation}
+    \left\{
+    \begin{split}
         v          & =\frac{\mu}{\sqrt{\lambda}}+\epsilon\frac{1}{2\mu^2}+\mathcal{O}(\epsilon^2) \\
         m_\sigma^2 & =2\mu^2+\mathcal{O}(\epsilon)                                                \\
         m_\pi^2    & =\epsilon\frac{\sqrt{\lambda}}{\mu}+\mathcal{O}(\epsilon^2)
-    \end{align}
-\end{subequations}
+    \end{split}
+    \right.\qquad\overset{\text{to lowest order}}{\iff}\qquad
+    \left\{
+    \begin{split}
+        \mu&=\frac{m_\sigma}{\sqrt{2}}\\
+        \lambda&=\frac{m_\sigma^2}{2v}\\
+        \epsilon&=vm_\pi^2
+    \end{split}
+    \right.
+\end{equation}
 Choose now a fixed alignment of the condensate $\mathbf{\pi}=\pi\mathbf{e}$ with $\mathbf{e}\cdot\mathbf{e}=1$ determining the orientation in isospin space. This choice breaks $O(4)$ to $O(2)$ (we restrict ourselves to $SO(2)$) and use to isomorphism $SO(2)\overset{\sim}{=}U(1)$ to write the linear $\sigma$-model as a theory of a complex scalar field $\phi=\frac{1}{\sqrt{2}}(\sigma+\imagu\pi)=\rho e^{\imagu\vartheta}$.
 \begin{subequations}
     \begin{align}
@@ -1565,14 +1574,23 @@ The classical equations of motion arising from this are
 The conserved Noether current of the symmetry $\theta\to\theta+\alpha$ (in the limit $\epsilon\to 0$) and energy-momentum tensor are
 \begin{subequations}
     \begin{align}
-        \alpha j^\mu & =-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\vartheta)}\delta\vartheta=2\alpha\rho^2(\partial^\mu\vartheta)                                                                                                                                                                                           \\
-        T^{\mu\nu}   & =\textcolor{red}{\overset{?}{-}}\frac{2}{\sqrt{-g}}\frac{\delta(\sqrt{-g}\mathscr{L})}{\delta g_{\mu\nu}}=2\frac{\partial\mathscr{L}}{\partial g_{\mu\nu}}-g^{\mu\nu}\mathscr{L}=2\big[(\partial^\mu\rho)(\partial^\nu\rho)+\rho^2(\partial^\mu\vartheta)(\partial^\nu\vartheta)\big]-g^{\mu\nu}\mathscr{L}
+        \alpha j^\mu & =-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\vartheta)}\delta\vartheta=2\alpha\rho^2(\partial^\mu\vartheta)                                                                                                                                                             \\
+        T^{\mu\nu}   & =\frac{2}{\sqrt{-g}}\frac{\delta(\sqrt{-g}\mathscr{L})}{\delta g_{\mu\nu}}=2\frac{2\partial\mathscr{L}}{\partial g_{\mu\nu}}+g^{\mu\nu}\mathscr{L}=2\big[(\partial^\mu\rho)(\partial^\nu\rho)+\rho^2(\partial^\mu\vartheta)(\partial^\nu\vartheta)\big]+g^{\mu\nu}\mathscr{L}
     \end{align}
 \end{subequations}
+where $\delta\sqrt{-g}=\frac{-1}{2\sqrt{-g}}\delta g=\frac{-1}{\sqrt{-g}}gg^{\mu\nu}\delta g_{\mu\nu}=\frac{\sqrt{-g}}{2}g^{\mu\nu}\delta g_{\mu\nu}$ was used.
+
 In a tree-level approximation one only needs to solve the classical equations of motion. In the limit $\epsilon\to 0$ a valid solution is
 \begin{equation}
     \partial_\mu\vartheta=\const\,,\qquad\rho=\sqrt{\frac{\chi^2+\mu^2}{\lambda}}+\mathcal{O}(\epsilon)\qquad(\chi^2\defeq-(\partial_\mu\vartheta)(\partial^\mu\vartheta))
 \end{equation}
+On these solutions one finds
+\begin{subequations}
+    \begin{align}
+        \mathscr{L}\big\vert_{\text{EOM}} & =\rho^2(\chi^2+\mu^2-\frac{\lambda}{2}\rho^2)=\rho^2\frac{\chi^2+\mu^2}{2}                    \\
+        T^{\mu\nu}\big\vert_{\text{EOM}}  & =2\rho^2(\partial^\mu\vartheta)(\partial^\nu\vartheta)+g^{\mu\nu}\rho^2\frac{\chi^2+\mu^2}{2}
+    \end{align}
+\end{subequations}
 
 Assume the dynamics of the field could be described by ideal hydrodynamics, i.e. a conserved current and energy-momentum tensor of the form \todo{I really don't know about the signature}
 \begin{subequations}
@@ -1589,7 +1607,8 @@ from which the prefactors can be extracted by the contractions
 Identifying the field theoretic with the hydrodynamic viewpoint it immediately follows that
 \begin{subequations}
     \begin{gather}
-        n_s=2\rho^2\chi=2\chi\frac{\chi^2+\mu^2}{\lambda}\,,\qquad v^\mu=\chi^{-1}(\partial^\mu\vartheta)\qquad(\hookrightarrow\chi=-v^\mu(\partial_\mu\vartheta))
+        n_s=2\rho^2\chi\,,\qquad v^\mu=\chi^{-1}(\partial^\mu\vartheta)\qquad(\hookrightarrow\chi=-v^\mu(\partial_\mu\vartheta))\\
+        \epsilon_s=2\rho^2\chi^2-\rho^2\frac{\chi^2+\mu^2}{2}=\rho^2\frac{4\chi^2-(\chi^2+\mu^2)}{2}=\frac{(\chi^2+\mu^2)(3\chi^2-\mu^2)}{2\lambda}
     \end{gather}
 \end{subequations}
 

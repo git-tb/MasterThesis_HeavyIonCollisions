@@ -1,0 +1,14 @@
+\chapter{Calculation of Condensed Field}
+
+\section{Finding the Condensate of the Freezeout Surface}
+
+The freeze out surface is invariant under rotations (= independent of polar angle $\varphi$) around the collision axis and longitudinal boosts (= independent of rapidity $\eta_s$) and hence parametrized by a one-dimensional curve in the $r\text{-}\tau$-plane. The curve itself may be parametrized by some real parameter $\alpha$, following some mapping $s\mapsto (r(\alpha),\tau(\alpha))$. From the hydro simulation we wish to identify the gradient $\partial_\mu\vartheta\sim u_\mu$ of the complex phase of the condensate field with the fluid $4$-velocity $u_\mu$, hence in order to find the phase of the field, an integration of $\partial_\mu\vartheta$ over the hypersurface is needed and an integration constant $\vartheta_0$ can be chosen freely. Choose $\alpha=\arctan(y/x)$ to be the polar angle of the point $(r(\alpha),\tau(\alpha))$ in the $r\text{-}\tau$-plane. Since $r,\tau>0$ $\alpha$ is restricted to the range $[0,\pi]$ and $\vartheta(\alpha)$ on the hypersurface can be calculated via
+\begin{equation}
+    \vartheta(\alpha)=\vartheta_0+\int_0^\alpha\dt s\frac{\dt\vartheta}{\dt s}=\vartheta_0+\int_0^\alpha\dt s\frac{\partial x^\mu(s)}{\partial s}\partial_\mu\vartheta
+\end{equation}
+In Milne coordinates $(x^\mu)=(\tau,r,\varphi,\eta_s)$.
+
+The energy density $\epsilon$ and $4$-velocity $u^\mu$ of the fluid is related to the condensate phase and density via
+\begin{equation}
+    -(\partial_\mu\vartheta)(\partial^\mu\vartheta)=\chi^2=\frac{-\mu^2+\sqrt{6\epsilon\lambda+2\mu^4}}{3}\,,\qquad \partial^\mu\vartheta=\chi u^\mu
+\end{equation}
