@@ -1,0 +1,60 @@
+\documentclass[xcolor={dvipsnames,rgb},aspectratio=1610]{beamer}
+% xcolor: e.g. provides \colorlet
+% dvipsnames option: extra named colours
+% aspectratio=1610: for modern widescreen monitors...
+% see https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX for more detail
+
+% equation annotations also work in articles, of course (then might need explicit \usepackage[dvipsnames]{xcolor}
+
+%%% standard math packages for equations:
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{annotate-equations}
+
+\begin{document}
+
+\begin{frame}{Runtime complexity}
+    \LARGE %%% increase font size to make equation more readable!
+
+    %%% we define our own colors upfront - this makes it easier to keep it consistent if you change your mind
+    \colorlet{colorp}{NavyBlue}
+    \colorlet{colorT}{WildStrawberry}
+    \colorlet{colork}{OliveGreen}
+    \colorlet{colorM}{RoyalPurple}
+    \colorlet{colorNb}{Plum}
+    \colorlet{colorIs}{black}
+
+    \begin{equation*}
+        \color{BurntOrange}
+        \mathcal{O}\big(
+            (
+            % \tikzmarknode is what links parts of the equation and corresponding annotations
+            \eqnmarkbox[colorp]{p1}{p}
+            \eqnmarkbox[colork]{k1}{\kappa}^3 % note that we have the ^3 outside the \tikzmarknode
+            )
+            \eqnmarkbox{T1}{T}
+            +
+            (
+            \eqnmarkbox[colorp]{p2}{p} % tikzmarks need distinct names!
+            \eqnmark[colork]{k2}{\kappa}
+            )
+            (
+            \eqnmarkbox[colorT]{T2}{T}^2
+            \tikzmarknode{Is}{|\mathcal{I}^*|}
+            \eqnmarkbox[colorNb]{Nb}{N}_{\!\!\eqnmarkbox[BurntOrange]{b}{b}}
+            \eqnmark[colorM]{M}{M}
+            )
+        \big)
+    \end{equation*}
+    \annotatetwo[yshift=1em]{above}{p1}{p2}{\# of nodes}
+    \annotatetwo[yshift=-1em,xshift=0.2ex]{below}{T1}{T2}{\# of graphs in $\hat{\mathcal{G}}_T$}
+    \annotatetwo[yshift=-2em]{below}{k1}{k2}{max.\ indegree in $\hat{\mathcal{G}}_T$}
+    \annotate[yshift=3em]{above,left}{Is}{size of set of allowed interventions}
+    \annotate[yshift=1em]{above}{Nb}{\# of samples per batch}
+    \annotate[yshift=-1em]{below}{M}{\# of samples for $\mathbb{E}_y$}
+    \annotate[yshift=-3em]{below,left}{b}{batch index}
+\end{frame}
+
+\end{document}

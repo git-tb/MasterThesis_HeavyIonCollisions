@@ -1,0 +1,576 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{KapustaGale_2007}{book}{}
+      \name{author}{2}{}{%
+        {{hash=f1e0c67f26a94e99ebd8727b12cc1a77}{%
+           family={Kapusta},
+           familyi={K\bibinitperiod},
+           given={Joseph\bibnamedelima I.},
+           giveni={J\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=73fd707d6a6bb09b7e6458c3448c0c69}{%
+           family={Gale},
+           familyi={G\bibinitperiod},
+           given={Charles},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{be7662b0e34415f3af19ec1a17d544e5}
+      \strng{fullhash}{be7662b0e34415f3af19ec1a17d544e5}
+      \strng{bibnamehash}{be7662b0e34415f3af19ec1a17d544e5}
+      \strng{authorbibnamehash}{be7662b0e34415f3af19ec1a17d544e5}
+      \strng{authornamehash}{be7662b0e34415f3af19ec1a17d544e5}
+      \strng{authorfullhash}{be7662b0e34415f3af19ec1a17d544e5}
+      \field{labelalpha}{KG07}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{This book develops the basic formalism and theoretical techniques for studying relativistic quantum field theory at high temperature and density. Specific physical theories treated include QED, QCD, electroweak theory, and effective nuclear field theories of hadronic and nuclear matter. Topics covered include: functional integral representation of the partition function, diagrammatic expansions, linear response theory, screening and plasma oscillations, spontaneous symmetry breaking, Goldstone theorem, resummation and hard thermal loops, lattice gauge theory, phase transitions, nucleation theory, quark-gluon plasma, and color superconductivity. Applications to astrophysics and cosmology cover white dwarf and neutron stars, neutrino emissivity, baryon number violation in the early universe, and cosmological phase transitions. Applications to relativistic nucleus-nucleus collisions are also included. The book is written for theorists in elementary particle physics, nuclear physics, astrophysics, and cosmology.}
+      \field{annotation}{Accepted: 2023-07-26T21:01:32Z}
+      \field{isbn}{978-1-00-940196-8}
+      \field{langid}{english}
+      \field{shorttitle}{Finite-{{Temperature Field Theory}}}
+      \field{title}{Finite-{{Temperature Field Theory}} : {{Principles}} and {{Applications}}, 2nd Edition}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{year}{2007}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1017/9781009401968
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/AZXXWEYM/Kapusta und Gale - 2007 - Finite-Temperature Field Theory Principles and A.pdf;/media/tobias/data/OneDrive/projects/Heavy Ion Collisions/resources/KapustaGale_2007.pdf;/home/tobias/Zotero/storage/EM3EVWZ4/107906.html
+      \endverb
+    \endentry
+    \entry{BuszaEtAl_2018}{article}{}
+      \name{author}{3}{}{%
+        {{hash=ed71f375a0106cb8ef2daf3422fa42e3}{%
+           family={Busza},
+           familyi={B\bibinitperiod},
+           given={Wit},
+           giveni={W\bibinitperiod}}}%
+        {{hash=57ef15a4fa2d5f27c46ea1d3375ec629}{%
+           family={Rajagopal},
+           familyi={R\bibinitperiod},
+           given={Krishna},
+           giveni={K\bibinitperiod}}}%
+        {{hash=a9dac878b325e45b0d21a3936e719f0c}{%
+           family={Schee},
+           familyi={S\bibinitperiod},
+           given={Wilke},
+           giveni={W\bibinitperiod},
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Annual Reviews}%
+      }
+      \strng{namehash}{f2f463cf0798d435f6912ff1216276f3}
+      \strng{fullhash}{f2f463cf0798d435f6912ff1216276f3}
+      \strng{bibnamehash}{f2f463cf0798d435f6912ff1216276f3}
+      \strng{authorbibnamehash}{f2f463cf0798d435f6912ff1216276f3}
+      \strng{authornamehash}{f2f463cf0798d435f6912ff1216276f3}
+      \strng{authorfullhash}{f2f463cf0798d435f6912ff1216276f3}
+      \field{labelalpha}{BRS18}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Heavy ion collisions quickly form a droplet of quark--gluon plasma (QGP) with a remarkably small viscosity. We give an accessible introduction to how to study this smallest and hottest droplet of liquid made on Earth and why it is so interesting. The physics of heavy ion collisions ranges from highly energetic quarks and gluons described by perturbative QCD to a bath of strongly interacting gluons at lower energy scales. These gluons quickly thermalize and form QGP, while the energetic partons traverse this plasma and end in a shower of particles called jets. Analyzing the final particles in various ways allows us to study the properties of QGP and the complex dynamics of multiscale processes in QCD that govern its formation and evolution, providing what is perhaps the simplest form of complex quantum matter that we know of. Much remains to be understood, and throughout the review big open questions are encountered.}
+      \field{issn}{0163-8998, 1545-4134}
+      \field{journaltitle}{Annual Review of Nuclear and Particle Science}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{number}{Volume 68, 2018}
+      \field{shorttitle}{Heavy {{Ion Collisions}}}
+      \field{title}{Heavy {{Ion Collisions}}: {{The Big Picture}} and the {{Big Questions}}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{68}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \field{pages}{339\bibrangedash 376}
+      \range{pages}{38}
+      \verb{doi}
+      \verb 10.1146/annurev-nucl-101917-020852
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/XL7NZKAA/Busza et al. - 2018 - Heavy Ion Collisions The Big Picture and the Big .pdf;/media/tobias/data/OneDrive/projects/Heavy Ion Collisions/resources/Busza_2018.pdf;/home/tobias/Zotero/storage/WC4PXTHS/annurev-nucl-101917-020852.html
+      \endverb
+    \endentry
+    \entry{Floerchinger_2016}{article}{}
+      \name{author}{1}{}{%
+        {{hash=50048509226fe3fdf2310776356e459f}{%
+           family={Floerchinger},
+           familyi={F\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{50048509226fe3fdf2310776356e459f}
+      \strng{fullhash}{50048509226fe3fdf2310776356e459f}
+      \strng{bibnamehash}{50048509226fe3fdf2310776356e459f}
+      \strng{authorbibnamehash}{50048509226fe3fdf2310776356e459f}
+      \strng{authornamehash}{50048509226fe3fdf2310776356e459f}
+      \strng{authorfullhash}{50048509226fe3fdf2310776356e459f}
+      \field{labelalpha}{Flo16}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Notes for lectures that introduce students of physics to fluid dynamics. Prepared for a course at Heidelberg university in the summer term 2016.}
+      \field{langid}{english}
+      \field{title}{Lectures on Fluid Dynamics}
+      \field{year}{2016}
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/948T8VLS/Floerchinger - Lectures on ﬂuid dynamics.pdf
+      \endverb
+    \endentry
+    \entry{Rischke_2022}{unpublished}{}
+      \name{author}{1}{}{%
+        {{hash=2b3fdab62f2e9fb13097507c3b02ed18}{%
+           family={Rischke},
+           familyi={R\bibinitperiod},
+           given={Dirk\bibnamedelima H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{fullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{bibnamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{authorbibnamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{authornamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{authorfullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \field{labelalpha}{Ris22}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{title}{Microscopic {{Foundations}} of {{Relativistic Fluid Dynamics}}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/GHDF6WKX/Rischke - Microscopic Foundations of Relativistic Fluid Dyna.pdf
+      \endverb
+    \endentry
+    \entry{Kovtun_2012}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f42219a9a5146c916490118e8101ec59}{%
+           family={Kovtun},
+           familyi={K\bibinitperiod},
+           given={Pavel},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{f42219a9a5146c916490118e8101ec59}
+      \strng{fullhash}{f42219a9a5146c916490118e8101ec59}
+      \strng{bibnamehash}{f42219a9a5146c916490118e8101ec59}
+      \strng{authorbibnamehash}{f42219a9a5146c916490118e8101ec59}
+      \strng{authornamehash}{f42219a9a5146c916490118e8101ec59}
+      \strng{authorfullhash}{f42219a9a5146c916490118e8101ec59}
+      \field{labelalpha}{Kov12}
+      \field{sortinit}{7}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{These are pedagogical lecture notes on hydrodynamic fluctuations in normal relativistic fluids. The lectures discuss correlation functions of conserved densities in thermal equilibrium, interactions of the hydrodynamic modes, an effective action for viscous fluids, and the breakdown of the derivative expansion in hydrodynamics.}
+      \field{eprintclass}{hep-th}
+      \field{eprinttype}{arxiv}
+      \field{issn}{1751-8113, 1751-8121}
+      \field{journaltitle}{Journal of Physics A: Mathematical and Theoretical}
+      \field{month}{11}
+      \field{number}{47}
+      \field{title}{Lectures on Hydrodynamic Fluctuations in Relativistic Theories}
+      \field{urlday}{20}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{45}
+      \field{year}{2012}
+      \field{urldateera}{ce}
+      \field{pages}{473001}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1751-8113/45/47/473001
+      \endverb
+      \verb{eprint}
+      \verb 1205.5040
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/AF397IQ3/Kovtun - 2012 - Lectures on hydrodynamic fluctuations in relativis.pdf;/home/tobias/Zotero/storage/FNEBUMKC/1205.html
+      \endverb
+      \keyw{High Energy Physics - Theory}
+    \endentry
+    \entry{JaiswalKoch_2015}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=3a1d4582f66bf7a06a8b0b922727b2de}{%
+           family={Jaiswal},
+           familyi={J\bibinitperiod},
+           given={Amaresh},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a7f4bf668408cc1902afbb9d1dc0be32}{%
+           family={Koch},
+           familyi={K\bibinitperiod},
+           given={Volker},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \strng{fullhash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \strng{bibnamehash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \strng{authorbibnamehash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \strng{authornamehash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \strng{authorfullhash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \field{labelalpha}{JK15}
+      \field{sortinit}{8}
+      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Using a viscosity-based survival scale for geometrical perturbations formed in the early stages of relativistic heavy-ion collisions, we model the radial flow velocity during freeze-out. Subsequently, we employ the Cooper-Frye freeze-out prescription, with first-order viscous corrections to the distribution function, to obtain the transverse momentum distribution of particle yields and flow harmonics. For initial eccentricities, we use the results of Monte Carlo Glauber model. We fix the blast-wave model parameters by fitting the transverse momentum spectra of identified particles at the Large Hadron Collider (LHC) and demonstrate that this leads to a fairly good agreement with transverse momentum distribution of elliptic and triangular flow for various centralities. Within this viscous blast-wave model, we estimate the shear viscosity to entropy density ratio \${\textbackslash}eta/s{\textbackslash}simeq 0.24\$ at the LHC.}
+      \field{eprintclass}{hep-ph, physics:nucl-th}
+      \field{eprinttype}{arxiv}
+      \field{month}{8}
+      \field{number}{arXiv:1508.05878}
+      \field{title}{A Viscous Blast-Wave Model for Relativistic Heavy-Ion Collisions}
+      \field{urlday}{26}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.1508.05878
+      \endverb
+      \verb{eprint}
+      \verb 1508.05878
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/DU24F9FQ/Jaiswal und Koch - 2015 - A viscous blast-wave model for relativistic heavy-.pdf;/home/tobias/Zotero/storage/384DYB27/1508.html
+      \endverb
+      \keyw{High Energy Physics - Phenomenology,Nuclear Theory}
+    \endentry
+    \entry{Ollitrault_2008}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9377db4a51f329fd32ffb3f089701302}{%
+           family={Ollitrault},
+           familyi={O\bibinitperiod},
+           given={Jean-Yves},
+           giveni={J\bibinithyphendelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{9377db4a51f329fd32ffb3f089701302}
+      \strng{fullhash}{9377db4a51f329fd32ffb3f089701302}
+      \strng{bibnamehash}{9377db4a51f329fd32ffb3f089701302}
+      \strng{authorbibnamehash}{9377db4a51f329fd32ffb3f089701302}
+      \strng{authornamehash}{9377db4a51f329fd32ffb3f089701302}
+      \strng{authorfullhash}{9377db4a51f329fd32ffb3f089701302}
+      \field{labelalpha}{Oll08}
+      \field{sortinit}{9}
+      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Relativistic hydrodynamics is essential to our current understanding of nucleus-nucleus collisions at ultrarelativistic energies (current experiments at the Relativistic Heavy Ion Collider, forthcoming experiments at the CERN Large Hadron Collider). This is an introduction to relativistic hydrodynamics for graduate students. It includes a detailed derivation of the equations, and a description of the hydrodynamical evolution of a heavy-ion collisions. Some knowledge of thermodynamics and special relativity is assumed.}
+      \field{eprintclass}{nucl-th}
+      \field{eprinttype}{arxiv}
+      \field{issn}{0143-0807, 1361-6404}
+      \field{journaltitle}{European Journal of Physics}
+      \field{month}{3}
+      \field{number}{2}
+      \field{title}{Relativistic Hydrodynamics for Heavy-Ion Collisions}
+      \field{urlday}{24}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{29}
+      \field{year}{2008}
+      \field{urldateera}{ce}
+      \field{pages}{275\bibrangedash 302}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1088/0143-0807/29/2/010
+      \endverb
+      \verb{eprint}
+      \verb 0708.2433
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/Q3GQCP8T/Ollitrault - 2008 - Relativistic hydrodynamics for heavy-ion collision.pdf;/home/tobias/Zotero/storage/3N4U79HZ/0708.html
+      \endverb
+      \keyw{Nuclear Theory}
+    \endentry
+    \entry{DevetakEtAl_2020}{article}{}
+      \name{author}{7}{}{%
+        {{hash=07be8fc312c91c0507e92285609f5cb4}{%
+           family={Devetak},
+           familyi={D\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=2fa2d3fe983b658fb9397649c17216a1}{%
+           family={Dubla},
+           familyi={D\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=24ccf3a25e18357e765f9424d838a8e9}{%
+           family={Floerchinger},
+           familyi={F\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ccf7a78ea4961cf0a9f64716173a66f2}{%
+           family={Grossi},
+           familyi={G\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=23b35aaeb4eec4129d6af58f447e7c16}{%
+           family={Masciocchi},
+           familyi={M\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a2746e531a7bee531dca730aba344261}{%
+           family={Mazeliauskas},
+           familyi={M\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5ae4400a366a8e9bdec46ff13f429546}{%
+           family={Selyuzhenkov},
+           familyi={S\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{f4ad98328975119e6dd4b53f144bada9}
+      \strng{fullhash}{becde5c2e0dd91f1b36c7ef691c99356}
+      \strng{bibnamehash}{f4ad98328975119e6dd4b53f144bada9}
+      \strng{authorbibnamehash}{f4ad98328975119e6dd4b53f144bada9}
+      \strng{authornamehash}{f4ad98328975119e6dd4b53f144bada9}
+      \strng{authorfullhash}{becde5c2e0dd91f1b36c7ef691c99356}
+      \field{labelalpha}{Dev+20}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Transverse momentum spectra of identified particles produced in heavy-ion collisions at the Large Hadron Collider are described with relativistic fluid dynamics. We perform a systematic comparison of experimental data for pions, kaons and protons up to a transverse momentum of 3 GeV\$/c\$ with calculations using the FluiduM code package to solve the evolution equations of fluid dynamics, the TrENTo model to describe the initial state and the FastReso code to take resonance decays into account. Using data in five centrality classes at the center-of-mass collision energy per nucleon pair \${\textbackslash}sqrt\{s\_{\textbackslash}text\{NN\}\}=2.76{\textbackslash},{\textbackslash}text\{TeV\}\$, we determine systematically the most likely parameters of our theoretical model including the shear and bulk viscosity to entropy ratios, the initialization time, initial density and freeze-out temperature through a global search and quantify their posterior probability. This is facilitated by the very efficient numerical implementation of FluiduM and FastReso. Based on the most likely model parameters we present predictions for the transverse momentum spectra of multi-strange hadrons as well as identified particle spectra from Pb-Pb collisions at \${\textbackslash}sqrt\{s\_{\textbackslash}text\{NN\}\}=5.02{\textbackslash},{\textbackslash}text\{TeV\}\$.}
+      \field{eprintclass}{hep-ph, physics:nucl-ex, physics:nucl-th}
+      \field{eprinttype}{arxiv}
+      \field{issn}{1029-8479}
+      \field{journaltitle}{Journal of High Energy Physics}
+      \field{month}{6}
+      \field{number}{6}
+      \field{title}{Global Fluid Fits to Identified Particle Transverse Momentum Spectra from Heavy-Ion Collisions at the {{Large Hadron Collider}}}
+      \field{urlday}{27}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{2020}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \field{pages}{44}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1007/JHEP06(2020)044
+      \endverb
+      \verb{eprint}
+      \verb 1909.10485
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/MWY47769/Devetak et al. - 2020 - Global fluid fits to identified particle transvers.pdf;/home/tobias/Zotero/storage/DAH46Z4Q/1909.html
+      \endverb
+      \keyw{High Energy Physics - Phenomenology,Nuclear Experiment,Nuclear Theory}
+    \endentry
+    \entry{ChenEtAl_2021}{article}{}
+      \name{author}{5}{}{%
+        {{hash=95d25145789eb692784f0e434ed1b801}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Jia},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9c5a0f869704ca6e25b8aa8b167ba3a5}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=cc20ce694b3448d55ece5efa2e6887a0}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={Zebo},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=b3407586a9727da4242aaf6bb4139fff}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Zhangbu},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=b182798c336bebfb4b9120e5cf6a1c2b}{%
+           family={Yi},
+           familyi={Y\bibinitperiod},
+           given={Li},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{26bb640312961d5fc10121ff650f56bc}
+      \strng{fullhash}{321a91eaadf7cf0c2dcab352780badcd}
+      \strng{bibnamehash}{26bb640312961d5fc10121ff650f56bc}
+      \strng{authorbibnamehash}{26bb640312961d5fc10121ff650f56bc}
+      \strng{authornamehash}{26bb640312961d5fc10121ff650f56bc}
+      \strng{authorfullhash}{321a91eaadf7cf0c2dcab352780badcd}
+      \field{labelalpha}{Che+21}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper, we investigate the kinetic freeze-out properties in relativistic heavy ion collisions at different collision energies. We present a study of standard Boltzmann-Gibbs blast-wave (BGBW) fits and Tsallis blast-wave (TBW) fits performed on the transverse momentum spectra of identified hadrons produced in Au+Au collisions at collision energies of {\textsurd}sNN=7.7--200 GeV at the Relativistic Heavy Ion Collider (RHIC), and in Pb+Pb collisions at collision energies of {\textsurd}sNN=2.76 and 5.02 TeV at the Large Hadron Collider (LHC). The behavior of strange and multistrange particles is also investigated. We found that the TBW model describes data better than the BGBW one overall, and the contrast is more prominent as the collision energy increases as the degree of nonequilibrium of the produced system is found to increase. From TBW fits, the kinetic freeze-out temperature at the same centrality shows a weak dependence of collision energy between 7.7 and 39 GeV, while it decreases as collision energy continues to increase up to 5.02 TeV. The radial flow is found to be consistent with zero in peripheral collisions at RHIC energies but sizable at LHC energies and central collisions at all RHIC energies. We also observed that the strange hadrons, with higher temperature and similar radial flow, approach equilibrium more quickly from peripheral to central collisions than light hadrons. The dependence of temperature and flow velocity on nonequilibrium parameter (q-1) is characterized by two second-order polynomials. Both a and d{$\xi$} from the polynomials fit, related to the influence of the system bulk viscosity, increase toward lower RHIC energies.}
+      \field{journaltitle}{Physical Review C}
+      \field{month}{9}
+      \field{number}{3}
+      \field{title}{Nonequilibrium Kinetic Freeze-out Properties in Relativistic Heavy Ion Collisions from Energies Employed at the {{RHIC}} Beam Energy Scan to Those Available at the {{LHC}}}
+      \field{urlday}{26}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{104}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{034901}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevC.104.034901
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/GJ9R5XW3/Chen et al. - 2021 - Nonequilibrium kinetic freeze-out properties in re.pdf;/home/tobias/Zotero/storage/XUJHQP7X/PhysRevC.104.html
+      \endverb
+    \endentry
+    \entry{MazeliauskasEtAl_2019}{article}{}
+      \name{author}{4}{}{%
+        {{hash=6c448f148486dc170d8a2367c3a372d2}{%
+           family={Mazeliauskas},
+           familyi={M\bibinitperiod},
+           given={Aleksas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=50048509226fe3fdf2310776356e459f}{%
+           family={Floerchinger},
+           familyi={F\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1bcc77a68e857dea3bb5cb7f10f12e35}{%
+           family={Grossi},
+           familyi={G\bibinitperiod},
+           given={Eduardo},
+           giveni={E\bibinitperiod}}}%
+        {{hash=23e454b1f6444190b4e10d2ace485de5}{%
+           family={Teaney},
+           familyi={T\bibinitperiod},
+           given={Derek},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{216524005290c0ad97a2f65a9cb8ebc2}
+      \strng{fullhash}{4875e1c9e7b0a3fcffe245694cff014a}
+      \strng{bibnamehash}{216524005290c0ad97a2f65a9cb8ebc2}
+      \strng{authorbibnamehash}{216524005290c0ad97a2f65a9cb8ebc2}
+      \strng{authornamehash}{216524005290c0ad97a2f65a9cb8ebc2}
+      \strng{authorfullhash}{4875e1c9e7b0a3fcffe245694cff014a}
+      \field{labelalpha}{Maz+19}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In the context of ultra-relativistic nuclear collisions, we present a fast method for calculating the final particle spectra after the direct decay of resonances from a Cooper-Frye integral over the freeze-out surface. The method is based on identifying components of the final particle spectrum that transform in an irreducible way under rotations in the fluid-restframe. Corresponding distribution functions can be pre-computed including all resonance decays. Just a few of easily tabulated scalar functions then determine the Lorentz invariant decay spectrum from each space-time point, and simple integrals of these scalar functions over the freeze-out surface determine the final decay products. This by-passes numerically costly event-by-event calculations of the intermediate resonances. The method is of considerable practical use for making realistic data to model comparisons of the identified particle yields and flow harmonics, and for studying the viscous corrections to the freeze-out distribution function.}
+      \field{eprintclass}{hep-ph, physics:nucl-th}
+      \field{eprinttype}{arxiv}
+      \field{issn}{1434-6044, 1434-6052}
+      \field{journaltitle}{The European Physical Journal C}
+      \field{month}{3}
+      \field{number}{3}
+      \field{title}{Fast Resonance Decays in Nuclear Collisions}
+      \field{urlday}{27}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{79}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{284}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1140/epjc/s10052-019-6791-7
+      \endverb
+      \verb{eprint}
+      \verb 1809.11049
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/63D364NP/Mazeliauskas et al. - 2019 - Fast resonance decays in nuclear collisions.pdf;/home/tobias/Zotero/storage/6L5KB5L5/1809.html
+      \endverb
+      \keyw{High Energy Physics - Phenomenology,Nuclear Theory}
+    \endentry
+    \entry{GretherEtAl_2007}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0553d29e3c54223e347ed9fba85452eb}{%
+           family={Grether},
+           familyi={G\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=823ec7d873a4673abe1d6bb74a69a5f8}{%
+           family={{de Llano}},
+           familyi={d\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6ccb24789088d554fa6bd59f32670130}{%
+           family={Baker},
+           familyi={B\bibinitperiod},
+           given={George\bibnamedelima A.},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{d63a84d3976f51e3cccc13b11b49d3c3}
+      \strng{fullhash}{d63a84d3976f51e3cccc13b11b49d3c3}
+      \strng{bibnamehash}{d63a84d3976f51e3cccc13b11b49d3c3}
+      \strng{authorbibnamehash}{d63a84d3976f51e3cccc13b11b49d3c3}
+      \strng{authornamehash}{d63a84d3976f51e3cccc13b11b49d3c3}
+      \strng{authorfullhash}{d63a84d3976f51e3cccc13b11b49d3c3}
+      \field{labelalpha}{GdB07}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Bose-Einstein condensation (BEC) critical temperature in a relativistic ideal Bose gas of identical bosons, with and without the antibosons expected to be pair-produced abundantly at sufficiently hot temperatures, is exactly calculated for all boson number densities, all boson point rest masses, and all temperatures. The Helmholtz free energy at the critical BEC temperature is lower with antibosons, thus implying that omitting antibosons always leads to the computation of a metastable state.}
+      \field{journaltitle}{Physical Review Letters}
+      \field{month}{11}
+      \field{number}{20}
+      \field{title}{Bose-{{Einstein Condensation}} in the {{Relativistic Ideal Bose Gas}}}
+      \field{urlday}{30}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{99}
+      \field{year}{2007}
+      \field{urldateera}{ce}
+      \field{pages}{200406}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.99.200406
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/QAM58BA5/Grether et al. - 2007 - Bose-Einstein Condensation in the Relativistic Ide.pdf;/home/tobias/Zotero/storage/4Q7NDDHX/PhysRevLett.99.html
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
