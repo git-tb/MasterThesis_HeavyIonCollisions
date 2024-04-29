@@ -8,12 +8,22 @@ The freeze-out surface is invariant under rotations (= independent of polar angl
 \end{equation}
 
 The energy density $\epsilon$ and $4$-velocity $u^\mu$ of the fluid is related to the condensate phase and density via
-\begin{equation}
-    -(\partial_\mu\vartheta)(\partial^\mu\vartheta)=\chi^2=\frac{-\mu^2+\sqrt{6\epsilon\lambda+2\mu^4}}{3}\,,\qquad \partial^\mu\vartheta=\chi u^\mu
-\end{equation}
+\begin{subequations}
+    \begin{gather}
+        -(\partial_\mu\vartheta)(\partial^\mu\vartheta)=\chi^2=\frac{-\mu^2+\sqrt{6\epsilon\lambda+2\mu^4}}{3}\\
+        \partial^\mu\vartheta=\chi u^\mu\,,\qquad\rho^2=\sqrt{\frac{\chi^2+\mu^2}{\lambda}}
+    \end{gather}
+\end{subequations}
 One may use the relations \eqref{eq:LinearSigmaModel_CouplingsMassesRelation} to rewrite the above equation in terms of the particle masses and the pion decay constant $f_\pi\equiv v$.
 \begin{equation}
-    \chi^2=\frac{-m_\sigma^2/2+\sqrt{3\epsilon m_\sigma^2/f_\pi+m_\sigma^4/2}}{3}=\frac{-m_\sigma^2+m_\sigma\sqrt{12\epsilon/f_\pi+2m_\sigma^2}}{6}
+    \chi^2=\frac{-m_\sigma^2/2+\sqrt{3\epsilon m_\sigma^2/f_\pi+m_\sigma^4/2}}{3}=\frac{-m_\sigma^2+m_\sigma\sqrt{12\epsilon/f_\pi+2m_\sigma^2}}{6}\,,\qquad\rho=\sqrt{f_\pi\frac{2\chi^2+m_\sigma^2}{m_\sigma^2}}
 \end{equation}
 
 In Milne coordinates $(x^\mu)=(\tau,r,\varphi,\eta_s)$ the $4$-velocity has components $(u^\mu)=(\gamma,\gamma v,0,0)$, where $v=v(\alpha)$ is a function on the freeze-out surface.
+
+
+
+Questions to Andreas regarding numerics:
+\begin{itemize}
+    \item Why is $\dt\alpha=\alpha_{j+1}-\alpha_{j}\neq\const$?
+\end{itemize}
