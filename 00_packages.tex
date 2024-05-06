@@ -52,54 +52,54 @@
 \newcounter{examp}[section]\setcounter{examp}{0}
 \renewcommand{\theexamp}{\arabic{section}.\arabic{examp}}
 \newenvironment{examp}[2][]{%
-    % \refstepcounter{examp}%
-    \refstepcounter{box}%
-    \ifstrempty{#1}%
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=blue!20]
-                    {\strut Example~\thebox};}}
-    }%
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=blue!20]
-                    {\strut Example~\thebox:~#1};}}%
-    }%
-    \mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
-        linewidth=2pt,topline=true,%
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-    }
-    \begin{mdframed}[]\relax%
-        \label{#2}}{\end{mdframed}}
+        % \refstepcounter{examp}%
+        \refstepcounter{box}%
+        \ifstrempty{#1}%
+        {\mdfsetup{%
+                        frametitle={%
+                                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                                        \node[anchor=east,rectangle,fill=blue!20]
+                                        {\strut Example~\thebox};}}
+        }%
+        {\mdfsetup{%
+                        frametitle={%
+                                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                                        \node[anchor=east,rectangle,fill=blue!20]
+                                        {\strut Example~\thebox:~#1};}}%
+        }%
+        \mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
+                linewidth=2pt,topline=true,%
+                frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+        }
+        \begin{mdframed}[]\relax%
+                \label{#2}}{\end{mdframed}}
 % =====================
 % === definition box ===
 % =====================
 \newcounter{defin}[section]\setcounter{defin}{0}
 \renewcommand{\thedefin}{\arabic{section}.\arabic{defin}}
 \newenvironment{defin}[2][]{%
-    % \refstepcounter{defin}%
-    \refstepcounter{box}%
-    \ifstrempty{#1}%
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=blue!20]
-                    {\strut Definition~\thebox};}}
-    }%
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=blue!20]
-                    {\strut Definition~\thebox:~#1};}}%
-    }%
-    \mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
-        linewidth=2pt,topline=true,%
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-    }
-    \begin{mdframed}[]\relax%
-        \label{#2}}{\end{mdframed}}
+        % \refstepcounter{defin}%
+        \refstepcounter{box}%
+        \ifstrempty{#1}%
+        {\mdfsetup{%
+                        frametitle={%
+                                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                                        \node[anchor=east,rectangle,fill=blue!20]
+                                        {\strut Definition~\thebox};}}
+        }%
+        {\mdfsetup{%
+                        frametitle={%
+                                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                                        \node[anchor=east,rectangle,fill=blue!20]
+                                        {\strut Definition~\thebox:~#1};}}%
+        }%
+        \mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
+                linewidth=2pt,topline=true,%
+                frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+        }
+        \begin{mdframed}[]\relax%
+                \label{#2}}{\end{mdframed}}
 
 % =====================
 % === calculations box ===
@@ -107,27 +107,27 @@
 \newcounter{calc}[section]\setcounter{calc}{0}
 \renewcommand{\thecalc}{\arabic{section}.\arabic{calc}}
 \newenvironment{calc}[2][]{%
-    % \refstepcounter{calc}%
-    \refstepcounter{box}%
-    \ifstrempty{#1}%
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=orange!20]
-                    {\strut Calculation~\thebox};}}
-    }%
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=orange!20]
-                    {\strut Calculation~\thebox:~#1};}}%
-    }%
-    \mdfsetup{innertopmargin=10pt,linecolor=orange!20,%
-        linewidth=2pt,topline=true,%
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-    }
-    \begin{mdframed}[]\relax%
-        \label{#2}}{\end{mdframed}}
+        % \refstepcounter{calc}%
+        \refstepcounter{box}%
+        \ifstrempty{#1}%
+        {\mdfsetup{%
+                        frametitle={%
+                                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                                        \node[anchor=east,rectangle,fill=orange!20]
+                                        {\strut Calculation~\thebox};}}
+        }%
+        {\mdfsetup{%
+                        frametitle={%
+                                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                                        \node[anchor=east,rectangle,fill=orange!20]
+                                        {\strut Calculation~\thebox:~#1};}}%
+        }%
+        \mdfsetup{innertopmargin=10pt,linecolor=orange!20,%
+                linewidth=2pt,topline=true,%
+                frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+        }
+        \begin{mdframed}[]\relax%
+                \label{#2}}{\end{mdframed}}
 
 % =====================
 % === important box ===
@@ -135,27 +135,27 @@
 \newcounter{impt}[section]\setcounter{impt}{0}
 \renewcommand{\theimpt}{\arabic{section}|\arabic{impt}}
 \newenvironment{impt}[2][]{%
-    % \refstepcounter{impt}%
-    \refstepcounter{box}%
-    \ifstrempty{#1}%
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=red!20]
-                    {\strut Important~\thebox};}}
-    }%
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=red!20]
-                    {\strut Important~\thebox:~#1};}}%
-    }%
-    \mdfsetup{innertopmargin=10pt,linecolor=red!20,%
-        linewidth=2pt,topline=true,%
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-    }
-    \begin{mdframed}[]\relax%
-        \label{#2}}{\end{mdframed}}
+        % \refstepcounter{impt}%
+        \refstepcounter{box}%
+        \ifstrempty{#1}%
+        {\mdfsetup{%
+                        frametitle={%
+                                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                                        \node[anchor=east,rectangle,fill=red!20]
+                                        {\strut Important~\thebox};}}
+        }%
+        {\mdfsetup{%
+                        frametitle={%
+                                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                                        \node[anchor=east,rectangle,fill=red!20]
+                                        {\strut Important~\thebox:~#1};}}%
+        }%
+        \mdfsetup{innertopmargin=10pt,linecolor=red!20,%
+                linewidth=2pt,topline=true,%
+                frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+        }
+        \begin{mdframed}[]\relax%
+                \label{#2}}{\end{mdframed}}
 
 % =====================
 % === remark box ===
@@ -163,27 +163,27 @@
 \newcounter{rmrk}[section]\setcounter{rmrk}{0}
 \renewcommand{\thermrk}{\arabic{section}|\arabic{rmrk}}
 \newenvironment{rmrk}[2][]{%
-    % \refstepcounter{rmrk}%
-    \refstepcounter{box}%
-    \ifstrempty{#1}%
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=violet!20]
-                    {\strut Remark~\thebox};}}
-    }%
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=violet!20]
-                    {\strut Remark~\thebox:~#1};}}%
-    }%
-    \mdfsetup{innertopmargin=10pt,linecolor=violet!20,%
-        linewidth=2pt,topline=true,%
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-    }
-    \begin{mdframed}[]\relax%
-        \label{#2}}{\end{mdframed}}
+        % \refstepcounter{rmrk}%
+        \refstepcounter{box}%
+        \ifstrempty{#1}%
+        {\mdfsetup{%
+                        frametitle={%
+                                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                                        \node[anchor=east,rectangle,fill=violet!20]
+                                        {\strut Remark~\thebox};}}
+        }%
+        {\mdfsetup{%
+                        frametitle={%
+                                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                                        \node[anchor=east,rectangle,fill=violet!20]
+                                        {\strut Remark~\thebox:~#1};}}%
+        }%
+        \mdfsetup{innertopmargin=10pt,linecolor=violet!20,%
+                linewidth=2pt,topline=true,%
+                frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+        }
+        \begin{mdframed}[]\relax%
+                \label{#2}}{\end{mdframed}}
 % ======================================================================
 % ======================================================================
 
@@ -194,25 +194,25 @@
 \addbibresource{00_literature.bib}
 % https://tex.stackexchange.com/questions/12806/guidelines-for-customizing-biblatex-styles
 \AtEveryBibitem{%
-    \clearfield{number}%
-    \clearfield{pages}%
-    \clearfield{issn}%
-    \clearfield{isbn}%
-    \clearfield{urlyear}%
+        \clearfield{number}%
+        \clearfield{pages}%
+        \clearfield{issn}%
+        \clearfield{isbn}%
+        \clearfield{urlyear}%
 }
 % ======================================================================
 % ======================================================================
 
 \usepackage{geometry}
 \geometry{twoside,
-    paperwidth=210mm,
-    paperheight=297mm,
-    textheight=682pt,
-    textwidth=522pt,
-    centering,
-    headheight=50pt,
-    headsep=12pt,
-    footskip=18pt,
-    footnotesep=24pt plus 2pt minus 12pt,
-    columnsep=18pt
+        paperwidth=210mm,
+        paperheight=297mm,
+        textheight=682pt,%682
+        textwidth=500pt,%522
+        centering,
+        headheight=50pt,
+        headsep=12pt,
+        footskip=18pt,
+        footnotesep=24pt plus 2pt minus 12pt,
+        columnsep=18pt
 }%

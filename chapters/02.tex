@@ -39,7 +39,6 @@ In general the particle number $N$ and particle number density $n(\mathbf{x})$ i
 with the convention $\phi(\mathbf{x})=\int\dt^3p/(2\pi)^3\phi(\mathbf{p})e^{-\imagu\mathbf{p}\mathbf{x}}$ for the Fourier transform.
 
 
-
 % The field configuration found by this translation prescription is then propagated forwards in time by means of the retarded Greens function
 % \begin{equation}
 %     \overline{\phi}(x)=\langle\phi_a(x)\rangle=\int\dt^dyG_{\text{ret}}(x,y)j(y)
@@ -83,31 +82,90 @@ Let's evaluate the Fourier transform of the condensate field. The calculation us
                                                 & =\int\dt^4y\frac{1}{2\omega_{\mathbf{p}}}\Theta(x^0-y^0)e^{\imagu\mathbf{p}\mathbf{y}}\big[e^{-\imagu\omega_{\mathbf{p}}(x^0-y^0)}-e^{\imagu\omega_{\mathbf{p}}(x^0-y^0)}\big]j(y)                                                                                                                                            \\
                                                 & =\int\dt^4y\frac{1}{\imagu\omega_\mathbf{p}}\Theta(x^0-y^0)e^{\imagu\mathbf{p}{\mathbf{y}}}\sin(\omega_{\mathbf{p}}(x^0-y^0))j(y)                                                                                                                                                                                             \\
         \intertext{Specify this for the relevant case $\text{supp}j=\Sigma_{\text{freeze-out}}$ and parametrize the integral over the hypersurface $\Sigma$ via $\int_\Sigma\dt^4y=\int\dt\varphi\dt\eta\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)+\tau^{\prime 2}(\alpha)}$}
-                                                & =\int_0^{2\pi}\dt\varphi\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)+\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\mathbf{p}}}\Theta(x^0-\tau\cosh\eta)\times                                                                                                  \nonumber \\
-                                                & \phantom{=}\qquad\times\exp\left(\imagu[r(\alpha)(p_x\cos\varphi+p_y\sin\varphi)+p_z\tau(\alpha)\sinh\eta]\right)\sin(\omega_{\mathbf{p}}(x^0-\tau(\alpha)\cosh\eta))j(\tau(\alpha),r(\alpha))
+        \overline{\phi}(x^0\equiv t,\mathbf{p}) & =\int_0^{2\pi}\dt\varphi\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)+\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\mathbf{p}}}\Theta(x^0-\tau\cosh\eta)\times                                                                                                  \nonumber \\
+                                                & \phantom{=}\qquad\times\exp\left(\imagu[\mathbf{p}^\perp\mathbf{x}^\perp+p_z\tau(\alpha)\sinh\eta]\right)\sin(\omega_{\mathbf{p}}(x^0-\tau(\alpha)\cosh\eta))j(\tau(\alpha),r(\alpha))                                                                                                                                        \\
+        \intertext{Performing the $\varphi$-integration, with $\varphi$ appearing in the integrand in $\mathbf{x}^\perp=(r\cos\varphi,r\sin\varphi)$, we choose to align $\varphi=0$ with the $\mathbf{p}^\perp=(p_x,p_y)$ direction.Then $\mathbf{p}^\perp\mathbf{x}^\perp=p^\perp r\cos\varphi$. Use the definition of modified Bessel function (\url{https://dlmf.nist.gov/10.32}) $$I_0(z)=\frac{1}{\pi}\int_0^\pi e^{\pm z\cos\theta}\dt\theta$$ the result simplifies to}
+        \overline{\phi}(x^0\equiv t,\mathbf{p}) & =\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)+\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\mathbf{p}}}\Theta(x^0-\tau\cosh\eta)\times                                                                                                  \nonumber                        \\
+                                                & \phantom{=}\qquad\times\frac{2}{\pi}I_0(\imagu p^\perp r(\alpha))\exp\left(\imagu p_z\tau(\alpha)\sinh\eta\right)\sin(\omega_{\mathbf{p}}(x^0-\tau(\alpha)\cosh\eta))j(\tau(\alpha),r(\alpha))
     \end{align}
 \end{subequations}
 
-Recall the metric $g_{\mu\nu}=\text{diag}(-1,1,\tau^2,r^2)$ in coordinates $(\tau,\eta,r,\varphi)$. Orthonormal tangent vectors to the freeze out hypersurface are $(\hat\partial_\varphi)^\mu=(0,0,0,r^{-1})=r^{-1}(\partial_\varphi)^\mu$, $(\hat\partial_\eta)^\mu=(0,0,\tau^{-1},0)=\tau^{-1}(\partial_\eta)^\mu$ and $(\hat\partial_\alpha)^\mu=\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}(\tau^{\prime}(\alpha),r^{\prime}(\alpha),0,0)=D(\alpha)(\partial_\alpha)^\mu$ with $D(\alpha)=\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}$. The projector on the hypersurface is
+\begin{calc}[Metric on Hypersurface]{calc:HypersurfaceMetric}
+    Recall the metric $g_{\mu\nu}=\text{diag}(-1,1,\tau^2,r^2)$ in coordinates $(\tau,\eta,r,\varphi)$. Orthonormal tangent vectors to the freeze out hypersurface are $(\hat\partial_\varphi)^\mu=(0,0,0,r^{-1})=r^{-1}(\partial_\varphi)^\mu$, $(\hat\partial_\eta)^\mu=(0,0,\tau^{-1},0)=\tau^{-1}(\partial_\eta)^\mu$ and $(\hat\partial_\alpha)^\mu=\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}(\tau^{\prime}(\alpha),r^{\prime}(\alpha),0,0)=D(\alpha)(\partial_\alpha)^\mu$ with $D(\alpha)=\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}$. The projector on the hypersurface is
+    \begin{equation}
+        \gamma_{\mu\nu}=(\hat\partial_\varphi)_\mu(\hat\partial_\varphi)_\nu+(\hat\partial_\eta)_\mu(\hat\partial_\eta)_\nu+(\hat\partial_\alpha)_\mu(\hat\partial_\alpha)_\nu=\begin{pmatrix}
+            D^2(\alpha)\tau^{\prime2}(\alpha)               & -D^2(\alpha)\tau^\prime(\alpha)r^\prime(\alpha) & 0      & 0   \\
+            -D^2(\alpha)\tau^\prime(\alpha)r^\prime(\alpha) & D^2(\alpha)r^{\prime2}(\alpha)                  & 0      & 0   \\
+            0                                               & 0                                               & \tau^2 & 0   \\
+            0                                               & 0                                               & 0      & r^2
+        \end{pmatrix}
+    \end{equation}
+    The normal of the hypersurface is $n^\mu\equiv(\hat\partial_\alpha^\perp)^\mu=D(\alpha)(r^\prime(\alpha),\tau^\prime(\alpha),0,0)$ and is timelike where $D$ is real. Naturally $\gamma_{\mu\nu}n^\nu=0$. In the basis $(\partial_\alpha,\partial_\eta,\partial_\varphi,n)$ using (in short form)
+    \begin{equation}
+        (\partial_\alpha)^\nu\gamma_{\mu\nu}(\partial_\alpha)^\mu=\begin{pmatrix}
+            \tau^\prime \\r^\prime
+        \end{pmatrix}^T\begin{pmatrix}
+            -\tau^\prime \\
+            r^\prime
+        \end{pmatrix}=D^2
+    \end{equation}
+    the projector reads
+    \begin{equation}
+        \gamma_{ij}=\text{diag}(D^2(\alpha),\tau^2(\alpha),r^2(\alpha),0)
+    \end{equation}
+    and the volume element on the hypersurface is given by $r(\alpha)\tau(\alpha) D=r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}$.
+\end{calc}
+
+\paragraph{Converting Spectra between Coordinate Systems}
+
+Consider the coordinate change in momentum space
 \begin{equation}
-    \gamma_{\mu\nu}=(\hat\partial_\varphi)_\mu(\hat\partial_\varphi)_\nu+(\hat\partial_\eta)_\mu(\hat\partial_\eta)_\nu+(\hat\partial_\alpha)_\mu(\hat\partial_\alpha)_\nu=\begin{pmatrix}
-        D^2(\alpha)\tau^{\prime2}(\alpha)               & -D^2(\alpha)\tau^\prime(\alpha)r^\prime(\alpha) & 0      & 0   \\
-        -D^2(\alpha)\tau^\prime(\alpha)r^\prime(\alpha) & D^2(\alpha)r^{\prime2}(\alpha)                  & 0      & 0   \\
-        0                                               & 0                                               & \tau^2 & 0   \\
-        0                                               & 0                                               & 0      & r^2
-    \end{pmatrix}
+    \left\{
+    \begin{split}
+        p_x&=p^\perp\cos\varphi_p\\
+        p_y&=p^\perp\sin\varphi_p\\
+        p_z&=m^\perp\sinh\eta_p\\
+        p_t&=m^\perp\cosh\eta_p
+    \end{split}
+    \right.\qquad\iff\qquad
+    \left\{
+    \begin{split}
+        p^\perp&=\sqrt{p_x^2+p_y^2}\\
+        \varphi_p&=\arctan(p_y/p_y)\\
+        m^\perp&=\sqrt{p_t^2-p_z^2}\\
+        \eta_p&=\artanh(p_z/p_t)
+    \end{split}
+    \right.
 \end{equation}
-The normal of the hypersurface is $n^\mu\equiv(\hat\partial_\alpha^\perp)^\mu=D(\alpha)(r^\prime(\alpha),\tau^\prime(\alpha),0,0)$ and is timelike where $D$ is real. Naturally $\gamma_{\mu\nu}n^\nu=0$. In the basis $(\partial_\alpha,\partial_\eta,\partial_\varphi,n)$ using (in short form)
+with Jacobian
 \begin{equation}
-    (\partial_\alpha)^\nu\gamma_{\mu\nu}(\partial_\alpha)^\mu=\begin{pmatrix}
-        \tau^\prime \\r^\prime
-    \end{pmatrix}^T\begin{pmatrix}
-        -\tau^\prime \\
-        r^\prime
-    \end{pmatrix}=D^2
+    \big\vert\frac{\partial(p^\perp,\varphi_p,m^\perp,\eta_p)}{\partial(p_x,p_y,p_z,p_t)}\big\vert=\frac{1}{m^\perp p^\perp}
 \end{equation}
-the projector reads
+Let $f(p_\mu)$ be some distribution function and $F$ its space time integral evaluated on the momentum shell and future directed momenta.
+
+\begin{subequations}
+    \begin{align}
+        F=\int\frac{\dt^4p_{\text{cart}}}{(2\pi)^4}\delta(p^2-m^2)\Theta(p_t)f(p_\mu) & =\int\frac{\dt p_t}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\mathbf{p}}}\big(\delta(p_t-\omega_{\mathbf{p}})+\delta(p_t+\omega_{\mathbf{p}})\big)\Theta(p_t)f(p_\mu) \\
+                                                                                      & =\frac{1}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\mathbf{p}}}f(p_\mu)\big\vert_{p_t=\omega_{\mathbf{p}}}
+    \end{align}
+    On the other hand
+    \begin{align}
+        F=\int\frac{\dt^4p_{\text{cart}}}{(2\pi)^4}\delta(p^2-m^2)\Theta(p_t)f(p_\mu) & =\frac{1}{(2\pi)^4}\int_0^\infty \dt p^\perp\int_0^\infty \dt m^\perp\int_{-\infty}^\infty \dt\eta_p\int_0^{2\pi}\dt\varphi_pm^\perp p^\perp\delta((p^\perp)^2-(m^\perp)^2)f(p_\mu) \\
+        \intertext{assume $f(p^\mu)=f(p^\perp,m^\perp,\eta_p)$ and perform the $\varphi$-integraion}
+                                                                                      & =\frac{1}{(2\pi)^3}\int_0^\infty\dt m^\perp\int_{-\infty}^\infty\dt\eta_p\frac{m^\perp}{2}f(p_\mu)\big\vert_{m^\perp=p^\perp}
+    \end{align}
+    leding to the important result
+    \begin{equation}
+        \frac{1}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\mathbf{p}}}f(p_\mu)\big\vert_{p_t=\omega_{\mathbf{p}}}=\frac{1}{(2\pi)^3}\int_0^\infty\dt m^\perp\int_{-\infty}^\infty\dt\eta_p\frac{m^\perp}{2}f(p_\mu)\big\vert_{m^\perp=p^\perp}
+    \end{equation}
+\end{subequations}
+
+Since the restrictions $p_t=\omega_{\mathbf{p}}$ and $m^\perp=p^\perp$ are equivalent (considering the parametrization that already satisfies $p_t=p^\perp\cosh\eta_p\geq 0$) we find
 \begin{equation}
-    \gamma_{ij}=\text{diag}(D^2(\alpha),\tau^2(\alpha),r^2(\alpha),0)
+    \omega_{\mathbf{p}}\frac{\dt F}{\dt p_x\dt p_y\dt p_z}=\frac{1}{2\pi m^\perp}\frac{\dt F}{\dt m^\perp\dt\eta_p}
 \end{equation}
-and the volume element on the hypersurface is given by $r(\alpha)\tau(\alpha) D=r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}$.
+The result applies to the case
+\begin{equation}
+    f(p_\mu)\big\vert_{p_t=\omega_{\mathbf{p}}}=2\omega_{\mathbf{p}}\cdot 2\pi\cdot n(\mathbf{p})
+\end{equation}
+and $F=N$.
