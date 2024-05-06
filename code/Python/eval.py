@@ -41,8 +41,3 @@ rho = np.sqrt(fpi * (2*chi2 + msigma**2)/(msigma**2) )
 plt.scatter(np.arange(Npoints-1),np.cos(theta))
 print("rho={rho:.5f}".format(rho=rho))
 plt.show()
-
-# ============================================
-def D(dx):
-
-
