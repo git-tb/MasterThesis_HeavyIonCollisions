@@ -81,11 +81,11 @@ Let's evaluate the Fourier transform of the condensate field. The calculation us
                                                 & =\int\dt^4y\frac{1}{2\omega_{\mathbf{p}}}\Theta(x^0-y^0)\big[e^{-\imagu[w_{\mathbf{p}}(x^0-y^0)-\mathbf{p}\mathbf{y}]}-e^{\imagu[w_{\mathbf{p}}(x^0-y^0)+\mathbf{p}\mathbf{y}]}\big]j(y)                                                                                                                                      \\
                                                 & =\int\dt^4y\frac{1}{2\omega_{\mathbf{p}}}\Theta(x^0-y^0)e^{\imagu\mathbf{p}\mathbf{y}}\big[e^{-\imagu\omega_{\mathbf{p}}(x^0-y^0)}-e^{\imagu\omega_{\mathbf{p}}(x^0-y^0)}\big]j(y)                                                                                                                                            \\
                                                 & =\int\dt^4y\frac{1}{\imagu\omega_\mathbf{p}}\Theta(x^0-y^0)e^{\imagu\mathbf{p}{\mathbf{y}}}\sin(\omega_{\mathbf{p}}(x^0-y^0))j(y)                                                                                                                                                                                             \\
-        \intertext{Specify this for the relevant case $\text{supp}j=\Sigma_{\text{freeze-out}}$ and parametrize the integral over the hypersurface $\Sigma$ via $\int_\Sigma\dt^4y=\int\dt\varphi\dt\eta\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)+\tau^{\prime 2}(\alpha)}$}
-        \overline{\phi}(x^0\equiv t,\mathbf{p}) & =\int_0^{2\pi}\dt\varphi\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)+\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\mathbf{p}}}\Theta(x^0-\tau\cosh\eta)\times                                                                                                  \nonumber \\
+        \intertext{Specify this for the relevant case $\text{supp}j=\Sigma_{\text{freeze-out}}$ and parametrize the integral over the hypersurface $\Sigma$ via $\int_\Sigma\dt^4y=\int\dt\varphi\dt\eta\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}$}
+        \overline{\phi}(x^0\equiv t,\mathbf{p}) & =\int_0^{2\pi}\dt\varphi\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\mathbf{p}}}\Theta(x^0-\tau\cosh\eta)\times                                                                                                  \nonumber \\
                                                 & \phantom{=}\qquad\times\exp\left(\imagu[\mathbf{p}^\perp\mathbf{x}^\perp+p_z\tau(\alpha)\sinh\eta]\right)\sin(\omega_{\mathbf{p}}(x^0-\tau(\alpha)\cosh\eta))j(\tau(\alpha),r(\alpha))                                                                                                                                        \\
         \intertext{Performing the $\varphi$-integration, with $\varphi$ appearing in the integrand in $\mathbf{x}^\perp=(r\cos\varphi,r\sin\varphi)$, we choose to align $\varphi=0$ with the $\mathbf{p}^\perp=(p_x,p_y)$ direction.Then $\mathbf{p}^\perp\mathbf{x}^\perp=p^\perp r\cos\varphi$. Use the definition of modified Bessel function (\url{https://dlmf.nist.gov/10.32}) $$I_0(z)=\frac{1}{\pi}\int_0^\pi e^{\pm z\cos\theta}\dt\theta$$ the result simplifies to}
-        \overline{\phi}(x^0\equiv t,\mathbf{p}) & =\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)+\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\mathbf{p}}}\Theta(x^0-\tau\cosh\eta)\times                                                                                                  \nonumber                        \\
+        \overline{\phi}(x^0\equiv t,\mathbf{p}) & =\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\mathbf{p}}}\Theta(x^0-\tau\cosh\eta)\times                                                                                                  \nonumber                        \\
                                                 & \phantom{=}\qquad\times\frac{2}{\pi}I_0(\imagu p^\perp r(\alpha))\exp\left(\imagu p_z\tau(\alpha)\sinh\eta\right)\sin(\omega_{\mathbf{p}}(x^0-\tau(\alpha)\cosh\eta))j(\tau(\alpha),r(\alpha))
     \end{align}
 \end{subequations}
@@ -109,11 +109,11 @@ Let's evaluate the Fourier transform of the condensate field. The calculation us
             r^\prime
         \end{pmatrix}=D^2
     \end{equation}
-    the projector reads
+    the hypersurface metric (projecting out the normal component from $g_{\mu\nu}$) reads
     \begin{equation}
-        \gamma_{ij}=\text{diag}(D^2(\alpha),\tau^2(\alpha),r^2(\alpha),0)
+        \gamma_{}=\text{diag}(D^2(\alpha),\tau^2(\alpha),r^2(\alpha),0)
     \end{equation}
-    and the volume element on the hypersurface is given by $r(\alpha)\tau(\alpha) D=r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}$.
+    and the volume element is given by $r(\alpha)\tau(\alpha) D=r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}$.
 \end{calc}
 
 \paragraph{Converting Spectra between Coordinate Systems}
