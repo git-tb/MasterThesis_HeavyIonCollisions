@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      4721,        150]
-NotebookOptionsPosition[      3936,        128]
-NotebookOutlinePosition[      4331,        144]
-CellTagsIndexPosition[      4288,        141]
+NotebookDataLength[      6608,        199]
+NotebookOptionsPosition[      5497,        172]
+NotebookOutlinePosition[      5901,        188]
+CellTagsIndexPosition[      5858,        185]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -124,10 +124,54 @@ Cell[BoxData[
   3.9231322744149647`*^9, {3.923132383065095*^9, 3.9231324145264883`*^9}, 
    3.9231326714972267`*^9, 3.9231328869704647`*^9},
  CellLabel->"Out[23]=",ExpressionUUID->"34d4e204-f330-4979-af90-7521ccc55e12"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   RowBox[{"Exp", "[", 
+    RowBox[{"I", "*", "a", "*", "x"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "Infinity"}], "}"}], ",", 
+   RowBox[{"Assumptions", "\[Rule]", 
+    RowBox[{"Element", "[", 
+     RowBox[{"a", ",", "Reals"}], "]"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.9246750886865273`*^9, 3.9246751099549017`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"e20fb79e-d82a-416e-8746-93f3e3fa1b75"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Integrate", "idiv", 
+   "\"Integral of \\!\\(\\*SuperscriptBox[\\\"\[ExponentialE]\\\", RowBox[{\\\
+\"\[ImaginaryI]\\\", \\\" \\\", \\\"a\\\", \\\" \\\", \\\"x\\\"}]]\\) does \
+not converge on \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"0\\\", \\\",\\\", \
+\\\"\[Infinity]\\\"}], \\\"}\\\"}]\\).\"", 2, 1, 1, 33700635510427664298, 
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.924675121049931*^9},
+ CellLabel->
+  "During evaluation of \
+In[1]:=",ExpressionUUID->"75242513-5097-4726-a5bd-aa71192ebf1c"],
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"\[ImaginaryI]", " ", "a", " ", "x"}]], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "\[Infinity]"}], "}"}], ",", 
+   RowBox[{"Assumptions", "\[Rule]", 
+    RowBox[{"a", "\[Element]", 
+     TemplateBox[{},
+      "Reals"]}]}]}], "]"}]], "Output",
+ CellChangeTimes->{3.924675121090893*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"92d9814f-d301-49ba-973c-9ecee13693ce"]
 }, Open  ]]
 },
-WindowSize->{2880., 1576.5},
-WindowMargins->{{0, Automatic}, {0.75, Automatic}},
+WindowSize->{1618.5, 1576.5},
+WindowMargins->{{2880.75, Automatic}, {Automatic, 1282.5}},
 FrontEndVersion->"12.3 for Linux x86 (64-bit) (July 9, 2021)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"b9d4200c-74be-44bd-b8ef-578ea12507a4"
@@ -150,7 +194,12 @@ Cell[1445, 47, 464, 13, 52, "Output",ExpressionUUID->"c60c0ef5-9d11-43c1-b7df-57
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[1946, 65, 699, 19, 29, "Input",ExpressionUUID->"1cf9edf1-a924-489c-b562-ffffca204bc8"],
-Cell[2648, 86, 1272, 39, 108, "Output",ExpressionUUID->"34d4e204-f330-4979-af90-7521ccc55e12"]
+Cell[2648, 86, 1272, 39, 59, "Output",ExpressionUUID->"34d4e204-f330-4979-af90-7521ccc55e12"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3957, 130, 481, 11, 29, "Input",ExpressionUUID->"e20fb79e-d82a-416e-8746-93f3e3fa1b75"],
+Cell[4441, 143, 559, 12, 28, "Message",ExpressionUUID->"75242513-5097-4726-a5bd-aa71192ebf1c"],
+Cell[5003, 157, 478, 12, 58, "Output",ExpressionUUID->"92d9814f-d301-49ba-973c-9ecee13693ce"]
 }, Open  ]]
 }
 ]
