@@ -1,8 +1,94 @@
 \chapter{Calculation of Condensed Field}
 
-\section{Finding the Condensate of the Freeze-Out Surface}
+\section{Relating Fluid and Pion Fields}
 
-The freeze-out surface is invariant under rotations (= independent of polar angle $\varphi$) around the collision axis and longitudinal boosts (= independent of rapidity $\eta_s$) and hence parametrized by a one-dimensional curve in the $r\text{-}\tau$-plane. The curve itself may be parametrized by some real parameter $\alpha$, following some mapping $s\mapsto (r(\alpha),\tau(\alpha))$. From the hydro simulation we wish to identify the gradient $\partial_\mu\vartheta\sim u_\mu$ of the complex phase of the condensate field with the fluid $4$-velocity $u_\mu$, hence in order to find the phase of the field, an integration of $\partial_\mu\vartheta$ over the hypersurface is needed and an integration constant $\vartheta_0$ can be chosen freely. Choose $\alpha=\arctan(y/x)$ to be the polar angle of the point $(r(\alpha),\tau(\alpha))$ in the $r\text{-}\tau$-plane. Since $r,\tau>0$ $\alpha$ is restricted to the range $[0,\pi]$ and $\vartheta(\alpha)$ on the hypersurface can be calculated via
+The signature is $(-,+,+,+)$.
+
+Start with the Lagrangian of the linear $\sigma$-model for the real-valued $O(4)$-vector $\varphi_a=(\sigma,\mathbf{\pi})$.
+\begin{equation}
+    \mathscr{L}=-\frac{1}{2}\partial_\mu\sigma\partial^\mu\sigma-\frac{1}{2}\partial_\mu\mathbf{\pi}\partial^\mu\mathbf{\pi}-\frac{1}{2}m^2(\sigma^2+\mathbf{\pi}^2)-\frac{\lambda}{4}(\sigma^2+\mathbf{\pi}^2)^2-\epsilon\sigma
+\end{equation}
+and from \ref{subsubsec:linearsigmamodel} we find, that if $m^2=-\mu^2<0$ SSB occurs (plus, $\epsilon\neq 0$ explicitly breaks the symmetry) with the VEV $v$ and masses of the $\sigma$ and $\mathbf{\pi}$ excitation in $\varphi_a=(v+\delta\sigma,\mathbf{\pi})$ are given by (note the difference in conventions $\lambda\to 6\lambda$ w.r.t. \ref{subsubsec:linearsigmamodel})
+\begin{equation}
+    \left\{
+    \begin{split}
+        v          & =\frac{\mu}{\sqrt{\lambda}}+\epsilon\frac{1}{2\mu^2}+\mathcal{O}(\epsilon^2) \\
+        m_\sigma^2 & =2\mu^2+\mathcal{O}(\epsilon)                                                \\
+        m_\pi^2    & =\epsilon\frac{\sqrt{\lambda}}{\mu}+\mathcal{O}(\epsilon^2)
+    \end{split}
+    \right.\qquad\overset{\text{to lowest order}}{\iff}\qquad
+    \left\{
+    \begin{split}
+        \mu&=\frac{m_\sigma}{\sqrt{2}}\\
+        \lambda&=\frac{m_\sigma^2}{2v}\\
+        \epsilon&=vm_\pi^2
+    \end{split}
+    \right.
+    \label{eq:LinearSigmaModel_CouplingsMassesRelation}
+\end{equation}
+Choose now a fixed alignment of the condensate $\mathbf{\pi}=\pi\mathbf{e}$ with $\mathbf{e}\cdot\mathbf{e}=1$ determining the orientation in isospin space. This choice breaks $O(4)$ to $O(2)$ (we restrict ourselves to $SO(2)$) and use to isomorphism $SO(2)\overset{\sim}{=}U(1)$ to write the linear $\sigma$-model as a theory of a complex scalar field $\phi=\frac{1}{\sqrt{2}}(\sigma+\imagu\pi)=\rho e^{\imagu\vartheta}$.
+\begin{subequations}
+    \begin{align}
+        \text{in terms of}\,(\phi,\phi^*)      &  & \mathscr{L} & =-(\partial_\mu\phi)(\partial^\mu\phi^*)+\mu^2\phi\phi^*-\frac{\lambda}{2}(\phi\phi^*)^2+\frac{\epsilon}{\sqrt{2}}(\phi+\phi^*)                                   \\
+        \text{in terms of}\,(\rho,\vartheta^*) &  & \mathscr{L} & =-(\partial_\mu\rho)(\partial^\mu\rho)-\rho^2(\partial_\mu\vartheta)(\partial^\mu\vartheta)+\mu^2\rho^2-\frac{\lambda}{2}\rho^4+\sqrt{2}\epsilon\rho\cos\vartheta
+    \end{align}
+\end{subequations}
+The classical equations of motion arising from this are
+\begin{subequations}
+    \begin{align}
+        \text{in terms of}\,(\phi,\phi^*)      &                                                                                                                           & -\Box\phi                                  & =(\partial_t^2-\mathbf{\nabla}^2)\phi=\big[\mu^2-\lambda(\phi^*\phi)\big]\phi+\frac{\epsilon}{\sqrt{2}} \\
+        \text{in terms of}\,(\rho,\vartheta^*) &                                                                                                                           &
+        -\Box\rho                              & =\big[-(\partial_\mu\vartheta)(\partial^\mu\vartheta)+\mu^2-\lambda\rho^2\big]\rho+\frac{\epsilon}{\sqrt{2}}\cos\vartheta                                                                                                                                                        \\
+                                               &                                                                                                                           & -\partial_\mu(\rho^2\partial^\mu\vartheta) & =-\frac{\epsilon}{\sqrt{2}}\rho\sin\vartheta
+    \end{align}
+\end{subequations}
+The conserved Noether current of thse symmetry $\theta\to\theta+\alpha$ (in the limit $\epsilon\to 0$) and energy-momentum tensor are
+\begin{subequations}
+    \begin{align}
+        \alpha j^\mu & =-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\vartheta)}\delta\vartheta=2\alpha\rho^2(\partial^\mu\vartheta)                                                                                                                                                             \\
+        T^{\mu\nu}   & =\frac{2}{\sqrt{-g}}\frac{\delta(\sqrt{-g}\mathscr{L})}{\delta g_{\mu\nu}}=2\frac{2\partial\mathscr{L}}{\partial g_{\mu\nu}}+g^{\mu\nu}\mathscr{L}=2\big[(\partial^\mu\rho)(\partial^\nu\rho)+\rho^2(\partial^\mu\vartheta)(\partial^\nu\vartheta)\big]+g^{\mu\nu}\mathscr{L}
+    \end{align}
+\end{subequations}
+where $\delta\sqrt{-g}=\frac{-1}{2\sqrt{-g}}\delta g=\frac{-1}{\sqrt{-g}}gg^{\mu\nu}\delta g_{\mu\nu}=\frac{\sqrt{-g}}{2}g^{\mu\nu}\delta g_{\mu\nu}$ was used.
+
+In a tree-level approximation one only needs to solve the classical equations of motion. In the limit $\epsilon\to 0$ a valid solution is
+\begin{equation}
+    \partial_\mu\vartheta=\const\,,\qquad\rho=\sqrt{\frac{\chi^2+\mu^2}{\lambda}}+\mathcal{O}(\epsilon)\qquad(\chi^2\defeq-(\partial_\mu\vartheta)(\partial^\mu\vartheta))
+\end{equation}
+We might generalize the solution to the case $\partial_\mu\vartheta\approx\const$ which should be valid in the limit $\chi^2\ll\mu^2=\frac{m_\sigma^2}{2}$. On these solutions one finds
+\begin{subequations}
+    \begin{align}
+        \mathscr{L}\big\vert_{\text{EOM}} & =\rho^2(\chi^2+\mu^2-\frac{\lambda}{2}\rho^2)=\rho^2\frac{\chi^2+\mu^2}{2}                    \\
+        T^{\mu\nu}\big\vert_{\text{EOM}}  & =2\rho^2(\partial^\mu\vartheta)(\partial^\nu\vartheta)+g^{\mu\nu}\rho^2\frac{\chi^2+\mu^2}{2}
+    \end{align}
+\end{subequations}
+
+Assume the dynamics of the field could be described by ideal hydrodynamics, i.e. a conserved current and energy-momentum tensor of the form \todo{I really don't know about the signature}
+\begin{subequations}
+    \begin{align}
+        j^\mu      & =n_s\nu^\mu\qquad(v^\mu v_\mu=-1)          \\
+        T^{\mu\nu} & =(\epsilon_s+P_s)v^\mu v^\nu+g^{\mu\nu}P_s
+    \end{align}
+\end{subequations}
+from which the prefactors can be extracted by the contractions
+\begin{equation}
+    n_s=\sqrt{-j^\mu j_\mu}\,,\qquad\epsilon_s=v_\mu v_\nu T^{\mu\nu}\,,\qquad P_s=\frac{1}{3}(g_{\mu\nu}+v_\mu v_\nu)T^{\mu\nu}
+\end{equation}
+
+Identifying the field theoretic with the hydrodynamic viewpoint it immediately follows that
+\begin{subequations}
+    \begin{gather}
+        n_s=2\rho^2\chi\,,\qquad v^\mu=\chi^{-1}(\partial^\mu\vartheta)\qquad(\iff\chi=-v^\mu(\partial_\mu\vartheta))\\
+        \epsilon_s=2\rho^2\chi^2-\rho^2\frac{\chi^2+\mu^2}{2}=\rho^2\frac{4\chi^2-(\chi^2+\mu^2)}{2}=\frac{(\chi^2+\mu^2)(3\chi^2-\mu^2)}{2\lambda}
+    \end{gather}
+\end{subequations}
+
+% \textcolor{red}{\textbf{NOTE THE HANDWRITTEN NOTES SEEM TO HAVE MOSTLY $(+,-,-,-)$ SIGNATURE EXCEPT FOR THE CLAIM $v_\mu v^\mu=-1$, WHIS IS SIMPLY INCONSISTENT}}
+% \includepdf{resources/notes_0423.pdf}
+
+\paragraph*{Summary}\mbox{}\\
+
+The freeze-out surface is invariant under rotations (= independent of polar angle $\varphi$) around the collision axis and longitudinal boosts (= independent of rapidity $\eta_s$) and hence parametrized by a one-dimensional curve in the $r\text{-}\tau$-plane. The curve itself may be parametrized by some real parameter $\alpha$, following some mapping $s\mapsto (r(\alpha),\tau(\alpha))$. From the hydro simulation we wish to identify the gradient $\partial_\mu\vartheta\sim u_\mu$ of the complex phase of the condensate field with the fluid $4$-velocity $u_\mu$, hence in order to find the phase of the field, an integration of $\partial_\mu\vartheta$ over the hypersurface is needed and an integration constant $\vartheta_0$ can be chosen freely. Choose $\alpha=\arctan(\tau/r)$ to be the polar angle of the point $(r(\alpha),\tau(\alpha))$ in the $r\text{-}\tau$-plane. Since $r,\tau>0$ $\alpha$ is restricted to the range $[0,\pi]$ and $\vartheta(\alpha)$ on the hypersurface can be calculated via
 \begin{equation}
     \vartheta(\alpha)=\vartheta_0+\int_0^\alpha\dt s\frac{\dt\vartheta}{\dt s}=\vartheta_0+\int_0^\alpha\dt s\frac{\partial x^\mu(s)}{\partial s}\partial_\mu\vartheta
 \end{equation}
@@ -21,11 +107,6 @@ One may use the relations \eqref{eq:LinearSigmaModel_CouplingsMassesRelation} to
 \end{equation}
 
 In Milne coordinates $(x^\mu)=(\tau,r,\varphi,\eta_s)$ the $4$-velocity has components $(u^\mu)=(\gamma,\gamma v,0,0)$, where $v=v(\alpha)$ is a function on the freeze-out surface.
-
-Questions to Andreas regarding numerics:
-\begin{itemize}
-    \item Why is $\dt\alpha=\alpha_{j+1}-\alpha_{j}\neq\const$?
-\end{itemize}
 
 \section{Finding the Spectrum at the Detector Surface}
 
@@ -49,9 +130,9 @@ with the convention $\phi(\mathbf{x})=\int\dt^3p/(2\pi)^3\phi(\mathbf{p})e^{-\im
 % \end{equation}
 % and $\omega_\mathbf{p}=\sqrt{m^2+\mathbf{p}^2}$.
 
-\includepdf{resources/notes_0430.pdf}
+% \includepdf{resources/notes_0430.pdf}
 
-\subsection{Treating the Freeze Out Field as Source Term}
+\subsection{Treating the Freeze Out Field as Source Term???}
 
 Let's evaluate the Fourier transform of the condensate field. The calculation uses the result from linear response theory
 \begin{subequations}
@@ -77,13 +158,16 @@ Let's evaluate the Fourier transform of the condensate field. The calculation us
         \overline{\phi}(x^0\equiv t,\mathbf{p}) & =\int\dt^3x e^{\imagu\mathbf{p}\mathbf{x}}\overline{\phi}(x^0\equiv t,\mathbf{x})                                                                                                                                                                                                                                             \\
                                                 & =\int\dt^3xe^{\imagu\mathbf{p}\mathbf{x}}\int\dt^4yG_{\text{ret}}(x,y)j(y)                                                                                                                                                                                                                                                    \\
                                                 & =\int\dt^3xe^{\imagu\mathbf{p}\mathbf{x}}\int\dt^4y\Theta(x^0-y^0)\big[D(x-y)-D(y-x)\big]j(y)                                                                                                                                                                                                                                 \\
-                                                & =\int\dt^3xe^{\imagu\mathbf{p}\mathbf{x}}\int\dt^4y\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\mathbf{q}}}\Theta(x^0-y^0)\big[e^{-\imagu[w_{\mathbf{q}}(x^0-y^0)-\mathbf{q}(\mathbf{x}-\mathbf{y})]}-e^{\imagu[w_{\mathbf{q}}(x^0-y^0)-\mathbf{q}(\mathbf{x}-\mathbf{y})]}\big]j(y)                                         \\
-                                                & =\int\dt^3x\int\dt^4y\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\mathbf{q}}}\Theta(x^0-y^0)\big[e^{-\imagu[w_{\mathbf{q}}(x^0-y^0)+\mathbf{q}\mathbf{y}]}e^{\imagu(\mathbf{p}+\mathbf{q})\mathbf{x}}-e^{\imagu[w_{\mathbf{q}}(x^0-y^0)+\mathbf{q}\mathbf{y}]}e^{\imagu(\mathbf{p}-\mathbf{q})\mathbf{x}}\big]j(y)           \\
-                                                & =\int\dt^4y\int\dt^3q\frac{1}{2\omega_{\mathbf{q}}}\Theta(x^0-y^0)\big[e^{-\imagu[w_{\mathbf{q}}(x^0-y^0)+\mathbf{q}\mathbf{y}]}\delta^{(3)}(\mathbf{p}+\mathbf{q})-e^{\imagu[w_{\mathbf{q}}(x^0-y^0)+\mathbf{q}\mathbf{y}]}\delta^{(3)}(\mathbf{p}-\mathbf{q})\big]j(y)                                                      \\
+                                                & =\int\dt^3xe^{\imagu\mathbf{p}\mathbf{x}}\int\dt^4y\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\mathbf{q}}}\Theta(x^0-y^0)\times\nonumber                                                                                                                                                                                    \\
+                                                & \phantom{=}\qquad\times\big[e^{-\imagu[w_{\mathbf{q}}(x^0-y^0)-\mathbf{q}(\mathbf{x}-\mathbf{y})]}-e^{\imagu[w_{\mathbf{q}}(x^0-y^0)-\mathbf{q}(\mathbf{x}-\mathbf{y})]}\big]j(y)                                                                                                                                             \\
+                                                & =\int\dt^3x\int\dt^4y\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\mathbf{q}}}\Theta(x^0-y^0)\times\nonumber                                                                                                                                                                                                                  \\
+                                                & \phantom{=}\qquad\times\big[e^{-\imagu[w_{\mathbf{q}}(x^0-y^0)+\mathbf{q}\mathbf{y}]}e^{\imagu(\mathbf{p}+\mathbf{q})\mathbf{x}}-e^{\imagu[w_{\mathbf{q}}(x^0-y^0)+\mathbf{q}\mathbf{y}]}e^{\imagu(\mathbf{p}-\mathbf{q})\mathbf{x}}\big]j(y)                                                                                 \\
+                                                & =\int\dt^4y\int\dt^3q\frac{1}{2\omega_{\mathbf{q}}}\Theta(x^0-y^0)\times\nonumber                                                                                                                                                                                                                                             \\
+                                                & \phantom{=}\qquad\times\big[e^{-\imagu[w_{\mathbf{q}}(x^0-y^0)+\mathbf{q}\mathbf{y}]}\delta^{(3)}(\mathbf{p}+\mathbf{q})-e^{\imagu[w_{\mathbf{q}}(x^0-y^0)+\mathbf{q}\mathbf{y}]}\delta^{(3)}(\mathbf{p}-\mathbf{q})\big]j(y)                                                                                                 \\
                                                 & =\int\dt^4y\frac{1}{2\omega_{\mathbf{p}}}\Theta(x^0-y^0)\big[e^{-\imagu[w_{\mathbf{p}}(x^0-y^0)-\mathbf{p}\mathbf{y}]}-e^{\imagu[w_{\mathbf{p}}(x^0-y^0)+\mathbf{p}\mathbf{y}]}\big]j(y)                                                                                                                                      \\
                                                 & =\int\dt^4y\frac{1}{2\omega_{\mathbf{p}}}\Theta(x^0-y^0)e^{\imagu\mathbf{p}\mathbf{y}}\big[e^{-\imagu\omega_{\mathbf{p}}(x^0-y^0)}-e^{\imagu\omega_{\mathbf{p}}(x^0-y^0)}\big]j(y)                                                                                                                                            \\
                                                 & =\int\dt^4y\frac{1}{\imagu\omega_\mathbf{p}}\Theta(x^0-y^0)e^{\imagu\mathbf{p}{\mathbf{y}}}\sin(\omega_{\mathbf{p}}(x^0-y^0))j(y)                                                                                                                                                                                             \\
-        \intertext{Specify this for the relevant case $\text{supp}j=\Sigma_{\text{freeze-out}}$ and parametrize the integral over the hypersurface $\Sigma$ via $\int_\Sigma\dt^4y=\int\dt\varphi\dt\eta\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}$}
+        \intertext{Specify this for the relevant case $\text{supp}j=\Sigma_{\text{freeze-out}}$ and parametrize the integral over the hypersurface $\Sigma$ via $\int_\Sigma\dt^3\Sigma=\int\dt\varphi\dt\eta\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}$}
         \overline{\phi}(x^0\equiv t,\mathbf{p}) & =\int_0^{2\pi}\dt\varphi\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\mathbf{p}}}\Theta(x^0-\tau\cosh\eta)\times                                                                                                  \nonumber \\
                                                 & \phantom{=}\qquad\times\exp\left(\imagu[\mathbf{p}^\perp\mathbf{x}^\perp+p_z\tau(\alpha)\sinh\eta]\right)\sin(\omega_{\mathbf{p}}(x^0-\tau(\alpha)\cosh\eta))j(\tau(\alpha),r(\alpha))                                                                                                                                        \\
         \intertext{Performing the $\varphi$-integration, with $\varphi$ appearing in the integrand in $\mathbf{x}^\perp=(r\cos\varphi,r\sin\varphi)$, we choose to align $\varphi=0$ with the $\mathbf{p}^\perp=(p_x,p_y)$ direction.Then $\mathbf{p}^\perp\mathbf{x}^\perp=p^\perp r\cos\varphi$. Use the definition of modified Bessel function (\url{https://dlmf.nist.gov/10.32}) $$I_0(z)=\frac{1}{\pi}\int_0^\pi e^{\pm z\cos\theta}\dt\theta$$ the result simplifies to}
@@ -120,7 +204,7 @@ Let's evaluate the Fourier transform of the condensate field. The calculation us
     \end{equation}
 \end{calc}
 
-\paragraph{Converting Spectra between Coordinate Systems}
+\subsection{Converting Spectra between Coordinate Systems}
 
 Consider the coordinate change in momentum space
 \begin{equation}
@@ -154,7 +238,8 @@ Let $f(p_\mu)$ be some distribution function and $F$ its momentum space integral
     \end{align}
     On the other hand
     \begin{align}
-        F=\int\frac{\dt^4p_{\text{cart}}}{(2\pi)^4}\delta(p^2-m^2)\Theta(p_t)f(p_\mu) & =\frac{1}{(2\pi)^4}\int_0^\infty \dt p^\perp\int_0^\infty \dt m^\perp\int_{-\infty}^\infty \dt\eta_p\int_0^{2\pi}\dt\varphi_pm^\perp p^\perp\delta((p^\perp)^2-(m^\perp)^2)f(p_\mu) \\
+        F=\int\frac{\dt^4p_{\text{cart}}}{(2\pi)^4}\delta(p^2-m^2)\Theta(p_t)f(p_\mu) & =\frac{1}{(2\pi)^4}\int_0^\infty \dt p^\perp\int_0^\infty \dt m^\perp\int_{-\infty}^\infty \dt\eta_p\int_0^{2\pi}\dt\varphi_pm^\perp p^\perp\times\nonumber \\
+                                                                                      & \phantom{=}\qquad\times\delta((p^\perp)^2-(m^\perp)^2)f(p_\mu)                                                                                              \\
         \intertext{assume $f(p^\mu)=f(p^\perp,m^\perp,\eta_p)$ and perform the $\varphi$-integraion}
                                                                                       & =\frac{1}{(2\pi)^3}\int_0^\infty\dt m^\perp\int_{-\infty}^\infty\dt\eta_p\frac{m^\perp}{2}f(p_\mu)\big\vert_{m^\perp=p^\perp}
     \end{align}
@@ -214,6 +299,8 @@ where $\gamma$ is the induced metric determinant. The relevant example is $\Sigm
     \end{split}\right.
 \end{equation}
 
+\subsubsection{Fourier Transform in Adapted Coordinates}
+
 Let's first evaluate $p_\mu x^\mu$ in the Bjorken coordinate system. Therefore introduce an analogous coordinate change in momentum space
 \begin{equation}
     \left\{\begin{split}
@@ -238,6 +325,7 @@ These coordinates are adapted to boost symmetry $\eta\to\eta^\prime$ along the b
     \begin{align}
         \phi(x^\mu) & =\frac{1}{(2\pi)^4}\int_{-\infty}^\infty\dt m_\perp\int_0^\infty\dt p_\perp\int_{-\infty}^\infty\dt\eta_p\int_0^{2\pi}\dt\varphi_p\cdot m_\perp p_\perp\delta(m_\perp^2-\omega_\perp^2)\Theta(m_\perp)\times\nonumber \\
                     & \phantom{=}\qquad\times \phi(p_x(p_\perp,\varphi_p),p_y(p_\perp,\varphi_p),p_z(m_\perp,\eta_p))e^{\imagu(\tau m_\perp\cosh(\eta-\eta_p)-r_\perp p_\perp\cos(\varphi-\varphi_p))}                                      \\
+        \intertext{\dots shift $\varphi_p\to\varphi_p+\varphi$ and $\eta_p\to\eta_p+\eta$\dots}
                     & =\frac{1}{(2\pi)^4}\int_{-\infty}^\infty\dt m_\perp\int_0^\infty\dt p_\perp\int_{-\infty}^\infty\dt\eta_p\int_0^{2\pi}\dt\varphi_p\cdot m_\perp p_\perp\delta(m_\perp^2-\omega_\perp^2)\Theta(m_\perp)\times\nonumber \\
                     & \phantom{=}\qquad\times \phi(p_x(p_\perp,\varphi_p+\varphi),p_y(p_\perp,\varphi_p+\varphi),p_z(m_\perp,\eta_p+\eta))e^{\imagu(\tau m_\perp\cosh\eta_p-r_\perp p_\perp\cos\varphi_p)}                                  \\
         \intertext{From this it follows that $\phi(p_x,p_y,p_z)=\phi(p_\perp)=\phi(\sqrt{p_x^2+p_y^2})$ and we can simplify the integral. Let's also evaluate the $\delta$-distribution by using that $\delta(m_\perp^2-\omega_\perp^2)=(1/2\omega_\perp)(\delta(m_\perp-\omega_\perp)+\delta(m_\perp+\omega_\perp))$}
@@ -248,20 +336,106 @@ These coordinates are adapted to boost symmetry $\eta\to\eta^\prime$ along the b
 where in the last step the following integral representation of Bessel functions of the first kind $J_0(x)$ and of the second kind $Y_0(x)$ where used \url{https://dlmf.nist.gov/10.9}
 \begin{equation}
     J_0(x\in\mathbb{R})=\frac{1}{2\pi}\int_0^{2\pi}\dt t\exp{(\textcolor{red}{\overset{?}{\pm}}\imagu x\cos t)}\,,\quad
-    J_0(x>0)=\frac{1}{\pi}\int_{-\infty}^\infty\dt t\sin(x\cosh t)\,,\quad Y_0(x>0)=-\frac{2}{\pi}\dt t\cos(x\cosh t)
+    J_0(x>0)=\frac{1}{\pi}\int_{-\infty}^\infty\dt t\sin(x\cosh t)\,,\quad Y_0(x>0)=-\frac{2}{\pi}\int_0^\infty\dt t\cos(x\cosh t)
 \end{equation}
 
-Let us finally come back to the naive idea of extracting a particular Fourier component by convolution of the field in position space with some plane wave. We wish to evaluate integrals of the form
+% Let us finally come back to the naive idea of extracting a particular Fourier component by convolution of the field in position space with some plane wave. We wish to evaluate integrals of the form
+% \begin{subequations}
+%     \begin{align}
+%         \phi(p_\mu) & \sim\int_\Sigma\dt^3y\sqrt{\gamma}\phi(x^\mu(y^i))\exp\big(\imagu[\tau(\alpha) m_\perp^p\cosh(\eta-\eta_p)-r_\perp(\alpha) p_\perp\cos(\varphi-\varphi_p)]\big)                                                                       \\
+%                     & \sim\int_\Sigma\dt\alpha\dt\eta\dt\varphi\sqrt{\gamma}\Bigg(\frac{1}{{(2\pi)^4}}\int\dt m_\perp^q\dt q_\perp\dt \eta_q\dt \varphi_q\cdot m_\perp^q q_\perp\delta(m_\perp^2-\omega_\perp^2)\Theta(m_\perp)\phi(q_\perp)\times\nonumber \\
+%                     & \phantom{=}\quad\times\exp\Big(\imagu\big[\tau(\alpha) (m_\perp^p\cosh(\eta-\eta_p)-m_\perp^q\cosh(\eta-\eta_q))-r_\perp(\alpha) (p_\perp\cos(\varphi-\varphi_p)-q_\perp\cos(\varphi-\varphi_q))\big]\Big)\Bigg)
+%     \end{align}
+% \end{subequations}
+% Eventually $p_\mu$ should be some on-shell momentum. There seems to exist no useful orthonormality condition to extract $\phi(p_\perp)$ from this.
+
+% In terms of Bessel function, let $(z_n)_{n\in\mathbb{N}}$ be zeros of $J_\nu$. Then \url{http://physics.ucsc.edu/~peter/116C/bess_orthog.pdf}
+% \begin{equation}
+%     \int_0^1\dt tJ_\nu(z_nt)J_\nu(z_mt)=\delta_{nm}\frac{1}{2}\frac{\dt J_\nu(x)}{\dt x}\big\vert_{x=z_n}
+% \end{equation}
+
+\subsubsection{Invariance of Fourier Transform w.r.t. Deformations of the Hypersurface}
+
+Let $\phi_1,\phi_2$ be fields of equal mass evolving according to the KG equation. Then the current
+\begin{equation}
+    J_\mu[\phi_1,\phi_2]=-\imagu(\phi_1\partial_\mu\phi_2^*-(\partial_\mu\phi_1)\phi_2^*)\eqdef-\imagu\phi_1\overset{\leftrightarrow}{\partial_\mu}\phi_2
+\end{equation}
+is conserved. Recall Gauß law
+\begin{equation}
+    \int_\Omega\dt \Omega\nabla_\mu J^\mu=\int_{\partial\Omega}\dt\sigma_\mu J^\mu
+\end{equation}
+with $\dt\sigma_\mu$ the outwards oriented surface normal of the spacetime volume $\Omega$. The bilinear form
+\begin{equation}
+    (\phi_1,\phi_2)_\Sigma=\int_\Sigma\dt\Sigma_\mu J^\mu[\phi_1,\phi_2]=-\imagu\int_\Sigma\dt\Sigma_\mu \phi_1\overset{\leftrightarrow}{\partial_\mu}\phi_2^*
+\end{equation}
+is therefore independent of the choice of (Cauchy) hypersurface $\Sigma$ (if $\partial\Sigma$ is changed, one must carefully check for further contributions in Gauß law). Choose a hypersurface $\Sigma_t$ where $t=\text{const}$. Consider a solution to the KG equation given by its Fourier decomposition
+\begin{equation}
+    \phi(t,\vec{x})=\int\frac{\dt^3p}{(2\pi)^3}\tilde{\phi}(\vec{p})u_{\vec{p}}(t,\vec{x})\,,\qquad u_{\vec{p}}(t,\vec{x})=\frac{1}{\sqrt{2\omega_{\vec{p}}}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}
+\end{equation}
+The mode functions $u_{\vec{p}}$ are orthogonal w.r.t. to the bilinear form $(\cdot,\cdot)_{\Sigma_t}$ and normalized according to
+\begin{equation}
+    (u_{\vec{p}},u_{\vec{q}})_{\Sigma_t}=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})
+\end{equation}
+and the Fourier transform $\tilde{\phi}(\vec{p})$ can be extracted via $$\tilde{\phi}(\vec{p})=(\phi,u_{\vec{p}})_{\Sigma_t}$$ and can thus be evaluated on any Cauchy surface.
+
+\debugbox{
+    \begin{minipage}{\linewidth}
+        \centering
+        \includegraphics[width=0.4\linewidth]{images/FreezeOutSurface.pdf}
+        \captionof{figure}{Freezeout surface in $\tau$-$r(\equiv r_\perp)$-plane\cite{KirchnerEtAl_2023}.}
+        \label{fig:FreezeOutSurface_rtau}
+    \end{minipage}
+}
+
+Consider the freezeout on the hypersurface depicted in \ref{fig:FreezeOutSurface_rtau}. Assume that the condensate contribution as a function in phase space $f_{\text{cond}}(x^\mu,\vec{p})$ vanishes on $\Sigma_{\text{\rom{2}}}$ and $\Sigma_{\text{\rom{5}}}$, i.e. is contained within the union of all light cones starting on the freeze out surface $\Sigma_{FO}\equiv\Sigma_{\text{\rom{1}}}\cap\Sigma_\text{{\rom{3}}}$. \todo{By causality this seems reasonable, but from Fourier decomposition of a classical field this is not at all clear.}
+
+
+Following the reasoning from \cite{KirchnerEtAl_2023}, we wish to apply Gauß law. Consider separately the contribution on the $\tau$-axis
+\begin{equation*}
+    \int_{\Sigma_{r=0}}\dt\Sigma_\mu J^\mu\qquad\text{or}\qquad\lim_{r\to 0}\int_{\Sigma_{r}}\dt\Sigma_\mu J^\mu
+\end{equation*}
+The surface vector on this hypersurface is $\dt\Sigma_\mu=r\tau\dt\tau\dt\eta\dt\varphi(0,1,0,0)$ and thus vanishes at $r=0$ (the hypersurface $\Sigma_{r=0}$ has zero $3$-volume). Since the derivative in the integrad introduces no divergencies, the contribution of $\Sigma_{r=0}$ to Gauß law is zero.
+% \begin{subequations}
+%     \begin{align}
+%         \partial_\mu=(\partial_t,\partial_x,\partial_y,\partial_z)                                                                                                              \\
+%         \partial_x+\partial_y=(\frac{\partial r}{\partial x}+\frac{\partial r}{\partial y})\frac{\partial}{\partial r}                                                          \\
+%         \hat{e}_x\partial_x+\hat{e}_y\partial_y=\hat{e}_x\frac{\partial r}{\partial x}\partial_r+\hat{e}_y\frac{\partial r}{\partial y}\partial_r\partial_r=\hat{e}_r\partial_r \\
+%         =\cos\varphi\hat{e}_x\partial_r+\sin\varphi\hat{e}_y                                                                                                                    \\
+%         \hat{e}_r=\cos\varphi\hat{e}_x+\sin\varphi\hat{e}_y                                                                                                                     \\
+%         \hat{e}_\varphi=-\sin\varphi\hat{e}_x+\cos\varphi\hat{e}_y                                                                                                              \\
+%         \hat{e}_x=\cos\varphi\hat{e}_r-\sin\varphi\hat{e}_\varphi                                                                                                               \\
+%         \hat{e}_y=\sin\varphi\hat{e}_r+\cos\varphi\hat{e}_varphi                                                                                                                \\
+%     \end{align}
+% \end{subequations}
+
+We can therefore write
+\begin{equation}
+    \tilde{\phi}(\vec{p})=(\phi,u_{\vec{p}})_{\Sigma_t}=(\phi,u_{\vec{p}})_{\Sigma_{\tau\gg\tau_L}}=(\phi,u_{\vec{p}})_{\Sigma_{FO}}
+\end{equation}
+The second "$=$" assumes that $\phi=0$ for large spacetime rapidities $\eta\to\pm\infty$ and the $\tau=\const$ hypersurface can be deformed to a $t=\const$ hypersurface.
+
+Using the freezeout surface parametrization stated in earlier paragraphs one computes
 \begin{subequations}
     \begin{align}
-        \phi(p_\mu) & \sim\int_\Sigma\dt^3y\sqrt{\gamma}\phi(x^\mu(y^i))\exp\big(\imagu[\tau(\alpha) m_\perp^p\cosh(\eta-\eta_p)-r_\perp(\alpha) p_\perp\cos(\varphi-\varphi_p)]\big)                                                                       \\
-                    & \sim\int_\Sigma\dt\alpha\dt\eta\dt\varphi\sqrt{\gamma}\Bigg(\frac{1}{{(2\pi)^4}}\int\dt m_\perp^q\dt q_\perp\dt \eta_q\dt \varphi_q\cdot m_\perp^q q_\perp\delta(m_\perp^2-\omega_\perp^2)\Theta(m_\perp)\phi(q_\perp)\times\nonumber \\
-                    & \phantom{=}\quad\times\exp\Big(\imagu\big[\tau(\alpha) (m_\perp^p\cosh(\eta-\eta_p)-m_\perp^q\cosh(\eta-\eta_q))-r_\perp(\alpha) (p_\perp\cos(\varphi-\varphi_p)-q_\perp\cos(\varphi-\varphi_q))\big]\Big)\Bigg)
+        \tilde{\phi}(\vec{p}) & =-\imagu\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\big[r^\prime(\alpha)\phi(\tau,r_\perp)\overset{\leftrightarrow}{\partial_\tau}e^{\imagu(\tau m_\perp\cosh(\eta-\eta_p)-r_\perp p_\perp\cos(\varphi-\varphi_p))}+\nonumber \\
+                              & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r_\perp)\overset{\leftrightarrow}{\partial_r}e^{\imagu(\tau m_\perp\cosh(\eta-\eta_p)-r_\perp p_\perp\cos(\varphi-\varphi_p))}\big]                                                                                           \\
+                              & =-\imagu\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\big[r^\prime(\alpha)\phi(\tau,r_\perp)\overset{\leftrightarrow}{\partial_\tau}e^{\imagu(\tau m_\perp\cosh\eta-r_\perp p_\perp\cos\varphi)}+\nonumber                      \\
+                              & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r_\perp)\overset{\leftrightarrow}{\partial_r}e^{\imagu(\tau m_\perp\cosh\eta-r_\perp p_\perp\cos\varphi)}\big]                                                                                                                \\
+                              & =-\imagu\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\Bigg[r^\prime(\alpha)\phi(\tau,r_\perp)\overset{\leftrightarrow}{\partial_\tau}\Big[2\pi J_0(r_\perp p_\perp)\times\big(\pi(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp))\big)\Big]+\nonumber                         \\
+                              & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r_\perp)\overset{\leftrightarrow}{\partial_r}\Big[2\pi J_0(r_\perp p_\perp)\times\big(\pi(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp))\big)\Big]\Bigg]                                                                \\
+                              & =-\imagu\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\Bigg[(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r_\perp)[2\pi J_0(r_\perp p_\perp)\times\big(\pi(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp))\big)\Big]-\nonumber                                        \\
+                              & \phantom{=}\qquad - \phi(\tau,r_\perp)\Big[r^\prime\times2\pi p_\perp J_1(r_\perp p_\perp)\times\big(\pi(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp))\big)+\nonumber                                                                                                   \\
+                              & \phantom{=}\qquad\phantom{-\phi(\tau,r_\perp)\Big[}+\omega_\perp\times2\pi J_0(r_\perp p_\perp)\times\big(\pi(Y_1(\tau\omega_\perp)-\imagu J_0(\tau\omega_\perp))\big)\Big]\Bigg]
     \end{align}
 \end{subequations}
-Eventually $p_\mu$ should be some on-shell momentum. There seems to exist no useful orthonormality condition to extract $\phi(p_\perp)$ from this.
+where
+\begin{subequations}
+    \begin{equation}
+        \int_0^{2\pi}\dt\varphi\int_{-\infty}^\infty\dt\eta e^{\imagu(a\cosh\eta-b\cos\varphi)}=\Big[2\pi J_0(b)\times\big(\pi(-Y_0(a)+\imagu J_0(a))\big)\Big]
+    \end{equation}
+    and
+    \begin{equation}
+        \frac{\dt}{\dt x}J_0(x)=-J_1(x)\,,\qquad\frac{\dt}{\dt x}Y_0(x)=-Y_1(x)
+    \end{equation}
+\end{subequations}
 
-In terms of Bessel function, let $(z_n)_{n\in\mathbb{N}}$ be zeros of $J_\nu$. Then \url{http://physics.ucsc.edu/~peter/116C/bess_orthog.pdf}
-\begin{equation}
-    \int_0^1\dt tJ_\nu(z_nt)J_\nu(z_mt)=\delta_{nm}\frac{1}{2}\frac{\dt J_\nu(x)}{\dt x}\big\vert_{x=z_n}
-\end{equation}
