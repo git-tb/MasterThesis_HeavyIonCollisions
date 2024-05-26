@@ -12,7 +12,7 @@ and from \ref{subsubsec:linearsigmamodel} we find, that if $m^2=-\mu^2<0$ SSB oc
 \begin{equation}
     \left\{
     \begin{split}
-        v          & =\frac{\mu}{\sqrt{\lambda}}+\epsilon\frac{1}{2\mu^2}+\mathcal{O}(\epsilon^2) \\
+        v_0         & =\frac{\mu}{\sqrt{\lambda}}+\epsilon\frac{1}{2\mu^2}+\mathcal{O}(\epsilon^2) \\
         m_\sigma^2 & =2\mu^2+\mathcal{O}(\epsilon)                                                \\
         m_\pi^2    & =\epsilon\frac{\sqrt{\lambda}}{\mu}+\mathcal{O}(\epsilon^2)
     \end{split}
@@ -20,8 +20,8 @@ and from \ref{subsubsec:linearsigmamodel} we find, that if $m^2=-\mu^2<0$ SSB oc
     \left\{
     \begin{split}
         \mu&=\frac{m_\sigma}{\sqrt{2}}\\
-        \lambda&=\frac{m_\sigma^2}{2v}\\
-        \epsilon&=vm_\pi^2
+        \lambda&=\frac{m_\sigma^2}{2v_0}\\
+        \epsilon&=v_0m_\pi^2
     \end{split}
     \right.
     \label{eq:LinearSigmaModel_CouplingsMassesRelation}
@@ -97,14 +97,15 @@ $\partial x^\mu(s)/\partial s$ represents the tangent vector of the freeze-out s
 The energy density $\epsilon$ and $4$-velocity $u^\mu$ of the fluid is related to the condensate phase and density via
 \begin{subequations}
     \begin{gather}
-        -(\partial_\mu\vartheta)(\partial^\mu\vartheta)=\chi^2=\frac{-\mu^2+\sqrt{6\epsilon\lambda+2\mu^4}}{3}\\
+        -(\partial_\mu\vartheta)(\partial^\mu\vartheta)=\chi^2=\frac{-\mu^2+\sqrt{6\epsilon\lambda+4\mu^4}}{3}\\
         \partial^\mu\vartheta=\chi u^\mu\,,\qquad\rho^2=\sqrt{\frac{\chi^2+\mu^2}{\lambda}}
     \end{gather}
 \end{subequations}
-One may use the relations \eqref{eq:LinearSigmaModel_CouplingsMassesRelation} to rewrite the above equation in terms of the particle masses and the pion decay constant $f_\pi\equiv v$.
+One may use the relations \eqref{eq:LinearSigmaModel_CouplingsMassesRelation} to rewrite the above equation in terms of the particle masses and the $\sigma$-vev $v_0$.
 \begin{equation}
-    \chi^2=\frac{-m_\sigma^2/2+\sqrt{3\epsilon m_\sigma^2/f_\pi+m_\sigma^4/2}}{3}=\frac{-m_\sigma^2+m_\sigma\sqrt{12\epsilon/f_\pi+2m_\sigma^2}}{6}\,,\qquad\rho=\sqrt{f_\pi\frac{2\chi^2+m_\sigma^2}{m_\sigma^2}}
+    \chi^2=\frac{-m_\sigma^2/2+\sqrt{3\epsilon m_\sigma^2/v_0+m_\sigma^4}}{3}=\frac{-m_\sigma^2+2m_\sigma\sqrt{3\epsilon/v_0+m_\sigma^2}}{6}\,,\qquad\rho=\sqrt{v_0\frac{2\chi^2+m_\sigma^2}{m_\sigma^2}}
 \end{equation}
+\todo{This is a number of order $m_{\Sigma}^2$. Of what order is $u_\mu$ (in $\text{eV}^{-1}$? But then again, isn't $u^\mu$ normalized to $\pm 1$?)}
 
 In Milne coordinates $(x^\mu)=(\tau,r,\varphi,\eta_s)$ the $4$-velocity has components $(u^\mu)=(\gamma,\gamma v,0,0)$, where $v=v(\alpha)$ is a function on the freeze-out surface. \todo{Are these upstairs or downstairs indexed coordinates?}
 
