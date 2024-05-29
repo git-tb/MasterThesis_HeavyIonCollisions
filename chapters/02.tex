@@ -435,7 +435,10 @@ Using the freezeout surface parametrization stated in earlier paragraphs one com
                               & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_r}\Big[2\pi J_0(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]                                                                                                          \\
                               & =-\imagu\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Bigg[-(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)[2\pi J_0(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                               \\
                               & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times2\pi p_\perp J_1(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)+\nonumber                                                                                                                                          \\
-                              & \phantom{=}\qquad\phantom{-\phi(\tau,r)\Big[}+r^\prime\times2\pi J_0(r p_\perp)\times\pi\omega_\perp\big(Y_1(\tau\omega_\perp)-\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]
+                              & \phantom{=}\qquad\phantom{-\phi(\tau,r)\Big[}+r^\prime\times2\pi J_0(r p_\perp)\times\pi\omega_\perp\big(Y_1(\tau\omega_\perp)-\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]                                                                                                                                \\
+                              & =-\frac{2\pi^2\imagu}{\sqrt{2\omega_{\vec{p}}}}\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\Bigg[-(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)[J_0(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                                  \\
+                              & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times p_\perp J_1(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)+\nonumber                                                                                                                                                 \\
+                              & \phantom{=}\qquad\phantom{-\phi(\tau,r)\Big[}+r^\prime\times J_0(r p_\perp)\times\omega_\perp\big(Y_1(\tau\omega_\perp)-\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]
     \end{align}
 \end{subequations}
 where the Bessel function identities \eqref{eq:BesselFunctions} were used. One may choose to work at mid-rapidity $\eta_p=0$ where $\omega_{\vec{p}}=m_\perp\vert_{\text{on-shell}}=\omega_\perp$. Note that for large $p_\perp$ one finds
@@ -449,4 +452,9 @@ How to treat the projection $r^\prime\partial_\tau+\tau^\prime\partial_r\equiv\p
 In the spirit of identifying the pion field with fluid variables, one could argue
 \begin{equation}
     \partial_\mu\phi=\partial_\mu(\rho\exp(\imagu\vartheta))=\imagu\phi\partial_\mu\vartheta=\imagu\phi\chi u_\mu
+\end{equation}
+
+Really we are only interested in the pionic component of $\phi$, which by definition is $\pi=\sqrt{2}\Im\phi$. Replace all $\phi$'s in the last paragraph by $\pi$ maybe? Yes, real and imaginary part fulfill the homogeneous KG equation separately. It's derivative is
+\begin{equation}
+    \partial_\mu\pi=\sqrt{2}\Im\partial_\mu\phi=\sqrt{2}\chi u_\mu\Re\phi=\sigma\chi u_\mu
 \end{equation}
