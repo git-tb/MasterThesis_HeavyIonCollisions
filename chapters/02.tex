@@ -7,6 +7,7 @@ The signature is $(-,+,+,+)$.
 Start with the Lagrangian of the linear $\sigma$-model for the real-valued $O(4)$-vector $\varphi_a=(\sigma,\mathbf{\pi})$.
 \begin{equation}
     \mathscr{L}=-\frac{1}{2}\partial_\mu\sigma\partial^\mu\sigma-\frac{1}{2}\partial_\mu\mathbf{\pi}\partial^\mu\mathbf{\pi}-\frac{1}{2}m^2(\sigma^2+\mathbf{\pi}^2)-\frac{\lambda}{4}(\sigma^2+\mathbf{\pi}^2)^2-\epsilon\sigma
+    \label{eq:Lagrangian_LinearSigma1}
 \end{equation}
 and from \ref{subsubsec:linearsigmamodel} we find, that if $m^2=-\mu^2<0$ SSB occurs (plus, $\epsilon\neq 0$ explicitly breaks the symmetry) with the VEV $v$ and masses of the $\sigma$ and $\mathbf{\pi}$ excitation in $\varphi_a=(v+\delta\sigma,\mathbf{\pi})$ are given by (note the difference in conventions $\lambda\to 6\lambda$ w.r.t. \ref{subsubsec:linearsigmamodel})
 \begin{equation}
@@ -119,37 +120,26 @@ Define
         \sqrt{2}\pi^-      & \sigma-\imagu\pi^0
     \end{pmatrix}\,,\qquad\pi^\pm=\frac{1}{\sqrt{2}}(\pi^1\mp\imagu\pi^2)
 \end{equation}
-where $\tau^a$, $a\in\{1,2,3\}$ are the Pauli matrices. Using $(\tau^a)^\dagger=\tau^a$, $\Tr(\tau^a\tau^b)=2\delta^{ab}$ and $\Tr(\tau^a)=0$ one immediately finds for example $\Tr(\Phi^\dagger\Phi)\equiv[\Phi^\dagger]_{jk}[\Phi]_{kj}=2(\sigma^2+\pi^a\pi^a)$ and the formerly stated linear $\sigma$-model Lagrangian can easily be shown to be equivalent to
+where $\tau^a$, $a\in\{0,1,2\}$ are the Pauli matrices (more precisely, $\tau^a=\sigma^{a+1}$ since $\sigma^0$ is usually reserved for the identity). Using $(\tau^a)^\dagger=\tau^a$, $\Tr(\tau^a\tau^b)=2\delta^{ab}$ and $\Tr(\tau^a)=0$ one immediately finds for example $\Tr(\Phi^\dagger\Phi)\equiv[\Phi^\dagger]_{jk}[\Phi]_{kj}=2(\sigma^2+\pi^a\pi^a)$ and the formerly stated linear $\sigma$-model Lagrangian can easily be shown to be equivalent to
 \begin{equation}
     \mathscr{L}=-\frac{1}{2}\Tr\big[(\partial_\mu\Phi^\dagger)(\partial_\mu\Phi\big)]-\frac{1}{2}m^2\Tr\big[\Phi^\dagger\Phi\big]-\frac{\lambda}{4}\Big(\Tr\big[\Phi^\dagger\Phi\big]\Big)^2-\frac{\epsilon}{2}\Tr\big[\Phi^\dagger+\Phi\big]
+    \label{eq:Lagrangian_LinearSigma2}
 \end{equation}
 
 Investigate the transformation behaviour of the field $\Phi$ under chiral symmetry transformation, following \cite{Koch_1997}. These symmetries are
 \begin{subequations}
     \begin{align}
-        U_V: &  & \psi & \mapsto e^{-\frac{\imagu}{2}\alpha_a\tau_a}\psi         \\
-        U_A: &  & \psi & \mapsto e^{-\frac{\imagu}{2}\gamma_5\alpha_a\tau_a}\psi
-    \end{align}
-\end{subequations}
-Pions and the $\sigma$ field are certain bound states of quarks, namely $\pi_a=\imagu\overline{\psi}\tau_a\gamma_5\psi$ and $\sigma=\overline{\psi}\psi$. Under the above transformations one finds infinitesimally
-\begin{subequations}
-    \begin{align}
-        U_V: &  & \pi_a & \mapsto\pi_a+\epsilon_{abc}\alpha_b\pi_c & \sigma & \mapsto\sigma               \\
-        U_A: &  & \pi_a & \mapsto\pi_a+\alpha_a\sigma              & \sigma & \mapsto\sigma-\pi_a\alpha_a \\
-    \end{align}
-\end{subequations}
-and after some calculations
-\begin{subequations}
-    \begin{align}
-        U_V: &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}-\imagu\frac{\alpha^a}{2}[\tau^a,\Phi^{(\dagger)}]                  \\
-        U_A: &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}\overset{(-)}{+}\imagu\frac{\alpha^a}{2}\{\tau^a,\Phi^{(\dagger)}\}
-    \end{align}
-\end{subequations}
-This infintesimal transformation behaviour corresponds to the finite transformations
-\begin{subequations}
-    \begin{align}
-        U_V: &  & \Phi^{(\dagger)} & \mapsto U\Phi^{(\dagger)}U^\dagger                                          \\
-        U_A: &  & \Phi             & \mapsto U^\dagger\Phi U^\dagger\,,\quad \Phi^\dagger\mapsto U\Phi^\dagger U
+         &  & U_V: &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\alpha_a\tau_a}\psi                                             &        &                                  \\
+         &  & U_A: &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\gamma_5\alpha_a\tau_a}\psi                                     &        &                                  \\
+        \intertext{Pions and the $\sigma$ field are certain bound states of quarks, namely $\pi_a=\imagu\overline{\psi}\tau_a\gamma_5\psi$ and $\sigma=\overline{\psi}\psi$. Under the above transformations one finds infinitesimally}
+         &  & U_V: &  & \pi_a            & \mapsto\pi_a+\epsilon_{abc}\alpha_b\pi_c                                                    & \sigma & \mapsto\sigma               &  & \\
+         &  & U_A: &  & \pi_a            & \mapsto\pi_a+\alpha_a\sigma                                                                 & \sigma & \mapsto\sigma-\pi_a\alpha_a &  & \\
+        \intertext{and after some calculations}
+         &  & U_V: &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}-\imagu\frac{\alpha^a}{2}[\tau^a,\Phi^{(\dagger)}]                                                              \\
+         &  & U_A: &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}\overset{(-)}{+}\imagu\frac{\alpha^a}{2}\{\tau^a,\Phi^{(\dagger)}\} &        &                                  \\
+        \intertext{This infintesimal transformation behaviour corresponds to the finite transformations}
+         &  & U_V: &  & \Phi^{(\dagger)} & \mapsto U\Phi^{(\dagger)}U^\dagger                                                          &        &                                  \\
+         &  & U_A: &  & \Phi             & \mapsto U^\dagger\Phi U^\dagger\,,\quad \Phi^\dagger\mapsto U\Phi^\dagger U                 &        &
     \end{align}
 \end{subequations}
 with $U=\exp\big(-\frac{\imagu}{2}\alpha^a\tau^a)$. Finally, the conserved currents are
@@ -169,6 +159,14 @@ with $U=\exp\big(-\frac{\imagu}{2}\alpha^a\tau^a)$. Finally, the conserved curre
                 & =\frac{\imagu\alpha^a}{2}\frac{1}{2}\Tr\Big(\big((\partial_\mu\sigma)-\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2(\sigma\tau^a+\imagu\pi^a)-\big((\partial_\mu\sigma)+\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2(\sigma\tau^a-\imagu\pi^a)\Big) \\
                 & =\frac{\imagu\alpha^a}{2}\frac{1}{2}\cdot\big(4\imagu(\partial_\mu\sigma)\pi^a\Tr(\mathbb{1})-4\imagu\sigma(\partial_\mu\pi^b)\Tr(\tau^a\tau^b)\big)                                                                                           \\
                 & =\frac{\imagu\alpha^a}{2}\frac{1}{2}\cdot8\imagu\cdot\big((\partial_\mu\sigma)\pi^a-\sigma(\partial_\mu\pi^a)\big)
+    \end{align}
+\end{subequations}
+
+By equivalence of the Lagrangians \eqref{eq:Lagrangian_LinearSigma1} and \eqref{eq:Lagrangian_LinearSigma2} the equations of motion for $(\sigma,\pi^a)$, $a\in\{0,1,2\}$ read
+\begin{subequations}
+    \begin{align}
+        -\partial_\mu\partial^\mu\sigma & =m^2\sigma-\frac{\lambda}{2}(\sigma^2+\pi^a\pi^a)\sigma-\epsilon \\
+        -\partial_\mu\partial^\mu\pi^a  & =m^2\pi^a-\frac{\lambda}{2}(\sigma^2+\pi^b\pi^b)\pi^a
     \end{align}
 \end{subequations}
 
@@ -403,9 +401,11 @@ where in the last step the following integral representation of Bessel functions
     \begin{gather}
         J_0(x\in\mathbb{R})=\frac{1}{2\pi}\int_0^{2\pi}\dt t\exp{(\textcolor{red}{\overset{?}{\pm}}\imagu x\cos t)}\,,\quad
         J_0(x>0)=\frac{1}{\pi}\int_{-\infty}^\infty\dt t\sin(x\cosh t)\,,\quad Y_0(x>0)=-\frac{2}{\pi}\int_0^\infty\dt t\cos(x\cosh t)\\
+        H_\nu^{(1)}(z)
         \int_0^{2\pi}\dt\varphi\int_{-\infty}^\infty\dt\eta e^{\imagu(a\cosh\eta-b\cos\varphi)}=\Big[2\pi J_0(b)\times\big(\pi(-Y_0(a)+\imagu J_0(a))\big)\Big]\\
         \intertext{Other relevant properties are}
-        \frac{\dt}{\dt x}J_0(x)=-J_1(x)\,,\qquad\frac{\dt}{\dt x}Y_0(x)=-Y_1(x)
+        \frac{\dt}{\dt x}J_0(x)=-J_1(x)\,,\qquad\frac{\dt}{\dt x}Y_0(x)=-Y_1(x)\\
+        H_\nu^{(1)}(z)=J_\nu(z)+\imagu Y_\nu(z)
         \label{eq:BesselFunctions}
     \end{gather}
 \end{subequations}
@@ -524,7 +524,7 @@ How to treat the projection $r^\prime\partial_\tau+\tau^\prime\partial_r\equiv\p
 
 \subsection{Properly Considering all Initial Conditions}
 
-Adapt the reasoning in \cite{Amelino-CameliaEtAl_1997}. For a field with the e.o.m.
+Adapt the reasoning in \cite{Amelino-CameliaEtAl_1997}. The idea is to model a non-linear, particle producing interaction process with the inhomogeneous KG equation. After all interactions have decayed and the source has vanished, the particle are effectively free. One can use the true e.o.m. to evolve initial conditions and then, after all interactions have decayed, reconstruct the hypothetical source term and derive particle production from this. For a field with the e.o.m.
 \begin{equation}
     (\Box-m^2)\phi(x)=J(x)
 \end{equation}
@@ -585,14 +585,11 @@ It is now argued that the Fourier decomposition of a real source can be found by
 which, by the same argument as before, is independent of the choice of Cauchy surface. The calculation is the same as before, repeated here for my own clarity (note $\overset{\leftrightarrow}{\partial}=\overset{\leftarrow}{\partial}-\overset{\rightarrow}{\partial}$, unlike before) \textcolor{green}{\textbf{and some errors corrected}}
 \begin{subequations}
     \begin{align}
-        \tilde{J}(\vec{p}) & =\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\Bigg[r^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_\tau}e^{\imagu(\tau \omega_\perp\cosh(\eta-\eta_p)-r p_\perp\cos(\varphi-\varphi_p))}+\nonumber \\
-                           & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_r}e^{\imagu(\tau \omega_\perp\cosh(\eta-\eta_p)-r p_\perp\cos(\varphi-\varphi_p))}\Bigg]                                                                                    \\
-                           & =\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\Bigg[r^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_\tau}e^{\imagu(\tau \omega_\perp\cosh\eta-r p_\perp\cos\varphi)}+\nonumber                      \\
-                           & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_r}e^{\imagu(\tau \omega_\perp\cosh\eta-r p_\perp\cos\varphi)}\Bigg]                                                                                                         \\
-                           & =\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\Bigg[r^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_\tau}\Big[2\pi J_0(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                 \\
-                           & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_r}\Big[2\pi J_0(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]                                                                 \\
-                           & =2\pi^2\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\Bigg[(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)\Big[J_0(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                              \\
-                           & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times p_\perp J_1(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)+\nonumber                                                                                                        \\
+        \tilde{J}(\vec{p}) & =\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)\big(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r}\big)e^{\imagu(\tau \omega_\perp\cosh(\eta-\eta_p)-r p_\perp\cos(\varphi-\varphi_p))}\Bigg] \\
+                           & =\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)\big(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r}\big)e^{\imagu(\tau \omega_\perp\cosh\eta-r p_\perp\cos\varphi)}\Bigg]                      \\
+                           & =\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r})\Big[J_0(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]                                                 \\
+                           & =2\pi^2\int_0^\pi\dt\alpha\tau r\Bigg[(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)\Big[J_0(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                                                                             \\
+                           & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times p_\perp J_1(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)+\nonumber                                                                                                                                       \\
                            & \phantom{=}\qquad\phantom{+\phi(\tau,r)\Big[}+r^\prime\times J_0(r p_\perp)\times\omega_\perp\big(-Y_1(\tau\omega_\perp)+\imagu J_1(\tau\omega_\perp)\big)\Big]\Bigg]
     \end{align}
 \end{subequations}
