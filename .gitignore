@@ -1,2 +1,4 @@
 */venv/*
-*/C++/*
+*/C++/DCCspec/boost*
+*/C++/DCCspec/eigen*
+*/C++/DCCspec/libInterpolate*
