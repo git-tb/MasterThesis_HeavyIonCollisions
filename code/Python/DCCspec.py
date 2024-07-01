@@ -34,8 +34,9 @@ utau = scipy.interpolate.CubicSpline(alpha_arr, utau_arr,extrapolate=True)
 
 ####################################
 # from interpolation function, define smoother sampled data
+Nalphas = 1500
 alphas = np.linspace(0,np.pi/2,1500)
-dalphas = alphas[1] - alphas[0]
+dalphas = (np.pi/2)/Nalphas
 taus = tau(alphas)
 rs = r(alphas)
 Dtaus = Dtau(alphas)
@@ -62,30 +63,35 @@ chi = np.sqrt(chi2) # in GeV
 rho = np.sqrt(vev*(2*chi2+msigma**2)/(msigma**2))
 thetas = chi * np.cumsum((Dtaus*utaus - Drs*urs) * fmtoIGeV * dalphas)
 
+####################################
 # We need function that return the pion and sigma field on the freezout surface. We could
 #   1)  Define an interpolated function theta(alpha) from the integrated (np.cumsum) data 
 #       above and define function pi0(alpha) and sigma0(alpha), referring back to theta(alpha).
 #   2)  Compute arrays pi0s and sigma0s from the integrated (np.cumsum) data and interpolate
 #       these to find functions pi0(alpha) and sigma0(alpha).
 
+####################################
 # following option 1):
 theta = scipy.interpolate.CubicSpline(alphas, thetas)
-pi0 = lambda alpha: np.sqrt(2) * rho * np.cos(theta(alpha))
-sigma0 = lambda alpha: np.sqrt(2) * rho * np.sin(theta(alpha))
+pi0 = lambda alpha: np.sqrt(2) * rho * np.sin(theta(alpha))
+sigma0 = lambda alpha: np.sqrt(2) * rho * np.cos(theta(alpha))
 
+####################################
 # following option 2)
 # phi0s = rho * np.exp(1j*thetas)
 # pi0s = np.sqrt(2) * np.imag(phi0s)
 # sigma0s = np.sqrt(2) * np.real(phi0s)
-
 # pi0 = scipy.interpolate.CubicSpline(alphas,pi0s)
 # sigma0 = scipy.interpolate.CubicSpline(alphas,sigma0s)
 
-alphatest = np.linspace(0,np.pi/2,10000)
+alphatest = np.linspace(0,np.pi/2,1000)
+# for (x,y) in list(zip(alphatest,pi0(alphatest))):
+    # print("{:.7f}\t{:.7f}".format(x,y))
 plt.plot(alphatest,pi0(alphatest),label=r"$\pi_0$")
 plt.plot(alphatest,sigma0(alphatest),label=r"$\sigma_0$")
 plt.legend()
 plt.show()
+# quit()
 
 print("[ DEBUG ] Field functions done.")
 ####################################
@@ -141,7 +147,7 @@ myspectr = np.array([
     for p in ps
 ])
 
-plt.scatter(ps,np.abs(myspectr)**2)
+plt.scatter(ps,np.abs(myspectr)**2,s=2)
 plt.yscale("log")
 plt.show()
 
