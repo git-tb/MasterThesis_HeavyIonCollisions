@@ -199,7 +199,7 @@
       \field{labeltitlesource}{title}
       \field{abstract}{These are pedagogical lecture notes on hydrodynamic fluctuations in normal relativistic fluids. The lectures discuss correlation functions of conserved densities in thermal equilibrium, interactions of the hydrodynamic modes, an effective action for viscous fluids, and the breakdown of the derivative expansion in hydrodynamics.}
       \field{eprintclass}{hep-th}
-      \field{eprinttype}{arxiv}
+      \field{eprinttype}{arXiv}
       \field{issn}{1751-8113, 1751-8121}
       \field{journaltitle}{Journal of Physics A: Mathematical and Theoretical}
       \field{month}{11}
@@ -253,7 +253,7 @@
       \field{labeltitlesource}{title}
       \field{abstract}{Using a viscosity-based survival scale for geometrical perturbations formed in the early stages of relativistic heavy-ion collisions, we model the radial flow velocity during freeze-out. Subsequently, we employ the Cooper-Frye freeze-out prescription, with first-order viscous corrections to the distribution function, to obtain the transverse momentum distribution of particle yields and flow harmonics. For initial eccentricities, we use the results of Monte Carlo Glauber model. We fix the blast-wave model parameters by fitting the transverse momentum spectra of identified particles at the Large Hadron Collider (LHC) and demonstrate that this leads to a fairly good agreement with transverse momentum distribution of elliptic and triangular flow for various centralities. Within this viscous blast-wave model, we estimate the shear viscosity to entropy density ratio \${\textbackslash}eta/s{\textbackslash}simeq 0.24\$ at the LHC.}
       \field{eprintclass}{hep-ph, physics:nucl-th}
-      \field{eprinttype}{arxiv}
+      \field{eprinttype}{arXiv}
       \field{month}{8}
       \field{number}{arXiv:1508.05878}
       \field{title}{A Viscous Blast-Wave Model for Relativistic Heavy-Ion Collisions}
@@ -294,7 +294,7 @@
       \field{labeltitlesource}{title}
       \field{abstract}{Relativistic hydrodynamics is essential to our current understanding of nucleus-nucleus collisions at ultrarelativistic energies (current experiments at the Relativistic Heavy Ion Collider, forthcoming experiments at the CERN Large Hadron Collider). This is an introduction to relativistic hydrodynamics for graduate students. It includes a detailed derivation of the equations, and a description of the hydrodynamical evolution of a heavy-ion collisions. Some knowledge of thermodynamics and special relativity is assumed.}
       \field{eprintclass}{nucl-th}
-      \field{eprinttype}{arxiv}
+      \field{eprinttype}{arXiv}
       \field{issn}{0143-0807, 1361-6404}
       \field{journaltitle}{European Journal of Physics}
       \field{month}{3}
@@ -370,7 +370,7 @@
       \field{labeltitlesource}{title}
       \field{abstract}{Transverse momentum spectra of identified particles produced in heavy-ion collisions at the Large Hadron Collider are described with relativistic fluid dynamics. We perform a systematic comparison of experimental data for pions, kaons and protons up to a transverse momentum of 3 GeV\$/c\$ with calculations using the FluiduM code package to solve the evolution equations of fluid dynamics, the TrENTo model to describe the initial state and the FastReso code to take resonance decays into account. Using data in five centrality classes at the center-of-mass collision energy per nucleon pair \${\textbackslash}sqrt\{s\_{\textbackslash}text\{NN\}\}=2.76{\textbackslash},{\textbackslash}text\{TeV\}\$, we determine systematically the most likely parameters of our theoretical model including the shear and bulk viscosity to entropy ratios, the initialization time, initial density and freeze-out temperature through a global search and quantify their posterior probability. This is facilitated by the very efficient numerical implementation of FluiduM and FastReso. Based on the most likely model parameters we present predictions for the transverse momentum spectra of multi-strange hadrons as well as identified particle spectra from Pb-Pb collisions at \${\textbackslash}sqrt\{s\_{\textbackslash}text\{NN\}\}=5.02{\textbackslash},{\textbackslash}text\{TeV\}\$.}
       \field{eprintclass}{hep-ph, physics:nucl-ex, physics:nucl-th}
-      \field{eprinttype}{arxiv}
+      \field{eprinttype}{arXiv}
       \field{issn}{1029-8479}
       \field{journaltitle}{Journal of High Energy Physics}
       \field{month}{6}
@@ -493,7 +493,7 @@
       \field{labeltitlesource}{title}
       \field{abstract}{In the context of ultra-relativistic nuclear collisions, we present a fast method for calculating the final particle spectra after the direct decay of resonances from a Cooper-Frye integral over the freeze-out surface. The method is based on identifying components of the final particle spectrum that transform in an irreducible way under rotations in the fluid-restframe. Corresponding distribution functions can be pre-computed including all resonance decays. Just a few of easily tabulated scalar functions then determine the Lorentz invariant decay spectrum from each space-time point, and simple integrals of these scalar functions over the freeze-out surface determine the final decay products. This by-passes numerically costly event-by-event calculations of the intermediate resonances. The method is of considerable practical use for making realistic data to model comparisons of the identified particle yields and flow harmonics, and for studying the viscous corrections to the freeze-out distribution function.}
       \field{eprintclass}{hep-ph, physics:nucl-th}
-      \field{eprinttype}{arxiv}
+      \field{eprinttype}{arXiv}
       \field{issn}{1434-6044, 1434-6052}
       \field{journaltitle}{The European Physical Journal C}
       \field{month}{3}
@@ -590,7 +590,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This article is an attempt to a pedagogical introduction and review into the elementary concepts of chiral symmetry in nuclear physics. Effective chiral models such as the linear and nonlinear sigma model will be discussed as well as the essential ideas of chiral perturbation theory. Some applications to the physics of ultrarelativistic heavy ion collisions will be presented.}
-      \field{eprinttype}{arxiv}
+      \field{eprinttype}{arXiv}
       \field{issn}{0218-3013, 1793-6608}
       \field{journaltitle}{International Journal of Modern Physics E}
       \field{month}{6}
@@ -611,7 +611,7 @@
       \verb nucl-th/9706075
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/ZUXZA56X/Koch - 1997 - Aspects of Chiral Symmetry.pdf
+      \verb /home/tobias/Zotero/storage/ZUXZA56X/Koch - 1997 - Aspects of Chiral Symmetry.pdf;/home/tobias/Zotero/storage/PLQQEXS3/9706075.html
       \endverb
       \keyw{Nuclear Experiment,Nuclear Theory}
     \endentry
@@ -649,7 +649,7 @@
       \field{labeltitlesource}{title}
       \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}
       \field{eprintclass}{hep-ph}
-      \field{eprinttype}{arxiv}
+      \field{eprinttype}{arXiv}
       \field{month}{8}
       \field{number}{arXiv:2308.10616}
       \field{title}{Cooper-{{Frye}} Spectra of Hadrons with Viscous Corrections Including Feed down from Resonance Decays}
@@ -699,7 +699,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{We study the various stages of the evolution of chiral condensates disoriented via the ``baked-alaska'' mechanism, in which the condensates are described as the products of external sources localized on the light cone. Our analysis is based on the classical equations of motion of either the linear or the nonlinear sigma model. We use the associated framework of coherent states and, especially, their source functions to make the connection to the distribution functions for the produced particles. We also compare our classical approach with a mean-field calculation which includes a certain class of quantum corrections.}
-      \field{eprinttype}{arxiv}
+      \field{eprinttype}{arXiv}
       \field{issn}{0556-2821, 1089-4918}
       \field{journaltitle}{Physical Review D}
       \field{month}{12}

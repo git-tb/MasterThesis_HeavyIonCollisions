@@ -170,6 +170,123 @@ By equivalence of the Lagrangians \eqref{eq:Lagrangian_LinearSigma1} and \eqref{
     \end{align}
 \end{subequations}
 
+\subsection{Expanding around Minimum of Linear $\sigma$-model}
+
+The Lagrangian density
+\begin{equation}
+    \mathscr{L}=\mathcal{L}_{\text{kin}}-V(\sigma,\vec{\pi})=-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}(\partial_\mu\vec{\pi})(\partial^\mu\vec{\pi})+\frac{1}{2}\mu^2(\sigma^2+\vec{\pi}^2)+\frac{\lambda}{4}(\sigma^2+\vec{\pi}^2)^2+h\sigma
+\end{equation}
+can be expanded around the minimum at $\sigma_0=f_\pi+h\cdot\frac{1}{2\mu^2}+\mathcal{O}(h^2)$ where $f_\pi=\frac{\mu}{\sqrt{\lambda}}$. Performing the substitution $\sigma\mapsto v+\sigma$ and neglecting terms of order $\mathcal{O}(h^2,\sigma^3,\sigma\vec{\pi}^2,(\vec{\pi}^2)^2)$ and higher the potential reads
+\begin{equation}
+    V(\sigma,\vec{\pi})=-\frac{\mu^4}{4\lambda}+\frac{1}{2}m_\sigma\sigma^2+\frac{1}{2}m_\pi^2\vec{\pi}^2
+\end{equation}
+with pion mass $m_\pi^2=\frac{h}{f_\pi}$ and sigma mass $m_\sigma^2=2\mu^2+\mathcal{O}(h)$. Defining $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$ one gets 
+\begin{equation}
+    (\pi^1)^2+(\pi^2)^2=\abs{\pi^+}^2+\abs{\pi^-}^2=2\pi^+\pi^-\equiv 2\pi^+\overline{\pi^+}
+\end{equation}
+
+The expansion of the Lagrangian around $\sigma_0$ breaks the $SO(4)$-symmetry associated to the vector $(\sigma,\vec{\pi})$ and chooses explicitly a minimum within the $SO(4)$-symmetric mexican hat potential. The residual symmetry is $SU(3)$. It features the $SO(2)$ subgroup of symmetry transformations
+\begin{equation}
+    \begin{pmatrix}
+        \pi^1\\\pi^2
+    \end{pmatrix}
+        \mapsto
+        \begin{pmatrix}
+            \cos\alpha&\sin\alpha\\-\sin\alpha&\cos\alpha
+        \end{pmatrix}
+        \begin{pmatrix}
+            \pi^1\\\pi^2
+        \end{pmatrix}
+        \qquad\iff\qquad\pi^\pm\mapsto e^{\pm\imagu\alpha}\pi^\pm
+\end{equation}
+Note $\pi^-=\overline{\pi^+}$.
+
+The Lagrangians and energy-momentum tensors $T^{\mu\nu}=2(\partial\mathscr{L}/\partial g_{\mu\nu})+g^{\mu\nu}\mathscr{L}$ \textbf{CITE: BLAU NOTES} for the separate fields read
+\begin{subequations}
+    \begin{align}
+        \mathscr{L}_{\pi^\pm}&=-(\partial_\mu\pi^+)(\overline{\partial_\mu\pi^+})-m_\pi^2\pi^+\overline{\pi^+}&T^{\mu\nu}_{\pi^\pm}&=-2(\partial^\mu\pi^+)(\overline{\partial^\nu\pi^+})+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\overline{\partial_\alpha\pi^+})-m_\pi^2\pi^+\overline{\pi^+}\big)\\
+        \mathscr{L}_{\pi^0}&=-\frac{1}{2}(\partial_\mu\pi^0)(\partial^\mu\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2&T^{\mu\nu}_{\pi^0}&=-(\partial^\mu\pi^0)(\partial^\nu\pi^0)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\pi^0)(\partial^\alpha\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\\
+        \mathscr{L}_\sigma&=-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}m_\sigma^2\sigma^2&T^{\mu\nu}_{\sigma}&=-(\partial^\mu\sigma)(\partial^\nu\sigma)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\sigma)(\partial^\alpha\sigma)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)
+    \end{align}
+\end{subequations}
+
+\subsubsection{Matching to Fluid Variables for the Real Field $\pi^0$}
+
+The only availabe $4$-vector in the fluid theory is $u_\mu$. It is thus intuitive to try to identify the real-valued $4$vector $\partial_\mu\pi^0\sim u_\mu$. Taking the normalization $u_\mu u^\mu=-1$ into account, one finds
+\begin{equation}
+    u_\mu=\frac{\partial_\mu\pi^0}{\chi}\,,\qquad0<\chi^2\defeq-(\partial_\mu\pi^0)(\partial^\mu\pi^0)
+\end{equation}
+From the fluid theory, we try to match the energy density of the hypothetical superfluid
+\begin{subequations}
+    \begin{align}
+        \epsilon_{s,\pi^0}=u_\mu u_\nu T^{\mu\nu}_{\pi^0}&=\frac{(\partial_\nu\pi^0)(\partial_\mu\pi^0)}{\chi^2}\Big(-(\partial^\mu\pi^0)(\partial^\nu\pi^0)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\pi^0)(\partial^\alpha\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\Big)\\
+        &=-\chi^2-\big(\frac{1}{2}\chi^2-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\\
+        &=\frac{m_\pi^2(\pi^0)^2-3\chi^2}{2}
+    \end{align}
+\end{subequations}
+
+The equations of motion for the real Klein-Gordon field are
+\begin{equation}
+    (-\Box+m_\pi^2)\pi^0=0
+\end{equation}
+
+
+\subsubsection{Matching to Fluid Variables for the Complex Fields $\pi^\pm$}
+
+The $U(1)$-symmetry $\pi^\pm\mapsto e^{\pm\imagu\alpha}\pi^\pm$ with infinitesimal transformation $\pi^\pm\mapsto(1\pm\imagu\delta\alpha)\pi^\pm$ generates a conserved Noether current
+\begin{subequations}
+    \begin{align}
+        j^\mu&\sim\frac{\delta\mathscr{L}}{\delta(\partial_\mu\pi^+)}\delta\pi^++\frac{\delta\mathscr{L}}{\delta(\partial_\mu\pi^-)}\delta\pi^-\\
+        &\sim\pi^-(\partial^\mu\pi^+)-\pi^+(\partial_\mu\pi^-)\\
+        &=\sqrt{n}\big((\partial_\mu\sqrt{n})+\imagu\sqrt{n}(\partial_\mu\theta)\big)-\sqrt{n}\big((\partial_\mu\sqrt{n})-\imagu\sqrt{n}(\partial_\mu\theta)\big)\\
+        &=n(\partial_\mu\theta)
+    \end{align}
+\end{subequations}
+with the parametrization $\pi^\pm=\sqrt{n}e^{\pm\imagu\theta}$. The most intuitive matching is now
+\begin{equation}
+    u^\mu=\frac{\partial_\mu\theta}{\chi}\,,\qquad 0<\chi^2\defeq-(\partial_\mu\theta)(\partial^\mu\theta)
+\end{equation}
+leading to the energy density
+\begin{subequations}
+    \begin{align}
+        \epsilon_{s,\pi^\pm}=u_\mu u_\nu T^{\mu\nu}_{\pi^\pm}&=\frac{(\partial_\mu\theta)(\partial_\nu\theta)}{\chi^2}\Big(-2(\partial^\mu\pi^+)(\partial^\nu\pi^-)+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\partial^\alpha\pi^-)-m_\pi^2\pi^+\pi^-\big)\Big)\\
+        &=-2\frac{[(\partial_\mu\sqrt{n})(\partial^\mu\theta)]^2}{\chi^2}-2n\chi^2-\big(n\chi^2-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})-m_\pi^2n\big)
+    \end{align}
+\end{subequations}
+where the intermediate calculation
+\begin{subequations}
+    \begin{align}
+        (\partial^\mu\pi^+)(\partial^\mu\pi^-)&=\big((\partial^\mu\sqrt{n})+\imagu\sqrt{n}(\partial^\mu\theta)\big)\big((\partial^\nu\sqrt{n})-\imagu\sqrt{n}(\partial^\nu\theta)\big)\\
+        &=(\partial^\mu\sqrt{n})(\partial^\nu\sqrt{n})+n(\partial^\mu\theta)(\partial^\nu\theta)+\imagu\big(\sqrt{n}(\partial^\mu\theta)(\partial^\nu\sqrt{n})-\sqrt{n}(\partial^\nu\theta)(\partial^\mu\sqrt{n})\big)
+    \end{align}
+\end{subequations}
+is useful.
+
+Expressing the Lagrangian in terms of $(n,\theta)$ 
+\begin{equation}
+    \mathscr{L}_{\pi^\pm}=-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})-n(\partial_\mu\theta)(\partial^\mu\theta)-nm_\pi^2
+\end{equation}
+yields as the corresponding equations of motion
+\begin{subequations}
+    \begin{align}
+        \partial_\mu\Bigg(\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial(\partial_\mu\sqrt{n})}\Bigg)=\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial\sqrt{n}}&:&-2\Box\sqrt{n}&=-2\sqrt{n}\big((\partial_\mu\theta)(\partial^\mu\theta)+m_\pi^2\big)\\
+        \partial_\mu\Bigg(\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial(\partial_\mu\theta)}\Bigg)=\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial\theta}&:&\partial_\mu\big(-2n(\partial^\mu\theta)\big)&=0
+    \end{align}
+\end{subequations}
+the second of which encodes the conservation law for the $U(1)$-Noether current.
+    
+The easiest (and most naive) solution is again $n=\const$ and $\partial_\mu\theta=p_\mu$ with $p_\mu p^\mu=-m_\pi^2$. This would be a solution with only a single momentum mode. This solution implies $u^\mu=\const$ which is generally not satisfied by the given data. Assume therefore the existence of a small perturbation $\partial_\mu\theta=p_\mu+\delta q_\mu$ with $q_\mu p^\mu = 0$. From this, $\chi^2=-(\partial_\mu\theta)(\partial^\mu\theta)=-p_\mu p^\mu-q_\mu q^\mu=m_\pi^2-\delta^2q^2$. To linear order in $\delta$
+\begin{equation}
+    \partial_\mu\theta=\chi u_\mu=m_\pi u_\mu
+\end{equation}
+holds true. To expand the equations of motion and allow for non-constant amplitude, assume $n=n_{(0)}+\delta n_{(1)}(x)$ with $n_{(0)}=\const$ ($\sqrt{n}\approx\sqrt{n_{(0)}}+\delta\cdot n_{(1)}/(2\sqrt{n_{(0)}})$). 
+\begin{subequations}
+    \begin{align}
+        \Box\sqrt{n_{(1)}}&=0+\mathcal{O}(\delta^2)\\
+        0&=n_{(0)}\partial_\mu q^\mu+q^\mu\partial_\mu n_{(1)}
+    \end{align}
+\end{subequations}
+
 
 \section{Finding the Spectrum at the Detector Surface}
 
@@ -197,47 +314,47 @@ with the convention $\phi(\vec{x})=\int\dt^3p/(2\pi)^3\phi(\vec{p})e^{-\imagu\ve
 
 \subsection{Treating the Freeze Out Field as Source Term???}
 
-Let's evaluate the Fourier transform of the condensate field. The calculation uses the result from linear response theory for the deviation of the expectation value $\overline{\phi}$ induced by a source term $j$, which we for the moment we assume to be specified by the hydro variables on the freezeout surface.
-\begin{subequations}
-    \begin{equation}
-        \overline{\phi}(x)\equiv\langle\phi(x)\rangle=\int\dt^4G_{\text{ret}}(x,y)j(y)
-    \end{equation}
-    The retarded Greens function is given by
-    \begin{equation}
-        G_{\text{ret}}(x,y)=\Theta(x^0-y^0)\big[D(x-y)-D(y-x)\big]
-    \end{equation}
-    with the propagator
-    \begin{equation}
-        D(x-y)=\int\frac{\dt^3q}{(2\pi)^3}\frac{e^{-\imagu[\omega_{\vec{q}}(x^0-y^0)-\vec{q}(\vec{x}-\vec{y})]}}{2\omega_{\vec{q}}}
-    \end{equation}
-    and the relations
-    \begin{equation}
-        \int\dt^3x e^{\imagu\vec{x}(\vec{p}-\vec{q})}=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\,,\qquad\phi(t,\vec{p})=\int\dt^3x e^{\imagu\vec{p}\vec{x}}\phi(t,\vec{x})
-    \end{equation}
-\end{subequations}
-Putting things together
-\begin{subequations}
-    \begin{align}
-        \overline{\phi}(x^0\equiv t,\vec{p}) & =\int\dt^3x e^{\imagu\vec{p}\vec{x}}\overline{\phi}(x^0\equiv t,\vec{x})                                                                                                                                                                                                                                                           \\
-                                             & =\int\dt^3xe^{\imagu\vec{p}\vec{x}}\int\dt^4yG_{\text{ret}}(x,y)j(y)                                                                                                                                                                                                                                                               \\
-                                             & =\int\dt^3xe^{\imagu\vec{p}\vec{x}}\int\dt^4y\Theta(x^0-y^0)\big[D(x-y)-D(y-x)\big]j(y)                                                                                                                                                                                                                                            \\
-                                             & =\int\dt^3xe^{\imagu\vec{p}\vec{x}}\int\dt^4y\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{q}}}\Theta(x^0-y^0)\times\nonumber                                                                                                                                                                                                  \\
-                                             & \phantom{=}\qquad\times\big[e^{-\imagu[w_{\vec{q}}(x^0-y^0)-\vec{q}(\vec{x}-\vec{y})]}-e^{\imagu[w_{\vec{q}}(x^0-y^0)-\vec{q}(\vec{x}-\vec{y})]}\big]j(y)                                                                                                                                                                          \\
-                                             & =\int\dt^3x\int\dt^4y\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{q}}}\Theta(x^0-y^0)\times\nonumber                                                                                                                                                                                                                          \\
-                                             & \phantom{=}\qquad\times\big[e^{-\imagu[w_{\vec{q}}(x^0-y^0)+\vec{q}\vec{y}]}e^{\imagu(\vec{p}+\vec{q})\vec{x}}-e^{\imagu[w_{\vec{q}}(x^0-y^0)+\vec{q}\vec{y}]}e^{\imagu(\vec{p}-\vec{q})\vec{x}}\big]j(y)                                                                                                                          \\
-                                             & =\int\dt^4y\int\dt^3q\frac{1}{2\omega_{\vec{q}}}\Theta(x^0-y^0)\times\nonumber                                                                                                                                                                                                                                                     \\
-                                             & \phantom{=}\qquad\times\big[e^{-\imagu[w_{\vec{q}}(x^0-y^0)+\vec{q}\vec{y}]}\delta^{(3)}(\vec{p}+\vec{q})-e^{\imagu[w_{\vec{q}}(x^0-y^0)+\vec{q}\vec{y}]}\delta^{(3)}(\vec{p}-\vec{q})\big]j(y)                                                                                                                                    \\
-                                             & =\int\dt^4y\frac{1}{2\omega_{\vec{p}}}\Theta(x^0-y^0)\big[e^{-\imagu[w_{\vec{p}}(x^0-y^0)-\vec{p}\vec{y}]}-e^{\imagu[w_{\vec{p}}(x^0-y^0)+\vec{p}\vec{y}]}\big]j(y)                                                                                                                                                                \\
-                                             & =\int\dt^4y\frac{1}{2\omega_{\vec{p}}}\Theta(x^0-y^0)e^{\imagu\vec{p}\vec{y}}\big[e^{-\imagu\omega_{\vec{p}}(x^0-y^0)}-e^{\imagu\omega_{\vec{p}}(x^0-y^0)}\big]j(y)                                                                                                                                                                \\
-                                             & =\int\dt^4y\frac{1}{\imagu\omega_{\vec{p}}}\Theta(x^0-y^0)e^{\imagu\vec{p}\vec{y}}\sin(\omega_{\vec{p}}(x^0-y^0))j(y)                                                                                                                                                                                                              \\
-        \intertext{Specify this for the relevant case $\text{supp}j=\Sigma_{\text{freeze-out}}$ and parametrize the integral over the hypersurface $\Sigma$ via (see \eqref{calc:HypersurfaceMetric})$\int_\Sigma\dt^3\Sigma=\int\dt\varphi\dt\eta\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}$}
-        \overline{\phi}(x^0\equiv t,\vec{p}) & =\int_0^{2\pi}\dt\varphi\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\vec{p}}}\Theta(x^0-\tau(\alpha)\cosh\eta)\times                                                                                                  \nonumber \\
-                                             & \phantom{=}\qquad\times\exp\left(\imagu[\vec{p}_\perp\vec{x}_\perp+p_z\tau(\alpha)\sinh\eta]\right)\sin(\omega_{\vec{p}}(x^0-\tau(\alpha)\cosh\eta))j(\tau(\alpha),r(\alpha))                                                                                                                                                      \\
-        \intertext{Performing the $\varphi$-integration, with $\varphi$ appearing in the integrand in $\vec{x}_\perp=(r\cos\varphi,r\sin\varphi)$, we choose to align $\varphi=0$ with the $p_x$ direction. Then $\vec{p}_\perp\vec{x}_\perp=p^\perp r\cos\varphi$. Use the Bessel function $J_0$ of first kind to simplify}
-        \overline{\phi}(x^0\equiv t,\vec{p}) & =\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\vec{p}}}\Theta(x^0-\tau(\alpha)\cosh\eta)\times                                                                                                  \nonumber                        \\
-                                             & \phantom{=}\qquad\times 2\pi J_0(p^\perp r(\alpha))\exp\left(\imagu p_z\tau(\alpha)\sinh\eta\right)\sin(\omega_{\vec{p}}(x^0-\tau(\alpha)\cosh\eta))j(\tau(\alpha),r(\alpha))
-    \end{align}
-\end{subequations}
+% Let's evaluate the Fourier transform of the condensate field. The calculation uses the result from linear response theory for the deviation of the expectation value $\overline{\phi}$ induced by a source term $j$, which we for the moment we assume to be specified by the hydro variables on the freezeout surface.
+% \begin{subequations}
+%     \begin{equation}
+%         \overline{\phi}(x)\equiv\langle\phi(x)\rangle=\int\dt^4G_{\text{ret}}(x,y)j(y)
+%     \end{equation}
+%     The retarded Greens function is given by
+%     \begin{equation}
+%         G_{\text{ret}}(x,y)=\Theta(x^0-y^0)\big[D(x-y)-D(y-x)\big]
+%     \end{equation}
+%     with the propagator
+%     \begin{equation}
+%         D(x-y)=\int\frac{\dt^3q}{(2\pi)^3}\frac{e^{-\imagu[\omega_{\vec{q}}(x^0-y^0)-\vec{q}(\vec{x}-\vec{y})]}}{2\omega_{\vec{q}}}
+%     \end{equation}
+%     and the relations
+%     \begin{equation}
+%         \int\dt^3x e^{\imagu\vec{x}(\vec{p}-\vec{q})}=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\,,\qquad\phi(t,\vec{p})=\int\dt^3x e^{\imagu\vec{p}\vec{x}}\phi(t,\vec{x})
+%     \end{equation}
+% \end{subequations}
+% Putting things together
+% \begin{subequations}
+%     \begin{align}
+%         \overline{\phi}(x^0\equiv t,\vec{p}) & =\int\dt^3x e^{\imagu\vec{p}\vec{x}}\overline{\phi}(x^0\equiv t,\vec{x})                                                                                                                                                                                                                                                           \\
+%                                              & =\int\dt^3xe^{\imagu\vec{p}\vec{x}}\int\dt^4yG_{\text{ret}}(x,y)j(y)                                                                                                                                                                                                                                                               \\
+%                                              & =\int\dt^3xe^{\imagu\vec{p}\vec{x}}\int\dt^4y\Theta(x^0-y^0)\big[D(x-y)-D(y-x)\big]j(y)                                                                                                                                                                                                                                            \\
+%                                              & =\int\dt^3xe^{\imagu\vec{p}\vec{x}}\int\dt^4y\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{q}}}\Theta(x^0-y^0)\times\nonumber                                                                                                                                                                                                  \\
+%                                              & \phantom{=}\qquad\times\big[e^{-\imagu[w_{\vec{q}}(x^0-y^0)-\vec{q}(\vec{x}-\vec{y})]}-e^{\imagu[w_{\vec{q}}(x^0-y^0)-\vec{q}(\vec{x}-\vec{y})]}\big]j(y)                                                                                                                                                                          \\
+%                                              & =\int\dt^3x\int\dt^4y\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{q}}}\Theta(x^0-y^0)\times\nonumber                                                                                                                                                                                                                          \\
+%                                              & \phantom{=}\qquad\times\big[e^{-\imagu[w_{\vec{q}}(x^0-y^0)+\vec{q}\vec{y}]}e^{\imagu(\vec{p}+\vec{q})\vec{x}}-e^{\imagu[w_{\vec{q}}(x^0-y^0)+\vec{q}\vec{y}]}e^{\imagu(\vec{p}-\vec{q})\vec{x}}\big]j(y)                                                                                                                          \\
+%                                              & =\int\dt^4y\int\dt^3q\frac{1}{2\omega_{\vec{q}}}\Theta(x^0-y^0)\times\nonumber                                                                                                                                                                                                                                                     \\
+%                                              & \phantom{=}\qquad\times\big[e^{-\imagu[w_{\vec{q}}(x^0-y^0)+\vec{q}\vec{y}]}\delta^{(3)}(\vec{p}+\vec{q})-e^{\imagu[w_{\vec{q}}(x^0-y^0)+\vec{q}\vec{y}]}\delta^{(3)}(\vec{p}-\vec{q})\big]j(y)                                                                                                                                    \\
+%                                              & =\int\dt^4y\frac{1}{2\omega_{\vec{p}}}\Theta(x^0-y^0)\big[e^{-\imagu[w_{\vec{p}}(x^0-y^0)-\vec{p}\vec{y}]}-e^{\imagu[w_{\vec{p}}(x^0-y^0)+\vec{p}\vec{y}]}\big]j(y)                                                                                                                                                                \\
+%                                              & =\int\dt^4y\frac{1}{2\omega_{\vec{p}}}\Theta(x^0-y^0)e^{\imagu\vec{p}\vec{y}}\big[e^{-\imagu\omega_{\vec{p}}(x^0-y^0)}-e^{\imagu\omega_{\vec{p}}(x^0-y^0)}\big]j(y)                                                                                                                                                                \\
+%                                              & =\int\dt^4y\frac{1}{\imagu\omega_{\vec{p}}}\Theta(x^0-y^0)e^{\imagu\vec{p}\vec{y}}\sin(\omega_{\vec{p}}(x^0-y^0))j(y)                                                                                                                                                                                                              \\
+%         \intertext{Specify this for the relevant case $\text{supp}j=\Sigma_{\text{freeze-out}}$ and parametrize the integral over the hypersurface $\Sigma$ via (see \eqref{calc:HypersurfaceMetric})$\int_\Sigma\dt^3\Sigma=\int\dt\varphi\dt\eta\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}$}
+%         \overline{\phi}(x^0\equiv t,\vec{p}) & =\int_0^{2\pi}\dt\varphi\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\vec{p}}}\Theta(x^0-\tau(\alpha)\cosh\eta)\times                                                                                                  \nonumber \\
+%                                              & \phantom{=}\qquad\times\exp\left(\imagu[\vec{p}_\perp\vec{x}_\perp+p_z\tau(\alpha)\sinh\eta]\right)\sin(\omega_{\vec{p}}(x^0-\tau(\alpha)\cosh\eta))j(\tau(\alpha),r(\alpha))                                                                                                                                                      \\
+%         \intertext{Performing the $\varphi$-integration, with $\varphi$ appearing in the integrand in $\vec{x}_\perp=(r\cos\varphi,r\sin\varphi)$, we choose to align $\varphi=0$ with the $p_x$ direction. Then $\vec{p}_\perp\vec{x}_\perp=p^\perp r\cos\varphi$. Use the Bessel function $J_0$ of first kind to simplify}
+%         \overline{\phi}(x^0\equiv t,\vec{p}) & =\int_{-\infty}^\infty\dt\eta\int_0^\pi\dt\alpha r(\alpha)\tau(\alpha)\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}\frac{1}{\imagu\omega_{\vec{p}}}\Theta(x^0-\tau(\alpha)\cosh\eta)\times                                                                                                  \nonumber                        \\
+%                                              & \phantom{=}\qquad\times 2\pi J_0(p^\perp r(\alpha))\exp\left(\imagu p_z\tau(\alpha)\sinh\eta\right)\sin(\omega_{\vec{p}}(x^0-\tau(\alpha)\cosh\eta))j(\tau(\alpha),r(\alpha))
+%     \end{align}
+% \end{subequations}
 
 \begin{calc}[Metric on Hypersurface]{calc:HypersurfaceMetric}
     Recall the metric $g_{\mu\nu}=\text{diag}(-1,1,\tau^2,r^2)$ in coordinates $(\tau,r,\eta,\varphi)$. Orthonormal tangent vectors to the freeze out hypersurface are $(\hat\partial_\varphi)^\mu=(0,0,0,r^{-1})=r^{-1}(\partial_\varphi)^\mu$, $(\hat\partial_\eta)^\mu=(0,0,\tau^{-1},0)=\tau^{-1}(\partial_\eta)^\mu$ and $(\hat\partial_\alpha)^\mu=\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}(\tau^{\prime}(\alpha),r^{\prime}(\alpha),0,0)=D(\alpha)(\partial_\alpha)^\mu$ with $D(\alpha)=\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}$. The projector on the hypersurface is
@@ -497,30 +614,30 @@ We can therefore write
 \end{equation}
 The second "$=$" assumes that $\phi=0$ for large spacetime rapidities $\eta\to\pm\infty$ and the $\tau=\const$ hypersurface can be deformed to a $t=\const$ hypersurface.
 
-Using the freezeout surface parametrization stated in earlier paragraphs one computes \todo{some errors}
-\begin{subequations}
-    \begin{align}
-        \tilde{\phi}(\vec{p}) & =-\imagu\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Bigg[r^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_\tau}e^{\imagu(\tau \omega_\perp\cosh(\eta-\eta_p)-r p_\perp\cos(\varphi-\varphi_p))}+\nonumber \\
-                              & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_r}e^{\imagu(\tau \omega_\perp\cosh(\eta-\eta_p)-r p_\perp\cos(\varphi-\varphi_p))}\Bigg]                                                                                                                             \\
-                              & =-\imagu\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Bigg[r^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_\tau}e^{\imagu(\tau \omega_\perp\cosh\eta-r p_\perp\cos\varphi)}+\nonumber                      \\
-                              & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_r}e^{\imagu(\tau \omega_\perp\cosh\eta-r p_\perp\cos\varphi)}\Bigg]                                                                                                                                                  \\
-                              & =-\imagu\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Bigg[r^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_\tau}\Big[2\pi J_0(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                 \\
-                              & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_r}\Big[2\pi J_0(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]                                                                                                          \\
-                              & =-\imagu\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Bigg[-(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)[2\pi J_0(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                               \\
-                              & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times2\pi p_\perp J_1(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)+\nonumber                                                                                                                                          \\
-                              & \phantom{=}\qquad\phantom{-\phi(\tau,r)\Big[}+r^\prime\times2\pi J_0(r p_\perp)\times\pi\omega_\perp\big(Y_1(\tau\omega_\perp)-\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]                                                                                                                                \\
-                              & =-\frac{2\pi^2\imagu}{\sqrt{2\omega_{\vec{p}}}}\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\Bigg[-(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)[J_0(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                                  \\
-                              & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times p_\perp J_1(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)+\nonumber                                                                                                                                                 \\
-                              & \phantom{=}\qquad\phantom{-\phi(\tau,r)\Big[}+r^\prime\times J_0(r p_\perp)\times\omega_\perp\big(Y_1(\tau\omega_\perp)-\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]
-    \end{align}
-\end{subequations}
-where the Bessel function identities \eqref{eq:BesselFunctions} were used. One may choose to work at mid-rapidity $\eta_p=0$ where $\omega_{\vec{p}}=m_\perp\vert_{\text{on-shell}}=\omega_\perp$. Note that for large $p_\perp$ one finds
-\begin{equation}
-    \omega_\perp\sim p_\perp\,,\qquad J_\nu,Y_\nu\sim\frac{1}{\sqrt{p_\perp}}
-\end{equation}
-and therefore $\phi(\vec{p})\sim\frac{1}{\sqrt{p_\perp}}$.
+% Using the freezeout surface parametrization stated in earlier paragraphs one computes \todo{some errors}
+% \begin{subequations}
+%     \begin{align}
+%         \tilde{\phi}(\vec{p}) & =-\imagu\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Bigg[r^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_\tau}e^{\imagu(\tau \omega_\perp\cosh(\eta-\eta_p)-r p_\perp\cos(\varphi-\varphi_p))}+\nonumber \\
+%                               & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_r}e^{\imagu(\tau \omega_\perp\cosh(\eta-\eta_p)-r p_\perp\cos(\varphi-\varphi_p))}\Bigg]                                                                                                                             \\
+%                               & =-\imagu\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Bigg[r^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_\tau}e^{\imagu(\tau \omega_\perp\cosh\eta-r p_\perp\cos\varphi)}+\nonumber                      \\
+%                               & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_r}e^{\imagu(\tau \omega_\perp\cosh\eta-r p_\perp\cos\varphi)}\Bigg]                                                                                                                                                  \\
+%                               & =-\imagu\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Bigg[r^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_\tau}\Big[2\pi J_0(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                 \\
+%                               & \phantom{=}\qquad + \tau^\prime(\alpha)\phi(\tau,r)\overset{\leftrightarrow}{\partial_r}\Big[2\pi J_0(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]                                                                                                          \\
+%                               & =-\imagu\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Bigg[-(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)[2\pi J_0(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                               \\
+%                               & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times2\pi p_\perp J_1(r p_\perp)\times\pi\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)+\nonumber                                                                                                                                          \\
+%                               & \phantom{=}\qquad\phantom{-\phi(\tau,r)\Big[}+r^\prime\times2\pi J_0(r p_\perp)\times\pi\omega_\perp\big(Y_1(\tau\omega_\perp)-\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]                                                                                                                                \\
+%                               & =-\frac{2\pi^2\imagu}{\sqrt{2\omega_{\vec{p}}}}\int_0^\pi\dt\alpha\tau(\alpha) r(\alpha)\Bigg[-(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)[J_0(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                                  \\
+%                               & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times p_\perp J_1(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)+\nonumber                                                                                                                                                 \\
+%                               & \phantom{=}\qquad\phantom{-\phi(\tau,r)\Big[}+r^\prime\times J_0(r p_\perp)\times\omega_\perp\big(Y_1(\tau\omega_\perp)-\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]
+%     \end{align}
+% \end{subequations}
+% where the Bessel function identities \eqref{eq:BesselFunctions} were used. One may choose to work at mid-rapidity $\eta_p=0$ where $\omega_{\vec{p}}=m_\perp\vert_{\text{on-shell}}=\omega_\perp$. Note that for large $p_\perp$ one finds
+% \begin{equation}
+%     \omega_\perp\sim p_\perp\,,\qquad J_\nu,Y_\nu\sim\frac{1}{\sqrt{p_\perp}}
+% \end{equation}
+% and therefore $\phi(\vec{p})\sim\frac{1}{\sqrt{p_\perp}}$.
 
-How to treat the projection $r^\prime\partial_\tau+\tau^\prime\partial_r\equiv\partial_\perp\propto n^\mu\partial_\mu$ of $\partial_\mu$ onto the normal vector $\propto n^\mu$? One could argue that $\partial_\perp\phi$ not specified by field data on the hypersurface and one needs to find suitable initial conditions. A reasonable choice would be $\pi\vert_{\Sigma_{FO}}\equiv\dot{\phi}\vert_{\Sigma_{FO}}=0$. Since $\partial_\eta\phi=0$ by symmetry assumption, this implies $\partial_\tau\phi\vert_{\Sigma_{FO}}=0$. The derivatives $\partial_\alpha\equiv\tau^\prime\partial_\tau+r^\prime\partial_r$ and $\partial_\perp\equiv r^\prime\partial_\tau+\tau^\prime\partial_r$ therefore can be related by $\partial_\perp\phi\vert_{\Sigma_{FO}}=\frac{\tau^\prime}{r^\prime}\partial_\alpha\phi\vert_{\Sigma_{FO}}$.
+% How to treat the projection $r^\prime\partial_\tau+\tau^\prime\partial_r\equiv\partial_\perp\propto n^\mu\partial_\mu$ of $\partial_\mu$ onto the normal vector $\propto n^\mu$? One could argue that $\partial_\perp\phi$ not specified by field data on the hypersurface and one needs to find suitable initial conditions. A reasonable choice would be $\pi\vert_{\Sigma_{FO}}\equiv\dot{\phi}\vert_{\Sigma_{FO}}=0$. Since $\partial_\eta\phi=0$ by symmetry assumption, this implies $\partial_\tau\phi\vert_{\Sigma_{FO}}=0$. The derivatives $\partial_\alpha\equiv\tau^\prime\partial_\tau+r^\prime\partial_r$ and $\partial_\perp\equiv r^\prime\partial_\tau+\tau^\prime\partial_r$ therefore can be related by $\partial_\perp\phi\vert_{\Sigma_{FO}}=\frac{\tau^\prime}{r^\prime}\partial_\alpha\phi\vert_{\Sigma_{FO}}$.
 
 \subsection{Properly Considering all Initial Conditions}
 
@@ -634,3 +751,4 @@ and the final result via
 \begin{equation}
     \tilde{J}(\vec{p})=(C_{1\sigma}+C_{2\sigma})\sin\vartheta_0+(C_{1\pi}+C_{2\pi})\cos\vartheta_0
 \end{equation}
+

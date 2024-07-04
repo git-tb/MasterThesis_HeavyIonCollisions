@@ -1,0 +1,134 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{Amelino-CameliaEtAl_1997}{article}{}
+      \name{author}{3}{}{%
+        {{hash=d6554a23c13cf0551c4ff6b13c4927ee}{%
+           family={{Amelino-Camelia}},
+           familyi={A\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=521260719aa678e55ec9feee0e966779}{%
+           family={Bjorken},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=573c225bd71054b6ff30fb08bfe8ed50}{%
+           family={Larsson},
+           familyi={L\bibinitperiod},
+           given={S.\bibnamedelimi E.},
+           giveni={S\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{eac544595d4b8df6d805de9a237dd921}
+      \strng{fullhash}{eac544595d4b8df6d805de9a237dd921}
+      \strng{bibnamehash}{eac544595d4b8df6d805de9a237dd921}
+      \strng{authorbibnamehash}{eac544595d4b8df6d805de9a237dd921}
+      \strng{authornamehash}{eac544595d4b8df6d805de9a237dd921}
+      \strng{authorfullhash}{eac544595d4b8df6d805de9a237dd921}
+      \field{labelalpha}{ABL97}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We study the various stages of the evolution of chiral condensates disoriented via the ``baked-alaska'' mechanism, in which the condensates are described as the products of external sources localized on the light cone. Our analysis is based on the classical equations of motion of either the linear or the nonlinear sigma model. We use the associated framework of coherent states and, especially, their source functions to make the connection to the distribution functions for the produced particles. We also compare our classical approach with a mean-field calculation which includes a certain class of quantum corrections.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{0556-2821, 1089-4918}
+      \field{journaltitle}{Physical Review D}
+      \field{month}{12}
+      \field{number}{11}
+      \field{title}{Pion {{Production}} from {{Baked-Alaska Disoriented Chiral Condensate}}}
+      \field{urlday}{22}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{volume}{56}
+      \field{year}{1997}
+      \field{urldateera}{ce}
+      \field{pages}{6942\bibrangedash 6956}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.56.6942
+      \endverb
+      \verb{eprint}
+      \verb hep-ph/9706530
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/N2VVW7QH/Amelino-Camelia et al. - 1997 - Pion Production from Baked-Alaska Disoriented Chir.pdf;/home/tobias/Zotero/storage/DKBU9EJ6/9706530.html
+      \endverb
+      \keyw{High Energy Physics - Phenomenology}
+    \endentry
+    \entry{KirchnerEtAl_2023}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=2cdd372b340499f2204a5afd3ef395f6}{%
+           family={Kirchner},
+           familyi={K\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=1bcc77a68e857dea3bb5cb7f10f12e35}{%
+           family={Grossi},
+           familyi={G\bibinitperiod},
+           given={Eduardo},
+           giveni={E\bibinitperiod}}}%
+        {{hash=50048509226fe3fdf2310776356e459f}{%
+           family={Floerchinger},
+           familyi={F\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{0ede250374fe5868188340c29e64c200}
+      \strng{fullhash}{0ede250374fe5868188340c29e64c200}
+      \strng{bibnamehash}{0ede250374fe5868188340c29e64c200}
+      \strng{authorbibnamehash}{0ede250374fe5868188340c29e64c200}
+      \strng{authornamehash}{0ede250374fe5868188340c29e64c200}
+      \strng{authorfullhash}{0ede250374fe5868188340c29e64c200}
+      \field{labelalpha}{KGF23}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}
+      \field{eprintclass}{hep-ph}
+      \field{eprinttype}{arXiv}
+      \field{month}{8}
+      \field{number}{arXiv:2308.10616}
+      \field{title}{Cooper-{{Frye}} Spectra of Hadrons with Viscous Corrections Including Feed down from Resonance Decays}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2024}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.2308.10616
+      \endverb
+      \verb{eprint}
+      \verb 2308.10616
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/YPNHDTEU/Kirchner et al. - 2023 - Cooper-Frye spectra of hadrons with viscous correc.pdf;/home/tobias/Zotero/storage/2LG7PLUE/2308.html
+      \endverb
+      \keyw{High Energy Physics - Phenomenology}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
