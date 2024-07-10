@@ -11,6 +11,9 @@ DIRLIBRARIES   := #-L"/usr/lib/x86_64-linux-gnu"#DON'T FORGET "-L"-PREFIX
 LIBRARIES = -l"gsl" #-l"sfml-system" -l"sfml-network" -l"sfml-audio" -l"sfml-window" -l"sfml-graphics" #DON'T FORGET "-l"-PREFIX
 EXECUTABLE  := main
 
+run: build
+	./$(BIN)/$(EXECUTABLE)
+
 build:
 	$(CXX) $(CXX_FLAGS) $(INCLUDE) $(SRC)/$(EXECUTABLE).cpp -o $(BIN)/$(EXECUTABLE) $(DIRLIBRARIES) $(LIBRARIES)
 

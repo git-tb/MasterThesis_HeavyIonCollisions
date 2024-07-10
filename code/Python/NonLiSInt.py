@@ -6,10 +6,10 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.colors import PowerNorm
 
-v0 = 2
-mu2 = 1
+v0 = 1.5
+mu2 = 2
 lam = mu2/(v0**2)
-eps = 0.1
+eps = 0.05
 
 def V(sigma,pi):
     return - mu2/2 * (sigma**2 + pi**2) + lam/4 * (sigma**2 + pi**2)**2 - eps * sigma
@@ -48,15 +48,22 @@ tstart = 0.01
 tend = 1000
 
 result = scipy.integrate.solve_ivp(dy, (tstart,tend), y0, jac=df,method="Radau")
-# result = scipy.integrate.solve_ivp(dy, (0.01,100), y0)
 
 ts = result["t"]
 ys = result["y"]
 sigmas, pis, Psigmas, Ppis = ys[0],ys[1],ys[2],ys[3]
-plt.plot(ts,sigmas)
+Vs = V(sigmas,pis)
+
 plt.plot(ts,pis)
+plt.plot(ts,sigmas)
+# plt.plot(ts,Vs)
 plt.show()
 
-plt.plot(sigmas,pis)
-plt.pcolor(sigmagrid,pigrid,Vgrid)
-plt.show()
+# =======================================
+# grid parameters
+nghost = 2
+Nr = 500
+r_a, r_b = 0, 30
+
+r = gr.gr_CC(Nr, r_a, r_b, nghost=nghost)
+dr = r[1] - r[0]
