@@ -37,7 +37,15 @@ The Lagrangians and energy-momentum tensors $T^{\mu\nu}=2(\partial\mathscr{L}/\p
         \mathscr{L}_\sigma&=-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}m_\sigma^2\sigma^2&T^{\mu\nu}_{\sigma}&=(\partial^\mu\sigma)(\partial^\nu\sigma)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\sigma)(\partial^\alpha\sigma)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)
     \end{align}
 \end{subequations}
-
+Following \textbf{CITE WEINBERG COSMOLOGY} the energy momentum tensor of a real scalar field $\varphi$ is
+\begin{subequations}
+    \begin{align}
+        T_\varphi^{\mu\nu}&=-g^{\mu\nu}\big[\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)+V(\varphi)\big]+g^{\mu\rho}g^{\nu\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\\
+        \epsilon&=\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)+V(\varphi)\\
+        p&=\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)-V(\varphi)\\
+        u^\mu&=-\big[-g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\big]^{-1/2}g^{\mu\nu}\partial_\nu\varphi
+    \end{align}
+\end{subequations}
 \subsubsection{Matching to Fluid Variables for the Real Field $\pi^0$}
 
 The only availabe $4$-vector in the fluid theory is $u_\mu$. It is thus intuitive to try to identify the real-valued $4$vector $\partial_\mu\pi^0\sim u_\mu$. Taking the normalization $u_\mu u^\mu=-1$ into account, one finds
@@ -52,6 +60,21 @@ From the fluid theory, we try to match the energy density of the hypothetical su
         &=\frac{m_\pi^2(\pi^0)^2+\chi^2}{2}
     \end{align}
 \end{subequations}
+
+Imposing $\epsilon=\const$ on the freezout surface, which is parametrized by some angle $\alpha$, yields
+\begin{subequations}
+    \begin{align}
+        0=\dt\epsilon&=m_\pi^2\pi^0\dt\pi^0+\chi\dt\chi\\
+        &=m_\pi^2\pi^0(\partial_\mu\pi^0)\dt^\mu s+\chi\dt\chi\\
+        &=m_\pi^2\pi^0\chi u_\mu\dt^\mu s+\chi\dt\chi
+    \end{align}
+\end{subequations}
+The solution $\pi^0$ on the freezout surface thus needs to fulfill the ODE
+    \begin{equation}
+        \dt\pi^0=\chi u_\mu\dt^\mu s\,,\quad
+        \dt\chi=-m_\pi^2\pi^0 u_\mu\dt^\mu s
+    \end{equation}
+    with $\dt^\mu s=(\partial x^\mu)/(\partial\alpha)\dt\alpha$ the displacement vector on the freezeout surface. Initial conditions leave 1 degree of freedom, namely the ratio of kinetic energy $\epsilon_{\text{kin}}=(1/2)\chi^2$ and $\epsilon_{\text{pot}}=(1/2)m_\pi^2(\pi^0)^2$ at $\alpha=0$. To be precise, choose $r\in[0,1]$ and set $\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon$ and $\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon$.
 
 The equations of motion for the real Klein-Gordon field are
 \begin{equation}
@@ -72,23 +95,28 @@ The $U(1)$-symmetry $\pi^\pm\mapsto e^{\pm\imagu\alpha}\pi^\pm$ with infinitesim
 \end{subequations}
 with the parametrization $\pi^\pm=\sqrt{n}e^{\pm\imagu\theta}$. The most intuitive matching is now
 \begin{equation}
-    u^\mu=\frac{\partial_\mu\theta}{\chi}\,,\qquad 0<\chi^2\defeq-(\partial_\mu\theta)(\partial^\mu\theta)
+    u^\mu=\frac{\partial_\mu\theta}{\chi_\theta}\,,\qquad 0<\chi_\theta^2\defeq-(\partial_\mu\theta)(\partial^\mu\theta)
 \end{equation}
 leading to the energy density
 \begin{subequations}
     \begin{align}
-        \epsilon_{s,\pi^\pm}=u_\mu u_\nu T^{\mu\nu}_{\pi^\pm}&=\frac{(\partial_\mu\theta)(\partial_\nu\theta)}{\chi^2}\Big(2(\partial^\mu\pi^+)(\partial^\nu\pi^-)+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\partial^\alpha\pi^-)-m_\pi^2\pi^+\pi^-\big)\Big)\\
-        &=2\frac{[(\partial_\mu\sqrt{n})(\partial^\mu\theta)]^2}{\chi^2}+2n\chi^2-\big(n\chi^2-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})-m_\pi^2n\big)
+        \epsilon_{s,\pi^\pm}=u_\mu u_\nu T^{\mu\nu}_{\pi^\pm}&=\frac{(\partial_\mu\theta)(\partial_\nu\theta)}{\chi_\theta^2}\Big(2(\partial^\mu\pi^+)(\partial^\nu\pi^-)+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\partial^\alpha\pi^-)-m_\pi^2\pi^+\pi^-\big)\Big)\\
+        &=2\frac{[(\partial_\mu\sqrt{n})(\partial^\mu\theta)]^2}{\chi_\theta^2}+2n\chi_\theta^2-\big(n\chi_\theta^2-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})-m_\pi^2n\big)\\
+        &=n\chi_\theta^2+2\frac{[(\partial_\mu\sqrt{n})(\partial^\mu\theta)]^2}{\chi_\theta^2}+(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})+m_\pi^2n
     \end{align}
 \end{subequations}
 where the intermediate calculation
 \begin{subequations}
     \begin{align}
         (\partial^\mu\pi^+)(\partial^\nu\pi^-)&=\big((\partial^\mu\sqrt{n})+\imagu\sqrt{n}(\partial^\mu\theta)\big)\big((\partial^\nu\sqrt{n})-\imagu\sqrt{n}(\partial^\nu\theta)\big)\\
-        &=(\partial^\mu\sqrt{n})(\partial^\nu\sqrt{n})+n(\partial^\mu\theta)(\partial^\nu\theta)+\imagu\big(\sqrt{n}(\partial^\mu\theta)(\partial^\nu\sqrt{n})-\sqrt{n}(\partial^\nu\theta)(\partial^\mu\sqrt{n})\big)
+        &=(\partial^\mu\sqrt{n})(\partial^\nu\sqrt{n})+n(\partial^\mu\theta)(\partial^\nu\theta)+\imagu\big(\sqrt{n}(\partial^\mu\theta)(\partial^\nu\sqrt{n})-\sqrt{n}(\partial^\nu\theta)(\partial^\mu\sqrt{n})\big)\\
+        (\partial_\mu\pi^+)(\partial^\mu\pi^-)&=-\chi_n^2-n\chi_\theta^2
     \end{align}
 \end{subequations}
-is useful.
+is useful. Note how the imaginary part of this tensor is antisymmetric and thus does not contribute upon contraction with a symmetric tensor. Assume further $\partial_\mu\sqrt{n}=u_\mu\chi_n$ then
+\begin{equation}
+    \epsilon_{s,\pi^\pm}=n\chi_\theta^2+\chi_n^2+m_\pi^2n
+\end{equation}
 
 Expressing the Lagrangian in terms of $(n,\theta)$ 
 \begin{equation}
