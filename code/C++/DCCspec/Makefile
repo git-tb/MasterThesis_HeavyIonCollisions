@@ -1,19 +1,31 @@
-.SILENT:
+CXX       := g++
+CXX_FLAGS := -std=c++2a
+# CXX_FLAGS += -g
+# CXX_FLAGS += -O3
+CXX_FLAGS += -DNDEBUG
 
-CXX       := "g++"
-CXX_FLAGS := -std=c++17 -g -fopenmp
-
+EXE 	:= main
 BIN     := bin
 SRC     := src
-INCLUDE := -Iinclude -Iboost_1_82_0 -IlibInterpolate/src -Ieigen-3.4.0/Eigen #DON'T FORGET "-I"-PREFIX
 
-DIRLIBRARIES   := #-L"/usr/lib/x86_64-linux-gnu"#DON'T FORGET "-L"-PREFIX
-LIBRARIES = -l"gsl" #-l"sfml-system" -l"sfml-network" -l"sfml-audio" -l"sfml-window" -l"sfml-graphics" #DON'T FORGET "-l"-PREFIX
-EXECUTABLE  := main
+INCLUDE :=
+DIRLIBRARIES := 
+LIBRARIES :=
 
-run: build
-	./$(BIN)/$(EXECUTABLE)
+INCLUDE += -Iinclude
+INCLUDE += -Iboost_1_82_0
+
+DIRLIBRARIES += -Lboost_1_82_0/lib
+
+LIBRARIES += -lboost_program_options
+LIBRARIES += -lgsl
+run:
+	./$(BIN)/$(EXE)
 
 build:
-	$(CXX) $(CXX_FLAGS) $(INCLUDE) $(SRC)/$(EXECUTABLE).cpp -o $(BIN)/$(EXECUTABLE) $(DIRLIBRARIES) $(LIBRARIES)
+	$(CXX) $(CXX_FLAGS) $(INCLUDE) $(SRC)/$(EXE).cpp -o $(BIN)/$(EXE) $(DIRLIBRARIES) $(LIBRARIES) -Wl,-rpath=$(PWD)/boost_1_82_0/lib/
+
+checklibs:
+	ldd ./bin/$(EXE)
+
 

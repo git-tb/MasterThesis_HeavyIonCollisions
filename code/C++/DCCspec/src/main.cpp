@@ -6,8 +6,12 @@
 #include <gsl/gsl_integration.h>
 #include <map>
 #include <boost/math/interpolators/pchip.hpp>
+#include <boost/program_options.hpp>
 #include <gsl/gsl_matrix.h>
 #include <gsl/gsl_odeiv2.h>
+
+#include <algorithm>
+#include <iterator>
 
 #include "filereader.h"
 #include "spectr.h"
@@ -94,7 +98,7 @@ std::vector<std::complex<double>> spectr(
     std::function<double(double)> func,
     std::function<double(double)> Dfunc)
 {
-    // FOR EVALUATION ON ARRAY OF PS, WE DON'T NEED TO ALLOCATE AND FREE 
+    // FOR EVALUATION ON ARRAY OF PS, WE DON'T NEED TO ALLOCATE AND FREE
     //  THE MEMORY FOR THE INTEGRATION WORKSPACE OVER AND OVER AGAIN
     std::vector<std::complex<double>> result(ps.size());
 
@@ -229,8 +233,30 @@ int jac(double alpha, const double y[], double *dfdy, double dfdt[], void *param
 };
 /* #endregion */
 
-int main()
+int main(int ac, char* av[])
 {
+    /* #region COMMAND LINE OPTIONS */
+    // Declare the supported options.
+    // namespace po = boost::program_options;
+    // po::options_description desc("Allowed options");
+    // desc.add_options()
+    //     ("help", "produce help message")
+    //     ("pTmax", po::value<double>()->default_value(1.0), "set pTmax");
+
+    // po::variables_map vm;
+    // po::store(po::parse_command_line(ac, av, desc), vm);
+    // po::notify(vm);
+
+    // if (vm.count("help"))
+    // {
+    //     std::cout << desc << "\n";
+    //     return 1;
+    // }
+    // double pTmax(vm["pTmax"].as<double>());
+    // std::cout << pTmax << std::endl;
+    // return 1;
+    /* #endregion */
+
     /* #region INTERPOLATING FUNCTIONS FROM THE FREEZOUT DATA */
     // READ IN FREEZOUT DATA
     csvdata mydata = readcsv("./../../Mathematica/data/ExampleFreezeOut.csv", ",", true, true);
@@ -314,26 +340,26 @@ int main()
 
     /* #region FIND INITIAL CONDITIONS */
     // INITIAL CONDITIONS
-    double epsilon = 0.001  * 0.160054;  // energy density of condensate
-                                        // epsilon = Epot + Ekin
-                                        //  Epot = (1/2) m^2 phi^2
-                                        //  Ekin = (1/2) chi^2
-    double ratio(0.5);   // Epot/epsilon
-    int sign(-1); // +-1, relative sign between pi0(alpha=0) and \partial pi0(alpha=0)
-    double Epot(ratio * epsilon), Ekin((1-ratio)*epsilon);
-    double pi0_start = std::sqrt(2*Epot)/m_pion;
-    double chi_start = sign * std::sqrt(2*Ekin);
+    double epsilon = 0.001 * 0.160054; // energy density of condensate
+                                       // epsilon = Epot + Ekin
+                                       //  Epot = (1/2) m^2 phi^2
+                                       //  Ekin = (1/2) chi^2
+    double ratio(0.5);                 // Epot/epsilon
+    int sign(-1);                      // +-1, relative sign between pi0(alpha=0) and \partial pi0(alpha=0)
+    double Epot(ratio * epsilon), Ekin((1 - ratio) * epsilon);
+    double pi0_start = std::sqrt(2 * Epot) / m_pion;
+    double chi_start = sign * std::sqrt(2 * Ekin);
 
     double EPSREL(1e-3), EPSABS(0);
     double alphastart(0.0), alphaend(M_PI / 2.0);
-    double stepsize(1e-6);    // initial value
+    double stepsize(1e-6);                // initial value
     double y[2] = {pi0_start, chi_start}; // initial value
 
     const gsl_odeiv2_step_type *TYPE = gsl_odeiv2_step_rk8pd;
     gsl_odeiv2_step *STEP = gsl_odeiv2_step_alloc(TYPE, 2); // dimension = 2
     gsl_odeiv2_control *CONTROL = gsl_odeiv2_control_y_new(EPSABS, EPSREL);
     gsl_odeiv2_evolve *EVOLVE = gsl_odeiv2_evolve_alloc(2); // dimension = 2
-    gsl_odeiv2_system SYS = {func, NULL, 2, NULL}; // this is {func, jac, dimension, parameters}
+    gsl_odeiv2_system SYS = {func, NULL, 2, NULL};          // this is {func, jac, dimension, parameters}
 
     double alpha(alphastart);
     std::vector<double> alphas({alpha}), pi0s({y[0]}), chis({y[1]});
@@ -361,21 +387,22 @@ int main()
     auto chi_spline = pchip(
         std::move(alphas2),
         std::move(chis));
-    auto epsilon_fo = [&pi0_spline, &chi_spline](double alpha) { 
-        return 0.5 * (m_pion * m_pion * pi0_spline(alpha) * pi0_spline(alpha) 
-                        + chi_spline(alpha) * chi_spline(alpha));
-        };
+    auto epsilon_fo = [&pi0_spline, &chi_spline](double alpha)
+    {
+        return 0.5 * (m_pion * m_pion * pi0_spline(alpha) * pi0_spline(alpha) + chi_spline(alpha) * chi_spline(alpha));
+    };
+    /* #endregion */
+    // DEFINE PION FIELD AND DERIVATIVE ON FREEZOUT SURFACE
+    std::function<double(double)> func = [&pi0_spline](double alpha)
+    { return exp(-alpha*alpha); };
+    // { return pi0_spline(alpha); };
+    std::function<double(double)> Dfunc = [&chi_spline](double alpha)
+    { return 0; };
+    // { return chi_spline(alpha) * (-Dr(alpha) * utau(alpha) + Dtau(alpha) * ur(alpha)); };
 
     writeFuncToFile("data/pi0_initial.txt", pi0_spline, 0, M_PI / 2.0, 1000);
     writeFuncToFile("data/chi_initial.txt", chi_spline, 0, M_PI / 2.0, 1000);
     writeFuncToFile("data/epscheck_initial.txt", epsilon_fo, 0, M_PI / 2.0, 1000);
-    /* #endregion */
-
-    // DEFINE PION FIELD AND DERIVATIVE ON FREEZOUT SURFACE
-    std::function<double(double)> func = [&pi0_spline](double alpha)
-    { return pi0_spline(alpha); };
-    std::function<double(double)> Dfunc = [&chi_spline](double alpha)
-    { return chi_spline(alpha) * (-Dr(alpha)*utau(alpha) + Dtau(alpha)*ur(alpha)); };
 
     // COMPUTE SPECTRUM
     // std::function<double(double)> spectrfun = [&func, &Dfunc](double p)
@@ -391,6 +418,6 @@ int main()
     std::vector<std::complex<double>> myspectr = spectr(ps, func, Dfunc);
     std::vector<double> myspectr_abs2(myspectr.size());
     for (int i = 0; i < myspectr.size(); i++)
-        myspectr_abs2[i] = (1/std::pow(2*M_PI,3)) * std::norm(myspectr[i]);
+        myspectr_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr[i]);
     writeSamplesToFile("data/spectr.txt", ps, myspectr_abs2);
 }
