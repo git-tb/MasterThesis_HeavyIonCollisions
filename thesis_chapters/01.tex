@@ -26,8 +26,7 @@ The equations of motion \eqref{eq:KGEq} have the general solution
         (\implies)\quad\pi(t,x) & =\int\frac{\dt ^3p}{(2\pi)^3}\mathcal{N}_{\vec{p}}\left\{-\imagu\omega_{\vec{p}}a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\imagu\omega_{\vec{p}}b_{\vec{p}}^* e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\right\}\,.
     \end{align}
 \end{subequations}
-only subject to the condition $\omega_{\vec{p}}=\sqrt{m^2+p^2}$. Reality of $\phi(t,x)$ implies $a_{\vec{p}}=b_{\vec{p}}$.
-If one uses
+only subject to the condition $\omega_{\vec{p}}=\sqrt{m^2+p^2}$. $a_{\vec{p}}$ and $b_{\vec{p}}^*$ are complex Fourier coefficients. Reality of $\phi(t,x)$ further implies $a_{\vec{p}}=b_{\vec{p}}$. The normalization is typically chosen as $\mathcal{N}_{\vec{p}}^2\omega_{\vec{p}}=\frac{1}{2}$ for reasons that will become clear in a moment. If one uses
 \begin{defin}[Poisson Brackets on Field Space]{def:PoissonBrack}
     \begin{equation}
         \poisson{A,B}=\int\dt^3x\left[\frac{\delta A}{\delta\phi}\frac{\delta B}{\delta\pi}-\frac{\delta A}{\delta\pi}\frac{\delta B}{\delta\phi}\right]
@@ -41,7 +40,7 @@ Quantization is achieved by the replacement
 \begin{equation}
     \imagu\{\cdot,\cdot\}\to\commut{\cdot,\cdot}\,,
 \end{equation}
-lifting fields to operators, $\phi\to\hat{\phi}$ and $\pi\to\hat{\pi}$ (though the $\hat{\cdot}$ will be omitted) as well as $\cdot^*\to\cdot^\dagger$. Using $a_{\vec{p}}=b_{\vec{p}}$ together with the normalization $\mathcal{N}_{\vec{p}}^2\omega_{\vec{p}}=\frac{1}{2}$, the fundamental commutator $\commut{\phi(t,x),\pi(t,y)}=\imagu\delta^{(d)}(x-y)$ then implies
+lifting fields to operators, $\phi\to\hat{\phi}$ and $\pi\to\hat{\pi}$, and therefore also $a_{\vec{p}}\to\hat{a}_{\vec{p}}$ and $a_{\vec{p}}^\dagger\to\hat{a}_{\vec{p}}^\dagger$ (though the $\hat{\cdot}$ will be omitted). The fundamental commutator $\commut{\phi(t,x),\pi(t,y)}=\imagu\delta^{(d)}(x-y)$ then implies
 \begin{impt}[Commutators of $a_{\vec{p}}$, $a_{\vec{q}}^\dagger$]{impt:LadderCommut}
     \begin{equation}
         \commut{a_{\vec{p}},a_{\vec{q}}}=\commut{a_{\vec{p}}^\dagger,a_{\vec{q}}^\dagger}=0\,,\quad\commut{a_{\vec{p}},a_{\vec{q}}^\dagger}=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\,.
@@ -50,12 +49,13 @@ lifting fields to operators, $\phi\to\hat{\phi}$ and $\pi\to\hat{\pi}$ (though t
 
 \begin{calc}[Commutators of $a_{\vec{p}}$, $a_{\vec{q}}^\dagger$]{calc:LadderCommut}
     Notice the relations
-    \begin{equation}
-        \begin{aligned}
+    \begin{subequations}
+        \begin{align}
             a_{\vec{p}} & =\frac{1}{2\mathcal{N}_{\vec{p}}}\int\dt ^3x\left\{\phi(t,x)+\frac{\imagu}{\omega_{\vec{p}}}\pi(t,x)\right\}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}  \\
             a_{\vec{p}}^\dagger       & =\frac{1}{2\mathcal{N}_{\vec{p}}}\int\dt ^3x\left\{\phi(t,x)-\frac{\imagu}{\omega_{\vec{p}}}\pi(t,x)\right\}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}
-        \end{aligned}
-    \end{equation}
+        \end{align}
+        \label{eq:AnnCrePhiPi_Relation}
+    \end{subequations}
     The non-vanishing commutator is derived as follows:
     \begin{align*}
         \commut{a_{\vec{p}},a_{\vec{q}}^\dagger} & =\frac{1}{4\mathcal{N}_{\vec{p}}\mathcal{N}_{\vec{q}}}\int\dt^3x\dt^3y\left\{-\frac{\imagu}{\omega_{\vec{q}}}\commut{\phi(t,x),\pi(t,y)}e^{\imagu\left((\omega_{\vec{p}}-\omega_{\vec{q}})t-(\vec{p}\vec{x}-\vec{q}\vec{y})\right)}\right. \\
@@ -294,6 +294,7 @@ Equation \eqref{eq:ClassicalFieldAfterSource} allows use to extract
         J(-p)e^{\imagu\omega_{\vec{p}}t}&=-\int\dt^3x\Big(-\imagu\omega_{\vec{p}}\phi_J(x)-\big(\partial_t\phi_J(x)\big)\Big)e^{\imagu\vec{p}\vec{x}}\\
         J(-p)&=\int\dt^3x\Big(\phi_J(x)\overset{\leftarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-\phi_J(x)\overset{\rightarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big)
     \end{align}
+    \label{eq:SourceFieldRelation}
 \end{subequations} 
 
 \section{Matching Hydrodynamics with Field Theory}
@@ -443,9 +444,127 @@ holds true. To expand the equations of motion and allow for non-constant amplitu
     \end{align}
 \end{subequations}
 
-\subsubsection{Fourier Transform in Adapted Coordinates}
+\section{Evaluation on the Freezeout Surface}
 
-The relevant example is $\Sigma=\{x^\mu\in\mathbb{R}^{(1,3)}\vert (\tau,r)=(\tau(\alpha),r(\alpha))\}$ with $\tau,r$ defined by the coordinate transformation
+% Adapt the reasoning in \cite{Amelino-CameliaEtAl_1997}. The idea is to model a non-linear, particle producing interaction process with the inhomogeneous KG equation. After all interactions have decayed and the source has vanished, the particle are effectively free. One can use the true e.o.m. to evolve initial conditions and then, after all interactions have decayed, reconstruct the hypothetical source term and derive particle production from this. For a field with the e.o.m.
+% \begin{equation}
+%     (\Box-m^2)\phi(x)=J(x)
+% \end{equation}
+% the particle spectrum after the source has vanished is
+% \begin{equation}
+%     2\omega_{\vec{p}}\frac{\dt N}{\dt^3\vec{p}}=\frac{1}{(2\pi)^3}\abs{\tilde{J}(\vec{p})}^2
+% \end{equation}
+
+% The full solution of a KG-field is specified by 2 initial conditions, e.g. $\phi(t,\vec{x})$ and $\dot{\phi}(t,\vec{x})$ for fixed $t$, or equivalently 2 spectral functions $a(p)$, $b(p)$  within the following decomposition:
+% \begin{subequations}
+%     \begin{align}
+%         \phi(t,\vec{x})       & =2\pi\int\frac{\dt^4p}{(2\pi)^4}\delta(p^2-m^2)\Theta(p^0)\big(a(p)e^{\imagu px}+b(p)e^{-\imagu px}\big)                                                                                                          \\
+%                               & =\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\big(a(\omega_{\vec{p}},\vec{p})e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+b(\omega_{\vec{p}},\vec{p})e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\big) \\
+%         \dot{\phi}(t,\vec{x}) & =\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2}\big(-\imagu a(\omega_{\vec{p}},\vec{p})e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\imagu  b(\omega_{\vec{p}},\vec{p})e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\big)
+%     \end{align}
+%     From computing the transformations
+%     \begin{align}
+%         \tilde{\phi}^{(3)}(t,\vec{p})=\int\dt^3x e^{-\imagu\vec{p}\vec{x}}\phi(t,\vec{x})             & =\int\dt^3xe^{-\imagu\vec{p}\vec{x}}\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{q}}}\big(a(\omega_{\vec{q}},\vec{q})e^{-\imagu(\omega_{\vec{q}}t-\vec{q}\vec{x})}+b(\omega_{\vec{q}},\vec{q})e^{\imagu(\omega_{\vec{q}}t-\vec{q}\vec{x})}\big) \\
+%                                                                                                       & =\frac{1}{2\omega_{\vec{p}}}\big(a(\omega_{\vec{p}},\vec{p})e^{-\imagu\omega_{\vec{p}}t}+b(\omega_{\vec{p}},-\vec{p})e^{\imagu\omega_{\vec{p}}t}\big)                                                                                                \\
+%         \dot{\tilde{\phi}}^{(3)}(t,\vec{p})=\int\dt^3x e^{-\imagu\vec{p}\vec{x}}\dot{\phi}(t,\vec{x}) & =\frac{1}{2}\big(-\imagu a(\omega_{\vec{p}},\vec{p})e^{-\imagu\omega_{\vec{p}}t}+\imagu b(\omega_{\vec{p}},-\vec{p})e^{\imagu\omega_{\vec{p}}t}\big)
+%     \end{align}
+%     we can find the inversion of the parametrization
+%     \begin{align}
+%         a(\omega_{\vec{p}},\vec{p})e^{-\imagu\omega_{\vec{p}}t} & =\int\dt^3x\big(\omega_{\vec{p}}\phi(t,\vec{x})+\imagu\dot{\phi}(t,\vec{x})\big)e^{-\imagu\vec{p}\vec{x}}                                                                                                                                          \\
+%                                                                 & =\imagu e^{-\imagu\omega_{\vec{p}}t}\int\dt^3x\big(\phi(t,\vec{x})\overset{\leftarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-\phi(t,\vec{x})\overset{\rightarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\big)   \\
+%         b(\omega_{\vec{p}},-\vec{p})e^{\imagu\omega_{\vec{p}}t} & =\int\dt^3x\big(\omega_{\vec{p}}\phi(t,\vec{x})-\imagu\dot{\phi}(t,\vec{x})\big)e^{-\imagu\vec{p}\vec{x}}                                                                                                                                          \\
+%                                                                 & =-\imagu e^{\imagu\omega_{\vec{p}}t}\int\dt^3x\big(\phi(t,\vec{x})\overset{\leftarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t+\vec{p}\vec{x})}-\phi(t,\vec{x})\overset{\rightarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t+\vec{p}\vec{x})}\big)
+%     \end{align}
+% \end{subequations}
+
+\subsection{Invariance of Fourier Transform w.r.t. Deformations of the Hypersurface}
+\label{subsec:FourierDeformHypersurface}
+
+Let $\phi_1,\phi_2$ be fields of equal mass evolving according to the KG equation. Then the current
+\begin{equation}
+    J_\mu[\phi_1,\phi_2]=-\imagu(\phi_1\partial_\mu\phi_2^*-(\partial_\mu\phi_1)\phi_2^*)\eqdef-\imagu\phi_1\overset{\leftrightarrow}{\partial_\mu}\phi_2^*
+\end{equation}
+with the antisymmetrized two-sided derivative $\overset{\leftrightarrow}{\partial_\mu}=\overset{\rightarrow}{\partial_\mu}-\overset{\leftarrow}{\partial_\mu}$ is conserved. Recall Gauß law
+\begin{equation}
+    \int_\Omega\dt \Omega\,\nabla^\mu J_\mu=\int_{\partial\Omega}\dt\sigma^\mu\,J_\mu
+\end{equation}
+with $\dt\sigma_\mu$ the outwards oriented surface normal of the spacetime volume $\Omega$. The bilinear form
+\begin{equation}
+    (\phi_1,\phi_2)_\Sigma=\int_\Sigma\dt\Sigma^\mu\,J_\mu[\phi_1,\phi_2]=-\imagu\int_\Sigma\dt\Sigma^\mu\,\phi_1\overset{\leftrightarrow}{\partial_\mu}\phi_2^*
+\end{equation}
+is therefore independent of the choice of (Cauchy) hypersurface $\Sigma$ (if $\partial\Sigma$ is changed, one must carefully check for further contributions in Gauß law).
+
+Let 
+\begin{equation}
+    u_{\vec{p}}(t,\vec{x})=\exp(-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x}))\,,\qquad u_{\vec{p}}^*(t,\vec{x})=\exp(\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x}))
+\end{equation}
+be the positive and negative frequency eigensolutions to the free Klein-Gordon equation. They form an orthogonal system with respect to the inner product defined above,
+\begin{equation}
+    (u_{\vec{p}},u_{\vec{q}})_{\Sigma_t}=(2\omega_{\vec{p}})(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\,,\qquad (u_{\vec{p}}^*,u_{\vec{q}}^*)_{\Sigma_t}=-(2\omega_{\vec{p}})(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\,,\qquad (u_{\vec{p}},u_{\vec{q}}^*)_{\Sigma_t}=0
+\end{equation}
+with the relations stated here on a a hypersurface $\Sigma_t$ where $t=\text{const.}$. This means that the Fourier coefficients, or equivalently annihilation and creation operators after quantization, for example in equation \eqref{eq:CanonicalQuant_RealScalar}, can be extraced via
+\begin{equation}
+    \sqrt{2\omega_{\vec{p}}}a_{\vec{p}}=(\phi,u_{\vec{p}})_{\Sigma_t}\,,\qquad \sqrt{2\omega_{\vec{p}}}a_{\vec{p}}^\dagger=-(\phi,u_{\vec{p}}^*)_{\Sigma_t}
+\end{equation}
+This leads of course to the same statement as in equations \eqref{eq:AnnCrePhiPi_Relation}.
+
+% Note how this has the form of the inner product defined in \ref{subsec:FourierDeformHypersurface}, to be precise
+% \begin{equation}
+%     a(\omega_{\vec{p}},\vec{p})=(\phi,e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})})_{\Sigma_t}\,,\qquad b(\omega_{\vec{p}},-\vec{p})=-(\phi,e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})})_{\Sigma_t}
+% \end{equation}
+% and can therefore in principle be evaluated on any Cauchy surface.
+
+% In \cite{Amelino-CameliaEtAl_1997} it is argued that
+% \begin{subequations}
+%     \begin{align}
+%         \phi_{\text{out}}(t,\vec{p})&=\frac{1}{\omega_{\vec{p}}}\Big([\imagu \tilde{J}(\vec{p})]e^{-\imagu\omega_{\vec{p}}t}-[\imagu \tilde{J}(-\vec{p})]e^{\imagu\omega_{\vec{p}}t}\Big)\\
+%         \dot{\phi}_{\text{out}}(t,\vec{p})&=\Big(\tilde{J}(\vec{p})e^{-\imagu\omega_{\vec{p}}t}+\tilde{J}(-\vec{p})e^{\imagu\omega_{\vec{p}}t}\Big)
+%     \end{align}
+% \end{subequations}
+%     from which one derives \textbf{\textcolor{red}{prefactor of $2$?}}
+% \begin{subequations}
+%     \begin{align}
+%         \tilde{J}(\vec{p}) & =-\imagu e^{\imagu\omega_{\vec{p}}t}\big(\omega_{\vec{p}} \phi_{\text{out}}(t,\vec{p})+\imagu\dot{\phi}_{\text{out}}(t,\vec{p})\big)                                                                         \\
+%         \tilde{J}(-\vec{p})&=\imagu e^{-\imagu\omega_{\vec{p}}t}(\omega_{\vec{p}}\phi_{\text{out}}(t,\vec{p})-\imagu\dot{\phi}_{\text{out}}(t,\vec{p}))\\
+%         \intertext{By substition this gives}
+%         \tilde{J}(\vec{p}) & =-\imagu e^{\imagu\omega_{\vec{p}}t}\int\dt^3x\big(\omega_{\vec{p}}\phi(t,\vec{x})+\imagu\dot{\phi}(t,\vec{x})\big)e^{-\imagu\vec{p}\vec{x}}                                                                  \\
+%                            & =\int\dt^3x\big(\phi(t,\vec{x})\overset{\leftarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-\phi(t,\vec{x})\overset{\rightarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\big)\\
+%                            \intertext{and}
+%         \tilde{J}(-\vec{p})&=\imagu e^{-\imagu\omega_{\vec{p}}t}\int\dt^3x\big(\omega_{\vec{p}}\phi(t,\vec{x})-\imagu\dot{\phi}(t,\vec{x})\big)e^{-\imagu\vec{p}\vec{x}}\\
+%         &=\int\dt^3x\big(\phi(t,\vec{x})\overset{\leftarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t+\vec{p}\vec{x})}-\phi(t,\vec{x})\overset{\rightarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t+\vec{p}\vec{x})}\big)
+%     \end{align}
+% \end{subequations}
+% which, by the same argument as before, is independent of the choice of Cauchy surface.
+
+The equations in \eqref{eq:SourceFieldRelation} are also precisely of this form, namely
+\begin{subequations}
+    \begin{align}
+        J(p)&=-\int_{\Sigma_t}\dt\Sigma^\mu\,\phi_J\overset{\leftrightarrow}{\partial_\mu}u_{\vec{p}}^*=(\phi_J,u_{\vec{p}})_{\Sigma_t}\\
+        J(-p)&=-\int_{\Sigma_t}\dt\Sigma^\mu\,\phi_J\overset{\leftrightarrow}{\partial_\mu}u_{\vec{p}}=(\phi_J,u_{\vec{p}}^*)_{\Sigma_t}
+    \end{align}
+\end{subequations}
+
+We finally wish to transform the hypersurface to evaluate the inner product on, and evaluate instead on the Freezeout surface. Assuming that the condensate has no contributions at large rapidities $\eta\to\pm\infty$, one can deform the hypersurface $\Sigma_t$ at large lab time $t=\text{const.}$ into a hypersurface of large Bjorken time $\Sigma_{\tau\gg\tau_L}$ at a $\tau$ much larger then the lifetime $\tau_L$ of the fireball. Finally, transform $\Sigma_{\tau\gg\tau_L}$ to the freezeout surface.
+\debugbox{
+    \begin{minipage}{\linewidth}
+        \centering
+        \includegraphics[width=0.4\linewidth]{images/FreezeOutSurface.pdf}
+        \captionof{figure}{Freezeout surface in $\tau$-$r$-plane\cite{KirchnerEtAl_2023}.}
+        \label{fig:FreezeOutSurface_rtau}
+    \end{minipage}
+}
+Consider the freezeout on the hypersurface depicted in \ref{fig:FreezeOutSurface_rtau}. Assume that the condensate contribution as a function in phase space $f_{\text{cond}}(x^\mu,\vec{p})$ vanishes on $\Sigma_{\text{\rom{2}}}$ and $\Sigma_{\text{\rom{5}}}$, i.e. is contained within the union of all light cones starting on the freeze out surface $\Sigma_{FO}\equiv\Sigma_{\text{\rom{1}}}\cap\Sigma_\text{{\rom{3}}}$. \todo{By causality this seems reasonable, but from Fourier decomposition of a classical field this is not at all clear.} Following the reasoning from \cite{KirchnerEtAl_2023}, we wish to apply Gauß law. Consider separately the contribution on the $\tau$-axis
+\begin{equation*}
+    \int_{\Sigma_{r=0}}\dt\Sigma^\mu\,J_\mu\qquad\text{or}\qquad\lim_{r\to 0}\int_{\Sigma_{r}}\dt\Sigma^\mu\,J_\mu
+\end{equation*}
+The surface vector on this hypersurface is $\dt\Sigma_\mu=r\tau\dt\tau\dt\eta\dt\varphi(0,1,0,0)$ and thus vanishes at $r=0$ (the hypersurface $\Sigma_{r=0}$ has zero $3$-volume). Since the derivative of a rotationally symmetric integrand introduces no divergencies, the contribution of $\Sigma_{r=0}$ to Gauß law is zero.
+\begin{equation}
+    (\phi_J,u_{\vec{p}}^{(*)})_{\Sigma_t}=(\phi,u_{\vec{p}}^{(*)})_{\Sigma_{\tau\gg\tau_L}}=(\phi,u_{\vec{p}}^{(*)})_{\Sigma_{FO}}
+\end{equation}
+
+\subsection{Coordinates on the Freezeout Surface}
+
+The freezeout hypersurface is parametrized as $\Sigma_{\text{FO}}=\{x^\mu\in\mathbb{R}^{(1,3)}\vert (\tau,r)=(\tau(\alpha),r(\alpha))\}$ with $\tau,r$ defined by the coordinate transformation
 \begin{equation}
     \left\{\begin{split}
         t&=\tau\cosh\eta\\
@@ -461,25 +580,6 @@ The relevant example is $\Sigma=\{x^\mu\in\mathbb{R}^{(1,3)}\vert (\tau,r)=(\tau
         \varphi&=\arctan(y/x)
     \end{split}\right.
 \end{equation}
-
-Let's first evaluate $p_\mu x^\mu$ in the Bjorken coordinate system. Therefore introduce an analogous coordinate change in momentum space
-\begin{equation}
-    \left\{\begin{split}
-        p_t&=m_\perp\cosh\eta_p\\
-        p_z&=m_\perp\sinh\eta_p\\
-        p_x&=p_\perp\cos\varphi_p\\
-        p_y&=p_\perp\sin\varphi_p
-    \end{split}\right.
-\end{equation}
-to rewrite the scalar product as
-\begin{equation}
-    p_\mu x^\mu\equiv-\tau(p_t\cosh\eta-p_z\sinh\eta)+r(p_x\cos\varphi+p_y\sin\varphi)=-\tau m_\perp\cosh(\eta-\eta_p)+r p_\perp\cos(\varphi-\varphi_p)
-\end{equation}
-We used the identities
-\begin{equation}
-    \cosh(a-b)=\cosh a\cosh b-\sinh a\sinh b\,,\qquad\cos(a-b)=\cos a\cos b+\sin a\sin b
-\end{equation}
-The integral measure changes according to $\dt^4p_{\text{cart}}=\dt m_\perp\dt p_\perp\dt\eta_p\dt\varphi_p\cdot m_\perp p_\perp$. The momentum shell condition $p^2=m^2$ is equivalently parametrized by $m_\perp^2=p_\perp^2+m^2\eqdef \omega_\perp^2$.
 
 \begin{calc}[Metric on Hypersurface]{calc:HypersurfaceMetric}
     Recall the metric $g_{\mu\nu}=\text{diag}(-1,1,\tau^2,r^2)$ in coordinates $(\tau,r,\eta,\varphi)$. Orthonormal tangent vectors to the freeze out hypersurface are $(\hat\partial_\varphi)^\mu=(0,0,0,r^{-1})=r^{-1}(\partial_\varphi)^\mu$, $(\hat\partial_\eta)^\mu=(0,0,\tau^{-1},0)=\tau^{-1}(\partial_\eta)^\mu$ and $(\hat\partial_\alpha)^\mu=\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}(\tau^{\prime}(\alpha),r^{\prime}(\alpha),0,0)=D(\alpha)(\partial_\alpha)^\mu$ with $D(\alpha)=\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}$. The projector on the hypersurface is
@@ -509,147 +609,66 @@ The integral measure changes according to $\dt^4p_{\text{cart}}=\dt m_\perp\dt p
     \end{equation}
 \end{calc}
 
-\subsection{Properly Considering all Initial Conditions}
-
-Adapt the reasoning in \cite{Amelino-CameliaEtAl_1997}. The idea is to model a non-linear, particle producing interaction process with the inhomogeneous KG equation. After all interactions have decayed and the source has vanished, the particle are effectively free. One can use the true e.o.m. to evolve initial conditions and then, after all interactions have decayed, reconstruct the hypothetical source term and derive particle production from this. For a field with the e.o.m.
+It is also useful to evaluate $p_\mu x^\mu$ in the Bjorken coordinate system. Therefore introduce an analogous coordinate change in momentum space
 \begin{equation}
-    (\Box-m^2)\phi(x)=J(x)
+    \left\{\begin{split}
+        p_t&=m_\perp\cosh\eta_p\\
+        p_z&=m_\perp\sinh\eta_p\\
+        p_x&=p_\perp\cos\varphi_p\\
+        p_y&=p_\perp\sin\varphi_p
+    \end{split}\right.
 \end{equation}
-the particle spectrum after the source has vanished is
+to rewrite the scalar product as
 \begin{equation}
-    2\omega_{\vec{p}}\frac{\dt N}{\dt^3\vec{p}}=\frac{1}{(2\pi)^3}\abs{\tilde{J}(\vec{p})}^2
+    p_\mu x^\mu\equiv-\tau(p_t\cosh\eta-p_z\sinh\eta)+r(p_x\cos\varphi+p_y\sin\varphi)=-\tau m_\perp\cosh(\eta-\eta_p)+r p_\perp\cos(\varphi-\varphi_p)
 \end{equation}
+We used the identities
+\begin{equation}
+    \cosh(a-b)=\cosh a\cosh b-\sinh a\sinh b\,,\qquad\cos(a-b)=\cos a\cos b+\sin a\sin b
+\end{equation}
+The integral measure changes according to $\dt^4p_{\text{cart}}=\dt m_\perp\dt p_\perp\dt\eta_p\dt\varphi_p\cdot m_\perp p_\perp$. The momentum shell condition $p^2+m^2=0$ is equivalently parametrized by $m_\perp^2=p_\perp^2+m^2\eqdef \omega_\perp^2$.
 
-Use following conventions:
-\begin{impt}[Conventions for Fourier Transform]{impt:FourierConvention_PionProdPaper}
-    Signature is $(-,+,+,+)$.
-    \begin{subequations}
-        \begin{align}
-            \tilde{f}(p)               & =\int\dt^4x e^{-\imagu px}f(x)                     \\
-            \tilde{f}^{(3)}(t,\vec{p}) & =\int\dt^3xe^{-\imagu\vec{p}{\vec{x}}}f(t,\vec{x}) \\
-            \tilde{J}(\vec{p})         & =\tilde{J}(p)\vert_{p^0=\omega_{\vec{p}}}
-        \end{align}
-    \end{subequations}
-\end{impt}
+\subsection{Computing the Inner Product}
 
-The full solution of a KG-field is specified by 2 initial conditions, e.g. $\phi(t,\vec{x})$ and $\dot{\phi}(t,\vec{x})$ for fixed $t$, or equivalently 2 spectral functions $a(p)$, $b(p)$  within the following decomposition:
+The projection of the derivative onto the surface normal of $\Sigma_{\text{FO}}$  is (omiiting the $\alpha$-dependence) 
+\begin{equation}
+    \dt\Sigma^\mu\partial_\mu=(r^\prime\partial_\tau+\tau^\prime\partial_r)\cdot r\tau\,\dt\alpha\dt\eta\dt\varphi
+\end{equation}
+It is useful to compute the following integrals related to Bessel functions: \url{https://dlmf.nist.gov/10.9}
 \begin{subequations}
     \begin{align}
-        \phi(t,\vec{x})       & =2\pi\int\frac{\dt^4p}{(2\pi)^4}\delta(p^2-m^2)\Theta(p^0)\big(a(p)e^{\imagu px}+b(p)e^{-\imagu px}\big)                                                                                                          \\
-                              & =\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\big(a(\omega_{\vec{p}},\vec{p})e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+b(\omega_{\vec{p}},\vec{p})e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\big) \\
-        \dot{\phi}(t,\vec{x}) & =\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2}\big(-\imagu a(\omega_{\vec{p}},\vec{p})e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\imagu  b(\omega_{\vec{p}},\vec{p})e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\big)
+        \int_0^{2\pi}\dt\varphi e^{\pm\imagu a\cos\varphi}&=\int_0^{2\pi}\big(\cos(a\cos\varphi)\pm\imagu\sin(a\cos\varphi)\big)=2\int_0^\pi\cos(a\cos\varphi)\\
+        &=2\pi J_0(a)\\
+        \int_{-\infty}^\infty\dt\eta e^{\pm\imagu a\cosh\eta}&=2\int_0^\infty\dt\eta\big(\cos(a\cosh\eta)\pm\imagu\sin(a\cosh\eta)\big)\\
+        &=\pi\big(-Y_0(a)\pm\imagu J_0(a)\big)\\
+        &=\pm\pi\imagu(J_0(a)\pm\imagu Y_0(a))=\begin{cases}
+            +\pi\imagu H^{(1)}_0(a)&\text{for "+"}\\
+            -\pi\imagu H^{(2)}_0(a)&\text{for "-"}
+        \end{cases}
     \end{align}
-    From computing the transformations
-    \begin{align}
-        \tilde{\phi}^{(3)}(t,\vec{p})=\int\dt^3x e^{-\imagu\vec{p}\vec{x}}\phi(t,\vec{x})             & =\int\dt^3xe^{-\imagu\vec{p}\vec{x}}\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{q}}}\big(a(\omega_{\vec{q}},\vec{q})e^{-\imagu(\omega_{\vec{q}}t-\vec{q}\vec{x})}+b(\omega_{\vec{q}},\vec{q})e^{\imagu(\omega_{\vec{q}}t-\vec{q}\vec{x})}\big) \\
-                                                                                                      & =\frac{1}{2\omega_{\vec{p}}}\big(a(\omega_{\vec{p}},\vec{p})e^{-\imagu\omega_{\vec{p}}t}+b(\omega_{\vec{p}},-\vec{p})e^{\imagu\omega_{\vec{p}}t}\big)                                                                                                \\
-        \dot{\tilde{\phi}}^{(3)}(t,\vec{p})=\int\dt^3x e^{-\imagu\vec{p}\vec{x}}\dot{\phi}(t,\vec{x}) & =\frac{1}{2}\big(-\imagu a(\omega_{\vec{p}},\vec{p})e^{-\imagu\omega_{\vec{p}}t}+\imagu b(\omega_{\vec{p}},-\vec{p})e^{\imagu\omega_{\vec{p}}t}\big)
-    \end{align}
-    we can find the inversion of the parametrization
-    \begin{align}
-        a(\omega_{\vec{p}},\vec{p})e^{-\imagu\omega_{\vec{p}}t} & =\int\dt^3x\big(\omega_{\vec{p}}\phi(t,\vec{x})+\imagu\dot{\phi}(t,\vec{x})\big)e^{-\imagu\vec{p}\vec{x}}                                                                                                                                          \\
-                                                                & =\imagu e^{-\imagu\omega_{\vec{p}}t}\int\dt^3x\big(\phi(t,\vec{x})\overset{\leftarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-\phi(t,\vec{x})\overset{\rightarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\big)   \\
-        b(\omega_{\vec{p}},-\vec{p})e^{\imagu\omega_{\vec{p}}t} & =\int\dt^3x\big(\omega_{\vec{p}}\phi(t,\vec{x})-\imagu\dot{\phi}(t,\vec{x})\big)e^{-\imagu\vec{p}\vec{x}}                                                                                                                                          \\
-                                                                & =-\imagu e^{\imagu\omega_{\vec{p}}t}\int\dt^3x\big(\phi(t,\vec{x})\overset{\leftarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t+\vec{p}\vec{x})}-\phi(t,\vec{x})\overset{\rightarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t+\vec{p}\vec{x})}\big)
-    \end{align}
+    Additionally to the integral representations, the following computation makes use of \url{https://dlmf.nist.gov/10.4}
+    \begin{equation}
+        J_{0}^\prime(x)=-J_1(x)\,,\qquad Y_0^\prime(x)=-Y_1(x)
+    \end{equation}
 \end{subequations}
-
-\subsubsection{Invariance of Fourier Transform w.r.t. Deformations of the Hypersurface}
-\label{subsec:FourierDeformHypersurface}
-
-Let $\phi_1,\phi_2$ be fields of equal mass evolving according to the KG equation. Then the current
-\begin{equation}
-    J_\mu[\phi_1,\phi_2]=-\imagu(\phi_1\partial_\mu\phi_2^*-(\partial_\mu\phi_1)\phi_2^*)\eqdef-\imagu\phi_1\overset{\leftrightarrow}{\partial_\mu}\phi_2
-\end{equation}
-is conserved. Recall Gauß law
-\begin{equation}
-    \int_\Omega\dt \Omega\nabla_\mu J^\mu=\int_{\partial\Omega}\dt\sigma_\mu J^\mu
-\end{equation}
-with $\dt\sigma_\mu$ the outwards oriented surface normal of the spacetime volume $\Omega$. The bilinear form
-\begin{equation}
-    (\phi_1,\phi_2)_\Sigma=\int_\Sigma\dt\Sigma_\mu J^\mu[\phi_1,\phi_2]=-\imagu\int_\Sigma\dt\Sigma_\mu \phi_1\overset{\leftrightarrow}{\partial^\mu}\phi_2^*
-\end{equation}
-is therefore independent of the choice of (Cauchy) hypersurface $\Sigma$ (if $\partial\Sigma$ is changed, one must carefully check for further contributions in Gauß law).
-
-\debugbox{
-    \begin{minipage}{\linewidth}
-        \centering
-        \includegraphics[width=0.4\linewidth]{images/FreezeOutSurface.pdf}
-        \captionof{figure}{Freezeout surface in $\tau$-$r$-plane\cite{KirchnerEtAl_2023}.}
-        \label{fig:FreezeOutSurface_rtau}
-    \end{minipage}
-}
-
-Consider the freezeout on the hypersurface depicted in \ref{fig:FreezeOutSurface_rtau}. Assume that the condensate contribution as a function in phase space $f_{\text{cond}}(x^\mu,\vec{p})$ vanishes on $\Sigma_{\text{\rom{2}}}$ and $\Sigma_{\text{\rom{5}}}$, i.e. is contained within the union of all light cones starting on the freeze out surface $\Sigma_{FO}\equiv\Sigma_{\text{\rom{1}}}\cap\Sigma_\text{{\rom{3}}}$. \todo{By causality this seems reasonable, but from Fourier decomposition of a classical field this is not at all clear.}
-
-Following the reasoning from \cite{KirchnerEtAl_2023}, we wish to apply Gauß law. Consider separately the contribution on the $\tau$-axis
-\begin{equation*}
-    \int_{\Sigma_{r=0}}\dt\Sigma_\mu J^\mu\qquad\text{or}\qquad\lim_{r\to 0}\int_{\Sigma_{r}}\dt\Sigma_\mu J^\mu
-\end{equation*}
-The surface vector on this hypersurface is $\dt\Sigma_\mu=r\tau\dt\tau\dt\eta\dt\varphi(0,1,0,0)$ and thus vanishes at $r=0$ (the hypersurface $\Sigma_{r=0}$ has zero $3$-volume). Since the derivative in the integrad introduces no divergencies, the contribution of $\Sigma_{r=0}$ to Gauß law is zero.
-
-We can therefore write
-\begin{equation}
-    \tilde{\phi}(\vec{p})=(\phi,u_{\vec{p}})_{\Sigma_t}=(\phi,u_{\vec{p}})_{\Sigma_{\tau\gg\tau_L}}=(\phi,u_{\vec{p}})_{\Sigma_{FO}}
-\end{equation}
-The second "$=$" assumes that $\phi=0$ for large spacetime rapidities $\eta\to\pm\infty$ and the $\tau=\const$ hypersurface can be deformed to a $t=\const$ hypersurface.
-
-Note how this has the form of the inner product defined in \ref{subsec:FourierDeformHypersurface}, to be precise
-\begin{equation}
-    a(\omega_{\vec{p}},\vec{p})=(\phi,e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})})_{\Sigma_t}\,,\qquad b(\omega_{\vec{p}},-\vec{p})=-(\phi,e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})})_{\Sigma_t}
-\end{equation}
-and can therefore in principle be evaluated on any Cauchy surface.
-
-In \cite{Amelino-CameliaEtAl_1997} it is argued that
-\begin{subequations}
-    \begin{align}
-        \phi_{\text{out}}(t,\vec{p})&=\frac{1}{\omega_{\vec{p}}}\Big([\imagu \tilde{J}(\vec{p})]e^{-\imagu\omega_{\vec{p}}t}-[\imagu \tilde{J}(-\vec{p})]e^{\imagu\omega_{\vec{p}}t}\Big)\\
-        \dot{\phi}_{\text{out}}(t,\vec{p})&=\Big(\tilde{J}(\vec{p})e^{-\imagu\omega_{\vec{p}}t}+\tilde{J}(-\vec{p})e^{\imagu\omega_{\vec{p}}t}\Big)
-    \end{align}
-\end{subequations}
-    from which one derives \textbf{\textcolor{red}{prefactor of $2$?}}
-\begin{subequations}
-    \begin{align}
-        \tilde{J}(\vec{p}) & =-\imagu e^{\imagu\omega_{\vec{p}}t}\big(\omega_{\vec{p}} \phi_{\text{out}}(t,\vec{p})+\imagu\dot{\phi}_{\text{out}}(t,\vec{p})\big)                                                                         \\
-        \tilde{J}(-\vec{p})&=\imagu e^{-\imagu\omega_{\vec{p}}t}(\omega_{\vec{p}}\phi_{\text{out}}(t,\vec{p})-\imagu\dot{\phi}_{\text{out}}(t,\vec{p}))\\
-        \intertext{By substition this gives}
-        \tilde{J}(\vec{p}) & =-\imagu e^{\imagu\omega_{\vec{p}}t}\int\dt^3x\big(\omega_{\vec{p}}\phi(t,\vec{x})+\imagu\dot{\phi}(t,\vec{x})\big)e^{-\imagu\vec{p}\vec{x}}                                                                  \\
-                           & =\int\dt^3x\big(\phi(t,\vec{x})\overset{\leftarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-\phi(t,\vec{x})\overset{\rightarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\big)\\
-                           \intertext{and}
-        \tilde{J}(-\vec{p})&=\imagu e^{-\imagu\omega_{\vec{p}}t}\int\dt^3x\big(\omega_{\vec{p}}\phi(t,\vec{x})-\imagu\dot{\phi}(t,\vec{x})\big)e^{-\imagu\vec{p}\vec{x}}\\
-        &=\int\dt^3x\big(\phi(t,\vec{x})\overset{\leftarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t+\vec{p}\vec{x})}-\phi(t,\vec{x})\overset{\rightarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t+\vec{p}\vec{x})}\big)
-    \end{align}
-\end{subequations}
-which, by the same argument as before, is independent of the choice of Cauchy surface. The calculation is the same as before, repeated here for my own clarity (note $\overset{\leftrightarrow}{\partial}=\overset{\leftarrow}{\partial}-\overset{\rightarrow}{\partial}$, unlike before) \textcolor{green}{\textbf{and some errors corrected}}
-\begin{subequations}
-    \begin{align}
-        \tilde{J}(\vec{p}) & =\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)\big(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r}\big)e^{\imagu(\tau \omega_\perp\cosh(\eta-\eta_p)-r p_\perp\cos(\varphi-\varphi_p))}\Bigg] \\
-                           & =\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)\big(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r}\big)e^{\imagu(\tau \omega_\perp\cosh\eta-r p_\perp\cos\varphi)}\Bigg]                      \\
-                           & =\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r})\Big[J_0(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]                                                 \\
-                           & =2\pi^2\int_0^\pi\dt\alpha\tau r\Bigg[(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)\Big[J_0(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                                                                             \\
-                           & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times p_\perp J_1(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)+\imagu J_0(\tau\omega_\perp)\big)+\nonumber                                                                                                                                       \\
-                           & \phantom{=}\qquad\phantom{+\phi(\tau,r)\Big[}+r^\prime\times J_0(r p_\perp)\times\omega_\perp\big(-Y_1(\tau\omega_\perp)+\imagu J_1(\tau\omega_\perp)\big)\Big]\Bigg]
-    \end{align}
-\end{subequations}
-
-The above logic holds true for real sources. Real fields in the present approach are $(\sigma,\pi^a)$. One should expect that $J_{\pi^\pm}=\frac{1}{\sqrt{2}}(J_{\pi^1}\pm\imagu J_{\pi^2})$.
 
 \begin{subequations}
     \begin{align}
-        \pi^\pm&=\frac{1}{\sqrt{2}}(\pi^1\mp\imagu\pi^2)=\sqrt{n}e^{\pm\imagu\theta}&\partial_\mu\pi^\pm&=\pm\imagu(\partial_\mu\theta)\pi^\pm=\pm\imagu\chi u_\mu\pi^\pm\\
-        \pi^1&=\sqrt{2}\Re\pi^+&\partial_\mu\pi^1&=\sqrt{2}\chi u_\mu\Re(\imagu\pi^+)=-\sqrt{2}\chi u_\mu\Im\pi^+=\chi u_\mu\pi^2\\
-        \pi^2&=-\sqrt{2}\Im\pi^+&\partial_\mu\pi^2&=-\sqrt{2}\chi u_\mu\Im(\imagu\pi^+)=-\sqrt{2}\chi u_\mu\Re\pi^+=-\chi u_\mu\pi^1        
+        J(\pm p) & =-\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)\big(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r}\big)e^{\pm\imagu(\tau \omega_\perp\cosh(\eta-\eta_p)-r p_\perp\cos(\varphi-\varphi_p))}\Bigg] \\
+                           & =-\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)\big(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r}\big)e^{\pm\imagu(\tau \omega_\perp\cosh\eta-r p_\perp\cos\varphi)}\Bigg]                      \\
+                           & =-2\pi^2\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r})\Big[J_0(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)\pm\imagu J_0(\tau\omega_\perp)\big)\Big]\Bigg]                                                 \\
+                           & =2\pi^2\int_0^\pi\dt\alpha\tau r\Bigg[(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)\Big[J_0(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)\pm\imagu J_0(\tau\omega_\perp)\big)\Big]+\nonumber                                                                                             \\
+                           & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times p_\perp J_1(r p_\perp)\times\big(-Y_0(\tau\omega_\perp)\pm\imagu J_0(\tau\omega_\perp)\big)+\nonumber                                                                                                                                       \\
+                           & \phantom{=}\qquad\phantom{+\phi(\tau,r)\Big[}+r^\prime\times J_0(r p_\perp)\times\omega_\perp\big(-Y_1(\tau\omega_\perp)\pm\imagu J_1(\tau\omega_\perp)\big)\Big]\Bigg]
     \end{align}
 \end{subequations}
 
-If we consider the $U(1)$-symmetry $\pi^\pm\mapsto\pi^\pm e^{\pm\imagu\theta_0}$, taking the above equalities for $\theta_0=0$ (i.e. $\pi^\pm=\pi^\pm(0)$ etc.), then
 \begin{subequations}
     \begin{align}
-        \pi^1(\theta_0)&=\sqrt{2}\Re(e^{\imagu\theta_0}\pi^+)=\sqrt{2}(\cos\theta_0\Re\pi^+-\sin\theta_0\Im\pi^+)=\pi^1\cos\theta_0+\pi^2\sin\theta_0\\
-        \pi^2(\theta_0)&=-\sqrt{2}\Im(e^{\imagu\theta_0}\pi^+)=-\sqrt{2}(\cos\theta_0\Im\pi^++\sin\theta_0\Re\pi^+)=\pi^2\cos\theta_0-\pi^1\sin\theta_0
+        J(\overset{(-)}{+}p) & =-\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)\big(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r}\big)e^{\overset{(-)}{+}\imagu(\tau \omega_\perp\cosh(\eta-\eta_p)-r p_\perp\cos(\varphi-\varphi_p))}\Bigg] \\
+                           & =-\int_{-\infty}^\infty\dt\eta\int_0^{2\pi}\dt\varphi\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)\big(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r}\big)e^{\overset{(-)}{+}\imagu(\tau \omega_\perp\cosh\eta-r p_\perp\cos\varphi)}\Bigg]                      \\
+                           & =\overset{(+)}{-}2\pi^2\imagu\int_0^\pi\dt\alpha\tau r\Bigg[\phi(\tau,r)(r^\prime\overset{\leftrightarrow}{\partial_\tau}+\tau^\prime\overset{\leftrightarrow}{\partial_r})\Big[J_0(r p_\perp)\times H_0^{\overset{(2)}{(1)}}(\tau\omega_\perp)\Big]\Bigg]                                                 \\
+                           & =\overset{(-)}{+}2\pi^2\imagu\int_0^\pi\dt\alpha\tau r\Bigg[(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)\Big[J_0(r p_\perp)\times H_0^{\overset{(2)}{(1)}}(\tau\omega_\perp)\Big]+\nonumber                                                                                             \\
+                           & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times p_\perp J_1(r p_\perp)\times H_0^{\overset{(2)}{(1)}}(\tau\omega_\perp)+r^\prime\times J_0(r p_\perp)\times\omega_\perp H_1^{\overset{(2)}{(1)}}(\tau\omega_\perp)\Big]\Bigg]
     \end{align}
 \end{subequations}
-The final $\pi^\pm$ spectrum will be given by
-\begin{equation}
-    2\abs{J_{\pi^\pm}(\theta_0)}^2=\abs{J_{\pi^1}(\theta_0)\mp\imagu J_{\pi^2}(\theta_0)}^2=\abs{\cos\theta_0J_{\pi^1}+\sin\theta_0J_{\pi^2}\mp\imagu(J_\pi^2\cos\theta_0-J_{\pi^1}\sin\theta_0)}^2=\abs{(J_{\pi^1}\mp\imagu J_{\pi^2})e^{\pm\imagu\theta_0}}^2
-\end{equation}

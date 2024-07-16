@@ -35,144 +35,68 @@ double Y1tw(double alpha, double p) { return std::cyl_neumann(1, tau(alpha) * w(
 double J0tw(double alpha, double p) { return std::cyl_bessel_j(0, tau(alpha) * w(p) * GeVtoIfm); }
 double J1tw(double alpha, double p) { return std::cyl_bessel_j(1, tau(alpha) * w(p) * GeVtoIfm); }
 
-std::complex<double> G0(double alpha, double p) { return J0rp(alpha, p) * (-Y0tw(alpha, p) + 1i * J0tw(alpha, p)); }
-std::complex<double> G0_ANTI(double alpha, double p) { return J0rp(alpha, p) * (-Y0tw(alpha, p) - 1i * J0tw(alpha, p)); }
-std::complex<double> G1(double alpha, double p) {
+std::complex<double> H1(double alpha, double p) { return J0rp(alpha, p) * (-Y0tw(alpha, p) + 1i * J0tw(alpha, p)); }
+std::complex<double> H2(double alpha, double p)
+{
     return J1rp(alpha, p) * (-Y0tw(alpha, p) + 1i * J0tw(alpha, p)) * Dtau(alpha) * fmtoIGeV * p +
            J0rp(alpha, p) * (-Y1tw(alpha, p) + 1i * J1tw(alpha, p)) * Dr(alpha) * fmtoIGeV * w(p);
 }
-std::complex<double> G1_ANTI(double alpha, double p)
-{
-    return J1rp(alpha, p) * (-Y0tw(alpha, p) - 1i * J0tw(alpha, p)) * Dtau(alpha) * fmtoIGeV * p +
-           J0rp(alpha, p) * (-Y1tw(alpha, p) - 1i * J1tw(alpha, p)) * Dr(alpha) * fmtoIGeV * w(p);
-}
-
-// struct args
-// {
-//     double p;
-//     std::function<double(double)> func;
-//     std::function<double(double)> Dfunc;
-// };
-
-// auto integrand_re = [](double alpha, void *params)
-// {
-//     args myargs = *(struct args *)params;
-//     return tau(alpha) * r(alpha) * fmtoIGeV * fmtoIGeV * (myargs.Dfunc(alpha) * H1(alpha, myargs.p).real() + myargs.func(alpha) * H2(alpha, myargs.p).real());
-// };
-// auto integrand_im = [](double alpha, void *params)
-// {
-//     args myargs = *(struct args *)params;
-//     return tau(alpha) * r(alpha) * fmtoIGeV * fmtoIGeV * (myargs.Dfunc(alpha) * H1(alpha, myargs.p).imag() + myargs.func(alpha) * H2(alpha, myargs.p).imag());
-// };
 
 struct args
 {
     double p;
-    std::function<std::complex<double>(double)> func, Dfunc;
+    std::function<double(double)> func;
+    std::function<double(double)> Dfunc;
 };
 
-std::complex<double> (*integrand)(double, void*) = [](double alpha, void* params)
+auto integrand_re = [](double alpha, void *params)
 {
     args myargs = *(struct args *)params;
-    return tau(alpha) * r(alpha) * fmtoIGeV * fmtoIGeV * (
-        myargs.Dfunc(alpha) * G0(alpha, myargs.p) + myargs.func(alpha) * G1(alpha, myargs.p)
-    );
+    return tau(alpha) * r(alpha) * fmtoIGeV * fmtoIGeV * (myargs.Dfunc(alpha) * H1(alpha, myargs.p).real() + myargs.func(alpha) * H2(alpha, myargs.p).real());
 };
-
-std::complex<double> (*integrand_anti)(double, void*) = [](double alpha, void* params)
+auto integrand_im = [](double alpha, void *params)
 {
     args myargs = *(struct args *)params;
-    return tau(alpha) * r(alpha) * fmtoIGeV * fmtoIGeV * (
-        myargs.Dfunc(alpha) * G0_ANTI(alpha, myargs.p) + myargs.func(alpha) * G1_ANTI(alpha, myargs.p)
-    );
+    return tau(alpha) * r(alpha) * fmtoIGeV * fmtoIGeV * (myargs.Dfunc(alpha) * H1(alpha, myargs.p).imag() + myargs.func(alpha) * H2(alpha, myargs.p).imag());
 };
 /* #endregion */
 
 /* #region SPECTRUM COMPUTATION AT SINGLE P-VALUE OR LIST OF P-VALUES */
-// std::complex<double> spectr(double p, std::function<double(double)> func, std::function<double(double)> Dfunc)
-// {
-//     args myargs = {p, func, Dfunc};
+std::complex<double> spectr(double p, std::function<double(double)> func, std::function<double(double)> Dfunc)
+{
+    args myargs = {p, func, Dfunc};
 
-//     gsl_function F_re, F_im;
-//     F_re.function = integrand_re;
-//     F_im.function = integrand_im;
-//     F_re.params = &myargs;
-//     F_im.params = &myargs;
+    gsl_function F_re, F_im;
+    F_re.function = integrand_re;
+    F_im.function = integrand_im;
+    F_re.params = &myargs;
+    F_im.params = &myargs;
 
-//     double EPSABS(0), EPSREL(1e-2);
-//     int ITERATIONS(1000);
-//     int KEY(6);
+    double EPSABS(0), EPSREL(1e-2);
+    int ITERATIONS(1000);
+    int KEY(6);
 
-//     gsl_set_error_handler_off();
+    gsl_set_error_handler_off();
 
-//     double result_re, result_im, error_re, error_im;
-//     gsl_integration_workspace *workspace = gsl_integration_workspace_alloc(ITERATIONS);
-//     int status = gsl_integration_qag(&F_re, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, KEY, workspace, &result_re, &error_re);
-//     if (status)
-//         std::cout << gsl_strerror(status) << " at p = " << myargs.p << " | estimated error (re): " << error_re << std::endl;
+    double result_re, result_im, error_re, error_im;
+    gsl_integration_workspace *workspace = gsl_integration_workspace_alloc(ITERATIONS);
+    int status = gsl_integration_qag(&F_re, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, KEY, workspace, &result_re, &error_re);
+    if (status)
+        std::cout << gsl_strerror(status) << " at p = " << myargs.p << " | estimated error (re): " << error_re << std::endl;
 
-//     status = gsl_integration_qag(&F_im, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, KEY, workspace, &result_im, &error_im);
-//     if (status)
-//         std::cout << gsl_strerror(status) << " at p = " << myargs.p << " | estimated error (imag): " << error_im << std::endl;
+    status = gsl_integration_qag(&F_im, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, KEY, workspace, &result_im, &error_im);
+    if (status)
+        std::cout << gsl_strerror(status) << " at p = " << myargs.p << " | estimated error (imag): " << error_im << std::endl;
 
-//     gsl_integration_workspace_free(workspace);
+    gsl_integration_workspace_free(workspace);
 
-//     return 2 * M_PI * M_PI * (result_re + 1i * result_im);
-// }
-
-// std::vector<std::complex<double>> spectr(
-//     std::vector<double> ps,
-//     std::function<double(double)> func,
-//     std::function<double(double)> Dfunc)
-// {
-//     // FOR EVALUATION ON ARRAY OF PS, WE DON'T NEED TO ALLOCATE AND FREE
-//     //  THE MEMORY FOR THE INTEGRATION WORKSPACE OVER AND OVER AGAIN
-//     std::vector<std::complex<double>> result(ps.size());
-
-//     double EPSABS(0), EPSREL(1e-2);
-//     int ITERATIONS(1000);
-//     int KEY(6);
-//     gsl_integration_workspace *workspace = gsl_integration_workspace_alloc(ITERATIONS);
-//     gsl_set_error_handler_off();
-
-//     for (int i = 0; i < ps.size(); i++)
-//     {
-//         std::cout << i + 1 << " / " << ps.size() << std::endl;
-
-//         double p = ps[i];
-
-//         args myargs = {p, func, Dfunc};
-
-//         gsl_function F_re, F_im;
-//         F_re.function = integrand_re;
-//         F_im.function = integrand_im;
-//         F_re.params = &myargs;
-//         F_im.params = &myargs;
-
-//         double result_re, result_im, error_re, error_im;
-
-//         // int status = gsl_integration_qags(&F_re, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, workspace, &result_re, &error_re);
-//         int status = gsl_integration_qag(&F_re, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, KEY, workspace, &result_re, &error_re);
-//         if (status)
-//             std::cout << gsl_strerror(status) << " at p = " << myargs.p << " | estimated error (re): " << error_re << std::endl;
-
-//         // status = gsl_integration_qags(&F_im, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, workspace, &result_im, &error_im);
-//         status = gsl_integration_qag(&F_im, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, KEY, workspace, &result_im, &error_im);
-//         if (status)
-//             std::cout << gsl_strerror(status) << " at p = " << myargs.p << " | estimated error (imag): " << error_im << std::endl;
-
-//         result[i] = 2 * M_PI * M_PI * (result_re + 1i * result_im);
-//     }
-
-//     gsl_integration_workspace_free(workspace);
-//     return result;
-// }
+    return 2 * M_PI * M_PI * (result_re + 1i * result_im);
+}
 
 std::vector<std::complex<double>> spectr(
     std::vector<double> ps,
-    std::function<std::complex<double>(double)> func,
-    std::function<std::complex<double>(double)> Dfunc,
-    bool anti = false)
+    std::function<double(double)> func,
+    std::function<double(double)> Dfunc)
 {
     // FOR EVALUATION ON ARRAY OF PS, WE DON'T NEED TO ALLOCATE AND FREE
     //  THE MEMORY FOR THE INTEGRATION WORKSPACE OVER AND OVER AGAIN
@@ -193,16 +117,8 @@ std::vector<std::complex<double>> spectr(
         args myargs = {p, func, Dfunc};
 
         gsl_function F_re, F_im;
-        if(!anti)
-        {
-            F_re.function = [](double alpha, void* params){ return std::real(integrand(alpha, params)); };
-            F_im.function = [](double alpha, void* params){ return std::imag(integrand(alpha, params)); };
-        }
-        else
-        {
-            F_re.function = [](double alpha, void* params){ return std::real(integrand_anti(alpha, params)); };
-            F_im.function = [](double alpha, void* params){ return std::imag(integrand_anti(alpha, params)); };
-        }
+        F_re.function = integrand_re;
+        F_im.function = integrand_im;
         F_re.params = &myargs;
         F_im.params = &myargs;
 
@@ -227,8 +143,7 @@ std::vector<std::complex<double>> spectr(
 /* #endregion */
 
 /* #region HELPER FUNCTIONS TO STORE ARRAYS AND FUNCTION VALUES */
-template <typename T>
-void writeSamplesToFile(std::string path, std::vector<double> x, std::vector<T> y)
+void writeSamplesToFile(std::string path, std::vector<double> x, std::vector<double> y)
 {
     std::ofstream output(path);
 
@@ -240,14 +155,13 @@ void writeSamplesToFile(std::string path, std::vector<double> x, std::vector<T> 
 
     for (int i = 0; i < x.size(); i++)
     {
-        output << x[i] << ";" << std::real(y[i]) << ";" << std::imag(y[i]) << std::endl;
+        output << x[i] << ";" << y[i] << std::endl;
     }
 
     output.close();
 }
 
-template <typename T>
-void writeFuncToFile(std::string path, std::function<T(double)> func, double a, double b, int Nsamples)
+void writeFuncToFile(std::string path, std::function<double(double)> func, double a, double b, int Nsamples)
 {
     std::ofstream output(path);
 
@@ -260,8 +174,7 @@ void writeFuncToFile(std::string path, std::function<T(double)> func, double a, 
     double dx = (b - a) / (Nsamples - 1);
     for (int i = 0; i < Nsamples; i++)
     {
-        T y = func(i * dx);
-        output << i * dx << ";" << std::real(y) << ";" << std::imag(y) << std::endl;
+        output << i * dx << ";" << func(i * dx) << std::endl;
     }
 
     output.close();
@@ -478,22 +391,18 @@ int main(int ac, char* av[])
     {
         return 0.5 * (m_pion * m_pion * pi0_spline(alpha) * pi0_spline(alpha) + chi_spline(alpha) * chi_spline(alpha));
     };
-
-    writeFuncToFile<double>("data/pi0_initial.txt", pi0_spline, 0, M_PI / 2.0, 1000);
-    writeFuncToFile<double>("data/chi_initial.txt", chi_spline, 0, M_PI / 2.0, 1000);
-    writeFuncToFile<double>("data/epscheck_initial.txt", epsilon_fo, 0, M_PI / 2.0, 1000);
     /* #endregion */
-
     // DEFINE PION FIELD AND DERIVATIVE ON FREEZOUT SURFACE
-    std::function<std::complex<double>(double)> func = [&](double alpha)
-    { return std::cos(5*alpha) + 1i * std::sin(5*alpha); };
+    std::function<double(double)> func = [&pi0_spline](double alpha)
+    { return exp(-alpha*alpha); };
     // { return pi0_spline(alpha); };
-    std::function<std::complex<double>(double)> Dfunc = [&](double alpha)
-    { return 1i * std::cos(5*alpha) - std::sin(5*alpha); };
+    std::function<double(double)> Dfunc = [&chi_spline](double alpha)
+    { return 0; };
     // { return chi_spline(alpha) * (-Dr(alpha) * utau(alpha) + Dtau(alpha) * ur(alpha)); };
 
-    writeFuncToFile("data/field0.txt", func, 0, M_PI / 2.0, 1000);
-    writeFuncToFile("data/field0_deriv.txt", Dfunc, 0, M_PI / 2.0, 1000);
+    writeFuncToFile("data/pi0_initial.txt", pi0_spline, 0, M_PI / 2.0, 1000);
+    writeFuncToFile("data/chi_initial.txt", chi_spline, 0, M_PI / 2.0, 1000);
+    writeFuncToFile("data/epscheck_initial.txt", epsilon_fo, 0, M_PI / 2.0, 1000);
 
     // COMPUTE SPECTRUM
     // std::function<double(double)> spectrfun = [&func, &Dfunc](double p)
@@ -503,22 +412,12 @@ int main(int ac, char* av[])
     // ...USING SLIGHTLY OPTIMIZED VERSION FOR ARRAY-LIKE ARGUMENTS
     double pmin(0), pmax(0.7);
     int Nps(100);
-
     std::vector<double> ps(Nps);
     for (int i = 0; i < ps.size(); i++)
         ps[i] = pmin + i * (pmax - pmin) / (Nps - 1);
-
-    std::vector<std::complex<double>> myspectr = spectr(ps, func, Dfunc,false);
-    std::vector<std::complex<double>> myspectr_anti = spectr(ps, func, Dfunc,true);
-
+    std::vector<std::complex<double>> myspectr = spectr(ps, func, Dfunc);
     std::vector<double> myspectr_abs2(myspectr.size());
     for (int i = 0; i < myspectr.size(); i++)
         myspectr_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr[i]);
-
-    std::vector<double> myspectr_anti_abs2(myspectr_anti.size());
-    for (int i = 0; i < myspectr_anti.size(); i++)
-        myspectr_anti_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr_anti[i]);
-
     writeSamplesToFile("data/spectr.txt", ps, myspectr_abs2);
-    writeSamplesToFile("data/spectr_anti.txt", ps, myspectr_anti_abs2);
 }
