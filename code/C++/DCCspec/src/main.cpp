@@ -296,7 +296,7 @@ void linearExtrapolate(std::vector<double> &x, std::vector<double> &y, double x_
 /* #endregion */
 
 /* #region ODE SYSTEM FOR INITIAL CONDITIONS */
-int func(double alpha, const double y[], double f[], void *params)
+int func_pi0(double alpha, const double y[], double f[], void *params)
 {
     double deriv = (-Dtau(alpha) * utau(alpha) + Dr(alpha) * ur(alpha));
     f[0] = y[1] * deriv;
@@ -304,7 +304,7 @@ int func(double alpha, const double y[], double f[], void *params)
     return GSL_SUCCESS;
 };
 
-int jac(double alpha, const double y[], double *dfdy, double dfdt[], void *params)
+int jac_pi0(double alpha, const double y[], double *dfdy, double dfdt[], void *params)
 {
     double deriv = (-Dtau(alpha) * utau(alpha) + Dtau(alpha) * ur(alpha));
 
@@ -317,6 +317,105 @@ int jac(double alpha, const double y[], double *dfdy, double dfdt[], void *param
     dfdt[0] = 0.0; // not yet implemented
     dfdt[1] = 0.0; // not yet implemented
     return GSL_SUCCESS;
+};
+
+int func_piplus(double alpha, const double y[], double f[], void *params)
+{
+    double deriv = (-Dtau(alpha) * utau(alpha) + Dr(alpha) * ur(alpha));
+    f[0] = m_pion * deriv; // chi = m_pion
+    return GSL_SUCCESS;
+};
+
+struct InitialConditions_Pi0
+{
+    std::function<double(double)> pi0;
+    std::function<double(double)> chi; // =Sqrt[-(\partial_\mu\pi^0)(\partial^\mu\pi^0)]
+};
+InitialConditions_Pi0 getInitialCondition_Pi0(double pi0_start, double chi_start)
+{
+    double EPSREL(1e-3), EPSABS(0);
+    double alphastart(0.0), alphaend(M_PI / 2.0);
+    double stepsize(1e-6);                // initial value
+    double y[2] = {pi0_start, chi_start}; // initial value
+
+    const gsl_odeiv2_step_type *TYPE = gsl_odeiv2_step_rk8pd;
+    gsl_odeiv2_step *STEP = gsl_odeiv2_step_alloc(TYPE, 2); // dimension = 2
+    gsl_odeiv2_control *CONTROL = gsl_odeiv2_control_y_new(EPSABS, EPSREL);
+    gsl_odeiv2_evolve *EVOLVE = gsl_odeiv2_evolve_alloc(2); // dimension = 2
+    gsl_odeiv2_system SYS({func_pi0, NULL, 2, NULL});          // this is {func, jac, dimension, parameters}
+
+    double alpha(alphastart);
+    std::vector<double> alphas({alpha}), pi0s({y[0]}), chis({y[1]});
+    while (alpha < alphaend)
+    {
+        int status = gsl_odeiv2_evolve_apply(EVOLVE, CONTROL, STEP, &SYS, &alpha, alphaend, &stepsize, y);
+        if (status != GSL_SUCCESS)
+            break;
+
+        alphas.push_back(alpha);
+        pi0s.push_back(y[0]);
+        chis.push_back(y[1]);
+    }
+
+    gsl_odeiv2_control_free(CONTROL);
+    gsl_odeiv2_evolve_free(EVOLVE);
+    gsl_odeiv2_step_free(STEP);
+
+    std::vector<double> alphas1(alphas), alphas2(alphas);
+    auto pi0_spline = boost::math::interpolators::pchip(
+        std::move(alphas1),
+        std::move(pi0s));
+    auto chi_spline = boost::math::interpolators::pchip(
+        std::move(alphas2),
+        std::move(chis));
+
+    return InitialConditions_Pi0({pi0_spline,chi_spline});
+};
+
+struct InitialConditions_PiPlus
+{
+    std::function<std::complex<double>(double)> piplus;
+    std::function<double(double)> theta; // =Sqrt[-(\partial_\mu\pi^0)(\partial^\mu\pi^0)]
+};
+InitialConditions_PiPlus getInitialCondition_PiPlus(double thetastart)
+{
+    double EPSREL(1e-3), EPSABS(0);
+    double alphastart(0.0), alphaend(M_PI / 2.0);
+    double stepsize(1e-6);                // initial value
+    double y_piplus[1] = {thetastart}; // initial value
+
+    const gsl_odeiv2_step_type *TYPE = gsl_odeiv2_step_rk8pd;
+    gsl_odeiv2_step *STEP = gsl_odeiv2_step_alloc(TYPE, 1); // dimension = 1
+    gsl_odeiv2_control *CONTROL = gsl_odeiv2_control_y_new(EPSABS, EPSREL);
+    gsl_odeiv2_evolve *EVOLVE = gsl_odeiv2_evolve_alloc(1); // dimension = 1
+    gsl_odeiv2_system SYS({func_piplus, NULL, 1, NULL});          // this is {func, jac, dimension, parameters}
+
+    double alpha = alphastart;
+    std::vector<double> alphas({alpha}), thetas({thetastart});
+    while (alpha < alphaend)
+    {
+        int status = gsl_odeiv2_evolve_apply(EVOLVE, CONTROL, STEP, &SYS, &alpha, alphaend, &stepsize, y_piplus);
+        if (status != GSL_SUCCESS)
+            break;
+                
+        thetas.push_back(y_piplus[0]);
+        alphas.push_back(alpha);
+    }
+
+    gsl_odeiv2_control_free(CONTROL);
+    gsl_odeiv2_evolve_free(EVOLVE);
+    gsl_odeiv2_step_free(STEP);
+
+    auto theta_spline = boost::math::interpolators::pchip(
+        std::move(alphas),
+        std::move(thetas));
+    std::function<std::complex<double>(double)> piplus = [](double alpha)
+    {
+        std::cout << "PIPLUS CANNOT BE SET BY INITIALIZATION FUNCTION, YOU NEED TO CONSTRUCT IT YOURSELF FROM THETA" << std::endl;
+        return 0.0 + 1i * 0.0;
+    };
+
+    return InitialConditions_PiPlus({piplus, theta_spline});
 };
 /* #endregion */
 
@@ -425,7 +524,6 @@ int main(int ac, char* av[])
     writeFuncToFile("data/utau_interp.txt", utau, 0, M_PI / 2.0, NSAMPLE);
     /* #endregion */
 
-    /* #region FIND INITIAL CONDITIONS */
     // INITIAL CONDITIONS
     double epsilon = 0.001 * 0.160054; // energy density of condensate
                                        // epsilon = Epot + Ekin
@@ -434,74 +532,40 @@ int main(int ac, char* av[])
     double ratio(0.5);                 // Epot/epsilon
     int sign(-1);                      // +-1, relative sign between pi0(alpha=0) and \partial pi0(alpha=0)
     double Epot(ratio * epsilon), Ekin((1 - ratio) * epsilon);
-    double pi0_start = std::sqrt(2 * Epot) / m_pion;
-    double chi_start = sign * std::sqrt(2 * Ekin);
 
-    double EPSREL(1e-3), EPSABS(0);
-    double alphastart(0.0), alphaend(M_PI / 2.0);
-    double stepsize(1e-6);                // initial value
-    double y[2] = {pi0_start, chi_start}; // initial value
+    std::cout << "generatin pi0 initial conditions..." << std::flush;
+    InitialConditions_Pi0 ic_pi0 = getInitialCondition_Pi0(sqrt(2*Epot)/m_pion, sqrt(2*Ekin));
+    std::cout << " done" << std::endl;
+    std::cout << "generatin pi+ initial conditions..." << std::flush;
+    InitialConditions_PiPlus ic_piplus = getInitialCondition_PiPlus(0.6);
+    std::cout << " done" << std::endl;
+    double n(1.0);
+    ic_piplus.piplus = [&](double alpha) { return sqrt(n) * (cos(ic_piplus.theta(alpha)) + 1i * sin(ic_piplus.theta(alpha))); };
 
-    const gsl_odeiv2_step_type *TYPE = gsl_odeiv2_step_rk8pd;
-    gsl_odeiv2_step *STEP = gsl_odeiv2_step_alloc(TYPE, 2); // dimension = 2
-    gsl_odeiv2_control *CONTROL = gsl_odeiv2_control_y_new(EPSABS, EPSREL);
-    gsl_odeiv2_evolve *EVOLVE = gsl_odeiv2_evolve_alloc(2); // dimension = 2
-    gsl_odeiv2_system SYS = {func, NULL, 2, NULL};          // this is {func, jac, dimension, parameters}
-
-    double alpha(alphastart);
-    std::vector<double> alphas({alpha}), pi0s({y[0]}), chis({y[1]});
-    while (alpha < alphaend)
-    {
-        int status = gsl_odeiv2_evolve_apply(EVOLVE, CONTROL, STEP, &SYS, &alpha, alphaend, &stepsize, y);
-        if (status != GSL_SUCCESS)
-            break;
-
-        alphas.push_back(alpha);
-        pi0s.push_back(y[0]);
-        chis.push_back(y[1]);
-    }
-
-    gsl_odeiv2_control_free(CONTROL);
-    gsl_odeiv2_evolve_free(EVOLVE);
-    gsl_odeiv2_step_free(STEP);
-
-    // DEFINE INTERPOLATING FUNCTIONS FOR INITIAL FIELD
-    std::vector<double> alphas1(alphas), alphas2(alphas);
-    // using boost::math::interpolators::pchip;
-    auto pi0_spline = pchip(
-        std::move(alphas1),
-        std::move(pi0s));
-    auto chi_spline = pchip(
-        std::move(alphas2),
-        std::move(chis));
-    auto epsilon_fo = [&pi0_spline, &chi_spline](double alpha)
-    {
-        return 0.5 * (m_pion * m_pion * pi0_spline(alpha) * pi0_spline(alpha) + chi_spline(alpha) * chi_spline(alpha));
-    };
-
-    writeFuncToFile<double>("data/pi0_initial.txt", pi0_spline, 0, M_PI / 2.0, 1000);
-    writeFuncToFile<double>("data/chi_initial.txt", chi_spline, 0, M_PI / 2.0, 1000);
-    writeFuncToFile<double>("data/epscheck_initial.txt", epsilon_fo, 0, M_PI / 2.0, 1000);
-    /* #endregion */
-
+    std::cout << "saving initial conditions..." << std::flush;
+    writeFuncToFile("data/pi0_initial.txt", ic_pi0.pi0, 0, M_PI / 2.0, 1000);
+    writeFuncToFile("data/chi_initial.txt", ic_pi0.chi, 0, M_PI / 2.0, 1000);
+    writeFuncToFile<std::complex<double>>("data/piplus_initial.txt", ic_piplus.piplus, 0, M_PI / 2.0, 1000);
+    writeFuncToFile("data/theta_initial.txt", ic_piplus.theta, 0, M_PI / 2.0, 1000);
+    std::cout << " done" << std::endl;
+    
+    
     // DEFINE PION FIELD AND DERIVATIVE ON FREEZOUT SURFACE
     std::function<std::complex<double>(double)> func = [&](double alpha)
-    { return std::cos(5*alpha) + 1i * std::sin(5*alpha); };
-    // { return pi0_spline(alpha); };
+    { return ic_piplus.piplus(alpha); };
     std::function<std::complex<double>(double)> Dfunc = [&](double alpha)
-    { return 1i * std::cos(5*alpha) - std::sin(5*alpha); };
+    { return 1i * ic_piplus.piplus(alpha) * m_pion * (-Dr(alpha) * utau(alpha) + Dtau(alpha) * ur(alpha)); };
+    // std::function<std::complex<double>(double)> func = [&](double alpha)
+    // { return pi0_spline(alpha); };
+    // std::function<std::complex<double>(double)> Dfunc = [&](double alpha)
     // { return chi_spline(alpha) * (-Dr(alpha) * utau(alpha) + Dtau(alpha) * ur(alpha)); };
 
     writeFuncToFile("data/field0.txt", func, 0, M_PI / 2.0, 1000);
     writeFuncToFile("data/field0_deriv.txt", Dfunc, 0, M_PI / 2.0, 1000);
 
     // COMPUTE SPECTRUM
-    // std::function<double(double)> spectrfun = [&func, &Dfunc](double p)
-    // { return (1/std::pow(2*M_PI,3)) *std::norm(spectr(p, func, Dfunc)); }; // this is |...|^2
-    // writeFuncToFile("data/spectr.txt",spectrfun, 0, 2, 100);
-
-    // ...USING SLIGHTLY OPTIMIZED VERSION FOR ARRAY-LIKE ARGUMENTS
-    double pmin(0), pmax(0.7);
+    // USING SLIGHTLY OPTIMIZED VERSION FOR ARRAY-LIKE ARGUMENTS
+    double pmin(0), pmax(1.0);
     int Nps(100);
 
     std::vector<double> ps(Nps);

@@ -29,7 +29,7 @@ ax0.plot(df_initial.to_numpy().T[0],df_initial.to_numpy().T[1],label="Real",lw=3
 ax0.plot(df_initial.to_numpy().T[0],df_initial.to_numpy().T[2],label="Imag")
 ax1.plot(df_initial_deriv.to_numpy().T[0],df_initial_deriv.to_numpy().T[1],label="Real",lw=3)
 ax1.plot(df_initial_deriv.to_numpy().T[0],df_initial_deriv.to_numpy().T[2],label="Imag")
-ax2.plot(df_spec.to_numpy().T[0],df_spec.to_numpy().T[1],label="spectr")
+ax3.plot(df_spec.to_numpy().T[0],df_spec.to_numpy().T[1],label="spectr",lw=3)
 ax3.plot(df_spec_anti.to_numpy().T[0],df_spec_anti.to_numpy().T[1],label="spectr anti")
 
 ax0.legend()
