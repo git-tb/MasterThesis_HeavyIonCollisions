@@ -4,7 +4,7 @@ CXX_FLAGS := -std=c++2a
 # CXX_FLAGS += -O3
 CXX_FLAGS += -DNDEBUG
 
-EXE 	:= main
+EXE 	:= NO_EXECUTBALE_SPECIFIED
 BIN     := bin
 SRC     := src
 

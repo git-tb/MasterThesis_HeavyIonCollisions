@@ -348,6 +348,7 @@ Following \textbf{CITE WEINBERG COSMOLOGY} the energy momentum tensor of a real 
     \end{align}
 \end{subequations}
 \subsubsection{Matching to Fluid Variables for the Real Field $\pi^0$}
+\label{sec:FluidFromRealScalar}
 
 The only availabe $4$-vector in the fluid theory is $u_\mu$. It is thus intuitive to try to identify the real-valued $4$vector $\partial_\mu\pi^0\sim u_\mu$. Taking the normalization $u_\mu u^\mu=-1$ into account, one finds
 \begin{equation}
@@ -377,12 +378,6 @@ The solution $\pi^0$ on the freezout surface thus needs to fulfill the ODE
     \end{equation}
     with $\dt^\mu s=(\partial x^\mu)/(\partial\alpha)\dt\alpha$ the displacement vector on the freezeout surface. Initial conditions leave 1 degree of freedom, namely the ratio of kinetic energy $\epsilon_{\text{kin}}=(1/2)\chi^2$ and $\epsilon_{\text{pot}}=(1/2)m_\pi^2(\pi^0)^2$ at $\alpha=0$. To be precise, choose $r\in[0,1]$ and set $\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon$ and $\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon$.
 
-The equations of motion for the real Klein-Gordon field are
-\begin{equation}
-    (-\Box+m_\pi^2)\pi^0=0
-\end{equation}
-
-
 \subsubsection{Matching to Fluid Variables for the Complex Fields $\pi^\pm$}
 
 The $U(1)$-symmetry $\pi^\pm\mapsto e^{\pm\imagu\alpha}\pi^\pm$ with infinitesimal transformation $\pi^\pm\mapsto(1\pm\imagu\delta\alpha)\pi^\pm$ generates a conserved Noether current
@@ -402,8 +397,8 @@ leading to the energy density
 \begin{subequations}
     \begin{align}
         \epsilon_{s,\pi^\pm}=u_\mu u_\nu T^{\mu\nu}_{\pi^\pm}&=\frac{(\partial_\mu\theta)(\partial_\nu\theta)}{\chi_\theta^2}\Big(2(\partial^\mu\pi^+)(\partial^\nu\pi^-)+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\partial^\alpha\pi^-)-m_\pi^2\pi^+\pi^-\big)\Big)\\
-        &=2\frac{[(\partial_\mu\sqrt{n})(\partial^\mu\theta)]^2}{\chi_\theta^2}+2n\chi_\theta^2-\big(n\chi_\theta^2-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})-m_\pi^2n\big)\\
-        &=n\chi_\theta^2+2\frac{[(\partial_\mu\sqrt{n})(\partial^\mu\theta)]^2}{\chi_\theta^2}+(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})+m_\pi^2n
+        &=2\frac{[(\partial_\mu\sqrt{n})u^\mu]^2}{\chi_\theta^2}+2n\chi_\theta^2-\big(n\chi_\theta^2+\chi_n^2-m_\pi^2n\big)\\
+        &=n\chi_\theta^2+2[u^\mu(\partial_\mu\sqrt{n})]^2-\chi^2_n+m_\pi^2n
     \end{align}
 \end{subequations}
 where the intermediate calculation
@@ -414,7 +409,7 @@ where the intermediate calculation
         (\partial_\mu\pi^+)(\partial^\mu\pi^-)&=-\chi_n^2-n\chi_\theta^2
     \end{align}
 \end{subequations}
-is useful. Note how the imaginary part of this tensor is antisymmetric and thus does not contribute upon contraction with a symmetric tensor. Assume further $\partial_\mu\sqrt{n}=u_\mu\chi_n$ then
+with $(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})\eqdef -\chi_n^2$ is useful. Note how the imaginary part of this tensor is antisymmetric and thus does not contribute upon contraction with a symmetric tensor. Assume further $\partial_\mu\sqrt{n}=u_\mu\chi_n$ then
 \begin{equation}
     \epsilon_{s,\pi^\pm}=n\chi_\theta^2+\chi_n^2+m_\pi^2n
 \end{equation}
@@ -431,18 +426,6 @@ yields as the corresponding equations of motion
     \end{align}
 \end{subequations}
 the second of which encodes the conservation law for the $U(1)$-Noether current.
-    
-The easiest (and most naive) solution is again $n=\const$ and $\partial_\mu\theta=p_\mu$ with $p_\mu p^\mu=-m_\pi^2$. This would be a solution with only a single momentum mode. This solution implies $u^\mu=\const$ which is generally not satisfied by the given data. Assume therefore the existence of a small perturbation $\partial_\mu\theta=p_\mu+\delta q_\mu$ with $q_\mu p^\mu = 0$. From this, $\chi^2=-(\partial_\mu\theta)(\partial^\mu\theta)=-p_\mu p^\mu-q_\mu q^\mu=m_\pi^2-\delta^2q^2$. To linear order in $\delta$
-\begin{equation}
-    \partial_\mu\theta=\chi u_\mu=m_\pi u_\mu
-\end{equation}
-holds true. To expand the equations of motion and allow for non-constant amplitude, assume $n=n_{(0)}+\delta n_{(1)}(x)$ with $n_{(0)}=\const$ ($\sqrt{n}\approx\sqrt{n_{(0)}}+\delta\cdot n_{(1)}/(2\sqrt{n_{(0)}})$). 
-\begin{subequations}
-    \begin{align}
-        \Box\sqrt{n_{(1)}}&=0+\mathcal{O}(\delta^2)\\
-        0&=n_{(0)}\partial_\mu q^\mu+q^\mu\partial_\mu n_{(1)}
-    \end{align}
-\end{subequations}
 
 \section{Evaluation on the Freezeout Surface}
 
@@ -628,12 +611,73 @@ We used the identities
 \end{equation}
 The integral measure changes according to $\dt^4p_{\text{cart}}=\dt m_\perp\dt p_\perp\dt\eta_p\dt\varphi_p\cdot m_\perp p_\perp$. The momentum shell condition $p^2+m^2=0$ is equivalently parametrized by $m_\perp^2=p_\perp^2+m^2\eqdef \omega_\perp^2$.
 
+\subsection{Converting Spectra between Coordinate Systems}
+\label{sec:SpectraCoordinateSystem}
+
+Consider the coordinate change in momentum space
+\begin{equation}
+    \left\{
+    \begin{split}
+        p_x&=p^\perp\cos\varphi_p\\
+        p_y&=p^\perp\sin\varphi_p\\
+        p_z&=m^\perp\sinh\eta_p\\
+        p_t&=m^\perp\cosh\eta_p
+    \end{split}
+    \right.\qquad\iff\qquad
+    \left\{
+    \begin{split}
+        p^\perp&=\sqrt{p_x^2+p_y^2}\\
+        \varphi_p&=\arctan(p_y/p_y)\\
+        m^\perp&=\sqrt{p_t^2-p_z^2}\\
+        \eta_p&=\artanh(p_z/p_t)
+    \end{split}
+    \right.
+\end{equation}
+with Jacobian
+\begin{equation}
+    \big\vert\frac{\partial(p^\perp,\varphi_p,m^\perp,\eta_p)}{\partial(p_x,p_y,p_z,p_t)}\big\vert=\frac{1}{m^\perp p^\perp}
+\end{equation}
+Let $f(p_\mu)$ be some distribution function and $F$ its momentum space integral evaluated on the momentum shell and future directed momenta.
+
+\begin{subequations}
+    \begin{align}
+        F=\int\frac{\dt^4p_{\text{cart}}}{(2\pi)^4}\delta(p^2+m^2)\Theta(p_t)f(p_\mu) & =\int\frac{\dt p_t}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\big(\delta(p_t-\omega_{\vec{p}})+\delta(p_t+\omega_{\vec{p}})\big)\Theta(p_t)f(p_\mu) \\
+                                                                                      & =\frac{1}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}f(p_\mu)\big\vert_{p_t=\omega_{\vec{p}}}
+    \end{align}
+    On the other hand
+    \begin{align}
+        F=\int\frac{\dt^4p_{\text{cart}}}{(2\pi)^4}\delta(p^2+m^2)\Theta(p_t)f(p_\mu) & =\frac{1}{(2\pi)^4}\int_0^\infty \dt p^\perp\int_0^\infty \dt m^\perp\int_{-\infty}^\infty \dt\eta_p\int_0^{2\pi}\dt\varphi_pm^\perp p^\perp\times\nonumber \\
+                                                                                      & \phantom{=}\qquad\times\delta((p^\perp)^2-(m^\perp)^2+m^2)f(p_\mu)                                                                                              \\
+        \intertext{assume $f(p^\mu)=f(p^\perp,m^\perp,\eta_p)$ and perform the $\varphi$-integraion as well as $m^\perp$-integration, where $\omega^{\perp,2}=m^2+p^{\perp,2}$ is defined}
+                                                                                      & =\frac{1}{(2\pi)^3}\int_0^\infty\dt p^\perp\int_{-\infty}^\infty\dt\eta_p\frac{p^\perp}{2}f(p_\mu)\big\vert_{m^\perp=\omega^\perp}
+    \end{align}
+    leding to the important result
+    \begin{equation}
+        \frac{1}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}f(p_\mu)\big\vert_{p_t=\omega_{\vec{p}}}=\frac{1}{(2\pi)^3}\int_0^\infty\dt p^\perp\int_{-\infty}^\infty\dt\eta_p\frac{p^\perp}{2}f(p_\mu)\big\vert_{m^\perp=\omega^\perp}
+    \end{equation}
+\end{subequations}
+
+Since the restrictions $p_t=\omega_{\vec{p}}$ and $m^\perp=\omega^\perp$ are equivalent (considering the parametrization that already satisfies $p_t=p^\perp\cosh\eta_p\geq 0$) we find
+\begin{equation}
+    \omega_{\vec{p}}\frac{\dt F}{\dt p_x\dt p_y\dt p_z}=\frac{1}{2\pi p^\perp}\frac{\dt F}{\dt p^\perp\dt\eta_p}
+\end{equation}
+The result applies to the case
+\begin{equation}
+    f(p_\mu)\big\vert_{p_t=\omega_{\vec{p}}}=2\omega_{\vec{p}}\cdot 2\pi\cdot n(\vec{p})
+\end{equation}
+and $F=N$.
+
 \subsection{Computing the Inner Product}
 
-The projection of the derivative onto the surface normal of $\Sigma_{\text{FO}}$  is (omiiting the $\alpha$-dependence) 
+The projection of the derivative onto the surface normal of $\Sigma_{\text{FO}}$  is (omitting the $\alpha$-dependence) 
 \begin{equation}
     \dt\Sigma^\mu\partial_\mu=(r^\prime\partial_\tau+\tau^\prime\partial_r)\cdot r\tau\,\dt\alpha\dt\eta\dt\varphi
 \end{equation}
+For the real scalar field $\pi^0$, following the ideas of section \ref{sec:FluidFromRealScalar}, one finds
+\begin{equation}
+    \dt\Sigma^\mu\partial_\mu=\chi(r^\prime \underbrace{u_\tau}_{\textcolor{red}{=-u^\tau}}+\tau^\prime u_r)\cdot r\tau\,\dt\alpha\dt\eta\dt\varphi
+\end{equation}
+
 It is useful to compute the following integrals related to Bessel functions: \url{https://dlmf.nist.gov/10.9}
 \begin{subequations}
     \begin{align}
@@ -672,3 +716,97 @@ It is useful to compute the following integrals related to Bessel functions: \ur
                            & \phantom{=}\qquad + \phi(\tau,r)\Big[\tau^\prime\times p_\perp J_1(r p_\perp)\times H_0^{\overset{(2)}{(1)}}(\tau\omega_\perp)+r^\prime\times J_0(r p_\perp)\times\omega_\perp H_1^{\overset{(2)}{(1)}}(\tau\omega_\perp)\Big]\Bigg]
     \end{align}
 \end{subequations}
+
+\section{Considering Resonance Decays}
+
+If the particles considered on the freezout surface are not stable, the spectra computed there cannot be directly related to the spectra on the detector surface. Instead, one has to calculate contributions from all possible decay channels/heavier resonances $a$ that decay into the (stable) resonance $b$ under consideration. This is done via the linear decay map
+\begin{equation}
+    E_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}D_{a\rightarrow b}(\vec{p},\vec{q})E_{\vec{q}}\frac{\dt N_a}{\dt^3 q}
+\end{equation} 
+where $D_{a\rightarrow b}(\vec{p},\vec{q})$ is the Lorentz invariant probability of particle $a$ with (on-shell) momentum $\vec{q}$ to decay into particle $b$ with momentum $\vec{p}$. Due to the probabilistic nature of a decay process, this relation is true if the lifetime of the heavy resonances is short compared to the propagation time and the number of particles is large enough.
+
+Assuming isotropic decay, a two-body decay $a\rightarrow b+c$ is modelled by the decay map 
+\begin{equation}
+    D_{a\rightarrow b\vert c}(\vec{p},\vec{q})=D_{a\rightarrow b\vert c}(p^\mu q_\mu)=B\frac{4\pi^2 m_a}{p_{a\rightarrow b\vert c}}\delta(q^\mu p_\mu+m_a E_{a\rightarrow b\vert c})
+\end{equation}
+where $B$ is the branching ratio of the decay and
+\begin{equation}
+    p_{a\rightarrow b\vert c}=\frac{1}{2m_a}\sqrt{\big((m_a+m_b)^2-m_c^2\big)\big((m_a-m_b)^2-m_c^2\big)}\,,\qquad E_{a\rightarrow b\vert c}=\sqrt{m_b^2+p_{a\rightarrow b\vert c}^2}
+\end{equation}
+In the rest frame of particle $a$ one finds $\vec{p}\equiv \vec{p}_b=-\vec{p}_c$, energy conservation is expressed as
+\begin{equation}
+    m_a=\sqrt{m_b^2+\vec{p}^2}+\sqrt{m_c^2+\vec{p}^2}
+\end{equation}
+with the solution space restricted only by $\vec{p}^2=p_{a\rightarrow b\vert c}^2$. The energy of particle $b$ in the rest frame of $a$, expressed covariantly, is just $E_{a\rightarrow b\vert c}=-\frac{1}{m_a}q^\mu p_\mu$ and thus the above formula simply represents energy conservation.
+
+To decompose the above delta function, rewrite $q^\mu p_\mu$ in the coordinates used in \ref{sec:SpectraCoordinateSystem}.
+\begin{equation}
+    q^\mu p_\mu=-m_q^\perp m_p^\perp\cosh(\eta_q-\eta_p)+q^\perp p^\perp\cos(\varphi_q-\varphi_p)
+\end{equation}
+    
+\begin{subequations}
+    \begin{align}
+        \omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}&=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int\frac{\dt^4q}{(2\pi)^4}\delta(q^2+m^2)\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\delta\big(q^\mu p_\mu+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int_{(0,0,-\infty,0)}^{(\infty,\infty,\infty,2\pi)}\frac{\dt m_q^\perp \dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}m_q^\perp q^\perp\delta(-m_q^{\perp,2}+q^{\perp,2}+m^2)\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-m_q^\perp m_p^\perp\cosh(\eta_q-\eta_p)+q^\perp p^\perp\cos(\varphi_q-\varphi_p)+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int_{(0,-\infty,0)}^{(\infty,\infty,2\pi)}\frac{\dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q^\perp}{2}\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-\omega_q^\perp \omega_p^\perp\cosh(\eta_q-\eta_p)+q^\perp p^\perp\cos(\varphi_q-\varphi_p)+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int_{(0,-\infty,0)}^{(\infty,\infty,2\pi)}\frac{\dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q^\perp}{2}\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-\omega_q^\perp \omega_p^\perp\cosh\eta_q+q^\perp p^\perp\cos\varphi_q+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\times 2\times 2\int_{(0,0,0)}^{(\infty,\infty,\pi)}\frac{\dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q^\perp}{2}\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-\omega_q^\perp \omega_p^\perp\cosh\eta_q+q^\perp p^\perp\cos\varphi_q+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\times 2\times 2\int_{(0,1,-1)}^{(\infty,\infty,1)}\frac{\dt t\dt u\dt v}{(2\pi)^4}\frac{q^{\perp,2}}{2}\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\frac{1}{\sqrt{1+u^2}}\frac{1}{\sqrt{1-v^2}}\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-\omega_q^\perp \omega_p^\perp u+q^\perp p^\perp tv+m_a E_{a\rightarrow b\vert c}\big)
+    \end{align}
+\end{subequations}
+where we made use of rotational and boost symmetry to eliminate the $\varphi_p$ and $\eta_p$ dependence and applied the variable changes
+\begin{gather*}
+    \int_0^\infty\dt\eta\;f(\cosh\eta)=\int_1^\infty\dt u\frac{f(u)}{\sqrt{1+u^2}}\,,\qquad \int_0^\pi\dt\varphi\;f(\cos\varphi)=\int_{-1}^1\dt v\frac{f(v)}{\sqrt{1-v^2}}\\
+   \text{and}\qquad q^\perp=\tilde{q}t\quad\text{with}\;\tilde{q}^\perp=\const
+\end{gather*}
+where the last variable changes simply separates the dimensionality from the integration variable. The $\tilde{\cdot}$ is omitted.
+
+Consider the function
+\begin{subequations}
+    \begin{align}
+        g(t,u,v)&=-\omega_q^\perp \omega_p^\perp u+q^\perp p^\perp tv+m_a E_{a\rightarrow b\vert c}\\
+        \vec{\nabla} g&=
+        \begin{pmatrix}
+            -\frac{\omega_p^\perp}{\omega_q^\perp}q^{\perp,2} tu+q^\perp p^\perp v\\
+            -\omega_q^\perp\omega_p^\perp\\
+            q^\perp p^\perp
+        \end{pmatrix}
+    \end{align}
+\end{subequations}
+
+We want to use
+\begin{equation}
+    \int\dt^dx f(x^i)\delta(g(x^i))=\int_{g^{-1}(0)}\dt^{d-1}\sigma\frac{f(x^i)}{\abs{\vec{\nabla}g(x^i)}}
+\end{equation}
+The manifold defined by the level set where $g(t,u,v)=0$ is given by 
+\begin{equation}
+    g^{-1}(0)=\Bigg\{(t,u,v)\Big\vert u=u^\star(t,v)=\frac{m_aE_{a\rightarrow b\vert c}-q^\perp p^\perp tv}{\omega_q^\perp\omega_p^\perp}\Bigg\}
+    \label{eq:DecayMap_BjorkenCoord_DeltaManifold}
+\end{equation}
+\eqref{eq:DecayMap_BjorkenCoord_DeltaManifold} defines a chart on $g^{-1}(0)$ with coordinates $(t,v)$. One computes the coordinate derivative vectors and oriented surface element
+\begin{equation}
+    \frac{\partial x^i}{\partial t}=\begin{pmatrix}
+    1\\
+    v\frac{p^\perp}{\omega_p^\perp}\big(-\frac{q^\perp}{\omega_q^\perp}+\frac{q^{\perp,3}}{\omega_q^{\perp,3}}\big)\\
+    0
+    \end{pmatrix}\,,\qquad
+    \frac{\partial x^i}{\partial v}=\begin{pmatrix}
+        0\\
+        -\frac{q^\perp p^\perp}{\omega_q^\perp\omega_p^\perp}\\
+        1
+    \end{pmatrix}\,,\qquad
+    \dt\sigma^i=\frac{\partial x^i}{\partial q^\perp}\times \frac{\partial x^i}{\partial q^\perp}=\begin{pmatrix}
+        v\frac{p^\perp q^\perp}{\omega_p^\perp\omega_q^\perp}\big(-1+\frac{q^{\perp,2}}{\omega_q^{\perp,2}}\big)\\
+        -1\\
+        -\frac{q^\perp p^\perp}{\omega_q^\perp\omega_p^\perp}
+    \end{pmatrix}\dt t\dt v
+\end{equation}
+to find the scalar surface element
+\begin{equation}
+    \dt^2\sigma=\dt t\dt v\sqrt{v^2\frac{p^{\perp,2}q^{\perp,2}}{\omega_p^{\perp,2}\omega_q^{\perp,2}}\big(-1+\frac{q^{\perp,2}}{\omega_q^{\perp,2}}\big)^2+1+\frac{q^{\perp,2} p^{\perp,2}}{\omega_q^{\perp,2}\omega_p^{\perp,2}}}
+\end{equation}

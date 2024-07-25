@@ -18,7 +18,7 @@ csvdata readcsv(std::string source, std::string delimiter = ",", bool has_header
 
     if (!input.is_open())
     {
-        std::cerr << "Error opening the file!" << std::endl;
+        std::cerr << "Error opening the file: " << source << std::endl;
         return {{"ERROR"}, {{-1}}};
     }
 
