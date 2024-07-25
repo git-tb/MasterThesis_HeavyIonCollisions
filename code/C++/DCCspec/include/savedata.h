@@ -9,15 +9,22 @@
 #include <functional>
 
 template <typename T>
-void writeSamplesToFile(std::string path, std::vector<double> x, std::vector<T> y, std::vector<std::string> headers)
+void writeSamplesToFile(std::string path, 
+    std::vector<double> x, 
+    std::vector<T> y, 
+    std::vector<std::string> headers, 
+    std::vector<std::string> comments = std::vector<std::string>({}))
 {
     std::ofstream output(path);
 
     if (!output.is_open())
     {
-        std::cerr << "Error opening the file: " << path << std::endl;
+        std::cerr << "Error opening the file: " << path << " to save to" << std::endl;
         return;
     }
+
+    for(int i = 0; i < comments.size(); i++)
+        output << "# " << comments[i] << std::endl;
 
     for(int i = 0; i < headers.size(); i++)
     {
@@ -35,15 +42,24 @@ void writeSamplesToFile(std::string path, std::vector<double> x, std::vector<T> 
 }
 
 template <typename T>
-void writeFuncToFile(std::string path, std::function<T(double)> func, double a, double b, int Nsamples, std::vector<std::string> headers)
+void writeFuncToFile(std::string path, 
+    std::function<T(double)> func, 
+    double a, 
+    double b, 
+    int Nsamples, 
+    std::vector<std::string> headers, 
+    std::vector<std::string> comments = std::vector<std::string>({}))
 {
     std::ofstream output(path);
 
     if (!output.is_open())
     {
-        std::cerr << "Error opening the file: " << path << std::endl;
+        std::cerr << "Error opening the file: " << path << " to save to" << std::endl;
         return;
     }
+
+    for(int i = 0; i < comments.size(); i++)
+        output << "# " << comments[i] << std::endl;
 
     for(int i = 0; i < headers.size(); i++)
     {
@@ -63,23 +79,33 @@ void writeFuncToFile(std::string path, std::function<T(double)> func, double a, 
 }
 
 template <typename T>
-void writeFunctionsToFile(std::string path, std::vector<std::function<T(double)>> funcs, double a, double b, int Nsamples, std::vector<std::string> headers)
+void writeFunctionsToFile(std::string path, 
+    std::vector<std::function<T(double)>> funcs, 
+    double a, 
+    double b, 
+    int Nsamples, 
+    std::vector<std::string> headers, 
+    std::vector<std::string> comments = std::vector<std::string>({}))
 {
     std::ofstream output(path);
 
     if (!output.is_open())
     {
-        std::cerr << "Error opening the file: " << path << std::endl;
+        std::cerr << "Error opening the file: " << path << " to save to" << std::endl;
         return;
     }
 
-    double dx = (b - a) / (Nsamples - 1);
+    for(int i = 0; i < comments.size(); i++)
+        output << "# " << comments[i] << std::endl;
+
     for(int i = 0; i < headers.size(); i++)
     {
         output << headers[i];
         if(i != headers.size()-1) output << ",";
     }
     output << std::endl;
+
+    double dx = (b - a) / (Nsamples - 1);
     for (int i = 0; i < Nsamples; i++)
     {
         output << i * dx ;

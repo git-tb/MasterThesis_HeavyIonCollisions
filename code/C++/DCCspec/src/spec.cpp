@@ -8,6 +8,8 @@
 #include <boost/math/interpolators/pchip.hpp>
 #include <boost/program_options.hpp>
 #include <filesystem>
+#include <ctime>   // std::time, std::local_time
+#include <iomanip> // std::put_time
 
 #include <algorithm>
 #include <iterator>
@@ -146,6 +148,7 @@ int main(int ac, char* av[])
     // DEFINE VARIABLES TO BE SET
     double pmin(0), pmax(1.0);
     int Nps(100);
+    std::string initdata;
 
     // DECLARE SUPPORTED OPTIONS
     namespace po = boost::program_options;
@@ -153,7 +156,8 @@ int main(int ac, char* av[])
     desc.add_options()
         ("help", "produce help message")
         ("pTmax", po::value<double>()->default_value(1.0), "spectrum is computed on [0,pTmax]")
-        ("NpT", po::value<int>()->default_value(100), "number of sample points within [0,pTmax]");
+        ("NpT", po::value<int>()->default_value(100), "number of sample points within [0,pTmax]")
+        ("initpath",po::value<std::string>(),"csv file containing initial field data");
 
     po::variables_map vm;
     po::store(po::parse_command_line(ac, av, desc), vm);
@@ -166,25 +170,29 @@ int main(int ac, char* av[])
     }
     pmax = vm["pTmax"].as<double>();
     Nps = vm["NpT"].as<int>();
+    initdata = vm["initpath"].as<std::string>();
     /* #endregion */
 
     // CREATE DIRECTORY TO SAVE FILES
-    std::filesystem::current_path(std::filesystem::temp_directory_path());
-    std::filesystem::create_directories("sandbox/1/2/a");
-    return -1;
-
+    std::time_t t = std::time(nullptr);
+    std::tm tm = *std::localtime(&t);
+    std::stringstream timestamp_sstr;
+    timestamp_sstr << std::put_time(&tm, "%Y%m%d_%H%M%S");
+    std::string timestamp = timestamp_sstr.str();
+    std::string pathname = "data/spec_"+timestamp;
+    std::filesystem::create_directories(pathname);
 
     csvdata mydata = ProcessFreezeoutData();
-    csvdata initialdata = ProcessInitialData();
+    csvdata initialdata = ProcessInitialData(initdata);
 
     // SAVE FOR INSPECTION
     //  THE RAW SAMPLES
-    writeSamplesToFile("data/tau_samp.txt", mydata.data[0], mydata.data[1],{"alpha","tauRe","tauIm"});
-    writeSamplesToFile("data/r_samp.txt", mydata.data[0], mydata.data[2],{"alpha","rRe","rIm"});
-    writeSamplesToFile("data/Dtau_samp.txt", mydata.data[0], mydata.data[3],{"alpha","DtauRe","DtauIm"});
-    writeSamplesToFile("data/Dr_samp.txt", mydata.data[0], mydata.data[4],{"alpha","DrRe","DrIm"});
-    writeSamplesToFile("data/ur_samp.txt", mydata.data[0], mydata.data[5],{"alpha","urRe","urIm"});
-    writeSamplesToFile("data/utau_samp.txt", mydata.data[0], mydata.data[6],{"alpha","utauRe","utauIm"});
+    writeSamplesToFile(pathname+"/tau_samp.txt", mydata.data[0], mydata.data[1],{"alpha","tauRe","tauIm"},{timestamp});
+    writeSamplesToFile(pathname+"/r_samp.txt", mydata.data[0], mydata.data[2],{"alpha","rRe","rIm"},{timestamp});
+    writeSamplesToFile(pathname+"/Dtau_samp.txt", mydata.data[0], mydata.data[3],{"alpha","DtauRe","DtauIm"},{timestamp});
+    writeSamplesToFile(pathname+"/Dr_samp.txt", mydata.data[0], mydata.data[4],{"alpha","DrRe","DrIm"},{timestamp});
+    writeSamplesToFile(pathname+"/ur_samp.txt", mydata.data[0], mydata.data[5],{"alpha","urRe","urIm"},{timestamp});
+    writeSamplesToFile(pathname+"/utau_samp.txt", mydata.data[0], mydata.data[6],{"alpha","utauRe","utauIm"},{timestamp});
     {
         std::vector<std::complex<double>> f0dat, Df0dat;    // REAL AND IMAGINARY PART ARE READ IN AS 2 SEPARATE REAL-VALUED ARRAYS
                                                             //  BUT SHOULD BE PRINTED AS 1 COMBINED COMPLEX-VALUED ARRAY
@@ -193,21 +201,21 @@ int main(int ac, char* av[])
             f0dat.push_back(initialdata.data[1][i] + 1i * initialdata.data[2][i]);
             Df0dat.push_back(initialdata.data[3][i] + 1i * initialdata.data[4][i]);
         }
-        writeSamplesToFile("data/f0_samp.txt", initialdata.data[0], f0dat,{"alpha","f0Re","f0Im"});
-        writeSamplesToFile("data/Df0_samp.txt", initialdata.data[0], Df0dat,{"alpha","Df0Re","Df0Im"});
+        writeSamplesToFile(pathname+"/f0_samp.txt", initialdata.data[0], f0dat,{"alpha","f0Re","f0Im"},{timestamp});
+        writeSamplesToFile(pathname+"/Df0_samp.txt", initialdata.data[0], Df0dat,{"alpha","Df0Re","Df0Im"},{timestamp});
     }
 
     // THE INTERPOLATED FUNCTIONS, SAMPLED AT SOME PRESCRIBED RESOLUTION
     int NSAMPLE = 1000;
-    writeFuncToFile("data/tau_interp.txt", tau, 0, M_PI / 2.0, NSAMPLE,{"alpha","tauRe","tauIm"});
-    writeFuncToFile("data/r_interp.txt", r, 0, M_PI / 2.0, NSAMPLE,{"alpha","rRe","rIm"});
-    writeFuncToFile("data/Dtau_interp.txt", Dtau, 0, M_PI / 2.0, NSAMPLE,{"alpha","DtauRe","DtauIm"});
-    writeFuncToFile("data/Dr_interp.txt", Dr, 0, M_PI / 2.0, NSAMPLE,{"alpha","DrRe","DrIm"});
-    writeFuncToFile("data/ur_interp.txt", ur, 0, M_PI / 2.0, NSAMPLE,{"alpha","urRe","urIm"});
-    writeFuncToFile("data/utau_interp.txt", utau, 0, M_PI / 2.0, NSAMPLE,{"alpha","utauRe","utauIm"});
+    writeFuncToFile(pathname+"/tau_interp.txt", tau, 0, M_PI / 2.0, NSAMPLE,{"alpha","tauRe","tauIm"},{timestamp});
+    writeFuncToFile(pathname+"/r_interp.txt", r, 0, M_PI / 2.0, NSAMPLE,{"alpha","rRe","rIm"},{timestamp});
+    writeFuncToFile(pathname+"/Dtau_interp.txt", Dtau, 0, M_PI / 2.0, NSAMPLE,{"alpha","DtauRe","DtauIm"},{timestamp});
+    writeFuncToFile(pathname+"/Dr_interp.txt", Dr, 0, M_PI / 2.0, NSAMPLE,{"alpha","DrRe","DrIm"},{timestamp});
+    writeFuncToFile(pathname+"/ur_interp.txt", ur, 0, M_PI / 2.0, NSAMPLE,{"alpha","urRe","urIm"},{timestamp});
+    writeFuncToFile(pathname+"/utau_interp.txt", utau, 0, M_PI / 2.0, NSAMPLE,{"alpha","utauRe","utauIm"},{timestamp});
 
-    writeFuncToFile("data/f0_interp.txt", f0, 0, M_PI / 2.0, NSAMPLE,{"alpha","f0Re","f0Im"});
-    writeFuncToFile("data/Df0_interp.txt", Df0, 0, M_PI / 2.0, NSAMPLE,{"alpha","Df0Re","Df0Im"});    
+    writeFuncToFile(pathname+"/f0_interp.txt", f0, 0, M_PI / 2.0, NSAMPLE,{"alpha","f0Re","f0Im"},{timestamp});
+    writeFuncToFile(pathname+"/Df0_interp.txt", Df0, 0, M_PI / 2.0, NSAMPLE,{"alpha","Df0Re","Df0Im"},{timestamp});    
     
     // DEFINE PION FIELD AND DERIVATIVE ON FREEZOUT SURFACE
     std::function<std::complex<double>(double)> func = [](double alpha)
@@ -215,8 +223,8 @@ int main(int ac, char* av[])
     std::function<std::complex<double>(double)> Dfunc = [](double alpha)
     { return Df0(alpha); };
 
-    writeFuncToFile("data/field0.txt", func, 0, M_PI / 2.0, 1000,{"alpha","field0Re","field0Im"});
-    writeFuncToFile("data/field0_deriv.txt", Dfunc, 0, M_PI / 2.0, 1000,{"alpha","Dfield0Re","Dfield0Im"});
+    writeFuncToFile(pathname+"/field0.txt", func, 0, M_PI / 2.0, 1000,{"alpha","field0Re","field0Im"},{timestamp});
+    writeFuncToFile(pathname+"/field0_deriv.txt", Dfunc, 0, M_PI / 2.0, 1000,{"alpha","Dfield0Re","Dfield0Im"},{timestamp});
 
     // COMPUTE SPECTRUM
     // USING SLIGHTLY OPTIMIZED VERSION FOR ARRAY-LIKE ARGUMENTS
@@ -235,6 +243,6 @@ int main(int ac, char* av[])
     for (int i = 0; i < myspectr_anti.size(); i++)
         myspectr_anti_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr_anti[i]);
 
-    writeSamplesToFile("data/spectr.txt", ps, myspectr_abs2,{"pT","abs2Re","abs2Im"});
-    writeSamplesToFile("data/spectr_anti.txt", ps, myspectr_anti_abs2,{"pT","abs2Re","abs2Im"});
+    writeSamplesToFile(pathname+"/spectr.txt", ps, myspectr_abs2,{"pT","abs2Re","abs2Im"},{timestamp});
+    writeSamplesToFile(pathname+"/spectr_anti.txt", ps, myspectr_anti_abs2,{"pT","abs2Re","abs2Im"},{timestamp});
 }

@@ -18,31 +18,49 @@ import glob
 # plt.show()
 
 ### INITIAL CONDITIONS & SPECTRUM
-df_initial = pd.read_csv("data/field0.txt",header=None,sep=";")
-df_initial_deriv = pd.read_csv("data/field0_deriv.txt",header=None,sep=";")
-df_spec = pd.read_csv("data/spectr.txt",header=None,sep=";")
-df_spec_anti = pd.read_csv("data/spectr_anti.txt",header=None,sep=";")
+folders = glob.glob("data/spec*")
+print(folders)
+folders = [
+    'data/spec_20240725_152007',
+    'data/spec_20240725_151255', 
+    # 'data/spec_20240725_151321', 
+    # 'data/spec_20240725_151344', 
+    # 'data/spec_20240725_151406', 
+    # 'data/spec_20240725_151431', 
+    # 'data/spec_20240725_151451', 
+    # 'data/spec_20240725_151512', 
+    # 'data/spec_20240725_151537', 
+    # 'data/spec_20240725_151600', 
+    # 'data/spec_20240725_151621' 
+    ]
+for folder in folders:
+    # folder = "data/spec_20240725_145826"
+    df_initial = pd.read_csv(folder+"/field0.txt",sep=",",comment="#")
+    df_initial_deriv = pd.read_csv(folder+"/field0_deriv.txt",sep=",",comment="#")
+    df_spec = pd.read_csv(folder+"/spectr.txt",sep=",",comment="#")
+    df_spec_anti = pd.read_csv(folder+"/spectr_anti.txt",sep=",",comment="#")
 
-fig, ((ax0,ax1),(ax2,ax3)) = plt.subplots(ncols=2,nrows=2,figsize=(10,10))
+    fig, ((ax0,ax1),(ax2,ax3)) = plt.subplots(ncols=2,nrows=2,figsize=(10,10))
+    fig.suptitle(folder)
 
-ax0.plot(df_initial.to_numpy().T[0],df_initial.to_numpy().T[1],label="Real",lw=3)
-ax0.plot(df_initial.to_numpy().T[0],df_initial.to_numpy().T[2],label="Imag")
-ax1.plot(df_initial_deriv.to_numpy().T[0],df_initial_deriv.to_numpy().T[1],label="Real",lw=3)
-ax1.plot(df_initial_deriv.to_numpy().T[0],df_initial_deriv.to_numpy().T[2],label="Imag")
-ax3.plot(df_spec.to_numpy().T[0],df_spec.to_numpy().T[1],label="spectr",lw=3)
-ax3.plot(df_spec_anti.to_numpy().T[0],df_spec_anti.to_numpy().T[1],label="spectr anti")
+    ax0.plot(df_initial.to_numpy().T[0],df_initial.to_numpy().T[1],label="Real",lw=3)
+    ax0.plot(df_initial.to_numpy().T[0],df_initial.to_numpy().T[2],label="Imag")
+    ax1.plot(df_initial_deriv.to_numpy().T[0],df_initial_deriv.to_numpy().T[1],label="Real",lw=3)
+    ax1.plot(df_initial_deriv.to_numpy().T[0],df_initial_deriv.to_numpy().T[2],label="Imag")
+    ax3.plot(df_spec.to_numpy().T[0],df_spec.to_numpy().T[1],label="spectr",lw=3)
+    ax3.plot(df_spec_anti.to_numpy().T[0],df_spec_anti.to_numpy().T[1],label="spectr anti")
 
-ax0.legend()
-ax0.grid()
-ax1.legend()
-ax1.grid()
-ax2.set_yscale('log')
-ax2.legend()
-ax2.grid()
-ax3.set_yscale('log')
-ax3.legend()
-ax3.grid()
-plt.show()
+    ax0.legend()
+    ax0.grid()
+    ax1.legend()
+    ax1.grid()
+    ax2.set_yscale('log')
+    ax2.legend()
+    ax2.grid()
+    ax3.set_yscale('log')
+    ax3.legend()
+    ax3.grid()
+    plt.show()
 
 # df = pd.read_csv("../../Mathematica/data//ExampleFreezeOut.csv")
 # alphas = df["alpha"].to_numpy()

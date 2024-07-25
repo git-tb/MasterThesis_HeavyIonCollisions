@@ -18,7 +18,8 @@ csvdata readcsv(std::string source, std::string delimiter = ",", bool has_header
 
     if (!input.is_open())
     {
-        std::cerr << "Error opening the file: " << source << std::endl;
+        std::cerr << "Error opening the file: " << source << " to read in" << std::endl;
+        exit(1);
         return {{"ERROR"}, {{-1}}};
     }
 
@@ -28,7 +29,9 @@ csvdata readcsv(std::string source, std::string delimiter = ",", bool has_header
 
     if (has_header)
     {
-        std::getline(input, line);
+        do {
+            std::getline(input,line);
+        } while (line.starts_with('#'));
         size_t pos = 0;
         std::string token;
         while ((pos = line.find(delimiter)) != std::string::npos)
@@ -41,6 +44,8 @@ csvdata readcsv(std::string source, std::string delimiter = ",", bool has_header
 
     while (std::getline(input, line))
     {
+        while (line.starts_with('#')) std::getline(input,line);
+
         mydata.data.push_back(std::vector<double>());
 
         size_t pos = 0;

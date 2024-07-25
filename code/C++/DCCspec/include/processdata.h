@@ -99,7 +99,7 @@ std::function<double(double)>
     Df0Im(UNINITIALIZED_FUNCTION);
 std::function<std::complex<double>(double)> f0 = [](double alpha) { return f0Re(alpha) + 1i * f0Im(alpha);};
 std::function<std::complex<double>(double)> Df0 = [](double alpha) { return Df0Re(alpha) + 1i * Df0Im(alpha);};
-csvdata ProcessInitialData(std::string datafile = "./data/initialfields.csv")
+csvdata ProcessInitialData(std::string datafile = "NO_INITIALDATA_SPECIFIED")
 { 
     std::ofstream debug("debug_initial.txt");
 
