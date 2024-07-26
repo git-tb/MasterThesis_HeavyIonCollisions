@@ -27,32 +27,30 @@ double p_abc = 1/(2*ma) * sqrt(
 double E_abc(sqrt(mb*mb + p_abc*p_abc));
 
 std::function<double(double,double)> w = [](double p, double m) { return sqrt(pow(p,2)+pow(m,2));};
-std::function<double(double, double,double,double)> absgradg = [](double t, double u, double v, double p) {
+std::function<double(double, double,double,double)> absgradg = [](double t, double eta, double phi, double p) {
     return sqrt(
-        pow(-w(p,mb)*Q*Q*t*u/w(Q*t,ma) + Q*p*v,2)+
-        pow(w(Q*t,ma)*w(p,mb),2)+
-        pow(Q*t*p,2)
+        pow(-w(p,mb)*Q*Q*t*cosh(eta)/w(Q*t,ma) + Q*p*cos(phi),2)+
+        pow(w(Q*t,ma)*w(p,mb)*sinh(eta),2)+
+        pow(t*Q*p*sin(phi),2)
     );
 };
-std::function<double(double, double,double)> areafactor = [](double t, double v, double p) {
+std::function<double(double,double,double)> u_star = [](double t, double phi, double p){
+    return (ma * E_abc + t*Q*p*cos(phi))/(w(Q*t,ma) * w(p,mb));
+};
+std::function<double(double, double,double)> areafactor = [](double t, double phi, double p) {
+    double u = u_star(t,phi,p);
     return sqrt(
-        pow(v*p*Q*t/(w(p,mb) * w(Q*t,ma)),2) * pow(-1+pow(Q*t/w(Q*t,ma),2),2) +
-        1 +
-        pow(t*Q*p/(w(Q*t,ma),w(p,mb)),2)
+        1/(u*u-1) * pow(Q*p/(w(t*Q,ma)*w(p,mb)),2) (
+            pow(cos(phi)*(1 - pow(t*Q/w(t*Q,ma),2)),2) + pow(t*sin(phi),2)
+        )
     );
 };
 
 std::function<double(double)> primespec;
-std::function<double(double,double,double)> u_star = [](double t, double v, double p){
-    return (ma * E_abc - Q*p * t*v)/(w(Q*t,ma) * w(p,mb));
-};
-std::function<double(double,double,double)> fullfunc = [](double t, double u, double v){
-    return primespec(t*Q) * ( 1/sqrt(1+u*u) ) * ( 1/sqrt(1-v*v) );
-};
-std::function<double(double,double,void*)> restrictfunc = [](double t, double v,double p){
-    double u_ = u_star(t,v,p);
-    if(u_ < 1) return 0;
-    return fullfunc(t,u_,v) * areafactor(t,v,p)/absgradg(t,u_,v,p);
+std::function<double(double,double,void*)> restrictfunc = [](double t, double phi,double p){
+    double u = u_star(t,v,p);
+    if(u < 1) return 0;
+    return t * primespec(t*Q) * areafactor(t,v,p)/absgradg(t,u_,v,p);
 };
 
 struct args
