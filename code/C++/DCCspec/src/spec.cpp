@@ -16,6 +16,7 @@
 
 #include "savedata.h"       // write to file
 #include "processdata.h"    // initial conditions and freezeout functions
+                            // this defines the functions tau(), r(), Dtau(), Dr(), utau(), ur() and f0(), Df0()
 #include "constants.h"      // pion mass, GeV to inverse fm
 
 using namespace std::complex_literals;
@@ -182,8 +183,8 @@ int main(int ac, char* av[])
     std::string pathname = "data/spec_"+timestamp;
     std::filesystem::create_directories(pathname);
 
-    csvdata mydata = ProcessFreezeoutData();
-    csvdata initialdata = ProcessInitialData(initdata);
+    csvdata mydata = ProcessFreezeoutData();            // THIS SETS TAU, R, DTAU, DR, UTAU, UR
+    csvdata initialdata = ProcessInitialData(initdata); // THIS SETS F0, DF0
 
     // SAVE FOR INSPECTION
     //  THE RAW SAMPLES

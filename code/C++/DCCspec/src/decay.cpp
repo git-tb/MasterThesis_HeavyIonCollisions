@@ -18,173 +18,254 @@
 #include "processdata.h"    // initial conditions and freezeout functions
 #include "constants.h"      // pion mass, GeV to inverse fm
 #include "cubature.h"
+#include "cuba.h"
 
-double Q(1.0);
-double ma(1), mb(1), mc(1);
-double p_abc = 1/(2*ma) * sqrt(
-    (pow(ma+mb,2)-pow(mc,2))*(pow(ma-mb,2)-pow(mc,2))
-);
-double E_abc(sqrt(mb*mb + p_abc*p_abc));
+const double Q(1.0);
+const double ma(0.6), mb(0.14), mc(0.14);
+const double p_abc = 1/(2*ma) * sqrt( (pow(ma+mb,2)-pow(mc,2)) * (pow(ma-mb,2)-pow(mc,2)) );
+const double E_abc(sqrt(mb*mb + p_abc*p_abc));
 
-std::function<double(double,double)> w = [](double p, double m) { return sqrt(pow(p,2)+pow(m,2));};
-std::function<double(double, double,double,double)> absgradg = [](double t, double eta, double phi, double p) {
+std::function<double(double,double)> w = [](double p, double m) { return sqrt(p*p + m*m);};
+std::function<double(double, double,double,double)> absgradg = [](double t, double u, double v, double p) {
     return sqrt(
-        pow(-w(p,mb)*Q*Q*t*cosh(eta)/w(Q*t,ma) + Q*p*cos(phi),2)+
-        pow(w(Q*t,ma)*w(p,mb)*sinh(eta),2)+
-        pow(t*Q*p*sin(phi),2)
+        pow(-t*u*Q*Q*w(p,mb)/w(Q*t,ma) + Q*p*v,2)
+        + pow(-w(Q*t,ma)*w(p,mb),2)
+        + pow(t*Q*p,2)
     );
 };
-std::function<double(double,double,double)> u_star = [](double t, double phi, double p){
-    return (ma * E_abc + t*Q*p*cos(phi))/(w(Q*t,ma) * w(p,mb));
+std::function<double(double,double,double)> u_star = [](double t, double v, double p){
+    return (ma * E_abc + t*Q*p*v)/(w(Q*t,ma) * w(p,mb));
 };
-std::function<double(double, double,double)> areafactor = [](double t, double phi, double p) {
-    double u = u_star(t,phi,p);
+std::function<double(double, double,double)> areafactor = [](double t, double v, double p) {
     return sqrt(
-        1/(u*u-1) * pow(Q*p/(w(t*Q,ma)*w(p,mb)),2) (
-            pow(cos(phi)*(1 - pow(t*Q/w(t*Q,ma),2)),2) + pow(t*sin(phi),2)
-        )
+        pow( (1-t*t*Q*Q/pow(w(Q*t,ma),2))*v*p*Q/(w(p,mb)*w(Q*t,ma)),2)
+        +pow(-1,2)
+        +pow(t*Q*p/(w(Q*t,ma)*w(p,mb)),2)
     );
 };
 
 std::function<double(double)> primespec;
-std::function<double(double,double,void*)> restrictfunc = [](double t, double phi,double p){
+std::function<double(double,double,double)> restrictfunc = [](double t, double v, double p){
+    // double u = (1 + t*v)/sqrt(2+t*t);
+    // if(u <= 1)  return 0.0;
+    // else        return 1/(sqrt(u*u-1) * sqrt(1-v*v));
+
     double u = u_star(t,v,p);
-    if(u < 1) return 0;
-    return t * primespec(t*Q) * areafactor(t,v,p)/absgradg(t,u_,v,p);
+    if(u <= 1) return 0.0;
+    return (1/sqrt(u*u-1)) * (1/sqrt(1-v*v)) * areafactor(t,v,p)/absgradg(t,u,v,p);
+    // return (1/sqrt(u*u-1)) * (1/sqrt(1-v*v)) * areafactor(t,v,p)/absgradg(t,u,v,p) * t * primespec(t*Q);
 };
 
-struct args
+struct argsCUBATURE
 {
     double p;
 };
-std::function myintegrand = [](
-        unsigned ndim,
-        const double *x,
+
+struct argsCUBA
+{
+    double p, tmin, tmax, vmin, vmax;
+};
+
+static int integrandCUBA(
+    const int *ndim, const double xx[],
+    const int *ncomp, double ff[], void *userdata)
+{    
+    argsCUBA myargs = *(struct argsCUBA*)userdata;
+
+    double t = myargs.tmin + (myargs.tmax - myargs.tmin) * xx[0];
+    double v = myargs.vmin + (myargs.vmax - myargs.vmin) * xx[1];
+
+    ff[0] = (myargs.tmax - myargs.tmin) * (myargs.vmax - myargs.vmin) * restrictfunc(t,v,myargs.p);
+
+    return 0;
+}
+
+int integrandCUBATURE(
+        unsigned ndim, const double *x,
         void *fdata,
-        unsigned fdim,
-        double *fval)
+        unsigned fdim, double *fval)
 {
     double t(x[0]), v(x[1]);
-    args myargs = *(struct args *)fdata;
+    argsCUBATURE myargs = *(struct argsCUBATURE *)fdata;
     fval[0] = restrictfunc(t,v,myargs.p);
     return 0;
-};
+}
 
 std::vector<double> decayspec(
     std::vector<double> ps,
-    std::function<double(double)> primespec)
+    std::function<double(double)> primespec,
+    double qmax)
 {
     std::vector<double> finalspec(ps.size());
 
-    double ERRABS(0), ERRREL(1e-2);
-    int MAXEVAL(1000), FDIM(1), XDIM(2);
-    args myargs;
+    double ERRABS(1e-7), ERRREL(1e-3);
+    int MAXEVAL(1e6), FDIM(1), XDIM(2);
+    argsCUBATURE myargsCUBATURE;
+    argsCUBA myargsCUBA;
 
     for (int i = 0; i < ps.size(); i++)
     {
         std::cout << i + 1 << " / " << ps.size() << std::endl;
 
-        myargs.p = ps[i];
-        hcubature(FDIM, f, &myargs, XDIM, xmin, xmax, MAXEVAL, ERRABS, ERRREL, ERROR_INDIVIDUAL, &val, &err);
+        double  A(ma*E_abc),
+                B(ps[i]*Q),
+                C(Q),
+                D(ma),
+                F(ps[i]),
+                G(mb);
+
+        double vmin(-1);
+        if(-A*A*D*D + D*D*D*D*(F*F + G*G) > 0)
+            vmin = A*C*(-A + sqrt(F*F + G*G) * sqrt(D*D*D*D*(F*F + G*G)/(A*A)))/
+                        (B*sqrt(-A*A*D*D + D*D*D*D*(F*F + G*G)));
+
+        // ------------------ WITH CUBATURE LIBRARY -------------------------
+        // const double    XMIN[2] = {0,vmin},
+        //                 XMAX[2] = {1,1};
+
+        // myargsCUBATURE.p = ps[i];
+        // double val, err;
+        // hcubature(FDIM, integrandCUBATURE, &myargsCUBATURE, XDIM, XMIN, XMAX, MAXEVAL, ERRABS, ERRREL, ERROR_INDIVIDUAL, &val, &err);
+        // finalspec[i] = val;
+
+
+        // ------------------ WITH CUBA LIBRARY -------------------------
+        const int   NDIM(2), 
+                    NCOMP(1), 
+                    NVEC(1), 
+                    FLAGS(0), 
+                    MINEVAL(0), 
+                    MAXEVAL(1e6), 
+                    KEY(0);
+        void* USERDATA(&myargsCUBA);
+        void* SPIN(NULL);
+        const double EPSREL(1e-7), EPSABS(1e-3);
+        const char* STATEFILE(NULL);
+
+        int nregions, neval, fail;
+        double integral[NCOMP], error[NCOMP], prob[NCOMP];
+
+        myargsCUBA.tmin = 0;
+        myargsCUBA.tmax = 10;
+        myargsCUBA.vmin = vmin;
+        myargsCUBA.vmax = 1;
+        myargsCUBA.p = ps[i];
+
+        Cuhre(NDIM, NCOMP, integrandCUBA, USERDATA, NVEC,
+            EPSREL, EPSABS, FLAGS,
+            MINEVAL, MAXEVAL, KEY,
+            STATEFILE, SPIN,
+            &nregions, &neval, &fail, integral, error, prob);
+
+        finalspec[i] = integral[0];
     }
     return finalspec;
 }
+
+// std::vector<double> decayspec(
+//     std::vector<double> ps,
+//     std::function<double(double)> primespec,
+//     double qmax)
+// {
+//     auto myintegrand = [](
+//         unsigned ndim,
+//         const double *x,
+//         void *fdata,
+//         unsigned fdim,
+//         double *fval)
+//     {
+//         double t(x[0]), v(x[1]);
+//         args myargs = *(struct args *)fdata;
+//         fval[0] = restrictfunc(t,v,myargs.p);
+//         return 0;
+//     };
+
+//     std::vector<double> finalspec(ps.size());
+
+//     double ERRABS(1e-7), ERRREL(1e-3);
+//     int MAXEVAL(1e6), FDIM(1), XDIM(2);
+//     args myargs;
+//     const double    XMIN[2] = {0,-1},
+//                     XMAX[2] = {1,1};
+
+//     for (int i = 0; i < ps.size(); i++)
+//     {
+//         std::cout << i + 1 << " / " << ps.size() << std::endl;
+
+//         myargs.p = ps[i];
+//         double val, err;
+//         hcubature(FDIM, myintegrand, &myargs, XDIM, XMIN, XMAX, MAXEVAL, ERRABS, ERRREL, ERROR_INDIVIDUAL, &val, &err);
+//         finalspec[i] = val;
+//     }
+//     return finalspec;
+// }
 /* #endregion */
 
 int main(int ac, char* av[])
 {
-    auto f = [](
-        unsigned ndim,
-        const double *x,
-        void *fdata,
-        unsigned fdim,
-        double *fval)
-    {
-        fval[0] = exp(-x[0]*x[0]-x[1]*x[1]);
-        return 0;
-    };
+    /* #region COMMAND LINE OPTIONS */
+    // DEFINE VARIABLES TO BE SET
+    double pmin(0), pmax(1.0);
+    int Nps(100);
+    std::string primespecpath;
 
-    double xmin[2] = {-10, -10}, xmax[2] = {10,10};
-    int XDIM(2), FDIM(1), MAXEVAL(10000);
-    double ERRABS(1e-7), ERRREL(1e-7);
-    double val, err;
-    void* fdata = NULL;
-    hcubature(FDIM, f, fdata, XDIM, xmin, xmax, MAXEVAL, ERRABS, ERRREL, ERROR_INDIVIDUAL, &val, &err);
-    printf("Computed integral = %0.10g +/- %g\n", val, err);
+    // DECLARE SUPPORTED OPTIONS
+    namespace po = boost::program_options;
+    po::options_description desc("Allowed options");
+    desc.add_options()
+        ("help", "produce help message")
+        ("pTmax", po::value<double>()->default_value(1.0), "spectrum is computed on [0,pTmax]")
+        ("NpT", po::value<int>()->default_value(100), "number of sample points within [0,pTmax]")
+        ("primespecpath",po::value<std::string>(),"csv file containing primary spectrum");
 
+    po::variables_map vm;
+    po::store(po::parse_command_line(ac, av, desc), vm);
+    po::notify(vm);
 
-    // /* #region COMMAND LINE OPTIONS */
-    // // DEFINE VARIABLES TO BE SET
-    // double pmin(0), pmax(1.0);
-    // int Nps(100);
-    // std::string primespec_data;
+    // PROCESS CMDLINE OPTIONS
+    if (vm.count("help"))    {
+        std::cout << desc << "\n";
+        return 1;
+    }
+    pmax = vm["pTmax"].as<double>();
+    Nps = vm["NpT"].as<int>();
+    primespecpath = vm["primespecpath"].as<std::string>();
+    /* #endregion */
 
-    // // DECLARE SUPPORTED OPTIONS
-    // namespace po = boost::program_options;
-    // po::options_description desc("Allowed options");
-    // desc.add_options()
-    //     ("help", "produce help message")
-    //     ("pTmax", po::value<double>()->default_value(1.0), "spectrum is computed on [0,pTmax]")
-    //     ("NpT", po::value<int>()->default_value(100), "number of sample points within [0,pTmax]")
-    //     ("primespecpath",po::value<std::string>(),"csv file containing primary spectrum");
+    // CREATE DIRECTORY TO SAVE FILES
+    std::time_t t = std::time(nullptr);
+    std::tm tm = *std::localtime(&t);
+    std::stringstream timestamp_sstr;
+    timestamp_sstr << std::put_time(&tm, "%Y%m%d_%H%M%S");
+    std::string timestamp = timestamp_sstr.str();
+    std::string pathname = "data/decayspec_"+timestamp;
+    std::filesystem::create_directories(pathname);
 
-    // po::variables_map vm;
-    // po::store(po::parse_command_line(ac, av, desc), vm);
-    // po::notify(vm);
+    // INTERPOLATE PRIMESPEC FROM DATA
+    csvdata primespecdata = readcsv(primespecpath);
+    std::vector<double> x(primespecdata.data[0]);
+    std::vector<double> y(primespecdata.data[1]);
 
-    // // PROCESS CMDLINE OPTIONS
-    // if (vm.count("help"))    {
-    //     std::cout << desc << "\n";
-    //     return 1;
-    // }
-    // pmax = vm["pTmax"].as<double>();
-    // Nps = vm["NpT"].as<int>();
-    // primespecpath = vm["primespecpath"].as<std::string>();
-    // /* #endregion */
+    std::vector<double> log10y(y.size());
+    for(int i = 0; i < y.size(); i++) log10y[i] = log10(y[i]);
 
-    // // CREATE DIRECTORY TO SAVE FILES
-    // std::time_t t = std::time(nullptr);
-    // std::tm tm = *std::localtime(&t);
-    // std::stringstream timestamp_sstr;
-    // timestamp_sstr << std::put_time(&tm, "%Y%m%d_%H%M%S");
-    // std::string timestamp = timestamp_sstr.str();
-    // std::string pathname = "data/spec_"+timestamp;
-    // std::filesystem::create_directories(pathname);
-   
+    linearExtrapolate(x, log10y, 0 - 0.01);
+
+    double qmin(0), qmax(x[x.size()-1]);
+
+    using boost::math::interpolators::pchip;
+    auto logspecspline = pchip(
+        std::move(x),
+        std::move(log10y));
+    primespec = [&](double p){ return pow(10, logspecspline(p)); };
+
+    int NSAMPLE(1000);
+    writeFuncToFile(pathname+"/primespec_interp.txt", primespec, qmin, qmax, NSAMPLE, {"q","primespecRe","primespecIm"},{timestamp});
+
+    // COMPUTE DECAY SPEC
+    std::vector<double> ps(Nps);
+    for (int i = 0; i < ps.size(); i++) ps[i] = pmin + i * (pmax - pmin) / (Nps - 1);
+    std::vector<double> finalspec = decayspec(ps, primespec,qmax);
     
-    // // DEFINE PION FIELD AND DERIVATIVE ON FREEZOUT SURFACE
-    // std::function<double(double)> primespecc;
-
-    // std::vector<double> myspectr_abs2 = decayspec(ps, primespec);
-
-    // writeSamplesToFile(pathname+"/spectr.txt", ps, myspectr_abs2,{"pT","abs2Re","abs2Im"},{timestamp});
+    writeSamplesToFile(pathname+"/decayspec.txt", ps, finalspec, {"p","finalspecRe","finalspecIm"},{timestamp});
 }
-
-/* EXAMPLE CALL TO CUBATURE LIBRARY
-
-int f(unsigned ndim, const double *x, void *fdata,
-      unsigned fdim, double *fval);
-
-int hcubature(unsigned fdim, integrand f, void *fdata,
-              unsigned dim, const double *xmin, const double *xmax, 
-              size_t maxEval, double reqAbsError, double reqRelError,
-              error_norm norm,
-              double *val, double *err);
-
-int f(unsigned ndim, const double *x, void *fdata, unsigned fdim, double *fval) {
-    double sigma = *((double *) fdata); // we can pass σ via fdata argument
-    double sum = 0;
-    unsigned i;
-    for (i = 0; i < ndim; ++i) sum += x[i] * x[i];
-    // compute the output value: note that fdim should == 1 from below
-    fval[0] = exp(-sigma * sum);
-    return 0; // success*
-}
-
-double xmin[3] = {-2,-2,-2}, xmax[3] = {2,2,2}, sigma = 0.5, val, err;
-hcubature(1, f, &sigma, 3, xmin, xmax, 0, 0, 1e-4, ERROR_INDIVIDUAL, &val, &err);
-printf("Computed integral = %0.10g +/- %g\n", val, err);
-
-Computed integral = 13.69609043 +/- 0.00136919
-
-*/

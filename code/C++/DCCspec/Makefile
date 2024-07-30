@@ -17,18 +17,29 @@ LIBRARIES :=
 INCLUDE += -Iinclude
 INCLUDE += -Iboost_1_82_0
 INCLUDE += -Icubature
+INCLUDE += -ICuba-4.2.2
 
 DIRLIBRARIES += -Lboost_1_82_0/lib
 DIRLIBRARIES += -Lcubature
+DIRLIBRARIES += -LCuba-4.2.2
 
 LIBRARIES += -lboost_program_options
 LIBRARIES += -lgsl
+LIBRARIES += -lm
+LIBRARIES += -lcuba
 LIBRARIES += -lhcubature -lpcubature
+
+DYNLINK :=
+
+DYNLINK += -Wl,-rpath=$(PWD)/boost_1_82_0/lib/
+DYNLINK += -Wl,-rpath=$(PWD)/cubature/
+DYNLINK += -Wl,-rpath=$(PWD)/Cuba-4.2.2
+
 run:
 	./$(BIN)/$(EXE) $(ARGS)
 
 build:
-	$(CXX) $(CXX_FLAGS) $(INCLUDE) $(SRC)/$(EXE).cpp -o $(BIN)/$(EXE) $(DIRLIBRARIES) $(LIBRARIES) -Wl,-rpath=$(PWD)/boost_1_82_0/lib/ -Wl,-rpath=$(PWD)/cubature/
+	$(CXX) $(CXX_FLAGS) $(INCLUDE) $(SRC)/$(EXE).cpp -o $(BIN)/$(EXE) $(DIRLIBRARIES) $(LIBRARIES) $(DYNLINK)
 
 checklibs:
 	ldd ./bin/$(EXE)
