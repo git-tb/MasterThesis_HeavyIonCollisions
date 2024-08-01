@@ -17,17 +17,17 @@
 #include "savedata.h"       // write to file
 #include "processdata.h"    // initial conditions and freezeout functions
                             // this defines the functions tau(), r(), Dtau(), Dr(), utau(), ur() and f0(), Df0()
-#include "constants.h"      // pion mass, GeV to inverse fm
+#include "constants.h"      // GeV to inverse fm
 #include "cubature.h"
 
 using namespace std::complex_literals;
 
 double EPSABS(0), EPSREL(1e-3);
 int ITERATIONS(1e5);
-
+double Mparticle(1.0);
 
 /* #region HELPER FUNCTIONS FOR SPECTRUM COMPUTATION */
-double w(double p) { return sqrt(p * p + m_pion * m_pion); }
+double w(double p) { return sqrt(p * p + Mparticle * Mparticle); }
 double J0rp(double alpha, double p) { return std::cyl_bessel_j(0, r(alpha) * p * GeVtoIfm); }
 double J1rp(double alpha, double p) { return std::cyl_bessel_j(1, r(alpha) * p * GeVtoIfm); }
 double Y0tw(double alpha, double p) { return std::cyl_neumann(0, tau(alpha) * w(p) * GeVtoIfm); }
@@ -46,24 +46,6 @@ std::complex<double> G1_ANTI(double alpha, double p)
     return J1rp(alpha, p) * (-Y0tw(alpha, p) - 1i * J0tw(alpha, p)) * Dtau(alpha) * fmtoIGeV * p +
            J0rp(alpha, p) * (-Y1tw(alpha, p) - 1i * J1tw(alpha, p)) * Dr(alpha) * fmtoIGeV * w(p);
 }
-
-// struct args
-// {
-//     double p;
-//     std::function<double(double)> func;
-//     std::function<double(double)> Dfunc;
-// };
-
-// auto integrand_re = [](double alpha, void *params)
-// {
-//     args myargs = *(struct args *)params;
-//     return tau(alpha) * r(alpha) * fmtoIGeV * fmtoIGeV * (myargs.Dfunc(alpha) * H1(alpha, myargs.p).real() + myargs.func(alpha) * H2(alpha, myargs.p).real());
-// };
-// auto integrand_im = [](double alpha, void *params)
-// {
-//     args myargs = *(struct args *)params;
-//     return tau(alpha) * r(alpha) * fmtoIGeV * fmtoIGeV * (myargs.Dfunc(alpha) * H1(alpha, myargs.p).imag() + myargs.func(alpha) * H2(alpha, myargs.p).imag());
-// };
 
 struct args
 {
@@ -86,7 +68,6 @@ std::complex<double> (*myintegrand_anti)(double, void*) = [](double alpha, void*
         myargs.Dfunc(alpha) * G0_ANTI(alpha, myargs.p) + myargs.func(alpha) * G1_ANTI(alpha, myargs.p)
     );
 };
-/* #endregion */
 
 int integrandCUBATUREreal(
         unsigned ndim, const double *x,
@@ -107,6 +88,7 @@ int integrandCUBATUREimag(
     fval[0] = std::imag(myintegrand(alpha, fdata));
     return 0;
 }
+/* #endregion */
 
 /* #region SPECTRUM COMPUTATION AT SINGLE P-VALUE OR LIST OF P-VALUES */
 std::vector<std::complex<double>> spectr(
@@ -186,8 +168,9 @@ int main(int ac, char* av[])
     po::options_description desc("Allowed options");
     desc.add_options()
         ("help", "produce help message")
-        ("pTmax", po::value<double>()->default_value(1.0), "spectrum is computed on [0,pTmax]")
-        ("NpT", po::value<int>()->default_value(100), "number of sample points within [0,pTmax]")
+        ("m",po::value<double>()->default_value(0.14),"particle mass (in GeV)")
+        ("pTmax", po::value<double>()->default_value(1.0), "spectrum is computed on [0,pTmax] (in GeV)")
+        ("NpT", po::value<int>()->default_value(100), "number of sample points within [0,pTmax] (in GeV)")
         ("epsabs", po::value<double>()->default_value(0), "absolute integration error goal")
         ("epsrel", po::value<double>()->default_value(1e-3), "relative integration error goal")
         ("iter", po::value<int>()->default_value(1e4), "maximum integration iterations")
@@ -208,6 +191,7 @@ int main(int ac, char* av[])
     EPSABS = vm["epsabs"].as<double>();
     EPSREL = vm["epsrel"].as<double>();
     ITERATIONS = vm["iter"].as<int>();
+    Mparticle = vm["m"].as<double>();
     /* #endregion */
 
     // CREATE DIRECTORY TO SAVE FILES
@@ -281,17 +265,19 @@ int main(int ac, char* av[])
         myspectr_anti_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr_anti[i]);
 
     
-    std::stringstream initdata_ss, NpT_ss, pTmax_ss, epsabs_ss, epsrel_ss, iter_ss;
+    std::stringstream initdata_ss, NpT_ss, pTmax_ss, epsabs_ss, epsrel_ss, iter_ss, mass_ss;
     initdata_ss << "initdata:\t" << initdata;
     NpT_ss << "NpT:\t" << Nps;
     pTmax_ss << "pTmax:\t" << pmax;
     epsabs_ss << "epsabs:\t" << EPSABS;
     epsrel_ss << "epsrel:\t" << EPSREL;
     iter_ss << "integr iter:\t" << ITERATIONS;
+    mass_ss << "particle mass:\t" << Mparticle;
 
     writeSamplesToFile(pathname+"/spectr.txt", ps, myspectr_abs2,{"pT","abs2Re","abs2Im"},
         {   timestamp,
             initdata_ss.str(),
+            mass_ss.str(),
             NpT_ss.str(),
             pTmax_ss.str(),
             epsabs_ss.str(),
@@ -301,6 +287,7 @@ int main(int ac, char* av[])
     writeSamplesToFile(pathname+"/spectr_anti.txt", ps, myspectr_anti_abs2,{"pT","abs2Re","abs2Im"},
         {   timestamp,
             initdata_ss.str(),
+            mass_ss.str(),
             NpT_ss.str(),
             pTmax_ss.str(),
             epsabs_ss.str(),

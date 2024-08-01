@@ -11,17 +11,18 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 #%%
 # COMPUTE A SPECTRUM FROM INITIALDATA
 
-pTmax = 5
-NpT = 250
-initpath = "data/init_20240730_172100/initialfields_pi0.csv"
+pTmax = 10
+NpT = 100
+# initpath = "data/init_20240730_172100/initialfields_pi0.csv"
+initpath = "initial1.csv"
 
 result = subprocess.run(args=[
     "./bin/spec",
     "--pTmax=%f"%(pTmax),
     "--NpT=%d"%(NpT),
     "--epsabs=0",
-    "--epsrel=1e-12",
-    "--iter=1000000",
+    "--epsrel=1e-6",
+    "--iter=10000",
     "--initpath=%s"%(initpath)
 ])
 print(result)
@@ -32,11 +33,13 @@ print(result)
 # path = "data/spec_20240731_142132/"
 # path = "data/spec_20240731_143403/"
 # path = "data/spec_20240731_150822/"
-path = "data/spec_20240731_151921/"
+# path = "data/spec_20240731_151921/"
 # path = "data/spec_20240731_130022/"
+path = "data/spec_20240801_111153/"
 prop = "ur"
 
 df_spec = pd.read_csv(path+"spectr.txt",comment="#")
+df_specanti = pd.read_csv(path+"spectr_anti.txt",comment="#")
 df_init = pd.read_csv(path+prop+"_samp.txt",comment="#")
 df_init2 = pd.read_csv(path+prop+"_interp.txt",comment="#")
 df_field = pd.read_csv(path+"field0.txt",comment="#")
@@ -49,13 +52,15 @@ fig.suptitle(path)
 plt.show()
 
 fig, ax = plt.subplots()
-ax.plot(df_spec["pT"].to_numpy(), df_spec["abs2Re"].to_numpy())
+ax.plot(df_spec["pT"].to_numpy(), df_spec["abs2Re"].to_numpy(),lw=3)
+ax.plot(df_specanti["pT"].to_numpy(), df_specanti["abs2Re"].to_numpy(),lw=1)
 ax.set_yscale("log")
 fig.suptitle(path)
 plt.show()
 
 fig, ax = plt.subplots()
 ax.plot(df_field["alpha"].to_numpy(), df_field["field0Re"].to_numpy())
+ax.plot(df_field["alpha"].to_numpy(), df_field["field0Im"].to_numpy())
 fig.suptitle(path)
 plt.show()
 
@@ -118,7 +123,7 @@ newalpha = np.linspace(0,np.pi/2.0 + 0.001,500)
 newdf["alpha"] = newalpha
 
 for key in keys:
-    popt = np.polyfit(alpha,df[key].to_numpy(),39)    
+    popt = np.polyfit(alpha,df[key].to_numpy(),55)    
     fitfunc = np.poly1d(popt)
 
     offset = 0
@@ -137,3 +142,28 @@ print(newdf)
 newdf.to_csv("./../../../code/Mathematica/data/ExampleFreezeOutCorrected.csv",index=False)
 
 # %%
+# CREATE ESSENTIALLY RANDOM INITIAL DATA
+
+def f0(alpha):
+    return np.sin(11.4*alpha) * np.exp(-(alpha-1.4*1j)**2)
+
+def Df0(alpha):
+    return np.cos(12-7*alpha) * np.exp(-3*(alpha-0.7*1j)**2)
+
+x = np.linspace(0,np.pi/2,100)
+f0x = f0(x)
+Df0x = Df0(x)
+plt.plot(x,np.real(f0x))
+plt.plot(x,np.imag(f0x))
+plt.show()
+plt.plot(x,np.real(Df0x))
+plt.plot(x,np.imag(Df0x))
+plt.show()
+
+mydf = pd.DataFrame()
+mydf["alpha"] = x
+mydf["f0Re"] = np.real(f0x)
+mydf["f0Im"] = np.imag(f0x)
+mydf["Df0Re"] = np.real(Df0x)
+mydf["Df0Im"] = np.imag(Df0x)
+mydf.to_csv("initial1.csv",index=False,sep=",")

@@ -1,7 +1,6 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-const double m_pion = 0.14;
 const double GeVtoIfm = 5.0677;
 const double IfmtoGeV = 1 / GeVtoIfm;
 const double fmtoIGeV = GeVtoIfm;
