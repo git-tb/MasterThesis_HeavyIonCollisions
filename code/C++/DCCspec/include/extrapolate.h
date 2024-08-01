@@ -29,4 +29,12 @@ void linearExtrapolate(std::vector<double> &x, std::vector<double> &y, double x_
     }
 }
 
+void addPoint(std::vector<double> &xx, std::vector<double> &yy, double x, double y)
+{
+    int i = 0;
+    while(x > xx[i]) i++;
+    xx.insert(std::next(xx.begin(),i),x);
+    yy.insert(std::next(yy.begin(),i),y);
+}
+
 #endif

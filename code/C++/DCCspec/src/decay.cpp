@@ -121,7 +121,7 @@ std::vector<double> decayspec(
 
         // ------------------ WITH CUBATURE LIBRARY -------------------------
         // const double    XMIN[2] = {0,vmin},
-        //                 XMAX[2] = {1,1};
+        //                 XMAX[2] = {qmax/Q,1};
 
         // myargsCUBATURE.p = ps[i];
         // double val, err;
@@ -146,11 +146,12 @@ std::vector<double> decayspec(
         double integral[NCOMP], error[NCOMP], prob[NCOMP];
 
         myargsCUBA.tmin = 0;
-        myargsCUBA.tmax = 10;
+        myargsCUBA.tmax = qmax/Q;
         myargsCUBA.vmin = vmin;
         myargsCUBA.vmax = 1;
         myargsCUBA.p = ps[i];
 
+        // This performs the numerical integraion
         Cuhre(NDIM, NCOMP, integrandCUBA, USERDATA, NVEC,
             EPSREL, EPSABS, FLAGS,
             MINEVAL, MAXEVAL, KEY,
@@ -161,45 +162,6 @@ std::vector<double> decayspec(
     }
     return finalspec;
 }
-
-// std::vector<double> decayspec(
-//     std::vector<double> ps,
-//     std::function<double(double)> primespec,
-//     double qmax)
-// {
-//     auto myintegrand = [](
-//         unsigned ndim,
-//         const double *x,
-//         void *fdata,
-//         unsigned fdim,
-//         double *fval)
-//     {
-//         double t(x[0]), v(x[1]);
-//         args myargs = *(struct args *)fdata;
-//         fval[0] = restrictfunc(t,v,myargs.p);
-//         return 0;
-//     };
-
-//     std::vector<double> finalspec(ps.size());
-
-//     double ERRABS(1e-7), ERRREL(1e-3);
-//     int MAXEVAL(1e6), FDIM(1), XDIM(2);
-//     args myargs;
-//     const double    XMIN[2] = {0,-1},
-//                     XMAX[2] = {1,1};
-
-//     for (int i = 0; i < ps.size(); i++)
-//     {
-//         std::cout << i + 1 << " / " << ps.size() << std::endl;
-
-//         myargs.p = ps[i];
-//         double val, err;
-//         hcubature(FDIM, myintegrand, &myargs, XDIM, XMIN, XMAX, MAXEVAL, ERRABS, ERRREL, ERROR_INDIVIDUAL, &val, &err);
-//         finalspec[i] = val;
-//     }
-//     return finalspec;
-// }
-/* #endregion */
 
 int main(int ac, char* av[])
 {
@@ -267,5 +229,13 @@ int main(int ac, char* av[])
     for (int i = 0; i < ps.size(); i++) ps[i] = pmin + i * (pmax - pmin) / (Nps - 1);
     std::vector<double> finalspec = decayspec(ps, primespec,qmax);
     
-    writeSamplesToFile(pathname+"/decayspec.txt", ps, finalspec, {"p","finalspecRe","finalspecIm"},{timestamp});
+    std::stringstream qmax_ss, primespec_ss;
+    qmax_ss << "gmax:\t" << qmax;
+    primespec_ss << "primespec:\t" << primespecpath;
+    writeSamplesToFile(pathname+"/decayspec.txt", ps, finalspec, {"p","finalspecRe","finalspecIm"},
+    {
+        timestamp,
+        primespec_ss.str(),
+        qmax_ss.str(),
+    });
 }

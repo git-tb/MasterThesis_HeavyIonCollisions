@@ -24,7 +24,7 @@ std::function<double(double)>
     Dr(UNINITIALIZED_FUNCTION),
     ur(UNINITIALIZED_FUNCTION),
     utau(UNINITIALIZED_FUNCTION);
-csvdata ProcessFreezeoutData(std::string datafile = "./../../Mathematica/data/ExampleFreezeOut.csv")
+csvdata ProcessFreezeoutData(std::string datafile = "./../../Mathematica/data/ExampleFreezeOutCorrected.csv")
 {
     std::ofstream debug("debug_freezout.txt");
 
@@ -48,16 +48,25 @@ csvdata ProcessFreezeoutData(std::string datafile = "./../../Mathematica/data/Ex
         y5(mydata.data[5]),
         y6(mydata.data[6]);
 
+    // tau
     linearExtrapolate(x1, y1, 0 - 0.01);
     linearExtrapolate(x1, y1, M_PI / 2.0 + 0.01);
+    // r
+    // addPoint(x2,y2,0,0);
     linearExtrapolate(x2, y2, 0 - 0.01);
     linearExtrapolate(x2, y2, M_PI / 2.0 + 0.01);
+    // Dtau
+    // addPoint(x3,y3,0,0);
     linearExtrapolate(x3, y3, 0 - 0.01);
     linearExtrapolate(x3, y3, M_PI / 2.0 + 0.01);
+    // Dr
     linearExtrapolate(x4, y4, 0 - 0.01);
     linearExtrapolate(x4, y4, M_PI / 2.0 + 0.01);
+    // ur
+    // addPoint(x5,y5,0,0);
     linearExtrapolate(x5, y5, 0 - 0.01);
     linearExtrapolate(x5, y5, M_PI / 2.0 + 0.01);
+    // utau
     linearExtrapolate(x6, y6, 0 - 0.01);
     linearExtrapolate(x6, y6, M_PI / 2.0 + 0.01);
 

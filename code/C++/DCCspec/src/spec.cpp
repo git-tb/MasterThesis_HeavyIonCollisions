@@ -18,8 +18,12 @@
 #include "processdata.h"    // initial conditions and freezeout functions
                             // this defines the functions tau(), r(), Dtau(), Dr(), utau(), ur() and f0(), Df0()
 #include "constants.h"      // pion mass, GeV to inverse fm
+#include "cubature.h"
 
 using namespace std::complex_literals;
+
+double EPSABS(0), EPSREL(1e-3);
+int ITERATIONS(1e5);
 
 
 /* #region HELPER FUNCTIONS FOR SPECTRUM COMPUTATION */
@@ -67,7 +71,7 @@ struct args
     std::function<std::complex<double>(double)> func, Dfunc;
 };
 
-std::complex<double> (*integrand)(double, void*) = [](double alpha, void* params)
+std::complex<double> (*myintegrand)(double, void*) = [](double alpha, void* params)
 {
     args myargs = *(struct args *)params;
     return tau(alpha) * r(alpha) * fmtoIGeV * fmtoIGeV * (
@@ -75,7 +79,7 @@ std::complex<double> (*integrand)(double, void*) = [](double alpha, void* params
     );
 };
 
-std::complex<double> (*integrand_anti)(double, void*) = [](double alpha, void* params)
+std::complex<double> (*myintegrand_anti)(double, void*) = [](double alpha, void* params)
 {
     args myargs = *(struct args *)params;
     return tau(alpha) * r(alpha) * fmtoIGeV * fmtoIGeV * (
@@ -83,6 +87,26 @@ std::complex<double> (*integrand_anti)(double, void*) = [](double alpha, void* p
     );
 };
 /* #endregion */
+
+int integrandCUBATUREreal(
+        unsigned ndim, const double *x,
+        void *fdata,
+        unsigned fdim, double *fval)
+{
+    double alpha = x[0];
+    fval[0] = std::real(myintegrand(alpha, fdata));
+    return 0;
+}
+
+int integrandCUBATUREimag(
+        unsigned ndim, const double *x,
+        void *fdata,
+        unsigned fdim, double *fval)
+{
+    double alpha = x[0];
+    fval[0] = std::imag(myintegrand(alpha, fdata));
+    return 0;
+}
 
 /* #region SPECTRUM COMPUTATION AT SINGLE P-VALUE OR LIST OF P-VALUES */
 std::vector<std::complex<double>> spectr(
@@ -95,8 +119,6 @@ std::vector<std::complex<double>> spectr(
     //  THE MEMORY FOR THE INTEGRATION WORKSPACE OVER AND OVER AGAIN
     std::vector<std::complex<double>> result(ps.size());
 
-    double EPSABS(0), EPSREL(1e-2);
-    int ITERATIONS(1000);
     int KEY(6);
     gsl_integration_workspace *workspace = gsl_integration_workspace_alloc(ITERATIONS);
     gsl_set_error_handler_off();
@@ -108,22 +130,30 @@ std::vector<std::complex<double>> spectr(
         double p = ps[i];
 
         args myargs = {p, func, Dfunc};
+        double result_re, result_im, error_re, error_im;
 
+        // ==================================
+        // CUBATURE EXAMPLE
+        // int FDIM(1), XDIM(1);
+        // const double XMIN []= {0}, XMAX[] = {M_PI_2};
+        // hcubature(FDIM, integrandCUBATUREreal, &myargs, XDIM, XMIN, XMAX, ITERATIONS, EPSABS, EPSREL, ERROR_INDIVIDUAL, &result_re, &error_re);
+        // hcubature(FDIM, integrandCUBATUREimag, &myargs, XDIM, XMIN, XMAX, ITERATIONS, EPSABS, EPSREL, ERROR_INDIVIDUAL, &result_im, &error_im);
+        // ==================================
+
+        // ====================================
         gsl_function F_re, F_im;
         if(!anti)
         {
-            F_re.function = [](double alpha, void* params){ return std::real(integrand(alpha, params)); };
-            F_im.function = [](double alpha, void* params){ return std::imag(integrand(alpha, params)); };
+            F_re.function = [](double alpha, void* params){ return std::real(myintegrand(alpha, params)); };
+            F_im.function = [](double alpha, void* params){ return std::imag(myintegrand(alpha, params)); };
         }
         else
         {
-            F_re.function = [](double alpha, void* params){ return std::real(integrand_anti(alpha, params)); };
-            F_im.function = [](double alpha, void* params){ return std::imag(integrand_anti(alpha, params)); };
+            F_re.function = [](double alpha, void* params){ return std::real(myintegrand_anti(alpha, params)); };
+            F_im.function = [](double alpha, void* params){ return std::imag(myintegrand_anti(alpha, params)); };
         }
         F_re.params = &myargs;
         F_im.params = &myargs;
-
-        double result_re, result_im, error_re, error_im;
 
         // int status = gsl_integration_qags(&F_re, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, workspace, &result_re, &error_re);
         int status = gsl_integration_qag(&F_re, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, KEY, workspace, &result_re, &error_re);
@@ -158,6 +188,9 @@ int main(int ac, char* av[])
         ("help", "produce help message")
         ("pTmax", po::value<double>()->default_value(1.0), "spectrum is computed on [0,pTmax]")
         ("NpT", po::value<int>()->default_value(100), "number of sample points within [0,pTmax]")
+        ("epsabs", po::value<double>()->default_value(0), "absolute integration error goal")
+        ("epsrel", po::value<double>()->default_value(1e-3), "relative integration error goal")
+        ("iter", po::value<int>()->default_value(1e4), "maximum integration iterations")
         ("initpath",po::value<std::string>(),"csv file containing initial field data");
 
     po::variables_map vm;
@@ -172,6 +205,9 @@ int main(int ac, char* av[])
     pmax = vm["pTmax"].as<double>();
     Nps = vm["NpT"].as<int>();
     initdata = vm["initpath"].as<std::string>();
+    EPSABS = vm["epsabs"].as<double>();
+    EPSREL = vm["epsrel"].as<double>();
+    ITERATIONS = vm["iter"].as<int>();
     /* #endregion */
 
     // CREATE DIRECTORY TO SAVE FILES
@@ -244,6 +280,31 @@ int main(int ac, char* av[])
     for (int i = 0; i < myspectr_anti.size(); i++)
         myspectr_anti_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr_anti[i]);
 
-    writeSamplesToFile(pathname+"/spectr.txt", ps, myspectr_abs2,{"pT","abs2Re","abs2Im"},{timestamp});
-    writeSamplesToFile(pathname+"/spectr_anti.txt", ps, myspectr_anti_abs2,{"pT","abs2Re","abs2Im"},{timestamp});
+    
+    std::stringstream initdata_ss, NpT_ss, pTmax_ss, epsabs_ss, epsrel_ss, iter_ss;
+    initdata_ss << "initdata:\t" << initdata;
+    NpT_ss << "NpT:\t" << Nps;
+    pTmax_ss << "pTmax:\t" << pmax;
+    epsabs_ss << "epsabs:\t" << EPSABS;
+    epsrel_ss << "epsrel:\t" << EPSREL;
+    iter_ss << "integr iter:\t" << ITERATIONS;
+
+    writeSamplesToFile(pathname+"/spectr.txt", ps, myspectr_abs2,{"pT","abs2Re","abs2Im"},
+        {   timestamp,
+            initdata_ss.str(),
+            NpT_ss.str(),
+            pTmax_ss.str(),
+            epsabs_ss.str(),
+            epsrel_ss.str(),
+            iter_ss.str()
+        });
+    writeSamplesToFile(pathname+"/spectr_anti.txt", ps, myspectr_anti_abs2,{"pT","abs2Re","abs2Im"},
+        {   timestamp,
+            initdata_ss.str(),
+            NpT_ss.str(),
+            pTmax_ss.str(),
+            epsabs_ss.str(),
+            epsrel_ss.str(),
+            iter_ss.str()
+        });
 }
