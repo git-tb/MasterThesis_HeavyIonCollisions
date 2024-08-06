@@ -15,7 +15,7 @@ void linearExtrapolate(std::vector<double> &x, std::vector<double> &y, double x_
         x.insert(x.begin(), newx.begin(), newx.end());
         y.insert(y.begin(), newy.begin(), newy.end());
     }
-    else if (x_extr > x[0])
+    else if (x_extr > x[x.size()-1])
     {
         int n = x.size();
         double slope = (y[n - 1] - y[n - 2]) / (x[n - 1] - x[n - 2]);
@@ -25,7 +25,7 @@ void linearExtrapolate(std::vector<double> &x, std::vector<double> &y, double x_
     }
     else
     {
-        std::cout << "ERROR! Extrapolation point must lie outside data range" << std::endl;
+        std::cout << "WARNING: Extrapolation point must lie outside data range. No extrapolation performed." << std::endl;
     }
 }
 

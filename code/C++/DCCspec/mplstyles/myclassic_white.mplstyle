@@ -216,8 +216,25 @@ axes.unicode_minus  : True    # use Unicode for the minus symbol
 #                                           # single letter, long name, or
 #                                           # web-style hex
 
+### from cycler import cycler
+### 
+### cc = cycler(color="bgrcmyk")
+### cm = cycler(marker=['D','s'])
+### 
+### cols = []
+### markers = []
+### 
+### for m in cm:
+###     for c in cc:
+###         cols.append(c["color"])
+###         markers.append(m["marker"])
+### 
+### print(cols)
+### print(markers)
 
-axes.prop_cycle    : cycler("color",['blue','red','green','violet','orange'])                           
+# USE https://matplotlib.org/stable/api/markers_api.html FOR MARKERS
+
+axes.prop_cycle    : cycler(color=['b', 'g', 'r', 'c', 'm', 'y', 'k', 'b', 'g', 'r', 'c', 'm', 'y', 'k'], marker=['X', 'X', 'X', 'X', 'X', 'X', 'X', 'P', 'P', 'P', 'P', 'P', 'P', 'P'])                           
 axes.autolimit_mode : round_numbers
 axes.xmargin        : 0  # x margin.  See `axes.Axes.margins`
 axes.ymargin        : 0  # y margin See `axes.Axes.margins`
@@ -348,7 +365,7 @@ contour.corner_mask : True
 errorbar.capsize: 3
 
 # scatter props
-scatter.marker: o
+scatter.marker: .
 
 ### Boxplots
 boxplot.bootstrap: None

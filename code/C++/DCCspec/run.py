@@ -35,7 +35,8 @@ print(result)
 # path = "data/spec_20240731_150822/"
 # path = "data/spec_20240731_151921/"
 # path = "data/spec_20240731_130022/"
-path = "data/spec_20240801_111153/"
+path = "data/spec_20240806_144955/"
+# path = "data/spec_20240806_151611/"
 prop = "ur"
 
 df_spec = pd.read_csv(path+"spectr.txt",comment="#")
@@ -52,7 +53,7 @@ fig.suptitle(path)
 plt.show()
 
 fig, ax = plt.subplots()
-ax.plot(df_spec["pT"].to_numpy(), df_spec["abs2Re"].to_numpy(),lw=3)
+ax.plot(df_spec["pT"].to_numpy(), df_spec["abs2Re"].to_numpy(),lw=3,ls="-.")
 ax.plot(df_specanti["pT"].to_numpy(), df_specanti["abs2Re"].to_numpy(),lw=1)
 ax.set_yscale("log")
 fig.suptitle(path)
@@ -70,7 +71,7 @@ plt.show()
 pTmax = 1
 NpT = 100
 # primespecpath = "data/spec_20240730_131734/spectr.txt"
-primespecpath = "data/spec_20240730_131221/spectr.txt"
+primespecpath = "data/spec_20240806_151611/spectr.txt"
 
 subprocess.run(args=[
     "./bin/decay",
@@ -81,21 +82,35 @@ subprocess.run(args=[
 # %%
 # PLOT SPECTRUM
 
-path1="data/decayspec_20240730_131835/"
-path2="data/decayspec_20240730_132116/"
+plt.style.use("mplstyles/myclassic_white.mplstyle")
 
-df_ds1 = pd.read_csv(path1+"decayspec.txt",comment="#")
-df_ps1 = pd.read_csv(path1+"primespec_interp.txt",comment="#")
-df_ds2 = pd.read_csv(path2+"decayspec.txt",comment="#")
-df_ps2 = pd.read_csv(path2+"primespec_interp.txt",comment="#")
+paths = [
+"data/decayspec_20240806_161324/",
+"data/decayspec_20240806_161542/",
+"data/decayspec_20240806_162432/",
+"data/decayspec_20240806_162634/",
+"data/decayspec_20240806_163017/",
+"data/decayspec_20240806_163439/",
+"data/decayspec_20240806_163743/",
+"data/decayspec_20240806_164059/",
+"data/decayspec_20240806_164445/",
+"data/decayspec_20240806_164831/",
+""][:-1]
 
-fig, ax = plt.subplots(nrows=1,ncols=2)
-ax[0].plot(df_ps1["q"].to_numpy(),df_ps1["primespecRe"].to_numpy())
-ax[1].plot(df_ds1["p"].to_numpy(),df_ds1["finalspecRe"].to_numpy())
-ax[0].plot(df_ps2["q"].to_numpy(),df_ps2["primespecRe"].to_numpy())
-ax[1].plot(df_ds2["p"].to_numpy(),df_ds2["finalspecRe"].to_numpy())
-ax[0].set_yscale("log")
-ax[1].set_yscale("log")
+print(paths)
+
+fig, ax = plt.subplots()
+
+for path in paths:
+    df_ps = pd.read_csv(path+"primespec_interp.txt",comment="#")
+    qmax = max(df_ps["q"].to_numpy())
+
+    df_ds = pd.read_csv(path+"decayspec.txt",comment="#")
+    ax.plot(df_ds["p"].to_numpy(),df_ds["finalspecRe"].to_numpy(),
+                label="qmax="+str(qmax),ls="None",ms=10)
+
+ax.set_yscale("log")
+plt.legend()
 plt.show()
 # %%
 

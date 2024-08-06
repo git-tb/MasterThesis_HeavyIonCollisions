@@ -95,7 +95,8 @@ std::vector<std::complex<double>> spectr(
     std::vector<double> ps,
     std::function<std::complex<double>(double)> func,
     std::function<std::complex<double>(double)> Dfunc,
-    bool anti = false)
+    bool anti = false,
+    std::function<void(double, std::complex<double>)> callback= [](double p, std::complex<double> val){ return; })
 {
     // FOR EVALUATION ON ARRAY OF PS, WE DON'T NEED TO ALLOCATE AND FREE
     //  THE MEMORY FOR THE INTEGRATION WORKSPACE OVER AND OVER AGAIN
@@ -148,6 +149,8 @@ std::vector<std::complex<double>> spectr(
             std::cout << gsl_strerror(status) << " at p = " << myargs.p << " | estimated error (imag): " << error_im << std::endl;
 
         result[i] = 2 * M_PI * M_PI * (result_re + 1i * result_im);
+
+        callback(ps[i],result[i]);
     }
 
     gsl_integration_workspace_free(workspace);
@@ -201,11 +204,11 @@ int main(int ac, char* av[])
     timestamp_sstr << std::put_time(&tm, "%Y%m%d_%H%M%S");
     std::string timestamp = timestamp_sstr.str();
     std::string pathname = "data/spec_"+timestamp;
-    std::filesystem::create_directories(pathname);
 
     csvdata mydata = ProcessFreezeoutData();            // THIS SETS TAU, R, DTAU, DR, UTAU, UR
     csvdata initialdata = ProcessInitialData(initdata); // THIS SETS F0, DF0
 
+    std::filesystem::create_directories(pathname);
     // SAVE FOR INSPECTION
     //  THE RAW SAMPLES
     writeSamplesToFile(pathname+"/tau_samp.txt", mydata.data[0], mydata.data[1],{"alpha","tauRe","tauIm"},{timestamp});
@@ -253,18 +256,7 @@ int main(int ac, char* av[])
     for (int i = 0; i < ps.size(); i++)
         ps[i] = pmin + i * (pmax - pmin) / (Nps - 1);
 
-    std::vector<std::complex<double>> myspectr = spectr(ps, func, Dfunc,false);
-    std::vector<std::complex<double>> myspectr_anti = spectr(ps, func, Dfunc,true);
-
-    std::vector<double> myspectr_abs2(myspectr.size());
-    for (int i = 0; i < myspectr.size(); i++)
-        myspectr_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr[i]);
-
-    std::vector<double> myspectr_anti_abs2(myspectr_anti.size());
-    for (int i = 0; i < myspectr_anti.size(); i++)
-        myspectr_anti_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr_anti[i]);
-
-    
+    // WRITE TO FILE DURING COMPUTATION, THEREFORE PREPARE THE FILE HERE
     std::stringstream initdata_ss, NpT_ss, pTmax_ss, epsabs_ss, epsrel_ss, iter_ss, mass_ss;
     initdata_ss << "initdata:\t" << initdata;
     NpT_ss << "NpT:\t" << Nps;
@@ -273,25 +265,90 @@ int main(int ac, char* av[])
     epsrel_ss << "epsrel:\t" << EPSREL;
     iter_ss << "integr iter:\t" << ITERATIONS;
     mass_ss << "particle mass:\t" << Mparticle;
+    std::vector<std::string> comments({   
+        timestamp,
+        initdata_ss.str(),
+        mass_ss.str(),
+        NpT_ss.str(),
+        pTmax_ss.str(),
+        epsabs_ss.str(),
+        epsrel_ss.str(),
+        iter_ss.str()
+    });
+    std::vector<std::string> headers({"pT","abs2Re","abs2Im"});
 
-    writeSamplesToFile(pathname+"/spectr.txt", ps, myspectr_abs2,{"pT","abs2Re","abs2Im"},
-        {   timestamp,
-            initdata_ss.str(),
-            mass_ss.str(),
-            NpT_ss.str(),
-            pTmax_ss.str(),
-            epsabs_ss.str(),
-            epsrel_ss.str(),
-            iter_ss.str()
-        });
-    writeSamplesToFile(pathname+"/spectr_anti.txt", ps, myspectr_anti_abs2,{"pT","abs2Re","abs2Im"},
-        {   timestamp,
-            initdata_ss.str(),
-            mass_ss.str(),
-            NpT_ss.str(),
-            pTmax_ss.str(),
-            epsabs_ss.str(),
-            epsrel_ss.str(),
-            iter_ss.str()
-        });
+    // START WITH THE PARTICLE SPECTRUM
+    std::string spectr_path = pathname+"/spectr.txt";
+    std::ofstream spectr_output(spectr_path);
+    if (!spectr_output.is_open()) { std::cerr << "Error opening the file: " << spectr_path << " to save to" << std::endl; return -1; }
+    for(int i = 0; i < comments.size(); i++) spectr_output << "# " << comments[i] << std::endl;
+    for(int i = 0; i < headers.size(); i++) { spectr_output << headers[i]; if(i != headers.size()-1) spectr_output << ","; }
+    spectr_output << std::endl;
+
+    std::function<void(double,std::complex<double>)> spectr_callback = [&spectr_output](double p, std::complex<double> value)
+    {
+        double abs2norm = (1 / std::pow(2 * M_PI, 3)) * std::norm(value);
+        spectr_output << p << "," << std::real(abs2norm) << "," << std::imag(abs2norm) << std::endl;
+    };   
+
+    std::vector<std::complex<double>> myspectr = spectr(ps, func, Dfunc,false,spectr_callback);
+    spectr_output.close();
+
+    // ...AND THEN THE ANTI PARTICLE SPECTRUM
+    std::string spectranti_path = pathname+"/spectr_anti.txt";
+    std::ofstream spectranti_output(spectranti_path);
+    if (!spectranti_output.is_open()) { std::cerr << "Error opening the file: " << spectranti_path << " to save to" << std::endl; return -1; }
+    for(int i = 0; i < comments.size(); i++) spectranti_output << "# " << comments[i] << std::endl;
+    for(int i = 0; i < headers.size(); i++) { spectranti_output << headers[i]; if(i != headers.size()-1) spectranti_output << ","; }
+    spectranti_output << std::endl;
+
+    std::function<void(double,std::complex<double>)> spectranti_callback = [&spectranti_output](double p, std::complex<double> value)
+    {
+        double abs2norm = (1 / std::pow(2 * M_PI, 3)) * std::norm(value);
+        spectranti_output << p << "," << std::real(abs2norm) << "," << std::imag(abs2norm) << std::endl;
+    };
+
+    std::vector<std::complex<double>> myspectr_anti = spectr(ps, func, Dfunc,true,spectranti_callback);
+    spectranti_output.close();
+
+    // std::vector<double> myspectr_abs2(myspectr.size());
+    // for (int i = 0; i < myspectr.size(); i++)
+    //     myspectr_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr[i]);
+
+    // std::vector<double> myspectr_anti_abs2(myspectr_anti.size());
+    // for (int i = 0; i < myspectr_anti.size(); i++)
+    //     myspectr_anti_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr_anti[i]);
+
+    
+    // std::stringstream initdata_ss, NpT_ss, pTmax_ss, epsabs_ss, epsrel_ss, iter_ss, mass_ss;
+    // initdata_ss << "initdata:\t" << initdata;
+    // NpT_ss << "NpT:\t" << Nps;
+    // pTmax_ss << "pTmax:\t" << pmax;
+    // epsabs_ss << "epsabs:\t" << EPSABS;
+    // epsrel_ss << "epsrel:\t" << EPSREL;
+    // iter_ss << "integr iter:\t" << ITERATIONS;
+    // mass_ss << "particle mass:\t" << Mparticle;
+
+    // writeSamplesToFile(pathname+"/spectr.txt", ps, myspectr_abs2,{"pT","abs2Re","abs2Im"},
+    //     {   timestamp,
+    //         initdata_ss.str(),
+    //         mass_ss.str(),
+    //         NpT_ss.str(),
+    //         pTmax_ss.str(),
+    //         epsabs_ss.str(),
+    //         epsrel_ss.str(),
+    //         iter_ss.str()
+    //     });
+    // writeSamplesToFile(pathname+"/spectr_anti.txt", ps, myspectr_anti_abs2,{"pT","abs2Re","abs2Im"},
+    //     {   timestamp,
+    //         initdata_ss.str(),
+    //         mass_ss.str(),
+    //         NpT_ss.str(),
+    //         pTmax_ss.str(),
+    //         epsabs_ss.str(),
+    //         epsrel_ss.str(),
+    //         iter_ss.str()
+    //     });
+
+    return 0;
 }

@@ -44,7 +44,7 @@ std::function<double(double, double,double)> areafactor = [](double t, double v,
     );
 };
 
-std::function<double(double)> primespec;
+std::function<double(double)> primespec = [](double x){ std::cout << "PRIMARY SPECTRUM FUNCTION UNINITIALIZED!"; return 0.0;};
 std::function<double(double,double,double)> restrictfunc = [](double t, double v, double p){
     // double u = (1 + t*v)/sqrt(2+t*t);
     // if(u <= 1)  return 0.0;
@@ -52,8 +52,8 @@ std::function<double(double,double,double)> restrictfunc = [](double t, double v
 
     double u = u_star(t,v,p);
     if(u <= 1) return 0.0;
-    return (1/sqrt(u*u-1)) * (1/sqrt(1-v*v)) * areafactor(t,v,p)/absgradg(t,u,v,p);
-    // return (1/sqrt(u*u-1)) * (1/sqrt(1-v*v)) * areafactor(t,v,p)/absgradg(t,u,v,p) * t * primespec(t*Q);
+    return (1/sqrt(u*u-1)) * (1/sqrt(1-v*v)) * areafactor(t,v,p)/absgradg(t,u,v,p) * t * primespec(t*Q);
+    // return (1/sqrt(u*u-1)) * (1/sqrt(1-v*v)) * areafactor(t,v,p)/absgradg(t,u,v,p);
 };
 
 struct argsCUBATURE
@@ -94,7 +94,8 @@ int integrandCUBATURE(
 std::vector<double> decayspec(
     std::vector<double> ps,
     std::function<double(double)> primespec,
-    double qmax)
+    double qmax,
+    std::function<void(double, double)> callback= [](double p, double val){ return; })
 {
     std::vector<double> finalspec(ps.size());
 
@@ -107,6 +108,10 @@ std::vector<double> decayspec(
     {
         std::cout << i + 1 << " / " << ps.size() << std::endl;
 
+        double vmin(-1);
+        double tmin(0);
+        double tmax(qmax/Q);
+
         double  A(ma*E_abc),
                 B(ps[i]*Q),
                 C(Q),
@@ -114,10 +119,18 @@ std::vector<double> decayspec(
                 F(ps[i]),
                 G(mb);
 
-        double vmin(-1);
-        if(-A*A*D*D + D*D*D*D*(F*F + G*G) > 0)
-            vmin = A*C*(-A + sqrt(F*F + G*G) * sqrt(D*D*D*D*(F*F + G*G)/(A*A)))/
-                        (B*sqrt(-A*A*D*D + D*D*D*D*(F*F + G*G)));
+        // if(-A*A*D*D + D*D*D*D*(F*F + G*G) >= 0)
+        //     vmin = A*C*(-A + sqrt(F*F + G*G) * sqrt(D*D*D*D*(F*F + G*G)/(A*A)))/
+        //                 (B*sqrt(-A*A*D*D + D*D*D*D*(F*F + G*G)));
+            
+        if(-E_abc*E_abc + ps[i]*ps[i] + mb*mb >= 0)
+            vmin = sqrt(-E_abc*E_abc + ps[i]*ps[i] + mb*mb)/ps[i];
+        // if(E_abc >= mb) // this is always true
+        tmin = ma * (E_abc*ps[i] - w(ps[i],mb) * sqrt(E_abc*E_abc - mb*mb))/(mb*mb);
+        tmax = ma * (E_abc*ps[i] + w(ps[i],mb) * sqrt(E_abc*E_abc - mb*mb))/(mb*mb);
+
+        tmin = tmin > 0 ? tmin : 0;
+        tmax = tmax < qmax/Q ? tmax : qmax/Q;
 
         // ------------------ WITH CUBATURE LIBRARY -------------------------
         // const double    XMIN[2] = {0,vmin},
@@ -145,8 +158,8 @@ std::vector<double> decayspec(
         int nregions, neval, fail;
         double integral[NCOMP], error[NCOMP], prob[NCOMP];
 
-        myargsCUBA.tmin = 0;
-        myargsCUBA.tmax = qmax/Q;
+        myargsCUBA.tmin = tmin;
+        myargsCUBA.tmax = tmax;
         myargsCUBA.vmin = vmin;
         myargsCUBA.vmax = 1;
         myargsCUBA.p = ps[i];
@@ -159,6 +172,7 @@ std::vector<double> decayspec(
             &nregions, &neval, &fail, integral, error, prob);
 
         finalspec[i] = integral[0];
+        callback(ps[i],finalspec[i]);
     }
     return finalspec;
 }
@@ -201,19 +215,17 @@ int main(int ac, char* av[])
     timestamp_sstr << std::put_time(&tm, "%Y%m%d_%H%M%S");
     std::string timestamp = timestamp_sstr.str();
     std::string pathname = "data/decayspec_"+timestamp;
-    std::filesystem::create_directories(pathname);
+    // std::filesystem::create_directories(pathname); // create later, such that in case of read-in error & abort no empty directory is created
 
     // INTERPOLATE PRIMESPEC FROM DATA
     csvdata primespecdata = readcsv(primespecpath);
     std::vector<double> x(primespecdata.data[0]);
     std::vector<double> y(primespecdata.data[1]);
-
-    std::vector<double> log10y(y.size());
-    for(int i = 0; i < y.size(); i++) log10y[i] = log10(y[i]);
-
-    linearExtrapolate(x, log10y, 0 - 0.01);
-
     double qmin(0), qmax(x[x.size()-1]);
+
+    std::vector<double> log10y(y.size()); // logarithmics data is probably interpolated better
+    for(int i = 0; i < y.size(); i++) log10y[i] = log10(y[i]);
+    linearExtrapolate(x, log10y, 0 - 0.01);
 
     using boost::math::interpolators::pchip;
     auto logspecspline = pchip(
@@ -222,20 +234,44 @@ int main(int ac, char* av[])
     primespec = [&](double p){ return pow(10, logspecspline(p)); };
 
     int NSAMPLE(1000);
+    std::filesystem::create_directories(pathname); // CREATE DIRECTORY HERE
     writeFuncToFile(pathname+"/primespec_interp.txt", primespec, qmin, qmax, NSAMPLE, {"q","primespecRe","primespecIm"},{timestamp});
 
     // COMPUTE DECAY SPEC
     std::vector<double> ps(Nps);
     for (int i = 0; i < ps.size(); i++) ps[i] = pmin + i * (pmax - pmin) / (Nps - 1);
-    std::vector<double> finalspec = decayspec(ps, primespec,qmax);
-    
+
+    // AGAIN, WRITE TO FILE DURING COMPUTATION, SO PREPARE THE FILE BEFOREHAND
     std::stringstream qmax_ss, primespec_ss;
-    qmax_ss << "gmax:\t" << qmax;
+    qmax_ss << "qmax:\t" << qmax;
     primespec_ss << "primespec:\t" << primespecpath;
-    writeSamplesToFile(pathname+"/decayspec.txt", ps, finalspec, {"p","finalspecRe","finalspecIm"},
-    {
+    std::vector<std::string> comments({
         timestamp,
         primespec_ss.str(),
         qmax_ss.str(),
     });
+    std::vector<std::string> headers({"p","finalspecRe","finalspecIm"});
+
+    std::string path = pathname+"/decayspec.txt";
+    std::ofstream decayspec_output(path);
+    if (!decayspec_output.is_open()) { std::cerr << "Error opening the file: " << path << " to save to" << std::endl; return -1; }
+    for(int i = 0; i < comments.size(); i++) decayspec_output << "# " << comments[i] << std::endl;
+    for(int i = 0; i < headers.size(); i++) { decayspec_output << headers[i]; if(i != headers.size()-1) decayspec_output << ","; }
+    decayspec_output << std::endl;
+
+    std::function<void(double,double)> callback = [&decayspec_output](double p, double value)
+    {
+        decayspec_output << p << "," << std::real(value) << "," << std::imag(value) << std::endl;
+    }; 
+    std::vector<double> finalspec = decayspec(ps, primespec,qmax,callback);
+    
+    // std::stringstream qmax_ss, primespec_ss;
+    // qmax_ss << "gmax:\t" << qmax;
+    // primespec_ss << "primespec:\t" << primespecpath;
+    // writeSamplesToFile(pathname+"/decayspec.txt", ps, finalspec, {"p","finalspecRe","finalspecIm"},
+    // {
+    //     timestamp,
+    //     primespec_ss.str(),
+    //     qmax_ss.str(),
+    // });
 }
