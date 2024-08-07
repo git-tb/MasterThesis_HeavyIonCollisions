@@ -171,7 +171,7 @@ std::vector<double> decayspec(
             STATEFILE, SPIN,
             &nregions, &neval, &fail, integral, error, prob);
 
-        finalspec[i] = integral[0];
+        finalspec[i] = integral[0] * Q*Q*ma / (p_abc * M_PI);
         callback(ps[i],finalspec[i]);
     }
     return finalspec;

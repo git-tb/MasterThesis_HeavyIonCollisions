@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 from IPython import get_ipython
+import glob
 
 get_ipython().run_line_magic("matplotlib","qt")
 plt.style.use("mplstyles/myclassic_white.mplstyle")
@@ -11,58 +12,151 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 #%%
 # COMPUTE A SPECTRUM FROM INITIALDATA
 
-pTmax = 10
-NpT = 100
-# initpath = "data/init_20240730_172100/initialfields_pi0.csv"
-initpath = "initial1.csv"
+pTmax = 2
+NpT = 200
 
-result = subprocess.run(args=[
-    "./bin/spec",
-    "--pTmax=%f"%(pTmax),
-    "--NpT=%d"%(NpT),
-    "--epsabs=0",
-    "--epsrel=1e-6",
-    "--iter=10000",
-    "--initpath=%s"%(initpath)
-])
-print(result)
+initpaths = [
+    "data/init_real/init0.csv",
+    "data/init_real/init1.csv",
+    "data/init_real/init2.csv",
+    "data/init_real/init3.csv",
+    "data/init_real/init4.csv",
+    "data/init_real/init5.csv",
+    "data/init_real/init6.csv",
+    "data/init_real/init7.csv",
+    "data/init_real/init8.csv",
+    "data/init_real/init9.csv",
+    "data/init_real/init10.csv",
+    ""][:-1]
+
+for initpath in initpaths:
+    result = subprocess.run(args=[
+        "./bin/spec",
+        "--pTmax=%f"%(pTmax),
+        "--NpT=%d"%(NpT),
+        "--epsabs=0",
+        "--epsrel=1e-5",
+        "--iter=10000",
+        "--initpath=%s"%(initpath)
+    ])
+    print(result)
 
 #%%
-# PLOT SPECTRUM
+# PLOT A SINGLE SPECTRUM
 
-# path = "data/spec_20240731_142132/"
-# path = "data/spec_20240731_143403/"
-# path = "data/spec_20240731_150822/"
-# path = "data/spec_20240731_151921/"
-# path = "data/spec_20240731_130022/"
-path = "data/spec_20240806_144955/"
-# path = "data/spec_20240806_151611/"
-prop = "ur"
+path = "data/sigmadecay/spec_20240807_223737"
+# path = "data/realfield_inittest/spec_20240807_212830"
 
-df_spec = pd.read_csv(path+"spectr.txt",comment="#")
-df_specanti = pd.read_csv(path+"spectr_anti.txt",comment="#")
-df_init = pd.read_csv(path+prop+"_samp.txt",comment="#")
-df_init2 = pd.read_csv(path+prop+"_interp.txt",comment="#")
-df_field = pd.read_csv(path+"field0.txt",comment="#")
+df_field0 = pd.read_csv(path+"/field0.txt",comment="#")
+df_Dfield0 = pd.read_csv(path+"/field0_deriv.txt",comment="#")
+df_spec = pd.read_csv(path+"/spectr.txt",comment="#")
 
-fig, ax = plt.subplots()
-ax.plot(df_init2["alpha"].to_numpy(), df_init2[prop+"Re"].to_numpy(),c="r")
-ax.scatter(df_init["alpha"].to_numpy(), df_init[prop+"Re"].to_numpy(),c="g")
-ax.set_title(prop)
-fig.suptitle(path)
+fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
+fig_spec, ax_spec = plt.subplots(figsize=(7,7))
+
+ax_init1.plot(
+    df_field0["alpha"].to_numpy(),
+    df_field0["field0Re"].to_numpy())
+ax_init2.plot(
+    df_Dfield0["alpha"].to_numpy(),
+    df_Dfield0["Dfield0Re"].to_numpy())
+ax_spec.plot(
+    df_spec["pT"].to_numpy(),
+    df_spec["abs2Re"].to_numpy())
+
+ax_init1.set_ylabel(r"$\phi$")
+ax_init2.set_ylabel(r"$n^\mu\partial_\mu\phi$")
+ax_spec.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
+
+ax_init1.set_xlabel(r"$\alpha$")
+ax_init2.set_xlabel(r"$\alpha$")
+ax_spec.set_xlabel(r"$p^\perp$")
+
+ax_spec.set_yscale("log")
+
 plt.show()
 
-fig, ax = plt.subplots()
-ax.plot(df_spec["pT"].to_numpy(), df_spec["abs2Re"].to_numpy(),lw=3,ls="-.")
-ax.plot(df_specanti["pT"].to_numpy(), df_specanti["abs2Re"].to_numpy(),lw=1)
-ax.set_yscale("log")
-fig.suptitle(path)
-plt.show()
+#%%
+# PLOT LIST OF SPECTRA
 
-fig, ax = plt.subplots()
-ax.plot(df_field["alpha"].to_numpy(), df_field["field0Re"].to_numpy())
-ax.plot(df_field["alpha"].to_numpy(), df_field["field0Im"].to_numpy())
-fig.suptitle(path)
+import scipy.interpolate
+
+paths = glob.glob("data/realfield_inittest/*/")
+
+fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
+fig_spec, ax_spec = plt.subplots(figsize=(7,7))
+fig_fullspec, ax_fullspec = plt.subplots(figsize=(7,7))
+
+ax_init1.set_ylabel(r"$\pi^0$")
+ax_init2.set_ylabel(r"$n^\mu\partial_\mu\pi^0$")
+ax_spec.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
+
+ax_init1.set_xlabel(r"$\alpha$")
+ax_init2.set_xlabel(r"$\alpha$")
+ax_spec.set_xlabel(r"$p^\perp$")
+
+ax_spec.set_yscale("log")
+ax_fullspec.set_yscale("log")
+
+decaypath = "data/sigmadecay/decayspec_20240807_230447"
+
+df_decayspec = pd.read_csv(decaypath+"/decayspec.txt",comment="#")
+df_decayprimespec = pd.read_csv(decaypath+"/primespec_interp.txt",comment="#")
+
+decayfunc = scipy.interpolate.CubicSpline(
+    df_decayspec["p"].to_numpy()[1:],
+    0.6666667*df_decayspec["finalspecRe"].to_numpy()[1:])
+
+fig_decay, (ax_decay1, ax_decay2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
+ax_decay1.plot(
+    df_decayprimespec["q"].to_numpy(),
+    df_decayprimespec["primespecRe"].to_numpy(),
+)
+ax_decay2.plot(
+    df_decayspec["p"].to_numpy(),
+    df_decayspec["finalspecRe"].to_numpy()
+)
+
+ax_decay1.set_yscale("log")
+ax_decay2.set_yscale("log")
+
+ax_decay1.set_xlabel(r"$p^\perp$")
+ax_decay2.set_xlabel(r"$p^\perp$")
+
+for (n,path) in enumerate(paths):
+    df_spec = pd.read_csv(path+"spectr.txt",comment="#")
+    df_field0 = pd.read_csv(path+"field0.txt",comment="#")
+    df_Dfield0 = pd.read_csv(path+"field0_deriv.txt",comment="#")
+
+    t = n / (len(paths)-1)
+    col=(t,0,1-t)
+
+    ax_init1.plot(
+        df_field0["alpha"].to_numpy(),
+        df_field0["field0Re"].to_numpy(),
+        marker="",
+        color=col)
+
+    ax_init2.plot(
+        df_Dfield0["alpha"].to_numpy(),
+        df_Dfield0["Dfield0Re"].to_numpy(),
+        marker="",
+        color=col)
+
+    ax_spec.plot(
+        df_spec["pT"].to_numpy(),
+        df_spec["abs2Re"].to_numpy(),
+        marker="",
+        color=col)
+    
+    ax_fullspec.plot(
+        df_spec["pT"].to_numpy(),
+        df_spec["abs2Re"].to_numpy()+decayfunc(df_spec["pT"].to_numpy()),
+        marker="",
+        color=col)
+
+fig_init.tight_layout()
+fig_spec.tight_layout()
 plt.show()
 
 # %%
@@ -85,19 +179,17 @@ subprocess.run(args=[
 plt.style.use("mplstyles/myclassic_white.mplstyle")
 
 paths = [
-"data/decayspec_20240806_161324/",
-"data/decayspec_20240806_161542/",
-"data/decayspec_20240806_162432/",
-"data/decayspec_20240806_162634/",
-"data/decayspec_20240806_163017/",
-"data/decayspec_20240806_163439/",
-"data/decayspec_20240806_163743/",
-"data/decayspec_20240806_164059/",
-"data/decayspec_20240806_164445/",
-"data/decayspec_20240806_164831/",
+"data/decaytest_1to10Gev/decayspec_20240806_161324/",
+"data/decaytest_1to10Gev/decayspec_20240806_161542/",
+"data/decaytest_1to10Gev/decayspec_20240806_162432/",
+"data/decaytest_1to10Gev/decayspec_20240806_162634/",
+"data/decaytest_1to10Gev/decayspec_20240806_163017/",
+"data/decaytest_1to10Gev/decayspec_20240806_163439/",
+"data/decaytest_1to10Gev/decayspec_20240806_163743/",
+"data/decaytest_1to10Gev/decayspec_20240806_164059/",
+"data/decaytest_1to10Gev/decayspec_20240806_164445/",
+"data/decaytest_1to10Gev/decayspec_20240806_164831/",
 ""][:-1]
-
-print(paths)
 
 fig, ax = plt.subplots()
 
@@ -107,9 +199,13 @@ for path in paths:
 
     df_ds = pd.read_csv(path+"decayspec.txt",comment="#")
     ax.plot(df_ds["p"].to_numpy(),df_ds["finalspecRe"].to_numpy(),
-                label="qmax="+str(qmax),ls="None",ms=10)
+                label=r"$q_{\mathrm{max}}=%.1f\,\mathrm{GeV}$"%(qmax),ls="None",ms=10)
 
 ax.set_yscale("log")
+
+ax.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
+ax.set_xlabel(r"$p^\perp$")
+
 plt.legend()
 plt.show()
 # %%
