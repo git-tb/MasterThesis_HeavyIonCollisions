@@ -16,17 +16,17 @@ pTmax = 2
 NpT = 200
 
 initpaths = [
-    "data/init_real/init0.csv",
-    "data/init_real/init1.csv",
-    "data/init_real/init2.csv",
-    "data/init_real/init3.csv",
-    "data/init_real/init4.csv",
-    "data/init_real/init5.csv",
-    "data/init_real/init6.csv",
-    "data/init_real/init7.csv",
-    "data/init_real/init8.csv",
-    "data/init_real/init9.csv",
-    "data/init_real/init10.csv",
+    "data/init_real_v2/init0.csv",
+    "data/init_real_v2/init1.csv",
+    "data/init_real_v2/init2.csv",
+    "data/init_real_v2/init3.csv",
+    "data/init_real_v2/init4.csv",
+    "data/init_real_v2/init5.csv",
+    "data/init_real_v2/init6.csv",
+    "data/init_real_v2/init7.csv",
+    "data/init_real_v2/init8.csv",
+    "data/init_real_v2/init9.csv",
+    "data/init_real_v2/init10.csv",
     ""][:-1]
 
 for initpath in initpaths:
@@ -51,18 +51,24 @@ df_field0 = pd.read_csv(path+"/field0.txt",comment="#")
 df_Dfield0 = pd.read_csv(path+"/field0_deriv.txt",comment="#")
 df_spec = pd.read_csv(path+"/spectr.txt",comment="#")
 
-fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
-fig_spec, ax_spec = plt.subplots(figsize=(7,7))
+fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(14,6))
+fig_spec, ax_spec = plt.subplots(figsize=(6,6))
+
+fig_init.suptitle(path)
+fig_spec.suptitle(path)
 
 ax_init1.plot(
     df_field0["alpha"].to_numpy(),
-    df_field0["field0Re"].to_numpy())
+    df_field0["field0Re"].to_numpy(),
+    marker="")
 ax_init2.plot(
     df_Dfield0["alpha"].to_numpy(),
-    df_Dfield0["Dfield0Re"].to_numpy())
+    df_Dfield0["Dfield0Re"].to_numpy(),
+    marker="")
 ax_spec.plot(
     df_spec["pT"].to_numpy(),
-    df_spec["abs2Re"].to_numpy())
+    df_spec["abs2Re"].to_numpy(),
+    marker="")
 
 ax_init1.set_ylabel(r"$\phi$")
 ax_init2.set_ylabel(r"$n^\mu\partial_\mu\phi$")
@@ -73,6 +79,11 @@ ax_init2.set_xlabel(r"$\alpha$")
 ax_spec.set_xlabel(r"$p^\perp$")
 
 ax_spec.set_yscale("log")
+ax_spec.set_ylim(10**(-3),10**5)
+ax_spec.set_xlim(0,2)
+
+fig_init.tight_layout()
+fig_spec.tight_layout()
 
 plt.show()
 
@@ -81,7 +92,8 @@ plt.show()
 
 import scipy.interpolate
 
-paths = glob.glob("data/realfield_inittest/*/")
+parentdir = "data/realfield_inittest_v2/*/"
+paths = glob.glob(parentdir)
 
 fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
 fig_spec, ax_spec = plt.subplots(figsize=(7,7))
@@ -103,6 +115,7 @@ decaypath = "data/sigmadecay/decayspec_20240807_230447"
 df_decayspec = pd.read_csv(decaypath+"/decayspec.txt",comment="#")
 df_decayprimespec = pd.read_csv(decaypath+"/primespec_interp.txt",comment="#")
 
+###
 decayfunc = scipy.interpolate.CubicSpline(
     df_decayspec["p"].to_numpy()[1:],
     0.6666667*df_decayspec["finalspecRe"].to_numpy()[1:])
@@ -111,10 +124,12 @@ fig_decay, (ax_decay1, ax_decay2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
 ax_decay1.plot(
     df_decayprimespec["q"].to_numpy(),
     df_decayprimespec["primespecRe"].to_numpy(),
+    marker=""
 )
 ax_decay2.plot(
     df_decayspec["p"].to_numpy(),
-    df_decayspec["finalspecRe"].to_numpy()
+    df_decayspec["finalspecRe"].to_numpy(),
+    marker=""
 )
 
 ax_decay1.set_yscale("log")
@@ -122,6 +137,16 @@ ax_decay2.set_yscale("log")
 
 ax_decay1.set_xlabel(r"$p^\perp$")
 ax_decay2.set_xlabel(r"$p^\perp$")
+ax_fullspec.set_xlabel(r"$p^\perp$")
+
+ax_decay1.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
+ax_decay2.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
+ax_fullspec.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
+
+fig_decay.tight_layout()
+###
+
+ax_fullspec.set_xlim(ax_decay2.get_xlim())
 
 for (n,path) in enumerate(paths):
     df_spec = pd.read_csv(path+"spectr.txt",comment="#")
@@ -155,8 +180,15 @@ for (n,path) in enumerate(paths):
         marker="",
         color=col)
 
+fig_init.suptitle(parentdir)
+fig_spec.suptitle(parentdir)
+fig_decay.suptitle(decaypath)
+fig_fullspec.suptitle(parentdir+"\n"+decaypath)
+
 fig_init.tight_layout()
 fig_spec.tight_layout()
+fig_fullspec.tight_layout()
+
 plt.show()
 
 # %%
@@ -174,7 +206,7 @@ subprocess.run(args=[
     "--primespecpath=%s"%(primespecpath)
 ])
 # %%
-# PLOT SPECTRUM
+# PLOT DECAYTEST SPECTRA
 
 plt.style.use("mplstyles/myclassic_white.mplstyle")
 
@@ -191,20 +223,34 @@ paths = [
 "data/decaytest_1to10Gev/decayspec_20240806_164831/",
 ""][:-1]
 
-fig, ax = plt.subplots()
+fig_decayspec, (ax_primespec,ax_decayspec)= plt.subplots(ncols=2,figsize=(15,7))
+fig_decayspec.suptitle("data/decaytest_1to10Gev")
+
+df_ps = pd.read_csv(paths[-1]+"primespec_interp.txt",comment="#")
+ax_primespec.plot(df_ps["q"],df_ps["primespecRe"],marker="")
+ax_primespec.set_yscale("log")
+ax_primespec.set_ylabel(r"$\frac{1}{2\pi q^\perp}\frac{\mathrm{d}N}{\mathrm{d}q^\perp\mathrm{d}\eta_q}$")
+ax_primespec.set_xlabel(r"$q^\perp$")
+
+istart, iend = 0, 200
+axin = ax_primespec.inset_axes([0.35,0.45,0.6,0.5])
+axin.plot(df_ps["q"][istart:iend],df_ps["primespecRe"][istart:iend],marker="")
+axin.set_yscale("log")
 
 for path in paths:
     df_ps = pd.read_csv(path+"primespec_interp.txt",comment="#")
     qmax = max(df_ps["q"].to_numpy())
 
     df_ds = pd.read_csv(path+"decayspec.txt",comment="#")
-    ax.plot(df_ds["p"].to_numpy(),df_ds["finalspecRe"].to_numpy(),
+    ax_decayspec.plot(df_ds["p"].to_numpy(),df_ds["finalspecRe"].to_numpy(),
                 label=r"$q_{\mathrm{max}}=%.1f\,\mathrm{GeV}$"%(qmax),ls="None",ms=10)
 
-ax.set_yscale("log")
+ax_decayspec.set_yscale("log")
 
-ax.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
-ax.set_xlabel(r"$p^\perp$")
+ax_decayspec.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
+ax_decayspec.set_xlabel(r"$p^\perp$")
+
+fig_decayspec.tight_layout()
 
 plt.legend()
 plt.show()

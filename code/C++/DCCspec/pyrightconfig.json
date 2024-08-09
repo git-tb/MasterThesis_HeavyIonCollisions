@@ -1,0 +1,14 @@
+{  
+    "exclude": [
+      "**/node_modules",
+      "**/__pycache__",
+      "**/.*",
+      "src",
+      "include",
+      "data",
+      "cubature",
+      "Cuba-4.2.2",
+      "boost_1_82_0",
+      "bin"
+    ]
+  }
