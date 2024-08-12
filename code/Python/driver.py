@@ -24,10 +24,10 @@ def driver(tau, u, r, nghost=1):
     sigma, pi, Psigma, Ppi = u
 
     # calculate all necessary derivatives
-    dr_sigma =  gr.ghost_pad(op.D1(sigma, r, nghost=nghost), nghost=nghost)
-    ddr_sigma =  gr.ghost_pad(op.D2(sigma, r, nghost=nghost), nghost=nghost)
-    dr_pi =  gr.ghost_pad(op.D1(pi, r, nghost=nghost), nghost=nghost)
-    ddr_pi =  gr.ghost_pad(op.D2(pi, r, nghost=nghost), nghost=nghost)
+    dr_sigma = gr.ghost_pad(op.D1(sigma, r, nghost=nghost), nghost=nghost)
+    ddr_sigma = gr.ghost_pad(op.D2(sigma, r, nghost=nghost), nghost=nghost)
+    dr_pi = gr.ghost_pad(op.D1(pi, r, nghost=nghost), nghost=nghost)
+    ddr_pi = gr.ghost_pad(op.D2(pi, r, nghost=nghost), nghost=nghost)
 
     fc.BC_parity(dr_sigma, is_even=False, left_side=True, nghost=nghost)
     fc.BC_parity(ddr_sigma, is_even=True, left_side=True, nghost=nghost)
@@ -88,8 +88,8 @@ dtau = (tau_f - tau_i) / N_t
 # =======================================
 # initial conditions
 
-sigma0 = v0 * np.ones_like(r)
-pi0 = 0.0001*(r**2)*np.exp(-(r-10)**2)
+sigma0 = (v0+eps/(2*mu2)) * np.ones_like(r)
+pi0 = 0.001*(r**2)*np.exp(-(r-10)**2)
 Psigma0 = np.zeros_like(r)
 Ppi0 = np.zeros_like(r)
 
@@ -126,6 +126,7 @@ for t_idx in range(int(N_t)):
     print("tau=", tau)
     
     u_c = it.ev_step_RK4(tau, u_c, dtau, driver_func)
+
     tau = tau + dtau
     taus.append(tau)
 
@@ -138,6 +139,14 @@ sigmahist, pihist, Psigmahist, Ppihist = np.transpose(hist,(1,0,2))
 
 
 # %%
+
+skip = 5
+taus = taus[::skip]
+sigmahist, pihist, Psigmahist, Ppihist = sigmahist[::skip], pihist[::skip], Psigmahist[::skip], Ppihist[::skip]
+
+
+%matplotlib qt
+plt.style.use("mplstyles/myclassic_white.mplstyle")
 
 fig = plt.figure(figsize=(19,10))
 gs = GridSpec(2,2,figure=fig)
@@ -157,6 +166,14 @@ axpi.set_title(r"$\pi$")
 axPsigma.set_title(r"$\Pi\sigma$")
 axPpi.set_title(r"$\Pi\pi$")
 
+def getlims(a):
+    return np.min(a)-0.05*np.ptp(a), np.max(a)+0.05*np.ptp(a)
+
+axsigma.set_ylim(getlims(sigmahist))
+axpi.set_ylim(getlims(pihist))
+axPsigma.set_ylim(getlims(Psigmahist))
+axPpi.set_ylim(getlims(Ppihist))
+
 def update(frame):
     fig.suptitle(r"$tau=$"+str(taus[frame]))
 
@@ -165,15 +182,17 @@ def update(frame):
     plotPsigma.set_ydata(Psigmahist[frame])
     plotPpi.set_ydata(Ppihist[frame])
 
-    axsigma.relim()
-    axpi.relim()
-    axPsigma.relim()
-    axPpi.relim()
+    # axsigma.relim()
+    # axpi.relim()
+    # axPsigma.relim()
+    # axPpi.relim()
 
-    axsigma.autoscale_view()
-    axpi.autoscale_view()
-    axPsigma.autoscale_view()
-    axPpi.autoscale_view()
+    # axsigma.autoscale_view()
+    # axpi.autoscale_view()
+    # axPsigma.autoscale_view()
+    # axPpi.autoscale_view()
+
+    # axsigma.set_ylim(-1,1)
 
 
 ani = AnimPlayer.Player(fig=fig, func=update,maxi=len(taus)-1)
