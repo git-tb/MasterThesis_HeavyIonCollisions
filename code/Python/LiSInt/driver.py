@@ -21,9 +21,16 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 
 %matplotlib inline
 
+tau0 = 0.1
+tauf = 50
+
 fpi = 94.5 # MeV
 mpi = 140 # MeV
 msigma = 600 # MeV
+
+# fpi = 2 # MeV
+# mpi = 0.05*2 # MeV
+# msigma = 1 # MeV
 
 lam = (msigma**2/2 + mpi**2)/(fpi**2)
 
@@ -31,6 +38,8 @@ def V(sigma, pi1, pi2, pi3,T):
     rho2 = (sigma**2 + pi1**2 + pi2**2 + pi3**3)
     return lam/4 * (rho2**2) -lam/2 * rho2 * (fpi**2 -mpi**2/lam - T**2/2) - fpi*mpi**2 * sigma
 
+
+### TEMPERATURE DEPENDENCE OF POTENTIAL
 fig, (axsig, axpi) = plt.subplots(ncols=2,figsize=(20,10))
 Ts = np.linspace(0,200,5)
 xs = np.linspace(0,200,1000)
@@ -55,13 +64,13 @@ axsig.legend()
 axpi.legend()
 plt.show()
 
+### TEMPERATURE AS A FUNCTION OF TAU, R
 T0 = 200
-tau0 = 0.1
-tauf = 2
 
 def T(tau,r):
-    dist = np.sqrt(tau**2 + r**2)
-    return T0 * (dist/tau0)**(-1/3)
+    return np.zeros_like(r)
+    # dist = np.sqrt(tau**2 + r**2)
+    # return T0 * (dist/tau0)**(-1/3)
 
 rgrid = np.linspace(0,10,100)
 taugrid = np.linspace(0,10,100)
@@ -69,21 +78,12 @@ rgrid, taugrid = np.meshgrid(rgrid, taugrid)
 Tgrid = T(rgrid, taugrid)
 
 fig, ax = plt.subplots()
+
 mylevels = np.logspace(1,np.log10(T0),20)
 contours = ax.contour(rgrid, taugrid, Tgrid,colors="k",levels=mylevels)
 ax.contourf(rgrid, taugrid, Tgrid,levels=mylevels)
-
 plt.clabel(contours,fmt="%2.1d MeV",colors="k",levels=mylevels)
-
 plt.show()
-
-# fig, ax = plt.subplots(figsize=(10,10))
-
-# taus = np.linspace(tau0,tauf,100)
-# ax.plot(taus,T(taus,0),marker="")
-# ax.set_ylabel(r"$T\ [\mathrm{MeV}]$")
-# ax.set_xlabel(r"$\tau\,[\mathrm{fm}]$")
-# plt.show()
 
 # %%
 # ================== DEFINE ODE SYSTEM ======================
@@ -144,24 +144,28 @@ def driver(tau, u, r, nghost=1):
 # grid parameters
 nghost = 2
 Nr = 500
-r_a, r_b = 0, 30
+r_a, r_b = 0,5
 
 r = gr.gr_CC(Nr, r_a, r_b, nghost=nghost)
 dr = r[1] - r[0]
 
-N_t = 10000
+dtau = 0.001
+N_t = (tauf-tau0)/dtau
+N_save = 1000
+skip_save = N_t//N_save
+print("skip %.d before save"%(skip_save))
 dtau = (tauf - tau0) / N_t
 
 # =======================================
 # initial conditions
-sigma = (fpi) * np.ones_like(r)
-pi0 = np.sin(r)
-pi1 = np.sin(r)
-pi2 = np.sin(r)
+sigma = fpi * np.ones_like(r)
+pi0 = (r**2)*np.exp(-5*(r-(r_b-r_a)/2)**2)
+pi1 = np.zeros_like(r)
+pi2 = np.zeros_like(r)
 Psigma = np.zeros_like(r)
-Ppi0 = np.cos(r)
-Ppi1 = np.cos(r)
-Ppi2 = np.cos(r)
+Ppi0 = np.zeros_like(r)
+Ppi1 = np.zeros_like(r)
+Ppi2 = np.zeros_like(r)
 
 fields = (sigma, pi0, pi1, pi2)
 Pfields = (Psigma, Ppi0, Ppi1, Ppi2)
@@ -179,6 +183,24 @@ for (field, Pfield) in list(zip(fields, Pfields)):
 # set up state vector
 u_i = np.vstack((*fields, *Pfields))
 
+# =======================================
+# PLOT
+%matplotlib qt
+fig = plt.figure(figsize=(19,10))
+gs = GridSpec(2,4,figure=fig)
+
+labels = [r"$\sigma$",r"$\pi^0$",r"$\pi^1$",r"$\pi^2$"]
+
+for (idx, _) in enumerate(fields):
+    axfield = fig.add_subplot(gs[0,idx])
+    axPfield = fig.add_subplot(gs[1,idx])
+
+    axfield.plot(r, fields[idx])
+    axPfield.plot(r, Pfields[idx])
+
+    axfield.set_title(labels[idx])
+    axPfield.set_title(r"$\Pi$"+labels[idx])
+
 
 # %%
 # ================== PERFORM EVOLUTION ======================
@@ -193,13 +215,14 @@ hist = [u_i]
 tau = tau0
 taus = [tau]
 for t_idx in range(int(N_t)):
-    print("tau=", tau)
+    print("tau=%.3f (%.d/%.d)"%(tau,t_idx,N_t))
     
     u_c = it.ev_step_RK4(tau, u_c, dtau, driver_func)
 
     tau = tau + dtau
-    taus.append(tau)
-    hist.append(u_c)
+    if(t_idx % skip_save == 0):
+        taus.append(tau)
+        hist.append(u_c)
 
 hist = np.array(hist)
 
@@ -233,8 +256,8 @@ for (idx, _) in enumerate(fieldhists):
     axfield.set_title(labels[idx])
     axPfield.set_title(r"$\Pi$"+labels[idx])
 
-    # axfield.set_ylim(getlims(fieldhists[idx]))
-    # axPfield.set_ylim(getlims(Pfieldhists[idx]))
+    axfield.set_ylim(getlims(fieldhists[idx]))
+    axPfield.set_ylim(getlims(Pfieldhists[idx]))
 
     axfields.append(axfield)
     axPfields.append(axPfield)
@@ -255,3 +278,4 @@ def update(frame):
 
 ani = AnimPlayer.Player(fig=fig, func=update,maxi=len(taus)-1)
 plt.show()
+# %%

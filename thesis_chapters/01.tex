@@ -304,6 +304,7 @@ Equation \eqref{eq:ClassicalFieldAfterSource} allows use to extract
 The Lagrangian density
 \begin{equation}
     \mathscr{L}=\mathcal{L}_{\text{kin}}-V(\sigma,\vec{\pi})=-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}(\partial_\mu\vec{\pi})(\partial^\mu\vec{\pi})+\frac{1}{2}\mu^2(\sigma^2+\vec{\pi}^2)-\frac{\lambda}{4}(\sigma^2+\vec{\pi}^2)^2+h\sigma
+    \label{eq:LinearSigmaModelLagrangian}
 \end{equation}
 can be expanded around the minimum at $\sigma_0=f_\pi+h\cdot\frac{1}{2\mu^2}+\mathcal{O}(h^2)$ where $f_\pi=\frac{\mu}{\sqrt{\lambda}}$. Performing the substitution $\sigma\mapsto v+\sigma$ and neglecting terms of order $\mathcal{O}(h^2,\sigma^3,\sigma\vec{\pi}^2,(\vec{\pi}^2)^2)$ and higher the potential reads
 \begin{equation}
@@ -347,95 +348,220 @@ Following \textbf{CITE WEINBERG COSMOLOGY} the energy momentum tensor of a real 
         u^\mu&=-\big[-g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\big]^{-1/2}g^{\mu\nu}\partial_\nu\varphi
     \end{align}
 \end{subequations}
-\subsubsection{Matching to Fluid Variables for the Real Field $\pi^0$}
+
+
+\subsection{Conserved Currents from Chiral Symmetries}
+
+Define
+\begin{equation}
+    \Phi=\sigma\mathbb{1}+\imagu\pi^a\tau^a=\begin{pmatrix}
+        \sigma+\imagu\pi^0 & \sqrt{2}\pi^+      \\
+        \sqrt{2}\pi^-      & \sigma-\imagu\pi^0
+    \end{pmatrix}\,,\qquad\pi^\pm=\frac{1}{\sqrt{2}}(\pi^1\mp\imagu\pi^2)
+\end{equation}
+where $\tau^a$, $a\in\{0,1,2\}$ are the Pauli matrices (more precisely, $\tau^a=\sigma^{a+1}$ since $\sigma^0$ is usually reserved for the identity). Using $(\tau^a)^\dagger=\tau^a$, $\Tr(\tau^a\tau^b)=2\delta^{ab}$ and $\Tr(\tau^a)=0$ one immediately finds for example $\Tr(\Phi^\dagger\Phi)=2(\sigma^2+\pi^a\pi^a)$ and the linear $\sigma$-model Lagrangian \eqref{eq:LinearSigmaModelLagrangian} can easily be shown to be equivalent to
+\begin{equation}
+    \mathscr{L}=-\frac{1}{4}\Tr\big[(\partial_\mu\Phi^\dagger)(\partial_\mu\Phi\big)]-\Bigg(-\frac{1}{4}\mu^2\Tr\big[\Phi^\dagger\Phi\big]+\frac{\lambda}{8}\Big(\Tr\big[\Phi^\dagger\Phi\big]\Big)^2-\frac{h}{4}\Tr\big[\Phi^\dagger+\Phi\big]\Bigg)
+    \label{eq:Lagrangian_LinearSigma2}
+\end{equation}
+
+Investigate the transformation behaviour of the field $\Phi$ under chiral symmetry transformation, following \cite{Koch_1997}. These symmetries are
+\begin{subequations}
+    \begin{align}
+         &  & U_V(1): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\alpha}\psi                                             &  \overline{\psi}&\mapsto\overline{\psi}e^{\frac{\imagu}{2}\alpha}     &&                              \\
+         &  & U_A(1): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\gamma_5\alpha}\psi                                     &  \overline{\psi}      & \mapsto \overline{\psi}e^{-\frac{\imagu}{2}\gamma_5\alpha} &&                                \\
+         &  & SU_V(N_f): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\alpha_a\tau_a}\psi                                             &  \overline{\psi}&\mapsto\overline{\psi}e^{\frac{\imagu}{2}\alpha_a\tau_a}     &&                              \\
+         &  & SU_A(N_f): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\gamma_5\alpha_a\tau_a}\psi                                     &  \overline{\psi}      & \mapsto \overline{\psi}e^{-\frac{\imagu}{2}\gamma_5\alpha_a\tau_a} &&                                \\
+        \intertext{Pions and the $\sigma$ field are certain bound states of quarks, namely $\pi_a=\imagu\overline{\psi}\tau_a\gamma_5\psi$ and $\sigma=\overline{\psi}\psi$. Under the above transformations one finds infinitesimally}
+         &  & U_V(1): &  & \pi_a            & \mapsto\pi_a & \sigma & \mapsto\sigma               &  & \\
+         &  & U_A(1): &  & \pi_a            & \mapsto\pi_a+\alpha\overline{\psi}\tau_a\psi                                                                & \sigma & \mapsto\sigma-\imagu\alpha\overline{\psi}\gamma_5\psi &  & \\
+         &  & SU_V(N_f): &  & \pi_a            & \mapsto\pi_a+\epsilon_{abc}\alpha_b\pi_c                                                    & \sigma & \mapsto\sigma               &  & \\
+         &  & SU_A(N_f): &  & \pi_a            & \mapsto\pi_a+\alpha_a\sigma                                                                 & \sigma & \mapsto\sigma-\pi_a\alpha_a &  & \\
+        \intertext{and after some calculations}
+         &  & U_V(1): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}                                                              \\
+         &  & U_A(1): &  & \Phi^{(\dagger)} & \mapsto ??? &        &                                  \\
+         &  & SU_V(N_f): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}-\imagu\frac{\alpha^a}{2}[\tau^a,\Phi^{(\dagger)}]                                                              \\
+         &  & SU_A(N_f): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}\overset{(-)}{+}\imagu\frac{\alpha^a}{2}\{\tau^a,\Phi^{(\dagger)}\} &        &                                  \\
+        \intertext{This infintesimal transformation behaviour corresponds to the finite transformations}
+         &  & SU_V(N_f): &  & \Phi & \mapsto U\Phi U^\dagger                                                          &        \Phi^{\dagger} & \mapsto U\Phi^{\dagger}U^\dagger                                  \\
+         &  & SU_A(N_f): &  & \Phi             & \mapsto U^\dagger\Phi U^\dagger&\Phi^\dagger&\mapsto U\Phi^\dagger U                 &                                              
+    \end{align}
+\end{subequations}
+with $U=\exp\big(-\frac{\imagu}{2}\alpha^a\tau^a)$.
+
+\begin{calc}[Transformation of pions and $\sigma$-mesons under chiral transformations]{calc:ChiralTransformPionSigma}
+\begin{subequations}
+\begin{align}
+    &&SU_V(N_f):&&\pi^a&\mapsto\pi^a-\frac{\alpha^b}{2}\overline{\psi}\underbrace{(\tau^b\tau^a-\tau^a\tau^b)}_{=-[\tau^a,\tau^b]=-2\imagu\epsilon^{acb}\tau^c}\psi&&&&\\
+    &&&&&=\pi^a+\epsilon^{abc}\alpha^b\pi^c&&&&\\
+    &&SU_A(N_f):&&\pi^a&\mapsto\pi^a+\frac{\alpha^b}{2}\overline{\psi}\underbrace{(\tau^b\tau^a+\tau^a\tau^b)}_{=\{\tau^a,\tau^b\}=2\delta^{ab}}\psi&&&&\\
+    &&&&&=\pi^a+\alpha^a\sigma&&&&\\
+    &&SU_V(N_f):&&\Phi^{\textcolor{red}{(\dagger)}}&\mapsto\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(-)}}{+}\imagu\tau^a\epsilon^{abc}\alpha^b\pi^c&&&&\\
+    &&&&&=\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(+)}}{-}\imagu\alpha^a\epsilon^{abc}\tau^b\pi^c&&&&\\
+    \intertext{\dots using $[\tau^a,\Phi^{\textcolor{red}{(\dagger)}}]=\overset{\textcolor{red}{(-)}}{+}\imagu\pi^b[\tau^a,\tau^b]=\overset{\textcolor{red}{(+)}}{-}2\pi^b\epsilon^{abc}\tau^c=\overset{\textcolor{red}{(-)}}{+}2\epsilon^{abc}\tau^b\pi^c$\dots}
+    &&&&&=\Phi^{\textcolor{red}{(\dagger)}}-\imagu\frac{\alpha^a}{2}[\tau^a,\Phi^{\textcolor{red}{(\dagger)}}]&&&&\\
+    &&SU_A(N_f):&&\Phi^{\textcolor{red}{(\dagger)}}&\mapsto\Phi^{\textcolor{red}{(\dagger)}}-\alpha^a\pi^a\overset{\textcolor{red}{(-)}}{+}\imagu\tau^a\alpha^a\sigma&&&&\\
+    &&&&&=\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(-)}}{+}\imagu\alpha^a(\tau^a\sigma\overset{\textcolor{red}{(-)}}{+}\imagu\pi^a)&&&&\\
+    \intertext{\dots using $\{\tau^a,\Phi^{\textcolor{red}{(\dagger)}}\}=2\sigma\tau^a\overset{\textcolor{red}{(-)}}{+}\imagu\pi^b\{\tau^a,\tau^b\}=2(\sigma\tau^a\overset{\textcolor{red}{(-)}}{+}\imagu\pi^a)$\dots}
+    &&&&&=\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(-)}}{+}\imagu\frac{\alpha^a}{2}\{\tau^a,\Phi^{\textcolor{red}{(\dagger)}}\}&&&&
+\end{align}
+\end{subequations}
+\end{calc}
+
+Let us also compute the conserved currents.
+\begin{subequations}
+    \begin{align}
+        &&SU_V(N_f):&&\alpha^aJ_V^{a,\mu}&=-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\sigma)}\delta\sigma-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\pi^a)}\delta\pi^a&&&&\\
+        &&&&&=(\partial^\mu\pi^a)\epsilon^{abc}\alpha^b\pi^c\\
+        &&&&&=-\alpha^a\epsilon^{abc}(\partial^\mu\pi^b)\pi^c\\
+        &&SU_A(N_f):&&\alpha^aJ_A^{a,\mu}&=-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\sigma)}\delta\sigma-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\pi^a)}\delta\pi^a&&&&\\
+        &&&&&=-(\partial_\mu\sigma)\alpha^a\pi^a+(\partial_\mu\pi^a)\alpha^a\sigma\\
+        &&&&&=-\alpha^a\big((\partial^\mu\sigma)\pi^a-(\partial_\mu\pi^a)\sigma\big)
+    \end{align}
+\end{subequations}
+or in terms of $\Phi^{(\dagger)}$
+\begin{subequations}
+    \begin{align}
+        J^\mu_V & =-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi]_{jk}}[\delta\Phi]_{jk}-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi^\dagger]_{jk}}[\delta\Phi^\dagger]_{jk}                                                                      \\
+                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\Big([\partial^\mu\Phi^\dagger]_{kj}[\tau^a,\Phi]_{jk}+[\partial^\mu\Phi]_{kj}[\tau^a,\Phi^\dagger]_{jk}\Big)                                                                                               \\
+                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big((\partial_\mu\Phi^\dagger)[\tau^a,\Phi]+(\partial_\mu\Phi)[\tau^a,\Phi^\dagger]\Big)                                                                                                                \\
+                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big(\big((\partial_\mu\sigma)-\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2\epsilon^{abc}\tau^b\pi^c+\big((\partial_\mu\sigma)+\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot(-2)\epsilon^{abc}\tau^b\pi^c\Big) \\
+                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\cdot\big(-8\imagu\epsilon^{abc}(\partial_\mu\pi^b)\pi^c\big)
+    \end{align}
+    and
+    \begin{align}
+        J^\mu_A & =-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi]_{jk}}[\delta\Phi]_{jk}-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi^\dagger]_{jk}}[\delta\Phi^\dagger]_{jk}                                                                    \\
+                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\Big([\partial^\mu\Phi^\dagger]_{kj}\{\tau^a,\Phi\}_{jk}-[\partial^\mu\Phi]_{kj}\{\tau^a,\Phi^\dagger\}_{jk}\Big)                                                                                          \\
+                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big((\partial_\mu\Phi^\dagger)\{\tau^a,\Phi\}-(\partial_\mu\Phi)\{\tau^a,\Phi^\dagger\}\Big)                                                                                                           \\
+                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big(\big((\partial_\mu\sigma)-\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2(\sigma\tau^a+\imagu\pi^a)-\big((\partial_\mu\sigma)+\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2(\sigma\tau^a-\imagu\pi^a)\Big) \\
+                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\cdot\big(4\imagu(\partial_\mu\sigma)\pi^a\Tr(\mathbb{1})-4\imagu\sigma(\partial_\mu\pi^b)\Tr(\tau^a\tau^b)\big)                                                                                           \\
+                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\cdot8\imagu\cdot\big((\partial_\mu\sigma)\pi^a-\sigma(\partial_\mu\pi^a)\big)
+    \end{align}
+\end{subequations}
+
+In summary, we found 3 conserved vector currents $J_V^{a,\mu}$ and 3 conserved axial currents $J_A^{a,\mu}$, that (omitting the -) take the form
+\begin{equation}
+    J_V^{a,\mu}=\epsilon^{abc}(\partial^\mu\pi^b)\pi^c\,,\qquad J_A^{a,\mu}=(\partial^\mu\sigma)\pi^a-(\partial^\mu\pi^a)\sigma
+\end{equation}
+Using the projection $\epsilon^{abc}J_V^{a,\mu}=(\partial^\mu\pi^b)\pi^c-(\partial^\mu\pi^c)\pi^b$, the conserved currents can also be stated as
+\begin{equation}
+    J^\mu[\phi_1,\phi_2]=\phi_1\overset{\leftrightarrow}{\partial_\mu}\phi_2\,,\qquad\text{where}\,\phi_{1}\neq\phi_2\,,\phi_{1,2}\in\{\sigma,\pi^0,\pi^1,\pi^2\}\,.
+\end{equation}
+This looks strinkingly similar to the conservation of the current described in the next section \eqref{subsec:FourierDeformHypersurface}, making use of the Klein-Gordon equation for fields of equal masses.
+
+If $J^\mu_{V,A}$ are assumed to be parallel to $u^\mu$, the assumption that all fields change only in direction of $u^\mu$ is consistent.
+
+
+\subsection{Models for Initial Data}
+
+We shall try to investigate certain classes of initial conditions:
+\begin{impt}[Possibilies to Fix Initial Data]{impt:InitialData}
+\begin{enumerate}
+    \item prescribe fields and orhtogonal derivatives directly \dots
+    \begin{itemize}
+        \item \dots in the sense of an expansion (starting with constants, Gauß modes?, \dots)
+        \item \dots as function of $(\tau,r)$
+    \end{itemize}
+    \item prescribe other physically accessible parameters like energy density $\epsilon$, pressure $p$, fluid velocity $u^\mu$\dots
+\end{enumerate}
+\end{impt}
+
+\subsubsection{Real Fields}
 \label{sec:FluidFromRealScalar}
 
-The only availabe $4$-vector in the fluid theory is $u_\mu$. It is thus intuitive to try to identify the real-valued $4$vector $\partial_\mu\pi^0\sim u_\mu$. Taking the normalization $u_\mu u^\mu=-1$ into account, one finds
+Let $\phi$ be a real scalar field, e.g. $\phi\in\{\sigma,\pi^0\}$. The only availabe $4$-vector in the fluid theory is $u_\mu$. It is thus intuitive to try to identify the real-valued $4$vector $\partial_\mu\phi\sim u_\mu$. Taking the normalization $u_\mu u^\mu=-1$ into account, one finds
 \begin{equation}
-    u_\mu=\frac{\partial_\mu\pi^0}{\chi}\,,\qquad0<\chi^2\defeq-(\partial_\mu\pi^0)(\partial^\mu\pi^0)
+    u_\mu=\frac{\partial_\mu\phi}{\chi}\,,\qquad0<\chi^2\defeq-(\partial_\mu\phi)(\partial^\mu\phi)
 \end{equation}
-From the fluid theory, we try to match the energy density of the hypothetical superfluid
-\begin{subequations}
-    \begin{align}
-        \epsilon_{s,\pi^0}=u_\mu u_\nu T^{\mu\nu}_{\pi^0}&=\frac{(\partial_\nu\pi^0)(\partial_\mu\pi^0)}{\chi^2}\Big((\partial^\mu\pi^0)(\partial^\nu\pi^0)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\pi^0)(\partial^\alpha\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\Big)\\
-        &=\chi^2-\big(\frac{1}{2}\chi^2-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\\
-        &=\frac{m_\pi^2(\pi^0)^2+\chi^2}{2}
-    \end{align}
-\end{subequations}
+This does not restrict the initial data enough to uniquely specify the resulting spectrum. We are left to prescribe two functions on the freezeout surface, namely $\phi\vert_{\Sigma_{\text{fo}}}$ and $\chi\vert_{\Sigma_{\text{fo}}}$.
 
-Imposing $\epsilon=\const$ on the freezout surface, which is parametrized by some angle $\alpha$, yields
+Regarding the second option in \ref{impt:InitialData}, from the fluid theory, we could try to match the energy density of the hypothetical superfluid
 \begin{subequations}
     \begin{align}
-        0=\dt\epsilon&=m_\pi^2\pi^0\dt\pi^0+\chi\dt\chi\\
-        &=m_\pi^2\pi^0(\partial_\mu\pi^0)\dt^\mu s+\chi\dt\chi\\
-        &=m_\pi^2\pi^0\chi u_\mu\dt^\mu s+\chi\dt\chi
+        \epsilon_{s,\phi}=u_\mu u_\nu T^{\mu\nu}_{\phi}&=\frac{(\partial_\nu\phi)(\partial_\mu\phi)}{\chi^2}\Big((\partial^\mu\phi)(\partial^\nu\phi)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\phi)(\partial^\alpha\phi)-\frac{1}{2}m_\phi^2(\phi)^2\big)\Big)   \\
+        &=\chi^2-\big(\frac{1}{2}\chi^2-\frac{1}{2}m_\phi^2\phi^2\big)  \\
+        &=\frac{1}{2}\big(m_\phi^2\phi^2+\chi^2\big)
     \end{align}
 \end{subequations}
-The solution $\pi^0$ on the freezout surface thus needs to fulfill the ODE
+which changes along the freezeout surface as
     \begin{equation}
-        \dt\pi^0=\chi u_\mu\dt^\mu s\,,\quad
-        \dt\chi=-m_\pi^2\pi^0 u_\mu\dt^\mu s
+        \dt\epsilon=m_\phi^2\phi\dt\phi+\chi\dt\chi=m_\phi^2\phi(\partial_i\phi)\dt^i s+\chi\dt\chi=m_\phi^2\phi(\chi u_i)\dt^i s+\chi\dt\chi
     \end{equation}
-    with $\dt^\mu s=(\partial x^\mu)/(\partial\alpha)\dt\alpha\equiv(\tau^\prime,r^\prime,0,0)\dt\alpha$ the displacement vector on the freezeout surface. Initial conditions leave 1 degree of freedom, namely the ratio of kinetic energy $\epsilon_{\text{kin}}=(1/2)\chi^2$ and $\epsilon_{\text{pot}}=(1/2)m_\pi^2(\pi^0)^2$ at $\alpha=0$. To be precise, choose $r\in[0,1]$ and set $\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon$ and $\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon$.
-
-\subsubsection{Matching to Fluid Variables for the Complex Fields $\pi^\pm$}
-
-The $U(1)$-symmetry $\pi^\pm\mapsto e^{\pm\imagu\alpha}\pi^\pm$ with infinitesimal transformation $\pi^\pm\mapsto(1\pm\imagu\delta\alpha)\pi^\pm$ generates a conserved Noether current
-\begin{subequations}
-    \begin{align}
-        j^\mu&\sim\frac{\delta\mathscr{L}}{\delta(\partial_\mu\pi^+)}\delta\pi^++\frac{\delta\mathscr{L}}{\delta(\partial_\mu\pi^-)}\delta\pi^-\\
-        &\sim\pi^-(\partial^\mu\pi^+)-\pi^+(\partial_\mu\pi^-)\\
-        &=\sqrt{n}\big((\partial_\mu\sqrt{n})+\imagu\sqrt{n}(\partial_\mu\theta)\big)-\sqrt{n}\big((\partial_\mu\sqrt{n})-\imagu\sqrt{n}(\partial_\mu\theta)\big)\\
-        &=n(\partial_\mu\theta)
-    \end{align}
-\end{subequations}
-with the parametrization $\pi^\pm=\sqrt{n}e^{\pm\imagu\theta}$. The most intuitive matching is now
+where the sum over $i\in\{\tau,r\}$ is to be taken w.r.t. to a Euclidean metric, i.e.
 \begin{equation}
-    u^\mu=\frac{\partial_\mu\theta}{\chi_\theta}\,,\qquad 0<\chi_\theta^2\defeq-(\partial_\mu\theta)(\partial^\mu\theta)
+    \dt\phi=\dt\tau\partial_\tau\phi+\dt r\partial_r\phi=\dt\alpha(\tau^\prime u_\tau+r^\prime u_r)\chi\equiv\chi u_i\dt^is
 \end{equation}
-leading to the energy density
+with $\dt^i s=(\partial x^\mu)/(\partial\alpha)\dt\alpha\equiv(\tau^\prime,r^\prime)\dt\alpha$ the displacement vector on the freezeout surface. For this prescription, the solution $\phi$ on the freezout surface thus needs to fulfill the ODE
+\begin{equation}
+    \dt\phi=\chi u_i\dt^i s\,,\quad
+    \dt\chi=\frac{1}{\chi}\dt\epsilon-m_\phi^2\phi u_i\dt^i s
+\end{equation}
+The solutions $(\phi,\chi)$ of this ODE have 1 degree of freedom, e.g. the ratio of kinetic energy $\epsilon_{\text{kin}}=(1/2)\chi^2$ and $\epsilon_{\text{pot}}=(1/2)m_\phi^2(\phi)^2$ at $\alpha=0$. To be precise, choose $r\in[0,1]$ and set $\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon$ and $\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon$.
+
+\subsubsection{Complex Fields}
+
+Let $\phi$ be a complex field, e.g. $\phi\in\{\pi^+,\pi^-\}$ with $U(1)$ symmetry. In the case of $\pi^\pm$, this $U(1)$ symmetry is the symmetry under chiral rotations of $\pi^1\leftrightarrow\pi^2$. Using $\pi^1=(1/\sqrt{2})(\pi^++\pi^-)$ and $\pi^2=(\imagu/\sqrt{2})(\pi^+-\pi^-)$, as well as $\pi^\pm=\sqrt{n}\exp(\pm\imagu\theta)$, the conserved current is
+\begin{align}
+    \epsilon^{a12}J_V^{a,\mu}&=(\partial^\mu\pi^1)\pi^2-(\partial^\mu\pi^2)\pi^1\\
+    &=\frac{\imagu}{2}\Big((\partial^\mu\pi^++\partial^\mu\pi^-)(\pi^+-\pi^-)-(\partial^\mu\pi^+-\partial^\mu\pi^-)(\pi^++\pi^-)\Big)\\
+    &=\imagu\Big(-(\partial^\mu\pi^+)\pi^-+(\partial^\mu\pi^-)\pi^+\Big)\\
+    &=\imagu\sqrt{n}\Big(-\big((\partial^\mu\sqrt{n})+\imagu\sqrt{n}(\partial^\mu\theta)\big)+\big((\partial^\mu\sqrt{n})-\imagu\sqrt{n}(\partial^\mu\theta)\big)\Big)\\
+    &=n(\partial^\mu\theta)
+\end{align}
+
+The ansatz $J_V^{\mu,a}\sim u^\mu$ now implies
+\begin{equation}
+    u^\mu=\frac{\partial^\mu\theta}{\chi_\theta}\,,\qquad 0<\chi_\theta^2\defeq-(\partial_\mu\theta)(\partial^\mu\theta)
+\end{equation}
+Further imposing $(\partial^\mu\pi^a)\sim u^\mu$ leads to 
+\begin{equation}
+    u_\mu=\frac{\partial_\mu\sqrt{n}}{\chi_n}\,,\qquad 0<\chi_n^2\defeq-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})
+\end{equation}
+and a resulting energy density of
 \begin{subequations}
     \begin{align}
-        \epsilon_{s,\pi^\pm}=u_\mu u_\nu T^{\mu\nu}_{\pi^\pm}&=\frac{(\partial_\mu\theta)(\partial_\nu\theta)}{\chi_\theta^2}\Big(2(\partial^\mu\pi^+)(\partial^\nu\pi^-)+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\partial^\alpha\pi^-)-m_\pi^2\pi^+\pi^-\big)\Big)\\
-        &=2\frac{[(\partial_\mu\sqrt{n})u^\mu]^2}{\chi_\theta^2}+2n\chi_\theta^2-\big(n\chi_\theta^2+\chi_n^2-m_\pi^2n\big)\\
-        &=n\chi_\theta^2+2[u^\mu(\partial_\mu\sqrt{n})]^2-\chi^2_n+m_\pi^2n
+        \epsilon_{s,\phi}=u_\mu u_\nu T^{\mu\nu}_{\phi}&=\frac{(\partial_\mu\theta)(\partial_\nu\theta)}{\chi_\theta^2}\Big(2(\partial^\mu\phi)(\partial^\nu\phi^*)+g^{\mu\nu}\big(-(\partial_\alpha\phi)(\partial^\alpha\phi^*)-m_\phi^2\phi\phi^*\big)\Big)\\
+        &=n\chi_\theta^2+\chi^2_n+m_\phi^2n
     \end{align}
 \end{subequations}
 where the intermediate calculation
 \begin{subequations}
     \begin{align}
-        (\partial^\mu\pi^+)(\partial^\nu\pi^-)&=\big((\partial^\mu\sqrt{n})+\imagu\sqrt{n}(\partial^\mu\theta)\big)\big((\partial^\nu\sqrt{n})-\imagu\sqrt{n}(\partial^\nu\theta)\big)\\
+        (\partial^\mu\phi)(\partial^\nu\phi^*)&=\big((\partial^\mu\sqrt{n})+\imagu\sqrt{n}(\partial^\mu\theta)\big)\big((\partial^\nu\sqrt{n})-\imagu\sqrt{n}(\partial^\nu\theta)\big)\\
         &=(\partial^\mu\sqrt{n})(\partial^\nu\sqrt{n})+n(\partial^\mu\theta)(\partial^\nu\theta)+\imagu\big(\sqrt{n}(\partial^\mu\theta)(\partial^\nu\sqrt{n})-\sqrt{n}(\partial^\nu\theta)(\partial^\mu\sqrt{n})\big)\\
-        (\partial_\mu\pi^+)(\partial^\mu\pi^-)&=-\chi_n^2-n\chi_\theta^2
+        (\partial_\mu\phi)(\partial^\mu\phi^*)&=-\chi_n^2-n\chi_\theta^2
     \end{align}
 \end{subequations}
-with $(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})\eqdef -\chi_n^2$ is useful. Note how the imaginary part of this tensor is antisymmetric and thus does not contribute upon contraction with a symmetric tensor. Assume further $\partial_\mu\sqrt{n}=u_\mu\chi_n$ then
+is useful. Note how the imaginary part of this tensor is antisymmetric and thus does not contribute upon contraction with a symmetric tensor.
+
+Considering the fact that we have already proposed ways to initialize the real valued fields $\pi^1$, $\pi^2$, we could also just simply construct $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$ from these fields. Given $\partial^\mu\pi^{1,2}$, the density of the charged pion fields changes as
 \begin{equation}
-    \epsilon_{s,\pi^\pm}=n\chi_\theta^2+\chi_n^2+m_\pi^2n
+    \partial^\mu n=\partial^\mu(\pi^+\pi^-)=\frac{1}{2}\partial^\mu\big((\pi^1)^2+(\pi^2)^2\big)=(\partial^\mu\pi^1)\pi^1+(\partial^\mu\pi^2)\pi^2
 \end{equation}
 
-Expressing the Lagrangian in terms of $(n,\theta)$ 
-\begin{equation}
-    \mathscr{L}_{\pi^\pm}=-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})-n(\partial_\mu\theta)(\partial^\mu\theta)-nm_\pi^2
-\end{equation}
-yields as the corresponding equations of motion
-\begin{subequations}
-    \begin{align}
-        \partial_\mu\Bigg(\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial(\partial_\mu\sqrt{n})}\Bigg)=\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial\sqrt{n}}&:&-2\Box\sqrt{n}&=-2\sqrt{n}\big((\partial_\mu\theta)(\partial^\mu\theta)+m_\pi^2\big)\\
-        \partial_\mu\Bigg(\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial(\partial_\mu\theta)}\Bigg)=\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial\theta}&:&\partial_\mu\big(-2n(\partial^\mu\theta)\big)&=0
-    \end{align}
-\end{subequations}
-the second of which encodes the conservation law for the $U(1)$-Noether current.
+% Expressing the Lagrangian in terms of $(n,\theta)$ 
+% \begin{equation}
+%     \mathscr{L}_{\pi^\pm}=-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})-n(\partial_\mu\theta)(\partial^\mu\theta)-nm_\pi^2
+% \end{equation}
+% yields as the corresponding equations of motion
+% \begin{subequations}
+%     \begin{align}
+%         \partial_\mu\Bigg(\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial(\partial_\mu\sqrt{n})}\Bigg)=\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial\sqrt{n}}&:&-2\Box\sqrt{n}&=-2\sqrt{n}\big((\partial_\mu\theta)(\partial^\mu\theta)+m_\pi^2\big)\\
+%         \partial_\mu\Bigg(\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial(\partial_\mu\theta)}\Bigg)=\frac{\partial\mathscr{L}_{\pi^\pm}}{\partial\theta}&:&\partial_\mu\big(-2n(\partial^\mu\theta)\big)&=0
+%     \end{align}
+% \end{subequations}
+% the second of which encodes the conservation law for the $U(1)$-Noether current.
 
-With the assumption $n=\const$ one finds
-\begin{subequations}
-    \begin{align}
-        0&=-\chi_\theta^2+m_\pi^2\\
-        \epsilon_{s,\pi^\pm}&=n\chi_\theta^2+nm_\pi^2=2nm_\pi^2\\
-        \theta&=\int\dt^\mu su_\mu \chi_\theta+\const\\
-        \partial_\mu\pi^\pm&=\imagu(\partial_\mu\theta)\pi^\pm=\imagu\chi_\theta u_\mu\pi^\pm
-    \end{align}
-\end{subequations}
+% With the assumption $n=\const$ one finds
+% \begin{subequations}
+%     \begin{align}
+%         0&=-\chi_\theta^2+m_\pi^2\\
+%         \epsilon_{s,\pi^\pm}&=n\chi_\theta^2+nm_\pi^2=2nm_\pi^2\\
+%         \theta&=\int\dt^\mu su_\mu \chi_\theta+\const\\
+%         \partial_\mu\pi^\pm&=\imagu(\partial_\mu\theta)\pi^\pm=\imagu\chi_\theta u_\mu\pi^\pm
+%     \end{align}
+% \end{subequations}
+
 
 \section{Evaluation on the Freezeout Surface}
 

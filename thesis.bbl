@@ -19,6 +19,51 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
+    \entry{Koch_1997}{article}{}
+      \name{author}{1}{}{%
+        {{hash=a7f4bf668408cc1902afbb9d1dc0be32}{%
+           family={Koch},
+           familyi={K\bibinitperiod},
+           given={Volker},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{a7f4bf668408cc1902afbb9d1dc0be32}
+      \strng{fullhash}{a7f4bf668408cc1902afbb9d1dc0be32}
+      \strng{bibnamehash}{a7f4bf668408cc1902afbb9d1dc0be32}
+      \strng{authorbibnamehash}{a7f4bf668408cc1902afbb9d1dc0be32}
+      \strng{authornamehash}{a7f4bf668408cc1902afbb9d1dc0be32}
+      \strng{authorfullhash}{a7f4bf668408cc1902afbb9d1dc0be32}
+      \field{labelalpha}{Koc97}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This article is an attempt to a pedagogical introduction and review into the elementary concepts of chiral symmetry in nuclear physics. Effective chiral models such as the linear and nonlinear sigma model will be discussed as well as the essential ideas of chiral perturbation theory. Some applications to the physics of ultrarelativistic heavy ion collisions will be presented.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{0218-3013, 1793-6608}
+      \field{journaltitle}{International Journal of Modern Physics E}
+      \field{month}{6}
+      \field{number}{02}
+      \field{title}{Aspects of {{Chiral Symmetry}}}
+      \field{urlday}{11}
+      \field{urlmonth}{6}
+      \field{urlyear}{2024}
+      \field{volume}{06}
+      \field{year}{1997}
+      \field{urldateera}{ce}
+      \field{pages}{203\bibrangedash 249}
+      \range{pages}{47}
+      \verb{doi}
+      \verb 10.1142/S0218301397000147
+      \endverb
+      \verb{eprint}
+      \verb nucl-th/9706075
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/ZUXZA56X/Koch - 1997 - Aspects of Chiral Symmetry.pdf;/home/tobias/Zotero/storage/PLQQEXS3/9706075.html
+      \endverb
+      \keyw{Nuclear Experiment,Nuclear Theory}
+    \endentry
     \entry{KirchnerEtAl_2023}{misc}{}
       \name{author}{3}{}{%
         {{hash=2cdd372b340499f2204a5afd3ef395f6}{%
@@ -47,8 +92,8 @@
       \strng{authornamehash}{0ede250374fe5868188340c29e64c200}
       \strng{authorfullhash}{0ede250374fe5868188340c29e64c200}
       \field{labelalpha}{KGF23}
-      \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}

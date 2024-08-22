@@ -195,6 +195,8 @@ int main(int ac, char* av[])
     EPSREL = vm["epsrel"].as<double>();
     ITERATIONS = vm["iter"].as<int>();
     Mparticle = vm["m"].as<double>();
+
+    std::cout << "[DEBUG] command line processing completed" << std::endl;
     /* #endregion */
 
     // CREATE DIRECTORY TO SAVE FILES
@@ -205,8 +207,10 @@ int main(int ac, char* av[])
     std::string timestamp = timestamp_sstr.str();
     std::string pathname = "data/spec_"+timestamp;
 
+    std::cout << "[DEBUG] start data processing" << std::endl;
     csvdata mydata = ProcessFreezeoutData();            // THIS SETS TAU, R, DTAU, DR, UTAU, UR
     csvdata initialdata = ProcessInitialData(initdata); // THIS SETS F0, DF0
+    std::cout << "[DEBUG] data processing completed" << std::endl;
 
     std::filesystem::create_directories(pathname);
     // SAVE FOR INSPECTION

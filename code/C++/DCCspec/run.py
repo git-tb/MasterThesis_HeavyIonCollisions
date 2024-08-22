@@ -12,8 +12,8 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 #%%
 # COMPUTE A SPECTRUM FROM INITIALDATA
 
-pTmax = 2
-NpT = 200
+pTmax = 1
+NpT = 100
 
 # initpaths = [
 #     "data/init_real_v2/init0.csv",
@@ -29,39 +29,53 @@ NpT = 200
 #     "data/init_real_v2/init10.csv",
 #     ""][:-1]
 
+# initpaths = [
+#     "data/init_piplus/init0.csv",
+#     "data/init_piplus/init1.csv",
+#     "data/init_piplus/init2.csv",
+#     "data/init_piplus/init3.csv",
+#     "data/init_piplus/init4.csv",
+#     "data/init_piplus/init5.csv",
+#     "data/init_piplus/init6.csv",
+#     "data/init_piplus/init7.csv",
+#     "data/init_piplus/init8.csv",
+#     "data/init_piplus/init9.csv",
+#     "data/init_piplus/init10.csv",
+#     "data/init_piplus/init11.csv",
+#     "data/init_piplus/init12.csv",
+#     "data/init_piplus/init13.csv",
+#     "data/init_piplus/init14.csv",
+#     "data/init_piplus/init15.csv",
+#     "data/init_piplus/init16.csv",
+#     "data/init_piplus/init17.csv",
+#     "data/init_piplus/init18.csv",
+#     "data/init_piplus/init19.csv",
+#     "data/init_piplus/init20.csv",
+#     "data/init_piplus/init21.csv",
+#     "data/init_piplus/init22.csv",
+#     "data/init_piplus/init23.csv",
+#     "data/init_piplus/init24.csv",
+#     "data/init_piplus/init25.csv",
+#     "data/init_piplus/init26.csv",
+#     "data/init_piplus/init27.csv",
+#     "data/init_piplus/init28.csv",
+#     "data/init_piplus/init29.csv",
+#     "data/init_piplus/init30.csv",
+#     "data/init_piplus/init31.csv",
+#     ""][:-1]
+
 initpaths = [
-    "data/init_piplus/init0.csv",
-    "data/init_piplus/init1.csv",
-    "data/init_piplus/init2.csv",
-    "data/init_piplus/init3.csv",
-    "data/init_piplus/init4.csv",
-    "data/init_piplus/init5.csv",
-    "data/init_piplus/init6.csv",
-    "data/init_piplus/init7.csv",
-    "data/init_piplus/init8.csv",
-    "data/init_piplus/init9.csv",
-    "data/init_piplus/init10.csv",
-    "data/init_piplus/init11.csv",
-    "data/init_piplus/init12.csv",
-    "data/init_piplus/init13.csv",
-    "data/init_piplus/init14.csv",
-    "data/init_piplus/init15.csv",
-    "data/init_piplus/init16.csv",
-    "data/init_piplus/init17.csv",
-    "data/init_piplus/init18.csv",
-    "data/init_piplus/init19.csv",
-    "data/init_piplus/init20.csv",
-    "data/init_piplus/init21.csv",
-    "data/init_piplus/init22.csv",
-    "data/init_piplus/init23.csv",
-    "data/init_piplus/init24.csv",
-    "data/init_piplus/init25.csv",
-    "data/init_piplus/init26.csv",
-    "data/init_piplus/init27.csv",
-    "data/init_piplus/init28.csv",
-    "data/init_piplus/init29.csv",
-    "data/init_piplus/init30.csv",
-    "data/init_piplus/init31.csv",
+    "data/init_20240821_184247/init0.csv",
+    "data/init_20240821_184247/init1.csv",
+    "data/init_20240821_184247/init2.csv",
+    "data/init_20240821_184247/init3.csv",
+    "data/init_20240821_184247/init4.csv",
+    "data/init_20240821_184247/init5.csv",
+    "data/init_20240821_184247/init6.csv",
+    "data/init_20240821_184247/init7.csv",
+    "data/init_20240821_184247/init8.csv",
+    "data/init_20240821_184247/init9.csv",
+    "data/init_20240821_184247/init10.csv",
     ""][:-1]
 
 for initpath in initpaths:
@@ -156,7 +170,9 @@ plt.show()
 
 import scipy.interpolate
 
-parentdir = "data/realfield_inittest_v2/*/"
+# parentdir = "data/realfield_inittest/*/"
+parentdir = "data/specsreal_v3/*/"
+# parentdir = "data/realfield_inittest_v2/*/"
 paths = glob.glob(parentdir)
 
 fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
