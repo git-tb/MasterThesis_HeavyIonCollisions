@@ -5,6 +5,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from IPython import get_ipython
 import glob
+import os
 
 get_ipython().run_line_magic("matplotlib","qt")
 plt.style.use("mplstyles/myclassic_white.mplstyle")
@@ -15,68 +16,17 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 pTmax = 1
 NpT = 100
 
-# initpaths = [
-#     "data/init_real_v2/init0.csv",
-#     "data/init_real_v2/init1.csv",
-#     "data/init_real_v2/init2.csv",
-#     "data/init_real_v2/init3.csv",
-#     "data/init_real_v2/init4.csv",
-#     "data/init_real_v2/init5.csv",
-#     "data/init_real_v2/init6.csv",
-#     "data/init_real_v2/init7.csv",
-#     "data/init_real_v2/init8.csv",
-#     "data/init_real_v2/init9.csv",
-#     "data/init_real_v2/init10.csv",
-#     ""][:-1]
+# parentdir = "data/init_real_pi_consteps_20240822_135426/*"
+# parentdir = "data/init_real_pi_consteps_20240822_135440/*"
+# parentdir = "data/init_real_pi_constfield_20240822_161734/*"
+# parentdir = "data/init_real_pi_constfield_20240822_161738/*"
+# parentdir = "data/init_comp_piplus_composed_consteps_20240822_145641/*"
+# parentdir = "data/init_comp_piplus_composed_consteps_20240822_145647/*"
+# parentdir = "data/init_comp_piplus_constfield_20240822_174903/*"
+parentdir = "data/init_comp_piplus_constfield_20240822_174908/*"
 
-# initpaths = [
-#     "data/init_piplus/init0.csv",
-#     "data/init_piplus/init1.csv",
-#     "data/init_piplus/init2.csv",
-#     "data/init_piplus/init3.csv",
-#     "data/init_piplus/init4.csv",
-#     "data/init_piplus/init5.csv",
-#     "data/init_piplus/init6.csv",
-#     "data/init_piplus/init7.csv",
-#     "data/init_piplus/init8.csv",
-#     "data/init_piplus/init9.csv",
-#     "data/init_piplus/init10.csv",
-#     "data/init_piplus/init11.csv",
-#     "data/init_piplus/init12.csv",
-#     "data/init_piplus/init13.csv",
-#     "data/init_piplus/init14.csv",
-#     "data/init_piplus/init15.csv",
-#     "data/init_piplus/init16.csv",
-#     "data/init_piplus/init17.csv",
-#     "data/init_piplus/init18.csv",
-#     "data/init_piplus/init19.csv",
-#     "data/init_piplus/init20.csv",
-#     "data/init_piplus/init21.csv",
-#     "data/init_piplus/init22.csv",
-#     "data/init_piplus/init23.csv",
-#     "data/init_piplus/init24.csv",
-#     "data/init_piplus/init25.csv",
-#     "data/init_piplus/init26.csv",
-#     "data/init_piplus/init27.csv",
-#     "data/init_piplus/init28.csv",
-#     "data/init_piplus/init29.csv",
-#     "data/init_piplus/init30.csv",
-#     "data/init_piplus/init31.csv",
-#     ""][:-1]
-
-initpaths = [
-    "data/init_20240821_184247/init0.csv",
-    "data/init_20240821_184247/init1.csv",
-    "data/init_20240821_184247/init2.csv",
-    "data/init_20240821_184247/init3.csv",
-    "data/init_20240821_184247/init4.csv",
-    "data/init_20240821_184247/init5.csv",
-    "data/init_20240821_184247/init6.csv",
-    "data/init_20240821_184247/init7.csv",
-    "data/init_20240821_184247/init8.csv",
-    "data/init_20240821_184247/init9.csv",
-    "data/init_20240821_184247/init10.csv",
-    ""][:-1]
+initpaths = glob.glob(parentdir)
+initpaths.sort(key=lambda s:(len(s), s))
 
 for initpath in initpaths:
     result = subprocess.run(args=[
@@ -89,6 +39,16 @@ for initpath in initpaths:
         "--initpath=%s"%(initpath)
     ])
     print(result)
+
+newdir = "data/newspectra"
+idx = 0
+while(os.path.isdir(newdir+str(idx))):
+    idx += 1
+subprocess.run(args=["mkdir",newdir+str(idx)])
+
+lastspecs = glob.glob("data/spec_????????_??????")
+for spec in lastspecs:
+    subprocess.run(args=["mv",spec,newdir+str(idx)])
 
 #%%
 # PLOT A SINGLE SPECTRUM
@@ -171,8 +131,12 @@ plt.show()
 import scipy.interpolate
 
 # parentdir = "data/realfield_inittest/*/"
-parentdir = "data/specsreal_v3/*/"
+# parentdir = "data/specsreal_v3/*/"
 # parentdir = "data/realfield_inittest_v2/*/"
+# parentdir = "data/spectra_consteps_20240822_135426/*/"
+# parentdir = "data/spectra_consteps_20240822_135440/*/"
+parentdir = "data/spectra_constfield_20240822_161734/*/"
+# parentdir = "data/spectra_constfield_20240822_161738/*/"
 paths = glob.glob(parentdir)
 
 fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
@@ -276,7 +240,10 @@ plt.show()
 
 import scipy.interpolate
 
-parentdir = "data/complexfield_inittest/*/"
+# parentdir = "data/spectra_comp_composed_consteps_20240822_145641/*/"
+# parentdir = "data/spectra_comp_composed_consteps_20240822_145647/*/"
+parentdir = "data/spectra_comp_constfield_20240822_162952/*/"
+# parentdir = "data/spectra_comp_constfield_20240822_162959/*/"
 paths = sorted(glob.glob(parentdir))
 
 fig_init, ((ax_init1, ax_init2),(ax_init1_im, ax_init2_im)) = plt.subplots(nrows=2,ncols=2,figsize=(12,12))
@@ -380,23 +347,23 @@ for (n,path) in enumerate(paths):
         df_spec["pT"].to_numpy(),
         df_spec["abs2Re"].to_numpy(),
         marker="",
-        c="b")
+        color=col)
     ax_specanti.plot(
         df_specanti["pT"].to_numpy(),
         df_specanti["abs2Re"].to_numpy(),
         marker="",
-        c="r")
+        color=col)
     
     ax_fullspec.plot(
         df_spec["pT"].to_numpy(),
         df_spec["abs2Re"].to_numpy()+decayfunc(df_spec["pT"].to_numpy()),
         marker="",
-        c="b")
+        color=col)
     ax_fullspecanti.plot(
         df_specanti["pT"].to_numpy(),
         df_specanti["abs2Re"].to_numpy()+decayfunc(df_specanti["pT"].to_numpy()),
         marker="",
-        c="r")
+        color=col)
 
 fig_init.suptitle(parentdir)
 fig_spec.suptitle(parentdir)
