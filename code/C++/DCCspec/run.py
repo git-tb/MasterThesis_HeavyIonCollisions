@@ -13,8 +13,8 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 #%%
 # COMPUTE A SPECTRUM FROM INITIALDATA
 
-pTmax = 1
-NpT = 100
+pTmax = 2
+NpT = 200
 
 # parentdir = "data/init_real_pi_consteps_20240822_135426/*"
 # parentdir = "data/init_real_pi_consteps_20240822_135440/*"
@@ -126,40 +126,51 @@ fig_spec.tight_layout()
 plt.show()
 
 #%%
+###############################################################
+###############################################################
 # PLOT LIST OF REAL FIELD SPECTRA
+###############################################################
+###############################################################
 
-import scipy.interpolate
+###
+# get_ipython().run_line_magic("matplotlib","inline")
+get_ipython().run_line_magic("matplotlib","qt")
+
+### TOGGLE WHETHER FIGURES SHOULD BE DISPLAYED IN INTERACTIVE MODE
+plt.ioff()
+# plt.ion()
+
 
 # parentdir = "data/realfield_inittest/*/"
 # parentdir = "data/specsreal_v3/*/"
 # parentdir = "data/realfield_inittest_v2/*/"
-# parentdir = "data/spectra_consteps_20240822_135426/*/"
-# parentdir = "data/spectra_consteps_20240822_135440/*/"
-parentdir = "data/spectra_constfield_20240822_161734/*/"
-# parentdir = "data/spectra_constfield_20240822_161738/*/"
+# parentdir = "data/spectra_real_consteps_20240822_135426/*/"
+# parentdir = "data/spectra_real_consteps_20240822_135440/*/"
+# parentdir = "data/spectra_real_constfield_20240822_161734/*/"
+parentdir = "data/spectra_real_constfield_20240822_161738/*/"
 paths = glob.glob(parentdir)
 
 fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
 fig_spec, ax_spec = plt.subplots(figsize=(7,7))
 fig_fullspec, ax_fullspec = plt.subplots(figsize=(7,7))
 
-ax_init1.set_ylabel(r"$\pi^0$")
-ax_init2.set_ylabel(r"$n^\mu\partial_\mu\pi^0$")
-ax_spec.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
+ax_init1.set_ylabel(r"$\pi^0\ [\mathrm{GeV}]$")
+ax_init2.set_ylabel(r"$n^\mu\partial_\mu\pi^0\ [\mathrm{GeV}^2]$")
+ax_spec.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
 
 ax_init1.set_xlabel(r"$\alpha$")
 ax_init2.set_xlabel(r"$\alpha$")
-ax_spec.set_xlabel(r"$p^\perp$")
+ax_spec.set_xlabel(r"$p^\perp\ [\mathrm{GeV}]$")
 
 ax_spec.set_yscale("log")
 ax_fullspec.set_yscale("log")
 
+###
 decaypath = "data/sigmadecay/decayspec_20240807_230447"
 
 df_decayspec = pd.read_csv(decaypath+"/decayspec.txt",comment="#")
 df_decayprimespec = pd.read_csv(decaypath+"/primespec_interp.txt",comment="#")
 
-###
 decayfunc = scipy.interpolate.CubicSpline(
     df_decayspec["p"].to_numpy()[1:],
     0.6666667*df_decayspec["finalspecRe"].to_numpy()[1:])
@@ -233,22 +244,35 @@ fig_init.tight_layout()
 fig_spec.tight_layout()
 fig_fullspec.tight_layout()
 
-plt.show()
+fig_init.savefig("data/images/"+parentdir.replace("data/","").replace("/*/","")+"_init.png",dpi=150)
+fig_spec.savefig("data/images/"+parentdir.replace("data/","").replace("/*/","")+"_spec.png",dpi=150)
+
+plt.close()
 
 #%%
+###############################################################
+###############################################################
 # PLOT LIST OF COMPLEX FIELD SPECTRA
+###############################################################
+###############################################################
 
-import scipy.interpolate
+###
+# get_ipython().run_line_magic("matplotlib","inline")
+get_ipython().run_line_magic("matplotlib","qt")
+
+### TOGGLE WHETHER FIGURES SHOULD BE DISPLAYED IN INTERACTIVE MODE
+plt.ioff()
+# plt.ion()
 
 # parentdir = "data/spectra_comp_composed_consteps_20240822_145641/*/"
 # parentdir = "data/spectra_comp_composed_consteps_20240822_145647/*/"
-parentdir = "data/spectra_comp_constfield_20240822_162952/*/"
+parentdir = "data/spectra_comp_constfield_20240822_174903/*/"
 # parentdir = "data/spectra_comp_constfield_20240822_162959/*/"
 paths = sorted(glob.glob(parentdir))
 
 fig_init, ((ax_init1, ax_init2),(ax_init1_im, ax_init2_im)) = plt.subplots(nrows=2,ncols=2,figsize=(12,12))
-fig_spec, ((ax_spec, ax_fullspec),(ax_specanti, ax_fullspecanti)) = plt.subplots(nrows=2,ncols=2,figsize=(12,12))
-# fig_fullspec, ax_fullspec = plt.subplots(figsize=(7,7))
+fig_spec, (ax_spec,ax_specanti) = plt.subplots(nrows=1,ncols=2,figsize=(12,6))
+fig_fullspec, (ax_fullspec,ax_fullspecanti) = plt.subplots(nrows=1,ncols=2,figsize=(12,6))
 
 ax_init1.set_ylabel(r"$\Re(\pi^+)$")
 ax_init2.set_ylabel(r"$\Re(n^\mu\partial_\mu\pi^+$)")
@@ -273,12 +297,12 @@ ax_specanti.set_yscale("log")
 ax_fullspec.set_yscale("log")
 ax_fullspecanti.set_yscale("log")
 
+######
 decaypath = "data/sigmadecay/decayspec_20240807_230447"
 
 df_decayspec = pd.read_csv(decaypath+"/decayspec.txt",comment="#")
 df_decayprimespec = pd.read_csv(decaypath+"/primespec_interp.txt",comment="#")
 
-###
 decayfunc = scipy.interpolate.CubicSpline(
     df_decayspec["p"].to_numpy()[1:],
     0.6666667*df_decayspec["finalspecRe"].to_numpy()[1:])
@@ -309,7 +333,7 @@ ax_decay2.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\pe
 ax_fullspec.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
 
 fig_decay.tight_layout()
-###
+######
 
 for (n,path) in enumerate(paths):
     df_spec = pd.read_csv(path+"spectr.txt",comment="#")
@@ -367,11 +391,16 @@ for (n,path) in enumerate(paths):
 
 fig_init.suptitle(parentdir)
 fig_spec.suptitle(parentdir)
+fig_fullspec.suptitle(parentdir+"\n"+decaypath)
 
 fig_init.tight_layout()
 fig_spec.tight_layout()
+fig_fullspec.tight_layout()
 
-plt.show()
+fig_init.savefig("data/images/"+parentdir.replace("data/","").replace("/*/","")+"_init.png",dpi=150)
+fig_spec.savefig("data/images/"+parentdir.replace("data/","").replace("/*/","")+"_spec.png",dpi=150)
+
+plt.close()
 
 # %%
 # COMPUTE DECAY SPECTRUM FROM PRIMARY SPECTRUM
