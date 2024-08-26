@@ -6,24 +6,41 @@ from matplotlib import pyplot as plt
 from IPython import get_ipython
 import glob
 import os
+import scipy.interpolate
 
 get_ipython().run_line_magic("matplotlib","qt")
 plt.style.use("mplstyles/myclassic_white.mplstyle")
 
 #%%
-# COMPUTE A SPECTRUM FROM INITIALDATA
+###############################################################
+###############################################################
+# COMPUTE SPECTRA FROM LIST OF INITIAL DATA
+###############################################################
+###############################################################
 
 pTmax = 2
 NpT = 200
+# parentdir = "data/init_real_m226_consteps_20240826_143119/*"
+# parentdir = "data/init_real_m312_consteps_20240826_143137/*"
+# parentdir = "data/init_real_m398_consteps_20240826_143151/*"
+# parentdir = "data/init_real_m484_consteps_20240826_143205/*"
+# parentdir = "data/init_real_m570_consteps_20240826_143224/*"
+# parentdir = "data/init_real_m656_consteps_20240826_143237/*"
+# parentdir = "data/init_real_m742_consteps_20240826_143253/*"
+# parentdir = "data/init_real_m828_consteps_20240826_143307/*"
+# parentdir = "data/init_real_m914_consteps_20240826_143326/*"
+parentdir = "data/init_real_m1000_consteps_20240826_143341/*"
 
-# parentdir = "data/init_real_pi_consteps_20240822_135426/*"
-# parentdir = "data/init_real_pi_consteps_20240822_135440/*"
-# parentdir = "data/init_real_pi_constfield_20240822_161734/*"
-# parentdir = "data/init_real_pi_constfield_20240822_161738/*"
-# parentdir = "data/init_comp_piplus_composed_consteps_20240822_145641/*"
-# parentdir = "data/init_comp_piplus_composed_consteps_20240822_145647/*"
-# parentdir = "data/init_comp_piplus_constfield_20240822_174903/*"
-parentdir = "data/init_comp_piplus_constfield_20240822_174908/*"
+# m = 0.226
+# m = 0.312
+# m = 0.398
+# m = 0.484
+# m = 0.570
+# m = 0.656
+# m = 0.742
+# m = 0.828
+# m = 0.914
+m = 1.000
 
 initpaths = glob.glob(parentdir)
 initpaths.sort(key=lambda s:(len(s), s))
@@ -31,6 +48,7 @@ initpaths.sort(key=lambda s:(len(s), s))
 for initpath in initpaths:
     result = subprocess.run(args=[
         "./bin/spec",
+        "--m=%f"%(m),
         "--pTmax=%f"%(pTmax),
         "--NpT=%d"%(NpT),
         "--epsabs=0",
@@ -51,7 +69,48 @@ for spec in lastspecs:
     subprocess.run(args=["mv",spec,newdir+str(idx)])
 
 #%%
+###############################################################
+###############################################################
+# COMPUTE SPECTRA FOR DIFFERENT MASSES BUT SAME INITIAL DATA
+###############################################################
+###############################################################
+
+pTmax = 2
+NpT = 200
+# initpath = "data/init_real_pi_constfield_20240822_161734/init5.csv"
+# initpath = "data/init_real_pi_consteps_20240822_135440/init8.csv"
+initpath = "data/init_real_pi_consteps_20240822_135426/init8.csv"
+ms = np.linspace(0.14,0.8,10)
+
+for m in ms:
+    result = subprocess.run(args=[
+        "./bin/spec",
+        "--pTmax=%f"%(pTmax),
+        "--NpT=%d"%(NpT),
+        "--m=%.2f"%(m),
+        "--epsabs=0",
+        "--epsrel=1e-5",
+        "--iter=10000",
+        "--initpath=%s"%(initpath)
+    ])
+    print(result)
+
+newdir = "data/newspectra"
+idx = 0
+while(os.path.isdir(newdir+str(idx))):
+    idx += 1
+subprocess.run(args=["mkdir",newdir+str(idx)])
+
+lastspecs = glob.glob("data/spec_????????_??????")
+for spec in lastspecs:
+    subprocess.run(args=["mv",spec,newdir+str(idx)])
+
+#%%
+###############################################################
+###############################################################
 # PLOT A SINGLE SPECTRUM
+###############################################################
+###############################################################
 
 path = "data/sigmadecay/spec_20240807_223737"
 path = "data/complexfield_inittest/spec_20240809_110228"
@@ -147,7 +206,20 @@ plt.ioff()
 # parentdir = "data/spectra_real_consteps_20240822_135426/*/"
 # parentdir = "data/spectra_real_consteps_20240822_135440/*/"
 # parentdir = "data/spectra_real_constfield_20240822_161734/*/"
-parentdir = "data/spectra_real_constfield_20240822_161738/*/"
+# parentdir = "data/spectra_real_constfield_20240822_161738/*/"
+# parentdir = "data/spectra_real_constfield_20240822_161734_masses/*/"
+# parentdir = "data/spectra_real_consteps_20240822_135440_masses/*/"
+# parentdir = "data/spectra_real_consteps_20240822_135426_masses/*/"
+# parentdir = "data/spectra_real_consteps_20240826_143119_m226/*/"
+# parentdir = "data/spectra_real_consteps_20240826_143137_m312/*/"
+# parentdir = "data/spectra_real_consteps_20240826_143151_m398/*/"
+# parentdir = "data/spectra_real_consteps_20240826_143205_m484/*/"
+# parentdir = "data/spectra_real_consteps_20240826_143224_m570/*/"
+# parentdir = "data/spectra_real_consteps_20240826_143237_m656/*/"
+# parentdir = "data/spectra_real_consteps_20240826_143253_m742/*/"
+# parentdir = "data/spectra_real_consteps_20240826_143307_m828/*/"
+# parentdir = "data/spectra_real_consteps_20240826_143326_m914/*/"
+parentdir = "data/spectra_real_consteps_20240826_143341_m1000/*/"
 paths = glob.glob(parentdir)
 
 fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
