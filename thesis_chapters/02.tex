@@ -60,70 +60,104 @@ which constitutes 5 scalar equations for 6 unkwon functions: $\epsilon(x), P(x),
 %====================================================================
 \section{Bjorken Model}
 
+In a heavy collision, two large nuclei are accelerated to create a head-on collision with a certain impact parameter. Due to the relativistic energies at play both nuclei can be viewed as thin, Lorentz contracted disks of nucleons, that are themselves bound states of quarks, antiquarks and gluons. Therefore, the nuclei form essentially 2-dimensional distributions of these so called parton fields. When the nuclei collide, the strong interaction between the constituents leads to the creation of new QCD matter in the expanding space between the onmoving disks. Due to the strong Lorentz contraction, very high energy densities are achieved initially. It turns, the system is described fairly accurate by a relativistic fluid, termed the QGP. \todo{Is confinement the right phenomenon to mention here?}.
 
+In a simplified model \cite{Ollitrault_2008} the collision happends almost instantaneously at ${t,z=0}$, $z$ being the coordinate along the collision axis and $t$ the lab time in the center-of-mass frame. If all momentum transfer is localized at this moment of collision, the resulting matter travels along lines of constant ${v_z=z/t}$. Switching into an inertial frame $(t^\prime,z^\prime$) moving longitudinally, i.e. in $z$-direction, with velocity $v$, the change of coordinates from the lab frame $(t,z)$ is mediated by the Lorentz transformation
+\begin{equation}
+    \begin{pmatrix}
+        ct\\z
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \gamma&\gamma\beta\\
+        \gamma\beta &\gamma
+    \end{pmatrix}
+    \begin{pmatrix}
+        ct^\prime\\
+        z
+    \end{pmatrix}\,.
+\end{equation}
+Here we introduced ${\beta=v/c}$ and the relativistic $\gamma$-factor ${\gamma=\sqrt{1-\beta^2}^{-1}}$. We will also make use of the rapidity variable $\eta$, defined by ${\beta=\tanh\eta}$. Whereas ${v_z,z,t}$ change under this boost, the prescription ${v_z=z/t}$ holds both in the old and new inertial frame and is thus boost invariant. In the following we work in units where ${c=1}$
 
+Motivated by empirical data \cite{AlpgardEtAl_1981}, boost invariance as a relevant symmetry was proposed by Bjorken \cite{Bjorken_1983}. He investigated the appearance of plateau region with respect to rapidity in the spectra of particles produced by nucleon-nucleon and nucleon-nucleus collisions and concluded, that in the mid-rapidity region ${\eta\approx 0}$ initial conditions and therefore also the subsequent dynamics look roughly the same in every reference frame achieved by longitudinal Lorentz boosts or, in other words, that the dynamics are independent of $\eta$. Instead, relevant quantities of the fluid evolution only dependent on proper time ${\tau=\sqrt{t^2-z^2}}$, drastically symplifying all computations.
 
+Whereas the above picture is already sufficient to make significant progress in the treatment of 1-dimensional flow of the QGP, in a real heavy ion collision the spatial extent in the transverse direction, i.e. in the $x$-$y$-plane, of course has to be considered. On one hand, the incoming nuclei need not be aligned perfectly on the collision axis, but are displaced by certain impact parameter. Accordingly, experimental data is grouped into certain centrality classes. This thesis will focus on central collisions only, which has the benefit that besides longitudinal boost invariance the system is also invariant under azimuthal rotation around the beam axis. On the other hand, the emerging fireball of QGP has finite radius $r$ in transverse direction, such that all evolution equations depend on $\tau$ and $r$ only.
 
+An adapted coordinate system is given in the form of Bjorken- or Milne-coordinates ${(\tau, r, \eta, \varphi)}$, defined by
+\begin{equation}
+    \left\{\begin{split}
+        t&=\tau\cosh\eta\\
+        x&=r\cos\varphi\\
+        y&=r\sin\varphi\\
+        z&=\tau\sinh\eta
+    \end{split}\right.
+    \qquad\iff\qquad
+    \left\{\begin{split}
+        \tau&=\sqrt{t^2-z^2}\\
+        r&=\sqrt{x^2+y^2}\\
+        \eta&=\artanh(z/t)\\
+        \varphi&=\arctan(y/x)
+    \end{split}\right.\,.
+    \label{eq:BjorkenCoords_PositionSpace}
+\end{equation}
+The Minkwoski metric in these coordinates takes the form ${g_{\mu\nu}=\text{diag}(1,-\tau^2,-1,-r^2)}$. An analogous choice of coordinates can be made in momentum space,
+\begin{equation}
+    \left\{
+    \begin{split}
+        p^t&=m_T\cosh\eta_p\\
+        p^x&=p_T\cos\varphi_p\\
+        p^y&=p_T\sin\varphi_p\\
+        p^z&=m_T\sinh\eta_p
+    \end{split}
+    \right.\qquad\iff\qquad
+    \left\{
+    \begin{split}
+        m_T&=\sqrt{(p^t)^2-(p^z)^2}\\
+        p_T&=\sqrt{(p^x)^2+(p^y)^2}\\
+        \eta_p&=\artanh(p^z/p^t)\\
+        \varphi_p&=\arctan(p^y/p^x)
+    \end{split}
+    \right.\,.
+    \label{eq:BjorkenCoords_MomentumSpace}
+\end{equation}
 
+During this thesis, we will encounter contractions of (cartesian) coordinate and momentum vectors ${px\equiv p_\mu x^\mu}$ and ${pq=p_\mu q^\mu}$. Expressed in the curvilinear coordinates given above, they read
+\begin{subequations}
+    \begin{align}
+        p_\mu x^\mu&=-\tau m_T\cosh(\eta-\eta_p)+rp_T\cos(\varphi-\varphi_p)\,,\label{eq:px_contraction}\\
+        p_\mu q^\mu&=-m_{T,p}m_{T,q}\cosh(\eta_p-\eta_q)+p_Tq_T\cos(\varphi_p-\varphi_q)\,.\label{eq:pq_contraction}
+    \end{align}
+    \label{eq:pxpq_contractions}
+\end{subequations}
+Note how $x^\mu$ and $p^\mu$ in the new coordinate system are not vector components in a strict sense and cannot be naively contracted using the new metric. The Fourier transform (compare \eqref{eq:FourierConvention})
+\begin{equation}
+    \tilde{f}(p^\mu)=\int\frac{\dt^4p}{(2\pi)^4}f(x^\mu)\exp\big(-\imagu(\tau m_T\cosh(\eta-\eta_p)-rp_T\cos(\varphi-\varphi_p))\big)
+\end{equation}
+of a rotationally and boost invariant function ${f(x^\mu)=f(\tau,r)}$ is therefore independent of the $\eta_p$ and $\varphi_p$ momentum components, as can be easily varified by shifting the integration variables ${\eta\to\eta-\eta_p}$ and ${\varphi\to\varphi+\varphi_p}$ in the above integral. The relativistic dispersion relation ${p^2+m^2=0}$ fixes 1 momentum component, typically ${(p^t)^2=\omega_{\vec{p}}^2\equiv m^2+\vec{p}^2}$ in cartesian coordinates or equivalently ${m_T^2=\omega_T^2\equiv m^2+p_T^2}$ in Bjorken coordinates. As we usually work on-shell, i.e. under validity of this dispersion relation, the spectra computed under the above symmetry assumption only depend on transverse momentum, ${\tilde{f}(p^\mu)=\tilde{f}(p_T)}$.
 
 
 
 \section{Converting Spectra between Coordinate Systems}
 \label{sec:SpectraCoordinateSystem}
 
-Consider the coordinate change in momentum space
+In a collider experiment, a number $N$ of particles is counted on the detector. Depending on the detectors capabilities to resolve momentum differences of the incoming particles, the counts are grouped into bins of certain momentum ranges. The continuous analogon of this is to understand the total particle number as an integral over a number density $n(\vec{p})$ and all possible 3-momenta $\vec{p}$,
 \begin{equation}
-    \left\{
-    \begin{split}
-        p^x&=p_T\cos\varphi_p\\
-        p^y&=p_T\sin\varphi_p\\
-        p^z&=m_T\sinh\eta_p\\
-        p^t&=m_T\cosh\eta_p
-    \end{split}
-    \right.\qquad\iff\qquad
-    \left\{
-    \begin{split}
-        p_T&=\sqrt{(p^x)^2+(p^y)^2}\\
-        \varphi_p&=\arctan(p^y/p^x)\\
-        m_T&=\sqrt{(p^t)^2-(p^z)^2}\\
-        \eta_p&=\artanh(p^z/p^t)
-    \end{split}
-    \right.
-\end{equation}
-with Jacobian
-\begin{equation}
-    \big\vert\frac{\partial(p_T,\varphi_p,m_T,\eta_p)}{\partial(p^x,p^y,p^z,p^t)}\big\vert=\frac{1}{m_T p_T}
-\end{equation}
-Let $f(p^\mu)$ be some distribution function and $F$ its momentum space integral evaluated on the momentum shell and future directed momenta.
+    N=\int\frac{\dt^3p}{(2\pi)^3}n(\vec{p})\,.
+    \label{eq:NumberDensity_Cartesian}
+\end{equation}.
+The corresponding 4-momenta $p^\mu$ are chosen to be on-shell for free relativsitic particles and future oriented, $p^t>0$. This definition is intuitive, but not practical given our symmetry assumptions. We shall briefly recapitulate an instructive calculation, showing how to convert spectra between the different coordinate systems.
 
-\begin{subequations}
-    \begin{align}
-        F=\int\frac{\dt^4p_{\text{cart}}}{(2\pi)^4}\delta(p^2+m^2)\Theta(p^t)f(p^\mu) & =\int\frac{\dt p^t}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\big(\delta(p^t-\omega_{\vec{p}})+\delta(p^t+\omega_{\vec{p}})\big)\Theta(p^t)f(p^\mu) \\
-                                                                                      & =\frac{1}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}f(p^\mu)\big\vert_{p^t=\omega_{\vec{p}}}
-    \end{align}
-    On the other hand
-    \begin{align}
-        F=\int\frac{\dt^4p_{\text{cart}}}{(2\pi)^4}\delta(p^2+m^2)\Theta(p^t)f(p^\mu) & =\frac{1}{(2\pi)^4}\int_0^\infty \dt p_T\int_0^\infty \dt m_T\int_{-\infty}^\infty \dt\eta_p\int_0^{2\pi}\dt\varphi_pm_T p_T\times\nonumber \\
-                                                                                      & \phantom{=}\qquad\times\delta((p_T)^2-(m_T)^2+m^2)f(p^\mu)                                                                                              \\
-        \intertext{assume $f(p^\mu)=f(p_T,m_T,\eta_p)$ and perform the $\varphi$-integraion as well as $m_T$-integration, where $\omega^{\perp,2}=m^2+p^{\perp,2}$ is defined}
-                                                                                      & =\frac{1}{(2\pi)^3}\int_0^\infty\dt p_T\int_{-\infty}^\infty\dt\eta_p\frac{p_T}{2}f(p^\mu)\big\vert_{m_T=\omega_T}
-    \end{align}
-    leding to the important result
-    \begin{equation}
-        \frac{1}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}f(p^\mu)\big\vert_{p^t=\omega_{\vec{p}}}=\frac{1}{(2\pi)^3}\int_0^\infty\dt p_T\int_{-\infty}^\infty\dt\eta_p\frac{p_T}{2}f(p^\mu)\big\vert_{m_T=\omega_T}
-    \end{equation}
-\end{subequations}
-
-Since the restrictions $p^t=\omega_{\vec{p}}$ and $m_T=\omega_T$ are equivalent (considering the parametrization that already satisfies $p^t=p_T\cosh\eta_p\geq 0$) we find
+The total number of particles is conveniently stated as an integral over 4-momenta, enforcing explicitly the dispersion relation and orientation via 
 \begin{equation}
-    \omega_{\vec{p}}\frac{\dt F}{\dt p^x\dt p^y\dt p^z}=\frac{1}{2\pi p_T}\frac{\dt F}{\dt p_T\dt\eta_p}
+    N=2\pi\int\frac{\dt^4p}{(2\pi)^4}\delta(p^2+m^2)\Theta(p^t)\big(2\omega_{\vec{p}}n(\vec{p})\big)\,.
+    \label{eq:NumberDensity_4momenta}
 \end{equation}
-The result applies to the case
+The additional factor of $2\omega_{\vec{p}}$ ensures that the form \eqref{eq:NumberDensity_Cartesian} is restored, after applying the well know identity for the $\delta$-distribution
 \begin{equation}
-    f(p^\mu)\big\vert_{p^t=\omega_{\vec{p}}}=2\omega_{\vec{p}}\cdot 2\pi\cdot n(\vec{p})
+    \delta(f(x))=\sum_{x_i, f(x_i)=0}\frac{\delta(x-x_i)}{\vert f^\prime(x_i)\vert}
 \end{equation}
-and $F=N$. \textbf{\textcolor{red}{This holds for the symmetric range $\eta\in(-\infty,\infty)$. Restricting to $\eta\in[0,\infty)$ we find
+and integrating out the $p^t$-component. The number $N$ of particles counted is the same in any reference frame. Since the integral measure $\dt^4p$ as well as the contraction $p^2$ are Lorentz invariants, it is clear that ${2\omega_{\vec{p}}n(\vec{p})\equiv 2\omega_{\vec{p}}(\dt N/\dt^3p)}$ is a Lorentz invariant prescription. On the other hand, we can evaluate the integral \eqref{eq:NumberDensity_4momenta} by performing the change of variables \eqref{eq:BjorkenCoords_PositionSpace}. The Jacobian determinant introduces a factor ${1/m_Tp_T}$ and the $\delta$-distribution cancels the $m_T$-integration, imposing $m_T=\omega_T$. Finally, assuming rotational invariance of the number density, the $\varphi_p$ integration can be performed. Comparing expressions in both coordinate systems, one is lead to the important result
 \begin{equation}
-    2\omega_{\vec{p}}\frac{\dt F}{\dt p^x\dt p^y\dt p^z}=\frac{1}{2\pi p_T}\frac{\dt F}{\dt p_T\dt\eta_p}
+    2\omega_{\vec{p}}\frac{\dt N}{\dt p^x\dt p^y\dt p^z}=\frac{1}{2\pi p_T}\frac{\dt N}{\dt p_T\dt \eta_p}\,.
 \end{equation}
-}}
+Note that this result assumes a symmetry under ${\eta\to-\eta}$, contraining $\eta$ to ${[0,\infty)}$, introducing a factor of $1/2$ on the RHS. If the number density with respect to momentum rapidity ${\eta\in(-\infty,\infty)}$ is considered, one should replace ${2\omega_{\vec{p}}\to\omega_{\vec{p}}}$. Both options are of course Lorentz invariant. More detailed is found in \ref{sec:Apx_ConvertingSpectra}.

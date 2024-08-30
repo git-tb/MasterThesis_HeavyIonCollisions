@@ -125,6 +125,304 @@
       \field{title}{Cosmology}
       \field{year}{2008}
     \endentry
+    \entry{AlpgardEtAl_1981}{article}{}
+      \name{author}{44}{}{%
+        {{hash=9b4c01736c480fc79df14131e6167904}{%
+           family={Alpg{å}rd},
+           familyi={A\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=e00650e59ddc4ac8f761b0e19bf44578}{%
+           family={Ansorge},
+           familyi={A\bibinitperiod},
+           given={R.\bibnamedelimi E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=6e001f4cbef8153c8b556f198575e141}{%
+           family={{Å}sman},
+           familyi={Å\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=a2eb645e3fdc33e8d1b0d1cc9a998e3f}{%
+           family={Berglund},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=16dfea764a29db20ac375574821acdc4}{%
+           family={Berkelman},
+           familyi={B\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=0fd7a18eaa5a6e38040620ae3c599efa}{%
+           family={Bertrand},
+           familyi={B\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=a6c7ab84eb895e366d2c115700148b2b}{%
+           family={B{ö}ckmann},
+           familyi={B\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=5857112623bc66c1a886148b5c2e1903}{%
+           family={Booth},
+           familyi={B\bibinitperiod},
+           given={C.\bibnamedelimi N.},
+           giveni={C\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=1c67823b04652cc02eb575e14d19e1d2}{%
+           family={Buffam},
+           familyi={B\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=4aecbb6987c1c48e4c2ebc5007af6e8a}{%
+           family={Burow},
+           familyi={B\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=e4c7db6e82978e7a70c08083764abe00}{%
+           family={Carlson},
+           familyi={C\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=ee974ad86579a48073dc0fa1bc26cb45}{%
+           family={Carter},
+           familyi={C\bibinitperiod},
+           given={J.\bibnamedelimi R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=c2063192b9d515b97fdfa934cbe25aac}{%
+           family={Chevalley},
+           familyi={C\bibinitperiod},
+           given={J.\bibnamedelimi -L.},
+           giveni={J\bibinitperiod\bibinitdelim \bibinithyphendelim L\bibinitperiod}}}%
+        {{hash=3edfefab2e07308ed384c361e601f002}{%
+           family={Eckart},
+           familyi={E\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=9baa0dbf78ca793259abcdfc36839177}{%
+           family={Ekspong},
+           familyi={E\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=d9913d255c5c835c7fc8c639421ba773}{%
+           family={Fabre},
+           familyi={F\bibinitperiod},
+           given={J.\bibnamedelimi -P.},
+           giveni={J\bibinitperiod\bibinitdelim \bibinithyphendelim P\bibinitperiod}}}%
+        {{hash=60f8a9e7da7c8fcc0a054feb5866e38b}{%
+           family={French},
+           familyi={F\bibinitperiod},
+           given={K.\bibnamedelimi A.},
+           giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=f53c9fd34e1c8ad69301eca6f9b12607}{%
+           family={Gauden},
+           familyi={G\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f8d4d113565401811a8e1a3c72691ee5}{%
+           family={Gijsen},
+           familyi={G\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=67793c39dd4125326f53225ef2bc9670}{%
+           family={{von Holt}},
+           familyi={v\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=5ca830f1d64b06c5e5778d14e82b6e4a}{%
+           family={Hospes},
+           familyi={H\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=927a9591a81d13904e2417ff95619693}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=8e3afb86e2a4a868744217598e1da04a}{%
+           family={{Jon-and}},
+           familyi={J\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=a1a4030bdc39c402c34ae972edea6673}{%
+           family={Kokott},
+           familyi={K\bibinitperiod},
+           given={{\relax\bibnamedelimb Th}.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=e50b430de69ff9633c35a2609ae679ff}{%
+           family={Mackenzie},
+           familyi={M\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=1f808c18813df99e5d8ee736ed158df3}{%
+           family={Maggs},
+           familyi={M\bibinitperiod},
+           given={M.\bibnamedelimi N.},
+           giveni={M\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=becbf615e5dfbe7b16ecb89399c63970}{%
+           family={Meinke},
+           familyi={M\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=1a92debf86f151e4f64cda604f8d023b}{%
+           family={M{ü}ller},
+           familyi={M\bibinitperiod},
+           given={{\relax\bibnamedelimb Th}.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=eea1db5ce9051d733902e3731ee8358a}{%
+           family={Mulkens},
+           familyi={M\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=7f5d75e618a6c59702381629ed63c9ae}{%
+           family={Munday},
+           familyi={M\bibinitperiod},
+           given={D.\bibnamedelimi J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=721bfa82023d16460d04594b336c919f}{%
+           family={Odian},
+           familyi={O\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=bd8b703061a73eaaa3f62176b471186b}{%
+           family={Rosenberg},
+           familyi={R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=2795e1b8a570417e131871f681408147}{%
+           family={Rushbrooke},
+           familyi={R\bibinitperiod},
+           given={J.\bibnamedelimi G.},
+           giveni={J\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=9c3c9c536f06d0ec12b22c9020219214}{%
+           family={Saarikko},
+           familyi={S\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=dafd1f458266537eb0e54785cb7664c3}{%
+           family={Saarikko},
+           familyi={S\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=5ab8001a0e1e7cd352b3d84367e0ec1a}{%
+           family={Triantis},
+           familyi={T\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=85f3f121e019070d2a94c4eb3198344e}{%
+           family={Walck},
+           familyi={W\bibinitperiod},
+           given={{\relax\bibnamedelimb Ch}.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=4f4a20d2743bcfd143104b75fe3bba76}{%
+           family={Ward},
+           familyi={W\bibinitperiod},
+           given={C.\bibnamedelimi P.},
+           giveni={C\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=d54747609442350f6c2fc6d76695c129}{%
+           family={Ward},
+           familyi={W\bibinitperiod},
+           given={D.\bibnamedelimi R.},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=ce61b008fa8b195bf9714566f47da889}{%
+           family={Weber},
+           familyi={W\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=db9d8a36a4d32092a41054ae000a4be8}{%
+           family={Weidberg},
+           familyi={W\bibinitperiod},
+           given={A.\bibnamedelimi R.},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=4606a8d7308e1ef6001faaefac896bb5}{%
+           family={White},
+           familyi={W\bibinitperiod},
+           given={T.\bibnamedelimi O.},
+           giveni={T\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=736184564c119bf5fa03d81f55a3c7e7}{%
+           family={Wilquet},
+           familyi={W\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=1d6dc45b2e8d9cb172b5c1e26713274b}{%
+           family={Yamdagni},
+           familyi={Y\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{4f4866fe1e9970b0e27b42cf583ecc4f}
+      \strng{fullhash}{c6d9a0a30680a693efb0a6eaacf65140}
+      \strng{bibnamehash}{4f4866fe1e9970b0e27b42cf583ecc4f}
+      \strng{authorbibnamehash}{4f4866fe1e9970b0e27b42cf583ecc4f}
+      \strng{authornamehash}{4f4866fe1e9970b0e27b42cf583ecc4f}
+      \strng{authorfullhash}{c6d9a0a30680a693efb0a6eaacf65140}
+      \field{labelalpha}{Alp+81}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{First results from UA5 on charged particle multiplicities from pp interactions at {\textsurd}s = 540 GeV are presented. A value of 27.4 {\textpm} 2.0 is obtained for the mean charged multiplicity {\textlangle}nch{\textrangle} of produced hadrons. This excludes an s14 behaviour of {\textlangle}nch{\textrangle} in going from ISR to Collider energies, but is not in disagreement with an extrapolation using a quadratic fit in ln s to previous lower energy data up to ISR energies.}
+      \field{issn}{0370-2693}
+      \field{journaltitle}{Physics Letters B}
+      \field{month}{12}
+      \field{number}{4}
+      \field{title}{Charged Particle Multiplicities at the {{CERN SPS}} Collider}
+      \field{urlday}{30}
+      \field{urlmonth}{8}
+      \field{urlyear}{2024}
+      \field{volume}{107}
+      \field{year}{1981}
+      \field{urldateera}{ce}
+      \field{pages}{315\bibrangedash 319}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1016/0370-2693(81)90838-8
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/C5G8AGLQ/Alpgård et al. - 1981 - Charged particle multiplicities at the CERN SPS co.pdf;/home/tobias/Zotero/storage/N6EKFCVS/0370269381908388.html
+      \endverb
+    \endentry
+    \entry{Bjorken_1983}{article}{}
+      \name{author}{1}{}{%
+        {{hash=521260719aa678e55ec9feee0e966779}{%
+           family={Bjorken},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{521260719aa678e55ec9feee0e966779}
+      \strng{fullhash}{521260719aa678e55ec9feee0e966779}
+      \strng{bibnamehash}{521260719aa678e55ec9feee0e966779}
+      \strng{authorbibnamehash}{521260719aa678e55ec9feee0e966779}
+      \strng{authornamehash}{521260719aa678e55ec9feee0e966779}
+      \strng{authorfullhash}{521260719aa678e55ec9feee0e966779}
+      \field{labelalpha}{Bjo83}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{The space-time evolution of the hadronic matter produced in the central rapidity region in extreme relativistic nucleus-nucleus collisions is described. We find, in agreement with previous studies, that quark-gluon plasma is produced at a temperature {$\greaterequivlnt$}200-300 MeV, and that it should survive over a time scale {$\greaterequivlnt$}5 fm/c. Our description relies on the existence of a flat central plateau and on the applicability of hydrodynamics.}
+      \field{journaltitle}{Physical Review D}
+      \field{month}{1}
+      \field{number}{1}
+      \field{shorttitle}{Highly Relativistic Nucleus-Nucleus Collisions}
+      \field{title}{Highly Relativistic Nucleus-Nucleus Collisions: {{The}} Central Rapidity Region}
+      \field{urlday}{25}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{27}
+      \field{year}{1983}
+      \field{urldateera}{ce}
+      \field{pages}{140\bibrangedash 151}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.27.140
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/SFXF5HAK/Bjorken - 1983 - Highly relativistic nucleus-nucleus collisions Th.pdf
+      \endverb
+    \endentry
     \entry{Koch_1997}{article}{}
       \name{author}{1}{}{%
         {{hash=a7f4bf668408cc1902afbb9d1dc0be32}{%
@@ -140,8 +438,8 @@
       \strng{authornamehash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \strng{authorfullhash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \field{labelalpha}{Koc97}
-      \field{sortinit}{3}
-      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{sortinit}{6}
+      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This article is an attempt to a pedagogical introduction and review into the elementary concepts of chiral symmetry in nuclear physics. Effective chiral models such as the linear and nonlinear sigma model will be discussed as well as the essential ideas of chiral perturbation theory. Some applications to the physics of ultrarelativistic heavy ion collisions will be presented.}
@@ -195,8 +493,8 @@
       \strng{authornamehash}{eac544595d4b8df6d805de9a237dd921}
       \strng{authorfullhash}{eac544595d4b8df6d805de9a237dd921}
       \field{labelalpha}{ABL97}
-      \field{sortinit}{4}
-      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{sortinit}{7}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{We study the various stages of the evolution of chiral condensates disoriented via the ``baked-alaska'' mechanism, in which the condensates are described as the products of external sources localized on the light cone. Our analysis is based on the classical equations of motion of either the linear or the nonlinear sigma model. We use the associated framework of coherent states and, especially, their source functions to make the connection to the distribution functions for the produced particles. We also compare our classical approach with a mean-field calculation which includes a certain class of quantum corrections.}
@@ -253,8 +551,8 @@
       \strng{authornamehash}{0ede250374fe5868188340c29e64c200}
       \strng{authorfullhash}{0ede250374fe5868188340c29e64c200}
       \field{labelalpha}{KGF23}
-      \field{sortinit}{5}
-      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{sortinit}{8}
+      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}

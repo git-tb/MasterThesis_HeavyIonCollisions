@@ -165,22 +165,7 @@ To verify the third equality in equation \ref{eq:InnerproductHypersurfaceDeforma
 
 \section{Coordinates on the Freezeout Surface}
 
-The freezeout hypersurface is parametrized as $\Sigma_{\text{fo}}=\{x^\mu\in\mathbb{R}^{(1,3)}\vert (\tau,r)=(\tau(\alpha),r(\alpha))\}$ with $\tau,r$ defined by the coordinate transformation
-\begin{equation}
-    \left\{\begin{split}
-        t&=\tau\cosh\eta\\
-        z&=\tau\sinh\eta\\
-        x&=r\cos\varphi\\
-        y&=r\sin\varphi
-    \end{split}\right.
-    \qquad\iff\qquad
-    \left\{\begin{split}
-        \tau&=\sqrt{t^2-z^2}\\
-        \eta&=\artanh(z/t)\\
-        r&=\sqrt{x^2+y^2}\\
-        \varphi&=\arctan(y/x)
-    \end{split}\right.
-\end{equation}
+The freezeout hypersurface is parametrized as $\Sigma_{\text{fo}}=\{x^\mu\in\mathbb{R}^{(1,3)}\vert (\tau,r)=(\tau(\alpha),r(\alpha))\}$ with $\tau,r$ defined by the coordinate transformation \eqref{eq:BjorkenCoords_PositionSpace}.
 
 \begin{calc}[Metric on Hypersurface]{calc:HypersurfaceMetric}
     Recall the metric $g_{\mu\nu}=\text{diag}(-1,1,\tau^2,r^2)$ in coordinates $(\tau,r,\eta,\varphi)$. Orthonormal tangent vectors to the freeze out hypersurface are $(\hat\partial_\varphi)^\mu=(0,0,0,r^{-1})=r^{-1}(\partial_\varphi)^\mu$, $(\hat\partial_\eta)^\mu=(0,0,\tau^{-1},0)=\tau^{-1}(\partial_\eta)^\mu$ and $(\hat\partial_\alpha)^\mu=\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}(\tau^{\prime}(\alpha),r^{\prime}(\alpha),0,0)=D(\alpha)(\partial_\alpha)^\mu$ with $D(\alpha)=\sqrt{r^{\prime 2}(\alpha)-\tau^{\prime 2}(\alpha)}^{-1}$. The projector on the hypersurface is
