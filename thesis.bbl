@@ -19,6 +19,112 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
+    \entry{Ollitrault_2008}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9377db4a51f329fd32ffb3f089701302}{%
+           family={Ollitrault},
+           familyi={O\bibinitperiod},
+           given={Jean-Yves},
+           giveni={J\bibinithyphendelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{9377db4a51f329fd32ffb3f089701302}
+      \strng{fullhash}{9377db4a51f329fd32ffb3f089701302}
+      \strng{bibnamehash}{9377db4a51f329fd32ffb3f089701302}
+      \strng{authorbibnamehash}{9377db4a51f329fd32ffb3f089701302}
+      \strng{authornamehash}{9377db4a51f329fd32ffb3f089701302}
+      \strng{authorfullhash}{9377db4a51f329fd32ffb3f089701302}
+      \field{labelalpha}{Oll08}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Relativistic hydrodynamics is essential to our current understanding of nucleus-nucleus collisions at ultrarelativistic energies (current experiments at the Relativistic Heavy Ion Collider, forthcoming experiments at the CERN Large Hadron Collider). This is an introduction to relativistic hydrodynamics for graduate students. It includes a detailed derivation of the equations, and a description of the hydrodynamical evolution of a heavy-ion collisions. Some knowledge of thermodynamics and special relativity is assumed.}
+      \field{eprintclass}{nucl-th}
+      \field{eprinttype}{arXiv}
+      \field{issn}{0143-0807, 1361-6404}
+      \field{journaltitle}{European Journal of Physics}
+      \field{month}{3}
+      \field{number}{2}
+      \field{title}{Relativistic Hydrodynamics for Heavy-Ion Collisions}
+      \field{urlday}{24}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{29}
+      \field{year}{2008}
+      \field{urldateera}{ce}
+      \field{pages}{275\bibrangedash 302}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1088/0143-0807/29/2/010
+      \endverb
+      \verb{eprint}
+      \verb 0708.2433
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/Q3GQCP8T/Ollitrault - 2008 - Relativistic hydrodynamics for heavy-ion collision.pdf;/home/tobias/Zotero/storage/3N4U79HZ/0708.html
+      \endverb
+      \keyw{Nuclear Theory}
+    \endentry
+    \entry{Rischke_2022}{unpublished}{}
+      \name{author}{1}{}{%
+        {{hash=2b3fdab62f2e9fb13097507c3b02ed18}{%
+           family={Rischke},
+           familyi={R\bibinitperiod},
+           given={Dirk\bibnamedelima H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{fullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{bibnamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{authorbibnamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{authornamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{authorfullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \field{labelalpha}{Ris22}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{title}{Microscopic {{Foundations}} of {{Relativistic Fluid Dynamics}}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/GHDF6WKX/Rischke - Microscopic Foundations of Relativistic Fluid Dyna.pdf
+      \endverb
+    \endentry
+    \entry{Weinberg_2008}{book}{}
+      \name{author}{1}{}{%
+        {{hash=15e144c72b0b9d10db00ddc6d37a19e6}{%
+           family={Weinberg},
+           familyi={W\bibinitperiod},
+           given={Steven},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Oxford university press}%
+      }
+      \strng{namehash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \strng{fullhash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \strng{bibnamehash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \strng{authorbibnamehash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \strng{authornamehash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \strng{authorfullhash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \field{labelalpha}{Wei08}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-19-852682-7}
+      \field{langid}{english}
+      \field{title}{Cosmology}
+      \field{year}{2008}
+    \endentry
     \entry{Koch_1997}{article}{}
       \name{author}{1}{}{%
         {{hash=a7f4bf668408cc1902afbb9d1dc0be32}{%
@@ -34,8 +140,8 @@
       \strng{authornamehash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \strng{authorfullhash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \field{labelalpha}{Koc97}
-      \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This article is an attempt to a pedagogical introduction and review into the elementary concepts of chiral symmetry in nuclear physics. Effective chiral models such as the linear and nonlinear sigma model will be discussed as well as the essential ideas of chiral perturbation theory. Some applications to the physics of ultrarelativistic heavy ion collisions will be presented.}
@@ -63,6 +169,61 @@
       \verb /home/tobias/Zotero/storage/ZUXZA56X/Koch - 1997 - Aspects of Chiral Symmetry.pdf;/home/tobias/Zotero/storage/PLQQEXS3/9706075.html
       \endverb
       \keyw{Nuclear Experiment,Nuclear Theory}
+    \endentry
+    \entry{Amelino-CameliaEtAl_1997}{article}{}
+      \name{author}{3}{}{%
+        {{hash=d6554a23c13cf0551c4ff6b13c4927ee}{%
+           family={{Amelino-Camelia}},
+           familyi={A\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=521260719aa678e55ec9feee0e966779}{%
+           family={Bjorken},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=573c225bd71054b6ff30fb08bfe8ed50}{%
+           family={Larsson},
+           familyi={L\bibinitperiod},
+           given={S.\bibnamedelimi E.},
+           giveni={S\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{eac544595d4b8df6d805de9a237dd921}
+      \strng{fullhash}{eac544595d4b8df6d805de9a237dd921}
+      \strng{bibnamehash}{eac544595d4b8df6d805de9a237dd921}
+      \strng{authorbibnamehash}{eac544595d4b8df6d805de9a237dd921}
+      \strng{authornamehash}{eac544595d4b8df6d805de9a237dd921}
+      \strng{authorfullhash}{eac544595d4b8df6d805de9a237dd921}
+      \field{labelalpha}{ABL97}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We study the various stages of the evolution of chiral condensates disoriented via the ``baked-alaska'' mechanism, in which the condensates are described as the products of external sources localized on the light cone. Our analysis is based on the classical equations of motion of either the linear or the nonlinear sigma model. We use the associated framework of coherent states and, especially, their source functions to make the connection to the distribution functions for the produced particles. We also compare our classical approach with a mean-field calculation which includes a certain class of quantum corrections.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{0556-2821, 1089-4918}
+      \field{journaltitle}{Physical Review D}
+      \field{month}{12}
+      \field{number}{11}
+      \field{title}{Pion {{Production}} from {{Baked-Alaska Disoriented Chiral Condensate}}}
+      \field{urlday}{22}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{volume}{56}
+      \field{year}{1997}
+      \field{urldateera}{ce}
+      \field{pages}{6942\bibrangedash 6956}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.56.6942
+      \endverb
+      \verb{eprint}
+      \verb hep-ph/9706530
+      \endverb
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/N2VVW7QH/Amelino-Camelia et al. - 1997 - Pion Production from Baked-Alaska Disoriented Chir.pdf;/home/tobias/Zotero/storage/DKBU9EJ6/9706530.html
+      \endverb
+      \keyw{High Energy Physics - Phenomenology}
     \endentry
     \entry{KirchnerEtAl_2023}{misc}{}
       \name{author}{3}{}{%
@@ -92,8 +253,8 @@
       \strng{authornamehash}{0ede250374fe5868188340c29e64c200}
       \strng{authorfullhash}{0ede250374fe5868188340c29e64c200}
       \field{labelalpha}{KGF23}
-      \field{sortinit}{2}
-      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}

@@ -9,6 +9,11 @@
 \usepackage{bbold} % \mathbb
 \usepackage{booktabs} % \midrule
 \usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.11}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{intersections}
 \usepackage{tkz-euclide}
 \usepackage{placeins} % \FloatBarrier
 \usepackage{mathtools}
@@ -21,8 +26,7 @@
 \usepackage{cancel}
 \usepackage{aligned-overset}
 \usepackage{pdfpages} %\includepdf[pages=- or pages={1}]{source.pdf}
-% \usepackage{bm}
-% \usepackage{unicode-math}
+\usepackage{fancyhdr}
 
 % ======================================================================
 % ============================ TO DO NOTES =============================
@@ -205,16 +209,12 @@
 % ======================================================================
 % ======================================================================
 
-\usepackage{geometry}
+\usepackage[includeheadfoot]{geometry}
 \geometry{twoside,
         paperwidth=210mm,
         paperheight=297mm,
-        textheight=682pt,%682
-        textwidth=500pt,%522
-        centering,
-        headheight=50pt,
-        headsep=12pt,
-        footskip=18pt,
-        footnotesep=24pt plus 2pt minus 12pt,
-        columnsep=18pt
+        top=30mm,
+        bottom=30mm,
+        inner=35mm,
+        outer=25mm
 }%

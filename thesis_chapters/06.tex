@@ -1,0 +1,172 @@
+\chapter{Resonance Decays}
+
+If the particles considered on the freezout surface are not stable, the spectra computed there cannot be directly related to the spectra on the detector surface. Instead, one has to calculate contributions from all possible decay channels/heavier resonances $a$ that decay into the (stable) resonance $b$ under consideration. This is done via the linear decay map
+\begin{equation}
+    E_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}D_{a\rightarrow b}(\vec{p},\vec{q})E_{\vec{q}}\frac{\dt N_a}{\dt^3 q}
+\end{equation} 
+where $D_{a\rightarrow b}(\vec{p},\vec{q})$ is the Lorentz invariant probability of particle $a$ with (on-shell) momentum $\vec{q}$ to decay into particle $b$ with momentum $\vec{p}$. Due to the probabilistic nature of a decay process, this relation is true if the lifetime of the heavy resonances is short compared to the propagation time and the number of particles is large enough.
+
+Assuming isotropic decay, a two-body decay $a\rightarrow b+c$ is modelled by the decay map 
+\begin{equation}
+    D_{a\rightarrow b\vert c}(\vec{p},\vec{q})=D_{a\rightarrow b\vert c}(p^\mu q_\mu)=B\frac{4\pi^2 m_a}{p_{a\rightarrow b\vert c}}\delta(q^\mu p_\mu+m_a E_{a\rightarrow b\vert c})
+\end{equation}
+where $B$ is the branching ratio of the decay and
+\begin{equation}
+    p_{a\rightarrow b\vert c}=\frac{1}{2m_a}\sqrt{\big((m_a+m_b)^2-m_c^2\big)\big((m_a-m_b)^2-m_c^2\big)}\,,\qquad E_{a\rightarrow b\vert c}=\sqrt{m_b^2+p_{a\rightarrow b\vert c}^2}
+\end{equation}
+In the rest frame of particle $a$ one finds $\vec{p}\equiv \vec{p}_b=-\vec{p}_c$, energy conservation is expressed as
+\begin{equation}
+    m_a=\sqrt{m_b^2+\vec{p}^2}+\sqrt{m_c^2+\vec{p}^2}
+\end{equation}
+with the solution space restricted only by $\vec{p}^2=p_{a\rightarrow b\vert c}^2$. The energy of particle $b$ in the rest frame of $a$, expressed covariantly, is just $E_{a\rightarrow b\vert c}=-\frac{1}{m_a}q^\mu p_\mu$ and thus the above formula simply represents energy conservation.
+
+To decompose the above delta function, rewrite $q^\mu p_\mu$ in the coordinates used in \ref{sec:SpectraCoordinateSystem}.
+\begin{equation}
+    q^\mu p_\mu=-m_q^\perp m_p^\perp\cosh(\eta_q-\eta_p)+q^\perp p^\perp\cos(\varphi_q-\varphi_p)
+\end{equation}
+Later we shall resolve the $\delta$-distribution using the identity
+\begin{equation}
+    \int\dt^dx f(x^i)\delta(g(x^i))=\int_{g^{-1}(0)}\dt^{d-1}\sigma\frac{f(x^i)}{\Vert\vec{\nabla}g(x^i)\Vert}
+\end{equation}
+    
+\begin{subequations}
+    \begin{align}
+        \omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}&=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int\frac{\dt^4q}{(2\pi)^4}\delta(q^2+m^2)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\delta\big(q^\mu p_\mu+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int_{(0,0,-\infty,0)}^{(\infty,\infty,\infty,2\pi)}\frac{\dt m_q^\perp \dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}m_q^\perp q^\perp\delta(-m_q^{\perp,2}+q^{\perp,2}+m^2)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-m_q^\perp m_p^\perp\cosh(\eta_q-\eta_p)+q^\perp p^\perp\cos(\varphi_q-\varphi_p)+m_a E_{a\rightarrow b\vert c}\big)\\
+        % &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int_{(0,-\infty,0)}^{(\infty,\infty,2\pi)}\frac{\dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q^\perp}{2}\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
+        % &\phantom{=}\qquad\times\delta\big(-\omega_q^\perp \omega_p^\perp\cosh(\eta_q-\eta_p)+q^\perp p^\perp\cos(\varphi_q-\varphi_p)+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int_{(0,-\infty,0)}^{(\infty,\infty,2\pi)}\frac{\dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q^\perp}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-\omega_q^\perp \omega_p^\perp\cosh\eta_q+q^\perp p^\perp\cos\varphi_q+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\times 2\times 2\int_{(0,0,0)}^{(\infty,\infty,\pi)}\frac{\dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q^\perp}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-\omega_q^\perp \omega_p^\perp\cosh\eta_q+q^\perp p^\perp\cos\varphi_q+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\times 2\times 2\times(q^\perp)^2\times\int_{(0,1,-1)}^{(\infty,\infty,1)}\frac{\dt t\dt u\dt v}{(2\pi)^4}\frac{t}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\frac{1}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-\omega_q^\perp \omega_p^\perp u+q^\perp p^\perp tv+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times\frac{4\pi(\tilde{q}^\perp)^2}{(2\pi)^4}\times\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot \tilde{q}^\perp }\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}        
+    \end{align}
+\end{subequations}
+\vspace{3em}
+\begin{equation}
+    \eqnmarkbox[blue]{myeq}{\omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\frac{B(\tilde{q}^\perp)^2}{p_{a\rightarrow b\vert c}\pi}\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot \tilde{q}^\perp }\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}}
+\end{equation}
+where we made use of rotational and boost symmetry to eliminate the $\varphi_p$ and $\eta_p$ dependence and applied the variable changes
+\begin{gather*}
+    \int_0^\infty\dt\eta\;f(\cosh\eta)=\int_1^\infty\dt u\frac{f(u)}{\sqrt{u^2-1}}\,,\qquad \int_0^\pi\dt\varphi\;f(\cos\varphi)=\int_{-1}^1\dt v\frac{f(v)}{\sqrt{1-v^2}}\\
+   \text{and}\qquad q^\perp=\tilde{q}^\perp t\quad\text{with}\;\tilde{q}^\perp=\const\;\text{and}\;[\tilde{q}^\perp]=\text{GeV}\,,\;[t]=1
+\end{gather*}
+(omit the $\tilde{\cdot}$ in the following) and defined $u^\star(t,v)$ to respect the $\delta$. The $\delta$-distribution depending on the variables $(t,u,v)$ and the parameters $(q^\perp,p^\perp)$ was replaced by considering the function
+\begin{subequations}
+    \begin{align}
+        g(t,u,v)&=-\omega_q^\perp \omega_p^\perp u+q^\perp p^\perp tv+m_a E_{a\rightarrow b\vert c}\\
+        \vec{\nabla} g&=
+        \begin{pmatrix}
+            -t\,u\,\frac{\omega_p^\perp}{\omega_q^\perp}(q^\perp)^2+q^\perp p^\perp v\\
+            -\omega_q^\perp\omega_p^\perp\\
+            t\,q^\perp p^\perp
+        \end{pmatrix}
+    \end{align}
+\end{subequations}
+The manifold defined by the level set where $g(t,u,v)=0$ is given by 
+\begin{equation}
+    g^{-1}(0)=\Bigg\{(t,u,v)\Big\vert u=u^\star(t,v)=\frac{m_aE_{a\rightarrow b\vert c}+q^\perp p^\perp tv}{\omega_q^\perp\omega_p^\perp}\Bigg\}
+    \label{eq:DecayMap_BjorkenCoord_DeltaManifold}
+\end{equation}
+\eqref{eq:DecayMap_BjorkenCoord_DeltaManifold} defines a chart $(t,v)\mapsto x^i(t,v)=(t,u^\star(t,v),v)$ on $g^{-1}(0)$ with coordinates $(t,v)$. One computes the coordinate derivative vectors and oriented surface element
+\begin{equation}
+    \frac{\partial x^i}{\partial t}=\begin{pmatrix}
+    1\\
+    v\frac{p^\perp q^\perp}{\omega_p^\perp\omega_q^\perp}\big(1-t^2\frac{(q^\perp)^2}{(\omega_q^\perp)^2}\big)\\
+    0
+    \end{pmatrix}\,,\quad
+    \frac{\partial x^i}{\partial v}=\begin{pmatrix}
+        0\\
+        t\frac{q^\perp p^\perp}{\omega_q^\perp\omega_p^\perp}\\
+        1
+    \end{pmatrix}\,,\quad
+    \dt\Sigma^i=\frac{\partial x^i}{\partial q^\perp}\times \frac{\partial x^i}{\partial q^\perp}\dt t\dt v=\begin{pmatrix}
+        v\frac{p^\perp q^\perp}{\omega_p^\perp\omega_q^\perp}\big(1-t^2\frac{(q^\perp)^2}{(\omega_q^\perp)^2}\big)\\
+        -1\\
+        t\frac{q^\perp p^\perp}{\omega_q^\perp\omega_p^\perp}
+    \end{pmatrix}\dt t\dt v
+\end{equation}
+which defines the scalar surface element via $\dt^2\sigma=\sigma(t,v)\dt t\dt v=\Vert\dt\Sigma^i\Vert$.
+
+Investigate the large $t$ behaviour of $u^\star(t,v)$. The claim is that there is always a $t_{\text{max}}(v,p^\perp)$ such that $u^*(t>t_{\text{max}},v)<1$. Since $u^*(t,1)\geq u^*(t,v\in[-1,1])$ it suffices to consider the case $v=1$. Also note that $\frac{p^\perp}{\omega_p^\perp}<1$ for every finite $p^\perp$. Since analogously $\lim_{t\to\infty}\frac{q^\perp t}{\omega_q^\perp}=1$ and the "$+m_aE_{a\rightarrow b\vert c}$" becomes irrelevant in the limit, one arrives at $\lim_{t\to\infty}u^\star(t,v)<1$.
+
+% \paragraph*{Again without Change of Variables}\mbox{}\\
+
+% \begin{subequations}
+%     \begin{align}
+%         \omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}&=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int\frac{\dt^4q}{(2\pi)^4}\delta(q^2+m^2)\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\delta\big(q^\mu p_\mu+m_a E_{a\rightarrow b\vert c}\big)\\
+%         &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int_{(0,0,-\infty,0)}^{(\infty,\infty,\infty,2\pi)}\frac{\dt m_q^\perp \dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}m_q^\perp q^\perp\delta(-m_q^{\perp,2}+q^{\perp,2}+m^2)\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
+%         &\phantom{=}\qquad\times\delta\big(-m_q^\perp m_p^\perp\cosh(\eta_q-\eta_p)+q^\perp p^\perp\cos(\varphi_q-\varphi_p)+m_a E_{a\rightarrow b\vert c}\big)\\
+%         &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int_{(0,-\infty,0)}^{(\infty,\infty,2\pi)}\frac{\dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q^\perp}{2}\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
+%         &\phantom{=}\qquad\times\delta\big(-\omega_q^\perp \omega_p^\perp\cosh\eta_q+q^\perp p^\perp\cos\varphi_q+m_a E_{a\rightarrow b\vert c}\big)\\
+%         &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\times 2\times 2\int_{(0,0,0)}^{(\infty,\infty,\pi)}\frac{\dt q^\perp\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q^\perp}{2}\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
+%         &\phantom{=}\qquad\times\delta\big(-\omega_q^\perp \omega_p^\perp\cosh\eta_q+q^\perp p^\perp\cos\varphi_q+m_a E_{a\rightarrow b\vert c}\big)\\
+%         \intertext{\dots using $q^\perp\mapsto t\cdot \tilde{q}^\perp$, where $\tilde{q}^\perp=\const$ carries the dimension and $t\in[0,\infty)$ is dimensionless, we calculate (omit the $\tilde{\cdot}$)}
+%         &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times\frac{4\pi(q^\perp)^2}{(2\pi)^4}\times\int_0^\infty\dt t\int_0^\pi\dt\varphi\cdot t\cdot \Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot q^\perp}\frac{\sigma(t,\varphi)}{\Vert\vec{\nabla}g(t,\eta^\star,\varphi)\Vert}
+%     \end{align}
+% \end{subequations}
+% Here we defined
+% \begin{subequations}
+%     \begin{align}
+%         g(t,\eta,\varphi)&=-\omega_q^\perp \omega_p^\perp \cosh\eta+q^\perp p^\perp t\cos\varphi+m_a E_{a\rightarrow b\vert c}\\
+%         \vec{\nabla} g&=
+%         \begin{pmatrix}
+%             -\frac{\omega_p^\perp}{\omega_q^\perp}(q^\perp)^2 \cdot t\cdot\cosh\eta+q^\perp p^\perp \cos\varphi\\
+%             -\omega_q^\perp\omega_p^\perp\sinh\eta\\
+%             -t\cdot q^\perp p^\perp\sin\varphi
+%         \end{pmatrix}
+%     \end{align}
+% \end{subequations}
+% implying 
+% \begin{equation}
+%     g^{-1}(0)=\Bigg\{(t,\eta,\varphi)\Big\vert\eta=\eta^\star(t,\varphi)=\arcosh\Big(\underbrace{\frac{m_a E_{a\rightarrow b\vert c}+t\cdot q^\perp p^\perp\cos\varphi}{\omega_q^\perp\omega_p^\perp}}_{\eqdef u^\star(t,\varphi)}\Big)\Bigg\}
+% \end{equation}
+% One this manifold we need the surface element $\sigma(t,\varphi)\dt t\dt\varphi$. For some $x^i\in g^{-1}(0)$ the coordinate derivatives and surface normal are given by
+% \begin{subequations}
+%     \begin{align}        
+%         \frac{\partial x^i}{\partial t}=\begin{pmatrix}
+%             1\\
+%             \frac{1}{\sqrt{(u^\star)^2-1}}\frac{\partial u^\star}{\partial t}\\
+%             0
+%         \end{pmatrix}&=\begin{pmatrix}
+%             1\\
+%         \frac{1}{\sqrt{(u^\star)^2-1}}\cdot\frac{q^\perp p^\perp}{\omega_q^\perp\omega_p^\perp}\cos\varphi\Big(1-t^2\big(\frac{q^\perp}{\omega_q^\perp}\big)^2\Big)\\
+%         0
+%     \end{pmatrix}\\
+%     \frac{\partial x^i}{\partial \varphi}=\begin{pmatrix}
+%         0\\
+%         \frac{1}{\sqrt{(u^\star)^2-1}}\frac{\partial u^\star}{\partial\varphi}\\
+%         1
+%     \end{pmatrix}&=\begin{pmatrix}
+%         0\\
+%         -\frac{1}{\sqrt{(u^\star)^2-1}}\frac{q^\perp p^\perp}{\omega_q^\perp\omega_p^\perp}\cdot t\sin\varphi\\
+%         1
+%     \end{pmatrix}\\
+%     \dt^2\sigma^i=\frac{\partial x^i}{\partial t}\times\frac{\partial x^i}{\partial\varphi}\dt t\dt\varphi&=\begin{pmatrix}
+%         \frac{1}{\sqrt{(u^\star)^2-1}}\cdot\frac{q^\perp p^\perp}{\omega_q^\perp\omega_p^\perp}\cos\varphi\Big(1-t^2\big(\frac{q^\perp}{\omega_q^\perp}\big)^2\Big)\\
+%         -1\\
+%         -\frac{1}{\sqrt{(u^\star)^2-1}}\frac{q^\perp p^\perp}{\omega_q^\perp\omega_p^\perp}\cdot t\sin\varphi
+%     \end{pmatrix}\dt t\dt\varphi\\
+%     \sigma(t,\varphi)\dt t\dt\varphi&\defeq \Vert\dt^2\sigma^i\Vert
+% \end{align}
+% \end{subequations}
+
+Let us try to evaluate the decay map in the rest frame of the decay product b, such that $p^\mu=(m_b,\vec{0})$.
+\begin{subequations}
+    \begin{align}
+        \omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}&=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int\frac{\dt^4q}{(2\pi)^4}\delta(q^2+m_a^2)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\delta\big(q^\mu p_\mu+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times2\pi\int\frac{\dt q^0\dt q^3\dt q^\perp q^\perp\dt\varphi}{(2\pi)^4}\delta(q^2+m_a^2)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\delta\big(-m_bq^0+m_a E_{a\rightarrow b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times\frac{2\pi}{m_b}\int\frac{\dt q^3\dt q^\perp q^\perp\dt\varphi}{(2\pi)^4}\delta\Big(\underbrace{-\frac{m_a^2E_{a\rightarrow b\vert c}^2}{m_b^2}+m_a^2}_{=-\frac{m_a^2p_{a\rightarrow b\vert c}^2}{m_b^2}}+(q^3)^2+(q^\perp)^2\Big)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\\
+        \intertext{\dots define $q^3=w\frac{m_a p_{a\rightarrow b\vert c}}{m_b}$\dots}
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times\frac{(2\pi)^2 m_ap_{a\rightarrow b\vert c}}{m_b^2}\int\frac{\dt w\dt q^\perp q^\perp}{(2\pi)^4}\delta\Big((q^\perp)^2-(1-w^2)\frac{m_a^2p_{a\rightarrow b\vert c}^2}{m_b^2}\Big)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\\
+        &=B\frac{4\pi^2m_a}{p_{a\rightarrow b\vert c}}\times\frac{(2\pi)^2 m_ap_{a\rightarrow b\vert c}}{2m_b^2}\int_{-1}^1\frac{\dt w}{(2\pi)^4}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{q^\perp=q^{\perp,\star}(w)}\\
+    \end{align}
+\end{subequations}
+where we integrated out the $\delta$-function over $q^\perp$, using $\delta((q^\perp)^2-(q^{\perp,\star})^2)=\delta(q^\perp\pm q^{\perp,\star})/(2\vert q^\perp\vert)$ with 
+\begin{equation}
+    q^{\perp,\star}(w)=\sqrt{(1-w^2)\frac{m_a^2p_{a\rightarrow b\vert c}^2}{m_b^2}}
+\end{equation}
+and the condition $(q^\perp)^2\geq 0$ implies $w\in[-1,1]$.

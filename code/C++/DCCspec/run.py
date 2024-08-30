@@ -7,6 +7,7 @@ from IPython import get_ipython
 import glob
 import os
 import scipy.interpolate
+from matplotlib import gridspec
 
 get_ipython().run_line_magic("matplotlib","qt")
 plt.style.use("mplstyles/myclassic_white.mplstyle")
@@ -222,17 +223,21 @@ plt.ioff()
 parentdir = "data/spectra_real_consteps_20240826_143341_m1000/*/"
 paths = glob.glob(parentdir)
 
-fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
+# fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
+fig_init = plt.figure(figsize=(7,7))
+gs = gridspec.GridSpec(nrows=2, ncols=1, hspace=0)
+ax_init1, ax_init2 = fig_init.add_subplot(gs[0]), fig_init.add_subplot(gs[1])
+
 fig_spec, ax_spec = plt.subplots(figsize=(7,7))
 fig_fullspec, ax_fullspec = plt.subplots(figsize=(7,7))
 
 ax_init1.set_ylabel(r"$\pi^0\ [\mathrm{GeV}]$")
 ax_init2.set_ylabel(r"$n^\mu\partial_\mu\pi^0\ [\mathrm{GeV}^2]$")
-ax_spec.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
+ax_spec.set_ylabel(r"$\frac{1}{2\pi p_T}\frac{\mathrm{d}N}{\mathrm{d}p_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
 
 ax_init1.set_xlabel(r"$\alpha$")
 ax_init2.set_xlabel(r"$\alpha$")
-ax_spec.set_xlabel(r"$p^\perp\ [\mathrm{GeV}]$")
+ax_spec.set_xlabel(r"$p_T\ [\mathrm{GeV}]$")
 
 ax_spec.set_yscale("log")
 ax_fullspec.set_yscale("log")
@@ -275,6 +280,8 @@ fig_decay.tight_layout()
 
 ax_fullspec.set_xlim(ax_decay2.get_xlim())
 
+minval1, maxval1 = np.inf, -np.inf
+minval2, maxval2 = np.inf, -np.inf
 for (n,path) in enumerate(paths):
     df_spec = pd.read_csv(path+"spectr.txt",comment="#")
     df_field0 = pd.read_csv(path+"field0.txt",comment="#")
@@ -294,6 +301,16 @@ for (n,path) in enumerate(paths):
         df_Dfield0["Dfield0Re"].to_numpy(),
         marker="",
         color=col)
+    
+    mindata1 = np.min(df_field0["field0Re"].to_numpy())
+    maxdata1 = np.max(df_field0["field0Re"].to_numpy())
+    minval1 = np.min((minval1,mindata1))
+    maxval1 = np.max((maxval1,maxdata1))
+
+    mindata2 = np.min(df_Dfield0["Dfield0Re"].to_numpy())
+    maxdata2 = np.max(df_Dfield0["Dfield0Re"].to_numpy())
+    minval2 = np.min((minval2,mindata2))
+    maxval2 = np.max((maxval2,maxdata2))
 
     ax_spec.plot(
         df_spec["pT"].to_numpy(),
@@ -306,6 +323,30 @@ for (n,path) in enumerate(paths):
         df_spec["abs2Re"].to_numpy()+decayfunc(df_spec["pT"].to_numpy()),
         marker="",
         color=col)
+
+myrange1 = maxval1 - minval1
+myrange2 = maxval2 - minval2
+if(myrange1 > 0):
+    ax_init1.set_ylim(minval1-0.05*myrange1,maxval1+0.05*myrange1)
+if(myrange2 > 0):
+    ax_init2.set_ylim(minval2-0.05*myrange2,maxval2+0.05*myrange2)
+
+ax_init1.set_xticklabels(ax_init1.get_xticklabels(), visible=False)
+labels = ax_init1.get_yticklabels()
+labels[0] = labels[-1] = ""
+ax_init1.set_yticklabels(labels)
+labels = ax_init2.get_yticklabels()
+labels[0] = labels[-1] = ""
+ax_init2.set_yticklabels(labels)
+
+
+xticks = [0,np.pi/8,np.pi/4,3*np.pi/8,np.pi/2]
+xticklabels = [r"$0$",r"$\pi/8$",r"$\pi/4$",r"$3\pi/8$",r"$\pi/2$"]
+ax_init1.set_xticks(xticks, xticklabels)
+ax_init2.set_xticks(xticks, xticklabels)
+
+ax_init1.set_xlim(0,np.pi/2)
+ax_init2.set_xlim(0,np.pi/2)
 
 fig_init.suptitle(parentdir)
 fig_spec.suptitle(parentdir)

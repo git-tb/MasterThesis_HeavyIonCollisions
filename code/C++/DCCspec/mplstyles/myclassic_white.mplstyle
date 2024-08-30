@@ -173,7 +173,7 @@ mathtext.default : it # The default font to use for math.
 # https://matplotlib.org/api/axes_api.html#module-matplotlib.axes
 axes.facecolor      : w       # axes background color
 axes.edgecolor      : k      # axes edge color
-axes.linewidth      : 1.0     # edge linewidth
+axes.linewidth      : 2.0     # edge linewidth
 axes.grid           : true   # display grid or not
 axes.grid.which     : both
 axes.grid.axis      : both

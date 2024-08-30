@@ -1,8 +1,13 @@
-\documentclass[a4paper]{report}
+\documentclass[a4paper,twoside,12pt]{report}
 
 \input{00_packages.tex}
 \input{00_defines.tex}
 
+\usepackage{tgtermes}
+\usepackage[T1]{fontenc}
+
+% \usepackage{venturis2}
+% \usepackage[T1]{fontenc}
 
 \begin{document}
 
@@ -10,9 +15,40 @@
 \author{Tobias Bruschke}
 \maketitle
 
+
+\fancypagestyle{myfancy}{%
+\fancyfoot[CO,CE]{}
+\fancyhead[RO,LE]{}
+\fancyhead[RE,LO]{\rightmark}
+\fancyfoot[LE,RO]{\bfseries\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+}
+
+\fancypagestyle{plain}{%
+    \fancyfoot[CO,CE]{}
+    \fancyhead[RO,LE]{}
+    \fancyhead[RE,LO]{}
+    \fancyfoot[LE,RO]{\bfseries\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0.5pt}
+}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+\pagestyle{myfancy}
+
 \tableofcontents
 
 \input{thesis_chapters/01.tex}
+\input{thesis_chapters/02.tex}
+\input{thesis_chapters/03.tex}
+\input{thesis_chapters/04.tex}
+\input{thesis_chapters/05.tex}
+\input{thesis_chapters/06.tex}
 
 \todos
 
