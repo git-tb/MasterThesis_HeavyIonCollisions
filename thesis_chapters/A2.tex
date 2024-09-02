@@ -1,0 +1,24 @@
+\section{Linear $\sigma$-Model}
+
+\begin{equation}
+V(\sigma,\vec{\pi})=-\frac{1}{2}\mu^2(\sigma^2+\vec{\pi}^2)+\frac{\lambda}{4}(\sigma^2+\vec{\pi}^2)^2-h\sigma
+\end{equation}
+The minimum is located at ${\sigma= v=f_\pi+\delta v}$ and ${\vec{\pi}=0}$. Assuming that the perturbation ${\delta v}$ is of order ${\mathcal{O}(h^2)}$, one finds
+\begin{subequations}
+    \begin{align}
+        0\overset{!}{=}\frac{\dt V}{\dt\sigma}\Big\vert_{\substack{\sigma= v\\\vec{\pi}=0}}&=-\mu^2 v+\lambda v^3-h\\
+        &=\delta v(-\mu^2+3\lambda f_\pi^2)+\mathcal{O}\big((\delta v)^2\big)-h\\
+        \iff\quad\delta v&=\frac{h}{2\mu^2}+\mathcal{O}(h^2)
+    \end{align}
+\end{subequations}
+
+Shifting ${\sigma\to v+\sigma}$, the potential reads
+\begin{subequations}
+    \begin{align}
+        V(\sigma,\vec{\pi})&=-\frac{1}{2}\mu^2\big((\sigma+v)^2+\vec{\pi}^2\big)+\frac{\lambda}{4}\big((\sigma+v)^2+\vec{\pi}^2\big)^2-h(\sigma+v)\\
+        &=-\frac{\mu^2}{2}v^2+\frac{\lambda}{4}v^4+\\
+        &\phantom{=}+\sigma(-\mu^2v+\lambda v^3-h)+\\
+        &\phantom{=}+\sigma^2(-\frac{\mu^2}{2}+\frac{3}{2}\lambda v^2)+\\
+        &\phantom{=}+\vec{\pi}^2(-\frac{\mu^2}{2}+\frac{\lambda}{2}v^2)+
+    \end{align}
+\end{subequations}

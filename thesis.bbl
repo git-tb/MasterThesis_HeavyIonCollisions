@@ -423,6 +423,38 @@
       \verb /home/tobias/Zotero/storage/SFXF5HAK/Bjorken - 1983 - Highly relativistic nucleus-nucleus collisions Th.pdf
       \endverb
     \endentry
+    \entry{Floerchinger_2020}{unpublished}{}
+      \name{author}{1}{}{%
+        {{hash=50048509226fe3fdf2310776356e459f}{%
+           family={Floerchinger},
+           familyi={F\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Heidelberg}%
+      }
+      \strng{namehash}{50048509226fe3fdf2310776356e459f}
+      \strng{fullhash}{50048509226fe3fdf2310776356e459f}
+      \strng{bibnamehash}{50048509226fe3fdf2310776356e459f}
+      \strng{authorbibnamehash}{50048509226fe3fdf2310776356e459f}
+      \strng{authornamehash}{50048509226fe3fdf2310776356e459f}
+      \strng{authorfullhash}{50048509226fe3fdf2310776356e459f}
+      \field{labelalpha}{Flo20}
+      \field{sortinit}{6}
+      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Lectures on {{Symmetries}}}
+      \field{urlday}{2}
+      \field{urlmonth}{9}
+      \field{urlyear}{2024}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/tobias/Zotero/storage/BQKWH9HG/SymmetriesFloerchinger.pdf
+      \endverb
+    \endentry
     \entry{Koch_1997}{article}{}
       \name{author}{1}{}{%
         {{hash=a7f4bf668408cc1902afbb9d1dc0be32}{%
@@ -438,8 +470,8 @@
       \strng{authornamehash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \strng{authorfullhash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \field{labelalpha}{Koc97}
-      \field{sortinit}{6}
-      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
+      \field{sortinit}{7}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This article is an attempt to a pedagogical introduction and review into the elementary concepts of chiral symmetry in nuclear physics. Effective chiral models such as the linear and nonlinear sigma model will be discussed as well as the essential ideas of chiral perturbation theory. Some applications to the physics of ultrarelativistic heavy ion collisions will be presented.}
@@ -493,8 +525,8 @@
       \strng{authornamehash}{eac544595d4b8df6d805de9a237dd921}
       \strng{authorfullhash}{eac544595d4b8df6d805de9a237dd921}
       \field{labelalpha}{ABL97}
-      \field{sortinit}{7}
-      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{sortinit}{8}
+      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{We study the various stages of the evolution of chiral condensates disoriented via the ``baked-alaska'' mechanism, in which the condensates are described as the products of external sources localized on the light cone. Our analysis is based on the classical equations of motion of either the linear or the nonlinear sigma model. We use the associated framework of coherent states and, especially, their source functions to make the connection to the distribution functions for the produced particles. We also compare our classical approach with a mean-field calculation which includes a certain class of quantum corrections.}
@@ -551,8 +583,8 @@
       \strng{authornamehash}{0ede250374fe5868188340c29e64c200}
       \strng{authorfullhash}{0ede250374fe5868188340c29e64c200}
       \field{labelalpha}{KGF23}
-      \field{sortinit}{8}
-      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
+      \field{sortinit}{9}
+      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}
