@@ -16,7 +16,13 @@ Quarks and antiquarks form bound states, the hadrons. The ways in which these fu
 
 From a group theory perspective, quarks transform under the fundamental representation $\mathbf{3}_C$ of the $SU_C(3)$ group of color rotations, whereas antiquarks transform under the conjugate representation $\overline{\mathbf{3}}_C$. The hypothesis of color neutrality implies that any observed state must not transform under color rotations and thus form a 1-dimensional invariant subspace $\mathbf{1}_C$. Hadrons transform under representations given by the tensor product of the representations of their constituents. This raises the question, which tensor products of $\mathbf{3}_C$ and $\overline{\mathbf{3}}_C$ contain such 1-dimensional invariant subspaces, a question answered by decomposing the tensor product representation into its irreducible components. Combining 2 quarks, the compound state lives in the representation space of ${\mathbf{3}_C\otimes\mathbf{3}_C=\mathbf{6}_C\oplus\overline{\mathbf{3}}_C}$, not featuring a 1-dimensional invariant subspace and thus not containing any color neutral state. Consequently, no bound states of 2 quarks exist. In contrast to that, combining a quark and an antiquark leads to the representation ${\mathbf{3}_C\otimes\overline{\mathbf{3}}_C=\mathbf{8}_C\oplus\mathbf{1}_C}$, which contains the singlet $\mathbf{1}_C$, allowing at least in principle for color neutral compound states of that kind. These states are termed mesons. Color invariant states also appear in the decompositions of ${\mathbf{3}_C\otimes \mathbf{3}_C\otimes \mathbf{3}_C}$ and ${\overline{\mathbf{3}}_C\otimes \overline{\mathbf{3}}_C\otimes \overline{\mathbf{3}}_C}$, and are then called baryons.
 
-The flavor content of a hadron is found by applying the above restriction to the representation theory of $SU(N_f)$. First, investigate the case ${N_f=2}$, by choosing the up- and down-quark $\ket{u}$ and $\ket{d}$ as basis states in flavor space. The representation theory of $SU(2)$ is well known from the study of angular momentum of spin-$\frac{1}{2}$ particles with basis states $\ket{\uparrow}$, $\ket{\downarrow}$. The tensor product ${\mathbf{2}_f\otimes\mathbf{2}_f=\mathbf{3}_f\oplus\mathbf{1}_f}$ contains a triplet and singlet. The triplet states are the pions $\pi^a$, and the singlet state is given by the $\sigma$-meson. In terms of the spinor fields, they are given by \todo{factor of $\sqrt{2}$?}
+The flavor content of a hadron is found by applying the above restriction to the representation theory of $SU(N_f)$. First, investigate the case ${N_f=2}$, by choosing the up- and down-quark $\ket{u}$ and $\ket{d}$ as basis states in flavor space. The representation theory of $SU(2)$ is well known from the study of angular momentum of spin-$\frac{1}{2}$ particles with basis states $\ket{\uparrow}$, $\ket{\downarrow}$. The tensor product ${\mathbf{2}_f\otimes\mathbf{2}_f=\mathbf{3}_f\oplus\mathbf{1}_f}$ contains a triplet and singlet. The triplet states are the pions $\pi^a$, and the singlet state is given by the $\sigma$-meson. In terms of the spinor fields, they are given by 
+\begin{gather}
+    \ket{\pi^0}=\frac{1}{\sqrt{2}}(\ket{u\overline{u}}-\ket{d\overline{d}})\,,\qquad\ket{\pi^1}=\frac{1}{\sqrt{2}}(\ket{u\overline{d}}+\ket{d\overline{u}})\,,\qquad\ket{\pi^2}=\frac{1}{\sqrt{2}\imagu}(\ket{d\overline{u}}-\ket{u\overline{d}})\,,\\
+    \ket{\sigma}=\frac{1}{\sqrt{2}}(\ket{u\overline{u}}+\ket{d\overline{d}})
+\end{gather}
+
+\todo{factor of $\sqrt{2}$?}
 \begin{equation}
     \pi^a=\imagu\overline{\psi}\tau^a\gamma_5\psi\,,\qquad\sigma=\overline{\psi}\psi\,.
 \end{equation}
@@ -42,20 +48,28 @@ In the low energy limit\todo{is that even right? maybe more precise} the fundame
 \end{multline}
 containing a kinetic part $\mathscr{L}_{\text{kin}}$ with derivatives and the potential $V(\sigma,\vec{\pi})$ depending on the field amplitudes. $\mu^2$, $\lambda$ and $h$ are model parameters, that can be related to physical observables.
 
-The above Lagrangian is invariant under $SO(4)$ rotations of the real 4-component vector ${(\sigma,\vec{\pi})}$, up to terms of order ${\mathcal{O}(h^1)}$. This symmetry reflects the approximate $SU_f(2)$ symmetry, which is however broken by a slight difference ${m_u\neq m_d}$ in the quark masses. As this difference is much smaller than the relevant scales at play, it can usually be treated as an expansion parameter. We will do so in the next section.
+The above Lagrangian is invariant under $SO(4)$ rotations of the real 4-component vector ${(\sigma,\vec{\pi})}$, up to terms of order ${\mathcal{O}(h^1)}$. This symmetry reflects the approximate $SU_f(2)$ symmetry, which is however broken by a slight difference ${m_u\neq m_d}$ in the quark masses. As this difference is much smaller than the relevant scales at play, it can usually be treated as an expansion parameter. We will do so in the following.
 
-The theory described by the Lagrangian \eqref{eq:LinearSigmaModelLagrangian} is a prototypical example for spontaneous symmetry breaking. At sufficiently low temperatures the parameters satisfy ${\mu^2>0}$ and ${\lambda>0}$. In the limit ${h\to0}$, one speaks of a Mexican hat potential due to the characteristic shape in field space. It features a manifold of equivalent vacua, determined by $\sigma^2+\vec{\pi}^2=f_\pi^2$ with the pion decay constant $f_\pi=u/\sqrt{\lambda}$. Fluctuations single out one of the possible vacuum states, conventionally chosen to be $(\sigma,\vec{\pi})=(f_\pi,\vec{0})$. This choice becomes reasonable, once the symmetry breaking term $h>0$ is considered. It favors the excitation in $\sigma$-direction, yielding a unique vacuum at ${\sigma_0=f_\pi+h/(2\mu^2)+\mathcal{O}(h^2)}$ and $\vec{\pi}=0$. The non-vanishing vacuum expectation value of ${\sigma\sim\overline{\psi}\psi}$ due to spontaneous symmetry breaking is called the chiral condensate.
+In the limit ${h\to0}$ the theory described by the Lagrangian \eqref{eq:LinearSigmaModelLagrangian} is a prototypical example for spontaneous symmetry breaking. At sufficiently low temperatures the parameters satisfy ${\mu^2>0}$ and ${\lambda>0}$ leading to the well known Mexican hat potential with the characteristic shape in field space. It features a manifold of equivalent vacua, determined by $\sigma^2+\vec{\pi}^2=f_\pi^2$ with the pion decay constant ${f_\pi=\mu/\sqrt{\lambda}}$. Fluctuations single out one of the possible vacuum states, conventionally chosen to be $(\sigma,\vec{\pi})=(f_\pi,\vec{0})$. This choice is essentially random, coining the term spontaneous symmetry breaking. The vacuum itself is not invariant under the full symmetry group of $SO(4)$ rotations of the model. Instead, the vacuum is only invariant under the subgroup ${SO(3)\subset SO(4)}$, that keeps 1 axis in field space fixed. With the choice above, these are all the rotations of the 3-component vector $\vec{\pi}$ of the pion fields. Out of the 6 generators of $SO(4)$ rotations, 3 are broken by the spontaneous choice of vacuum, namely the generators of rotations that interchange the $\sigma$-field with 1 pion field $\pi^a$. According to the Nambu-Goldstone theorem, there must be an equal number of massless excitations on top of the vacuum state, called Nambu-Goldstone bosons. In the present theory, these are the 3 pion fields $\pi^a$. We will come back to this observation soon.
 
-the potential develops a minimum at ${\sigma_0=f_\pi+h\cdot\frac{1}{2\mu^2}+\mathcal{O}(h^2)}$ and $\vec{\pi}=0$, where ${f_\pi=\frac{\mu}{\sqrt{\lambda}}}$ is the so-called pion-decay-constant. Performing the substitution ${\sigma\mapsto v+\sigma}$ and neglecting terms of order $\mathcal{O}(h^2,\sigma^3,\sigma\vec{\pi}^2,(\vec{\pi}^2)^2)$ and higher the potential reads
+The conventional choice of the vacuum ${(\sigma,\vec{\pi})=(f_\pi,0)}$ becomes reasonable, once the symmetry breaking term $h>0$ is considered. It favors the excitation in $\sigma$-direction, yielding a unique vacuum at ${\sigma=v\equiv f_\pi+h/(2\mu^2)+\mathcal{O}(h^2)}$ and $\vec{\pi}=0$. The non-vanishing vacuum expectation value $v$ of ${\sigma\sim\overline{\psi}\psi}$ due to spontaneous symmetry breaking is called the chiral condensate.
+
+The expansion of the linear $\sigma$-model around the vacuum is performed in the Appendix \ref{sec:Apx_LinearSigmaExpansion}. For small excitations on top of the vacuum, working to quadratic order in the fields is justified. Neglecting a constant offset, the potential reads
 \begin{equation}
-    V(\sigma,\vec{\pi})=-\frac{\mu^4}{4\lambda}+\frac{1}{2}m_\sigma\sigma^2+\frac{1}{2}m_\pi^2\vec{\pi}^2
+    V(\sigma,\vec{\pi})=\frac{1}{2}m_\sigma\sigma^2+\frac{1}{2}m_\pi^2\vec{\pi}^2
 \end{equation}
-with pion mass $m_\pi^2=\frac{h}{f_\pi}$ and sigma mass $m_\sigma^2=2\mu^2+\mathcal{O}(h)$. Defining $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$ one gets 
+with the mass terms given by
+\begin{equation}
+    m_\sigma^2=2\mu^2+\mathcal{O}(h)\,,\qquad m_\pi^2=\frac{h}{f_\pi}+\mathcal{O}(h^2)\,.
+    \label{eq:LinearSigmaExpansion_Masses}
+\end{equation}
+Unlike the squared curvature mass ${-\mu^2}$ of the potential appearing in the $SO(4)$-symmetric Lagrangian \ref{eq:LinearSigmaModelLagrangian}, the squared mass terms in \eqref{eq:LinearSigmaExpansion_Masses} are positive and the corresponding excitations can nicely be interpreted as free relativistic particles. We find further, that in the limit $h\to 0$ the pions are indeed massless, in accordance with the Nambu-Goldstone theorem for the spontaneously broken $SO(4)$-symmetry. 
+
+What is measured in experiment are not the 3 real valued pion fields $\pi^a$, but rather the neutral pion $\pi^0$ and 2 charged pions $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$. One immediately finds 
 \begin{equation}
     (\pi^1)^2+(\pi^2)^2=\abs{\pi^+}^2+\abs{\pi^-}^2=2\pi^+\pi^-\equiv 2\pi^+\overline{\pi^+}
 \end{equation}
-
-The expansion of the Lagrangian around $\sigma_0$ breaks the $SO(4)$-symmetry associated to the vector $(\sigma,\vec{\pi})$ and chooses explicitly a minimum within the $SO(4)$-symmetric mexican hat potential. The residual symmetry is $SU(3)$. It features the $SO(2)$ subgroup of symmetry transformations
+As a note, the subgroup ${SO(3)\subset SO(4)}$ of rotations of the pion fields features the ${SO(2)\simeq U(1)}$ subgroup of symmetry transformations
 \begin{equation}
     \begin{pmatrix}
         \pi^1\\\pi^2
@@ -67,19 +81,22 @@ The expansion of the Lagrangian around $\sigma_0$ breaks the $SO(4)$-symmetry as
         \begin{pmatrix}
             \pi^1\\\pi^2
         \end{pmatrix}
-        \qquad\iff\qquad\pi^\pm\mapsto e^{\pm\imagu\alpha}\pi^\pm
+        \qquad\iff\qquad\pi^\pm\mapsto e^{\pm\imagu\alpha}\pi^\pm\,.
 \end{equation}
-Note $\pi^-=\overline{\pi^+}$.
+Note also Theta $\pi^-=\overline{\pi^+}$.
 
-The Lagrangians and energy-momentum tensors $T^{\mu\nu}=2(\partial\mathscr{L}/\partial g_{\mu\nu})+g^{\mu\nu}\mathscr{L}$ \textbf{CITE: BLAU NOTES} for the separate fields read
+To later make contact with the fluid description of the QGP, we state here the Lagrangians and canonical energy-momentum tensors ${T^{\mu\nu}=2(\partial\mathscr{L}/\partial g_{\mu\nu})+g^{\mu\nu}\mathscr{L}}$ \cite{Weinberg_2008} for the real fields $\sigma$ and $\pi^0$, as well as the complex fields $\pi^\pm$. They read
 \begin{subequations}
     \begin{align}
-        \mathscr{L}_{\pi^\pm}&=-(\partial_\mu\pi^+)(\overline{\partial_\mu\pi^+})-m_\pi^2\pi^+\overline{\pi^+}&T^{\mu\nu}_{\pi^\pm}&=2(\partial^\mu\pi^+)(\overline{\partial^\nu\pi^+})+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\overline{\partial^\alpha\pi^+})-m_\pi^2\pi^+\overline{\pi^+}\big)\\
-        \mathscr{L}_{\pi^0}&=-\frac{1}{2}(\partial_\mu\pi^0)(\partial^\mu\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2&T^{\mu\nu}_{\pi^0}&=(\partial^\mu\pi^0)(\partial^\nu\pi^0)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\pi^0)(\partial^\alpha\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\\
-        \mathscr{L}_\sigma&=-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}m_\sigma^2\sigma^2&T^{\mu\nu}_{\sigma}&=(\partial^\mu\sigma)(\partial^\nu\sigma)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\sigma)(\partial^\alpha\sigma)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)
+        % \mathscr{L}_\sigma&=-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}m_\sigma^2\sigma^2\\
+        T^{\mu\nu}_{\sigma}&=(\partial^\mu\sigma)(\partial^\nu\sigma)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\sigma)(\partial^\alpha\sigma)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\\
+        % \mathscr{L}_{\pi^0}&=-\frac{1}{2}(\partial_\mu\pi^0)(\partial^\mu\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2\\
+        T^{\mu\nu}_{\pi^0}&=(\partial^\mu\pi^0)(\partial^\nu\pi^0)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\pi^0)(\partial^\alpha\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\\
+        % \mathscr{L}_{\pi^\pm}&=-(\partial_\mu\pi^+)(\overline{\partial_\mu\pi^+})-m_\pi^2\pi^+\overline{\pi^+}\\
+        T^{\mu\nu}_{\pi^\pm}&=2(\partial^\mu\pi^+)(\overline{\partial^\nu\pi^+})+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\overline{\partial^\alpha\pi^+})-m_\pi^2\pi^+\overline{\pi^+}\big)
     \end{align}
 \end{subequations}
-Following \textbf{CITE WEINBERG COSMOLOGY} the energy momentum tensor of a real scalar field $\varphi$ is
+Following \cite{Weinberg_2008} the energy momentum tensor of a real scalar field $\varphi$ is
 \begin{subequations}
     \begin{align}
         T_\varphi^{\mu\nu}&=-g^{\mu\nu}\big[\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)+V(\varphi)\big]+g^{\mu\rho}g^{\nu\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\\
@@ -88,6 +105,19 @@ Following \textbf{CITE WEINBERG COSMOLOGY} the energy momentum tensor of a real 
         u^\mu&=-\big[-g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\big]^{-1/2}g^{\mu\nu}\partial_\nu\varphi
     \end{align}
 \end{subequations}
+
+Finally, the linear $\sigma$-model is often states in terms of a combined matrix-valued field
+\begin{equation}
+    \Phi=\sigma\mathbb{1}+\imagu\pi^a\tau^a=\begin{pmatrix}
+        \sigma+\imagu\pi^0 & \sqrt{2}\pi^+      \\
+        \sqrt{2}\pi^-      & \sigma-\imagu\pi^0
+    \end{pmatrix}
+\end{equation}
+where $\tau^a$, ${a\in\{0,1,2\}}$ are the Pauli matrices. Using ${(\tau^a)^\dagger=\tau^a}$, ${\Tr(\tau^a\tau^b)=2\delta^{ab}}$ and ${\Tr(\tau^a)=0}$ one immediately finds for example ${\Tr(\Phi^\dagger\Phi)=2(\sigma^2+\pi^a\pi^a)}$ and the linear $\sigma$-model Lagrangian \eqref{eq:LinearSigmaModelLagrangian} can easily be shown to be equivalent to
+\begin{equation}
+    \mathscr{L}=-\frac{1}{4}\Tr\big[(\partial_\mu\Phi^\dagger)(\partial_\mu\Phi\big)]-\Bigg(-\frac{1}{4}\mu^2\Tr\big[\Phi^\dagger\Phi\big]+\frac{\lambda}{8}\Big(\Tr\big[\Phi^\dagger\Phi\big]\Big)^2-\frac{h}{4}\Tr\big[\Phi^\dagger+\Phi\big]\Bigg)\,.
+    \label{eq:Lagrangian_LinearSigma2}
+\end{equation}
 
 
 
@@ -101,26 +131,72 @@ Following \textbf{CITE WEINBERG COSMOLOGY} the energy momentum tensor of a real 
 
 \section{Conserved Currents from Chiral Symmetries}
 
-Define
+A 4-component Dirac spinor $\psi$ is composed of two 2-component Weyl spinors that transform under conjugate representations of the Lorentz group and are called left-handed and right-handed Weyl spinors respectively. Complex phase rotations of these Weyl spinors lead to another set of symmetries of QCD, called chiral symmetries. The set of chiral transformations is given by the product of left-handed phase rotations ${U_+(1)}$ (or ${U_{\text{L}}(1)}$) and right handed phase rotations ${U_-(1)}$ (or ${U_{\text{R}}(1)}$). It can be equivalently expressed as the product of simultaneous phase rotations of both left- and right-handed components by an equal angle, together with simultaneous phase rotations by opposite angles, leading to the notion of vector and axial transformations.
+
+These transformations are understood best with the help of the $\gamma_5$-matrix
 \begin{equation}
-    \Phi=\sigma\mathbb{1}+\imagu\pi^a\tau^a=\begin{pmatrix}
-        \sigma+\imagu\pi^0 & \sqrt{2}\pi^+      \\
-        \sqrt{2}\pi^-      & \sigma-\imagu\pi^0
-    \end{pmatrix}\,,\qquad\pi^\pm=\frac{1}{\sqrt{2}}(\pi^1\mp\imagu\pi^2)
+    \gamma_5=\imagu\prod_{\mu=0}^3\gamma^\mu=\begin{pmatrix}
+        -\mathbb{1}_{2\times 2}&0\\0&\mathbb{1}_{2\times 2}\,,
+    \end{pmatrix}
 \end{equation}
-where $\tau^a$, $a\in\{0,1,2\}$ are the Pauli matrices (more precisely, $\tau^a=\sigma^{a+1}$ since $\sigma^0$ is usually reserved for the identity). Using $(\tau^a)^\dagger=\tau^a$, $\Tr(\tau^a\tau^b)=2\delta^{ab}$ and $\Tr(\tau^a)=0$ one immediately finds for example $\Tr(\Phi^\dagger\Phi)=2(\sigma^2+\pi^a\pi^a)$ and the linear $\sigma$-model Lagrangian \eqref{eq:LinearSigmaModelLagrangian} can easily be shown to be equivalent to
+where the explicit form of the matrix is given in the chiral representation of the Clifford algebra. The $\gamma_5$-matrix satisfies
 \begin{equation}
-    \mathscr{L}=-\frac{1}{4}\Tr\big[(\partial_\mu\Phi^\dagger)(\partial_\mu\Phi\big)]-\Bigg(-\frac{1}{4}\mu^2\Tr\big[\Phi^\dagger\Phi\big]+\frac{\lambda}{8}\Big(\Tr\big[\Phi^\dagger\Phi\big]\Big)^2-\frac{h}{4}\Tr\big[\Phi^\dagger+\Phi\big]\Bigg)
-    \label{eq:Lagrangian_LinearSigma2}
+    \{\gamma_5,\gamma^\mu\}=0\,,\qquad (\gamma_5)^2=\mathbb{1}\,.
+\end{equation}
+The left- and right-handed components of a Dirac spinor can naturally be projected out, ${\psi_\pm=P_\pm\psi}$, using the projectors ${P_\pm=(1\pm\gamma_5)/2}$. One easily verifies the projector properties
+\begin{subequations}
+    \begin{equation}
+        P_\pm^2=P_\pm\,,\qquad P_\pm P_\mp=0\,,\qquad P_++P_-=\mathbb{1}\,,
+    \end{equation}
+    as well as the relations
+    \begin{equation}
+        P_{\pm}\gamma^\mu=\gamma^\mu P_\mp\,,\qquad\gamma_5=P_+-P_-\,.
+    \end{equation}
+\end{subequations}
+They may be used to decompose the contributions of the Dirac Lagrangian
+\begin{equation}
+    \mathscr{L}_D=\imagu(\overline{\psi}_+\slashed{D}\psi_++\overline{\psi}_-\slashed{D}\psi_-)-m(\overline{\psi}_-\psi_++\overline{\psi}_+\psi_-)\,.
 \end{equation}
 
-Investigate the transformation behaviour of the field $\Phi$ under chiral symmetry transformation, following \cite{Koch_1997}. These symmetries are
+Whereas the kinetic term ${\sim\psi\slashed{\partial}\psi}$ does not mix left- and right-handed spinor components, the mass term ${\sim\overline{\psi}\psi}$ does. As a consequence, the kinetic term is invariant under the whole group ${U_+(1)\times U_-(1)}$ of independent phase rotations
+\begin{align}
+        &&U_\pm(1)  :&& \psi_\pm&\mapsto e^{\frac{\imagu}{2}\alpha_\pm}\psi_\pm&\overline{\psi}_\pm&\mapsto e^{-\frac{\imagu}{2}\alpha_\pm}\overline{\psi}_\pm&&
+\end{align}
+of the spinor components. The mass term on the other hand mixes left- and right-handed components and is thus only invariant if ${\alpha_+=\alpha_-}$. It is thus intuitive to categorize chiral transformations into so-called vector transformations ${U_V(1)}$, where ${\alpha_+=\alpha_-}$, and axial transformations ${U_A(1)}$, where ${\alpha_+=-\alpha_-}$. In formula,
+\begin{subequations}
+    \begin{align}
+        &&U_V(1) : & &\psi_\pm&\mapsto e^{\frac{\imagu}{2}\alpha}\psi_\pm &\overline{\psi}_\pm&\to e^{-\frac{\imagu}{2}\alpha}\overline{\psi}_\pm      &&\\
+        &&U_A(1) : & &\psi_\pm&\mapsto e^{\pm\frac{\imagu}{2}\alpha}\psi_\pm &\overline{\psi}_\pm&\mapsto e^{\mp\frac{\imagu}{2}\alpha}\overline{\psi}_\pm&&
+    \end{align}
+\end{subequations}
+Axial chiral symmetry is explicitly broken by non-vanishing fermion masses. If the fermion masses are small with respect to the energy scale at play, axial transformations are considered to be an approximate symmetry of the system. The $\sigma$-meson ${\sim\overline{\psi}\psi}$ in terms of the quark fields has the same structure as the mass term. Axial symmetry is therefore spontaneously broken by a non-vanishing vacuum expectation value of the $\sigma$. Up to this point, vector symmetry is yet unbroken.
+
+The idea of these transformations is based on the spinor structure of the fermionic fields. Having introduced different flavors of quarks already, more structure can be found by considering the larger group of transformations ${U_{V,A}(N_f)\supset U_{V,A}(1)}$. Note that
+\begin{equation}
+    U(N_f)=\big(SU(N_f)\times U(1)\big)/\mathbb{Z}_{N_f}\,.
+\end{equation}
+The quotient is essentially due to the fact that all ${U(1)}$ elements ${\exp(k\frac{2\pi\imagu}{N_f})}$ with ${k\in\{0,1,\dots N_f-1\}}$ are elements of ${SU(N_f)}$ if viewed as ${N_f\times N_f}$ matrices. Thus the naive mapping ${SU(N_f)\times U(1)\to U(N_f)}$ is not injective. This relation however intuitively leads to the notion of ${SU_\text{V,A}(N_f)}$. The full group ${G_\chi}$ of chiral transformations can be stated as
+\begin{equation}
+    G_\chi=U_V(1)\times U_A(1)\times SU_V(N_f)\times SU_A(N_f)\,,
+\end{equation}
+up to ambiguity mentioned above, which is irrelevant on the level of the Lie algebra elements.
+
+Due to the additional structure, another peculiarity arises. If different fermion flavors have different masses, flavor rotations are only an approximate symmetry, depending on the mass differences compared to relevant energy scales of the system. In formula, denoting the sum over flavor indices explicitly, a mass term ${\sim\overline{\psi}_am_{ab}\psi_b}$ with a diagonal mass matrix $m_{ab}$ transforms as
+\begin{equation}
+    \overline{\psi}_am_{ab}\psi_b=\overline{\psi}_{a^\prime}(U^\dagger)_{a^\prime a}m_{ab}U_{bb^\prime}\psi_{b^\prime}=\overline{\psi}_{a^\prime}(U^\dagger mU)_{a^\prime b^\prime}\psi_{b^\prime}\qquad\text{with}\;U\in SU(N_f)\,,
+\end{equation}
+% \begin{equation}
+%     \overline{\psi}_{a^\prime} (U^\dagger)^{a^\prime}_{\phantom{a^\prime}a}m^{ab}U^{b}_{\phantom{b}b^\prime}\psi^{b^\prime}=\overline{\psi}_{a^\prime}(U^\dagger m U)^{a^\prime}_{\phantom{a^\prime}b^\prime}\psi^{b^\prime}\qquad\text{with}\;U\in SU(N_f)\,,
+% \end{equation}
+and is only invariant if the mass matrix is proportional to the identity in flavor space, ${m_{ab}=m\delta_{ab}}$. Different flavor masses break the vector symmetry ${SU_V(N_f)\times U_V(1)}$ further down to ${U_V(1)^{N_f}}$.
+
+Let us investigate the precise transformation behaviour of the fields under these groups, following \cite{Koch_1997}. Instead of considering the spinor components, we make use of the properties of the $\gamma_5$-matrix to rewrite the transformations equivalently in terms of the full spinors.
 \begin{subequations}
     \begin{align}
          &  & U_V(1): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\alpha}\psi                                             &  \overline{\psi}&\mapsto\overline{\psi}e^{\frac{\imagu}{2}\alpha}     &&                              \\
          &  & U_A(1): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\gamma_5\alpha}\psi                                     &  \overline{\psi}      & \mapsto \overline{\psi}e^{-\frac{\imagu}{2}\gamma_5\alpha} &&                                \\
          &  & SU_V(N_f): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\alpha_a\tau_a}\psi                                             &  \overline{\psi}&\mapsto\overline{\psi}e^{\frac{\imagu}{2}\alpha_a\tau_a}     &&                              \\
-         &  & SU_A(N_f): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\gamma_5\alpha_a\tau_a}\psi                                     &  \overline{\psi}      & \mapsto \overline{\psi}e^{-\frac{\imagu}{2}\gamma_5\alpha_a\tau_a} &&                                \\
+         &  & SU_A(N_f): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\gamma_5\alpha_a\tau_a}\psi                                     &  \overline{\psi}      & \mapsto \overline{\psi}e^{-\frac{\imagu}{2}\gamma_5\alpha_a\tau_a} &&                                
         \intertext{Pions and the $\sigma$ field are certain bound states of quarks, namely $\pi_a=\imagu\overline{\psi}\tau_a\gamma_5\psi$ and $\sigma=\overline{\psi}\psi$. Under the above transformations one finds infinitesimally}
          &  & U_V(1): &  & \pi_a            & \mapsto\pi_a & \sigma & \mapsto\sigma               &  & \\
          &  & U_A(1): &  & \pi_a            & \mapsto\pi_a+\alpha\overline{\psi}\tau_a\psi                                                                & \sigma & \mapsto\sigma-\imagu\alpha\overline{\psi}\gamma_5\psi &  & \\
@@ -128,7 +204,7 @@ Investigate the transformation behaviour of the field $\Phi$ under chiral symmet
          &  & SU_A(N_f): &  & \pi_a            & \mapsto\pi_a+\alpha_a\sigma                                                                 & \sigma & \mapsto\sigma-\pi_a\alpha_a &  & \\
         \intertext{and after some calculations}
          &  & U_V(1): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}                                                              \\
-         &  & U_A(1): &  & \Phi^{(\dagger)} & \mapsto ??? &        &                                  \\
+         &  & U_A(1): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}-\imagu\alpha(\overline{\psi}\gamma_5\psi-\tau_a(\overline{\psi}\tau_a\psi)) &        &                                  \\
          &  & SU_V(N_f): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}-\imagu\frac{\alpha^a}{2}[\tau^a,\Phi^{(\dagger)}]                                                              \\
          &  & SU_A(N_f): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}\overset{(-)}{+}\imagu\frac{\alpha^a}{2}\{\tau^a,\Phi^{(\dagger)}\} &        &                                  \\
         \intertext{This infintesimal transformation behaviour corresponds to the finite transformations}
