@@ -17,6 +17,7 @@ Quarks and antiquarks form bound states, the hadrons. The ways in which these fu
 From a group theory perspective, quarks transform under the fundamental representation $\mathbf{3}_C$ of the $SU_C(3)$ group of color rotations, whereas antiquarks transform under the conjugate representation $\overline{\mathbf{3}}_C$. The hypothesis of color neutrality implies that any observed state must not transform under color rotations and thus form a 1-dimensional invariant subspace $\mathbf{1}_C$. Hadrons transform under representations given by the tensor product of the representations of their constituents. This raises the question, which tensor products of $\mathbf{3}_C$ and $\overline{\mathbf{3}}_C$ contain such 1-dimensional invariant subspaces, a question answered by decomposing the tensor product representation into its irreducible components. Combining 2 quarks, the compound state lives in the representation space of ${\mathbf{3}_C\otimes\mathbf{3}_C=\mathbf{6}_C\oplus\overline{\mathbf{3}}_C}$, not featuring a 1-dimensional invariant subspace and thus not containing any color neutral state. Consequently, no bound states of 2 quarks exist. In contrast to that, combining a quark and an antiquark leads to the representation ${\mathbf{3}_C\otimes\overline{\mathbf{3}}_C=\mathbf{8}_C\oplus\mathbf{1}_C}$, which contains the singlet $\mathbf{1}_C$, allowing at least in principle for color neutral compound states of that kind. These states are termed mesons. Color invariant states also appear in the decompositions of ${\mathbf{3}_C\otimes \mathbf{3}_C\otimes \mathbf{3}_C}$ and ${\overline{\mathbf{3}}_C\otimes \overline{\mathbf{3}}_C\otimes \overline{\mathbf{3}}_C}$, and are then called baryons.
 
 The flavor content of a hadron is found by applying the above restriction to the representation theory of $SU(N_f)$. First, investigate the case ${N_f=2}$, by choosing the up- and down-quark $\ket{u}$ and $\ket{d}$ as basis states in flavor space. The representation theory of $SU(2)$ is well known from the study of angular momentum of spin-$\frac{1}{2}$ particles with basis states $\ket{\uparrow}$, $\ket{\downarrow}$. The tensor product ${\mathbf{2}_f\otimes\mathbf{2}_f=\mathbf{3}_f\oplus\mathbf{1}_f}$ contains a triplet and singlet. The triplet states are the pions $\pi^a$, and the singlet state is given by the $\sigma$-meson. In terms of the spinor fields, they are given by 
+\todo{What is going on here?}
 \begin{gather}
     \ket{\pi^0}=\frac{1}{\sqrt{2}}(\ket{u\overline{u}}-\ket{d\overline{d}})\,,\qquad\ket{\pi^1}=\frac{1}{\sqrt{2}}(\ket{u\overline{d}}+\ket{d\overline{u}})\,,\qquad\ket{\pi^2}=\frac{1}{\sqrt{2}\imagu}(\ket{d\overline{u}}-\ket{u\overline{d}})\,,\\
     \ket{\sigma}=\frac{1}{\sqrt{2}}(\ket{u\overline{u}}+\ket{d\overline{d}})
@@ -197,86 +198,32 @@ Let us investigate the precise transformation behaviour of the fields under thes
          &  & U_A(1): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\gamma_5\alpha}\psi                                     &  \overline{\psi}      & \mapsto \overline{\psi}e^{-\frac{\imagu}{2}\gamma_5\alpha} &&                                \\
          &  & SU_V(N_f): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\alpha_a\tau_a}\psi                                             &  \overline{\psi}&\mapsto\overline{\psi}e^{\frac{\imagu}{2}\alpha_a\tau_a}     &&                              \\
          &  & SU_A(N_f): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\gamma_5\alpha_a\tau_a}\psi                                     &  \overline{\psi}      & \mapsto \overline{\psi}e^{-\frac{\imagu}{2}\gamma_5\alpha_a\tau_a} &&                                
-        \intertext{Pions and the $\sigma$ field are certain bound states of quarks, namely $\pi_a=\imagu\overline{\psi}\tau_a\gamma_5\psi$ and $\sigma=\overline{\psi}\psi$. Under the above transformations one finds infinitesimally}
+        \intertext{In terms of the spinors representing quark fields, the pions and $\sigma$-meson are given by the bilinears $\pi_a=\imagu\overline{\psi}\tau_a\gamma_5\psi$ and $\sigma=\overline{\psi}\psi$. Under the above transformations one finds infinitesimally}
          &  & U_V(1): &  & \pi_a            & \mapsto\pi_a & \sigma & \mapsto\sigma               &  & \\
          &  & U_A(1): &  & \pi_a            & \mapsto\pi_a+\alpha\overline{\psi}\tau_a\psi                                                                & \sigma & \mapsto\sigma-\imagu\alpha\overline{\psi}\gamma_5\psi &  & \\
          &  & SU_V(N_f): &  & \pi_a            & \mapsto\pi_a+\epsilon_{abc}\alpha_b\pi_c                                                    & \sigma & \mapsto\sigma               &  & \\
          &  & SU_A(N_f): &  & \pi_a            & \mapsto\pi_a+\alpha_a\sigma                                                                 & \sigma & \mapsto\sigma-\pi_a\alpha_a &  & \\
-        \intertext{and after some calculations}
+        \intertext{and after some calculations (see Appendix \ref{sec:Apdx_CurrentsChirSym})}
          &  & U_V(1): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}                                                              \\
-         &  & U_A(1): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}-\imagu\alpha(\overline{\psi}\gamma_5\psi-\tau_a(\overline{\psi}\tau_a\psi)) &        &                                  \\
-         &  & SU_V(N_f): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}-\imagu\frac{\alpha^a}{2}[\tau^a,\Phi^{(\dagger)}]                                                              \\
-         &  & SU_A(N_f): &  & \Phi^{(\dagger)} & \mapsto \Phi^{(\dagger)}\overset{(-)}{+}\imagu\frac{\alpha^a}{2}\{\tau^a,\Phi^{(\dagger)}\} &        &                                  \\
-        \intertext{This infintesimal transformation behaviour corresponds to the finite transformations}
+         &  & U_A(1): &  & \Phi^{(\dagger)} & \mathrlap{\mapsto \Phi^{(\dagger)}-\imagu\alpha(\overline{\psi}\gamma_5\psi-\tau_a(\overline{\psi}\tau_a\psi))} &        &                                  \\
+         &  & SU_V(N_f): &  & \Phi^{(\dagger)} & \mathrlap{\mapsto \Phi^{(\dagger)}-\imagu\frac{\alpha^a}{2}[\tau^a,\Phi^{(\dagger)}]}  &        &                                                            \\
+         &  & SU_A(N_f): &  & \Phi^{(\dagger)} & \mathrlap{\mapsto \Phi^{(\dagger)}\overset{(-)}{+}\imagu\frac{\alpha^a}{2}\{\tau^a,\Phi^{(\dagger)}\}} &        &                                  \\
+        \intertext{The infintesimal ${SU(N_f)}$ transformation behaviour corresponds to the finite transformations}
          &  & SU_V(N_f): &  & \Phi & \mapsto U\Phi U^\dagger                                                          &        \Phi^{\dagger} & \mapsto U\Phi^{\dagger}U^\dagger                                  \\
          &  & SU_A(N_f): &  & \Phi             & \mapsto U^\dagger\Phi U^\dagger&\Phi^\dagger&\mapsto U\Phi^\dagger U                 &                                              
     \end{align}
 \end{subequations}
 with $U=\exp\big(-\frac{\imagu}{2}\alpha^a\tau^a)$.
 
-\begin{calc}[Transformation of pions and $\sigma$-mesons under chiral transformations]{calc:ChiralTransformPionSigma}
-\begin{subequations}
-\begin{align}
-    &&SU_V(N_f):&&\pi^a&\mapsto\pi^a-\frac{\alpha^b}{2}\overline{\psi}\underbrace{(\tau^b\tau^a-\tau^a\tau^b)}_{=-[\tau^a,\tau^b]=-2\imagu\epsilon^{acb}\tau^c}\psi&&&&\\
-    &&&&&=\pi^a+\epsilon^{abc}\alpha^b\pi^c&&&&\\
-    &&SU_A(N_f):&&\pi^a&\mapsto\pi^a+\frac{\alpha^b}{2}\overline{\psi}\underbrace{(\tau^b\tau^a+\tau^a\tau^b)}_{=\{\tau^a,\tau^b\}=2\delta^{ab}}\psi&&&&\\
-    &&&&&=\pi^a+\alpha^a\sigma&&&&\\
-    &&SU_V(N_f):&&\Phi^{\textcolor{red}{(\dagger)}}&\mapsto\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(-)}}{+}\imagu\tau^a\epsilon^{abc}\alpha^b\pi^c&&&&\\
-    &&&&&=\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(+)}}{-}\imagu\alpha^a\epsilon^{abc}\tau^b\pi^c&&&&\\
-    \intertext{\dots using $[\tau^a,\Phi^{\textcolor{red}{(\dagger)}}]=\overset{\textcolor{red}{(-)}}{+}\imagu\pi^b[\tau^a,\tau^b]=\overset{\textcolor{red}{(+)}}{-}2\pi^b\epsilon^{abc}\tau^c=\overset{\textcolor{red}{(-)}}{+}2\epsilon^{abc}\tau^b\pi^c$\dots}
-    &&&&&=\Phi^{\textcolor{red}{(\dagger)}}-\imagu\frac{\alpha^a}{2}[\tau^a,\Phi^{\textcolor{red}{(\dagger)}}]&&&&\\
-    &&SU_A(N_f):&&\Phi^{\textcolor{red}{(\dagger)}}&\mapsto\Phi^{\textcolor{red}{(\dagger)}}-\alpha^a\pi^a\overset{\textcolor{red}{(-)}}{+}\imagu\tau^a\alpha^a\sigma&&&&\\
-    &&&&&=\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(-)}}{+}\imagu\alpha^a(\tau^a\sigma\overset{\textcolor{red}{(-)}}{+}\imagu\pi^a)&&&&\\
-    \intertext{\dots using $\{\tau^a,\Phi^{\textcolor{red}{(\dagger)}}\}=2\sigma\tau^a\overset{\textcolor{red}{(-)}}{+}\imagu\pi^b\{\tau^a,\tau^b\}=2(\sigma\tau^a\overset{\textcolor{red}{(-)}}{+}\imagu\pi^a)$\dots}
-    &&&&&=\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(-)}}{+}\imagu\frac{\alpha^a}{2}\{\tau^a,\Phi^{\textcolor{red}{(\dagger)}}\}&&&&
-\end{align}
-\end{subequations}
-\end{calc}
-
-Let us also compute the conserved currents.
-\begin{subequations}
-    \begin{align}
-        &&SU_V(N_f):&&\alpha^aJ_V^{a,\mu}&=-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\sigma)}\delta\sigma-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\pi^a)}\delta\pi^a&&&&\\
-        &&&&&=(\partial^\mu\pi^a)\epsilon^{abc}\alpha^b\pi^c\\
-        &&&&&=-\alpha^a\epsilon^{abc}(\partial^\mu\pi^b)\pi^c\\
-        &&SU_A(N_f):&&\alpha^aJ_A^{a,\mu}&=-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\sigma)}\delta\sigma-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\pi^a)}\delta\pi^a&&&&\\
-        &&&&&=-(\partial_\mu\sigma)\alpha^a\pi^a+(\partial_\mu\pi^a)\alpha^a\sigma\\
-        &&&&&=-\alpha^a\big((\partial^\mu\sigma)\pi^a-(\partial_\mu\pi^a)\sigma\big)
-    \end{align}
-\end{subequations}
-or in terms of $\Phi^{(\dagger)}$
-\begin{subequations}
-    \begin{align}
-        J^\mu_V & =-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi]_{jk}}[\delta\Phi]_{jk}-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi^\dagger]_{jk}}[\delta\Phi^\dagger]_{jk}                                                                      \\
-                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\Big([\partial^\mu\Phi^\dagger]_{kj}[\tau^a,\Phi]_{jk}+[\partial^\mu\Phi]_{kj}[\tau^a,\Phi^\dagger]_{jk}\Big)                                                                                               \\
-                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big((\partial_\mu\Phi^\dagger)[\tau^a,\Phi]+(\partial_\mu\Phi)[\tau^a,\Phi^\dagger]\Big)                                                                                                                \\
-                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big(\big((\partial_\mu\sigma)-\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2\epsilon^{abc}\tau^b\pi^c+\big((\partial_\mu\sigma)+\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot(-2)\epsilon^{abc}\tau^b\pi^c\Big) \\
-                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\cdot\big(-8\imagu\epsilon^{abc}(\partial_\mu\pi^b)\pi^c\big)
-    \end{align}
-    and
-    \begin{align}
-        J^\mu_A & =-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi]_{jk}}[\delta\Phi]_{jk}-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi^\dagger]_{jk}}[\delta\Phi^\dagger]_{jk}                                                                    \\
-                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\Big([\partial^\mu\Phi^\dagger]_{kj}\{\tau^a,\Phi\}_{jk}-[\partial^\mu\Phi]_{kj}\{\tau^a,\Phi^\dagger\}_{jk}\Big)                                                                                          \\
-                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big((\partial_\mu\Phi^\dagger)\{\tau^a,\Phi\}-(\partial_\mu\Phi)\{\tau^a,\Phi^\dagger\}\Big)                                                                                                           \\
-                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big(\big((\partial_\mu\sigma)-\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2(\sigma\tau^a+\imagu\pi^a)-\big((\partial_\mu\sigma)+\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2(\sigma\tau^a-\imagu\pi^a)\Big) \\
-                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\cdot\big(4\imagu(\partial_\mu\sigma)\pi^a\Tr(\mathbb{1})-4\imagu\sigma(\partial_\mu\pi^b)\Tr(\tau^a\tau^b)\big)                                                                                           \\
-                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\cdot8\imagu\cdot\big((\partial_\mu\sigma)\pi^a-\sigma(\partial_\mu\pi^a)\big)
-    \end{align}
-\end{subequations}
-
-In summary, we found 3 conserved vector currents $J_V^{a,\mu}$ and 3 conserved axial currents $J_A^{a,\mu}$, that (omitting the -) take the form
+Having found the infinitesimal transformaiton behvaiour of the fields, we can compute the Noether currents. These are conserved or approximately conserved, depending on the assumptions imposed on the model. In total, there are 3 vector currents $J_V^{a,\mu}$ and 3 axial currents $J_A^{a,\mu}$, which take the form
 \begin{equation}
-    J_V^{a,\mu}=\epsilon^{abc}(\partial^\mu\pi^b)\pi^c\,,\qquad J_A^{a,\mu}=(\partial^\mu\sigma)\pi^a-(\partial^\mu\pi^a)\sigma
+    J_V^{a,\mu}=\epsilon^{abc}(\partial^\mu\pi^b)\pi^c\,,\qquad J_A^{a,\mu}=(\partial^\mu\sigma)\pi^a-(\partial^\mu\pi^a)\sigma\,.
 \end{equation}
 Using the projection $\epsilon^{abc}J_V^{a,\mu}=(\partial^\mu\pi^b)\pi^c-(\partial^\mu\pi^c)\pi^b$, the conserved currents can also be stated as
 \begin{equation}
-    J^\mu[\phi_1,\phi_2]=\phi_1\overset{\leftrightarrow}{\partial_\mu}\phi_2\,,\qquad\text{where}\,\phi_{1}\neq\phi_2\,,\phi_{1,2}\in\{\sigma,\pi^0,\pi^1,\pi^2\}\,.
+    J^\mu[\phi_1,\phi_2]=\phi_1\overset{\leftrightarrow}{\partial^\mu}\phi_2\,,\qquad\text{where}\,\phi_{1}\neq\phi_2\,,\,\phi_{1,2}\in\{\sigma,\pi^0,\pi^1,\pi^2\}\,.
 \end{equation}
-This looks strinkingly similar to the conservation of the current described in the next section \eqref{subsec:FourierDeformHypersurface}, making use of the Klein-Gordon equation for fields of equal masses.
-
-
-
-
+This looks strinkingly similar to the conservation of the current described in the next section \eqref{subsec:FourierDeformHypersurface}, making use of the Klein-Gordon equation for fields of equal masses. \todo{The $U(1)$-current vanishes in terms of pions and $\sigma$-fields. What about quark fields?}
 
 
 

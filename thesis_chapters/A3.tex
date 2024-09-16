@@ -1,0 +1,50 @@
+\section{Currents from Chiral Symmetry}
+\label{sec:Apdx_CurrentsChirSym}
+
+\begin{subequations}
+    \begin{align}
+        &&SU_V(N_f):&&\pi^a&\mapsto\pi^a-\frac{\alpha^b}{2}\overline{\psi}\underbrace{(\tau^b\tau^a-\tau^a\tau^b)}_{=-[\tau^a,\tau^b]=-2\imagu\epsilon^{acb}\tau^c}\psi&&&&\\
+        &&&&&=\pi^a+\epsilon^{abc}\alpha^b\pi^c&&&&\\
+        &&SU_A(N_f):&&\pi^a&\mapsto\pi^a+\frac{\alpha^b}{2}\overline{\psi}\underbrace{(\tau^b\tau^a+\tau^a\tau^b)}_{=\{\tau^a,\tau^b\}=2\delta^{ab}}\psi&&&&\\
+        &&&&&=\pi^a+\alpha^a\sigma&&&&\\
+        &&SU_V(N_f):&&\Phi^{\textcolor{red}{(\dagger)}}&\mapsto\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(-)}}{+}\imagu\tau^a\epsilon^{abc}\alpha^b\pi^c&&&&\\
+        &&&&&=\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(+)}}{-}\imagu\alpha^a\epsilon^{abc}\tau^b\pi^c&&&&\\
+        \intertext{\dots using $[\tau^a,\Phi^{\textcolor{red}{(\dagger)}}]=\overset{\textcolor{red}{(-)}}{+}\imagu\pi^b[\tau^a,\tau^b]=\overset{\textcolor{red}{(+)}}{-}2\pi^b\epsilon^{abc}\tau^c=\overset{\textcolor{red}{(-)}}{+}2\epsilon^{abc}\tau^b\pi^c$\dots}
+        &&&&&=\Phi^{\textcolor{red}{(\dagger)}}-\imagu\frac{\alpha^a}{2}[\tau^a,\Phi^{\textcolor{red}{(\dagger)}}]&&&&\\
+        &&SU_A(N_f):&&\Phi^{\textcolor{red}{(\dagger)}}&\mapsto\Phi^{\textcolor{red}{(\dagger)}}-\alpha^a\pi^a\overset{\textcolor{red}{(-)}}{+}\imagu\tau^a\alpha^a\sigma&&&&\\
+        &&&&&=\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(-)}}{+}\imagu\alpha^a(\tau^a\sigma\overset{\textcolor{red}{(-)}}{+}\imagu\pi^a)&&&&\\
+        \intertext{\dots using $\{\tau^a,\Phi^{\textcolor{red}{(\dagger)}}\}=2\sigma\tau^a\overset{\textcolor{red}{(-)}}{+}\imagu\pi^b\{\tau^a,\tau^b\}=2(\sigma\tau^a\overset{\textcolor{red}{(-)}}{+}\imagu\pi^a)$\dots}
+        &&&&&=\Phi^{\textcolor{red}{(\dagger)}}\overset{\textcolor{red}{(-)}}{+}\imagu\frac{\alpha^a}{2}\{\tau^a,\Phi^{\textcolor{red}{(\dagger)}}\}&&&&
+    \end{align}
+\end{subequations}
+
+The computation of the Noether currents is straightforward.
+\begin{subequations}
+    \begin{align}
+        &&SU_V(N_f):&&\alpha^aJ_V^{a,\mu}&=-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\sigma)}\delta\sigma-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\pi^a)}\delta\pi^a&&&&\\
+        &&&&&=(\partial^\mu\pi^a)\epsilon^{abc}\alpha^b\pi^c\\
+        &&&&&=-\alpha^a\epsilon^{abc}(\partial^\mu\pi^b)\pi^c\\
+        &&SU_A(N_f):&&\alpha^aJ_A^{a,\mu}&=-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\sigma)}\delta\sigma-\frac{\partial\mathscr{L}}{\partial(\partial_\mu\pi^a)}\delta\pi^a&&&&\\
+        &&&&&=-(\partial_\mu\sigma)\alpha^a\pi^a+(\partial_\mu\pi^a)\alpha^a\sigma\\
+        &&&&&=-\alpha^a\big((\partial^\mu\sigma)\pi^a-(\partial_\mu\pi^a)\sigma\big)
+    \end{align}
+\end{subequations}
+or in terms of $\Phi^{(\dagger)}$
+\begin{subequations}
+    \begin{align}
+        J^\mu_V & =-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi]_{jk}}[\delta\Phi]_{jk}-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi^\dagger]_{jk}}[\delta\Phi^\dagger]_{jk}                                                                      \\
+                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\Big([\partial^\mu\Phi^\dagger]_{kj}[\tau^a,\Phi]_{jk}+[\partial^\mu\Phi]_{kj}[\tau^a,\Phi^\dagger]_{jk}\Big)                                                                                               \\
+                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big((\partial_\mu\Phi^\dagger)[\tau^a,\Phi]+(\partial_\mu\Phi)[\tau^a,\Phi^\dagger]\Big)                                                                                                                \\
+                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big(\big((\partial_\mu\sigma)-\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2\epsilon^{abc}\tau^b\pi^c+\big((\partial_\mu\sigma)+\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot(-2)\epsilon^{abc}\tau^b\pi^c\Big) \\
+                & =\frac{-\imagu\alpha^a}{2}\frac{1}{4}\cdot\big(-8\imagu\epsilon^{abc}(\partial_\mu\pi^b)\pi^c\big)
+    \end{align}
+    and
+    \begin{align}
+        J^\mu_A & =-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi]_{jk}}[\delta\Phi]_{jk}-\frac{\partial\mathscr{L}}{\partial[\partial_\mu\Phi^\dagger]_{jk}}[\delta\Phi^\dagger]_{jk}                                                                    \\
+                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\Big([\partial^\mu\Phi^\dagger]_{kj}\{\tau^a,\Phi\}_{jk}-[\partial^\mu\Phi]_{kj}\{\tau^a,\Phi^\dagger\}_{jk}\Big)                                                                                          \\
+                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big((\partial_\mu\Phi^\dagger)\{\tau^a,\Phi\}-(\partial_\mu\Phi)\{\tau^a,\Phi^\dagger\}\Big)                                                                                                           \\
+                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\Tr\Big(\big((\partial_\mu\sigma)-\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2(\sigma\tau^a+\imagu\pi^a)-\big((\partial_\mu\sigma)+\imagu\tau^d(\partial_\mu\pi^d)\big)\cdot2(\sigma\tau^a-\imagu\pi^a)\Big) \\
+                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\cdot\big(4\imagu(\partial_\mu\sigma)\pi^a\Tr(\mathbb{1})-4\imagu\sigma(\partial_\mu\pi^b)\Tr(\tau^a\tau^b)\big)                                                                                           \\
+                & =\frac{\imagu\alpha^a}{2}\frac{1}{4}\cdot8\imagu\cdot\big((\partial_\mu\sigma)\pi^a-\sigma(\partial_\mu\pi^a)\big)
+    \end{align}
+\end{subequations}
