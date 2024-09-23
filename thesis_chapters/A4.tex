@@ -1,0 +1,57 @@
+\section{Canonical Quantization}
+
+\subsection{Commutators of $a_{\vec{p}}$, $a_{\vec{q}}^\dagger$}
+\label{sec:Apdx_LadderCommut}
+
+Notice the relations
+    \begin{subequations}
+        \begin{align}
+            a_{\vec{p}} & =\frac{1}{2\mathcal{N}_{\vec{p}}}\int\dt ^3x\left\{\varphi(t,x)+\frac{\imagu}{\omega_{\vec{p}}}\pi(t,x)\right\}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}  \\
+            a_{\vec{p}}^\dagger       & =\frac{1}{2\mathcal{N}_{\vec{p}}}\int\dt ^3x\left\{\varphi(t,x)-\frac{\imagu}{\omega_{\vec{p}}}\pi(t,x)\right\}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}
+        \end{align}
+        \label{eq:AnnCrePhiPi_Relation}
+    \end{subequations}
+    The non-vanishing commutator is derived as follows:
+    \begin{align*}
+        \commut{a_{\vec{p}},a_{\vec{q}}^\dagger} & =\frac{1}{4\mathcal{N}_{\vec{p}}\mathcal{N}_{\vec{q}}}\int\dt^3x\dt^3y\left\{-\frac{\imagu}{\omega_{\vec{q}}}\commut{\varphi(t,x),\pi(t,y)}e^{\imagu\left((\omega_{\vec{p}}-\omega_{\vec{q}})t-(\vec{p}\vec{x}-\vec{q}\vec{y})\right)}\right. \\
+                                                 & \phantom{=}\quad\left.                     +\frac{\imagu}{\omega_{\vec{p}}}\commut{\pi(t,x),\varphi(t,y)}e^{-\imagu\left((\omega_{\vec{p}}-\omega_{\vec{q}})t-(\vec{p}\vec{x}-\vec{q}\vec{y})\right)}\right\}                                 \\
+                                                 & =\frac{1}{4\mathcal{N}_{\vec{p}}\mathcal{N}_{\vec{q}}}\int\dt^3x\left\{\frac{1}{\omega_{\vec{q}}}e^{\imagu\left((\omega_{\vec{p}}-\omega_{\vec{q}})t-(\vec{p}-\vec{q})x\right)}\right.                                                     \\
+                                                 & \phantom{=}\quad\left.                     +\frac{1}{\omega_{\vec{p}}}e^{-\imagu\left((\omega_{\vec{p}}-\omega_{\vec{q}})t-(\vec{p}-\vec{q})x\right)}\right\}                                                                              \\
+                                                 & =\frac{(2\pi)^3}{2\mathcal{N}_{\vec{p}}^2\omega_{\vec{p}}}\delta^{(3)}(\vec{p}-\vec{q})
+    \end{align*}
+    whereas the vanishing commutators are calculated as
+    \begin{align*}
+        \commut{a_{\vec{p}},a_{\vec{q}}} & =\frac{1}{4\mathcal{N}_{\vec{p}}\mathcal{N}_{\vec{q}}}\int\dt^3x\dt^3y\left\{\frac{\imagu}{\omega_{\vec{q}}}\commut{\varphi(t,x),\pi(t,y)}e^{\imagu\left((\omega_{\vec{p}}+\omega_{\vec{q}})t-(\vec{p}\vec{x}+\vec{q}\vec{y})\right)}\right. \\
+                                         & \phantom{=}\quad\left.                     +\frac{\imagu}{\omega_{\vec{p}}}\commut{\pi(t,x),\varphi(t,y)}e^{\imagu\left((\omega_{\vec{p}}+\omega_{\vec{q}})t-(\vec{p}\vec{x}+\vec{q}\vec{y})\right)}\right\}                                 \\
+                                         & =0
+    \end{align*}
+    and simmilarly for $\commut{a_{\vec{p}}^\dagger,a_{\vec{q}}^\dagger}=0$.
+
+\subsection{Hamiltonian in Terms of Creation and Annihilation Operators}
+\label{sec:Apdx_HamiltLadder}
+
+Omit the time dependence for the next calculation, for example by choosing $t=0$. The Hamiltonian is now easily computed to be
+\begin{subequations}
+    \begin{align}
+        H&=\frac{1}{2}\int\dt^3x\frac{\dt^3p}{(2\pi)^3}\frac{\dt^3q}{(2\pi)^3}\frac{1}{\sqrt{4\omega_{\vec{p}}\omega_{\vec{q}}}}e^{\imagu(\vec{p}+\vec{q})\vec{x}}\Big[-\omega_{\vec{p}}\omega_{\vec{q}}(-a_{\vec{p}}+a_{-\vec{p}}^\dagger)(-a_{\vec{q}}+a_{-\vec{q}}^\dagger)+\nonumber\\
+        &\phantom{=}\qquad+(-\vec{p}\vec{q}+m^2)(a_{\vec{p}}+a_{-\vec{p}}^\dagger)(a_{\vec{q}}+a_{-\vec{q}}^\dagger)\Big]\\
+        &=\frac{1}{2}\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\Big[-\omega_{\vec{p}}^2(\cancel{a_{\vec{p}}a_{-\vec{p}}}-a_{-\vec{p}}^\dagger a_{-\vec{p}}-a_{\vec{p}}a_{\vec{p}}^\dagger+\bcancel{a_{-\vec{p}}^\dagger a_{\vec{p}}^\dagger})+\nonumber\\
+        &\phantom{=}\qquad+(\vec{p}^2+m^2)(\cancel{a_{\vec{p}}a_{-\vec{p}}}+a_{-\vec{p}}^\dagger a_{-\vec{p}}+a_{\vec{p}}a_{\vec{p}}^\dagger+\bcancel{a_{-\vec{p}}^\dagger a_{\vec{p}}^\dagger})\Big]\\
+        &=\int\frac{\dt^3p}{(2\pi)^3}\frac{\omega_{\vec{p}}}{2}(a_{\vec{p}}^\dagger a_{\vec{p}}+a_{\vec{p}}a_{\vec{p}}^\dagger)\\
+        &=\int\frac{\dt^3p}{(2\pi)^3}\omega_{\vec{p}}(a_{\vec{p}}^\dagger a_{\vec{p}}+\frac{1}{2}[a_{\vec{p}},a_{\vec{p}}^\dagger])
+    \end{align}
+\end{subequations}
+Since only the combinations ${a_{\vec{p}}a_{\vec{p}}^\dagger}$ and ${a_{\vec{p}}^\dagger a_{\vec{p}}}$ remain, the explicit time dependence would have dropped out anyways, since the operators ${a_{\vec{p}}^{(\dagger)}}$ come with a factor of $e^{\overset{(+)}{-}\omega_{\vec{p}}}$.
+
+\section{Complex Annihilation and Creation Operators}
+\label{sec:Apdx_ComplLadderCommut}
+
+\begin{subequations}
+    \begin{align}
+        [a_{\vec{p}},b_{\vec{q}}]&=\frac{1}{2}[a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)},a_{\vec{q},(1)}-\imagu a_{\vec{q},(2)}]=0=[a_{\vec{p}}^\dagger,b_{\vec{q}}^\dagger]\\
+        [a_{\vec{p}}^{(\dagger)},a_{\vec{q}}^{(\dagger)}]&=0=[b_{\vec{p}}^{(\dagger)},b_{\vec{q}}^{(\dagger)}]\\
+        [a_{\vec{p}},b_{\vec{q}}^\dagger]&=\frac{1}{2}[a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)},a_{\vec{q},(1)}^\dagger+\imagu a_{\vec{q},(2)}^\dagger]=\frac{1}{2}\big([a_{\vec{p},(1)},a_{\vec{q},(1)}^\dagger]-[a_{\vec{p},(2)},a_{\vec{q},(2)}^\dagger]\big)=0=[a_{\vec{p}}^\dagger,b_{\vec{q}}]\\
+        [a_{\vec{p}},a_{\vec{q}}^\dagger]&=\frac{1}{2}[a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)},a_{\vec{q},(1)}^\dagger-\imagu a_{\vec{q},(2)}^\dagger]=\frac{1}{2}\big([a_{\vec{p},(1)},a_{\vec{q},(1)}^\dagger]+[a_{\vec{p},(2)},a_{\vec{q},(2)}^\dagger]\big)=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\\
+        [b_{\vec{p}},b_{\vec{q}}^\dagger]&=\frac{1}{2}[a_{\vec{p},(1)}-\imagu a_{\vec{p},(2)},a_{\vec{q},(1)}^\dagger+\imagu a_{\vec{q},(2)}^\dagger]=\frac{1}{2}\big([a_{\vec{p},(1)},a_{\vec{q},(1)}^\dagger]+[a_{\vec{p},(2)},a_{\vec{q},(2)}^\dagger]\big)=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})
+    \end{align}
+\end{subequations}

@@ -500,6 +500,81 @@
       \endverb
       \keyw{Nuclear Experiment,Nuclear Theory}
     \endentry
+    \entry{PeskinSchroeder_1995}{book}{}
+      \name{author}{2}{}{%
+        {{hash=e148b6b43275e52828b8df297254414c}{%
+           family={Peskin},
+           familyi={P\bibinitperiod},
+           given={Michael\bibnamedelima Edward},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=cc0fe4ad0bcb2f8883e7f5e5b5287dd9}{%
+           family={Schroeder},
+           familyi={S\bibinitperiod},
+           given={Daniel\bibnamedelima V.},
+           giveni={D\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Reading, Mass}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Pub. Co}%
+      }
+      \strng{namehash}{bd0b09f9d4658a6110c7cf3ae280532f}
+      \strng{fullhash}{bd0b09f9d4658a6110c7cf3ae280532f}
+      \strng{bibnamehash}{bd0b09f9d4658a6110c7cf3ae280532f}
+      \strng{authorbibnamehash}{bd0b09f9d4658a6110c7cf3ae280532f}
+      \strng{authornamehash}{bd0b09f9d4658a6110c7cf3ae280532f}
+      \strng{authorfullhash}{bd0b09f9d4658a6110c7cf3ae280532f}
+      \field{labelalpha}{PS95}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-201-50397-5}
+      \field{title}{An Introduction to Quantum Field Theory}
+      \field{year}{1995}
+      \keyw{Feynman diagrams,Gauge fields (Physics),Quantum field theory,Renormalization (Physics)}
+    \endentry
+    \entry{GreinerEtAl_1996}{book}{}
+      \name{author}{3}{}{%
+        {{hash=d51b4fc65f0446833f6a69fc1ef5bbcd}{%
+           family={Greiner},
+           familyi={G\bibinitperiod},
+           given={Walter},
+           giveni={W\bibinitperiod}}}%
+        {{hash=4d8423cb1196f8db1780b10bc675118f}{%
+           family={Reinhardt},
+           familyi={R\bibinitperiod},
+           given={Joachim},
+           giveni={J\bibinitperiod}}}%
+        {{hash=13f40575644fc160100f5f3d9b34fe6f}{%
+           family={Bromley},
+           familyi={B\bibinitperiod},
+           given={David\bibnamedelima Allan},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin Heidelberg New York}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
+      \strng{fullhash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
+      \strng{bibnamehash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
+      \strng{authorbibnamehash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
+      \strng{authornamehash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
+      \strng{authorfullhash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
+      \field{labelalpha}{GRB96}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-540-59179-5}
+      \field{langid}{english}
+      \field{title}{Field Quantization}
+      \field{year}{1996}
+    \endentry
     \entry{Amelino-CameliaEtAl_1997}{article}{}
       \name{author}{3}{}{%
         {{hash=d6554a23c13cf0551c4ff6b13c4927ee}{%

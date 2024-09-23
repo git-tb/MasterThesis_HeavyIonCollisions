@@ -2,297 +2,243 @@
 
 \section{Canonical Quantization}
 
+In the following we review the textbook procedure of canonical quantization of a field theory, see for example \cite{PeskinSchroeder_1995}. In this context, it is the step needed to define a notion of particle number and particle spectra.
+
 \subsection{Real Scalar Field}
 
-Consider a real scalar field $\phi$ with Lagrangian density ($\eta=\text{diag}(-,+,+,+)$)
+Consider a real scalar field $\varphi$ with Lagrangian density ($\eta=\text{diag}(-,+,+,+)$)
 \begin{equation}
-    \mathcal{L}=-\frac{1}{2}(\partial_\mu\phi)(\partial^\mu\phi)-V(\phi)=\frac{1}{2}(\dot{\phi}^2-\vec{\nabla}^2\phi)-V(\phi)
+    \mathcal{L}=-\frac{1}{2}(\partial_\mu\varphi)(\partial^\mu\varphi)-V(\varphi)=\frac{1}{2}(\dot{\varphi}^2-\vec{\nabla}^2\varphi)-V(\varphi)
     \label{eq:LagrangianRealScalar}
 \end{equation}
 with associated Hamiltonian density
 \begin{equation}
-    \mathcal{H}=\pi\dot{\phi}-\mathcal{L}=\frac{1}{2}(\pi^2+(\vec{\nabla}\phi)^2)+V(\phi)
+    \mathcal{H}=\pi\dot{\varphi}-\mathcal{L}=\frac{1}{2}(\pi^2+(\vec{\nabla}\varphi)^2)+V(\varphi)
 \end{equation}
-where $\pi=\frac{\partial\mathcal{L}}{\partial\dot{\phi}}=\dot{\phi}$. Choose the free scalar field, $V(\phi)=\frac{1}{2}m^2\phi^2$. The equations of motion arising from this is the Klein-Gordon equation
+where $\pi=\frac{\partial\mathcal{L}}{\partial\dot{\varphi}}=\dot{\varphi}$ is the canonical conjugate momentum. Choose the free scalar field, $V(\varphi)=\frac{1}{2}m^2\varphi^2$. The equations of motion arising from this is the Klein-Gordon equation
 \begin{equation}
-    (\partial_\mu\partial^\mu-m^2)\phi(t,\vec{x})=0\,.
+    (\partial_\mu\partial^\mu-m^2)\varphi(t,\vec{x})=0\,.
     \label{eq:KGEq}
 \end{equation}
 
 The equations of motion \eqref{eq:KGEq} have the general solution
 \begin{subequations}
     \begin{align}
-        \phi(t,x)               & =\int\frac{\dt ^3p}{(2\pi)^3}\mathcal{N}_{\vec{p}}\left\{a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+b_{\vec{p}}^* e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\right\}                                                 \\
-        (\implies)\quad\pi(t,x) & =\int\frac{\dt ^3p}{(2\pi)^3}\mathcal{N}_{\vec{p}}\left\{-\imagu\omega_{\vec{p}}a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\imagu\omega_{\vec{p}}b_{\vec{p}}^* e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\right\}\,.
+        \varphi(t,x)               & =\int\frac{\dt ^3p}{(2\pi)^3}\mathcal{N}_{\vec{p}}\left\{a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+b_{\vec{p}}^* e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\right\}                                                 \\
+        \pi(t,x) & =\int\frac{\dt ^3p}{(2\pi)^3}\mathcal{N}_{\vec{p}}\left\{-\imagu\omega_{\vec{p}}a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\imagu\omega_{\vec{p}}b_{\vec{p}}^* e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\right\}\,.
     \end{align}
 \end{subequations}
-only subject to the condition $\omega_{\vec{p}}=\sqrt{m^2+p^2}$. $a_{\vec{p}}$ and $b_{\vec{p}}^*$ are complex Fourier coefficients. Reality of $\phi(t,x)$ further implies $a_{\vec{p}}=b_{\vec{p}}$. The normalization is typically chosen as $\mathcal{N}_{\vec{p}}^2\omega_{\vec{p}}=\frac{1}{2}$ for reasons that will become clear in a moment. If one uses
+only subject to the condition $\omega_{\vec{p}}=\sqrt{m^2+\vec{p}^2}$. $a_{\vec{p}}$ and $b_{\vec{p}}^*$ are complex Fourier coefficients. Reality of $\varphi$ further implies $a_{\vec{p}}=b_{\vec{p}}$. The normalization is typically chosen as $\mathcal{N}_{\vec{p}}^2\omega_{\vec{p}}=\frac{1}{2}$ for reasons that will become clear in a moment. If one uses
 \begin{defin}[Poisson Brackets on Field Space]{def:PoissonBrack}
     \begin{equation}
-        \poisson{A,B}=\int\dt^3x\left[\frac{\delta A}{\delta\phi}\frac{\delta B}{\delta\pi}-\frac{\delta A}{\delta\pi}\frac{\delta B}{\delta\phi}\right]
+        \poisson{A,B}=\int\dt^3x\left[\frac{\delta A}{\delta\varphi}\frac{\delta B}{\delta\pi}-\frac{\delta A}{\delta\pi}\frac{\delta B}{\delta\varphi}\right]
     \end{equation}
 \end{defin}
 the field and momentum fields satisfy
 \begin{equation}
-    \poisson{\phi(t,x),\phi(t,y)}=\poisson{\pi(t,x),\pi(t,y)}=0\,,\quad\poisson{\phi(t,x),\pi(t,y)}=\delta^{(d)}(x-y)\,.
+    \poisson{\varphi(t,x),\varphi(t,y)}=\poisson{\pi(t,x),\pi(t,y)}=0\,,\quad\poisson{\varphi(t,x),\pi(t,y)}=\delta^{(d)}(x-y)\,.
 \end{equation}
-Quantization is achieved by the replacement
+
+Canonical quantization is now achieved by lifting fields to operators, $\varphi\to\hat{\varphi}$ and $\pi\to\hat{\pi}$, and therefore also $a_{\vec{p}}\to\hat{a}_{\vec{p}}$ and $a_{\vec{p}}^*\to\hat{a}_{\vec{p}}^\dagger$, though the $\hat{\cdot}$ will be conventionally omitted. The Poisson brackets are replaced by commutation relations,
 \begin{equation}
-    \imagu\{\cdot,\cdot\}\to\commut{\cdot,\cdot}\,,
+    \imagu\{\cdot,\cdot\}\to\commut{\cdot,\cdot}\,.
 \end{equation}
-lifting fields to operators, $\phi\to\hat{\phi}$ and $\pi\to\hat{\pi}$, and therefore also $a_{\vec{p}}\to\hat{a}_{\vec{p}}$ and $a_{\vec{p}}^\dagger\to\hat{a}_{\vec{p}}^\dagger$ (though the $\hat{\cdot}$ will be omitted). The fundamental commutator $\commut{\phi(t,x),\pi(t,y)}=\imagu\delta^{(d)}(x-y)$ then implies
+Following the short calculation in Appendix \ref{sec:Apdx_LadderCommut}, the fundamental commutator ${\commut{\varphi(t,x),\pi(t,y)}=\imagu\delta^{(d)}(x-y)}$ then implies
 \begin{impt}[Commutators of $a_{\vec{p}}$, $a_{\vec{q}}^\dagger$]{impt:LadderCommut}
     \begin{equation}
-        \commut{a_{\vec{p}},a_{\vec{q}}}=\commut{a_{\vec{p}}^\dagger,a_{\vec{q}}^\dagger}=0\,,\quad\commut{a_{\vec{p}},a_{\vec{q}}^\dagger}=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\,.
+        \commut{a_{\vec{p}},a_{\vec{q}}}=\commut{a_{\vec{p}}^\dagger,a_{\vec{q}}^\dagger}=0\,,\quad\commut{a_{\vec{p}},a_{\vec{q}}^\dagger}=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\,,
     \end{equation}
 \end{impt}
-
-\begin{calc}[Commutators of $a_{\vec{p}}$, $a_{\vec{q}}^\dagger$]{calc:LadderCommut}
-    Notice the relations
-    \begin{subequations}
-        \begin{align}
-            a_{\vec{p}} & =\frac{1}{2\mathcal{N}_{\vec{p}}}\int\dt ^3x\left\{\phi(t,x)+\frac{\imagu}{\omega_{\vec{p}}}\pi(t,x)\right\}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}  \\
-            a_{\vec{p}}^\dagger       & =\frac{1}{2\mathcal{N}_{\vec{p}}}\int\dt ^3x\left\{\phi(t,x)-\frac{\imagu}{\omega_{\vec{p}}}\pi(t,x)\right\}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}
-        \end{align}
-        \label{eq:AnnCrePhiPi_Relation}
-    \end{subequations}
-    The non-vanishing commutator is derived as follows:
-    \begin{align*}
-        \commut{a_{\vec{p}},a_{\vec{q}}^\dagger} & =\frac{1}{4\mathcal{N}_{\vec{p}}\mathcal{N}_{\vec{q}}}\int\dt^3x\dt^3y\left\{-\frac{\imagu}{\omega_{\vec{q}}}\commut{\phi(t,x),\pi(t,y)}e^{\imagu\left((\omega_{\vec{p}}-\omega_{\vec{q}})t-(\vec{p}\vec{x}-\vec{q}\vec{y})\right)}\right. \\
-                                                 & \phantom{=}\quad\left.                     +\frac{\imagu}{\omega_{\vec{p}}}\commut{\pi(t,x),\phi(t,y)}e^{-\imagu\left((\omega_{\vec{p}}-\omega_{\vec{q}})t-(\vec{p}\vec{x}-\vec{q}\vec{y})\right)}\right\}                                 \\
-                                                 & =\frac{1}{4\mathcal{N}_{\vec{p}}\mathcal{N}_{\vec{q}}}\int\dt^3x\left\{\frac{1}{\omega_{\vec{q}}}e^{\imagu\left((\omega_{\vec{p}}-\omega_{\vec{q}})t-(\vec{p}-\vec{q})x\right)}\right.                                                     \\
-                                                 & \phantom{=}\quad\left.                     +\frac{1}{\omega_{\vec{p}}}e^{-\imagu\left((\omega_{\vec{p}}-\omega_{\vec{q}})t-(\vec{p}-\vec{q})x\right)}\right\}                                                                              \\
-                                                 & =\frac{(2\pi)^3}{2\mathcal{N}_{\vec{p}}^2\omega_{\vec{p}}}\delta^{(3)}(\vec{p}-\vec{q})
-    \end{align*}
-    whereas the vanishing commutators are calculated as
-    \begin{align*}
-        \commut{a_{\vec{p}},a_{\vec{q}}} & =\frac{1}{4\mathcal{N}_{\vec{p}}\mathcal{N}_{\vec{q}}}\int\dt^3x\dt^3y\left\{\frac{\imagu}{\omega_{\vec{q}}}\commut{\phi(t,x),\pi(t,y)}e^{\imagu\left((\omega_{\vec{p}}+\omega_{\vec{q}})t-(\vec{p}\vec{x}+\vec{q}\vec{y})\right)}\right. \\
-                                         & \phantom{=}\quad\left.                     +\frac{\imagu}{\omega_{\vec{p}}}\commut{\pi(t,x),\phi(t,y)}e^{\imagu\left((\omega_{\vec{p}}+\omega_{\vec{q}})t-(\vec{p}\vec{x}+\vec{q}\vec{y})\right)}\right\}                                 \\
-                                         & =0
-    \end{align*}
-    and simmilarly for $\commut{a_{\vec{p}}^\dagger,a_{\vec{q}}^\dagger}=0$.
-\end{calc}
-
-After this quantization, the fields are written as
+where the normalization mentioned above was used to make the commutator independent of momentum $\vec{p}$. After this quantization, the fields are written as
 \begin{subequations}
     \begin{align}
-        \phi(t,x)               & =\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}\left\{a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+a_{\vec{p}}^\dagger e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\right\}                                                 \label{eq:CanonicalQuant_RealScalar}\\
+        \varphi(t,x)               & =\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}\left\{a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+a_{\vec{p}}^\dagger e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\right\}                                                 \label{eq:CanonicalQuant_RealScalar}\\
        \pi(t,x) & =\int\frac{\dt ^3p}{(2\pi)^3}\frac{\imagu\omega_{\vec{p}}}{\sqrt{2\omega_{\vec{p}}}}\left\{-a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+a_{\vec{p}}^\dagger e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\right\}\,.
     \end{align}
 \end{subequations}
-
-To express the Hamiltonian in terms of $a_{\vec{p}}$ and $a_{\vec{p}}^\dagger$ rewrite
+To express the Hamiltonian in terms of $a_{\vec{p}}$ and $a_{\vec{p}}^\dagger$ it is useful rewrite
 \begin{subequations}
     \begin{align}
-        \phi(t,x)               & =\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}\left\{a_{\vec{p}}e^{-\imagu\omega_{\vec{p}}t}+a_{-\vec{p}}^\dagger e^{\imagu\omega_{\vec{p}}t}\right\}e^{\imagu\vec{p}\vec{x}}                                             \\
+        \varphi(t,x)               & =\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}\left\{a_{\vec{p}}e^{-\imagu\omega_{\vec{p}}t}+a_{-\vec{p}}^\dagger e^{\imagu\omega_{\vec{p}}t}\right\}e^{\imagu\vec{p}\vec{x}}                                             \\
         \pi(t,x) & =\int\frac{\dt ^3p}{(2\pi)^3}\frac{\imagu\omega_{\vec{p}}}{\sqrt{2\omega_{\vec{p}}}}\left\{-a_{\vec{p}}e^{-\imagu\omega_{\vec{p}}t}+a_{-\vec{p}}^\dagger e^{\imagu\omega_{\vec{p}}t}\right\}e^{\imagu\vec{p}\vec{x}}\,.
     \end{align}
 \end{subequations}
-Omit the time dependence for the next calculation, for example by choosing $t=0$. The Hamiltonian is now easily computed to be
-\begin{subequations}
-    \begin{align}
-        H&=\frac{1}{2}\int\dt^3x\frac{\dt^3p}{(2\pi)^3}\frac{\dt^3q}{(2\pi)^3}\frac{1}{\sqrt{4\omega_{\vec{p}}\omega_{\vec{q}}}}e^{\imagu(\vec{p}+\vec{q})\vec{x}}\Big[-\omega_{\vec{p}}\omega_{\vec{q}}(-a_{\vec{p}}+a_{-\vec{p}}^\dagger)(-a_{\vec{q}}+a_{-\vec{q}}^\dagger)+\nonumber\\
-        &\phantom{=}\qquad+(-\vec{p}\vec{q}+m^2)(a_{\vec{p}}+a_{-\vec{p}}^\dagger)(a_{\vec{q}}+a_{-\vec{q}}^\dagger)\Big]\\
-        &=\frac{1}{2}\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\Big[-\omega_{\vec{p}}^2(\cancel{a_{\vec{p}}a_{-\vec{p}}}-a_{-\vec{p}}^\dagger a_{-\vec{p}}-a_{\vec{p}}a_{\vec{p}}^\dagger+\bcancel{a_{-\vec{p}}^\dagger a_{\vec{p}}^\dagger})+\nonumber\\
-        &\phantom{=}\qquad+(\vec{p}^2+m^2)(\cancel{a_{\vec{p}}a_{-\vec{p}}}+a_{-\vec{p}}^\dagger a_{-\vec{p}}+a_{\vec{p}}a_{\vec{p}}^\dagger+\bcancel{a_{-\vec{p}}^\dagger a_{\vec{p}}^\dagger})\Big]\\
-        &=\int\frac{\dt^3p}{(2\pi)^3}\frac{\omega_{\vec{p}}}{2}(a_{\vec{p}}^\dagger a_{\vec{p}}+a_{\vec{p}}a_{\vec{p}}^\dagger)\\
-        &=\int\frac{\dt^3p}{(2\pi)^3}\omega_{\vec{p}}(a_{\vec{p}}^\dagger a_{\vec{p}}+\frac{1}{2}[a_{\vec{p}},a_{\vec{p}}^\dagger])
-    \end{align}
-\end{subequations}
-Since only the combination $a_{\vec{p}}a_{\vec{p}}^\dagger$ shows up, the explicit time dependence would have dropped out anyways. The commutation relation between $H$, $a_{\vec{p}}$ and $a_{\vec{p}}^\dagger$ are given by
+The Hamiltonian is now easily computed to be (see Appendix \ref{sec:Apdx_HamiltLadder})
 \begin{equation}
-    [H,a_{\vec{p}}]=-\omega_{\vec{p}}a_{\vec{p}}\,,\qquad[H,a_{\vec{p}}^\dagger]=\omega_{\vec{p}}a_{\vec{p}}^\dagger
+        H=\int\frac{\dt^3p}{(2\pi)^3}\omega_{\vec{p}}(a_{\vec{p}}^\dagger a_{\vec{p}}+\frac{1}{2}[a_{\vec{p}},a_{\vec{p}}^\dagger])\,.
+        \label{eq:HamiltonianWithLadderOps}
 \end{equation}
-From quantum mechanics it is now clear that $H$ every momentum mode $\vec{p}$ has a discrete spectrum of excitations or energy eigenstates, such that
+The commutation relation between $H$, $a_{\vec{p}}$ and $a_{\vec{p}}^\dagger$ are given by
 \begin{equation}
-    H\ket{n_{\vec{p}}}=(\omega_{\vec{p}}+E_0)\ket{n_{\vec{p}}}
+    [H,a_{\vec{p}}]=-\omega_{\vec{p}}a_{\vec{p}}\,,\qquad[H,a_{\vec{p}}^\dagger]=\omega_{\vec{p}}a_{\vec{p}}^\dagger\,.
+    \label{eq:HamiltLadderCommut}
 \end{equation}
-and the operator $a_{\vec{p}}$ ($a_{\vec{p}}^\dagger$) annihilates (creates) excitations,
+This allows for an algebraic treatment of the eigenvalue problem of this Hamiltonian. From the well-known quantum mechanical harmonic oscillators, it is clear that $H$ has a discrete spectrum of excitations or energy eigenstates for each of its (continuous) momentum modes $\vec{p}$, such that
 \begin{equation}
-    a_{\vec{p}}\ket{n_{\vec{p}}}=\sqrt{n_{\vec{p}}} \ket{(n-1)_{\vec{p}}}\,,\qquad a_{\vec{p}}^\dagger\ket{n_{\vec{p}}}= \sqrt{(n+1)_{\vec{p}}}\ket{(n+1)_{\vec{p}}}
+    H\ket{n_{\vec{p}}}=(\omega_{\vec{p}}+E_0)\ket{n_{\vec{p}}}\,.
 \end{equation}
-$E_0$ is the (IR) divergent vacuum energy. The vacuum is defined by $a_{\vec{p}}\ket{0}=0$ $\forall\vec{p}$. The operator
+By applying equations \eqref{eq:HamiltLadderCommut} to an eigenstate $\ket{n_{\vec{p}}}$ one finds that the operator $a_{\vec{p}}$ ($a_{\vec{p}}^\dagger$) annihilates (creates) excitations in the momentum mode $\vec{p}$,
+\begin{equation}
+    a_{\vec{p}}\ket{n_{\vec{p}}}=\sqrt{n_{\vec{p}}} \ket{(n-1)_{\vec{p}}}\,,\qquad a_{\vec{p}}^\dagger\ket{n_{\vec{p}}}= \sqrt{(n+1)_{\vec{p}}}\ket{(n+1)_{\vec{p}}}\,.
+\end{equation}
+$E_0$ is a divergent vacuum energy, induced by the commutator ${[a_{\vec{p}},a_{\vec{p}}^\dagger]\propto\delta^{(3)}(0)}$. The ground state is defined by $a_{\vec{p}}\ket{0}=0$ $\forall\vec{p}$. The operator
 \begin{equation}
     N_{\vec{p}}=a_{\vec{p}}^\dagger a_{\vec{p}}
 \end{equation}
 is the number operator for a given momentum mode and its expectation value $n(\vec{p})=\langle N_{\vec{p}}\rangle$ has the interpretation of the momentum space number density,
 \begin{equation}
-    N=\int\frac{\dt^3p}{(2\pi)^3}n(\vec{p})\,,\qquad n(\vec{p})=(2\pi)^3\frac{\dt N}{\dt^3p}
+    N=\int\frac{\dt^3p}{(2\pi)^3}n(\vec{p})\,,\qquad n(\vec{p})=(2\pi)^3\frac{\dt N}{\dt^3p}\,.
+    \label{eq:NumberDensity}
 \end{equation}
+With this, the interpretation of the Hamiltonian \eqref{eq:HamiltonianWithLadderOps} is straightforward: Up to a divergent constant, it is simply the sum (integral) of ${n(\vec{p})}$ excitations with energy ${\omega(\vec{p})}$ over all momentum modes $\vec{p}$.
 
 \subsection{Complex Scalar Field}
 
-Consider a complex scalar field $\phi=\frac{1}{\sqrt{2}}(\phi_1+\imagu\phi_2)$ with $\phi_k,k\in\{1,2\}$ two real scalar fields. The Lagrangian of $\phi$ can be written as the sum of the Lagrangians $\mathcal{L}_k$ of $\phi_k$. Similarly for the Hamiltonian
+Consider a complex scalar field ${\phi=\frac{1}{\sqrt{2}}(\varphi_1+\imagu\varphi_2)}$ with ${\varphi_k,k\in\{1,2\}}$ two real scalar fields. The Lagrangian of $\phi$ can be written as the sum of the Lagrangians $\mathcal{L}_k$ of $\varphi_k$,
 \begin{equation}
-    \mathcal{L}=-(\partial_\mu\phi^*)(\partial^\mu\phi)-m^2\phi\phi^*=\sum_{k}\Big\{-\frac{1}{2}\Big((\partial_\mu\phi_k)(\partial^\mu\phi_k)+m^2\phi_k^2\Big)\Big\}=\sum_k\mathcal{L}_k
+    \mathcal{L}=-(\partial_\mu\phi^*)(\partial^\mu\phi)-m^2\phi\phi^*=\sum_{k}\Big\{-\frac{1}{2}\Big((\partial_\mu\varphi_k)(\partial^\mu\varphi_k)+m^2\varphi_k^2\Big)\Big\}=\sum_k\mathcal{L}_k\,.
 \end{equation}
-With the conjugate momenta $\pi_k=\dot{\phi}_k$ the conjugate momentum of $\phi$ turns out to be
+With the conjugate momenta $\pi_k=\dot{\varphi}_k$ the conjugate momentum of $\phi$ turns out to be
 \begin{equation}
     \pi=\frac{\partial\mathcal{L}}{\partial\dot{\phi}}=\dot{\phi}^*=\frac{\pi_1-\imagu\pi_2}{\sqrt{2}}
 \end{equation}
 and the Hamiltonian is therefore
+\begin{multline}
+    \mathcal{H}=\pi\dot{\phi}+\pi^*\dot{\phi}^*-\mathcal{L}=\dot{\phi}\dot{\phi}^*+(\vec{\nabla}\phi)(\vec{\nabla}\phi^*)+m^2\phi\phi^*\\
+    =\sum_k\frac{1}{2}(\pi_k^2+(\vec{\nabla}\varphi_k)^2+m^2\varphi_k^2)=\sum_k\mathcal{H}_k\,.
+\end{multline}
+
+Quantization rules are imposed as before on the real scalar fields $\varphi_k$. From this, it is immediately clear that $\phi(t,\vec{x})$ takes the form
+\begin{subequations}    
+    \begin{align}
+        \phi(t,\vec{x})&=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Big\{\frac{a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)}}{\sqrt{2}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\frac{a_{\vec{p},(1)}^\dagger+\imagu a_{\vec{p},(2)}^\dagger}{\sqrt{2}}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big\}\,,\\
+        \pi(t,\vec{x})&=\int\frac{\dt^3p}{(2\pi)^3}\frac{\imagu\omega_{\vec{p}}}{\sqrt{2\omega_{\vec{p}}}}\Big\{-\frac{a_{\vec{p},(1)}-\imagu a_{\vec{p},(2)}}{\sqrt{2}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\frac{a_{\vec{p},(1)}^\dagger-\imagu a_{\vec{p},(2)}^\dagger}{\sqrt{2}}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big\}\,.
+    \end{align}
+\end{subequations}
+It is intuitive to define
 \begin{equation}
-    \mathcal{H}=\pi\dot{\phi}+\pi^*\dot{\phi}^*-\mathcal{L}=\dot{\phi}\dot{\phi}^*+(\vec{\nabla}\phi)(\vec{\nabla}\phi^*)+m^2\phi\phi^*=\sum_k\frac{1}{2}(\pi_k^2+(\vec{\nabla}\phi_k)^2+m^2\phi_k^2)=\sum_k\mathcal{H}_k
+    a_{\vec{p}}=\frac{a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)}}{\sqrt{2}}\,,\qquad b_{\vec{p}}^\dagger=\frac{a_{\vec{p},(1)}^\dagger+\imagu a_{\vec{p},(2)}^\dagger}{\sqrt{2}}\,,
 \end{equation}
-
-Quantization rules are imposed as before on the real scalar field $\phi_k$. From this, it is immediately clear that $\phi(t,\vec{x})$ takes the form
+recovering the looking familiar expressions
 \begin{subequations}    
     \begin{align}
-        \phi(t,\vec{x})&=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Big\{\frac{a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)}}{\sqrt{2}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\frac{a_{\vec{p},(1)}^\dagger+\imagu a_{\vec{p},(2)}^\dagger}{\sqrt{2}}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big\}\\
-        \pi(t,\vec{x})&=\int\frac{\dt^3p}{(2\pi)^3}\frac{\imagu\omega_{\vec{p}}}{\sqrt{2\omega_{\vec{p}}}}\Big\{-\frac{a_{\vec{p},(1)}-\imagu a_{\vec{p},(2)}}{\sqrt{2}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\frac{a_{\vec{p},(1)}^\dagger-\imagu a_{\vec{p},(2)}^\dagger}{\sqrt{2}}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big\}
+        \phi(t,\vec{x})&=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Big\{a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+b_{\vec{p}}^\dagger e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big\}\,,\\
+        \pi(t,\vec{x})&=\int\frac{\dt^3p}{(2\pi)^3}\frac{\imagu\omega_{\vec{p}}}{\sqrt{2\omega_{\vec{p}}}}\Big\{-b_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+a_{\vec{p}}^\dagger e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big\}\,.
     \end{align}
 \end{subequations}
-    It is intuitive to define
-    \begin{equation}
-    a_{\vec{p}}=\frac{a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)}}{\sqrt{2}}\,,\qquad b_{\vec{p}}^\dagger=\frac{a_{\vec{p},(1)}^\dagger+\imagu a_{\vec{p},(2)}^\dagger}{\sqrt{2}}
-\end{equation}
-recovering the looking familiar expression
-\begin{subequations}    
-    \begin{align}
-        \phi(t,\vec{x})&=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}\Big\{a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+b_{\vec{p}}^\dagger e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big\}\\
-        \pi(t,\vec{x})&=\int\frac{\dt^3p}{(2\pi)^3}\frac{\imagu\omega_{\vec{p}}}{\sqrt{2\omega_{\vec{p}}}}\Big\{-b_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+a_{\vec{p}}^\dagger e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big\}
-    \end{align}
-\end{subequations}
-where now, unlike before, explicitly $a_{\vec{p}}\neq b_{\vec{p}}$ is found.
-
-The commutation relations of $a_{\vec{p},(k)}$, $a_{\vec{p},(k)}^\dagger$ are trivially given by
+Unlike before, we now explicitly find ${a_{\vec{p}}\neq b_{\vec{p}}}$, since there is no reality condition to be imposed on the fields $\phi$. The commutation relations of $a_{\vec{p},(k)}$, $a_{\vec{p},(k)}^\dagger$ are trivially given by
 \begin{equation}
     [a_{\vec{p},(j)},a_{\vec{q},(k)}^\dagger]=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\delta_{jk}\,,\qquad[a_{\vec{p},(j)}^{(\dagger)},a_{\vec{p},(k)}^{(\dagger)}]=0
 \end{equation}
-and lead to
-\begin{subequations}
-    \begin{align}
-        [a_{\vec{p}},b_{\vec{q}}]&=\frac{1}{2}[a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)},a_{\vec{q},(1)}-\imagu a_{\vec{q},(2)}]=0\\
-        [a_{\vec{p}}^{(\dagger)},a_{\vec{q}}^{(\dagger)}]&=0\\
-        [a_{\vec{p}},b_{\vec{q}}^\dagger]&=\frac{1}{2}[a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)},a_{\vec{q},(1)}^\dagger+\imagu a_{\vec{q},(2)}^\dagger]=\frac{1}{2}\big([a_{\vec{p},(1)},a_{\vec{q},(1)}^\dagger]-[a_{\vec{p},(2)},a_{\vec{q},(2)}^\dagger]\big)=0\\
-        [a_{\vec{p}},a_{\vec{q}}^\dagger]&=\frac{1}{2}[a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)},a_{\vec{q},(1)}^\dagger-\imagu a_{\vec{q},(2)}^\dagger]=\frac{1}{2}\big([a_{\vec{p},(1)},a_{\vec{q},(1)}^\dagger]+[a_{\vec{p},(2)},a_{\vec{q},(2)}^\dagger]\big)=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\\
-        [b_{\vec{p}},b_{\vec{q}}^\dagger]&=\frac{1}{2}[a_{\vec{p},(1)}-\imagu a_{\vec{p},(2)},a_{\vec{q},(1)}^\dagger+\imagu a_{\vec{q},(2)}^\dagger]=\frac{1}{2}\big([a_{\vec{p},(1)},a_{\vec{q},(1)}^\dagger]+[a_{\vec{p},(2)},a_{\vec{q},(2)}^\dagger]\big)=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})
-    \end{align}
-\end{subequations}
-
+and lead to (see Appendix \ref{sec:Apdx_ComplLadderCommut})
+\begin{equation}
+    \begin{aligned}
+        [a_{\vec{p}},b_{\vec{q}}]&=0=[a_{\vec{p}}^\dagger,b_{\vec{q}}^\dagger]\,,&[a_{\vec{p}}^{(\dagger)},a_{\vec{q}}^{(\dagger)}]&=0=[b_{\vec{p}}^{(\dagger)},b_{\vec{q}}^{(\dagger)}]\,,\\
+        [a_{\vec{p}},b_{\vec{q}}^\dagger]&=0=[a_{\vec{p}}^\dagger,b_{\vec{q}}]\,,&[a_{\vec{p}},a_{\vec{q}}^\dagger]&=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})=[b_{\vec{p}},b_{\vec{q}}^\dagger]\,.
+    \end{aligned}
+    \label{eq:ComplLadderCommut}
+\end{equation}
 From this, again the Hamiltonian is derived to be
-\begin{subequations}
-    \begin{align}        
-        H&=\int\frac{\dt^3p}{(2\pi)^3}\omega_{\vec{p}}\Big(a_{\vec{p},(1)}^\dagger a_{\vec{p},(1)}+a_{\vec{p},(2)}^\dagger a_{\vec{p},(2)}+\frac{1}{2}\big([a_{\vec{p},(1)},a_{\vec{p},(1)}^\dagger]+[a_{\vec{p},(2)},a_{\vec{p},(2)}^\dagger]\big)\Big)\\
-        &=\int\frac{\dt^3p}{(2\pi)^3}\omega_{\vec{p}}\Big(a_{\vec{p}}^\dagger a_{\vec{p}}+b_{\vec{p}}^\dagger b_{\vec{p}}+\frac{1}{2}\big([a_{\vec{p}},a_{\vec{p}}^\dagger]+[b_{\vec{p}},b_{\vec{p}}^\dagger]\big)\Big)
-    \end{align}
-\end{subequations}
-using $a_{\vec{p}}^\dagger a_{\vec{p}}=\frac{1}{2}(a_{\vec{p},(1)}^\dagger-\imagu a_{\vec{p},(2)}^\dagger)(a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)})$ and $b_{\vec{p}}^\dagger b_{\vec{p}}=\frac{1}{2}(a_{\vec{p},(1)}^\dagger+\imagu a_{\vec{p},(2)}^\dagger)(a_{\vec{p},(1)}-\imagu a_{\vec{p},(2)})$. Whereas $n_{\vec{p}}=\langle a_{\vec{p}}^\dagger a_{\vec{p}}\rangle$ has the interpretation of a particle number density, $\overline{n}_{\vec{p},J}=\langle b_{\vec{p}}^\dagger b_{\vec{p}}\rangle$ is understood as the antiparticle density.
+% \begin{subequations}
+%     \begin{align}        
+%         H&=\int\frac{\dt^3p}{(2\pi)^3}\omega_{\vec{p}}\Big(a_{\vec{p},(1)}^\dagger a_{\vec{p},(1)}+a_{\vec{p},(2)}^\dagger a_{\vec{p},(2)}+\frac{1}{2}\big([a_{\vec{p},(1)},a_{\vec{p},(1)}^\dagger]+[a_{\vec{p},(2)},a_{\vec{p},(2)}^\dagger]\big)\Big)\\
+%         &=\int\frac{\dt^3p}{(2\pi)^3}\omega_{\vec{p}}\Big(a_{\vec{p}}^\dagger a_{\vec{p}}+b_{\vec{p}}^\dagger b_{\vec{p}}+\frac{1}{2}\big([a_{\vec{p}},a_{\vec{p}}^\dagger]+[b_{\vec{p}},b_{\vec{p}}^\dagger]\big)\Big)
+%     \end{align}
+% \end{subequations}
+% using ${a_{\vec{p}}^\dagger a_{\vec{p}}=\frac{1}{2}(a_{\vec{p},(1)}^\dagger-\imagu a_{\vec{p},(2)}^\dagger)(a_{\vec{p},(1)}+\imagu a_{\vec{p},(2)})}$ and ${b_{\vec{p}}^\dagger b_{\vec{p}}=\frac{1}{2}(a_{\vec{p},(1)}^\dagger+\imagu a_{\vec{p},(2)}^\dagger)(a_{\vec{p},(1)}-\imagu a_{\vec{p},(2)})}$.
+\begin{equation}      
+        H=\int\frac{\dt^3p}{(2\pi)^3}\omega_{\vec{p}}\Big(a_{\vec{p}}^\dagger a_{\vec{p}}+b_{\vec{p}}^\dagger b_{\vec{p}}+\frac{1}{2}\big([a_{\vec{p}},a_{\vec{p}}^\dagger]+[b_{\vec{p}},b_{\vec{p}}^\dagger]\big)\Big)\,.
+\end{equation}
+
+Together with the commutation relations \eqref{eq:ComplLadderCommut} this offers an intuitive interpretation: The sets of operators ${\{a_{\vec{p}},a_{\vec{p}}^\dagger\}}$ and ${\{b_{\vec{p}},b_{\vec{p}}^\dagger\}}$ commute and each set fulfills the same algebraic relations as the real field $\varphi$ in the last section. They correspond to the creation and annihilation of particles and antiparticles respectively. Whereas ${n_{\vec{p}}=\langle a_{\vec{p}}^\dagger a_{\vec{p}}\rangle}$ has the interpretation of a particle number density, ${\overline{n}_{\vec{p}}=\langle b_{\vec{p}}^\dagger b_{\vec{p}}\rangle}$ is understood as the antiparticle density.
+
+
+
 
 \section{Particle Spectra from Classical Sources}
 
+We want to relate the experimentally observed spectra to the quantitites $n_{\vec{p}}$ defined by quantization of the field theory describing the interaction of the particles. Unfortunately, the notion of a particle in an interacting quantum field theory is not well-defined. The particle interpretation from the last section relies heavily on the validity of the free Klein-Gordon equation, its plane waves solutions and the relativistic dispersion relation of freely propagating particles. In a scattering event, the free theory is usually only a limiting case when particle densities are low or when the interacting fields have very small spatial overlap. The measurement of particles after a HIC can be understood as a zero-to-many particle scattering event. Long before the collision, there are no particles in the system. The interaction is turned on when the nuclei collide and the strong interaction between their constituents leads to complicated dynamics. After the fireball has expanded and cooled down, the density of the strongly interacting QGP has decreased and the mesonic bound states produced in the interaction propagate approximately as free particles to be measured on the detector surface.
+
+To make progress in the description of the particle spectra in the non-interacting limit after an interaction took place, we shall model the interaction dynamics by a spacetime dependent source $J(x)$ and make use of the concept of Greens functions. They are used to study for example correlations or the response of a system to perturbations.
+
 \subsection{Real Scalar Field}
 
-Follow \textbf{CITE: REINHARD: FIELD QUANTIZATION} around eq. 4.140. Define the Pauli-Jordan function $\Delta(x)$ via
-\begin{align}
-    \imagu\Delta(x-y)&=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\Big(e^{-\imagu (\omega_{\vec{p}}(x^0-y^0)-\vec{p}(\vec{x}-\vec{y}))}-e^{\imagu (\omega_{\vec{p}}(x^0-y^0)-\vec{p}(\vec{x}-\vec{y}))}\Big)\\
-    &=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\Big(e^{\imagu p(x-y)}-e^{-\imagu p(x-y)}\Big)\\
-    &=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\Big(e^{-\imagu \omega_{\vec{p}}(x^0-y^0)}-e^{\imagu \omega_{\vec{p}}(x^0-y^0)}\Big)e^{\imagu\vec{p}(\vec{x}-\vec{y})}\\
-    &=2\pi\int\frac{\dt^4p}{(2\pi)^4}\epsilon(p^0)\delta(p^2+m^2)e^{-\imagu(p^0(x^0-y^0)-\vec{p}(\vec{x}-\vec{y}))}\\
-    &=2\pi\int\frac{\dt^4p}{(2\pi)^4}\epsilon(p^0)\delta(p^2+m^2)e^{\imagu p(x-y)}
-\end{align}
-which satisfies (...) $(\partial_\mu\partial^\mu-m^2)\Delta=0$. $\epsilon(x)$ is the sign function. The retarded and advanced propagators $\Delta_{R,A}(x)$ are given by 
+Following referece \cite{GreinerEtAl_1996}, define the Pauli-Jordan function $\Delta(x)$ for example by one of the equivalent representations
+% \begin{align}
+%     \imagu\Delta(x-y)&=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\Big(e^{-\imagu (\omega_{\vec{p}}(x^0-y^0)-\vec{p}(\vec{x}-\vec{y}))}-e^{\imagu (\omega_{\vec{p}}(x^0-y^0)-\vec{p}(\vec{x}-\vec{y}))}\Big)\\
+%     &=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\Big(e^{\imagu p(x-y)}-e^{-\imagu p(x-y)}\Big)\\
+%     &=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\Big(e^{-\imagu \omega_{\vec{p}}(x^0-y^0)}-e^{\imagu \omega_{\vec{p}}(x^0-y^0)}\Big)e^{\imagu\vec{p}(\vec{x}-\vec{y})}\\
+%     &=2\pi\int\frac{\dt^4p}{(2\pi)^4}\text{sign}(p^0)\delta(p^2+m^2)e^{-\imagu(p^0(x^0-y^0)-\vec{p}(\vec{x}-\vec{y}))}\\
+%     &=2\pi\int\frac{\dt^4p}{(2\pi)^4}\text{sign}(p^0)\delta(p^2+m^2)e^{\imagu p(x-y)}
+% \end{align}
+\begin{subequations}
+    \begin{align}
+        \imagu\Delta(x-y)&=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\Big(e^{-\imagu (\omega_{\vec{p}}(x^0-y^0)-\vec{p}(\vec{x}-\vec{y}))}-e^{\imagu (\omega_{\vec{p}}(x^0-y^0)-\vec{p}(\vec{x}-\vec{y}))}\Big)\\
+        &=2\pi\int\frac{\dt^4p}{(2\pi)^4}\text{sign}(p^0)\delta(p^2+m^2)e^{\imagu p(x-y)}\,.
+    \end{align}
+\end{subequations}
+As a sum of plane waves with 4-momenta satisfying the relativistic dispersion relation, it satisfies ${(\partial_\mu\partial^\mu-m^2)\Delta=0}$. The retarded and advanced propagators $\Delta_{R,A}(x)$ are given by 
 \begin{equation}
-    \Delta_R(x)=\Theta(x^0)\Delta(x)\,,\qquad\Delta_A(x)=\Theta(x^0)\Delta(x)\,.
+    \Delta_R(x)=\Theta(x^0)\Delta(x)\,,\qquad\Delta_A(x)=-\Theta(-x^0)\Delta(x)\,,
 \end{equation}
 which immediately implies $\Delta(x)=\Delta_R(x)-\Delta_A(x)$. These function satisfy
 \begin{equation}
-    (\partial_\mu\partial^\mu-m^2)\Delta_{R,A}(x)=\delta^{(4)}(x)
+    (\partial_\mu\partial^\mu-m^2)\Delta_{R,A}(x)=\delta^{(4)}(x)\,,
 \end{equation}
+as can be checked from the explicit construction performed in Appendix \ref{sec:Apdx_GreensFunctionsKG}.
 
-\begin{calc}[Greens Functions]{calc:GreensFunctions}
-    Solve $(\partial_\mu\partial^\mu-m^2)D(x)=\delta^{(4)}(x)$. Using $$D(x)=\int\frac{\dt^4p}{(2\pi)^4}\tilde{D}(p)e^{\imagu px}$$ one finds
-    \begin{align}
-        \int\frac{\dt^4p}{(2\pi)^4}(-p^2-m^2)\tilde{D}(p)&=\delta^{(4)}(x)
-        \tilde{D}(p)=-\frac{1}{p^2+m^2}
-    \end{align}
-    and thus
-    \begin{align}
-        D(x)&=\int\frac{\dt^4p}{(2\pi)^4}\frac{-1}{p^2+m^2}e^{-\imagu px}\\
-        &=-\int\frac{\dt^3p}{(2\pi)^3}\frac{\dt p^0}{2\pi}\frac{1}{(p^0+\omega_{\vec{p}})(-p^0+\omega_{\vec{p}})}e^{\imagu(p^0t-\vec{p}\vec{x})}
-    \end{align}
-
-    \begin{defin}[Retarded Propagator, Contour]{def:RetPropCont}
-        \centering
-        \begin{tikzpicture}
-            \draw (0,-1) -- (0,1);
-            \draw (-3,0) -- (3,0);
-    
-            \coordinate[label=below:$-\omega_{\vec{p}}$] (n1) at (-2,0);
-            \draw[fill] (n1) circle (0.05);
-    
-            \coordinate[label=below:$\omega_{\vec{p}}$] (n2) at (2,0);
-            \draw[fill] (n2) circle (0.05);
-    
-            \draw[line width=1] (-2.5,0) arc (-180:0:0.5);
-            \draw[line width=1,-{Latex[length=7,width=7,sep=2]}] (-3,0) -- (-2.5,0);
-            \draw[line width=1] (-3,0) -- (-2.5,0);
-            \draw[line width=1] (-1.5,0) -- (1.5,0);
-            \draw[line width=1] (1.5,0) arc (-180:0:0.5);
-            \draw[line width=1,-{Latex[length=7,width=7,sep=2]}] (2.5,0) -- (3,0);
-            \draw[line width=1] (2.5,0) -- (3,0);
-        \end{tikzpicture}
-    \end{defin}
-
-    If $t>0$, close the integration contour in the upper imaginary half plane.
-    \begin{align}
-        \int\frac{\dt p^0}{2\pi}\frac{1}{(p^0+\omega_{\vec{p}})(-p^0+\omega_{\vec{p}})}e^{\imagu p^0t}&=2\pi\imagu\Big(\lim_{p^0\to\omega_{\vec{p}}}\frac{1}{2\pi}(p^0-\omega_{\vec{p}})\frac{e^{\imagu p^0t}}{(p^0+\omega_{\vec{p}})(-p^0+\omega_{\vec{p}})}+\lim_{p^0\to-\omega_{\vec{p}}}\frac{1}{2\pi}(p^0+\omega_{\vec{p}})\frac{e^{\imagu p^0t}}{(p^0+\omega_{\vec{p}})(-p^0+\omega_{\vec{p}})}\Big)\\
-        &=\imagu\Big(\frac{e^{-\imagu\omega_{\vec{p}}t}-e^{\imagu\omega_{\vec{p}}t}}{2\omega_{\vec{p}}}\Big)
-    \end{align}
-    For $t<0$, close the integration in the lower half plane, such that there is no residue within the integration contour. This leads to
-    \begin{equation}
-        D_R(x)=\frac{1}{\imagu}\Theta(t)\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}(e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})})=-\imagu\Theta(x^0)\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}(e^{\imagu px}-e^{-\imagu px})=\Theta(x^0)\Delta(x)\equiv\Delta_R(x)
-    \end{equation}
-\end{calc}
-
-Consider now a real scalar field that evolves according to the inhomogeneous Klein-Gordon equation
+Whereas the free Klein-Gordon equation can be used to describe the propagation of field excitations, it does not describe the origin or creation of such excitations from the vacuum. To do so, one can add an external driving force or source term $J$ to find the inhomogeneous Klein-Gordon equation
 \begin{equation}
-    (\partial_\mu\partial^\mu-m^2)\phi=-J
+    (\partial_\mu\partial^\mu-m^2)\varphi(x)=-J(x)\,.
 \end{equation}
-The solution is constructed by superposition of homogeneous solutions and a particular inhomogeneous solutions. Requesting $\phi\equiv 0$ for vanishing source, one finds
+This source term replaces all self-interactions terms of higher order than $\varphi^2$ in the Lagrangian, and possibly further interactions of the field $\varphi$ with other fields. The precise form could in principle be obtained by the full Lagrangian capturing all the relevant interactions at play, but choosing an external source $J$ as a placeholder suffices for our needs. The only physically relevant properties of $J$ are reality in the case of real-valued $\varphi$, and finite support, meaning $J$ vanishes before the collision and long after the collision, when the fluid or gas of interacting particles has been thinned out.
+
+The solution is constructed by superposition of homogeneous solutions and a particular inhomogeneous solutions, which is easily constructed with the help of the Greens functions discussed before. Requesting ${\varphi\equiv 0}$ for vanishing source, one finds
 \begin{subequations}
     \begin{align}        
-        \phi_J(x)&=-\int\dt^4y\Delta_R(x-y)J(y)\\
+        \varphi_J(x)&=-\int\dt^4y\Delta_R(x-y)J(y)\\
         &=\imagu\int\dt^4y\Theta(x^0-y^0)\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}(e^{\imagu p(x-y)}-e^{-\imagu p(x-y)})J(y)\\
         \overset{x^0\gg y^0}&{=}\imagu \int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}(J(p)e^{\imagu px}-J(-p)e^{-\imagu px})\\
         &=\imagu\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}(J(p)e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-J(-p)e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})})\label{eq:ClassicalFieldAfterSource}
     \end{align}
 \end{subequations}
-where $J(p)=\int\dt^4y J(x)e^{-\imagu py}$ was used.
-
-Taking the homogeneous solution $\phi_0$ as given by \eqref{eq:CanonicalQuant_RealScalar} into account, the field after the source has vanished is given by
-\begin{equation}
-    \phi(t,x)=\phi_0(t,\vec{x})+\phi_J(t,\vec{x})               =\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}\left\{\big(a_{\vec{p}}+\frac{\imagu J(p)}{\sqrt{2\omega_{\vec{p}}}}\big)e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\big(a_{\vec{p}}^\dagger-\frac{\imagu J(-p)}{\sqrt{2\omega_{\vec{p}}}}\big)e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\right\}
-\end{equation}
+where $J(p)=\int\dt^4y J(x)e^{-\imagu py}$ was used and implies evaluation on on-shell 4-momenta. The usage of the retarded propagator ensures the preservation of causality, since the source may only affect events within its own future light cone. Taking the homogeneous solution $\varphi_0$ as given by \eqref{eq:CanonicalQuant_RealScalar} into account, the field after the source has vanished is given by
+\begin{multline}
+    \varphi(t,x)=\varphi_0(t,\vec{x})+\varphi_J(t,\vec{x})\\
+    =\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}\left\{\big(a_{\vec{p}}+\frac{\imagu J(p)}{\sqrt{2\omega_{\vec{p}}}}\big)e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}+\big(a_{\vec{p}}^\dagger-\frac{\imagu J(-p)}{\sqrt{2\omega_{\vec{p}}}}\big)e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\right\}
+\end{multline}
 This is described by effectively replacing annihilation and creation operators via
 \begin{equation}
     a_{\vec{p}}\mapsto a_{\vec{p}}+\frac{\imagu J(p)}{\sqrt{2\omega_{\vec{p}}}}\,,\qquad a_{\vec{p}}^\dagger\mapsto a_{\vec{p}}^\dagger-\frac{\imagu J(-p)}{\sqrt{2\omega_{\vec{p}}}}
 \end{equation}
-These replacements are of course compatible, considering that for a real source $J(p)=J^*(-p)$. Since $J(p)$ is just a $\mathbb{C}$-number, it does not alter the commutation relations from which the Hamiltonian and number operator are derived. The number density after the source has vanished, starting from the initial vacuum state $\ket{0}$ without any particles, is given by
+These replacements are of course compatible, considering that for a real source ${J(p)=J^*(-p)}$. Since $J(p)$ is just a $\mathbb{C}$-number, it does not alter the commutation relations from which the Hamiltonian and number operator are derived. Starting without any particles in the system corresponds to considering the state $\ket{0}$ with respect to the initially defined creation and annihilation operators. The number density after the source has vanished is then given by
 \begin{equation}
-    n_{\vec{p},J}=\bra{0}\Big(a_{\vec{p}}+\frac{\imagu J(p)}{\sqrt{2\omega_{\vec{p}}}}\Big)\Big(a_{\vec{p}}^\dagger-\frac{\imagu J^*(p)}{\sqrt{2\omega_{\vec{p}}}}\Big)\ket{0}=\frac{1}{2\omega_{\vec{p}}}\abs{J(p)}^2
+    n_{\vec{p},J}=\bra{0}\Big(a_{\vec{p}}+\frac{\imagu J(p)}{\sqrt{2\omega_{\vec{p}}}}\Big)\Big(a_{\vec{p}}^\dagger-\frac{\imagu J^*(p)}{\sqrt{2\omega_{\vec{p}}}}\Big)\ket{0}=\frac{1}{2\omega_{\vec{p}}}\abs{J(p)}^2\,.
 \end{equation}
 
 \subsection{Complex Scalar Field}
 
-The derivation for the free scalar field is completely analogous. The identity $J(p)=J^*(-p)$ may not be used anymore. Instead, $J(p)$ contributes to the spectrum of particles, whereas $J(-p)$ contributes to the spectrum of antiparticles, in the following way:
+The derivation for the creation of particles and antiparticles as excitations of a complex-valued scalar field is completely analogous up to miniscule changes. The identity ${J(p)=J^*(-p)}$ may not be used anymore. Instead, $J(p)$ contributes to the spectrum of particles, whereas $J(-p)$ contributes to the spectrum of antiparticles, in the following way:
 \begin{equation}
     a_{\vec{p}}\mapsto a_{\vec{p}}+\frac{\imagu J(p)}{\sqrt{2\omega_{\vec{p}}}}\,,\qquad b_{\vec{p}}^\dagger\mapsto b_{\vec{p}}^\dagger-\frac{\imagu J(-p)}{\sqrt{2\omega_{\vec{p}}}}
 \end{equation}
-The particle and antiparticle momentum space number densities, or spectra, induces by the source $J$ are now
+The particle and antiparticle momentum space number densities induced by the source $J$ are now
 \begin{equation}
-    n_{\vec{p},J}=\frac{1}{2\omega_{\vec{p}}}\abs{J(p)}^2\,,\qquad \overline{n}_{\vec{p},J}=\frac{1}{2\omega_{\vec{p}}}\abs{J(-p)}^2
+    n_{\vec{p},J}=\frac{1}{2\omega_{\vec{p}}}\abs{J(p)}^2\,,\qquad \overline{n}_{\vec{p},J}=\frac{1}{2\omega_{\vec{p}}}\abs{J(-p)}^2\,.
+    \label{eq:SpectraFromSource}
 \end{equation}
+This equation covers the case of real fields.
 
 \subsection{Extracting the Source from the Late Time Field}
 
-Equation \eqref{eq:ClassicalFieldAfterSource} allows use to extract
+Given an external source term $J(x)$ we are able to predict the particle content in the non-interacting limit. Since $J$ is really only a placeholder for lots of complicated interaction terms that depend on the fields in a non-linear way, we cannot immediately write down the source in position or momentum space. Instead we would like to rephrase the problem in a way that enables us to compute the shape of the hypothetical source from the knowledge of the field. Equation \eqref{eq:ClassicalFieldAfterSource} allows us to do just that, giving (for real or complex field values)
 \begin{subequations}
     \begin{align}        
-        J(p)e^{-\imagu\omega_{\vec{p}}t}&=\int\dt^3x\Big(-\imagu\omega_{\vec{p}}\phi_J(x)+\big(\partial_t\phi_J(x)\big)\Big)e^{-\imagu\vec{p}\vec{x}}\\
-        J(p)&=\int\dt^3x\Big(\phi_J(x)\overset{\leftarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-\phi_J(x)\overset{\rightarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big)\\
-        J(-p)e^{\imagu\omega_{\vec{p}}t}&=-\int\dt^3x\Big(-\imagu\omega_{\vec{p}}\phi_J(x)-\big(\partial_t\phi_J(x)\big)\Big)e^{\imagu\vec{p}\vec{x}}\\
-        J(-p)&=\int\dt^3x\Big(\phi_J(x)\overset{\leftarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-\phi_J(x)\overset{\rightarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big)
+        % J(p)e^{-\imagu\omega_{\vec{p}}t}&=\int\dt^3x\Big(-\imagu\omega_{\vec{p}}\phi_J(x)+\big(\partial_t\phi_J(x)\big)\Big)e^{-\imagu\vec{p}\vec{x}}\\
+        J(p)&=\int\dt^3x\Big(\phi_J(x)\overset{\leftarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-\phi_J(x)\overset{\rightarrow}{\partial_t}e^{\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big)\,,\\
+        % J(-p)e^{\imagu\omega_{\vec{p}}t}&=-\int\dt^3x\Big(-\imagu\omega_{\vec{p}}\phi_J(x)-\big(\partial_t\phi_J(x)\big)\Big)e^{\imagu\vec{p}\vec{x}}\\
+        J(-p)&=\int\dt^3x\Big(\phi_J(x)\overset{\leftarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}-\phi_J(x)\overset{\rightarrow}{\partial_t}e^{-\imagu(\omega_{\vec{p}}t-\vec{p}\vec{x})}\Big)\,.
     \end{align}
     \label{eq:SourceFieldRelation}
 \end{subequations} 
+Finding a suitable prescription or model for $\phi_J$ will ultimately be the challenge of this. This line of thought was already pursued in \cite{Amelino-CameliaEtAl_1997}.

@@ -120,15 +120,18 @@ The Minkwoski metric in these coordinates takes the form ${g_{\mu\nu}=\text{diag
     \right.\,.
     \label{eq:BjorkenCoords_MomentumSpace}
 \end{equation}
-
 During this thesis, we will encounter contractions of (cartesian) coordinate and momentum vectors ${px\equiv p_\mu x^\mu}$ and ${pq=p_\mu q^\mu}$. Expressed in the curvilinear coordinates given above, they read
 \begin{subequations}
     \begin{align}
         p_\mu x^\mu&=-\tau m_T\cosh(\eta-\eta_p)+rp_T\cos(\varphi-\varphi_p)\,,\label{eq:px_contraction}\\
-        p_\mu q^\mu&=-m_{T,p}m_{T,q}\cosh(\eta_p-\eta_q)+p_Tq_T\cos(\varphi_p-\varphi_q)\,.\label{eq:pq_contraction}
+        p_\mu q^\mu&=-m_{T,p}m_{T,q}\cosh(\eta_p-\eta_q)+p_Tq_T\cos(\varphi_p-\varphi_q)\,,\label{eq:pq_contraction}
     \end{align}
     \label{eq:pxpq_contractions}
 \end{subequations}
+where we used the identities
+\begin{equation}
+    \cosh(a-b)=\cosh a\cosh b-\sinh a\sinh b\,,\qquad\cos(a-b)=\cos a\cos b+\sin a\sin b\,.
+\end{equation}
 Note how $x^\mu$ and $p^\mu$ in the new coordinate system are not vector components in a strict sense and cannot be naively contracted using the new metric. The Fourier transform (compare \eqref{eq:FourierConvention})
 \begin{equation}
     \tilde{f}(p^\mu)=\int\frac{\dt^4p}{(2\pi)^4}f(x^\mu)\exp\big(-\imagu(\tau m_T\cosh(\eta-\eta_p)-rp_T\cos(\varphi-\varphi_p))\big)
@@ -159,5 +162,6 @@ The additional factor of $2\omega_{\vec{p}}$ ensures that the form \eqref{eq:Num
 and integrating out the $p^t$-component. The number $N$ of particles counted is the same in any reference frame. Since the integral measure $\dt^4p$ as well as the contraction $p^2$ are Lorentz invariants, it is clear that ${2\omega_{\vec{p}}n(\vec{p})\equiv 2\omega_{\vec{p}}(\dt N/\dt^3p)}$ is a Lorentz invariant prescription. On the other hand, we can evaluate the integral \eqref{eq:NumberDensity_4momenta} by performing the change of variables \eqref{eq:BjorkenCoords_PositionSpace}. The Jacobian determinant introduces a factor ${1/m_Tp_T}$ and the $\delta$-distribution cancels the $m_T$-integration, imposing $m_T=\omega_T$. Finally, assuming rotational invariance of the number density, the $\varphi_p$ integration can be performed. Comparing expressions in both coordinate systems, one is lead to the important result
 \begin{equation}
     2\omega_{\vec{p}}\frac{\dt N}{\dt p^x\dt p^y\dt p^z}=\frac{1}{2\pi p_T}\frac{\dt N}{\dt p_T\dt \eta_p}\,.
+    \label{eq:SpectraConversion}
 \end{equation}
-Note that this result assumes a symmetry under ${\eta\to-\eta}$, contraining $\eta$ to ${[0,\infty)}$, introducing a factor of $1/2$ on the RHS. If the number density with respect to momentum rapidity ${\eta\in(-\infty,\infty)}$ is considered, one should replace ${2\omega_{\vec{p}}\to\omega_{\vec{p}}}$. Both options are of course Lorentz invariant. More detail is found in the Appendix \ref{sec:Apx_ConvertingSpectra}.
+Note that this result assumes a symmetry under ${\eta\to-\eta}$, constraining $\eta$ to ${[0,\infty)}$, introducing a factor of $1/2$ on the RHS. If the number density with respect to momentum rapidity ${\eta\in(-\infty,\infty)}$ is considered, one should replace ${2\omega_{\vec{p}}\to\omega_{\vec{p}}}$. Both options are of course Lorentz invariant. More detail is found in the Appendix \ref{sec:Apx_ConvertingSpectra}.
