@@ -1,6 +1,6 @@
 \chapter{Condensate Spectrum on the Freezeout Surface}
 
-Putting together equations \eqref{eq:SpectraConversion}, \eqref{eq:NumberDensity}, \eqref{eq:SpectraFromSource} and \eqref{eq:SourceFieldRelation} captures the essential procedure we want to pursue to find the particle spectra. We are left to come up with reasonable initial conditions for the fields of interest after the interaction in the fireball of QGP has deceased. The strong interactions are found to be described fairly accurately simulations of relativistic hydrodynamics. Therefore we attempt to define initial data at the point where the hydro simulation is stopped and the particle enter the non-interacting or free streaming phase. This point is called the Freezeout and is not described by a flat $\mathbb{R}^3$ hypersurface of constant lab time $t$, but rather by a numerically determined curve in the $\tau$-$r$-plane in Bjorken coordinates. We thus need to adapt our calculations for that case. 
+Putting together equations \eqref{eq:SpectraConversion}, \eqref{eq:NumberDensity}, \eqref{eq:SpectraFromSource} and \eqref{eq:SourceFieldRelation} captures the essential procedure we want to pursue to find the particle spectra. We are left to come up with reasonable initial conditions for the fields of interest after the interaction in the fireball of QGP has deceased. The strong interactions are found to be described fairly accurately simulations of relativistic hydrodynamics. Therefore we attempt to define initial data at the point where the hydro simulation is stopped and the particle enter the non-interacting or free streaming phase. This point is called the freezeout and is not described by a flat $\mathbb{R}^3$ hypersurface of constant lab time $t$, but rather by a numerically determined curve in the $\tau$-$r$-plane in Bjorken coordinates. We thus need to adapt our calculations for that case. 
 
 \section{Invariance of Fourier Transform w.r.t. Deformations of the Hypersurface}
 \label{subsec:FourierDeformHypersurface}
@@ -50,7 +50,7 @@ and are thus independent of the choice of Cauchy hypersurface.\\
         \label{fig:FreezeOutSurface_rtau}
     \end{minipage}
 }
-Consider the freezeout on the hypersurface depicted in figure \ref{fig:FreezeOutSurface_rtau}. Following the reasoning from \cite{KirchnerEtAl_2023}, we wish to apply Gauß law, taking care of the different signature compared to the usual version of Gauß law in Euclidean space. A calculation highlighting the difference between Euclidean and Minkowski signature is performed in Appendix \ref{sec:Apdx_GaußLawMinkowski}.
+The numerically determined shape of the freezeout surface is depicted in figure \ref{fig:FreezeOutSurface_rtau}. The intuitive picture of charges conserved under deformation of Cauchy surfaces is not enough to go from data on a hypersurface of constant lab time to the freezeout surface, since the latter undergoes a change from regions of timelike to spacelike normal vectors. Following the reasoning from \cite{KirchnerEtAl_2023}, we wish to apply Gauß law, taking care of the different signature compared to the usual version of Gauß law in Euclidean space. A calculation highlighting the difference between Euclidean and Minkowski signature is performed in Appendix \ref{sec:Apdx_GaußLawMinkowski}.
 
 Assuming that the condensate has no contributions at large rapidities ${\eta\to\pm\infty}$, one can deform the hypersurface $\Sigma_t$ at large lab time ${t=\const}$ into a hypersurface of large Bjorken time $\Sigma_{\tau\gg\tau_L}$ at a $\tau$ much larger then the lifetime $\tau_L$ of the fireball, using Gauß law applied to the spacetime volume enclosed by these two Cauchy surfaces. There is no contribution from the $\tau$-axis, because the set of points where $r=0$ has vanishing 3-volume. Assuming further that the condensate contribution as a function in phase space $f_{\text{cond}}(x^\mu,\vec{p})$ vanishes on $\Sigma_{\rom{2}}$ and $\Sigma_{\rom{5}}$, i.e. is contained within the union of all light cones starting on the freezeout surface ${\Sigma_{\text{fo}}\equiv\Sigma_{\rom{1}}\cap\Sigma_{\rom{3}}}$, the contributions on $\Sigma_{\rom{4}}$ and $\Sigma_{\rom{1}}$ coincide. From intuition about the Euclidean version of Gauß law one would expect a change in sign, given the normal vectors on these surface oriented as in figure \ref{fig:FreezeOutSurface_rtau}. However, since $\Sigma_{\rom{1}}$ is a timelike hypersurface there is another sign-flip compared to the spacelike hypersurface $\Sigma_{\rom{4}}$.
 
@@ -61,6 +61,7 @@ To summarize, the hypersurface on which the inner products are computed can be c
 \end{equation}
 
 \section{Metric on the Freezeout Surface}
+\label{sec:FOSurfaceMetric}
 
 To evaluate the inner product \eqref{eq:InvariantInnterProduct} explicitly on the freezeout surface, we need to find the induced metric and surface element of the hypersurface as a submanifold of Minkowski space $\mathbb{R}^{(1,3)}$ using a standard procedure.
 
@@ -129,7 +130,7 @@ Straightforward substitution of the different formula into each other leads to t
                        + \phi(\tau,r)\Big[\tau^\prime\times p_T J_1(r p_T)\times\big(-Y_0(\tau\omega_T)\pm\imagu J_0(\tau\omega_T)\big)+\nonumber                                                                                                                                       \\
                        \qquad\phantom{+\phi(\tau,r)\Big[}+r^\prime\times J_0(r p_T)\times\omega_T\big(-Y_1(\tau\omega_T)\pm\imagu J_1(\tau\omega_T)\big)\Big]\Bigg]\,.
 \end{multline}
-This can be evaluated numerically, once the shape of the freezeout surface is provided in the form of 2 function $\tau(\alpha)$ and $r(\alpha)$, and the initial data ${\phi\vert_{\Sigma_{\text{fo}}}}$ and ${\dt\Sigma^\mu\partial_\mu\phi\vert_{\Sigma_{\text{fo}}}}$ is specified. The necessity of 2 scalar functions as initial data is consistent with the idea that a solution to the Klein-Gordon equation has 2 scalar function-valued degrees of freedom.
+This can be evaluated numerically, once the shape of the freezeout surface is provided in the form of 2 functions $\tau(\alpha)$ and $r(\alpha)$, and the initial data ${\phi\vert_{\Sigma_{\text{fo}}}}$ and ${\dt\Sigma^\mu\partial_\mu\phi\vert_{\Sigma_{\text{fo}}}}$ is specified. The necessity of 2 scalar functions as initial data is consistent with the idea that a solution to the Klein-Gordon equation has 2 scalar function-valued degrees of freedom.
 
 \begin{subequations}
     \begin{align}
@@ -152,87 +153,110 @@ This can be evaluated numerically, once the shape of the freezeout surface is pr
     \end{align}
 \end{subequations}
 
+
+
 \section{Models for Initial Data}
 
-If $J^\mu_{V,A}$ are assumed to be parallel to $u^\mu$, the assumption that all fields change only in direction of $u^\mu$ is consistent.
-
-We shall try to investigate certain classes of initial conditions:
+The goal of this section is to find physically reasonable initial conditions for the condensate field distribution on the freezeout surface. Various approaches seem intuitive:
 \begin{impt}[Possibilies to Fix Initial Data]{impt:InitialData}
 \begin{enumerate}
-    \item prescribe fields and orhtogonal derivatives directly \dots
+    \item Prescribe fields and orhtogonal derivatives directly \dots
     \begin{itemize}
-        \item \dots in the sense of an expansion (starting with constants, Gauß modes?, \dots)
-        \item \dots as function of $(\tau,r)$
+        \item \dots in the sense of an expansion (starting with constants, Gauß modes, etc.).
+        \item \dots as function of $(\tau,r)$ rather than $\alpha$, followed by restriction on $\Sigma_{\text{fo}}$.
     \end{itemize}
-    \item prescribe other physically accessible parameters like energy density $\epsilon$, pressure $p$, fluid velocity $u^\mu$\dots
+    \item Prescribe other physically accessible parameters like energy density $\epsilon$, pressure $p$ or fluid velocity $u^\mu$, and make contact with the fluid simulation.
 \end{enumerate}
 \end{impt}
+Whereas the first approach imposes no constraints at all, some work must be put into the second approach. A key idea to assign physical quantitites of the QGP with the condensate field is by considering the conserved currents derived in section \ref{sec:ConservedCurrentsChirSym}. To be precise, we choose the (approximately) conserved vector and axial currents $J^\mu_{V,A}$ to be parallel to $u^\mu$, the only exceptional 4-vector in the fluid simulation. To simplify the ansatz further, we make the consistent assumption that all fields change only in direction of $u^\mu$.
+
+Making further contact with the fluid description of the QGP, we state here the Lagrangians and canonical energy-momentum tensors ${T^{\mu\nu}=2(\partial\mathscr{L}/\partial g_{\mu\nu})+g^{\mu\nu}\mathscr{L}}$ \cite{Weinberg_2008} for the real fields $\sigma$ and $\pi^0$, as well as the complex fields $\pi^\pm$. Using the expansion of the potential and Lagrangian density close to the vacuum, as performed in section \ref{sec:LinearSigmaModel}, they read
+\begin{subequations}
+    \begin{align}
+        % \mathscr{L}_\sigma&=-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}m_\sigma^2\sigma^2\\
+        T^{\mu\nu}_{\sigma}&=(\partial^\mu\sigma)(\partial^\nu\sigma)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\sigma)(\partial^\alpha\sigma)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\\
+        % \mathscr{L}_{\pi^0}&=-\frac{1}{2}(\partial_\mu\pi^0)(\partial^\mu\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2\\
+        T^{\mu\nu}_{\pi^0}&=(\partial^\mu\pi^0)(\partial^\nu\pi^0)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\pi^0)(\partial^\alpha\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\\
+        % \mathscr{L}_{\pi^\pm}&=-(\partial_\mu\pi^+)(\overline{\partial_\mu\pi^+})-m_\pi^2\pi^+\overline{\pi^+}\\
+        T^{\mu\nu}_{\pi^\pm}&=2(\partial^\mu\pi^+)(\overline{\partial^\nu\pi^+})+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\overline{\partial^\alpha\pi^+})-m_\pi^2\pi^+\overline{\pi^+}\big)
+    \end{align}
+\end{subequations}
+Following \cite{Weinberg_2008} the energy momentum tensor of a real scalar field $\varphi$ is
+\begin{subequations}
+    \begin{align}
+        T_\varphi^{\mu\nu}&=-g^{\mu\nu}\big[\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)+V(\varphi)\big]+g^{\mu\rho}g^{\nu\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\\
+        \epsilon&=-\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)+V(\varphi)\\
+        p&=-\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)-V(\varphi)\\
+        u^\mu&=-\big[-g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\big]^{-1/2}g^{\mu\nu}\partial_\nu\varphi
+    \end{align}
+\end{subequations}
 
 \subsection{Real Fields}
 \label{sec:FluidFromRealScalar}
 
-Let $\phi$ be a real scalar field, e.g. $\phi\in\{\sigma,\pi^0\}$. The only availabe $4$-vector in the fluid theory is $u_\mu$. It is thus intuitive to try to identify the real-valued $4$vector $\partial_\mu\phi\sim u_\mu$. Taking the normalization $u_\mu u^\mu=-1$ into account, one finds
+Let $\varphi$ be a real scalar field, e.g. ${\varphi\in\{\sigma,\pi^0\}}$. The only availabe $4$-vector in the fluid theory is $u_\mu$. It is thus intuitive to try to identify the real-valued $4$vector ${\partial_\mu\varphi\sim u_\mu}$. Taking the normalization ${u_\mu u^\mu=-1}$ into account, one finds
 \begin{equation}
-    u_\mu=\frac{\partial_\mu\phi}{\chi}\,,\qquad0<\chi^2\defeq-(\partial_\mu\phi)(\partial^\mu\phi)
+    u_\mu=\frac{\partial_\mu\varphi}{\chi}\,,\qquad0<\chi^2\defeq-(\partial_\mu\varphi)(\partial^\mu\varphi)\,.
 \end{equation}
-This does not restrict the initial data enough to uniquely specify the resulting spectrum. We are left to prescribe two functions on the freezeout surface, namely $\phi\vert_{\Sigma_{\text{fo}}}$ and $\chi\vert_{\Sigma_{\text{fo}}}$.
+This does not restrict the initial data enough to uniquely specify the resulting spectrum. We are left to prescribe two functions on the freezeout surface, namely $\varphi\vert_{\Sigma_{\text{fo}}}$ and $\chi\vert_{\Sigma_{\text{fo}}}$. This ansatz together with the result from \ref{sec:FOSurfaceMetric} yields for the normal projection of the field derivative
+\begin{equation}
+    \dt\Sigma^\mu\partial_\mu\varphi=\chi(r^\prime u_\tau+\tau^\prime u_r)\cdot r\tau\,\dt\alpha\dt\eta\dt\varphi\,.
+\end{equation}
 
-Regarding the second option in \ref{impt:InitialData}, from the fluid theory, we could try to match the energy density of the hypothetical superfluid
-\begin{subequations}
-    \begin{align}
-        \epsilon_{s,\phi}=u_\mu u_\nu T^{\mu\nu}_{\phi}&=\frac{(\partial_\nu\phi)(\partial_\mu\phi)}{\chi^2}\Big((\partial^\mu\phi)(\partial^\nu\phi)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\phi)(\partial^\alpha\phi)-\frac{1}{2}m_\phi^2(\phi)^2\big)\Big)   \\
-        &=\chi^2-\big(\frac{1}{2}\chi^2-\frac{1}{2}m_\phi^2\phi^2\big)  \\
-        &=\frac{1}{2}\big(m_\phi^2\phi^2+\chi^2\big)
-    \end{align}
-\end{subequations}
+To restrict initial data further in a physically meaningful way, from the fluid theory we could try to match the energy density of the hypothetical superfluid
+% \begin{subequations}
+%     \begin{align}
+%         \epsilon_{s,\varphi}=u_\mu u_\nu T^{\mu\nu}_{\varphi}&=\frac{(\partial_\nu\varphi)(\partial_\mu\varphi)}{\chi^2}\Big((\partial^\mu\varphi)(\partial^\nu\varphi)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\varphi)(\partial^\alpha\varphi)-\frac{1}{2}m_\varphi^2(\varphi)^2\big)\Big)   \\
+%         &=\chi^2-\big(\frac{1}{2}\chi^2-\frac{1}{2}m_\varphi^2\varphi^2\big)  \\
+%         &=\frac{1}{2}\big(m_\varphi^2\varphi^2+\chi^2\big)
+%     \end{align}
+% \end{subequations}
+\begin{equation}
+    \epsilon_\varphi=\frac{1}{2}(m_\varphi^2\varphi^2+\chi^2)
+\end{equation}
 which changes along the freezeout surface as
     \begin{equation}
-        \dt\epsilon=m_\phi^2\phi\dt\phi+\chi\dt\chi=m_\phi^2\phi(\partial_i\phi)\dt^i s+\chi\dt\chi=m_\phi^2\phi(\chi u_i)\dt^i s+\chi\dt\chi
+        \dt\epsilon=m_\varphi^2\varphi\dt\varphi+\chi\dt\chi=m_\varphi^2\varphi(\partial_\mu\varphi)\dt^\mu s+\chi\dt\chi=m_\varphi^2\varphi(\chi u_\mu)\dt^\mu s+\chi\dt\chi\,,
     \end{equation}
-where the sum over $i\in\{\tau,r\}$ is to be taken w.r.t. to a Euclidean metric, i.e.
+with $\dt^\mu s=(\partial x^\mu)/(\partial\alpha)\dt\alpha\equiv(\tau^\prime,r^\prime)\dt\alpha$ the displacement vector on the freezeout surface. To prevent confusion with the signature, note
 \begin{equation}
-    \dt\phi=\dt\tau\partial_\tau\phi+\dt r\partial_r\phi=\dt\alpha(\tau^\prime \underbrace{u_\tau}_{\textcolor{red}{=-u^\tau}}+r^\prime u_r)\chi\equiv\chi u_i\dt^is
+    \dt\varphi=\dt\tau\partial_\tau\varphi+\dt r\partial_r\varphi=\dt\alpha(\tau^\prime u_\tau+r^\prime u_r)\chi=\dt\alpha(-\tau^\prime u^\tau+r^\prime u_r)\equiv\chi u_\mu\dt^\mu s
 \end{equation}
-with $\dt^i s=(\partial x^\mu)/(\partial\alpha)\dt\alpha\equiv(\tau^\prime,r^\prime)\dt\alpha$ the displacement vector on the freezeout surface. For this prescription, the solution $\phi$ on the freezout surface thus needs to fulfill the ODE
+For this prescription, the solution $\varphi$ on the freezout surface thus needs to fulfill the ODE
 \begin{equation}
-    \dt\phi=\chi u_i\dt^i s\,,\quad
-    \dt\chi=\frac{1}{\chi}\dt\epsilon-m_\phi^2\phi u_i\dt^i s
+    \dt\varphi=\chi u_\mu\dt^\mu s\,,\quad
+    \dt\chi=\frac{1}{\chi}\dt\epsilon-m_\varphi^2\varphi u_\mu\dt^\mu s
 \end{equation}
-The solutions $(\phi,\chi)$ of this ODE have 1 degree of freedom, e.g. the ratio of kinetic energy $\epsilon_{\text{kin}}=(1/2)\chi^2$ and $\epsilon_{\text{pot}}=(1/2)m_\phi^2(\phi)^2$ at $\alpha=0$. To be precise, choose $r\in[0,1]$ and set $\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon$ and $\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon$.
+The solutions $(\varphi,\chi)$ of this ODE have 1 degree of freedom, e.g. the ratio of kinetic energy ${\epsilon_{\text{kin}}=(1/2)\chi^2}$ and ${\epsilon_{\text{pot}}=(1/2)m_\varphi^2\varphi^2}$ at $\alpha=0$. To be precise, choose ${r\in[0,1]}$ and set ${\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon}$ and ${\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon}$ to find initial values $\varphi\vert_{\alpha=0}$ and $\chi\vert_{\alpha=0}$.
 
-For the real scalar field $\pi^0$ one finds
-\begin{equation}
-    \dt\Sigma^\mu\partial_\mu=\chi(r^\prime \underbrace{u_\tau}_{\textcolor{red}{=-u^\tau}}+\tau^\prime u_r)\cdot r\tau\,\dt\alpha\dt\eta\dt\varphi\,.
-\end{equation}
+\paragraph{The Sign of $u^\mu\partial_\mu\varphi$}
 
-\paragraph{The Sign of $u^\mu\partial_\mu\phi$}
-
-The 4-vector $u^\mu$ is timelike, ${u_\mu u^\mu=-1}$ and future oriented, $u^\tau>0$. Long after the collision, when the fireball expands and density decreases, the amplitude of the condensate can be expected to decrease in direction of the fluid flow, ${\dt(\phi)^2\sim\phi\dt\phi<0}$ where
+The 4-vector $u^\mu$ is timelike, ${u_\mu u^\mu=-1}$ and future oriented, $u^\tau>0$. Long after the collision, when the fireball expands and density decreases, the amplitude of the condensate can be expected to decrease in direction of the fluid flow, ${\dt(\varphi)^2\sim\varphi\dt\varphi<0}$ where
 \begin{equation}
-    \dt\phi=(u^\tau\partial_\tau\phi+u^r\partial_r\phi)\dt\tau_E=u^\mu\partial_\mu\phi\dt\tau_E
+    \dt\varphi=(u^\tau\partial_\tau\varphi+u^r\partial_r\varphi)\dt\tau_E=u^\mu\partial_\mu\varphi\dt\tau_E
 \end{equation}
-with the eigen time interval $\dt\tau_E>0$. Inserting ${\partial_\mu\phi=\chi u_\mu}$ gives
+with the eigen time interval $\dt\tau_E>0$. Inserting ${\partial_\mu\varphi=\chi u_\mu}$ gives
 \begin{equation}
-    \dt\phi=\chi u_\mu u^\mu\dt\tau_E=-\chi\dt\tau_E\,.
+    \dt\varphi=\chi u_\mu u^\mu\dt\tau_E=-\chi\dt\tau_E\,.
 \end{equation}
-In this case, $\phi\chi>0$ is the appropiate choice for a decreasing density of the condensate in the frame of the expanding fireball.
+In this case, $\varphi\chi>0$ is the appropiate choice for a decreasing density of the condensate in the frame of the expanding fireball.
 
 \subsection{Complex Fields}
 
 Let $\phi$ be a complex field, e.g. $\phi\in\{\pi^+,\pi^-\}$ with $U(1)$ symmetry. In the case of $\pi^\pm$, this $U(1)$ symmetry is the symmetry under chiral rotations of $\pi^1\leftrightarrow\pi^2$. Using $\pi^1=(1/\sqrt{2})(\pi^++\pi^-)$ and $\pi^2=(\imagu/\sqrt{2})(\pi^+-\pi^-)$, as well as $\pi^\pm=\sqrt{n}\exp(\pm\imagu\theta)$, the conserved current is
 \begin{align}
-    \epsilon^{a12}J_V^{a,\mu}&=(\partial^\mu\pi^1)\pi^2-(\partial^\mu\pi^2)\pi^1\\
-    &=\frac{\imagu}{2}\Big((\partial^\mu\pi^++\partial^\mu\pi^-)(\pi^+-\pi^-)-(\partial^\mu\pi^+-\partial^\mu\pi^-)(\pi^++\pi^-)\Big)\\
-    &=\imagu\Big(-(\partial^\mu\pi^+)\pi^-+(\partial^\mu\pi^-)\pi^+\Big)\\
-    &=\imagu\sqrt{n}\Big(-\big((\partial^\mu\sqrt{n})+\imagu\sqrt{n}(\partial^\mu\theta)\big)+\big((\partial^\mu\sqrt{n})-\imagu\sqrt{n}(\partial^\mu\theta)\big)\Big)\\
-    &=n(\partial^\mu\theta)
+    \epsilon^{a12}J_V^{a,\mu}&=(\partial_\mu\pi^1)\pi^2-(\partial_\mu\pi^2)\pi^1\\
+    &=\frac{\imagu}{2}\Big((\partial_\mu\pi^++\partial_\mu\pi^-)(\pi^+-\pi^-)-(\partial_\mu\pi^+-\partial_\mu\pi^-)(\pi^++\pi^-)\Big)\\
+    &=\imagu\Big(-(\partial_\mu\pi^+)\pi^-+(\partial_\mu\pi^-)\pi^+\Big)\\
+    &=\imagu\sqrt{n}\Big(-\big((\partial_\mu\sqrt{n})+\imagu\sqrt{n}(\partial_\mu\theta)\big)+\big((\partial_\mu\sqrt{n})-\imagu\sqrt{n}(\partial_\mu\theta)\big)\Big)\\
+    &=n(\partial_\mu\theta)
 \end{align}
 
 The ansatz $J_V^{\mu,a}\sim u^\mu$ now implies
 \begin{equation}
-    u^\mu=\frac{\partial^\mu\theta}{\chi_\theta}\,,\qquad 0<\chi_\theta^2\defeq-(\partial_\mu\theta)(\partial^\mu\theta)
+    u_\mu=\frac{\partial_\mu\theta}{\chi_\theta}\,,\qquad 0<\chi_\theta^2\defeq-(\partial_\mu\theta)(\partial^\mu\theta)
 \end{equation}
-Further imposing $(\partial^\mu\pi^a)\sim u^\mu$ leads to 
+Further imposing $(\partial_\mu\pi^a)\sim u_\mu$ leads to 
 \begin{equation}
     u_\mu=\frac{\partial_\mu\sqrt{n}}{\chi_n}\,,\qquad 0<\chi_n^2\defeq-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})
 \end{equation}
@@ -253,9 +277,9 @@ where the intermediate calculation
 \end{subequations}
 is useful. Note how the imaginary part of this tensor is antisymmetric and thus does not contribute upon contraction with a symmetric tensor.
 
-Considering the fact that we have already proposed ways to initialize the real valued fields $\pi^1$, $\pi^2$, we could also just simply construct $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$ from these fields. Given $\partial^\mu\pi^{1,2}$, the density of the charged pion fields changes as
+Considering the fact that we have already proposed ways to initialize the real valued fields $\pi^1$, $\pi^2$, we could also just simply construct $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$ from these fields. Given $\partial_\mu\pi^{1,2}$, the density of the charged pion fields changes as
 \begin{equation}
-    \partial^\mu n=\partial^\mu(\pi^+\pi^-)=\frac{1}{2}\partial^\mu\big((\pi^1)^2+(\pi^2)^2\big)=(\partial^\mu\pi^1)\pi^1+(\partial^\mu\pi^2)\pi^2
+    \partial_\mu n=\partial_\mu(\pi^+\pi^-)=\frac{1}{2}\partial_\mu\big((\pi^1)^2+(\pi^2)^2\big)=(\partial_\mu\pi^1)\pi^1+(\partial_\mu\pi^2)\pi^2\,.
 \end{equation}
 
 \section{Examplary Spectra}

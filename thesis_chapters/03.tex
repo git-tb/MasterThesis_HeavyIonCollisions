@@ -27,7 +27,7 @@ The flavor content of a hadron is found by applying the above restriction to the
 \begin{equation}
     \pi^a=\imagu\overline{\psi}\tau^a\gamma_5\psi\,,\qquad\sigma=\overline{\psi}\psi\,.
 \end{equation}
-Here, the Pauli matrices $\tau^a$ are the generators of the flavor rotations $SU_f(2)$. The sum over flavor-, color- and spinor indices is conventionally omitted. By adding the strange quark $s$ as a basis state further bound states can be found, namely the kaons $K^a$ and the $\eta$-meson, effectively by choosing $\tau^a$ to be the generators of the larger group ${SU_f(3)\supset SU_f(2)}$. This thesis focusses on the case ${N_f=2}$.
+Here, the Pauli matrices $\tau^a$ are the generators of the flavor rotations $SU_f(2)$. The sum over flavor-, color- and spinor indices is conventionally omitted. By adding the strange quark $s$ as a basis state further bound states can be found, namely the kaons $K^a$ and the $\eta$-meson, effectively by choosing $\tau^a$ to be the generators of the larger group ${SU_f(3)\supset SU_f(2)}$. This thesis focusses on the case ${N_f=2}$. More details on the group theory of particle physics can be found in \cite{Floerchinger_2020}.
 
 The quark masses of the up- and down-quark are approximately equal, ${m_u\approx m_d\sim\mathcal{O}(10^0)\,\mathrm{MeV}}$, thus the transformation $SU_f(2)$ interchanging ${u\leftrightarrow d}$ is actually an approximate symmetry of QCD. An analogous statement cannot be made about $SU_f(3)$ when considering the strange quark, since its mass is significantly larger, ${m_s\sim\mathcal{O}(10^2)\,\mathrm{MeV}\gg m_u\,,m_d}$.
 
@@ -39,8 +39,9 @@ The quark masses of the up- and down-quark are approximately equal, ${m_u\approx
 
 
 \section{Linear $\sigma$-Model}
+\label{sec:LinearSigmaModel}
 
-In the low energy limit\todo{is that even right? maybe more precise} the fundamental degrees of freedom of this theory are not the quarks, but the bound states $\vec{\pi}=(\pi^a)=(\pi^0,\pi^1,\pi^2)$ and $\sigma$. An effective field theory in this case is given by the linear $\sigma$-model
+In the low energy limit\todo{is that even right? maybe more precise} the fundamental degrees of freedom of this theory are not the quarks, but the bound states ${\vec{\pi}=(\pi^a)=(\pi^0,\pi^1,\pi^2)}$ and $\sigma$. An effective field theory in this case is given by the linear $\sigma$-model
 \begin{multline}
     \mathscr{L}_{\text{LSM}}=\mathscr{L}_{\text{kin}}-V(\sigma,\vec{\pi})\\
     =-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}(\partial_\mu\vec{\pi})(\partial^\mu\vec{\pi})
@@ -84,30 +85,9 @@ As a note, the subgroup ${SO(3)\subset SO(4)}$ of rotations of the pion fields f
         \end{pmatrix}
         \qquad\iff\qquad\pi^\pm\mapsto e^{\pm\imagu\alpha}\pi^\pm\,.
 \end{equation}
-Note also Theta $\pi^-=\overline{\pi^+}$.
+Note also that $\pi^-=\overline{\pi^+}$.
 
-To later make contact with the fluid description of the QGP, we state here the Lagrangians and canonical energy-momentum tensors ${T^{\mu\nu}=2(\partial\mathscr{L}/\partial g_{\mu\nu})+g^{\mu\nu}\mathscr{L}}$ \cite{Weinberg_2008} for the real fields $\sigma$ and $\pi^0$, as well as the complex fields $\pi^\pm$. They read
-\begin{subequations}
-    \begin{align}
-        % \mathscr{L}_\sigma&=-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}m_\sigma^2\sigma^2\\
-        T^{\mu\nu}_{\sigma}&=(\partial^\mu\sigma)(\partial^\nu\sigma)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\sigma)(\partial^\alpha\sigma)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\\
-        % \mathscr{L}_{\pi^0}&=-\frac{1}{2}(\partial_\mu\pi^0)(\partial^\mu\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2\\
-        T^{\mu\nu}_{\pi^0}&=(\partial^\mu\pi^0)(\partial^\nu\pi^0)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\pi^0)(\partial^\alpha\pi^0)-\frac{1}{2}m_\pi^2(\pi^0)^2\big)\\
-        % \mathscr{L}_{\pi^\pm}&=-(\partial_\mu\pi^+)(\overline{\partial_\mu\pi^+})-m_\pi^2\pi^+\overline{\pi^+}\\
-        T^{\mu\nu}_{\pi^\pm}&=2(\partial^\mu\pi^+)(\overline{\partial^\nu\pi^+})+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\overline{\partial^\alpha\pi^+})-m_\pi^2\pi^+\overline{\pi^+}\big)
-    \end{align}
-\end{subequations}
-Following \cite{Weinberg_2008} the energy momentum tensor of a real scalar field $\varphi$ is
-\begin{subequations}
-    \begin{align}
-        T_\varphi^{\mu\nu}&=-g^{\mu\nu}\big[\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)+V(\varphi)\big]+g^{\mu\rho}g^{\nu\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\\
-        \epsilon&=-\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)+V(\varphi)\\
-        p&=-\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)-V(\varphi)\\
-        u^\mu&=-\big[-g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\big]^{-1/2}g^{\mu\nu}\partial_\nu\varphi
-    \end{align}
-\end{subequations}
-
-Finally, the linear $\sigma$-model is often states in terms of a combined matrix-valued field
+Finally, the linear $\sigma$-model is often stated in terms of a combined matrix-valued field
 \begin{equation}
     \Phi=\sigma\mathbb{1}+\imagu\pi^a\tau^a=\begin{pmatrix}
         \sigma+\imagu\pi^0 & \sqrt{2}\pi^+      \\
@@ -131,6 +111,7 @@ where $\tau^a$, ${a\in\{0,1,2\}}$ are the Pauli matrices. Using ${(\tau^a)^\dagg
 
 
 \section{Conserved Currents from Chiral Symmetries}
+\label{sec:ConservedCurrentsChirSym}
 
 A 4-component Dirac spinor $\psi$ is composed of two 2-component Weyl spinors that transform under conjugate representations of the Lorentz group and are called left-handed and right-handed Weyl spinors respectively. Complex phase rotations of these Weyl spinors lead to another set of symmetries of QCD, called chiral symmetries. The set of chiral transformations is given by the product of left-handed phase rotations ${U_+(1)}$ (or ${U_{\text{L}}(1)}$) and right handed phase rotations ${U_-(1)}$ (or ${U_{\text{R}}(1)}$). It can be equivalently expressed as the product of simultaneous phase rotations of both left- and right-handed components by an equal angle, together with simultaneous phase rotations by opposite angles, leading to the notion of vector and axial transformations.
 

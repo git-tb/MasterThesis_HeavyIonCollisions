@@ -1,0 +1,58 @@
+\section{Representation Theory}
+
+Consider the group $SU(N)$ of unitary ${N\times N}$-matrices that fulfull ${U^\dagger U=UU^\dagger=\mathbb{1}}$. The group elements $U$ can be expressed as
+\begin{equation}
+    U=e^{\imagu \alpha_aT_a}
+\end{equation}
+with real coefficients $\alpha_a$ and traceless hermitian matrices $T_a$, called generators. These generators fulfill the commutation relations
+\begin{equation}
+    [T_a,T_b]=\imagu f_{abc}T_c
+\end{equation}
+with group characteristic structure constants $f_{abc}$. The set of these commutation relations define the algebra $\mathfrak{su}(N)$. Whereas the direct derivation of the algebra from $SU(N)$ matrices leads to the fundamental representation, both the multiplicative relations that define a group and the commutation relations that define an algebra can be fulfilled by different sets of elements, also called different representations. 
+
+The charge conjugate representation of the $\mathfrak{su}(N)$ algebra is constructed from the matrices ${T_a^\mathcal{C}\equiv -T_a^*\equiv -T_a^T}$. One easily checks that they fulfill the same algebra,
+\begin{equation}
+    [T_a^\mathcal{C},T_b^\mathcal{C}]=([T_a,T_b])^*=-\imagu f_{abc}T_c^*=\imagu f_{abc}T_c^\mathcal{C}\,.
+\end{equation}
+
+\subsection{$SU(2)$}
+
+The space of traceless hermitian $2\times 2$ matrices is spanned by the Pauli matrices
+\begin{equation}
+    \sigma_1=\begin{pmatrix}
+        0&1\\1&0
+    \end{pmatrix}\,,\qquad
+    \sigma_2=\begin{pmatrix}
+        0&-\imagu\\\imagu&0
+    \end{pmatrix}\,,\qquad
+    \sigma_3=\begin{pmatrix}
+    1&0\\0&-1
+    \end{pmatrix}\,,
+\end{equation}
+that satisfy the $\mathfrak{su}(2)$-algebra ${[\sigma_a,\sigma_b]=2\imagu\epsilon_{abc}\sigma_c}$. Consider $\ket{\frac{1}{2}}=\begin{pmatrix}1&0\end{pmatrix}^T$ and $\ket{-\frac{1}{2}}=\begin{pmatrix}0&1\end{pmatrix}^T$ as states transforming under the fundamental representation os $SU(2)$. $\ket{\pm \frac{1}{2}}$ are eigenstates of $\sigma_3$ with eigenvalues ${\pm1}$ respectively. The other 2 Pauli matrices can be used to construct the ladder operators
+\begin{equation}
+    T_{\pm}=\frac{1}{2}(\sigma_1\pm\imagu\sigma_2)\,,\qquad
+    T_+=\begin{pmatrix}
+            0&1\\0&0
+    \end{pmatrix}\,,\qquad
+    T_-=\begin{pmatrix}
+            0&0\\1&0
+    \end{pmatrix}\,,
+\end{equation}
+that can be used to transition between the states,
+\begin{equation}
+    T_+\ket{-\frac{1}{2}}=\ket{\frac{1}{2}}\,,\quad T_+\ket{\frac{1}{2}}=0\,,\quad T_-\ket{-\frac{1}{2}}=0\,,\quad T_-\ket{\frac{1}{2}}=\ket{-\frac{1}{2}}\,.
+\end{equation}
+
+Under charge conjugation, one finds
+\begin{equation}
+    T_1\to\overline{T}_1=-T_1\,,\qquad T_2\to\overline{T}_2=T_2\,,\qquad T_3\to\overline{T}_3=-T_3\,.
+\end{equation}
+The corresponding eigenstates of $\overline{T}_3$ are ${\ket{\overline{\frac{1}{2}}}=\ket{-\frac{1}{2}}}$ and ${\ket{\overline{-\frac{1}{2}}}=-\ket{\frac{1}{2}}}$, as can be checked by
+\begin{equation}
+    \overline{T}_3\ket{\overline{\frac{1}{2}}}=-T_3\ket{-\frac{1}{2}}=\ket{-\frac{1}{2}}=+1\ket{\overline{\frac{1}{2}}}\,,\qquad \overline{T}_3\ket{\overline{-\frac{1}{2}}}=T_3\ket{\frac{1}{2}}=\ket{\frac{1}{2}}=-\ket{\overline{-\frac{1}{2}}}\,.
+\end{equation}
+
+
+
+
