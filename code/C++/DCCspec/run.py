@@ -21,6 +21,8 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 
 pTmax = 2
 NpT = 200
+
+# parentdir = "data/init_real_m140_consteps_20240826_143119/*"
 # parentdir = "data/init_real_m226_consteps_20240826_143119/*"
 # parentdir = "data/init_real_m312_consteps_20240826_143137/*"
 # parentdir = "data/init_real_m398_consteps_20240826_143151/*"
@@ -30,8 +32,21 @@ NpT = 200
 # parentdir = "data/init_real_m742_consteps_20240826_143253/*"
 # parentdir = "data/init_real_m828_consteps_20240826_143307/*"
 # parentdir = "data/init_real_m914_consteps_20240826_143326/*"
-parentdir = "data/init_real_m1000_consteps_20240826_143341/*"
+# parentdir = "data/init_real_m1000_consteps_20240826_143341/*"
 
+parentdir = "data/init_real_m140_s-1_consteps_20240926_124611/*"
+# parentdir = "data/init_real_m226_s-1_consteps_20240926_124618/*"
+# parentdir = "data/init_real_m312_s-1_consteps_20240926_124625/*"
+# parentdir = "data/init_real_m398_s-1_consteps_20240926_124635/*"
+# parentdir = "data/init_real_m484_s-1_consteps_20240926_124646/*"
+# parentdir = "data/init_real_m570_s-1_consteps_20240926_124658/*"
+# parentdir = "data/init_real_m656_s-1_consteps_20240926_124709/*"
+# parentdir = "data/init_real_m742_s-1_consteps_20240926_124716/*"
+# parentdir = "data/init_real_m828_s-1_consteps_20240926_124724/*"
+# parentdir = "data/init_real_m914_s-1_consteps_20240926_124737/*"
+# parentdir = "data/init_real_m1000_s-1_consteps_20240926_124748/*"
+
+m = 0.140
 # m = 0.226
 # m = 0.312
 # m = 0.398
@@ -69,6 +84,81 @@ lastspecs = glob.glob("data/spec_????????_??????")
 for spec in lastspecs:
     subprocess.run(args=["mv",spec,newdir+str(idx)])
 
+#%%
+###############################################################
+###############################################################
+# COMPUTE SINGLE SPECTRUM
+###############################################################
+###############################################################
+
+pTmax = 2
+NpT = 200
+m = 0.14
+
+initpath = "data/init_real_pi_constfield_20240822_161734/init5.csv"
+result = subprocess.run(args=[
+        "./bin/spec",
+        "--m=%f"%(m),
+        "--pTmax=%f"%(pTmax),
+        "--NpT=%d"%(NpT),
+        "--epsabs=0",
+        "--epsrel=1e-5",
+        "--iter=10000",
+        "--initpath=%s"%(initpath)
+    ])
+print(result)
+
+#%%
+###############################################################
+###############################################################
+# PLOT LIST OF REAL FIELD SPECTRA WITH SURFACE GEOMETRIES
+###############################################################
+###############################################################
+
+###
+# get_ipython().run_line_magic("matplotlib","inline")
+get_ipython().run_line_magic("matplotlib","qt")
+
+### TOGGLE WHETHER FIGURES SHOULD BE DISPLAYED IN INTERACTIVE MODE
+plt.ioff()
+# plt.ion()
+
+parentdir = "data/fosurf_scaletest/*"
+
+paths = glob.glob(parentdir)
+
+fig_fo, ax_fo = plt.subplots(figsize=(7,7))
+fig_spec, ax_spec = plt.subplots(figsize=(7,7))
+
+ax_spec.set_yscale("log")
+
+for (n,path) in enumerate(paths):
+    df_spec = pd.read_csv(path+"/spectr.txt",comment="#")
+    df_tau = pd.read_csv(path+"/tau_interp.txt",comment="#")
+    df_r = pd.read_csv(path+"/r_interp.txt",comment="#")
+
+    t = n / (len(paths)-1)
+    col=(t,0,1-t)
+
+    ax_fo.plot(df_r["rRe"].to_numpy(),
+               df_tau["tauRe"].to_numpy(),
+               marker="",
+               color=col)
+
+    ax_spec.plot(
+        df_spec["pT"].to_numpy(),
+        df_spec["abs2Re"].to_numpy(),
+        marker="",
+        color=col)
+
+fig_fo.suptitle(parentdir)
+fig_spec.suptitle(parentdir)
+
+fig_fo.tight_layout()
+fig_spec.tight_layout()
+
+plt.show()
+# plt.close()
 #%%
 ###############################################################
 ###############################################################
@@ -220,7 +310,18 @@ plt.ioff()
 # parentdir = "data/spectra_real_consteps_20240826_143253_m742/*/"
 # parentdir = "data/spectra_real_consteps_20240826_143307_m828/*/"
 # parentdir = "data/spectra_real_consteps_20240826_143326_m914/*/"
-parentdir = "data/spectra_real_consteps_20240826_143341_m1000/*/"
+# parentdir = "data/spectra_real_consteps_20240826_143341_m1000/*/"
+
+# parentdir = "data/spectra_real_consteps_20240926_124618_m226_s-1/*/"
+# parentdir = "data/spectra_real_consteps_20240926_124625_m312_s-1/*/"
+# parentdir = "data/spectra_real_consteps_20240926_124635_m398_s-1/*/"
+# parentdir = "data/spectra_real_consteps_20240926_124646_m484_s-1/*/"
+# parentdir = "data/spectra_real_consteps_20240926_124658_m570_s-1/*/"
+# parentdir = "data/spectra_real_consteps_20240926_124709_m656_s-1/*/"
+# parentdir = "data/spectra_real_consteps_20240926_124716_m742_s-1/*/"
+# parentdir = "data/spectra_real_consteps_20240926_124724_m828_s-1/*/"
+# parentdir = "data/spectra_real_consteps_20240926_124737_m914_s-1/*/"
+parentdir = "data/spectra_real_consteps_20240926_124748_m1000_s-1/*/"
 paths = glob.glob(parentdir)
 
 # fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
@@ -283,9 +384,9 @@ ax_fullspec.set_xlim(ax_decay2.get_xlim())
 minval1, maxval1 = np.inf, -np.inf
 minval2, maxval2 = np.inf, -np.inf
 for (n,path) in enumerate(paths):
-    df_spec = pd.read_csv(path+"spectr.txt",comment="#")
-    df_field0 = pd.read_csv(path+"field0.txt",comment="#")
-    df_Dfield0 = pd.read_csv(path+"field0_deriv.txt",comment="#")
+    df_spec = pd.read_csv(path+"/spectr.txt",comment="#")
+    df_field0 = pd.read_csv(path+"/field0.txt",comment="#")
+    df_Dfield0 = pd.read_csv(path+"/field0_deriv.txt",comment="#")
 
     t = n / (len(paths)-1)
     col=(t,0,1-t)
@@ -579,6 +680,9 @@ fig_decayspec.tight_layout()
 plt.legend()
 plt.show()
 # %%
+#############################################################
+########### COMPUTE SMOOTHER FREEZEOUT GEOMETRY #############
+#############################################################
 
 import numpy as np
 from scipy.interpolate import CubicSpline
@@ -587,6 +691,13 @@ from scipy.optimize import curve_fit
 path = "./../../../code/Mathematica/data/ExampleFreezeOut.csv"
 df = pd.read_csv(path)
 print(df)
+
+factor = 10
+
+df["tau"] *= factor
+df["r"] *= factor
+df["Dtau"] *= factor
+df["Dr"] *= factor
 
 alpha = df["alpha"].to_numpy()
 
@@ -618,9 +729,10 @@ for key in keys:
     ax.plot(newalpha, fitfunc(newalpha)-offset)
     ax.set_title(key)
 
-plt.show()
+# plt.show()
+plt.close()
 print(newdf)
-newdf.to_csv("./../../../code/Mathematica/data/ExampleFreezeOutCorrected.csv",index=False)
+newdf.to_csv("./../../../code/Mathematica/data/ExampleFreezeOutCorrected_"+str(factor)+"x.csv",index=False)
 
 # %%
 # CREATE ESSENTIALLY RANDOM INITIAL DATA

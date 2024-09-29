@@ -129,6 +129,7 @@ Straightforward substitution of the different formula into each other leads to t
     J(\pm p) =2\pi^2\int_0^\pi\dt\alpha\tau r\Bigg[(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)\Big[J_0(r p_T)\times\big(-Y_0(\tau\omega_T)\pm\imagu J_0(\tau\omega_T)\big)\Big]+\nonumber                                                                                             \\
                        + \phi(\tau,r)\Big[\tau^\prime\times p_T J_1(r p_T)\times\big(-Y_0(\tau\omega_T)\pm\imagu J_0(\tau\omega_T)\big)+\nonumber                                                                                                                                       \\
                        \qquad\phantom{+\phi(\tau,r)\Big[}+r^\prime\times J_0(r p_T)\times\omega_T\big(-Y_1(\tau\omega_T)\pm\imagu J_1(\tau\omega_T)\big)\Big]\Bigg]\,.
+                       \label{eq:SpectrumFinalFormula}
 \end{multline}
 This can be evaluated numerically, once the shape of the freezeout surface is provided in the form of 2 functions $\tau(\alpha)$ and $r(\alpha)$, and the initial data ${\phi\vert_{\Sigma_{\text{fo}}}}$ and ${\dt\Sigma^\mu\partial_\mu\phi\vert_{\Sigma_{\text{fo}}}}$ is specified. The necessity of 2 scalar functions as initial data is consistent with the idea that a solution to the Klein-Gordon equation has 2 scalar function-valued degrees of freedom.
 
@@ -168,9 +169,12 @@ The goal of this section is to find physically reasonable initial conditions for
     \item Prescribe other physically accessible parameters like energy density $\epsilon$, pressure $p$ or fluid velocity $u^\mu$, and make contact with the fluid simulation.
 \end{enumerate}
 \end{impt}
-Whereas the first approach imposes no constraints at all, some work must be put into the second approach. A key idea to assign physical quantitites of the QGP with the condensate field is by considering the conserved currents derived in section \ref{sec:ConservedCurrentsChirSym}. To be precise, we choose the (approximately) conserved vector and axial currents $J^\mu_{V,A}$ to be parallel to $u^\mu$, the only exceptional 4-vector in the fluid simulation. To simplify the ansatz further, we make the consistent assumption that all fields change only in direction of $u^\mu$.
+Whereas the first approach imposes no constraints at all, some work must be put into the second approach. A key idea to assign physical quantitites of the QGP with the condensate field is by considering the conserved currents derived in section \ref{sec:ConservedCurrentsChirSym}. To be precise, we choose the (approximately) conserved vector and axial currents $J^\mu_{V,A}$ to be parallel to $u^\mu$, the only exceptional 4-vector in the fluid simulation. To simplify the ansatz further, we make the consistent assumption that not only the currents, but all gradients of the fields point in direction of $u^\mu$.
 
 Making further contact with the fluid description of the QGP, we state here the Lagrangians and canonical energy-momentum tensors ${T^{\mu\nu}=2(\partial\mathscr{L}/\partial g_{\mu\nu})+g^{\mu\nu}\mathscr{L}}$ \cite{Weinberg_2008} for the real fields $\sigma$ and $\pi^0$, as well as the complex fields $\pi^\pm$. Using the expansion of the potential and Lagrangian density close to the vacuum, as performed in section \ref{sec:LinearSigmaModel}, they read
+%%%% MORE DETAIL
+%%%% MORE DETAIL
+%%%% MORE DETAIL
 \begin{subequations}
     \begin{align}
         % \mathscr{L}_\sigma&=-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}m_\sigma^2\sigma^2\\
@@ -204,6 +208,9 @@ This does not restrict the initial data enough to uniquely specify the resulting
 \end{equation}
 
 To restrict initial data further in a physically meaningful way, from the fluid theory we could try to match the energy density of the hypothetical superfluid
+%%%% MORE DETAIL
+%%%% MORE DETAIL
+%%%% MORE DETAIL
 % \begin{subequations}
 %     \begin{align}
 %         \epsilon_{s,\varphi}=u_\mu u_\nu T^{\mu\nu}_{\varphi}&=\frac{(\partial_\nu\varphi)(\partial_\mu\varphi)}{\chi^2}\Big((\partial^\mu\varphi)(\partial^\nu\varphi)+g^{\mu\nu}\big(-\frac{1}{2}(\partial_\alpha\varphi)(\partial^\alpha\varphi)-\frac{1}{2}m_\varphi^2(\varphi)^2\big)\Big)   \\
@@ -218,45 +225,52 @@ which changes along the freezeout surface as
     \begin{equation}
         \dt\epsilon=m_\varphi^2\varphi\dt\varphi+\chi\dt\chi=m_\varphi^2\varphi(\partial_\mu\varphi)\dt^\mu s+\chi\dt\chi=m_\varphi^2\varphi(\chi u_\mu)\dt^\mu s+\chi\dt\chi\,,
     \end{equation}
-with $\dt^\mu s=(\partial x^\mu)/(\partial\alpha)\dt\alpha\equiv(\tau^\prime,r^\prime)\dt\alpha$ the displacement vector on the freezeout surface. To prevent confusion with the signature, note
-\begin{equation}
-    \dt\varphi=\dt\tau\partial_\tau\varphi+\dt r\partial_r\varphi=\dt\alpha(\tau^\prime u_\tau+r^\prime u_r)\chi=\dt\alpha(-\tau^\prime u^\tau+r^\prime u_r)\equiv\chi u_\mu\dt^\mu s
-\end{equation}
-For this prescription, the solution $\varphi$ on the freezout surface thus needs to fulfill the ODE
+with $\dt^\mu s=(\partial x^\mu)/(\partial\alpha)\dt\alpha\equiv(\tau^\prime,r^\prime)\dt\alpha$ the displacement vector on the freezeout surface. For this prescription, the solution $\varphi$ on the freezout surface thus needs to fulfill the ODE
 \begin{equation}
     \dt\varphi=\chi u_\mu\dt^\mu s\,,\quad
     \dt\chi=\frac{1}{\chi}\dt\epsilon-m_\varphi^2\varphi u_\mu\dt^\mu s
+    \label{eq:InitialConditions_ODE}
 \end{equation}
 The solutions $(\varphi,\chi)$ of this ODE have 1 degree of freedom, e.g. the ratio of kinetic energy ${\epsilon_{\text{kin}}=(1/2)\chi^2}$ and ${\epsilon_{\text{pot}}=(1/2)m_\varphi^2\varphi^2}$ at $\alpha=0$. To be precise, choose ${r\in[0,1]}$ and set ${\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon}$ and ${\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon}$ to find initial values $\varphi\vert_{\alpha=0}$ and $\chi\vert_{\alpha=0}$.
 
 \paragraph{The Sign of $u^\mu\partial_\mu\varphi$}
 
-The 4-vector $u^\mu$ is timelike, ${u_\mu u^\mu=-1}$ and future oriented, $u^\tau>0$. Long after the collision, when the fireball expands and density decreases, the amplitude of the condensate can be expected to decrease in direction of the fluid flow, ${\dt(\varphi)^2\sim\varphi\dt\varphi<0}$ where
-\begin{equation}
-    \dt\varphi=(u^\tau\partial_\tau\varphi+u^r\partial_r\varphi)\dt\tau_E=u^\mu\partial_\mu\varphi\dt\tau_E
-\end{equation}
-with the eigen time interval $\dt\tau_E>0$. Inserting ${\partial_\mu\varphi=\chi u_\mu}$ gives
+At freezeout it seems reasonable to expect a decreasing amplitude of the condensate density in direction of the fluid flow. In order to derive restrictions on the (functional) degrees of freedom from this observation, we make the following general statement:
+\begin{impt}[Sign of Directional Derivative of $\varphi$]{impt:SignDVarphi}
+    After a step of ${\dt\tau_E>0}$ in eigentime in direction of any 4-vector $v^\mu$ the change in amplitude is
+    \begin{equation}
+        \dt(\varphi^2)\sim\varphi\dt\varphi=\varphi(v^\mu\partial_\mu\varphi)\dt\tau_E.
+    \end{equation}
+    Thus, a decreasing (increasing) amplitude in direction $v^\mu$ corresponds to the choice ${\varphi(v^\mu\partial_\mu\varphi)\overset{(>)}{<}0}$.
+\end{impt}
+
+The 4-vector $u^\mu$ is timelike, ${u_\mu u^\mu=-1}$ and future oriented, $u^\tau>0$. Inserting the above ansatz ${\partial_\mu\varphi=\chi u_\mu}$ gives for the change in direction of the fluid velocity
 \begin{equation}
     \dt\varphi=\chi u_\mu u^\mu\dt\tau_E=-\chi\dt\tau_E\,.
 \end{equation}
-In this case, $\varphi\chi>0$ is the appropiate choice for a decreasing density of the condensate in the frame of the expanding fireball.
+In this case, ${\varphi\chi>0}$ is the appropiate choice for a decreasing density of the condensate in the locally comoving frame of the fluid. Note further that in the region on the freezeout surface where $r\approx 0$, the normal vector ${\dt\Sigma^\mu}$ is also timelike and future oriented and ${\dt\Sigma^\mu u_\mu<0}$. Therefore the projection ${\dt\Sigma^\mu\partial_\mu\varphi}$ has the opposite sign of $\chi$ in the corresponding range of $\alpha$.
 
 \subsection{Complex Fields}
 
-Let $\phi$ be a complex field, e.g. $\phi\in\{\pi^+,\pi^-\}$ with $U(1)$ symmetry. In the case of $\pi^\pm$, this $U(1)$ symmetry is the symmetry under chiral rotations of $\pi^1\leftrightarrow\pi^2$. Using $\pi^1=(1/\sqrt{2})(\pi^++\pi^-)$ and $\pi^2=(\imagu/\sqrt{2})(\pi^+-\pi^-)$, as well as $\pi^\pm=\sqrt{n}\exp(\pm\imagu\theta)$, the conserved current is
-\begin{align}
-    \epsilon^{a12}J_V^{a,\mu}&=(\partial_\mu\pi^1)\pi^2-(\partial_\mu\pi^2)\pi^1\\
-    &=\frac{\imagu}{2}\Big((\partial_\mu\pi^++\partial_\mu\pi^-)(\pi^+-\pi^-)-(\partial_\mu\pi^+-\partial_\mu\pi^-)(\pi^++\pi^-)\Big)\\
-    &=\imagu\Big(-(\partial_\mu\pi^+)\pi^-+(\partial_\mu\pi^-)\pi^+\Big)\\
-    &=\imagu\sqrt{n}\Big(-\big((\partial_\mu\sqrt{n})+\imagu\sqrt{n}(\partial_\mu\theta)\big)+\big((\partial_\mu\sqrt{n})-\imagu\sqrt{n}(\partial_\mu\theta)\big)\Big)\\
-    &=n(\partial_\mu\theta)
-\end{align}
-
-The ansatz $J_V^{\mu,a}\sim u^\mu$ now implies
+Complex fields have an additional real degree of freedom compared to real fields. Let $\phi$ be a complex field, e.g. $\phi\in\{\pi^+,\pi^-\}$, which can be conveniently represented by ${\phi=\sqrt{n}e^{\imagu\theta}}$, by 2 real parameters, a density $n$ and phase $\theta$. In the case of ${\phi=\pi^+}$, instead of the gradient ${\partial_\mu\phi}$, a real valued 4-vector to be identified with the 4-velocity is now the conserved current
+%%%% MORE DETAIL
+%%%% MORE DETAIL
+%%%% MORE DETAIL
+% \begin{align}
+%     \epsilon^{a12}J_V^{a,\mu}&=(\partial_\mu\pi^1)\pi^2-(\partial_\mu\pi^2)\pi^1\\
+%     &=\frac{\imagu}{2}\Big((\partial_\mu\pi^++\partial_\mu\pi^-)(\pi^+-\pi^-)-(\partial_\mu\pi^+-\partial_\mu\pi^-)(\pi^++\pi^-)\Big)\\
+%     &=\imagu\Big(-(\partial_\mu\pi^+)\pi^-+(\partial_\mu\pi^-)\pi^+\Big)\\
+%     &=\imagu\sqrt{n}\Big(-\big((\partial_\mu\sqrt{n})+\imagu\sqrt{n}(\partial_\mu\theta)\big)+\big((\partial_\mu\sqrt{n})-\imagu\sqrt{n}(\partial_\mu\theta)\big)\Big)\\
+%     &=n(\partial_\mu\theta)
+% \end{align}
+\begin{equation}
+    \epsilon^{a12}J_V^{a,\mu}=(\partial_\mu\pi^1)\pi^2-(\partial_\mu\pi^2)\pi^1=n(\partial_\mu\theta)
+\end{equation}
+This is precisely the conserved current derived from the $U(1)$ symmetry of phase rotations of $\pi^+$, or equivalently chiral vector rotations that interchange ${\pi^1\leftrightarrow\pi^2}$. The ansatz $J_V^{\mu,a}\sim u^\mu$ implies
 \begin{equation}
     u_\mu=\frac{\partial_\mu\theta}{\chi_\theta}\,,\qquad 0<\chi_\theta^2\defeq-(\partial_\mu\theta)(\partial^\mu\theta)
 \end{equation}
-Further imposing $(\partial_\mu\pi^a)\sim u_\mu$ leads to 
+We already considered the more restrictive assumption $(\partial_\mu\pi^a)\sim u_\mu$, that leads to 
 \begin{equation}
     u_\mu=\frac{\partial_\mu\sqrt{n}}{\chi_n}\,,\qquad 0<\chi_n^2\defeq-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})
 \end{equation}
@@ -277,68 +291,69 @@ where the intermediate calculation
 \end{subequations}
 is useful. Note how the imaginary part of this tensor is antisymmetric and thus does not contribute upon contraction with a symmetric tensor.
 
-Considering the fact that we have already proposed ways to initialize the real valued fields $\pi^1$, $\pi^2$, we could also just simply construct $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$ from these fields. Given $\partial_\mu\pi^{1,2}$, the density of the charged pion fields changes as
+Considering the fact that we have already proposed ways to initialize the real valued fields $\pi^1$, $\pi^2$, we could also simply construct $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$ from these fields. Given $\partial_\mu\pi^{1,2}$, the density of the charged pion fields changes as
 \begin{equation}
     \partial_\mu n=\partial_\mu(\pi^+\pi^-)=\frac{1}{2}\partial_\mu\big((\pi^1)^2+(\pi^2)^2\big)=(\partial_\mu\pi^1)\pi^1+(\partial_\mu\pi^2)\pi^2\,.
 \end{equation}
 
 \section{Examplary Spectra}
 
-This section is aimed toward finding some intuition for the relation between particle mass, initial conditions and resulting spectra.
+This section is aimed towards finding some intuition for the relation between particle mass, initial conditions and resulting spectra.
 
-First, investigate the spectrum of a real scalar field for constant values of the field an normal derivative.\\
+\paragraph{Constant Initial Conditions}
+
+First, investigate the spectrum of a real scalar field for constant values of the field an normal derivative. These have no clear physical motivation and we are only interested in the shape of the spectra, not their absolute values.\\
 \debugbox{
     \begin{minipage}{\linewidth}
         \centering
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_constfield_20240822_161734_init.png}        
             \end{minipage}
         }
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_constfield_20240822_161734_spec.png}        
             \end{minipage}
         }
     \end{minipage}
 }
-Spectra from field configurations of high ratio ${\Big\vert\frac{\text{amplitude}}{\text{derivative}}\Big\vert}$ tend to be more "bumpy"/oscillate quicker in momentum space.
-
-These configurations are well suited to test separately the impact of the mass parameter in the spectrum computation, keeping the initial conditions fixed.\\
+Spectra from field configurations of high ratio ${\Big\vert\frac{\text{amplitude}}{\text{derivative}}\Big\vert}$ tend to be more "bumpy"/oscillate quicker in momentum space. Investigating formula \eqref{eq:SpectrumFinalFormula} this is probably due to the fact that $\phi$ and $\partial\phi$ are multiplied with Bessel functions of different order, that exhibit different limiting behaviour at relevant points in the integral, namely at ${\tau(\alpha)\to0}$ or ${r(\alpha)\to0}$. These configurations are also well suited to test separately the impact of the mass parameter in the spectrum computation, keeping the initial conditions fixed.\\
 \debugbox{
     \begin{minipage}{\linewidth}
         \centering
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_constfield_20240822_161734_masses_init.png}        
             \end{minipage}
         }
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_constfield_20240822_161734_masses_spec.png}        
             \end{minipage}
         }
     \end{minipage}
 }
-The displayed graphs correspond to particle masses from 0.14 GeV (blue) to 0.8 GeV (red). Together with the scale on which the freezeout surface varies, the particle mass sets the main scale/width of the spectrum.
+The displayed graphs correspond to particle masses from 0.14 GeV (blue) to 0.8 GeV (red). Together with the scale on which the freezeout surface varies, the particle mass sets the main scale/width of the spectrum, as is evident from the combinations ${rp_T}$ and ${\tau\omega_T\overset{p\to0}{\to}\tau m}$ appearing in formula \eqref{eq:SpectrumFinalFormula}.
 
+\paragraph{Constant Energy Density}
 
-Next, test the $\epsilon=\const$ prescription of defining initial data, which yields a 1-parameter family of initial field configuration.\\
+Next, test the aforementioned $\epsilon=\const$ prescription of defining initial data, which yields a 1-parameter family of initial field configurations. As previously described, the free parameter chosen here is the ratio ${r=\epsilon_{\text{pot}}/\epsilon}$ of potential to full energy density at ${\alpha=0}$. The energy density of the condensate is estimated by an arbitrary amount of $0.1\%$ of the energy density ${\epsilon_{\text{hydro}}\approx 0.16\,\mathrm{GeV}/(\mathrm{fm}^3)}$ of the hydro simulation.\\
 \debugbox{
     \begin{minipage}{\linewidth}
         \centering
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240822_135426_init.png}        
             \end{minipage}
         }
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240822_135426_spec.png}        
             \end{minipage}
@@ -347,18 +362,19 @@ Next, test the $\epsilon=\const$ prescription of defining initial data, which yi
 }
 The red graphs represent field configurations that are approximately constant on the ${\tau\approx\const}$ section of the freezeout surface. They seem to generate a distinct "break" in the spectrum, where the average slope (in the log scale) changes abruptly.
 
-Let us also change the mass in this scenario. Now, the mass also influences the initial conditions and lead to more oscillations along the freezeout surface. The following graphs range from 0.14 GeV to 1 GeV particle mass.\\
+As before, let us also change the mass in this scenario. Now, the mass further influences the initial conditions and lead to more oscillations along the freezeout surface. The following graphs range from 0.14 GeV to 1 GeV particle mass.
+
 \debugbox{
     \begin{minipage}{\linewidth}
         \centering
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143119_m226_init.png}        
             \end{minipage}
         }
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143119_m226_spec.png}        
             \end{minipage}
@@ -370,13 +386,13 @@ Let us also change the mass in this scenario. Now, the mass also influences the 
     \begin{minipage}{\linewidth}
         \centering
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143151_m398_init.png}        
             \end{minipage}
         }
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143151_m398_spec.png}        
             \end{minipage}
@@ -388,13 +404,13 @@ Let us also change the mass in this scenario. Now, the mass also influences the 
     \begin{minipage}{\linewidth}
         \centering
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143224_m570_init.png}        
             \end{minipage}
         }
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143224_m570_spec.png}        
             \end{minipage}
@@ -406,13 +422,13 @@ Let us also change the mass in this scenario. Now, the mass also influences the 
     \begin{minipage}{\linewidth}
         \centering
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143253_m742_init.png}        
             \end{minipage}
         }
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143253_m742_spec.png}        
             \end{minipage}
@@ -424,13 +440,13 @@ Let us also change the mass in this scenario. Now, the mass also influences the 
     \begin{minipage}{\linewidth}
         \centering
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143326_m914_init.png}        
             \end{minipage}
         }
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143326_m914_spec.png}        
             \end{minipage}
@@ -442,17 +458,24 @@ Let us also change the mass in this scenario. Now, the mass also influences the 
     \begin{minipage}{\linewidth}
         \centering
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143341_m1000_init.png}        
             \end{minipage}
         }
         \debugbox{
-            \begin{minipage}{0.45\linewidth}
+            \begin{minipage}{0.4\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143341_m1000_spec.png}        
             \end{minipage}
         }
     \end{minipage}
 }
-With increasing mass, one observers increasing width of the spectrum, as well as a second dominant bump away from $p=0\,\text{GeV}$, namely roughly at the particle mass.
+With increasing mass, one observers increasing width of the spectrum - as it was already observed and discussed in the last paragraph - as well as a second dominant bump away from $p_T=0\,\text{GeV}$, namely roughly at the particle mass. This fits the expectation of a general Fourier transformation picking up the dominant frequencies present in a field configuration. Requesting ${\epsilon=\const}$ and a hypothetically fixed projection ${u_\mu\dt^\mu s}$, equation \eqref{eq:InitialConditions_ODE} becomes simply a coupled ODE describing harmonic oscillation with frequency $m_\varphi$. Therefore, the Fourier transform has a peak at that frequency, modulated with the effects of the non-trivial hypersurface geometry.
+
+To summarize the different scales at play in the spectra, we state 3 central observations:
+\begin{enumerate}
+    \item Independent of initial conditions, the length scale of the freezeout surface set by the variations of $\tau(\alpha)$ and $r(\alpha)$ has an effect of the expected maximum at ${p_T=0\,\text{GeV}}$ in the spectra.
+    \item Also independent of initial conditions, the assumed particle mass acts as an effective scaling factor on the extent of the hypersurface.
+    \item A prominent oscillatory behaviour in the initial conditions induces another peak at roughly the oscillation frequency.
+\end{enumerate}
