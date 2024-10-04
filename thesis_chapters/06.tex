@@ -40,7 +40,7 @@ In detail, we use rotational and boost symmetry to eliminate the $\varphi_p$ and
     g(t,u,v)=-\omega_{q,T} \omega_{p,T} u+Q p_T tv+m_a E^a_{b\vert c}\,,\quad
         \vec{\nabla} g=
         \begin{pmatrix}
-            -t\,u\,\frac{\omega_{p,T}}{\omega_{q,T}}(Q)^2+Q p_T v\\
+            -t\,u\,\frac{\omega_{p,T}}{\omega_{q,T}}Q^2+Q p_T v\\
             -\omega_{q,T}\omega_{p,T}\\
             t\,Q p_T
         \end{pmatrix}\,.
@@ -50,7 +50,7 @@ In detail, we use rotational and boost symmetry to eliminate the $\varphi_p$ and
         g(t,u,v)&=-\omega_{q,T} \omega_{p,T} u+Q p_T tv+m_a E^a_{b\vert c}\\
         \vec{\nabla} g&=
         \begin{pmatrix}
-            -t\,u\,\frac{\omega_{p,T}}{\omega_{q,T}}(Q)^2+Q p_T v\\
+            -t\,u\,\frac{\omega_{p,T}}{\omega_{q,T}}Q^2+Q p_T v\\
             -\omega_{q,T}\omega_{p,T}\\
             t\,Q p_T
         \end{pmatrix}\,.
@@ -66,17 +66,17 @@ The manifold defined by the level set where ${g(t,u,v)=0}$ is given by
     \frac{\partial x^i}{\partial t}
         % =\begin{pmatrix}
         % 1\\
-        % v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}\big(1-m_a E^a_{b\vert c}t^2\frac{(Q)^2}{(\omega_{q,T})^2}\big)\\
+        % v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}\big(1-m_a E^a_{b\vert c}t^2\frac{Q^2}{(\omega_{q,T})^2}\big)\\
         % 0
         % \end{pmatrix}
         =\begin{pmatrix}
             1\\
-            v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}-\frac{t(Q)^2(m_a E^a_{b\vert c}+Q p_T tv)}{(\omega_{q,T})^3\omega_{p,T}}\\
+            v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}-\frac{tQ^2(m_a E^a_{b\vert c}+Q p_T tv)}{(\omega_{q,T})^3\omega_{p,T}}\\
             0
         \end{pmatrix}
         =\begin{pmatrix}
             1\\
-            v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}\big(1-t^2\frac{(Q)^2}{(\omega_{q,T})^2}\big)-\frac{t(Q)^2m_aE^a_{b\vert c}}{(\omega_{q,T})^3\omega_{p,T}}\\
+            v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}\big(1-t^2\frac{Q^2}{(\omega_{q,T})^2}\big)-\frac{t(Q)^2m_aE^a_{b\vert c}}{(\omega_{q,T})^3\omega_{p,T}}\\
             0
         \end{pmatrix}\,,\quad\\
     \frac{\partial x^i}{\partial v}=\begin{pmatrix}
@@ -85,7 +85,7 @@ The manifold defined by the level set where ${g(t,u,v)=0}$ is given by
         1
     \end{pmatrix}\,,\\
     \dt\Sigma^i=\frac{\partial x^i}{\partial Q}\times \frac{\partial x^i}{\partial Q}\dt t\dt v=\begin{pmatrix}
-        v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}\big(1-m_a E^a_{b\vert c}t^2\frac{(Q)^2}{(\omega_{q,T})^2}\big)\\
+        v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}\big(1-m_a E^a_{b\vert c}t^2\frac{Q^2}{(\omega_{q,T})^2}\big)\\
         -1\\
         t\frac{Q p_T}{\omega_{q,T}\omega_{p,T}}
     \end{pmatrix}\dt t\dt v\,.
@@ -103,14 +103,14 @@ which defines the scalar surface element via $\dt^2\sigma=\sigma(t,v)\dt t\dt v=
         &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T}\cosh\eta_q+Q p_T\cos\varphi_q+m_a E^a_{b\vert c}\big)\\
         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\times 2\times 2\int_{(0,0,0)}^{(\infty,\infty,\pi)}\frac{\dt Q\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{Q}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
         &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T}\cosh\eta_q+Q p_T\cos\varphi_q+m_a E^a_{b\vert c}\big)\\
-        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\times 2\times 2\times(Q)^2\times\int_{(0,1,-1)}^{(\infty,\infty,1)}\frac{\dt t\dt u\dt v}{(2\pi)^4}\frac{t}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\frac{1}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\times\nonumber\\
+        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\times 2\times 2\times Q^2\times\int_{(0,1,-1)}^{(\infty,\infty,1)}\frac{\dt t\dt u\dt v}{(2\pi)^4}\frac{t}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\frac{1}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\times\nonumber\\
         &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T} u+Q p_T tv+m_a E^a_{b\vert c}\big)\\
-        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{4\pi(Q)^2}{(2\pi)^4}\times\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q }\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}        
+        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{4\pi Q^2}{(2\pi)^4}\times\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q }\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}        
     \end{align}
 \end{subequations}
 \vspace{3em}
 \begin{equation}
-    \eqnmarkbox[blue]{myeq}{\omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\frac{B(Q)^2}{p^a_{b\vert c}\pi}\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q }\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}}
+    \eqnmarkbox[blue]{myeq}{\omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\frac{BQ^2}{p^a_{b\vert c}\pi}\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q }\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}}
 \end{equation}
 where we made use of 
 
@@ -128,7 +128,7 @@ Investigate the large $t$ behaviour of $u^\star(t,v)$. The claim is that there i
 %         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\times 2\times 2\int_{(0,0,0)}^{(\infty,\infty,\pi)}\frac{\dt Q\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{Q}{2}\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
 %         &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T}\cosh\eta_q+Q p_T\cos\varphi_q+m_a E^a_{b\vert c}\big)\\
 %         \intertext{\dots using $Q\mapsto t\cdot Q$, where $Q=\const$ carries the dimension and $t\in[0,\infty)$ is dimensionless, we calculate (omit the $\tilde{\cdot}$)}
-%         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{4\pi(Q)^2}{(2\pi)^4}\times\int_0^\infty\dt t\int_0^\pi\dt\varphi\cdot t\cdot \Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q}\frac{\sigma(t,\varphi)}{\Vert\vec{\nabla}g(t,\eta^\star,\varphi)\Vert}
+%         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{4\pi Q^2}{(2\pi)^4}\times\int_0^\infty\dt t\int_0^\pi\dt\varphi\cdot t\cdot \Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q}\frac{\sigma(t,\varphi)}{\Vert\vec{\nabla}g(t,\eta^\star,\varphi)\Vert}
 %     \end{align}
 % \end{subequations}
 % Here we defined
@@ -137,7 +137,7 @@ Investigate the large $t$ behaviour of $u^\star(t,v)$. The claim is that there i
 %         g(t,\eta,\varphi)&=-\omega_{q,T} \omega_{p,T} \cosh\eta+Q p_T t\cos\varphi+m_a E^a_{b\vert c}\\
 %         \vec{\nabla} g&=
 %         \begin{pmatrix}
-%             -\frac{\omega_{p,T}}{\omega_{q,T}}(Q)^2 \cdot t\cdot\cosh\eta+Q p_T \cos\varphi\\
+%             -\frac{\omega_{p,T}}{\omega_{q,T}}Q^2 \cdot t\cdot\cosh\eta+Q p_T \cos\varphi\\
 %             -\omega_{q,T}\omega_{p,T}\sinh\eta\\
 %             -t\cdot Q p_T\sin\varphi
 %         \end{pmatrix}
@@ -182,14 +182,14 @@ Let us try to evaluate the decay map in the rest frame of the decay product b, s
     \begin{align}
         \omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}&=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int\frac{\dt^4q}{(2\pi)^4}\delta(q^2+m_a^2)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\delta\big(q^\mu p_\mu+m_a E^a_{b\vert c}\big)\\
         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int\frac{\dt q^0\dt q^3\dt Q Q\dt\varphi}{(2\pi)^4}\delta(q^2+m_a^2)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\delta\big(-m_bq^0+m_a E^a_{b\vert c}\big)\\
-        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{2\pi}{m_b}\int\frac{\dt q^3\dt Q Q\dt\varphi}{(2\pi)^4}\delta\Big(\underbrace{-\frac{m_a^2E_{a\rightarrow b\vert c}^2}{m_b^2}+m_a^2}_{=-\frac{m_a^2p_{a\rightarrow b\vert c}^2}{m_b^2}}+(q^3)^2+(Q)^2\Big)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\\
+        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{2\pi}{m_b}\int\frac{\dt q^3\dt Q Q\dt\varphi}{(2\pi)^4}\delta\Big(\underbrace{-\frac{m_a^2E_{a\rightarrow b\vert c}^2}{m_b^2}+m_a^2}_{=-\frac{m_a^2p_{a\rightarrow b\vert c}^2}{m_b^2}}+(q^3)^2+Q^2\Big)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\\
         \intertext{\dots define $q^3=w\frac{m_a p^a_{b\vert c}}{m_b}$\dots}
-        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{(2\pi)^2 m_ap_{a\rightarrow b\vert c}}{m_b^2}\int\frac{\dt w\dt Q Q}{(2\pi)^4}\delta\Big((Q)^2-(1-w^2)\frac{m_a^2p_{a\rightarrow b\vert c}^2}{m_b^2}\Big)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\\
+        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{(2\pi)^2 m_ap_{a\rightarrow b\vert c}}{m_b^2}\int\frac{\dt w\dt Q Q}{(2\pi)^4}\delta\Big(Q^2-(1-w^2)\frac{m_a^2p_{a\rightarrow b\vert c}^2}{m_b^2}\Big)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\\
         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{(2\pi)^2 m_ap_{a\rightarrow b\vert c}}{2m_b^2}\int_{-1}^1\frac{\dt w}{(2\pi)^4}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{Q=q^{\perp,\star}(w)}\\
     \end{align}
 \end{subequations}
-where we integrated out the $\delta$-function over $Q$, using $\delta((Q)^2-(q^{\perp,\star})^2)=\delta(Q\pm q^{\perp,\star})/(2\vert Q\vert)$ with 
+where we integrated out the $\delta$-function over $Q$, using $\delta(Q^2-(q^{\perp,\star})^2)=\delta(Q\pm q^{\perp,\star})/(2\vert Q\vert)$ with 
 \begin{equation}
     q^{\perp,\star}(w)=\sqrt{(1-w^2)\frac{m_a^2p_{a\rightarrow b\vert c}^2}{m_b^2}}
 \end{equation}
-and the condition $(Q)^2\geq 0$ implies $w\in[-1,1]$.
+and the condition $Q^2\geq 0$ implies $w\in[-1,1]$.
