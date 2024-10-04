@@ -1,16 +1,23 @@
 \section{Representation Theory}
+\label{sec:Apdx_RepTheory}
 
-Consider the group $SU(N)$ of unitary ${N\times N}$-matrices that fulfull ${U^\dagger U=UU^\dagger=\mathbb{1}}$. The group elements $U$ can be expressed as
+Consider the group $SU(N)$ of unitary ${N\times N}$-matrices that fulfill ${U^\dagger U=UU^\dagger=\mathbb{1}}$. The group elements $U$ can be expressed as
 \begin{equation}
     U=e^{\imagu \alpha_aT_a}
 \end{equation}
-with real coefficients $\alpha_a$ and traceless hermitian matrices $T_a$, called generators. These generators fulfill the commutation relations
+with real coefficients $\alpha_a$ and traceless hermitian matrices $T_a$, called generators. These generators satisfy commutation relations
 \begin{equation}
     [T_a,T_b]=\imagu f_{abc}T_c
 \end{equation}
 with group characteristic structure constants $f_{abc}$. The set of these commutation relations define the algebra $\mathfrak{su}(N)$. Whereas the direct derivation of the algebra from $SU(N)$ matrices leads to the fundamental representation, both the multiplicative relations that define a group and the commutation relations that define an algebra can be fulfilled by different sets of elements, also called different representations. 
 
-The charge conjugate representation of the $\mathfrak{su}(N)$ algebra is constructed from the matrices ${T_a^\mathcal{C}\equiv -T_a^*\equiv -T_a^T}$. One easily checks that they fulfill the same algebra,
+\paragraph{Charge Conjugation}
+
+Charge conjugation is defined by complex conjugation on the level of the states, ${\psi^\mathcal{C}=\psi^*}$. \todo{Is this right?} For a state transforming under an element ${U=\exp(\imagu\alpha_a T_a)}$ of $SU(N)$, the transformation behaviour reads
+\begin{equation}
+    (\psi^\mathcal{C})^\prime\equiv(\psi^\prime)^\mathcal{C}=(\psi^\prime)^*=\exp(-\imagu\alpha_aT_a^*)\psi^*\eqdef\exp(\imagu\alpha_aT_a^\mathcal{C})\psi^\mathcal{C}\,.
+\end{equation}
+This defines the charge conjugate representation of the $\mathfrak{su}(N)$ algebra, which is constructed from the matrices ${T_a^\mathcal{C}\defeq -T_a^*\equiv -T_a^T}$. One easily checks that they fulfill the same algebra,
 \begin{equation}
     [T_a^\mathcal{C},T_b^\mathcal{C}]=([T_a,T_b])^*=-\imagu f_{abc}T_c^*=\imagu f_{abc}T_c^\mathcal{C}\,.
 \end{equation}
@@ -29,30 +36,98 @@ The space of traceless hermitian $2\times 2$ matrices is spanned by the Pauli ma
     1&0\\0&-1
     \end{pmatrix}\,,
 \end{equation}
-that satisfy the $\mathfrak{su}(2)$-algebra ${[\sigma_a,\sigma_b]=2\imagu\epsilon_{abc}\sigma_c}$. Consider $\ket{\frac{1}{2}}=\begin{pmatrix}1&0\end{pmatrix}^T$ and $\ket{-\frac{1}{2}}=\begin{pmatrix}0&1\end{pmatrix}^T$ as states transforming under the fundamental representation os $SU(2)$. $\ket{\pm \frac{1}{2}}$ are eigenstates of $\sigma_3$ with eigenvalues ${\pm1}$ respectively. The other 2 Pauli matrices can be used to construct the ladder operators
+that satisfy the algebra ${[\sigma_a,\sigma_b]=2\imagu\epsilon_{abc}\sigma_c}$. In units where ${\hbar=1}$, they are related to the generators $S_a$ of the $\mathfrak{su}(2)$- or angular momentum algebra
 \begin{equation}
-    T_{\pm}=\frac{1}{2}(\sigma_1\pm\imagu\sigma_2)\,,\qquad
-    T_+=\begin{pmatrix}
-            0&1\\0&0
-    \end{pmatrix}\,,\qquad
-    T_-=\begin{pmatrix}
-            0&0\\1&0
-    \end{pmatrix}\,,
+    [S_a,S_b]=\imagu\epsilon_{abc}S_C
 \end{equation}
-that can be used to transition between the states,
+via ${S_a=\frac{1}{2}\sigma_a}$. Considering the operator ${S^2=\sum S_a^2}$, a set of commuting observables is given by ${\{S_a,S^2\}}$ for any value of $a$. Conventionally, ${a=3\equiv z}$. Thus, a basis ${\{\ket{s,s_z}\}}$ of simultaneous eigenstates to both operators can be found. The spectrum can be characterized by
 \begin{equation}
-    T_+\ket{-\frac{1}{2}}=\ket{\frac{1}{2}}\,,\quad T_+\ket{\frac{1}{2}}=0\,,\quad T_-\ket{-\frac{1}{2}}=0\,,\quad T_-\ket{\frac{1}{2}}=\ket{-\frac{1}{2}}\,.
+    S^2\ket{s,s_z}=s(s+1)\ket{s,s_z}\,,\qquad S_z\ket{s,s_z}=s_z\ket{s,s_z}\,,
 \end{equation}
+where $s\in\mathbb{N}_0$ and $s_z$ ranges in integer steps from $-s$ to $s$, yielding a ${(2s+1)}$-fold degenerate subspace or multiplet for each value of $s$. This is typically found by defining and iteratively applying the ladder operators
+\begin{equation}
+    S_\pm=S_x\pm\imagu S_y\,,\qquad S_\pm\ket{s,s_z}\propto\ket{s,s_z\pm 1}\,,
+\end{equation}
+that allow a transition between all states within a multiplet.
 
-Under charge conjugation, one finds
-\begin{equation}
-    T_1\to\overline{T}_1=-T_1\,,\qquad T_2\to\overline{T}_2=T_2\,,\qquad T_3\to\overline{T}_3=-T_3\,.
-\end{equation}
-The corresponding eigenstates of $\overline{T}_3$ are ${\ket{\overline{\frac{1}{2}}}=\ket{-\frac{1}{2}}}$ and ${\ket{\overline{-\frac{1}{2}}}=-\ket{\frac{1}{2}}}$, as can be checked by
-\begin{equation}
-    \overline{T}_3\ket{\overline{\frac{1}{2}}}=-T_3\ket{-\frac{1}{2}}=\ket{-\frac{1}{2}}=+1\ket{\overline{\frac{1}{2}}}\,,\qquad \overline{T}_3\ket{\overline{-\frac{1}{2}}}=T_3\ket{\frac{1}{2}}=\ket{\frac{1}{2}}=-\ket{\overline{-\frac{1}{2}}}\,.
-\end{equation}
+The quark basis states ${u=\begin{pmatrix}1&0\end{pmatrix}^T}$ and ${d=\begin{pmatrix}0&1\end{pmatrix}^T}$ belong to the 2-dimensional fundamental representation $\mathbf{2}$ of $SU(2)$. The corresponding quantum number is called isospin $i$, thus we adapt notation ${S\to I}$, etc. In terms of their quantum numbers, up- and down-quark take the form ${u=\ket{\frac{1}{2},\frac{1}{2}}}$ and ${d=\ket{\frac{1}{2},-\frac{1}{2}}}$. Under charge conjugation one finds ${I^\mathcal{C}_x=-I_x}$, ${I^\mathcal{C}_y=I_y}$ and ${I^\mathcal{C}_z=-I_z}$. Therefore the $z$-component of the isospin flips sign, leading to ${\overline{u}=\ket{\frac{1}{2},-\frac{1}{2}}}$ and ${-\overline{d}=\ket{\frac{1}{2},\frac{1}{2}}}$. The "-"-sign in front of the anti-down quark seems like an arbitrary choice, which ensures however the correct transformation behaviour under isospin rotations. For more details, see \cite{Thomson_2011}.
 
+\paragraph{Tensor Product Representation}
+
+Bound states of quarks and antiquarks transform under the tensor product representation $\mathbf{2}\otimes\overline{\mathbf{2}}$ of the fundamental and conjugate representaion of $SU(2)$. Introducing the total isospin operators ${I^{(\text{tot})}_a=I^{(1)}_a\otimes\mathbb{1}^{(2)}+\mathbb{1}^{(1)}\otimes I^{(2)}_a}$, where $\cdot^{(1)}$ and $\cdot^{(2)}$ denote the two factors of the tensor product, the tensor product space can again be spanned by a basis ${\{\ket{i^{(\text{tot})},i^{(\text{tot})}_z}\}}$ of eigenstates of the total isospin operators. Starting from the state ${\ket{\frac{1}{2},\frac{1}{2}}\otimes \ket{\frac{1}{2},\frac{1}{2}}}$ with the highest possible value $i^{(\text{tot})}_{\text{max}}=i^{(\text{tot})}_{z,\text{max}}=1$, one can find all other states $\ket{i^{(\text{tot})}=1,i^{(\text{tot})}_z}$ in the same multiplet by applying $I^{\text{tot}}_-$. These states form the triplet
+\begin{subequations}
+    \begin{equation}
+        \pi^+\equiv\ket{1,1}=-u\overline{d}\,,\quad\pi^0\equiv\ket{1,0}=\frac{1}{\sqrt{2}}(u\overline{u}-d\overline{d})\,,\quad\pi^-\equiv\ket{1,-1}=d\overline{u}\,.
+    \end{equation}
+    By dimensionality of the tensor product it is obvious that 1 basis state is missing. Using orthogonality, the last state is the isospin-0 singlet
+    \begin{equation}
+        \sigma\equiv\ket{1,0}=\frac{1}{\sqrt{2}}(u\overline{u}+d\overline{d})\,.
+    \end{equation}
+\end{subequations}
+This treatment is called a decomposition into irreducible subspaces, i.e. subspaces that are invariant under the action of the group.
+
+\subsection{$SU(3)$}
+
+The $\mathbf{3}$-representation or fundamental representation is given by $T_a=\frac{1}{2}\lambda_a$ with the Gell-Mann matrices $\lambda_a$. They are constructed as follows: Choose the first three to reflect ${(u\leftrightarrow d)}$-symmetry, leading essentially to the same structure as in the $SU(2)$-case:
+\begin{subequations}
+    \begin{align}
+        \lambda_1=\begin{pmatrix}
+            0 & 1 & 0 \\
+            1 & 0 & 0 \\
+            0 & 0 & 0
+        \end{pmatrix}\,,\qquad
+        \lambda_2=\begin{pmatrix}
+            0      & -\imagu & 0 \\
+            \imagu & 0       & 0 \\
+            0      & 0       & 0
+        \end{pmatrix}\,,\qquad
+        \lambda_3=\begin{pmatrix}
+            1 & 0  & 0 \\
+            0 & -1 & 0 \\
+            0 & 0  & 0
+        \end{pmatrix}\,.        \\
+        \intertext{This construction is mirrored to reflect ${(u\leftrightarrow s)}$- and ${(d\leftrightarrow s)}$-symmetry}
+        \lambda_4=\begin{pmatrix}
+            0 & 0 & 1 \\
+            0 & 0 & 0 \\
+            1 & 0 & 0
+        \end{pmatrix}\,,\qquad
+        \lambda_5=\begin{pmatrix}
+            0      & 0 & -\imagu \\
+            0      & 0 & 0       \\
+            \imagu & 0 & 0       \\
+        \end{pmatrix}\,,\qquad
+        \lambda_8^\prime=\begin{pmatrix}
+            1 & 0 & 0  \\
+            0 & 0 & 0  \\
+            0 & 0 & -1
+        \end{pmatrix} \\
+        \lambda_6=\begin{pmatrix}
+            0 & 0 & 0 \\
+            0 & 0 & 1 \\
+            0 & 1 & 0
+        \end{pmatrix}\,,\qquad
+        \lambda_7=\begin{pmatrix}
+            0 & 0      & 0       \\
+            0 & 0      & -\imagu \\
+            0 & \imagu & 0
+        \end{pmatrix}\,,\qquad
+        \lambda_8^{\prime\prime}=\begin{pmatrix}
+            0 & 0 & 0  \\
+            0 & 1 & 0  \\
+            0 & 0 & -1
+        \end{pmatrix}
+    \end{align}
+    Note that only one of $\lambda_8^\prime,\lambda_8^{\prime\prime}$ can be linearly independent. One instead chooses for the generators of the algebra
+    \begin{equation}
+        \lambda_8=\frac{1}{\sqrt{3}}(\lambda_8^\prime+\lambda_8^{\prime\prime})=\frac{1}{\sqrt{3}}\begin{pmatrix}
+            1 & 0 & 0  \\
+            0 & 1 & 0  \\
+            0 & 0 & -2
+        \end{pmatrix}\,.
+    \end{equation}
+    \label{eq:GroupTheory_SU3_FundRep}
+\end{subequations}
 
 
 

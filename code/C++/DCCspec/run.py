@@ -140,6 +140,8 @@ for (n,path) in enumerate(paths):
     t = n / (len(paths)-1)
     col=(t,0,1-t)
 
+    scale = df_tau["tauRe"][0]/13.1
+
     ax_fo.plot(df_r["rRe"].to_numpy(),
                df_tau["tauRe"].to_numpy(),
                marker="",
@@ -147,7 +149,7 @@ for (n,path) in enumerate(paths):
 
     ax_spec.plot(
         df_spec["pT"].to_numpy(),
-        df_spec["abs2Re"].to_numpy(),
+        1/(scale**4)*df_spec["abs2Re"].to_numpy(),
         marker="",
         color=col)
 

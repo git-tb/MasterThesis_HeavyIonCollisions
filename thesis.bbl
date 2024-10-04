@@ -470,8 +470,8 @@
       \strng{authornamehash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \strng{authorfullhash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \field{labelalpha}{Koc97}
-      \field{sortinit}{8}
-      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
+      \field{sortinit}{7}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This article is an attempt to a pedagogical introduction and review into the elementary concepts of chiral symmetry in nuclear physics. Effective chiral models such as the linear and nonlinear sigma model will be discussed as well as the essential ideas of chiral perturbation theory. Some applications to the physics of ultrarelativistic heavy ion collisions will be presented.}
@@ -526,8 +526,8 @@
       \strng{authornamehash}{bd0b09f9d4658a6110c7cf3ae280532f}
       \strng{authorfullhash}{bd0b09f9d4658a6110c7cf3ae280532f}
       \field{labelalpha}{PS95}
-      \field{sortinit}{9}
-      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{sortinit}{8}
+      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-0-201-50397-5}
@@ -566,8 +566,8 @@
       \strng{authornamehash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
       \strng{authorfullhash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
       \field{labelalpha}{GRB96}
-      \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinit}{9}
+      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-3-540-59179-5}
@@ -683,6 +683,32 @@
       \verb /home/tobias/Zotero/storage/YPNHDTEU/Kirchner et al. - 2023 - Cooper-Frye spectra of hadrons with viscous correc.pdf;/home/tobias/Zotero/storage/2LG7PLUE/2308.html
       \endverb
       \keyw{High Energy Physics - Phenomenology}
+    \endentry
+    \entry{Thomson_2011}{unpublished}{}
+      \name{author}{1}{}{%
+        {{hash=57f5b607cec3b22885f854f4c4baf257}{%
+           family={Thomson},
+           familyi={T\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{57f5b607cec3b22885f854f4c4baf257}
+      \strng{fullhash}{57f5b607cec3b22885f854f4c4baf257}
+      \strng{bibnamehash}{57f5b607cec3b22885f854f4c4baf257}
+      \strng{authorbibnamehash}{57f5b607cec3b22885f854f4c4baf257}
+      \strng{authornamehash}{57f5b607cec3b22885f854f4c4baf257}
+      \strng{authorfullhash}{57f5b607cec3b22885f854f4c4baf257}
+      \field{labelalpha}{Tho11}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Lecture {{Notes}} on {{Particle Physics}}, {{Chapter}} "{{Symmetries}} and the {{Quark Model}}"}
+      \field{urlday}{4}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2011}
+      \field{urldateera}{ce}
     \endentry
   \enddatalist
 \endrefsection
