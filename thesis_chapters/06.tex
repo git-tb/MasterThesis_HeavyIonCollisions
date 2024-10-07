@@ -2,7 +2,7 @@
 
 If the particles considered on the freezout surface are not stable, the spectra computed there cannot be directly related to the spectra on the detector surface. Instead, one has to calculate contributions from all possible decay channels/heavier resonances $a$ that decay into the (stable) resonance $b$ under consideration. This is done via the linear decay map
 \begin{equation}
-    E_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}D_{a\rightarrow b}(\vec{p},\vec{q})E_{\vec{q}}\frac{\dt N_a}{\dt^3 q}
+    E_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}D^a_b(\vec{p},\vec{q})E_{\vec{q}}\frac{\dt N_a}{\dt^3 q}
 \end{equation} 
 where $D_{a\rightarrow b}(\vec{p},\vec{q})$ is the Lorentz invariant probability of particle $a$ with (on-shell) momentum $\vec{q}$ to decay into particle $b$ with momentum $\vec{p}$. Due to the probabilistic nature of a decay process, this relation is true if the lifetime of the heavy resonances is short compared to the propagation time and the number of particles is large enough.
 
@@ -37,91 +37,105 @@ In detail, we use rotational and boost symmetry to eliminate the $\varphi_p$ and
 \end{gather*}
 (omit the $\tilde{\cdot}$ in the following) and defined $u^\star(t,v)$ to respect the $\delta$. The $\delta$-distribution depending on the variables ${(t,u,v)}$ and the parameters ${(Q,p_T)}$ was replaced by considering the function
 \begin{equation}
-    g(t,u,v)=-\omega_{q,T} \omega_{p,T} u+Q p_T tv+m_a E^a_{b\vert c}\,,\quad
+    g(t,u,v)=-u\,\omega_{q,T} \omega_{p,T} +t\,v\,Qp_T+m_a E^a_{b\vert c}\,,\quad
         \vec{\nabla} g=
         \begin{pmatrix}
-            -t\,u\,\frac{\omega_{p,T}}{\omega_{q,T}}Q^2+Q p_T v\\
+            -t\,u\,\frac{\omega_{p,T}}{\omega_{q,T}}Q^2+vQ p_T\\
             -\omega_{q,T}\omega_{p,T}\\
             t\,Q p_T
         \end{pmatrix}\,.
 \end{equation}
-\begin{subequations}
-    \begin{align}
-        g(t,u,v)&=-\omega_{q,T} \omega_{p,T} u+Q p_T tv+m_a E^a_{b\vert c}\\
-        \vec{\nabla} g&=
-        \begin{pmatrix}
-            -t\,u\,\frac{\omega_{p,T}}{\omega_{q,T}}Q^2+Q p_T v\\
-            -\omega_{q,T}\omega_{p,T}\\
-            t\,Q p_T
-        \end{pmatrix}\,.
-    \end{align}
-\end{subequations}
+% \begin{subequations}
+%     \begin{align}
+%         g(t,u,v)&=-u\omega_{q,T} \omega_{p,T} +tvQ p_T+m_a E^a_{b\vert c}\\
+%         \vec{\nabla} g&=
+%         \begin{pmatrix}
+%             -t\,u\,\frac{\omega_{p,T}}{\omega_{q,T}}Q^2+vQ p_T\\
+%             -\omega_{q,T}\omega_{p,T}\\
+%             t\,Q p_T
+%         \end{pmatrix}\,.
+%     \end{align}
+% \end{subequations}
 The manifold defined by the level set where ${g(t,u,v)=0}$ is given by 
 \begin{equation}
-    g^{-1}(0)=\Bigg\{(t,u,v)\Big\vert u=u^\star(t,v)=\frac{m_a E^a_{b\vert c}+Q p_T tv}{\omega_{q,T}\omega_{p,T}}\Bigg\}\,.
+    g^{-1}(0)=\Bigg\{(t,u,v)\Big\vert u=u^\star(t,v)=\frac{m_a E^a_{b\vert c}+t\,v\,Q p_T}{\omega_{q,T}\omega_{p,T}}\Bigg\}\,.
     \label{eq:DecayMap_BjorkenCoord_DeltaManifold}
 \end{equation}
-\eqref{eq:DecayMap_BjorkenCoord_DeltaManifold} defines a chart $(t,v)\mapsto x^i(t,v)=(t,u^\star(t,v),v)$ on $g^{-1}(0)$ with coordinates $(t,v)$. One computes the coordinate derivative vectors and oriented surface element
+Equation \eqref{eq:DecayMap_BjorkenCoord_DeltaManifold} defines a chart $(t,v)\mapsto x^i(t,v)=(t,u^\star(t,v),v)$ on $g^{-1}(0)$ with coordinates $(t,v)$. One computes the coordinate derivative vectors and oriented surface element
 \begin{gather}
     \frac{\partial x^i}{\partial t}
         % =\begin{pmatrix}
-        % 1\\
-        % v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}\big(1-m_a E^a_{b\vert c}t^2\frac{Q^2}{(\omega_{q,T})^2}\big)\\
-        % 0
+        %     1\\
+        %     \frac{v\,Qp_T}{\omega_{p,T}\omega_{q,T}}-\frac{t\,Q^2(m_a E^a_{b\vert c}+t\,v\,Q p_T)}{\omega_{p,T}(\omega_{q,T})^3}\\
+        %     0
         % \end{pmatrix}
         =\begin{pmatrix}
             1\\
-            v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}-\frac{tQ^2(m_a E^a_{b\vert c}+Q p_T tv)}{(\omega_{q,T})^3\omega_{p,T}}\\
+            \frac{t\,Q^2(E^a_{b\vert c}m_a+t\,v\,Qp_T)}{\omega_{p,T}(\omega_{q,T})^3}\\
             0
-        \end{pmatrix}
-        =\begin{pmatrix}
-            1\\
-            v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}\big(1-t^2\frac{Q^2}{(\omega_{q,T})^2}\big)-\frac{t(Q)^2m_aE^a_{b\vert c}}{(\omega_{q,T})^3\omega_{p,T}}\\
-            0
-        \end{pmatrix}\,,\quad\\
+        \end{pmatrix}\,,\quad
     \frac{\partial x^i}{\partial v}=\begin{pmatrix}
         0\\
-        t\frac{Q p_T}{\omega_{q,T}\omega_{p,T}}\\
+        \frac{t\,Qp_T}{\omega_{p,T}\omega_{q,T}}\\
         1
     \end{pmatrix}\,,\\
-    \dt\Sigma^i=\frac{\partial x^i}{\partial Q}\times \frac{\partial x^i}{\partial Q}\dt t\dt v=\begin{pmatrix}
-        v\frac{p_T Q}{\omega_{p,T}\omega_{q,T}}\big(1-m_a E^a_{b\vert c}t^2\frac{Q^2}{(\omega_{q,T})^2}\big)\\
+    \dt\Sigma^i=\frac{\partial x^i}{\partial t}\times \frac{\partial x^i}{\partial v}\dt t\dt v=\begin{pmatrix}
+        \frac{t\,Q^2(E^a_{b\vert c}m_a+t\,v\,Qp_T)}{\omega_{p,T}(\omega_{q,T})^3}\\
         -1\\
-        t\frac{Q p_T}{\omega_{q,T}\omega_{p,T}}
+        \frac{t\,Qp_T}{\omega_{p,T}\omega_{q,T}}
     \end{pmatrix}\dt t\dt v\,.
 \end{gather}
-which defines the scalar surface element via $\dt^2\sigma=\sigma(t,v)\dt t\dt v=\Vert\dt\Sigma^i\Vert$.
-    
-\begin{subequations}
-    \begin{align}
-        \omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}&=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int\frac{\dt^4q}{(2\pi)^4}\delta(q^2+m^2)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\delta\big(q^\mu p_\mu+m_a E^a_{b\vert c}\big)\\
-        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int_{(0,0,-\infty,0)}^{(\infty,\infty,\infty,2\pi)}\frac{\dt m_{q,T} \dt Q\dt\eta_q\dt\varphi_q}{(2\pi)^4}m_{q,T} Q\delta(-m_q^{\perp,2}+q^{\perp,2}+m^2)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
-        &\phantom{=}\qquad\times\delta\big(-m_{q,T} m_{p,T}\cosh(\eta_q-\eta_p)+Q p_T\cos(\varphi_q-\varphi_p)+m_a E^a_{b\vert c}\big)\\
-        % &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int_{(0,-\infty,0)}^{(\infty,\infty,2\pi)}\frac{\dt Q\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{Q}{2}\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
-        % &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T}\cosh(\eta_q-\eta_p)+Q p_T\cos(\varphi_q-\varphi_p)+m_a E^a_{b\vert c}\big)\\
-        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int_{(0,-\infty,0)}^{(\infty,\infty,2\pi)}\frac{\dt Q\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{Q}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
-        &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T}\cosh\eta_q+Q p_T\cos\varphi_q+m_a E^a_{b\vert c}\big)\\
-        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\times 2\times 2\int_{(0,0,0)}^{(\infty,\infty,\pi)}\frac{\dt Q\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{Q}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
-        &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T}\cosh\eta_q+Q p_T\cos\varphi_q+m_a E^a_{b\vert c}\big)\\
-        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\times 2\times 2\times Q^2\times\int_{(0,1,-1)}^{(\infty,\infty,1)}\frac{\dt t\dt u\dt v}{(2\pi)^4}\frac{t}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\frac{1}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\times\nonumber\\
-        &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T} u+Q p_T tv+m_a E^a_{b\vert c}\big)\\
-        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{4\pi Q^2}{(2\pi)^4}\times\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q }\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}        
-    \end{align}
-\end{subequations}
-\vspace{3em}
-\begin{equation}
-    \eqnmarkbox[blue]{myeq}{\omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\frac{BQ^2}{p^a_{b\vert c}\pi}\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q }\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}}
-\end{equation}
-where we made use of 
+which defines the scalar surface element via $\dt^2\sigma=\sigma(t,v)\dt t\dt v=\Vert\dt\Sigma^i\Vert$. The result of this calculation (see Appendix \ref{sec:Apdx_ResonanceComput}) is given by
+\begin{multline}
+    \omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\frac{BQ^2}{\pi p^a_{b\vert c}}\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q }\times\\
+    \times\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}\,.
+\end{multline}
 
-Investigate the large $t$ behaviour of $u^\star(t,v)$. The claim is that there is always a $t_{\text{max}}(v,p_T)$ such that $u^*(t>t_{\text{max}},v)<1$. Since $u^*(t,1)\geq u^*(t,v\in[-1,1])$ it suffices to consider the case $v=1$. Also note that $\frac{p_T}{\omega_{p,T}}<1$ for every finite $p_T$. Since analogously $\lim_{t\to\infty}\frac{Q t}{\omega_{q,T}}=1$ and the "$+m_a E^a_{b\vert c}$" becomes irrelevant in the limit, one arrives at $\lim_{t\to\infty}u^\star(t,v)<1$.
+For the numerics, the integration interval of $t$ can be kept finite for 2 reasons. First, the spectrum of the primary resonance can be assumed to decay sufficiently fast. Second, investigate the large $t$ behaviour of $u^\star(t,v)$. The claim is that there is always a $t_{\text{max}}(v,p_T)$ such that ${u^*(t>t_{\text{max}},v)<1}$. Since ${u^*(t,1)\geq u^*(t,v\in[-1,1])}$ it suffices to consider the case $v=1$. Also note that ${\frac{p_T}{\omega_{p,T}}<1}$ for every finite $p_T$. Since analogously ${\lim_{t\to\infty}\frac{t\,Q}{\omega_{q,T}}=1}$ and the "${+m_a E^a_{b\vert c}}$" becomes irrelevant in the limit, one arrives at ${\lim_{t\to\infty}u^\star(t,v)<1}$. Actually, the restriction ${u^\star(t,v)\geq 1}$ allows for drastic reduction of the integration domain, which is especially important for the seemingly divergent - nevertheless integrable - integrand.
+
+It is instructive to see how this restriction looks like. A priori, the integration domain is partially unbounded rectangular region ${\{(t,v)\in[0,\infty]\times[-1,1]\}}$. The line ${u^\star(t,v)=1}$ separates this domain into 2 regions, only 1 of which contributes to the above integration, namely where ${u^*(t,v)>1}$. In the $t-v$-plane, this line is given as a function ${v_1(t)}$ by
+\begin{equation}
+    v_1(t)=\frac{\omega_{T,p}\omega_{T,q}-m_aE^a_{b\vert c}}{t\,Qp_T}\,.
+\end{equation}
+If we were to perform the multidimensional integration ${\int\int\dt t\dt v}$ via nested integrals, this would be sufficient, since we could first perform the $v$-integration over a $t$-dependent range and then integrate over $t$. Unfortunately this performs very poorly on the numeric side due to the iterative subdivision of the exterior integral causing a very large number of numerical evaluations of the interior integral. Instead, efficient multidimensional integral requires us to subdivide the $n$-dimensional integration domain in rectangular subdomains, thus looking for the smallest possible rectangular integration domain is desirable.
+
+To do so, we want to find the minimum an maximum values of $t$ and $v$. It is clear that ${v_{\text{max}}=1}$ by noting that ${\lim_{t\to\infty}v_1(t)>1}$. It is also clear that ${u^\star(t,v)>1}$ only if ${v>v_1(t)}$. Thus, in order to find a minimum value of $v$, we need to find the minimum of $v_1(t)$, which is located at
+\begin{equation}
+    t^\prime=\frac{m_a\sqrt{(\omega_{p,T})^2-(E^a_{b\vert c})^2}}{QE^a_{b\vert c}}\,,\qquad v_{\text{min}}=v_1(t^\prime)=\frac{\sqrt{(\omega_{p,T})^2-(E^a_{b\vert c})^2}}{p}\,.
+    \label{eq:Cubature_vmin}
+\end{equation}
+This minimum only exists when ${\omega_{p,T}>E^a_{b\vert c}}$. In this case, not only ${\lim_{t\to\infty}v_1(t)>1}$, but also ${\lim_{t\to0}v_1(t)>1}$. Therefore, minimal and maximal values of $t$ can be determined via
+\begin{equation}
+    v_1(t_{\text{max/min}})=1\qquad\iff\qquad t_{\text{max/min}}=\frac{m_a\Big(p_TE^a_{b\vert c}\pm\omega_{p,T}\sqrt{(E^a_{b\vert c})^2-m_b^2}\Big)}{m_b^2Q}\,.
+    \label{eq:Cubature_tminmax}
+\end{equation}
+On the other hand, if ${\omega_{p,T}<E^a_{b\vert c}}$, it is obvious that ${\lim_{t\to0}v_1(t)=-\infty}$, and therefore one sets ${v_{\text{min}}=-1}$ and accordingly ${t_{\text{min}}=0}$.
+
+To summarize, the smallest rectangular regions ${[t_{\text{min}},t_{\text{max}}]\times[v_{\text{min}},v_{\text{max}}]}$ are given by
+\debugbox{
+    \begin{minipage}{\linewidth}  
+        \centering      
+        \begin{tabular}{ c 
+            !{\vrule width 2pt}c 
+            !{\vrule width 1pt}c 
+            !{\vrule width 1pt}c 
+            !{\vrule width 1pt}c}
+            &$t_{\text{min}}$&$t_{\text{max}}$&$v_{\text{min}}$&$v_{\text{max}}$\\
+            \noalign{\hrule height 2pt}
+            ${\omega_{p,T}<E^a_{b\vert c}}$&$0$&\eqref{eq:Cubature_tminmax}&$-1$&$1$\\
+            \noalign{\hrule height 1pt}
+            ${\omega_{p,T}>E^a_{b\vert c}}$&\eqref{eq:Cubature_tminmax}&\eqref{eq:Cubature_tminmax}&\eqref{eq:Cubature_vmin}&$1$
+        \end{tabular}
+    \end{minipage}
+}
+Obviously, the integration domain becomes drastically smaller as soon as ${\omega_{p,T}>E^a_{b\vert c}}$. This is the threshold where the unstable heavy particle $a$ cannot be at rest (${q_T=0}$) in order to decay into a lighter particle $b$ with possibly large momentum ${p_T>0}$. Above this threshold, the possible values of ${v\geq v_{\text{min}}}$ get closer to $1$, meaning the momenta of heavy resonance and decay product become increasingly aligned.
 
 % \paragraph*{Again without Change of Variables}\mbox{}\\
 
 % \begin{subequations}
 %     \begin{align}
 %         \omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}&=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int\frac{\dt^4q}{(2\pi)^4}\delta(q^2+m^2)\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\delta\big(q^\mu p_\mu+m_a E^a_{b\vert c}\big)\\
-%         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int_{(0,0,-\infty,0)}^{(\infty,\infty,\infty,2\pi)}\frac{\dt m_{q,T} \dt Q\dt\eta_q\dt\varphi_q}{(2\pi)^4}m_{q,T} Q\delta(-m_q^{\perp,2}+q^{\perp,2}+m^2)\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
+%         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int_{(0,0,-\infty,0)}^{(\infty,\infty,\infty,2\pi)}\frac{\dt m_{q,T} \dt Q\dt\eta_q\dt\varphi_q}{(2\pi)^4}m_{q,T} Q\delta(-m_{q,T}^2+q_T^2+m^2)\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
 %         &\phantom{=}\qquad\times\delta\big(-m_{q,T} m_{p,T}\cosh(\eta_q-\eta_p)+Q p_T\cos(\varphi_q-\varphi_p)+m_a E^a_{b\vert c}\big)\\
 %         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int_{(0,-\infty,0)}^{(\infty,\infty,2\pi)}\frac{\dt Q\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{Q}{2}\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\times\nonumber\\
 %         &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T}\cosh\eta_q+Q p_T\cos\varphi_q+m_a E^a_{b\vert c}\big)\\

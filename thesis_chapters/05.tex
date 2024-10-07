@@ -291,6 +291,12 @@ where the intermediate calculation
 \end{subequations}
 is useful. Note how the imaginary part of this tensor is antisymmetric and thus does not contribute upon contraction with a symmetric tensor.
 
+There is now an addition degree of freedom ($\chi_\theta$) compared to the real case. There is additional information given by the conserved vector current $J_v^{a,\mu}$. By means of the underlying assumption of parallelity of all gradients with the 4-velocity $u_\mu$, its conservation law reads
+\begin{equation}
+        0=\partial_\mu\big(n(\partial_\mu\theta)\big)=(\partial_\mu n)(\partial_\mu\theta)+n(\partial_\mu\partial^\mu\theta)=-\chi_\theta\chi_n+n\chi_\theta(\partial_\mu u^\mu)+nu^\mu(\partial_\mu\chi_\theta)
+\end{equation}
+Denote the 4-divergence of the 4-velocity by ${D=\partial_\mu u^\mu}$. Proceding as before, imposing ${\dt\epsilon_{s,\phi}=0}$ as well as the just derived identiy
+
 Considering the fact that we have already proposed ways to initialize the real valued fields $\pi^1$, $\pi^2$, we could also simply construct $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$ from these fields. Given $\partial_\mu\pi^{1,2}$, the density of the charged pion fields changes as
 \begin{equation}
     \partial_\mu n=\partial_\mu(\pi^+\pi^-)=\frac{1}{2}\partial_\mu\big((\pi^1)^2+(\pi^2)^2\big)=(\partial_\mu\pi^1)\pi^1+(\partial_\mu\pi^2)\pi^2\,.
@@ -471,7 +477,7 @@ As before, let us also change the mass in this scenario. Now, the mass further i
         }
     \end{minipage}
 }
-With increasing mass, one observers increasing width of the spectrum - as it was already observed and discussed in the last paragraph - as well as a second dominant bump away from $p_T=0\,\text{GeV}$, namely roughly at the particle mass. This fits the expectation of a general Fourier transformation picking up the dominant frequencies present in a field configuration. Requesting ${\epsilon=\const}$ and a hypothetically fixed projection ${u_\mu\dt^\mu s}$, equation \eqref{eq:InitialConditions_ODE} becomes simply a coupled ODE describing harmonic oscillation with frequency $m_\varphi$. Therefore, the Fourier transform has a peak at that frequency, modulated with the effects of the non-trivial hypersurface geometry.
+With increasing mass, one observers increasing width of the spectrum - as it was already observed and discussed in the last paragraph - as well as a second dominant bump away from $p_T=0\,\text{GeV}$, namely roughly at the particle mass. This fits the expectation of a general Fourier transformation picking up the dominant frequencies present in a field configuration. Requesting ${\epsilon=\const}$ and a hypothetically fixed value of the projection ${u_\mu\dt^\mu s}$, equation \eqref{eq:InitialConditions_ODE} becomes simply a coupled ODE describing harmonic oscillation with frequency $m_\varphi$. Therefore, the Fourier transform has a peak at that frequency, modulated with the effects of the non-trivial hypersurface geometry.
 
 To summarize the different scales at play in the spectra, we state 3 central observations:
 \begin{enumerate}

@@ -1,0 +1,17 @@
+\section{Resonance Decay Computation}
+\label{sec:Apdx_ResonanceComput}
+
+\begin{subequations}
+    \begin{align}
+        \omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}&=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int\frac{\dt^4q}{(2\pi)^4}\delta(q^2+m^2)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\delta\big(q^\mu p_\mu+m_a E^a_{b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int_{(0,0,-\infty,0)}^{(\infty,\infty,\infty,2\pi)}\frac{\dt m_{q,T} \dt q_T\dt\eta_q\dt\varphi_q}{(2\pi)^4}m_{q,T} q_T\delta(-m_{q,T}^2+q_T^2+m^2)\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-m_{q,T} m_{p,T}\cosh(\eta_q-\eta_p)+q_Tp_T\cos(\varphi_q-\varphi_p)+m_a E^a_{b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\int_{(0,-\infty,0)}^{(\infty,\infty,2\pi)}\frac{\dt q_T\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q_T}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T}\cosh\eta_q+q_Tp_T\cos\varphi_q+m_a E^a_{b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\times 2\times 2\int_{(0,0,0)}^{(\infty,\infty,\pi)}\frac{\dt q_T\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q_T}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T}\cosh\eta_q+q_Tp_T\cos\varphi_q+m_a E^a_{b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\times 2\times 2\times Q^2\times\int_{(0,1,-1)}^{(\infty,\infty,1)}\frac{\dt t\dt u\dt v}{(2\pi)^4}\frac{t}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\frac{1}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\times\nonumber\\
+        &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T} u+Q p_T tv+m_a E^a_{b\vert c}\big)\\
+        &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{4\pi Q^2}{(2\pi)^4}\times\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q }\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}        
+    \end{align}
+\end{subequations}
