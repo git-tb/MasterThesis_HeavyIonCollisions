@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <ctime>   // std::time, std::local_time
 #include <iomanip> // std::put_time
+#include <limits>   // signaling NaN
 
 #include <algorithm>
 #include <iterator>
@@ -20,10 +21,11 @@
 #include "cubature.h"
 #include "cuba.h"
 
-const double Q(1.0);
-const double ma(0.6), mb(0.14), mc(0.14);
-const double p_abc = 1/(2*ma) * sqrt( (pow(ma+mb,2)-pow(mc,2)) * (pow(ma-mb,2)-pow(mc,2)) );
-const double E_abc(sqrt(mb*mb + p_abc*p_abc));
+double B(1.0);
+double Q(1.0);
+double ma(0.6), mb(0.14), mc(0.14);
+double p_abc(std::numeric_limits<double>::signaling_NaN());
+double E_abc(std::numeric_limits<double>::signaling_NaN());
 
 std::function<double(double,double)> w = [](double p, double m) { return sqrt(p*p + m*m);};
 std::function<double(double, double,double,double)> absgradg = [](double t, double u, double v, double p) {
@@ -38,9 +40,13 @@ std::function<double(double,double,double)> u_star = [](double t, double v, doub
 };
 std::function<double(double, double,double)> areafactor = [](double t, double v, double p) {
     return sqrt(
-        pow( (1-t*t*Q*Q/pow(w(Q*t,ma),2))*v*p*Q/(w(p,mb)*w(Q*t,ma)),2)
+        pow(
+            ma*Q*(-t*Q*E_abc + v*ma*p) / (w(p,mb) * pow(w(t*Q,ma),3))
+            ,2)
         +pow(-1,2)
-        +pow(t*Q*p/(w(Q*t,ma)*w(p,mb)),2)
+        +pow(
+            t*Q*p/(w(Q*t,ma)*w(p,mb))
+            ,2)
     );
 };
 
@@ -112,12 +118,12 @@ std::vector<double> decayspec(
         double tmin(0);
         double tmax(qmax/Q);
 
-        double  A(ma*E_abc),
-                B(ps[i]*Q),
-                C(Q),
-                D(ma),
-                F(ps[i]),
-                G(mb);
+        // double  A(ma*E_abc),
+        //         B(ps[i]*Q),
+        //         C(Q),
+        //         D(ma),
+        //         F(ps[i]),
+        //         G(mb);
 
         // if(-A*A*D*D + D*D*D*D*(F*F + G*G) >= 0)
         //     vmin = A*C*(-A + sqrt(F*F + G*G) * sqrt(D*D*D*D*(F*F + G*G)/(A*A)))/
@@ -126,8 +132,10 @@ std::vector<double> decayspec(
         if(-E_abc*E_abc + ps[i]*ps[i] + mb*mb >= 0)
             vmin = sqrt(-E_abc*E_abc + ps[i]*ps[i] + mb*mb)/ps[i];
         // if(E_abc >= mb) // this is always true
-        tmin = ma * (E_abc*ps[i] - w(ps[i],mb) * sqrt(E_abc*E_abc - mb*mb))/(mb*mb);
-        tmax = ma * (E_abc*ps[i] + w(ps[i],mb) * sqrt(E_abc*E_abc - mb*mb))/(mb*mb);
+        // tmin = ma * (E_abc*ps[i] - w(ps[i],mb) * sqrt(E_abc*E_abc - mb*mb))/(mb*mb);
+        // tmax = ma * (E_abc*ps[i] + w(ps[i],mb) * sqrt(E_abc*E_abc - mb*mb))/(mb*mb);
+        tmin = ma * (E_abc*ps[i] - w(ps[i],mb) * p_abc)/(mb*mb);
+        tmax = ma * (E_abc*ps[i] + w(ps[i],mb) * p_abc)/(mb*mb);
 
         tmin = tmin > 0 ? tmin : 0;
         tmax = tmax < qmax/Q ? tmax : qmax/Q;
@@ -171,7 +179,7 @@ std::vector<double> decayspec(
             STATEFILE, SPIN,
             &nregions, &neval, &fail, integral, error, prob);
 
-        finalspec[i] = integral[0] * Q*Q*ma / (p_abc * M_PI);
+        finalspec[i] = B * integral[0] * Q*Q*ma / (p_abc * M_PI);
         callback(ps[i],finalspec[i]);
     }
     return finalspec;
@@ -187,12 +195,23 @@ int main(int ac, char* av[])
 
     // DECLARE SUPPORTED OPTIONS
     namespace po = boost::program_options;
-    po::options_description desc("Allowed options");
+    po::options_description desc(   "// ============================================================= \\\\\n"
+                                    "|| This program computes the induced pT-spectrum of a particle b ||\n"
+                                    "|| from the decay of a primary particle a via the decay process  ||\n"
+                                    "||                       a -> b +c                               ||\n"
+                                    "\\\\ ============================================================= //\n\n"
+                                    "Allowed options");
     desc.add_options()
         ("help", "produce help message")
-        ("pTmax", po::value<double>()->default_value(1.0), "spectrum is computed on [0,pTmax]")
-        ("NpT", po::value<int>()->default_value(100), "number of sample points within [0,pTmax]")
-        ("primespecpath",po::value<std::string>(),"csv file containing primary spectrum");
+        ("ma", po::value<double>()->default_value(0.8), "mass of particle a")
+        ("mb", po::value<double>()->default_value(0.14), "mass of particle b")
+        ("mc", po::value<double>()->default_value(0.14), "mass of particle c")
+        ("pTmax", po::value<double>()->default_value(2.0), "spectrum is computed on [0,pTmax]")
+        ("NpT", po::value<int>()->default_value(200), "number of sample points within [0,pTmax]")
+        ("primespecpath",po::value<std::string>(),"csv file containing primary spectrum")
+        ("B", po::value<double>()->default_value(1.0), "branching ratio of the decay")
+        ("Q", po::value<double>()->default_value(1.0), "dimensionless scale (should not influence the result)")
+        ;
 
     po::variables_map vm;
     po::store(po::parse_command_line(ac, av, desc), vm);
@@ -203,9 +222,17 @@ int main(int ac, char* av[])
         std::cout << desc << "\n";
         return 1;
     }
+    ma = vm["ma"].as<double>();
+    mb = vm["mb"].as<double>();
+    mc = vm["mc"].as<double>();
     pmax = vm["pTmax"].as<double>();
     Nps = vm["NpT"].as<int>();
     primespecpath = vm["primespecpath"].as<std::string>();
+    B = vm["B"].as<double>();
+    Q = vm["Q"].as<double>();
+
+    p_abc = 1/(2*ma) * sqrt( (pow(ma+mb,2)-pow(mc,2)) * (pow(ma-mb,2)-pow(mc,2)) );
+    E_abc = sqrt(mb*mb + p_abc*p_abc);
     /* #endregion */
 
     // CREATE DIRECTORY TO SAVE FILES
@@ -237,14 +264,17 @@ int main(int ac, char* av[])
     std::filesystem::create_directories(pathname); // CREATE DIRECTORY HERE
     writeFuncToFile(pathname+"/primespec_interp.txt", primespec, qmin, qmax, NSAMPLE, {"q","primespecRe","primespecIm"},{timestamp});
 
-    // COMPUTE DECAY SPEC
-    std::vector<double> ps(Nps);
-    for (int i = 0; i < ps.size(); i++) ps[i] = pmin + i * (pmax - pmin) / (Nps - 1);
-
     // AGAIN, WRITE TO FILE DURING COMPUTATION, SO PREPARE THE FILE BEFOREHAND
-    std::stringstream qmax_ss, primespec_ss;
+    std::stringstream qmax_ss, primespec_ss, userinput_ss;
     qmax_ss << "qmax:\t" << qmax;
     primespec_ss << "primespec:\t" << primespecpath;
+    userinput_ss    << "ma:\t" << ma << "\n# "  // the other comments are just 1 line per comment, therefore add the comment symbol "#" manually....
+                    << "mb:\t" << mb << "\n# "
+                    << "mc:\t" << mc << "\n# "
+                    << "B:\t" << B << "\n# "
+                    << "Q:\t" << Q << "\n# "
+                    << "[DEBUG] pabc:\t" << p_abc << "\n# "
+                    << "[DEBUG] Eabc:\t" << E_abc;
     std::vector<std::string> comments({
         timestamp,
         primespec_ss.str(),
@@ -258,6 +288,10 @@ int main(int ac, char* av[])
     for(int i = 0; i < comments.size(); i++) decayspec_output << "# " << comments[i] << std::endl;
     for(int i = 0; i < headers.size(); i++) { decayspec_output << headers[i]; if(i != headers.size()-1) decayspec_output << ","; }
     decayspec_output << std::endl;
+
+    // COMPUTE DECAY SPEC
+    std::vector<double> ps(Nps);
+    for (int i = 0; i < ps.size(); i++) ps[i] = pmin + i * (pmax - pmin) / (Nps - 1);
 
     std::function<void(double,double)> callback = [&decayspec_output](double p, double value)
     {

@@ -40,7 +40,7 @@ In detail, we use rotational and boost symmetry to eliminate the $\varphi_p$ and
     g(t,u,v)=-u\,\omega_{q,T} \omega_{p,T} +t\,v\,Qp_T+m_a E^a_{b\vert c}\,,\quad
         \vec{\nabla} g=
         \begin{pmatrix}
-            -t\,u\,\frac{\omega_{p,T}}{\omega_{q,T}}Q^2+vQ p_T\\
+            -t\,u\,Q^2\frac{\omega_{p,T}}{\omega_{q,T}}+v\,Q p_T\\
             -\omega_{q,T}\omega_{p,T}\\
             t\,Q p_T
         \end{pmatrix}\,.
@@ -71,7 +71,7 @@ Equation \eqref{eq:DecayMap_BjorkenCoord_DeltaManifold} defines a chart $(t,v)\m
         % \end{pmatrix}
         =\begin{pmatrix}
             1\\
-            \frac{t\,Q^2(E^a_{b\vert c}m_a+t\,v\,Qp_T)}{\omega_{p,T}(\omega_{q,T})^3}\\
+            \frac{m_aQ(-t\,QE^a_{b\vert c}+v\,m_a p_T)}{\omega_{p,T}(\omega_{q,T})^3}\\
             0
         \end{pmatrix}\,,\quad
     \frac{\partial x^i}{\partial v}=\begin{pmatrix}
@@ -80,7 +80,7 @@ Equation \eqref{eq:DecayMap_BjorkenCoord_DeltaManifold} defines a chart $(t,v)\m
         1
     \end{pmatrix}\,,\\
     \dt\Sigma^i=\frac{\partial x^i}{\partial t}\times \frac{\partial x^i}{\partial v}\dt t\dt v=\begin{pmatrix}
-        \frac{t\,Q^2(E^a_{b\vert c}m_a+t\,v\,Qp_T)}{\omega_{p,T}(\omega_{q,T})^3}\\
+        \frac{m_aQ(-t\,QE^a_{b\vert c}+v\,m_a p_T)}{\omega_{p,T}(\omega_{q,T})^3}\\
         -1\\
         \frac{t\,Qp_T}{\omega_{p,T}\omega_{q,T}}
     \end{pmatrix}\dt t\dt v\,.
@@ -89,6 +89,7 @@ which defines the scalar surface element via $\dt^2\sigma=\sigma(t,v)\dt t\dt v=
 \begin{multline}
     \omega_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\frac{BQ^2}{\pi p^a_{b\vert c}}\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q }\times\\
     \times\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}\,.
+    \label{eq:DecayCalc_FinalIntegral}
 \end{multline}
 
 For the numerics, the integration interval of $t$ can be kept finite for 2 reasons. First, the spectrum of the primary resonance can be assumed to decay sufficiently fast. Second, investigate the large $t$ behaviour of $u^\star(t,v)$. The claim is that there is always a $t_{\text{max}}(v,p_T)$ such that ${u^*(t>t_{\text{max}},v)<1}$. Since ${u^*(t,1)\geq u^*(t,v\in[-1,1])}$ it suffices to consider the case $v=1$. Also note that ${\frac{p_T}{\omega_{p,T}}<1}$ for every finite $p_T$. Since analogously ${\lim_{t\to\infty}\frac{t\,Q}{\omega_{q,T}}=1}$ and the "${+m_a E^a_{b\vert c}}$" becomes irrelevant in the limit, one arrives at ${\lim_{t\to\infty}u^\star(t,v)<1}$. Actually, the restriction ${u^\star(t,v)\geq 1}$ allows for drastic reduction of the integration domain, which is especially important for the seemingly divergent - nevertheless integrable - integrand.
@@ -96,17 +97,18 @@ For the numerics, the integration interval of $t$ can be kept finite for 2 reaso
 It is instructive to see how this restriction looks like. A priori, the integration domain is partially unbounded rectangular region ${\{(t,v)\in[0,\infty]\times[-1,1]\}}$. The line ${u^\star(t,v)=1}$ separates this domain into 2 regions, only 1 of which contributes to the above integration, namely where ${u^*(t,v)>1}$. In the $t-v$-plane, this line is given as a function ${v_1(t)}$ by
 \begin{equation}
     v_1(t)=\frac{\omega_{T,p}\omega_{T,q}-m_aE^a_{b\vert c}}{t\,Qp_T}\,.
+    \label{eq:DecayCalc_v1t}
 \end{equation}
-If we were to perform the multidimensional integration ${\int\int\dt t\dt v}$ via nested integrals, this would be sufficient, since we could first perform the $v$-integration over a $t$-dependent range and then integrate over $t$. Unfortunately this performs very poorly on the numeric side due to the iterative subdivision of the exterior integral causing a very large number of numerical evaluations of the interior integral. Instead, efficient multidimensional integral requires us to subdivide the $n$-dimensional integration domain in rectangular subdomains, thus looking for the smallest possible rectangular integration domain is desirable.
+If we were to perform the multidimensional integration ${\iint\dt t\dt v}$ via nested integrals, this would be sufficient, since we could first perform the $v$-integration over a $t$-dependent range and then integrate over $t$. Unfortunately this performs very poorly on the numeric side due to the iterative subdivision of the exterior integral causing a very large number of numerical evaluations of the interior integral. Instead, efficient multidimensional integration requires us to subdivide the $n$-dimensional integration domain in rectangular subdomains, thus looking for the smallest possible rectangular integration domain is desirable. This is the idea of cubature algorithms.
 
-To do so, we want to find the minimum an maximum values of $t$ and $v$. It is clear that ${v_{\text{max}}=1}$ by noting that ${\lim_{t\to\infty}v_1(t)>1}$. It is also clear that ${u^\star(t,v)>1}$ only if ${v>v_1(t)}$. Thus, in order to find a minimum value of $v$, we need to find the minimum of $v_1(t)$, which is located at
+To do so, we want to find the minimal and maximal values of $t$ and $v$. It is clear that ${v_{\text{max}}=1}$ by noting that ${\lim_{t\to\infty}v_1(t)>1}$. It is also clear that ${u^\star(t,v)>1}$ only if ${v>v_1(t)}$. Thus, in order to find a minimum value of $v$, we need to find the minimum of $v_1(t)$, which is located at
 \begin{equation}
     t^\prime=\frac{m_a\sqrt{(\omega_{p,T})^2-(E^a_{b\vert c})^2}}{QE^a_{b\vert c}}\,,\qquad v_{\text{min}}=v_1(t^\prime)=\frac{\sqrt{(\omega_{p,T})^2-(E^a_{b\vert c})^2}}{p}\,.
     \label{eq:Cubature_vmin}
 \end{equation}
-This minimum only exists when ${\omega_{p,T}>E^a_{b\vert c}}$. In this case, not only ${\lim_{t\to\infty}v_1(t)>1}$, but also ${\lim_{t\to0}v_1(t)>1}$. Therefore, minimal and maximal values of $t$ can be determined via
+This minimum only exists when ${\omega_{p,T}>E^a_{b\vert c}}$ or equivalently ${p_T>p^a_{b\vert c}}$. In this case, not only ${\lim_{t\to\infty}v_1(t)>1}$, but also ${\lim_{t\to0}v_1(t)>1}$. Therefore, minimal and maximal values of $t$ can be determined via
 \begin{equation}
-    v_1(t_{\text{max/min}})=1\qquad\iff\qquad t_{\text{max/min}}=\frac{m_a\Big(p_TE^a_{b\vert c}\pm\omega_{p,T}\sqrt{(E^a_{b\vert c})^2-m_b^2}\Big)}{m_b^2Q}\,.
+    v_1(t_{\text{max/min}})=1\qquad\iff\qquad t_{\text{max/min}}=\frac{m_a\big(p_TE^a_{b\vert c}\pm p^a_{b\vert c}\omega_{p,T}\big)}{m_b^2Q}\,.
     \label{eq:Cubature_tminmax}
 \end{equation}
 On the other hand, if ${\omega_{p,T}<E^a_{b\vert c}}$, it is obvious that ${\lim_{t\to0}v_1(t)=-\infty}$, and therefore one sets ${v_{\text{min}}=-1}$ and accordingly ${t_{\text{min}}=0}$.
@@ -126,9 +128,17 @@ To summarize, the smallest rectangular regions ${[t_{\text{min}},t_{\text{max}}]
             \noalign{\hrule height 1pt}
             ${\omega_{p,T}>E^a_{b\vert c}}$&\eqref{eq:Cubature_tminmax}&\eqref{eq:Cubature_tminmax}&\eqref{eq:Cubature_vmin}&$1$
         \end{tabular}
+        \captionof{table}{Smallest rectangular regions ${[t_{\text{min}},t_{\text{max}}]\times[v_{\text{min}},v_{\text{max}}]}$ that contain the entire relevant integration domain for the decay computation.}
     \end{minipage}
 }
-Obviously, the integration domain becomes drastically smaller as soon as ${\omega_{p,T}>E^a_{b\vert c}}$. This is the threshold where the unstable heavy particle $a$ cannot be at rest (${q_T=0}$) in order to decay into a lighter particle $b$ with possibly large momentum ${p_T>0}$. Above this threshold, the possible values of ${v\geq v_{\text{min}}}$ get closer to $1$, meaning the momenta of heavy resonance and decay product become increasingly aligned.
+Obviously, the integration domain becomes drastically smaller as soon as ${\omega_{p,T}>E^a_{b\vert c}}$. This is the threshold where the unstable heavy particle $a$ cannot be at rest (${q_T=0}$) in order to decay into a lighter particle $b$ with possibly large momentum ${p_T>0}$. Above this threshold, the possible values of ${v\geq v_{\text{min}}}$ get closer to $1$, meaning the momenta of heavy resonance and decay product become increasingly aligned. The above considerations are summarized graphically in\\\noindent
+\debugbox{
+    \begin{minipage}{\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{code/C++/DCCspec/otherfiles/DecayCalc_IntegrDom.png}
+        \captionof{figure}{Depiction of the integration domain for the 2 cases ${\omega_{p,T}<E^a_{b\vert c}}$ (blue) and ${\omega_{p,T}>E^a_{b\vert c}}$ (red). Solid lines show the graph of ${v_1(t)}$ (see equation \eqref{eq:DecayCalc_v1t}), the shaded regions are the regions of non-vanishing contributions in the integral \eqref{eq:DecayCalc_FinalIntegral}, i.e. the relevant integration domain defined by ${u^\star(t,v)\geq 1}$. Dashed lines are the boundaries of the smallest rectangular integration domains in each case.}
+    \end{minipage}
+}
 
 % \paragraph*{Again without Change of Variables}\mbox{}\\
 

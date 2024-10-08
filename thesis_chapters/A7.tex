@@ -11,7 +11,56 @@
         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\times 2\times 2\int_{(0,0,0)}^{(\infty,\infty,\pi)}\frac{\dt q_T\dt\eta_q\dt\varphi_q}{(2\pi)^4}\frac{q_T}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\times\nonumber\\
         &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T}\cosh\eta_q+q_Tp_T\cos\varphi_q+m_a E^a_{b\vert c}\big)\\
         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times2\pi\times 2\times 2\times Q^2\times\int_{(0,1,-1)}^{(\infty,\infty,1)}\frac{\dt t\dt u\dt v}{(2\pi)^4}\frac{t}{2}\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\frac{1}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\times\nonumber\\
-        &\phantom{=}\qquad\times\delta\big(-\omega_{q,T} \omega_{p,T} u+Q p_T tv+m_a E^a_{b\vert c}\big)\\
+        &\phantom{=}\qquad\times\delta\big(-u\,\omega_{q,T} \omega_{p,T}+t\,v\,Q p_T+m_a E^a_{b\vert c}\big)\\
         &=B\frac{4\pi^2m_a}{p^a_{b\vert c}}\times\frac{4\pi Q^2}{(2\pi)^4}\times\int_0^\infty\dt t\int_{-1}^1\dt v\;t\;\Big(\omega_{\vec{q}}\frac{\dt N_a}{\dt^3 q}\Big)\Big\vert_{t\cdot Q }\Bigg(\frac{\Theta(u-1)}{\sqrt{u^2-1}}\frac{1}{\sqrt{1-v^2}}\frac{\sigma(t,v)}{\Vert\vec{\nabla}g(t,u,v)\Vert}\Bigg)\Bigg\vert_{u=u^\star(t,v)}        
     \end{align}
 \end{subequations}
+
+Consider the momentum 4-vector $p^\mu$ of the deacy product.
+\begin{equation*}
+    \left\{
+    \begin{split}
+        p^t&=m_{T,p}\cosh\eta_p\\
+        p^x&=p_T\cos\varphi_p\\
+        p^y&=p_T\sin\varphi_p\\
+        p^z&=m_{T,p}\sinh\eta_p
+    \end{split}
+    \right.
+\end{equation*}
+We want to calculate how a given vector $q^\mu$ (especially its $q_T$-component) changes when we transform into a reference frame where $p^\mu$. Without loss of generality, ${\eta_p=0}$ and ${\varphi_p=0}$. In the new coordinate system, we find
+\begin{equation}
+    p^\prime=\begin{pmatrix}
+        m\\0\\0\\0
+    \end{pmatrix}=
+    \begin{pmatrix}
+        \gamma&-\gamma\beta&0&0\\
+        -\gamma\beta&\gamma&0&0\\
+        0&0&1&0\\
+        0&0&0&1
+    \end{pmatrix}
+    \begin{pmatrix}
+        m_{T,p}\\p_{T}\\0\\0
+    \end{pmatrix}
+    \qquad\iff\qquad
+    \beta=\frac{p_T}{m_{T,p}}\,.
+\end{equation}
+The same transformation applied to a second vector $q^\mu$ gives
+\begin{equation}
+    q^\prime=
+    \begin{pmatrix}
+        \gamma&-\gamma\beta&0&0\\
+        -\gamma\beta&\gamma&0&0\\
+        0&0&1&0\\
+        0&0&0&1
+    \end{pmatrix}
+    \begin{pmatrix}
+        q^t\\q^x\\q^y\\q^z
+    \end{pmatrix}
+    =\begin{pmatrix}
+        \gamma(q^t-\beta q^x)\\\gamma(-\beta q^t+q^x)\\q^y\\q^z
+    \end{pmatrix}\,.
+\end{equation}
+The new transverse momentum component is given by
+\begin{align}
+    q^\prime_T&=\sqrt{(q^{\prime,x})^2+(q^{\prime,y})^2}
+\end{align}
