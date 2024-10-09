@@ -22,19 +22,7 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 pTmax = 2
 NpT = 200
 
-# parentdir = "data/init_real_m140_consteps_20240826_143119/*"
-# parentdir = "data/init_real_m226_consteps_20240826_143119/*"
-# parentdir = "data/init_real_m312_consteps_20240826_143137/*"
-# parentdir = "data/init_real_m398_consteps_20240826_143151/*"
-# parentdir = "data/init_real_m484_consteps_20240826_143205/*"
-# parentdir = "data/init_real_m570_consteps_20240826_143224/*"
-# parentdir = "data/init_real_m656_consteps_20240826_143237/*"
-# parentdir = "data/init_real_m742_consteps_20240826_143253/*"
-# parentdir = "data/init_real_m828_consteps_20240826_143307/*"
-# parentdir = "data/init_real_m914_consteps_20240826_143326/*"
-# parentdir = "data/init_real_m1000_consteps_20240826_143341/*"
-
-parentdir = "data/init_real_m140_s-1_consteps_20240926_124611/*"
+# parentdir = "data/init_real_m140_s-1_consteps_20240926_124611/*"
 # parentdir = "data/init_real_m226_s-1_consteps_20240926_124618/*"
 # parentdir = "data/init_real_m312_s-1_consteps_20240926_124625/*"
 # parentdir = "data/init_real_m398_s-1_consteps_20240926_124635/*"
@@ -46,20 +34,33 @@ parentdir = "data/init_real_m140_s-1_consteps_20240926_124611/*"
 # parentdir = "data/init_real_m914_s-1_consteps_20240926_124737/*"
 # parentdir = "data/init_real_m1000_s-1_consteps_20240926_124748/*"
 
-m = 0.140
+# parentdir = "data/init_real_m140_consteps_20240826_143119/*"
+# parentdir = "data/init_real_m226_consteps_20240826_143119/*"
+# parentdir = "data/init_real_m312_consteps_20240826_143137/*"
+# parentdir = "data/init_real_m398_consteps_20240826_143151/*"
+# parentdir = "data/init_real_m484_consteps_20240826_143205/*"
+# parentdir = "data/init_real_m570_consteps_20240826_143224/*"
+parentdir = "data/init_real_m656_consteps_20240826_143237/*"
+# parentdir = "data/init_real_m742_consteps_20240826_143253/*"
+# parentdir = "data/init_real_m828_consteps_20240826_143307/*"
+# parentdir = "data/init_real_m914_consteps_20240826_143326/*"
+# parentdir = "data/init_real_m1000_consteps_20240826_143341/*"
+
+# m = 0.140
 # m = 0.226
 # m = 0.312
 # m = 0.398
 # m = 0.484
 # m = 0.570
-# m = 0.656
+m = 0.656
 # m = 0.742
 # m = 0.828
 # m = 0.914
-m = 1.000
+# m = 1.000
 
 initpaths = glob.glob(parentdir)
 initpaths.sort(key=lambda s:(len(s), s))
+initpaths.reverse()
 
 for initpath in initpaths:
     result = subprocess.run(args=[
@@ -91,11 +92,11 @@ for spec in lastspecs:
 ###############################################################
 ###############################################################
 
-pTmax = 2
-NpT = 200
-m = 0.14
+pTmax = 10
+NpT = 1000
+m = 0.656
 
-initpath = "data/init_real_pi_constfield_20240822_161734/init5.csv"
+initpath = "data/init_real_m656_consteps_20240826_143237/init10.csv"
 result = subprocess.run(args=[
         "./bin/spec",
         "--m=%f"%(m),
@@ -619,21 +620,56 @@ fig_spec.savefig("data/images/"+parentdir.replace("data/","").replace("/*/","")+
 plt.close()
 
 # %%
-# COMPUTE DECAY SPECTRUM FROM PRIMARY SPECTRUM
+###############################################################
+###############################################################
+# COMPUTE DECAY SPECTRA
+###############################################################
+###############################################################
 
-pTmax = 1
-NpT = 100
-# primespecpath = "data/spec_20240730_131734/spectr.txt"
-primespecpath = "data/spec_20240806_151611/spectr.txt"
+ma, mb, mc = 0.656, 0.14, 0.14
+pTmax = 2
+NpT = 200
+primespecpath = "data/decay_convtest/spec_20241009_154507_10GeV/spectr.txt"
 
 subprocess.run(args=[
     "./bin/decay",
+    "--ma=%f"%(ma),
+    "--mb=%f"%(mb),
+    "--mc=%f"%(mc),
     "--pTmax=%f"%(pTmax),
     "--NpT=%d"%(NpT),
     "--primespecpath=%s"%(primespecpath)
 ])
+
+#%%
+###############################################################
+###############################################################
+# PLOT SINGLE DECAY SPECTRUM
+###############################################################
+###############################################################
+
+parentdir = "data/decayspec_20241009_170755"
+
+fig, (ax1,ax2) = plt.subplots(ncols=2,figsize=(7*1.61,7))
+
+df_1 = pd.read_csv(parentdir+"/primespec_interp.txt",comment="#")
+df_2 = pd.read_csv(parentdir+"/decayspec.txt",comment="#")
+
+ax1.plot(df_1["q"].to_numpy(), df_1["primespecRe"].to_numpy(),marker="")
+ax2.plot(df_2["p"].to_numpy(), df_2["finalspecRe"].to_numpy(),marker="")
+
+ax1.set_yscale("log")
+ax2.set_yscale("log")
+
+fig.tight_layout()
+plt.show()
+
 # %%
-# PLOT DECAYTEST SPECTRA
+###############################################################
+###############################################################
+# COMPUTE DECAY SPECTRA
+###############################################################
+###############################################################
 
 plt.style.use("mplstyles/myclassic_white.mplstyle")
 

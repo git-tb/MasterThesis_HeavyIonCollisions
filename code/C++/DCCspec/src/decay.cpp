@@ -279,6 +279,7 @@ int main(int ac, char* av[])
         timestamp,
         primespec_ss.str(),
         qmax_ss.str(),
+        userinput_ss.str(),
     });
     std::vector<std::string> headers({"p","finalspecRe","finalspecIm"});
 
