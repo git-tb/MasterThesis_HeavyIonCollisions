@@ -9,6 +9,8 @@ import os
 import scipy.interpolate
 from matplotlib import gridspec
 
+GOLDEN = 1.61803
+
 get_ipython().run_line_magic("matplotlib","qt")
 plt.style.use("mplstyles/myclassic_white.mplstyle")
 
@@ -19,8 +21,8 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 ###############################################################
 ###############################################################
 
-pTmax = 2
-NpT = 200
+pTmax = 3
+NpT = 300
 
 # parentdir = "data/init_real_m140_s-1_consteps_20240926_124611/*"
 # parentdir = "data/init_real_m226_s-1_consteps_20240926_124618/*"
@@ -641,6 +643,31 @@ subprocess.run(args=[
     "--primespecpath=%s"%(primespecpath)
 ])
 
+# %%
+###############################################################
+###############################################################
+# COMPUTE LIST OF DECAY SPECTRA
+###############################################################
+###############################################################
+
+ma, mb, mc = 0.656, 0.14, 0.14
+pTmax = 2
+NpT = 200
+
+paths = glob.glob("data/decay_inittest/*/spectr.txt")
+paths.sort()
+
+for primespecpath in paths:
+    subprocess.run(args=[
+        "./bin/decay",
+        "--ma=%f"%(ma),
+        "--mb=%f"%(mb),
+        "--mc=%f"%(mc),
+        "--pTmax=%f"%(pTmax),
+        "--NpT=%d"%(NpT),
+        "--primespecpath=%s"%(primespecpath)
+    ])
+
 #%%
 ###############################################################
 ###############################################################
@@ -648,75 +675,161 @@ subprocess.run(args=[
 ###############################################################
 ###############################################################
 
-parentdir = "data/decayspec_20241009_170755"
+plt.style.use("mplstyles/myclassic_white.mplstyle")
 
-fig, (ax1,ax2) = plt.subplots(ncols=2,figsize=(7*1.61,7))
+dir = "decayspec_20241009_170755"
+path = "data/decaydecay_convtest/"+dir+"/"
 
-df_1 = pd.read_csv(parentdir+"/primespec_interp.txt",comment="#")
-df_2 = pd.read_csv(parentdir+"/decayspec.txt",comment="#")
+fig_decayspec, ax_decayspec = plt.subplots(figsize=(7,7))
+fig_primespec, ax_primespec = plt.subplots(figsize=(7,7))
+fig_decayspec.suptitle(path+"decayspec")
+fig_primespec.suptitle(path+"primespec")
 
-ax1.plot(df_1["q"].to_numpy(), df_1["primespecRe"].to_numpy(),marker="")
-ax2.plot(df_2["p"].to_numpy(), df_2["finalspecRe"].to_numpy(),marker="")
+df_ps = pd.read_csv(path+"primespec_interp.txt",comment="#")
+ax_primespec.plot(df_ps["q"],df_ps["primespecRe"],marker="")
 
-ax1.set_yscale("log")
-ax2.set_yscale("log")
+ax_primespec.set_yscale("log")
+ax_primespec.set_ylabel(r"$\frac{1}{2\pi q_T}\frac{\mathrm{d}N}{\mathrm{d}q_T\mathrm{d}\eta_q}\ [\mathrm{GeV}^{-2}]$")
+ax_primespec.set_xlabel(r"$q_T\ [\mathrm{GeV}]$")
 
-fig.tight_layout()
+ylims = ax_primespec.get_ylim()
+ax_primespec.set_ylim((ylims[0],ylims[1]*100))
+
+istart, iend = 0, 200
+pad = 0.05
+x0, y0 = 0.4, 0.45
+dx, dy = 1-x0-pad, 1-y0-pad
+axin = ax_primespec.inset_axes([x0, y0, dx, dy])
+axin.plot(df_ps["q"][istart:iend],df_ps["primespecRe"][istart:iend],marker="")
+axin.set_yscale("log")
+
+df_ds = pd.read_csv(path+"decayspec.txt",comment="#")
+ax_decayspec.plot(df_ds["p"].to_numpy(),df_ds["finalspecRe"].to_numpy(),marker="")
+
+ax_decayspec.set_yscale("log")
+
+ax_decayspec.set_ylabel(r"$\frac{1}{2\pi p_T}\frac{\mathrm{d}N}{\mathrm{d}p_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
+ax_decayspec.set_xlabel(r"$p_T\ [\mathrm{GeV}]$")
+
+ax_decayspec.legend(loc=3,fontsize=15)
+
+fig_decayspec.tight_layout()
+fig_primespec.tight_layout()
+
+fig_primespec.savefig("data/images/"+dir+"_primespec.png")
+fig_decayspec.savefig("data/images/"+dir+"_decayspec.png")
+
 plt.show()
 
 # %%
 ###############################################################
 ###############################################################
-# COMPUTE DECAY SPECTRA
+# PLOT DECAY SPECTRA FOR CONVTEST DATA
 ###############################################################
 ###############################################################
 
 plt.style.use("mplstyles/myclassic_white.mplstyle")
 
-paths = [
-"data/decaytest_1to10Gev/decayspec_20240806_161324/",
-"data/decaytest_1to10Gev/decayspec_20240806_161542/",
-"data/decaytest_1to10Gev/decayspec_20240806_162432/",
-"data/decaytest_1to10Gev/decayspec_20240806_162634/",
-"data/decaytest_1to10Gev/decayspec_20240806_163017/",
-"data/decaytest_1to10Gev/decayspec_20240806_163439/",
-"data/decaytest_1to10Gev/decayspec_20240806_163743/",
-"data/decaytest_1to10Gev/decayspec_20240806_164059/",
-"data/decaytest_1to10Gev/decayspec_20240806_164445/",
-"data/decaytest_1to10Gev/decayspec_20240806_164831/",
-""][:-1]
+paths = glob.glob("data/decay_convtest/decayspec_*/")
+paths.sort()
 
-fig_decayspec, (ax_primespec,ax_decayspec)= plt.subplots(ncols=2,figsize=(15,7))
-fig_decayspec.suptitle("data/decaytest_1to10Gev")
+fig_decayspec, ax_decayspec = plt.subplots(figsize=(7,7))
+fig_primespec, ax_primespec = plt.subplots(figsize=(7,7))
+fig_decayspec.suptitle("data/decaydecay_convtest/*/decayspec_*")
+fig_primespec.suptitle("data/decaydecay_convtest/*/primespec_*")
 
 df_ps = pd.read_csv(paths[-1]+"primespec_interp.txt",comment="#")
 ax_primespec.plot(df_ps["q"],df_ps["primespecRe"],marker="")
+
 ax_primespec.set_yscale("log")
-ax_primespec.set_ylabel(r"$\frac{1}{2\pi q^\perp}\frac{\mathrm{d}N}{\mathrm{d}q^\perp\mathrm{d}\eta_q}$")
-ax_primespec.set_xlabel(r"$q^\perp$")
+ax_primespec.set_ylabel(r"$\frac{1}{2\pi q_T}\frac{\mathrm{d}N}{\mathrm{d}q_T\mathrm{d}\eta_q}\ [\mathrm{GeV}^{-2}]$")
+ax_primespec.set_xlabel(r"$q_T\ [\mathrm{GeV}]$")
+
+ylims = ax_primespec.get_ylim()
+ax_primespec.set_ylim((ylims[0],ylims[1]*100))
 
 istart, iend = 0, 200
-axin = ax_primespec.inset_axes([0.35,0.45,0.6,0.5])
+pad = 0.05
+x0, y0 = 0.4, 0.45
+dx, dy = 1-x0-pad, 1-y0-pad
+axin = ax_primespec.inset_axes([x0, y0, dx, dy])
 axin.plot(df_ps["q"][istart:iend],df_ps["primespecRe"][istart:iend],marker="")
 axin.set_yscale("log")
 
-for path in paths:
+for (i,path) in enumerate(paths):
     df_ps = pd.read_csv(path+"primespec_interp.txt",comment="#")
     qmax = max(df_ps["q"].to_numpy())
 
     df_ds = pd.read_csv(path+"decayspec.txt",comment="#")
     ax_decayspec.plot(df_ds["p"].to_numpy(),df_ds["finalspecRe"].to_numpy(),
-                label=r"$q_{\mathrm{max}}=%.1f\,\mathrm{GeV}$"%(qmax),ls="None",ms=10)
+                label=r"$q_{\mathrm{max}}=%.1f\,\mathrm{GeV}$"%(qmax),
+                marker="")
+    
+    # t = i/(len(paths)-1)
+    # col=(1-t,0,t)
+    # ax_decayspec.plot(df_ds["p"].to_numpy(),df_ds["finalspecRe"].to_numpy(),
+    #             label=r"$q_{\mathrm{max}}=%.1f\,\mathrm{GeV}$"%(qmax),
+    #             marker="",c=col)
 
 ax_decayspec.set_yscale("log")
 
-ax_decayspec.set_ylabel(r"$\frac{1}{2\pi p^\perp}\frac{\mathrm{d}N}{\mathrm{d}p^\perp\mathrm{d}\eta_p}$")
-ax_decayspec.set_xlabel(r"$p^\perp$")
+ax_decayspec.set_ylabel(r"$\frac{1}{2\pi p_T}\frac{\mathrm{d}N}{\mathrm{d}p_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
+ax_decayspec.set_xlabel(r"$p_T\ [\mathrm{GeV}]$")
+
+ax_decayspec.legend(loc=3,fontsize=15)
 
 fig_decayspec.tight_layout()
+fig_primespec.tight_layout()
 
-plt.legend()
+# fig_primespec.savefig("data/images/decaydecay_convtest_primespec.png")
+# fig_decayspec.savefig("data/images/decaydecay_convtest_decayspecs.png")
+
 plt.show()
+
+# %%
+###############################################################
+###############################################################
+# PLOT DECAY SPECTRA FOR INITTEST DATA
+###############################################################
+###############################################################
+
+plt.style.use("mplstyles/myclassic_white.mplstyle")
+
+paths = glob.glob("data/decay_inittest/decayspec_*/")
+paths.sort()
+
+fig_decayspec, ax_decayspec = plt.subplots(figsize=(7,7))
+fig_primespec, ax_primespec = plt.subplots(figsize=(7,7))
+fig_decayspec.suptitle("data/decaydecay_inittest/*/decayspec_*")
+fig_primespec.suptitle("data/decaydecay_inittest/*/primespec_*")
+
+for (i,path) in enumerate(paths):
+    t = i/(len(paths)-1)
+    col=(1-t,0,t)
+
+    df_ps = pd.read_csv(path+"primespec_interp.txt",comment="#")
+    df_ds = pd.read_csv(path+"decayspec.txt",comment="#")
+
+    ax_primespec.plot(df_ps["q"].to_numpy(),df_ps["primespecRe"].to_numpy(), marker="",c=col)
+    ax_decayspec.plot(df_ds["p"].to_numpy(),df_ds["finalspecRe"].to_numpy(), marker="",c=col)
+
+ax_primespec.set_yscale("log")
+ax_decayspec.set_yscale("log")
+
+ax_primespec.set_ylabel(r"$\frac{1}{2\pi q_T}\frac{\mathrm{d}N}{\mathrm{d}q_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
+ax_primespec.set_xlabel(r"$q_T\ [\mathrm{GeV}]$")
+
+ax_decayspec.set_ylabel(r"$\frac{1}{2\pi p_T}\frac{\mathrm{d}N}{\mathrm{d}p_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
+ax_decayspec.set_xlabel(r"$p_T\ [\mathrm{GeV}]$")
+
+fig_decayspec.tight_layout()
+fig_primespec.tight_layout()
+
+fig_primespec.savefig("data/images/decaydecay_inittest_primespec.png")
+fig_decayspec.savefig("data/images/decaydecay_inittest_decayspecs.png")
+
+plt.show()
+
 # %%
 #############################################################
 ########### COMPUTE SMOOTHER FREEZEOUT GEOMETRY #############

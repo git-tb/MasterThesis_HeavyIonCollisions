@@ -303,6 +303,7 @@ Considering the fact that we have already proposed ways to initialize the real v
 \end{equation}
 
 \section{Examplary Spectra}
+\label{sec:ExampleSpectra}
 
 This section is aimed towards finding some intuition for the relation between particle mass, initial conditions and resulting spectra.
 
@@ -364,6 +365,8 @@ Next, test the aforementioned $\epsilon=\const$ prescription of defining initial
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240822_135426_spec.png}        
             \end{minipage}
         }
+        \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.140\,\text{GeV}$.}
+        \label{fig:SpecRealConstEps_m140}
     \end{minipage}
 }
 The red graphs represent field configurations that are approximately constant on the ${\tau\approx\const}$ section of the freezeout surface. They seem to generate a distinct "break" in the spectrum, where the average slope (in the log scale) changes abruptly.
@@ -385,6 +388,8 @@ As before, let us also change the mass in this scenario. Now, the mass further i
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143119_m226_spec.png}        
             \end{minipage}
         }
+        \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.226\,\text{GeV}$.}
+        \label{fig:SpecRealConstEps_m226}
     \end{minipage}
 }
 
@@ -403,6 +408,8 @@ As before, let us also change the mass in this scenario. Now, the mass further i
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143151_m398_spec.png}        
             \end{minipage}
         }
+        \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.398\,\text{GeV}$.}
+        \label{fig:SpecRealConstEps_m398}
     \end{minipage}
 }
 
@@ -421,6 +428,8 @@ As before, let us also change the mass in this scenario. Now, the mass further i
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143224_m570_spec.png}        
             \end{minipage}
         }
+        \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.570\,\text{GeV}$.}
+        \label{fig:SpecRealConstEps_m570}
     \end{minipage}
 }
 
@@ -439,6 +448,8 @@ As before, let us also change the mass in this scenario. Now, the mass further i
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143253_m742_spec.png}        
             \end{minipage}
         }
+        \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.742\,\text{GeV}$.}
+        \label{fig:SpecRealConstEps_m742}
     \end{minipage}
 }
 
@@ -457,6 +468,8 @@ As before, let us also change the mass in this scenario. Now, the mass further i
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143326_m914_spec.png}        
             \end{minipage}
         }
+        \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.914\,\text{GeV}$.}
+        \label{fig:SpecRealConstEps_m914}
     \end{minipage}
 }
 
@@ -475,9 +488,11 @@ As before, let us also change the mass in this scenario. Now, the mass further i
                 \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143341_m1000_spec.png}        
             \end{minipage}
         }
+        \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=1\,\text{GeV}$.}
+        \label{fig:SpecRealConstEps_m1000}
     \end{minipage}
 }
-With increasing mass, one observers increasing width of the spectrum - as it was already observed and discussed in the last paragraph - as well as a second dominant bump away from $p_T=0\,\text{GeV}$, namely roughly at the particle mass. This fits the expectation of a general Fourier transformation picking up the dominant frequencies present in a field configuration. Requesting ${\epsilon=\const}$ and a hypothetically fixed value of the projection ${u_\mu\dt^\mu s}$, equation \eqref{eq:InitialConditions_ODE} becomes simply a coupled ODE describing harmonic oscillation with frequency $m_\varphi$. Therefore, the Fourier transform has a peak at that frequency, modulated with the effects of the non-trivial hypersurface geometry.
+With increasing mass, one observers increasing width of the spectrum - as it was already observed and discussed in the last paragraph - as well as a second dominant bump away from $p_T=0\,\text{GeV}$, namely roughly at the particle mass. This fits the expectation of a general Fourier transformation picking up the dominant frequencies present in a field configuration. Requesting ${\epsilon=\const}$ and a hypothetically fixed value of the projection ${u_\mu\dt^\mu s}$, equation \eqref{eq:InitialConditions_ODE} becomes simply a coupled ODE describing harmonic oscillation with frequency $m_\varphi$. Therefore, the Fourier transform has a peak at that frequency, modulated with the effects of the non-trivial hypersurface geometry. The precise way in which the geometry affects this behaviour of the Fourier transform seems to be more dependent on details of the initial conditions as we go to larger masses.
 
 To summarize the different scales at play in the spectra, we state 3 central observations:
 \begin{enumerate}

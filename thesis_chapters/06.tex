@@ -1,5 +1,7 @@
 \chapter{Resonance Decays}
 
+\section{Decay Map and Energy Conservation}
+
 If the particles considered on the freezout surface are not stable, the spectra computed there cannot be directly related to the spectra on the detector surface. Instead, one has to calculate contributions from all possible decay channels/heavier resonances $a$ that decay into the (stable) resonance $b$ under consideration. This is done via the linear decay map
 \begin{equation}
     E_{\vec{p}}\frac{\dt N_b}{\dt^3p}=\int\frac{\dt^3q}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}D^a_b(\vec{p},\vec{q})E_{\vec{q}}\frac{\dt N_a}{\dt^3 q}
@@ -20,7 +22,7 @@ In the rest frame of particle $a$ one finds $\vec{p}\equiv \vec{p}_b=-\vec{p}_c$
 \end{equation}
 with the solution space restricted only by $\vec{p}^2=(p^a_{b\vert c})^2$. The energy of particle $b$ in the rest frame of $a$, expressed covariantly, is just $E^a_{b\vert c}=-\frac{1}{m_a}q^\mu p_\mu$ and thus the above formula simply represents energy conservation.
 
-To decompose the above delta function, rewrite $q^\mu p_\mu$ in the coordinates used in \ref{sec:SpectraCoordinateSystem}.
+To decompose the above energy conserving delta function, rewrite $q^\mu p_\mu$ in the coordinates used in \ref{sec:SpectraCoordinateSystem}.
 \begin{equation}
     q^\mu p_\mu=-m_{q,T} m_{p,T}\cosh(\eta_q-\eta_p)+q_T p_T\cos(\varphi_q-\varphi_p)
 \end{equation}
@@ -92,7 +94,9 @@ which defines the scalar surface element via $\dt^2\sigma=\sigma(t,v)\dt t\dt v=
     \label{eq:DecayCalc_FinalIntegral}
 \end{multline}
 
-For the numerics, the integration interval of $t$ can be kept finite for 2 reasons. First, the spectrum of the primary resonance can be assumed to decay sufficiently fast. Second, investigate the large $t$ behaviour of $u^\star(t,v)$. The claim is that there is always a $t_{\text{max}}(v,p_T)$ such that ${u^*(t>t_{\text{max}},v)<1}$. Since ${u^*(t,1)\geq u^*(t,v\in[-1,1])}$ it suffices to consider the case $v=1$. Also note that ${\frac{p_T}{\omega_{p,T}}<1}$ for every finite $p_T$. Since analogously ${\lim_{t\to\infty}\frac{t\,Q}{\omega_{q,T}}=1}$ and the "${+m_a E^a_{b\vert c}}$" becomes irrelevant in the limit, one arrives at ${\lim_{t\to\infty}u^\star(t,v)<1}$. Actually, the restriction ${u^\star(t,v)\geq 1}$ allows for drastic reduction of the integration domain, which is especially important for the seemingly divergent - nevertheless integrable - integrand.
+\paragraph{Restricting the Integration Domain}
+
+For the numerics, the integration interval of $t$ can be kept finite for 2 reasons. First, the spectrum of the primary resonance can be assumed to decay sufficiently fast. Second, investigate the large $t$ behaviour of $u^\star(t,v)$. The claim is that there is always a $t_{\text{max}}(v,p_T)$ such that ${u^*(t>t_{\text{max}},v)<1}$. Since ${u^*(t,1)\geq u^*(t,v\in[-1,1])}$ it suffices to consider the case $v=1$. Also note that ${\frac{p_T}{\omega_{p,T}}<1}$ for every finite $p_T$. Since analogously ${\lim_{t\to\infty}\frac{t\,Q}{\omega_{q,T}}=1}$ and the "${+m_a E^a_{b\vert c}}$" becomes irrelevant in the limit, one arrives at ${\lim_{t\to\infty}u^\star(t,v)<1}$. Actually, the restriction ${u^\star(t,v)\geq 1}$ allows for drastic reduction of the integration domain, which is especially important for the seemingly divergent - nevertheless integrable - integrand. This is ultimately a consequence of energy conservation, allowing only for specific value of momentum rapidity, encoded by $u$.
 
 It is instructive to see how this restriction looks like. A priori, the integration domain is partially unbounded rectangular region ${\{(t,v)\in[0,\infty]\times[-1,1]\}}$. The line ${u^\star(t,v)=1}$ separates this domain into 2 regions, only 1 of which contributes to the above integration, namely where ${u^*(t,v)>1}$. In the $t-v$-plane, this line is given as a function ${v_1(t)}$ by
 \begin{equation}
@@ -137,6 +141,7 @@ Obviously, the integration domain becomes drastically smaller as soon as ${\omeg
         \centering
         \includegraphics[width=0.8\linewidth]{code/C++/DCCspec/otherfiles/DecayCalc_IntegrDom.png}
         \captionof{figure}{Depiction of the integration domain for the 2 cases ${\omega_{p,T}<E^a_{b\vert c}}$ (blue) and ${\omega_{p,T}>E^a_{b\vert c}}$ (red). Solid lines show the graph of ${v_1(t)}$ (see equation \eqref{eq:DecayCalc_v1t}), the shaded regions are the regions of non-vanishing contributions in the integral \eqref{eq:DecayCalc_FinalIntegral}, i.e. the relevant integration domain defined by ${u^\star(t,v)\geq 1}$. Dashed lines are the boundaries of the smallest rectangular integration domains in each case.}
+        \label{fig:DecayCalc_IntegrDom}
     \end{minipage}
 }
 
@@ -200,6 +205,66 @@ Obviously, the integration domain becomes drastically smaller as soon as ${\omeg
 %     \sigma(t,\varphi)\dt t\dt\varphi&\defeq \Vert\dt^2\sigma^i\Vert
 % \end{align}
 % \end{subequations}
+
+\section{Decay Spectra}
+
+Moving toward some results and actual spectra, let us try to investigate the decay ${a\to b+b}$ of a heavy particle $a$ into 2 equal lighter particles $b$. This is effectively the situation to be considered for the decays of the $\sigma$-meson into pions, for which there are the 2 decay channels
+\begin{equation}
+    \sigma\to\pi^0\pi^0\,,\qquad\sigma\to\pi^+\pi^-\,.
+\end{equation}
+To model this scenario to some extent, choose ${m_a=656\,\text{MeV}}$ and ${m_b=m_c=140\,\text{MeV}}$, which implies ${p^a_{b\vert c}\approx 297\,\text{MeV}}$. Building on the results shown in section \ref{sec:ExampleSpectra}, we choose initial conditions following the $\epsilon=\const$-prescription for real fields on the freezeout surface.
+
+\paragraph{Convergence Test}
+
+In the last paragraphs we argued that one does not need to compute the spectra of the primary resonances to arbitrarily high momentum $q_T$ because of numerical constraints, but also because the spectra must decrease sufficiently fast in order to be phyically reasonable, thus contributions from higher $q_T$ values of the heavy resonance will have negligible contributions to the low $p_T$ spectrum of the decay products. To confirm this statement, let us investigate how sensitively the spectra of the decay product depends on the maximum momentum $q_{T,\text{max}}$ up to which the primary spectrum is computed. To do so, we choose a representative from the $\epsilon=\const$-prescription to define initial data for reals fields of mass $m_a$ and restrict artificially the spectrum computation to the interval ${[0,q_{T,\text{max}}]}$. For a set of different values $q_{T,\text{max}}$, the decay spectra are computed according to formula \eqref{eq:DecayCalc_FinalIntegral}. These investigations are relevant, since computing spectra to high values of transverse momentum is increasingly costly.\\\noindent
+\debugbox{
+    \begin{minipage}{\linewidth}
+        \centering
+        \debugbox{
+            \begin{minipage}{0.45\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/decaydecay_convtest_primespec.png}        
+            \end{minipage}
+        }
+        \debugbox{
+            \begin{minipage}{0.45\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/decaydecay_convtest_decayspecs.png}        
+            \end{minipage}
+        }
+        \captionof{figure}{Underlying spectrum of the primary heavy resonance $a$ (left) and resulting spectra of the lighter resonance $b$ (right), for different restrictions on $q_{T,\text{max}}$.}
+        \label{fig:decayspec_convtest}
+    \end{minipage}
+}
+Analyzing figure \ref{fig:decayspec_convtest}, we derive that in order to compute the decay spectrum of the lighter resonance $b$ up to transverse momenta $p_T$, on should compute the spectrum of the heavy reasonance $a$ up to ${q_T>p_T}$. The most prominent feature of the decay spectrum is a plateau in the region ${p_T\in[0,p^a_{b\vert c}]}$. Having spent thoughts on the implications of energy conversation on the details of the computation already, it is easy to give an explanation on the origin of this plateau structure. As we saw in the last chapter, all primary spectra computed here are significantly peaked around ${q_T=0\,\text{GeV}}$. Only for ${p_T< p^a_{b\vert c}}$ or ${\omega_{p,T}>E^a_{b\vert c}}$ can the primary resonance be at rest and the large peak of the pimary spectrum contributes in the decay spectrum. For larger $p_T$, energy conservation requires the primary resonance to have non-vanishing momentum ${q_T>0}$ oriented approximately parallel to the momentum of magnitude ${p_T}$ of the decay product. This is essentially the statement of figure \ref{fig:DecayCalc_IntegrDom}.
+
+\paragraph{Sensitivity on Initial Conditions}
+
+In chapter \ref{sec:ExampleSpectra} we systematically tested 1-parameter families of initical condition within the ${\epsilon=\const}$-prescription. Recalling the spectra presented there, noticeable differences are especially present for larger particle masses. Thus, we should also study how these differences in initial conditions affect the shape of the spectra of the decay products. The results of this investigation are shown in the following figure \ref{fig:decayspec_inittest}.\\\noindent
+\debugbox{
+    \begin{minipage}{\linewidth}
+        \centering
+        \debugbox{
+            \begin{minipage}{0.45\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/decaydecay_inittest_primespec.png}        
+            \end{minipage}
+        }
+        \debugbox{
+            \begin{minipage}{0.45\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/decaydecay_inittest_decayspecs.png}        
+            \end{minipage}
+        }
+        \captionof{figure}{Underlying spectra of the primary heavy resonance $a$ (left) and resulting spectra of the lighter resonance $b$ (right), for different initial conditions (compare e.g. figure \ref{fig:SpecRealConstEps_m570}).}
+        \label{fig:decayspec_inittest}
+    \end{minipage}
+}
+For the low $p_T$ regime of the decay spectra, especially the aforementioned ${p_T<p^a_{b\vert c}}$ plateau, the precise initial conditions of the primary resonance do not play a significant role. Differences appear only at ${p_T>p^a_{b\vert c}}$, where we expect the effects of the condensate fields on the measurement to be negligible anyways.
+
+
+
+
 
 Let us try to evaluate the decay map in the rest frame of the decay product b, such that $p^\mu=(m_b,\vec{0})$.
 \begin{subequations}
