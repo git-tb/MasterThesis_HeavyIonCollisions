@@ -46,6 +46,7 @@ Following the short calculation in Appendix \ref{sec:Apdx_LadderCommut}, the fun
 \begin{impt}[Commutators of $a_{\vec{p}}$, $a_{\vec{q}}^\dagger$]{impt:LadderCommut}
     \begin{equation}
         \commut{a_{\vec{p}},a_{\vec{q}}}=\commut{a_{\vec{p}}^\dagger,a_{\vec{q}}^\dagger}=0\,,\quad\commut{a_{\vec{p}},a_{\vec{q}}^\dagger}=(2\pi)^3\delta^{(3)}(\vec{p}-\vec{q})\,,
+        \label{eq:LadderOpsCommut}
     \end{equation}
 \end{impt}
 where the normalization mentioned above was used to make the commutator independent of momentum $\vec{p}$. After this quantization, the fields are written as
@@ -214,6 +215,7 @@ This is described by effectively replacing annihilation and creation operators v
 These replacements are of course compatible, considering that for a real source ${J(p)=J^*(-p)}$. Since $J(p)$ is just a $\mathbb{C}$-number, it does not alter the commutation relations from which the Hamiltonian and number operator are derived. Starting without any particles in the system corresponds to considering the state $\ket{0}$ with respect to the initially defined creation and annihilation operators. The number density after the source has vanished is then given by
 \begin{equation}
     n_{\vec{p},J}=\bra{0}\Big(a_{\vec{p}}+\frac{\imagu J(p)}{\sqrt{2\omega_{\vec{p}}}}\Big)\Big(a_{\vec{p}}^\dagger-\frac{\imagu J^*(p)}{\sqrt{2\omega_{\vec{p}}}}\Big)\ket{0}=\frac{1}{2\omega_{\vec{p}}}\abs{J(p)}^2\,.
+    \label{eq:RealField_NumOpExval_Source}
 \end{equation}
 The Lorentz invariant formulation of this identity, compare equation \eqref{eq:SpectraConversion}, reads
 \begin{equation}
@@ -236,6 +238,8 @@ This equation covers the case of real fields.
 
 \subsection{Relation to Coherent State Formalism}
 
+The above arguments are made based on the solutions of classical equations of motion. In the quantum theory, coherent states are states for which the expectation values of the quantized operators reproduce the equations of motion of observables in the classical theory. Without claiming completeness, let us briefly outline the connection between the classical equations of motion and the corresponding coherent state for the example of real scalar fields.
+
 In the Heisenberg picture, operators are time dependent. Denoting the field operator $\varphi$ long before the interaction by $\varphi_{\text{in}}$ and long after the interaction as $\varphi_{\text{out}}$, they are related by some unitary transformation
 \begin{equation}
     \varphi_{\text{out}}=S^\dagger \varphi_{\text{in}}S=\varphi_{\text{in}}+S^\dagger[\varphi_{\text{in}},S]\,,
@@ -244,15 +248,16 @@ where we used ${S^\dagger S=\mathbb{1}}$. On the level of eigenstates of the tim
 \begin{equation}
     \varphi_{\text{out}}=\varphi_{\text{in}}-\int\dt^4y\Delta(x-y)J(y)\,.
 \end{equation}
+From the canonically quantized field \eqref{eq:CanonicalQuant_RealScalar}, a straightforward calculation utilizing the canonical commutation relations \eqref{eq:LadderOpsCommut} reveals
 \begin{subequations}
     \begin{align}
         [\varphi(x),\varphi(y)]&=\int\frac{\dt^3p\dt^3q}{(2\pi)^3(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}\sqrt{2\omega_{\vec{q}}}}\Big([a_{\vec{p}}e^{-\imagu(\omega_{\vec{p}}x^0-\vec{p}\vec{x})},a_{\vec{q}}^\dagger e^{\imagu(\omega_{\vec{q}}y^0-\vec{q}\vec{y})}]\\
         &\phantom{=}+[a_{\vec{p}}^\dagger e^{\imagu(\omega_{\vec{p}}x^0-\vec{p}\vec{x})},a_{\vec{q}} e^{-\imagu(\omega_{\vec{q}}y^0-\vec{q}\vec{y})}]\Big)\\
         &=\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}(e^{-\imagu(\omega_{\vec{p}}(x^0-y^0)-\vec{p}(\vec{x}-\vec{y}))}-e^{\imagu(\omega_{\vec{p}}(x^0-y^0)-\vec{p}(\vec{x}-\vec{y}))})\\
-        &=\imagu\Delta(x-y)
+        &=\imagu\Delta(x-y)\,,
     \end{align}
 \end{subequations}
-Using the relations
+which is just a complex scalar. Using further the relations
 \begin{equation}
     [A,B]=c\in\mathbb{C}\quad\implies\quad[A,B^n]=c\cdot nB^{n-1}\;\wedge\;[A,\exp(B)]=c\cdot\exp(B)
 \end{equation}
@@ -266,14 +271,28 @@ Working in Fourier modes,
     &=\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}(a_{\vec{p}}J(-p)+a_{\vec{p}}^\dagger J(p))\\
     &=\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}(a_{\vec{p}}J^*(p)+a_{\vec{p}}^\dagger J(p))
 \end{align}
-and using the BCH-formula for operators ${A,B}$ where ${[A,B]=c\in\mathbb{C}}$ it is now easy to show that
+and using the well known BCH-formula
 \begin{equation}
-    S=\exp\Big(-\int\frac{\dt^3p\dt^3q}{(2\pi)^3(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}\sqrt{2\omega_{\vec{q}}}}J^*(p)J(q)[a_{\vec{p}},a_{\vec{q}}^\dagger]\Big)\exp\Big(\imagu\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}J^*(p)a_{\vec{p}}\Big)\exp\Big(\imagu\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}J(p)a_{\vec{p}}^\dagger\Big)
+    e^{A+B}=e^{-[A,B]/2}e^Ae^B
 \end{equation}
+for operators ${A,B}$ where ${[A,B]=c\in\mathbb{C}}$ it is now easy to show that
+\begin{multline}
+    S=\exp\Big(\frac{1}{2}\int\frac{\dt^3p\dt^3q}{(2\pi)^3(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}\sqrt{2\omega_{\vec{q}}}}J(p)J^*(q)[a_{\vec{p}}^\dagger,a_{\vec{q}}]\Big)\times\\
+    \times\exp\Big(\imagu\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}J(p)a_{\vec{p}}^\dagger\Big)\exp\Big(\imagu\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}J^*(p)a_{\vec{p}}\Big)
+\end{multline}
+\begin{multline}
+    S=\exp\Big(-\frac{1}{2}\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\vert J(p)\vert^2\Big)\times\\
+    \times\exp\Big(\imagu\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}J(p)a_{\vec{p}}^\dagger\Big)\exp\Big(\imagu\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}J^*(p)a_{\vec{p}}\Big)
+\end{multline}
+The out-state ${\ket{0}_{\text{out}}=S^\dagger\ket{0}_{\text{in}}}$ of the vacuum in-state $\ket{0}_{\text{in}}$ is thus given by
 \begin{equation}
-    S=\exp\Big(-\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\vert J(p)\vert^2\Big)\exp\Big(\imagu\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}J^*(p)a_{\vec{p}}\Big)\exp\Big(\imagu\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}J(p)a_{\vec{p}}^\dagger\Big)
+    \ket{0}_{\text{out}}=\exp\Big(-\frac{1}{2}\int\frac{\dt^3p}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\vert J(p)\vert^2\Big)\exp\Big(-\imagu\int\frac{\dt ^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vec{p}}}}J(p)a_{\vec{p}}^\dagger\Big)\ket{0}_{\text{in}}\,,
 \end{equation}
-The out-state ${\ket{0}_{\text{out}}=S^\dagger\ket{0}_{\text{in}}}$ of the vacuum in-state $\ket{0}_{\text{in}}$
+which is a coherent state. It is an eigenstate to the creation operator,
+\begin{equation}
+    a_{\vec{p}}\ket{0}_{\text{out}}=\frac{-\imagu J(p)}{\sqrt{2\omega_{\vec{p}}}}\ket{0}_{\text{out}}
+\end{equation}
+and by computing the expectation value of the number operator ${a^\dagger_{\vec{p}}a_{\vec{p}}}$ w.r.t. $\ket{0}_{\text{out}}$ we verify the formerly stated result \eqref{eq:RealField_NumOpExval_Source}.
 
 \subsection{Extracting the Source from the Late Time Field}
 

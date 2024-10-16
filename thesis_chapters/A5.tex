@@ -1,9 +1,9 @@
 \section{Greens Functions of Klein-Gordon Equation}
 \label{sec:Apdx_GreensFunctionsKG}
-Solve $(\partial_\mu\partial^\mu-m^2)D(x)=\delta^{(4)}(x)$. Using $$D(x)=\int\frac{\dt^4p}{(2\pi)^4}\tilde{D}(p)e^{\imagu px}$$ one finds
+Solve $(\partial_\mu\partial^\mu-m^2)D(x)=\delta^{(4)}(x)$. Using $$D(x)=\int\frac{\dt^4p}{(2\pi)^4}\tilde{D}(p)e^{-\imagu px}$$ one finds
 \begin{subequations}
     \begin{align}
-        \int\frac{\dt^4p}{(2\pi)^4}(-p^2-m^2)\tilde{D}(p)e^{\imagu px}&=\delta^{(4)}(x)\\
+        \int\frac{\dt^4p}{(2\pi)^4}(-p^2-m^2)\tilde{D}(p)e^{-\imagu px}&=\delta^{(4)}(x)\\
         \implies\qquad\tilde{D}(p)&=-\frac{1}{p^2+m^2}
     \end{align}
 \end{subequations}
@@ -14,7 +14,7 @@ Solve $(\partial_\mu\partial^\mu-m^2)D(x)=\delta^{(4)}(x)$. Using $$D(x)=\int\fr
             &=-\int\frac{\dt^3p}{(2\pi)^3}\frac{\dt p^0}{2\pi}\frac{1}{(p^0+\omega_{\vec{p}})(-p^0+\omega_{\vec{p}})}e^{\imagu(p^0t-\vec{p}\vec{x})}
         \end{align}
     \end{subequations}
-    The $p^0$-integration encounter 2 poles at ${\pm\omega_{\vec{p}}}$ on the real axis that need to be treated carefully. This is done by translating the integral over the real variable to an integral along a contour in the complex plane that approaches the real axis in a suitable limiting procedure. Different choices of how to choose this contour will lead to different boundary conditions. Consider for example the following contour:
+The $p^0$-integration encounter 2 poles at ${\pm\omega_{\vec{p}}}$ on the real axis that need to be treated carefully. This is done by translating the integral over the real variable to an integral along a contour in the complex plane that approaches the real axis in a suitable limiting procedure. Different choices of how to choose this contour will lead to different boundary conditions. Consider for example the following contour:
 \begin{defin}[Retarded Propagator, Contour]{def:RetPropCont}
         \centering
         \begin{tikzpicture}
