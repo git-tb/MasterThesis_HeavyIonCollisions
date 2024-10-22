@@ -295,7 +295,6 @@ get_ipython().run_line_magic("matplotlib","qt")
 plt.ioff()
 # plt.ion()
 
-
 # parentdir = "data/realfield_inittest/*/"
 # parentdir = "data/specsreal_v3/*/"
 # parentdir = "data/realfield_inittest_v2/*/"
@@ -326,8 +325,44 @@ plt.ioff()
 # parentdir = "data/spectra_real_consteps_20240926_124716_m742_s-1/*/"
 # parentdir = "data/spectra_real_consteps_20240926_124724_m828_s-1/*/"
 # parentdir = "data/spectra_real_consteps_20240926_124737_m914_s-1/*/"
-parentdir = "data/spectra_real_consteps_20240926_124748_m1000_s-1/*/"
-paths = glob.glob(parentdir)
+# parentdir = "data/spectra_real_consteps_20240926_124748_m1000_s-1/*/"
+
+# paths = glob.glob(parentdir)
+
+folders = [
+ 'data/spectra_real_consteps_20240822_135426',
+ 'data/spectra_real_consteps_20240826_143119_m226',
+ 'data/spectra_real_consteps_20240826_143137_m312',
+ 'data/spectra_real_consteps_20240826_143151_m398',
+ 'data/spectra_real_consteps_20240826_143205_m484',
+ 'data/spectra_real_consteps_20240826_143224_m570',
+ 'data/spectra_real_consteps_20240826_143237_m656',
+ 'data/spectra_real_consteps_20240826_143253_m742',
+ 'data/spectra_real_consteps_20240826_143307_m828',
+ 'data/spectra_real_consteps_20240826_143326_m914',
+ 'data/spectra_real_consteps_20240826_143341_m1000']
+parentdir = "epsconst_masses"
+
+ms = [
+    140.0, 
+    226.0, 
+    312.0, 
+    398.0, 
+    484.0, 
+    570.0, 
+    656.0, 
+    742.0, 
+    828.0, 
+    914.0, 
+    1000.0]
+
+folders.sort()
+paths = []
+for folder in folders:
+    localpaths = glob.glob(folder+"/*")
+    paths.append(localpaths[0])
+
+parentdir = "epsconst_masses"
 
 # fig_init, (ax_init1, ax_init2) = plt.subplots(nrows=1,ncols=2,figsize=(15,7))
 fig_init = plt.figure(figsize=(7,7))
@@ -337,9 +372,9 @@ ax_init1, ax_init2 = fig_init.add_subplot(gs[0]), fig_init.add_subplot(gs[1])
 fig_spec, ax_spec = plt.subplots(figsize=(7,7))
 fig_fullspec, ax_fullspec = plt.subplots(figsize=(7,7))
 
-ax_init1.set_ylabel(r"$\pi^0\ [\mathrm{GeV}]$")
+ax_init1.set_ylabel(r"$m\cdot\pi^0\ [\mathrm{GeV}^2]$")
 ax_init2.set_ylabel(r"$n^\mu\partial_\mu\pi^0\ [\mathrm{GeV}^2]$")
-ax_spec.set_ylabel(r"$\frac{1}{2\pi p_T}\frac{\mathrm{d}N}{\mathrm{d}p_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
+ax_spec.set_ylabel(r"$\mathcal{N}\cdot\frac{1}{2\pi p_T}\frac{\mathrm{d}N}{\mathrm{d}p_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
 
 ax_init1.set_xlabel(r"$\alpha$")
 ax_init2.set_xlabel(r"$\alpha$")
@@ -349,7 +384,7 @@ ax_spec.set_yscale("log")
 ax_fullspec.set_yscale("log")
 
 ###
-decaypath = "data/sigmadecay/decayspec_20240807_230447"
+decaypath = "data/decay_inittest/decayspec_20241010_154911"
 
 df_decayspec = pd.read_csv(decaypath+"/decayspec.txt",comment="#")
 df_decayprimespec = pd.read_csv(decaypath+"/primespec_interp.txt",comment="#")
@@ -396,9 +431,11 @@ for (n,path) in enumerate(paths):
     t = n / (len(paths)-1)
     col=(t,0,1-t)
 
+    m = ms[n]/1000
+
     ax_init1.plot(
         df_field0["alpha"].to_numpy(),
-        df_field0["field0Re"].to_numpy(),
+        m*df_field0["field0Re"].to_numpy(),
         marker="",
         color=col)
 
@@ -408,8 +445,8 @@ for (n,path) in enumerate(paths):
         marker="",
         color=col)
     
-    mindata1 = np.min(df_field0["field0Re"].to_numpy())
-    maxdata1 = np.max(df_field0["field0Re"].to_numpy())
+    mindata1 = np.min(m*df_field0["field0Re"].to_numpy())
+    maxdata1 = np.max(m*df_field0["field0Re"].to_numpy())
     minval1 = np.min((minval1,mindata1))
     maxval1 = np.max((maxval1,maxdata1))
 
@@ -418,9 +455,12 @@ for (n,path) in enumerate(paths):
     minval2 = np.min((minval2,mindata2))
     maxval2 = np.max((maxval2,maxdata2))
 
+    scale = 1000/df_spec["abs2Re"].to_numpy()[0]
+    print("mass: ", m, " | scalefactor: ", scale, " | 0.63*m2: ", 0.6*m**2)
+
     ax_spec.plot(
         df_spec["pT"].to_numpy(),
-        df_spec["abs2Re"].to_numpy(),
+        scale*df_spec["abs2Re"].to_numpy(),
         marker="",
         color=col)
     
@@ -463,8 +503,8 @@ fig_init.tight_layout()
 fig_spec.tight_layout()
 fig_fullspec.tight_layout()
 
-fig_init.savefig("data/images/"+parentdir.replace("data/","").replace("/*/","")+"_init.png",dpi=150)
-fig_spec.savefig("data/images/"+parentdir.replace("data/","").replace("/*/","")+"_spec.png",dpi=150)
+# fig_init.savefig("data/images/"+parentdir.replace("data/","").replace("/*/","")+"_init.png",dpi=150)
+# fig_spec.savefig("data/images/"+parentdir.replace("data/","").replace("/*/","")+"_spec.png",dpi=150)
 
 plt.close()
 
@@ -886,28 +926,81 @@ print(newdf)
 newdf.to_csv("./../../../code/Mathematica/data/ExampleFreezeOutCorrected_"+str(factor)+"x.csv",index=False)
 
 # %%
-# CREATE ESSENTIALLY RANDOM INITIAL DATA
+#############################################################
+########### COMPARE FLUIDUM WITH ALICE DATASETS #############
+#############################################################
 
-def f0(alpha):
-    return np.sin(11.4*alpha) * np.exp(-(alpha-1.4*1j)**2)
+df_alice = pd.read_csv("./../../Mathematica/data/HEPData-ins1222333-v1-Table_1.csv",comment="#")
 
-def Df0(alpha):
-    return np.cos(12-7*alpha) * np.exp(-3*(alpha-0.7*1j)**2)
+pTs_alice = df_alice["PT [GEV]"].to_numpy()[:41].astype(float)
+spec_alice = df_alice["(1/Nev)*(1/(2*PI*PT))*D2(N)/DPT/DYRAP [GEV**-2]"].to_numpy()[:41].astype(float)
 
-x = np.linspace(0,np.pi/2,100)
-f0x = f0(x)
-Df0x = Df0(x)
-plt.plot(x,np.real(f0x))
-plt.plot(x,np.imag(f0x))
+df = pd.read_csv("./../../Mathematica/data/pionListBig.txt")
+pTs_fluidum= np.array(df.keys()).astype(float)
+spec_fluidum_pi0 = df.iloc[0].to_numpy()
+spec_fluidum_piplus = df.iloc[1].to_numpy()
+
+fig_spec, ax_spec = plt.subplots(figsize=(7,7))
+fig_diff, ax_diff = plt.subplots(figsize=(7,7))
+
+ax_spec.set_ylabel(r"$\frac{1}{2\pi p_T}\frac{\mathrm{d}N}{\mathrm{d}p_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
+ax_diff.set_ylabel(r"$\frac{1}{2\pi p_T}\frac{\mathrm{d}N}{\mathrm{d}p_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
+
+ax_spec.set_xlabel(r"$p_T\ [\mathrm{GeV}]$")
+ax_diff.set_xlabel(r"$p_T\ [\mathrm{GeV}]$")
+
+ax_spec.plot(pTs_fluidum, spec_fluidum_piplus,label="FluiduM",marker="")
+ax_spec.plot(pTs_alice, spec_alice,label="ALICE",marker="")
+ax_spec.set_yscale("log")
+
+spec_fluidum_piplus = np.exp(scipy.interpolate.interp1d(pTs_fluidum, np.log(spec_fluidum_piplus))(pTs_alice))
+
+ax_diff.plot(pTs_alice, spec_alice - spec_fluidum_piplus,label=r"ALICE$-$FluiduM",marker="")
+ax_diff.set_yscale("log")
+
+ax_spec.legend()
+ax_diff.legend()
+
+fig_spec.tight_layout()
+fig_diff.tight_layout()
+
+fig_spec.savefig("data/images/FluidumAliceCompare.png")
+fig_spec.savefig("data/images/FluidumAliceDiff.png")
+
 plt.show()
-plt.plot(x,np.real(Df0x))
-plt.plot(x,np.imag(Df0x))
-plt.show()
 
-mydf = pd.DataFrame()
-mydf["alpha"] = x
-mydf["f0Re"] = np.real(f0x)
-mydf["f0Im"] = np.imag(f0x)
-mydf["Df0Re"] = np.real(Df0x)
-mydf["Df0Im"] = np.imag(Df0x)
-mydf.to_csv("initial1.csv",index=False,sep=",")
+# %%
+#############################################################
+####################### ADD SPECTRA #########################
+#############################################################
+
+spectra = glob.glob("data/spectra_real_consteps_20240822_135426/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143119_m226/*")
+spec = spectra[-9]
+df_spec = pd.read_csv(spec+"/spectr.txt",comment="#")
+
+decayspec = glob.glob("data/decay_inittest/decayspec_20241010_154911/decayspec.txt")[0]
+df_decayspec = pd.read_csv(decayspec,comment="#")
+
+
+x_jump_data = 0.22
+x_jump_spec = 0.086
+# x_jump_spec = 0.076
+x_jump_spec = 0.0701
+r_jump_x = x_jump_data/x_jump_spec
+# r_jump_x = 1
+
+y_jump_data = 302
+y_jump_spec = 10200
+# y_jump_spec = 800
+y_jump_spec = 3342
+r_jump_y = y_jump_data/y_jump_spec
+# r_jump_y = 1
+
+fig, ax = plt.subplots()
+
+ax.plot(r_jump_x * df_spec["pT"].to_numpy(), r_jump_y * df_spec["abs2Re"].to_numpy())
+ax.plot(pTs_alice, spec_alice - spec_fluidum_piplus)
+ax.set_yscale("log")
+
+plt.show()
