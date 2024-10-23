@@ -161,12 +161,9 @@ This can be evaluated numerically, once the shape of the freezeout surface is pr
 The goal of this section is to find physically reasonable initial conditions for the condensate field distribution on the freezeout surface. Various approaches seem intuitive:
 \begin{impt}[Possibilies to Fix Initial Data]{impt:InitialData}
 \begin{enumerate}
-    \item Prescribe fields and orhtogonal derivatives directly \dots
-    \begin{itemize}
-        \item \dots in the sense of an expansion (starting with constants, Gauß modes, etc.).
-        \item \dots as function of $(\tau,r)$ rather than $\alpha$, followed by restriction on $\Sigma_{\text{fo}}$.
-    \end{itemize}
+    \item Prescribe fields and orhtogonal derivatives directly in the sense of an expansion on the freezeout surface (starting with constants, Gauß modes, etc.).
     \item Prescribe other physically accessible parameters like energy density $\epsilon$, pressure $p$ or fluid velocity $u^\mu$, and make contact with the fluid simulation.
+    \item Prescribe fields as functions of $(\tau,r)$ during the fireball evolution, followed by restriction on $\Sigma_{\text{fo}}$.
 \end{enumerate}
 \end{impt}
 Whereas the first approach imposes no constraints at all, some work must be put into the second approach. A key idea to assign physical quantitites of the QGP with the condensate field is by considering the conserved currents derived in section \ref{sec:ConservedCurrentsChirSym}. To be precise, we choose the (approximately) conserved vector and axial currents $J^\mu_{V,A}$ to be parallel to $u^\mu$, the only exceptional 4-vector in the fluid simulation. To simplify the ansatz further, we make the consistent assumption that not only the currents, but all gradients of the fields point in direction of $u^\mu$.
@@ -300,6 +297,17 @@ Denote the 4-divergence of the 4-velocity by ${D=\partial_\mu u^\mu}$. Proceding
 Considering the fact that we have already proposed ways to initialize the real valued fields $\pi^1$, $\pi^2$, we could also simply construct $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$ from these fields. Given $\partial_\mu\pi^{1,2}$, the density of the charged pion fields changes as
 \begin{equation}
     \partial_\mu n=\partial_\mu(\pi^+\pi^-)=\frac{1}{2}\partial_\mu\big((\pi^1)^2+(\pi^2)^2\big)=(\partial_\mu\pi^1)\pi^1+(\partial_\mu\pi^2)\pi^2\,.
+\end{equation}
+
+\subsection{Condensate Evolution in the Fireball}
+
+Let us investigate the possibility of an evolution process where the condensate density, i.e. the field amplitudes, rise during the fireball evolution with an easy-to-model ${(\tau,r)}$-dependence. A first guess might be a constant condensate amplitude as a function of the radial coordinate, which increases as a function of $\tau$. For real fields $\varphi$, we state
+\begin{equation}
+    \varphi(\tau,r)=(\tau-\tau_0)\overline{\varphi}
+\end{equation}
+with $\tau_0$ the parameter where the fluid description starts and $\overline{\varphi}$ a constant proportional to (the squareroot of) the energy density contained within the condensate field. This function is clearly only $\tau$-dependent and thus 
+\begin{equation}
+    \dt\Sigma^\mu\partial_\mu\varphi=\dt\Sigma^\tau\partial_\tau\varphi=r^\prime\overline{\varphi}\cdot r\tau\,\dt\alpha\dt\eta\dt\varphi
 \end{equation}
 
 \section{Examplary Spectra}

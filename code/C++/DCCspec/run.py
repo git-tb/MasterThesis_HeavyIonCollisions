@@ -15,6 +15,23 @@ get_ipython().run_line_magic("matplotlib","qt")
 plt.style.use("mplstyles/myclassic_white.mplstyle")
 
 #%%
+
+def data_to_bins(datax, datay, bins_lower, bins_upper):
+    bins_x = ( bins_upper + bins_lower ) / 2
+
+    bins_all = [[] for i in range(len(bins_x))]
+
+    for (x,y) in list(zip(datax, datay)):
+        binidx = np.where((x >= bins_lower).astype(int) * (x <= bins_upper).astype(int))[0][0]
+        bins_all[binidx].append(y)
+
+    bins_y = []
+    for bin_y in bins_all:
+        bins_y.append(np.mean(bin_y))
+
+    return bins_x, bins_y
+
+#%%
 ###############################################################
 ###############################################################
 # COMPUTE SPECTRA FROM LIST OF INITIAL DATA
@@ -94,11 +111,11 @@ for spec in lastspecs:
 ###############################################################
 ###############################################################
 
-pTmax = 10
-NpT = 1000
-m = 0.656
+pTmax = 2
+NpT = 200
+m = 0.14
 
-initpath = "data/init_real_m656_consteps_20240826_143237/init10.csv"
+initpath = "data/init_compl_taudep_20241023_170541/init.csv"
 result = subprocess.run(args=[
         "./bin/spec",
         "--m=%f"%(m),
@@ -208,9 +225,7 @@ for spec in lastspecs:
 ###############################################################
 ###############################################################
 
-path = "data/sigmadecay/spec_20240807_223737"
-path = "data/complexfield_inittest/spec_20240809_110228"
-path = "data/realfield_inittest/spec_20240807_212830"
+path = "data/spec_20241023_153952"
 
 df_field0 = pd.read_csv(path+"/field0.txt",comment="#")
 df_Dfield0 = pd.read_csv(path+"/field0_deriv.txt",comment="#")
@@ -934,6 +949,8 @@ df_alice = pd.read_csv("./../../Mathematica/data/HEPData-ins1222333-v1-Table_1.c
 
 pTs_alice = df_alice["PT [GEV]"].to_numpy()[:41].astype(float)
 spec_alice = df_alice["(1/Nev)*(1/(2*PI*PT))*D2(N)/DPT/DYRAP [GEV**-2]"].to_numpy()[:41].astype(float)
+bins_lower = df_alice["PT [GEV] LOW"].to_numpy()[:41].astype(float)
+bins_upper = df_alice["PT [GEV] HIGH"].to_numpy()[:41].astype(float)
 
 df = pd.read_csv("./../../Mathematica/data/pionListBig.txt")
 pTs_fluidum= np.array(df.keys()).astype(float)
@@ -965,7 +982,7 @@ fig_spec.tight_layout()
 fig_diff.tight_layout()
 
 fig_spec.savefig("data/images/FluidumAliceCompare.png")
-fig_spec.savefig("data/images/FluidumAliceDiff.png")
+fig_diff.savefig("data/images/FluidumAliceDiff.png")
 
 plt.show()
 
@@ -974,33 +991,45 @@ plt.show()
 ####################### ADD SPECTRA #########################
 #############################################################
 
-spectra = glob.glob("data/spectra_real_consteps_20240822_135426/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240822_135426/*")
 # spectra = glob.glob("data/spectra_real_consteps_20240826_143119_m226/*")
-spec = spectra[-9]
+spectra = glob.glob("data/spectra_real_constfield_20240822_161734_masses/*")
+spec = spectra[0]
+
+# spec = "data/spec_20241023_153952"
+
 df_spec = pd.read_csv(spec+"/spectr.txt",comment="#")
-
-decayspec = glob.glob("data/decay_inittest/decayspec_20241010_154911/decayspec.txt")[0]
-df_decayspec = pd.read_csv(decayspec,comment="#")
-
 
 x_jump_data = 0.22
 x_jump_spec = 0.086
-# x_jump_spec = 0.076
+x_jump_spec = 0.076
 x_jump_spec = 0.0701
+x_jump_spec = 0.12
 r_jump_x = x_jump_data/x_jump_spec
-# r_jump_x = 1
+r_jump_x = 1
 
 y_jump_data = 302
 y_jump_spec = 10200
-# y_jump_spec = 800
+y_jump_spec = 800
 y_jump_spec = 3342
+y_jump_spec = 134
+y_jump_spec = 6178
 r_jump_y = y_jump_data/y_jump_spec
 # r_jump_y = 1
 
+datax = r_jump_x * df_spec["pT"].to_numpy()
+datay = r_jump_y * df_spec["abs2Re"].to_numpy()
+
+imin = np.where(datax >= bins_lower[0])[0][0]
+bins_x, bins_y = data_to_bins(datax[imin:], datay[imin:], bins_lower, bins_upper)
+
 fig, ax = plt.subplots()
 
-ax.plot(r_jump_x * df_spec["pT"].to_numpy(), r_jump_y * df_spec["abs2Re"].to_numpy())
-ax.plot(pTs_alice, spec_alice - spec_fluidum_piplus)
+ax.plot(datax,datay,label=r"model")
+ax.plot(bins_x, bins_y,label=r"model bins")
+ax.plot(pTs_alice, spec_alice - spec_fluidum_piplus,label=r"ALICE$-$FluiduM")
 ax.set_yscale("log")
+
+plt.legend()
 
 plt.show()
