@@ -309,13 +309,16 @@ with $\tau_0$ the parameter where the fluid description starts and $\overline{\v
 \begin{equation}
     \dt\Sigma^\mu\partial_\mu\varphi=\dt\Sigma^\tau\partial_\tau\varphi=r^\prime\overline{\varphi}\cdot r\tau\,\dt\alpha\dt\eta\dt\varphi
 \end{equation}
+\begin{equation}
+    (r^\prime\partial_\tau+\tau^\prime\partial_r)\varphi(\tau,r)=r^\prime\overline{\varphi}
+\end{equation}
 
 \section{Examplary Spectra}
 \label{sec:ExampleSpectra}
 
 This section is aimed towards finding some intuition for the relation between particle mass, initial conditions and resulting spectra.
 
-\paragraph{Constant Initial Conditions}
+\subsection{Constant Initial Conditions}
 
 First, investigate the spectrum of a real scalar field for constant values of the field an normal derivative. These have no clear physical motivation and we are only interested in the shape of the spectra, not their absolute values.\\
 \debugbox{
@@ -355,7 +358,7 @@ Spectra from field configurations of high ratio ${\Big\vert\frac{\text{amplitude
 }
 The displayed graphs correspond to particle masses from 0.14 GeV (blue) to 0.8 GeV (red). Together with the scale on which the freezeout surface varies, the particle mass sets the main scale/width of the spectrum, as is evident from the combinations ${rp_T}$ and ${\tau\omega_T}$ appearing in formula \eqref{eq:SpectrumFinalFormula}. An increasing particle mass leads to a wider spectrum and has a similar effect as artificially decreasing the length scale of the freezeout surface.
 
-\paragraph{Constant Energy Density}
+\subsection{Constant Energy Density}
 
 Next, test the aforementioned $\epsilon=\const$ prescription of defining initial data, which yields a 1-parameter family of initial field configurations. As previously described, the free parameter chosen here is the ratio ${r=\epsilon_{\text{pot}}/\epsilon}$ of potential to full energy density at ${\alpha=0}$. The energy density of the condensate is estimated by an arbitrary amount of $0.1\%$ of the energy density ${\epsilon_{\text{hydro}}\approx 0.16\,\mathrm{GeV}/(\mathrm{fm}^3)}$ of the hydro simulation.\\
 \debugbox{
@@ -508,3 +511,6 @@ To summarize the different scales at play in the spectra, we state 3 central obs
     \item Also independent of initial conditions, the assumed particle mass acts as an effective scaling factor on the extent of the hypersurface.
     \item A prominent oscillatory behaviour in the initial conditions induces another peak at roughly the oscillation frequency.
 \end{enumerate}
+
+\subsection{Other Prescriptions}
+

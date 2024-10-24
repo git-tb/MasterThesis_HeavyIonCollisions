@@ -162,7 +162,7 @@ mathtext.fallback: cm  # Select fallback font from ['cm' (Computer Modern), 'sti
                        # custom math fonts. Select 'None' to not perform fallback
                        # and replace the missing character by a dummy.
 
-mathtext.default : it # The default font to use for math.
+mathtext.default : regular # The default font to use for math.
                       # Can be any of the LaTeX font names, including
                       # the special name "regular" for the same font
                       # used in regular text.

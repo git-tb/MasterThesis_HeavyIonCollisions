@@ -115,7 +115,7 @@ pTmax = 2
 NpT = 200
 m = 0.14
 
-initpath = "data/init_compl_taudep_20241023_170541/init.csv"
+initpath = "data/init_compl_taudep_20241023_171719/init.csv"
 result = subprocess.run(args=[
         "./bin/spec",
         "--m=%f"%(m),
@@ -225,7 +225,9 @@ for spec in lastspecs:
 ###############################################################
 ###############################################################
 
-path = "data/spec_20241023_153952"
+# path = "data/spec_20241023_153952"
+# path = "data/spec_20241023_170656"
+path = "data/spec_20241023_171739"
 
 df_field0 = pd.read_csv(path+"/field0.txt",comment="#")
 df_Dfield0 = pd.read_csv(path+"/field0_deriv.txt",comment="#")
@@ -997,6 +999,7 @@ spectra = glob.glob("data/spectra_real_constfield_20240822_161734_masses/*")
 spec = spectra[0]
 
 # spec = "data/spec_20241023_153952"
+spec = "data/spec_20241023_171739"
 
 df_spec = pd.read_csv(spec+"/spectr.txt",comment="#")
 
