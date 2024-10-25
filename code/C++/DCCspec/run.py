@@ -8,6 +8,7 @@ import glob
 import os
 import scipy.interpolate
 from matplotlib import gridspec
+from matplotlib.widgets import Button, Slider
 
 GOLDEN = 1.61803
 
@@ -59,7 +60,7 @@ NpT = 300
 # parentdir = "data/init_real_m398_consteps_20240826_143151/*"
 # parentdir = "data/init_real_m484_consteps_20240826_143205/*"
 # parentdir = "data/init_real_m570_consteps_20240826_143224/*"
-parentdir = "data/init_real_m656_consteps_20240826_143237/*"
+# parentdir = "data/init_real_m656_consteps_20240826_143237/*"
 # parentdir = "data/init_real_m742_consteps_20240826_143253/*"
 # parentdir = "data/init_real_m828_consteps_20240826_143307/*"
 # parentdir = "data/init_real_m914_consteps_20240826_143326/*"
@@ -983,8 +984,8 @@ ax_diff.legend()
 fig_spec.tight_layout()
 fig_diff.tight_layout()
 
-fig_spec.savefig("data/images/FluidumAliceCompare.png")
-fig_diff.savefig("data/images/FluidumAliceDiff.png")
+# fig_spec.savefig("data/images/FluidumAliceCompare.png")
+# fig_diff.savefig("data/images/FluidumAliceDiff.png")
 
 plt.show()
 
@@ -1034,5 +1035,193 @@ ax.plot(pTs_alice, spec_alice - spec_fluidum_piplus,label=r"ALICE$-$FluiduM")
 ax.set_yscale("log")
 
 plt.legend()
+
+plt.show()
+
+#%%
+
+# spec = "data/spectra_taudep/spec_20241023_171739"
+spec = "data/spectra_taudep/spec_20241023_170656"
+# spec = "data/spectra_taudep/spec_20241023_153952"
+
+# spectra = glob.glob("data/spectra_real_constfield_20240822_161734/*")
+# spec = spectra[5]
+
+# spectra = glob.glob("data/spectra_real_constfield_20240822_161734_masses/*")
+# spec = spectra[3]
+
+# spectra = glob.glob("data/spectra_real_consteps_20240822_135426_masses/*")
+# spec = spectra[0]
+
+# spectra = glob.glob("data/spectra_real_consteps_20240822_135440/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143119_m226/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143137_m312/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143151_m398/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143205_m484/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143224_m570/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143237_m656/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143253_m742/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143307_m828/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143326_m914/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240826_143341_m1000/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240926_124618_m226_s-1/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240926_124625_m312_s-1/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240926_124635_m398_s-1/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240926_124646_m484_s-1/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240926_124658_m570_s-1/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240926_124709_m656_s-1/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240926_124716_m742_s-1/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240926_124724_m828_s-1/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240926_124737_m914_s-1/*")
+# spectra = glob.glob("data/spectra_real_consteps_20240926_124748_m1000_s-1/*")
+# spec = spectra[5]
+
+FIGSIZE = (7,7)
+AXISLABELSIZE = 20
+TICKLABELSIZE = 15
+
+FIELD_XLABEL = r"$\alpha$"
+DFIELD_XLABEL = r"$\alpha$"
+SPEC_XLABEL = r"$p_T\ [GeV]$"
+
+FIELD_YLABEL = r"$\pi^0\ [GeV]$"
+DFIELD_YLABEL = r"$n^\mu\partial_\mu\pi^0\ [GeV^2]$"
+SPEC_YLABEL = r"$(2\pi p_T)^{-1}dN_{coherent}/(dp_Td\eta_p)\ [GeV^{-2}]$"
+
+with open(spec+"/spectr.txt", "r") as file:
+    for l in file.readlines():
+        if(l[0]!="#"):
+            break
+        print(l.replace("\n",""))
+
+df_field0 = pd.read_csv(spec+"/field0.txt",comment="#")
+df_Dfield0 = pd.read_csv(spec+"/field0_deriv.txt",comment="#")
+df_spec = pd.read_csv(spec+"/spectr.txt",comment="#")
+df_specanti = pd.read_csv(spec+"/spectr_anti.txt",comment="#")
+
+fig_init = plt.figure(figsize=FIGSIZE)
+gs = gridspec.GridSpec(nrows=2, ncols=1, hspace=0)
+ax_init1, ax_init2 = fig_init.add_subplot(gs[0]), fig_init.add_subplot(gs[1])
+
+fig_spec, ax_spec = plt.subplots(figsize=(7,7))
+fig_spec.subplots_adjust(left=0.25, bottom=0.25)
+
+x_spec = df_spec["pT"].to_numpy()
+x_specanti = df_specanti["pT"].to_numpy()
+
+y_spec = df_spec["abs2Re"].to_numpy()
+y_specanti = df_specanti["abs2Re"].to_numpy()
+
+ax_init1.plot(
+        df_field0["alpha"].to_numpy(),
+        df_field0["field0Re"].to_numpy(),
+        marker="",
+        lw=2)
+
+ax_init2.plot(
+        df_Dfield0["alpha"].to_numpy(),
+        df_Dfield0["Dfield0Re"].to_numpy(),
+        marker="",
+        lw=2)
+
+ax_init1.plot(
+        df_field0["alpha"].to_numpy(),
+        df_field0["field0Im"].to_numpy(),
+        ls="-.",
+        lw=2,
+        marker="")
+
+ax_init2.plot(
+        df_Dfield0["alpha"].to_numpy(),
+        df_Dfield0["Dfield0Im"].to_numpy(),
+        ls="-.",
+        lw=2,
+        marker="")
+
+line_spec, = ax_spec.plot(x_spec, y_spec,
+    label=r"model (particle)",
+    marker="",
+    lw=2)
+
+line_specanti, = ax_spec.plot(x_specanti, y_specanti,
+    label=r"model (antiparticle)",
+    marker="",
+    lw=2,
+    ls="-.")
+
+ax_spec.plot(pTs_alice, spec_alice - spec_fluidum_piplus,
+    label=r"ALICE$-$FluiduM",
+    marker="",
+    lw=2)
+
+ax_init1.set_ylabel(FIELD_YLABEL, fontsize=AXISLABELSIZE)
+ax_init2.set_ylabel(DFIELD_YLABEL, fontsize=AXISLABELSIZE)
+ax_spec.set_ylabel(SPEC_YLABEL, fontsize=AXISLABELSIZE)
+
+ax_init1.set_xlabel(FIELD_XLABEL, fontsize=AXISLABELSIZE)
+ax_init2.set_xlabel(DFIELD_XLABEL, fontsize=AXISLABELSIZE)
+ax_spec.set_xlabel(SPEC_XLABEL, fontsize=AXISLABELSIZE)
+
+ax_init1.set_xticklabels(ax_init1.get_xticklabels(), visible=False)
+labels = ax_init1.get_yticklabels()
+labels[0] = labels[-1] = ""
+ax_init1.set_yticklabels(labels)
+labels = ax_init2.get_yticklabels()
+labels[0] = labels[-1] = ""
+ax_init2.set_yticklabels(labels)
+
+xticks = [0,np.pi/8,np.pi/4,3*np.pi/8,np.pi/2]
+xticklabels = [r"$0$",r"$\pi/8$",r"$\pi/4$",r"$3\pi/8$",r"$\pi/2$"]
+ax_init1.set_xticks(xticks, xticklabels)
+ax_init2.set_xticks(xticks, xticklabels)
+
+ax_init1.tick_params(axis="both",labelsize=TICKLABELSIZE)
+ax_init2.tick_params(axis="both",labelsize=TICKLABELSIZE)
+ax_spec.tick_params(axis="both",labelsize=TICKLABELSIZE)
+
+ax_init1.set_xlim(0,np.pi/2)
+ax_init2.set_xlim(0,np.pi/2)
+
+ax_init1.grid(False,which="both")
+ax_init2.grid(False,which="both")
+ax_spec.grid(False,which="both")
+
+ax_spec.set_yscale("log")
+ax_spec.legend()
+
+fig_init.tight_layout()
+fig_spec.tight_layout()
+
+# Make a horizontal slider
+ax_sx = fig_spec.add_axes([0.25, 0.1, 0.65, 0.03])
+sx_slider = Slider(
+    ax=ax_sx,
+    label='scale x',
+    valmin=0.5,
+    valmax=2,
+    valinit=1,
+)
+
+# Make a vertically oriented slider
+ax_sy = fig_spec.add_axes([0.1, 0.25, 0.0225, 0.63])
+sy_slider = Slider(
+    ax=ax_sy,
+    label="ln(scale y)",
+    valmin=-5,
+    valmax=5,
+    valinit=0,
+    orientation="vertical"
+)
+
+# The function to be called anytime a slider's value changes
+def update(val):
+    line_spec.set_xdata(sx_slider.val * x_spec)
+    line_spec.set_ydata(np.exp(sy_slider.val) * y_spec)
+    line_specanti.set_xdata(sx_slider.val * x_specanti)
+    line_specanti.set_ydata(np.exp(sy_slider.val) * y_specanti)
+    fig.canvas.draw_idle()
+
+sx_slider.on_changed(update)
+sy_slider.on_changed(update)
 
 plt.show()
