@@ -39,8 +39,8 @@ def data_to_bins(datax, datay, bins_lower, bins_upper):
 ###############################################################
 ###############################################################
 
-pTmax = 3
-NpT = 300
+pTmax = 2
+NpT = 200
 
 # parentdir = "data/init_real_m140_s-1_consteps_20240926_124611/*"
 # parentdir = "data/init_real_m226_s-1_consteps_20240926_124618/*"
@@ -66,13 +66,22 @@ NpT = 300
 # parentdir = "data/init_real_m914_consteps_20240826_143326/*"
 # parentdir = "data/init_real_m1000_consteps_20240826_143341/*"
 
+# parentdir = "data/init_real_m140_consteps_20241029_110232/*"
+# parentdir = "data/init_real_m140_constfield_20241029_110519/*"
+# parentdir = "data/init_real_m140_taudep_20241029_132506/*"
+# parentdir = "data/init_real_m280_consteps_20241029_140005/*"
+# parentdir = "data/init_real_m280_constfield_20241029_140034/*"
+parentdir = "data/init_real_m140_constfield_20241029_163722/*"
+
+m = 0.14
+
 # m = 0.140
 # m = 0.226
 # m = 0.312
 # m = 0.398
 # m = 0.484
 # m = 0.570
-m = 0.656
+# m = 0.656
 # m = 0.742
 # m = 0.828
 # m = 0.914
@@ -963,19 +972,19 @@ spec_fluidum_piplus = df.iloc[1].to_numpy()
 fig_spec, ax_spec = plt.subplots(figsize=(7,7))
 fig_diff, ax_diff = plt.subplots(figsize=(7,7))
 
-ax_spec.set_ylabel(r"$\frac{1}{2\pi p_T}\frac{\mathrm{d}N}{\mathrm{d}p_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
-ax_diff.set_ylabel(r"$\frac{1}{2\pi p_T}\frac{\mathrm{d}N}{\mathrm{d}p_T\mathrm{d}\eta_p}\ [\mathrm{GeV}^{-2}]$")
+ax_spec.set_ylabel(r"$(2\pi p_T)^{-1}dN/(dp_Td\eta_p)\ [{GeV}^{-2}]$")
+ax_diff.set_ylabel(r"$(2\pi p_T)^{-1}dN/(dp_Td\eta_p)\ [{GeV}^{-2}]$")
 
-ax_spec.set_xlabel(r"$p_T\ [\mathrm{GeV}]$")
-ax_diff.set_xlabel(r"$p_T\ [\mathrm{GeV}]$")
+ax_spec.set_xlabel(r"$p_T\ [GeV]$")
+ax_diff.set_xlabel(r"$p_T\ [GeV]$")
 
-ax_spec.plot(pTs_fluidum, spec_fluidum_piplus,label="FluiduM",marker="")
-ax_spec.plot(pTs_alice, spec_alice,label="ALICE",marker="")
+ax_spec.plot(pTs_fluidum, spec_fluidum_piplus,label="FluiduM",marker="",lw=2,c="r")
+ax_spec.plot(pTs_alice, spec_alice,label="ALICE",marker="",lw=2,c="b")
 ax_spec.set_yscale("log")
 
 spec_fluidum_piplus = np.exp(scipy.interpolate.interp1d(pTs_fluidum, np.log(spec_fluidum_piplus))(pTs_alice))
 
-ax_diff.plot(pTs_alice, spec_alice - spec_fluidum_piplus,label=r"ALICE$-$FluiduM",marker="")
+ax_diff.plot(pTs_alice, np.abs(spec_alice - spec_fluidum_piplus),label=r"ALICE$-$FluiduM",marker="",c="b",lw=2)
 ax_diff.set_yscale("log")
 
 ax_spec.legend()
@@ -1041,7 +1050,7 @@ plt.show()
 #%%
 
 # spec = "data/spectra_taudep/spec_20241023_171739"
-spec = "data/spectra_taudep/spec_20241023_170656"
+# spec = "data/spectra_taudep/spec_20241023_170656"
 # spec = "data/spectra_taudep/spec_20241023_153952"
 
 # spectra = glob.glob("data/spectra_real_constfield_20240822_161734/*")
@@ -1051,6 +1060,21 @@ spec = "data/spectra_taudep/spec_20241023_170656"
 # spec = spectra[3]
 
 # spectra = glob.glob("data/spectra_real_consteps_20240822_135426_masses/*")
+# spec = spectra[0]
+
+# spectra = glob.glob("data/spectra_real_m140_taudep_20241029_132506/*")
+# spec = spectra[0]
+
+# spectra = glob.glob("data/spectra_real_m280_taudep_20241029_135948/*/")
+# spectra = glob.glob("data/spectra_real_m280_consteps_20241029_140005/*/")
+# spectra = glob.glob("data/spectra_real_m280_constfield_20241029_140034/*/")
+# spec = spectra[-1]
+
+# spectra = glob.glob("data/spectra_real_m140_consteps_20241029_110232/*/")
+# spectra = glob.glob("data/spectra_real_m140_taudep_20241029_132506/*/")
+# spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
+# spectra = glob.glob("data/spectra_real_m140_constfield_20241029_162545/*/")
+# spectra = glob.glob("data/spectra_real_m140_constfield_20241029_163722/*/")
 # spec = spectra[0]
 
 # spectra = glob.glob("data/spectra_real_consteps_20240822_135440/*")
@@ -1162,13 +1186,13 @@ ax_init1.set_xlabel(FIELD_XLABEL, fontsize=AXISLABELSIZE)
 ax_init2.set_xlabel(DFIELD_XLABEL, fontsize=AXISLABELSIZE)
 ax_spec.set_xlabel(SPEC_XLABEL, fontsize=AXISLABELSIZE)
 
-ax_init1.set_xticklabels(ax_init1.get_xticklabels(), visible=False)
-labels = ax_init1.get_yticklabels()
-labels[0] = labels[-1] = ""
-ax_init1.set_yticklabels(labels)
-labels = ax_init2.get_yticklabels()
-labels[0] = labels[-1] = ""
-ax_init2.set_yticklabels(labels)
+# ax_init1.set_xticklabels(ax_init1.get_xticklabels(), visible=False)
+# labels = ax_init1.get_yticklabels()
+# labels[0] = labels[-1] = ""
+# ax_init1.set_yticklabels(labels)
+# labels = ax_init2.get_yticklabels()
+# labels[0] = labels[-1] = ""
+# ax_init2.set_yticklabels(labels)
 
 xticks = [0,np.pi/8,np.pi/4,3*np.pi/8,np.pi/2]
 xticklabels = [r"$0$",r"$\pi/8$",r"$\pi/4$",r"$3\pi/8$",r"$\pi/2$"]
@@ -1219,7 +1243,7 @@ def update(val):
     line_spec.set_ydata(np.exp(sy_slider.val) * y_spec)
     line_specanti.set_xdata(sx_slider.val * x_specanti)
     line_specanti.set_ydata(np.exp(sy_slider.val) * y_specanti)
-    fig.canvas.draw_idle()
+    fig_spec.canvas.draw_idle()
 
 sx_slider.on_changed(update)
 sy_slider.on_changed(update)

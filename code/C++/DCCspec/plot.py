@@ -12,6 +12,58 @@ from matplotlib.colors import LinearSegmentedColormap
 get_ipython().run_line_magic("matplotlib","qt")
 plt.style.use("mplstyles/myclassic_white.mplstyle")
 
+# %%
+#############################################################
+########### COMPARE FLUIDUM WITH ALICE DATASETS #############
+#############################################################
+
+df_alice = pd.read_csv("./../../Mathematica/data/HEPData-ins1222333-v1-Table_1.csv",comment="#")
+
+pTs_alice = df_alice["PT [GEV]"].to_numpy()[:41].astype(float)
+spec_alice = df_alice["(1/Nev)*(1/(2*PI*PT))*D2(N)/DPT/DYRAP [GEV**-2]"].to_numpy()[:41].astype(float)
+bins_lower = df_alice["PT [GEV] LOW"].to_numpy()[:41].astype(float)
+bins_upper = df_alice["PT [GEV] HIGH"].to_numpy()[:41].astype(float)
+
+df = pd.read_csv("./../../Mathematica/data/pionListBig.txt")
+pTs_fluidum= np.array(df.keys()).astype(float)
+spec_fluidum_pi0 = df.iloc[0].to_numpy()
+spec_fluidum_piplus = df.iloc[1].to_numpy()
+
+fig_spec, ax_spec = plt.subplots(figsize=(7,7))
+fig_diff, ax_diff = plt.subplots(figsize=(7,7))
+
+ax_spec.set_ylabel(r"$(2\pi p_T)^{-1}dN/(dp_Td\eta_p)\ [{GeV}^{-2}]$")
+ax_diff.set_ylabel(r"$(2\pi p_T)^{-1}dN/(dp_Td\eta_p)\ [{GeV}^{-2}]$")
+
+ax_spec.set_xlabel(r"$p_T\ [GeV]$")
+ax_diff.set_xlabel(r"$p_T\ [GeV]$")
+
+ax_spec.plot(pTs_fluidum, spec_fluidum_piplus,label="FluiduM",marker="",lw=2,c="r")
+ax_spec.plot(pTs_alice, spec_alice,label="ALICE",marker="",lw=2,c="b")
+ax_spec.set_yscale("log")
+
+spec_fluidum_piplus = np.exp(scipy.interpolate.interp1d(pTs_fluidum, np.log(spec_fluidum_piplus))(pTs_alice))
+
+pT_compare = pTs_alice
+spec_compare = np.abs(spec_alice - spec_fluidum_piplus)
+
+ax_diff.plot(pT_compare, spec_compare,label=r"ALICE$-$FluiduM",marker="",c="b",lw=2)
+ax_diff.set_yscale("log")
+
+ax_spec.legend()
+ax_diff.legend()
+
+ax_spec.grid(False, which="both")
+ax_diff.grid(False, which="both")
+
+fig_spec.tight_layout()
+fig_diff.tight_layout()
+
+fig_spec.savefig(dpi=150,"images/FluidumAliceCompare.png")
+fig_diff.savefig(dpi=150,"images/FluidumAliceDiff.png")
+
+plt.show()
+
 #%%
 ###############################################################
 ###############################################################
@@ -30,7 +82,7 @@ plt.ion()
 # parentdir = "data/realfield_inittest/*/"
 # parentdir = "data/specsreal_v3/*/"
 # parentdir = "data/realfield_inittest_v2/*/"
-parentdir = "data/spectra_real_consteps_20240822_135426/*/"
+# parentdir = "data_old/spectra_real_consteps_20240822_135426/*/"
 # parentdir = "data/spectra_real_consteps_20240822_135440/*/"
 # parentdir = "data/spectra_real_constfield_20240822_161734/*/"
 # parentdir = "data/spectra_real_constfield_20240822_161738/*/"
@@ -71,80 +123,106 @@ parentdir = "data/spectra_real_consteps_20240822_135426/*/"
 # ms = 914*np.ones(len(paths))
 # ms = 1000*np.ones(len(paths))
 
-# parentdir = "data/spectra_real_constfield_20240822_161734_masses/*/"
+# parentdir = "data_old/spectra_real_constfield_20240822_161734_masses/*/"
 # paths = glob.glob(parentdir)
 # ms = np.linspace(140,800,10,endpoint=True)
+
+# spectra = glob.glob("data/spectra_real_m140_consteps_20241029_110232/*/")
+# spectra = glob.glob("data/spectra_real_m140_taudep_20241029_132506/*/")
+# spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
+# spectra = glob.glob("data/spectra_real_m140_constfield_20241029_162545/*/")
+# spectra = glob.glob("data/spectra_real_m140_constfield_20241029_163722/*/")
+# spec = spectra[0]
 
 # parentdir = "data/spectra_real_constfield_20240822_161734/*/"
 # paths = glob.glob(parentdir)
 # ms = 140*np.ones(len(paths))
 
-parentdir = "data/spectra_taudep/*/"
-paths = glob.glob(parentdir)
-ms = 140*np.ones(len(paths))
+# parentdir = "data/spectra_real_m140_consteps_20241029_110232/*/"
+# parentdir = "data/spectra_real_m140_taudep_20241029_132506/*/"
+# parentdir = "data/spectra_real_m140_constfield_20241029_110519/*/"
+# parentdir = "data/spectra_real_m140_constfield_20241029_162545/*/"
+# parentdir = "data/spectra_real_m140_constfield_20241029_163722/*/"
+# paths = glob.glob(parentdir)
+# ms = 140*np.ones(len(paths))
 
-### epsconstmasses
-# folders = [
-#  'data/spectra_real_consteps_20240822_135426',
-#  'data/spectra_real_consteps_20240826_143119_m226',
-#  'data/spectra_real_consteps_20240826_143137_m312',
-#  'data/spectra_real_consteps_20240826_143151_m398',
-#  'data/spectra_real_consteps_20240826_143205_m484',
-#  'data/spectra_real_consteps_20240826_143224_m570',
-#  'data/spectra_real_consteps_20240826_143237_m656',
-#  'data/spectra_real_consteps_20240826_143253_m742',
-#  'data/spectra_real_consteps_20240826_143307_m828',
-#  'data/spectra_real_consteps_20240826_143326_m914',
-#  'data/spectra_real_consteps_20240826_143341_m1000']
-# parentdir = "epsconst_masses"
+# parentdir = "data/spectra_real_m280_taudep_20241029_135948/*/"
+# parentdir = "data/spectra_real_m280_consteps_20241029_140005/*/"
+# parentdir = "data/spectra_real_m280_constfield_20241029_140034/*/"
+# paths = glob.glob(parentdir)
+# ms = 280*np.ones(len(paths))
 
-# ms = [
-#     140.0, 
-#     226.0, 
-#     312.0, 
-#     398.0, 
-#     484.0, 
-#     570.0, 
-#     656.0, 
-#     742.0, 
-#     828.0, 
-#     914.0, 
-#     1000.0]
+## epsconstmasses
+folders = [
+ 'data_old/spectra_real_consteps_20240822_135426',
+ 'data_old/spectra_real_consteps_20240826_143119_m226',
+ 'data_old/spectra_real_consteps_20240826_143137_m312',
+ 'data_old/spectra_real_consteps_20240826_143151_m398',
+ 'data_old/spectra_real_consteps_20240826_143205_m484',
+ 'data_old/spectra_real_consteps_20240826_143224_m570',
+ 'data_old/spectra_real_consteps_20240826_143237_m656',
+ 'data_old/spectra_real_consteps_20240826_143253_m742',
+ 'data_old/spectra_real_consteps_20240826_143307_m828',
+ 'data_old/spectra_real_consteps_20240826_143326_m914',
+ 'data_old/spectra_real_consteps_20240826_143341_m1000']
 
-# folders.sort()
-# paths = []
-# for folder in folders:
-#     localpaths = glob.glob(folder+"/*")
-#     paths.append(localpaths[-1])
+ms = [
+    140.0, 
+    226.0, 
+    312.0, 
+    398.0, 
+    484.0, 
+    570.0, 
+    656.0, 
+    742.0, 
+    828.0, 
+    914.0, 
+    1000.0]
 
-# parentdir = "epsconst_masses"
+folders.sort()
+paths = []
+for folder in folders:
+    localpaths = glob.glob(folder+"/*")
+    paths.append(localpaths[-1])
+
+parentdir = "epsconst_masses"
 ### \epsconstmasses
 
-SAVETITLE = parentdir.replace("data/","").replace("/*/","")
+SAVE = True
+# SAVE = False
+SAVETITLE = parentdir.replace("data/","").replace("/*/","").replace("data_old/","").replace("/*/","")
+
+# COMPARE = True
+COMPARE = False
 
 FIELD_XLABEL = r"$\alpha$"
 DFIELD_XLABEL = r"$\alpha$"
 SPEC_XLABEL = r"$p_T\ [GeV]$"
 
 FIELD_YLABEL = r"$\pi^0\ [GeV]$"
-DFIELD_YLABEL = r"$n^\mu\partial_\mu\pi^0\ [GeV^2]$"
+DFIELD_YLABEL = r"$n^\mu\partial_\mu\pi^0\ [GeV]$"
 # SPEC_YLABEL = r"$\mathcal{N}\cdot\frac{1}{2\pi p_T}\frac{dN_{coherent}}{dp_Td\eta_p}\ [GeV^{-2}]$"
 SPEC_YLABEL = r"$(2\pi p_T)^{-1}dN_{coherent}/(dp_Td\eta_p)\ [GeV^{-2}]$"
 
-SCALEBYMASS = False
+SCALEBYMASS = True
+# SCALEBYMASS = False
 if(SCALEBYMASS):
     FIELD_YLABEL = r"$m\cdot\pi^0\ [GeV^2]$"
-NORMALIZE_SPECS = False
+NORMALIZE_SPECS = True
+# NORMALIZE_SPECS = False
 if(NORMALIZE_SPECS):
     SPEC_YLABEL = r"$\mathcal{N}\cdot(2\pi p_T)^{-1}dN_{coherent}/(dp_Td\eta_p)\ [GeV^{-2}]$"
 
 
 FIGSIZE = (7,7)
+ADJUSTLABELS = False
 AXISLABELSIZE = 20
 TICKLABELSIZE = 15
 
-LINECOLLECTION = False
-WITHCMAP = False
+LINECOLLECTION = True
+# LINECOLLECTION = False
+WITHCMAP = True
+# WITHCMAP = False
 CMAP = LinearSegmentedColormap.from_list("custom", ["blue","red"])
 CMAP_LBWH = [0.025, 0.025, 0.05, 0.45]
 CMAP_LABELSIZE = 15
@@ -160,9 +238,14 @@ COMPLEX_FIELD = False
 
 LEGEND = False
 LEGENDSIZE = 10
-labels = [r"$m=%i\ MeV$"%(m) for m in ms]
+# labels = [r"$m=%i\ MeV$"%(m) for m in ms]
+# labels = [r"$a=1/3$",r"$a=1/2$",r"$a=1$",r"$a=2$",r"$a=3$"]
+# labels.reverse()
 if(not LEGEND):
     labels = ["" for n in range(len(paths))]
+
+cols = [(t, 0, 1-t) for t in np.linspace(0,1,len(paths),endpoint=True)]
+# cols = ["r", "g", "b", "purple", "cyan"]
 
 fig_init = plt.figure(figsize=FIGSIZE)
 gs = gridspec.GridSpec(nrows=2, ncols=1, hspace=0)
@@ -173,7 +256,6 @@ fig_spec, ax_spec = plt.subplots(figsize=FIGSIZE)
 minval1, maxval1 = np.inf, -np.inf
 minval2, maxval2 = np.inf, -np.inf
 
-cols = [(t, 0, 1-t) for t in np.linspace(0,1,len(paths),endpoint=True)]
 for (n,path) in enumerate(paths):
     df_spec = pd.read_csv(path+"/spectr.txt",comment="#")
     df_specanti = pd.read_csv(path+"/spectr_anti.txt",comment="#")
@@ -184,7 +266,7 @@ for (n,path) in enumerate(paths):
 
     scale_specs = 1
     if(NORMALIZE_SPECS):
-        scale_specs = 1000/df_spec["abs2Re"].to_numpy()[0]
+        scale_specs = 5000/df_spec["abs2Re"].to_numpy()[0]
     m = ms[n]/1000
 
     x_init1 = df_field0["alpha"].to_numpy()
@@ -300,12 +382,14 @@ if(myrange2 > 0):
     ax_init2.set_ylim(minval2-0.05*myrange2,maxval2+0.05*myrange2)
 
 ax_init1.set_xticklabels(ax_init1.get_xticklabels(), visible=False)
-labels = ax_init1.get_yticklabels()
-labels[0] = labels[-1] = ""
-ax_init1.set_yticklabels(labels)
-labels = ax_init2.get_yticklabels()
-labels[0] = labels[-1] = ""
-ax_init2.set_yticklabels(labels)
+
+if(ADJUSTLABELS):
+    labels = ax_init1.get_yticklabels()
+    labels[0] = labels[-1] = ""
+    ax_init1.set_yticklabels(labels)
+    labels = ax_init2.get_yticklabels()
+    labels[0] = labels[-1] = ""
+    ax_init2.set_yticklabels(labels)
 
 xticks = [0,np.pi/8,np.pi/4,3*np.pi/8,np.pi/2]
 xticklabels = [r"$0$",r"$\pi/8$",r"$\pi/4$",r"$3\pi/8$",r"$\pi/2$"]
@@ -318,10 +402,15 @@ ax_spec.tick_params(axis="both",labelsize=TICKLABELSIZE)
 
 ax_init1.set_xlim(0,np.pi/2)
 ax_init2.set_xlim(0,np.pi/2)
+ax_spec.set_xlim(0,2)
 
 ax_init1.grid(False,which="both")
 ax_init2.grid(False,which="both")
 ax_spec.grid(False,which="both")
+
+if(COMPARE):
+    ax_spec.plot(pT_compare, spec_compare,lw=2,label=r"ALICE$-$FluiduM",c="k",ls="--",marker="")
+    ax_spec.legend(fontsize=LEGENDSIZE,fancybox=True, framealpha=0.85,shadow=False)
 
 if(LEGEND):
     ax_spec.legend(fontsize=LEGENDSIZE,fancybox=True, framealpha=0.85,shadow=False)
@@ -332,8 +421,9 @@ if(LEGEND):
 fig_init.tight_layout()
 fig_spec.tight_layout()
 
-fig_init.savefig("data/images/"+SAVETITLE+"_init.png",dpi=150)
-fig_spec.savefig("data/images/"+SAVETITLE+"_spec.png",dpi=150)
+if(SAVE):
+    fig_init.savefig("images/"+SAVETITLE+"_init.png",dpi=150)
+    fig_spec.savefig("images/"+SAVETITLE+"_spec.png",dpi=150)
 
 # fig_init.show()
 # fig_spec.show()
