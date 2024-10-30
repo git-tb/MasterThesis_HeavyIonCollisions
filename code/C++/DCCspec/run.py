@@ -71,9 +71,13 @@ NpT = 200
 # parentdir = "data/init_real_m140_taudep_20241029_132506/*"
 # parentdir = "data/init_real_m280_consteps_20241029_140005/*"
 # parentdir = "data/init_real_m280_constfield_20241029_140034/*"
-parentdir = "data/init_real_m140_constfield_20241029_163722/*"
+# parentdir = "data/init_real_m140_constfield_20241029_163722/*"
 
-m = 0.14
+# parentdir = "data/init_real_m140_s-1_consteps_20241030_104847/*"
+# parentdir = "data/init_real_m280_s-1_constfield_20241030_111128/*"
+# parentdir = "data/init_real_m280_s-1_consteps_20241030_111119/*"
+parentdir = "data/init_real_m280_taudep_20241030_150721/*"
+m = 0.28
 
 # m = 0.140
 # m = 0.226
@@ -998,55 +1002,6 @@ fig_diff.tight_layout()
 
 plt.show()
 
-# %%
-#############################################################
-####################### ADD SPECTRA #########################
-#############################################################
-
-# spectra = glob.glob("data/spectra_real_consteps_20240822_135426/*")
-# spectra = glob.glob("data/spectra_real_consteps_20240826_143119_m226/*")
-spectra = glob.glob("data/spectra_real_constfield_20240822_161734_masses/*")
-spec = spectra[0]
-
-# spec = "data/spec_20241023_153952"
-spec = "data/spec_20241023_171739"
-
-df_spec = pd.read_csv(spec+"/spectr.txt",comment="#")
-
-x_jump_data = 0.22
-x_jump_spec = 0.086
-x_jump_spec = 0.076
-x_jump_spec = 0.0701
-x_jump_spec = 0.12
-r_jump_x = x_jump_data/x_jump_spec
-r_jump_x = 1
-
-y_jump_data = 302
-y_jump_spec = 10200
-y_jump_spec = 800
-y_jump_spec = 3342
-y_jump_spec = 134
-y_jump_spec = 6178
-r_jump_y = y_jump_data/y_jump_spec
-# r_jump_y = 1
-
-datax = r_jump_x * df_spec["pT"].to_numpy()
-datay = r_jump_y * df_spec["abs2Re"].to_numpy()
-
-imin = np.where(datax >= bins_lower[0])[0][0]
-bins_x, bins_y = data_to_bins(datax[imin:], datay[imin:], bins_lower, bins_upper)
-
-fig, ax = plt.subplots()
-
-ax.plot(datax,datay,label=r"model")
-ax.plot(bins_x, bins_y,label=r"model bins")
-ax.plot(pTs_alice, spec_alice - spec_fluidum_piplus,label=r"ALICE$-$FluiduM")
-ax.set_yscale("log")
-
-plt.legend()
-
-plt.show()
-
 #%%
 
 # spec = "data/spectra_taudep/spec_20241023_171739"
@@ -1068,14 +1023,16 @@ plt.show()
 # spectra = glob.glob("data/spectra_real_m280_taudep_20241029_135948/*/")
 # spectra = glob.glob("data/spectra_real_m280_consteps_20241029_140005/*/")
 # spectra = glob.glob("data/spectra_real_m280_constfield_20241029_140034/*/")
-# spec = spectra[-1]
+spectra = glob.glob("data/spectra_real_m280_s-1_constfield_20241030_111128/*")
+spec = spectra[0]
 
 # spectra = glob.glob("data/spectra_real_m140_consteps_20241029_110232/*/")
 # spectra = glob.glob("data/spectra_real_m140_taudep_20241029_132506/*/")
 # spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
 # spectra = glob.glob("data/spectra_real_m140_constfield_20241029_162545/*/")
 # spectra = glob.glob("data/spectra_real_m140_constfield_20241029_163722/*/")
-# spec = spectra[0]
+# spectra = glob.glob("data/spectra_real_m140_s-1_consteps_20241030_104847/*")
+# spec = spectra[-1]
 
 # spectra = glob.glob("data/spectra_real_consteps_20240822_135440/*")
 # spectra = glob.glob("data/spectra_real_consteps_20240826_143119_m226/*")

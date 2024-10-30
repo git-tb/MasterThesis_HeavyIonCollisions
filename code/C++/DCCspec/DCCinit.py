@@ -46,11 +46,6 @@ ur = scipy.interpolate.CubicSpline(alphas,urs)
 
 #%%
 # ==========================================
-# ===== CONSTANT FIELD AND DERIVATIVE ======
-# ==========================================
-
-#%%
-# ==========================================
 # ============= CONSTANT FIELD =============
 # ==========================================
 
@@ -58,17 +53,18 @@ ur = scipy.interpolate.CubicSpline(alphas,urs)
 Rs = np.linspace(0,1,11,endpoint=True)
 epsmax = 0.160054 * 1e-3
 
-ms = [0.14]
+sign = -1
+ms = [0.28]
 for m in ms:
     phimax = np.sqrt(2*epsmax)/m
 
     timestamp = "{:%Y%m%d_%H%M%S}".format(datetime.datetime.now())
-    newpath = "data/init_real_m%d_constfield_"%(1000*m)+timestamp
+    newpath = "data/init_real_m%d_s%d_constfield_"%(1000*m,sign)+timestamp
     os.makedirs(newpath)
 
     for R in Rs:
         phi = R * phimax
-        dphi = (1-R) * phimax
+        dphi = sign*(1-R) * phimax
 
         ## SAVE
         outfilename = "R%d"%(10*R)
@@ -89,10 +85,11 @@ epsilon = 0.160054 * 1e-3
 def uds(t):
     return -utau(t) * Dtau(t) + ur(t) * Dr(t) # utau === u^tau = - u_tau
 
+sign = -1
 ms = [0.28]
 for m in ms:
     timestamp = "{:%Y%m%d_%H%M%S}".format(datetime.datetime.now())
-    newpath = "data/init_real_m%d_consteps_"%(1000*m)+timestamp
+    newpath = "data/init_real_m%d_s%d_consteps_"%(1000*m, sign)+timestamp
     os.makedirs(newpath)
 
     def f(y, t, *args):
@@ -115,7 +112,7 @@ for m in ms:
         ekin0 = epsilon - epot0
 
         phi0 = np.sqrt(2*epot0)/m
-        chi0 = np.sqrt(2*ekin0)
+        chi0 = sign * np.sqrt(2*ekin0)
 
         y0 = (phi0, chi0)
 
@@ -176,7 +173,6 @@ taumin = np.min(taus)
 taumax = np.max(taus)
 
 epsmax = 0.160054 * 1e-3
-phimax = np.sqrt(2*epsmax)/m
 
 exponents = np.concatenate((1/np.arange(3,1,-1),np.arange(1,4,1)))
 alphas = np.linspace(0,np.pi/2,100,endpoint=True)
@@ -190,6 +186,8 @@ for m in ms:
     timestamp = "{:%Y%m%d_%H%M%S}".format(datetime.datetime.now())
     newpath = "data/init_real_m%d_taudep_"%(1000*m)+timestamp
     os.makedirs(newpath)
+
+    phimax = np.sqrt(2*epsmax)/m
 
     for (nvar,a) in enumerate(exponents):
         def phi_restr(alpha):

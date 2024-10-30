@@ -12,6 +12,23 @@ from matplotlib.colors import LinearSegmentedColormap
 get_ipython().run_line_magic("matplotlib","qt")
 plt.style.use("mplstyles/myclassic_white.mplstyle")
 
+#%%
+
+def data_to_bins(datax, datay, bins_lower, bins_upper):
+    bins_x = ( bins_upper + bins_lower ) / 2
+
+    bins_all = [[] for i in range(len(bins_x))]
+
+    for (x,y) in list(zip(datax, datay)):
+        binidx = np.where((x >= bins_lower).astype(int) * (x <= bins_upper).astype(int))[0][0]
+        bins_all[binidx].append(y)
+
+    bins_y = []
+    for bin_y in bins_all:
+        bins_y.append(np.mean(bin_y))
+
+    return bins_x, bins_y
+
 # %%
 #############################################################
 ########### COMPARE FLUIDUM WITH ALICE DATASETS #############
@@ -59,8 +76,8 @@ ax_diff.grid(False, which="both")
 fig_spec.tight_layout()
 fig_diff.tight_layout()
 
-fig_spec.savefig(dpi=150,"images/FluidumAliceCompare.png")
-fig_diff.savefig(dpi=150,"images/FluidumAliceDiff.png")
+# fig_spec.savefig(dpi=150,"images/FluidumAliceCompare.png")
+# fig_diff.savefig(dpi=150,"images/FluidumAliceDiff.png")
 
 plt.show()
 
@@ -132,6 +149,7 @@ plt.ion()
 # spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
 # spectra = glob.glob("data/spectra_real_m140_constfield_20241029_162545/*/")
 # spectra = glob.glob("data/spectra_real_m140_constfield_20241029_163722/*/")
+# spectra = glob.glob("data/spectra_real_m140_s-1_constfield_20241030_102134/*/")
 # spec = spectra[0]
 
 # parentdir = "data/spectra_real_constfield_20240822_161734/*/"
@@ -139,61 +157,80 @@ plt.ion()
 # ms = 140*np.ones(len(paths))
 
 # parentdir = "data/spectra_real_m140_consteps_20241029_110232/*/"
-# parentdir = "data/spectra_real_m140_taudep_20241029_132506/*/"
+parentdir = "data/spectra_real_m140_taudep_20241029_132506/*/"
 # parentdir = "data/spectra_real_m140_constfield_20241029_110519/*/"
 # parentdir = "data/spectra_real_m140_constfield_20241029_162545/*/"
 # parentdir = "data/spectra_real_m140_constfield_20241029_163722/*/"
-# paths = glob.glob(parentdir)
-# ms = 140*np.ones(len(paths))
+# parentdir = "data/spectra_real_m140_s-1_constfield_20241030_102134/*/"
+# parentdir = "data/spectra_real_m140_s-1_consteps_20241030_104847/*/"
+paths = glob.glob(parentdir)
+ms = 140*np.ones(len(paths))
 
 # parentdir = "data/spectra_real_m280_taudep_20241029_135948/*/"
 # parentdir = "data/spectra_real_m280_consteps_20241029_140005/*/"
 # parentdir = "data/spectra_real_m280_constfield_20241029_140034/*/"
+# parentdir = "data/spectra_real_m280_s-1_constfield_20241030_111128/*/"
 # paths = glob.glob(parentdir)
 # ms = 280*np.ones(len(paths))
 
 ## epsconstmasses
-folders = [
- 'data_old/spectra_real_consteps_20240822_135426',
- 'data_old/spectra_real_consteps_20240826_143119_m226',
- 'data_old/spectra_real_consteps_20240826_143137_m312',
- 'data_old/spectra_real_consteps_20240826_143151_m398',
- 'data_old/spectra_real_consteps_20240826_143205_m484',
- 'data_old/spectra_real_consteps_20240826_143224_m570',
- 'data_old/spectra_real_consteps_20240826_143237_m656',
- 'data_old/spectra_real_consteps_20240826_143253_m742',
- 'data_old/spectra_real_consteps_20240826_143307_m828',
- 'data_old/spectra_real_consteps_20240826_143326_m914',
- 'data_old/spectra_real_consteps_20240826_143341_m1000']
+# folders = [
+#  'data_old/spectra_real_consteps_20240822_135426',
+#  'data_old/spectra_real_consteps_20240826_143119_m226',
+#  'data_old/spectra_real_consteps_20240826_143137_m312',
+#  'data_old/spectra_real_consteps_20240826_143151_m398',
+#  'data_old/spectra_real_consteps_20240826_143205_m484',
+#  'data_old/spectra_real_consteps_20240826_143224_m570',
+#  'data_old/spectra_real_consteps_20240826_143237_m656',
+#  'data_old/spectra_real_consteps_20240826_143253_m742',
+#  'data_old/spectra_real_consteps_20240826_143307_m828',
+#  'data_old/spectra_real_consteps_20240826_143326_m914',
+#  'data_old/spectra_real_consteps_20240826_143341_m1000']
 
-ms = [
-    140.0, 
-    226.0, 
-    312.0, 
-    398.0, 
-    484.0, 
-    570.0, 
-    656.0, 
-    742.0, 
-    828.0, 
-    914.0, 
-    1000.0]
+# ms = [
+#     140.0, 
+#     226.0, 
+#     312.0, 
+#     398.0, 
+#     484.0, 
+#     570.0, 
+#     656.0, 
+#     742.0, 
+#     828.0, 
+#     914.0, 
+#     1000.0]
 
-folders.sort()
-paths = []
-for folder in folders:
-    localpaths = glob.glob(folder+"/*")
-    paths.append(localpaths[-1])
+# folders.sort()
+# paths = []
+# for folder in folders:
+#     localpaths = glob.glob(folder+"/*")
+#     paths.append(localpaths[0])
 
-parentdir = "epsconst_masses"
+# parentdir = "epsconst_masses"
 ### \epsconstmasses
+
+# paths = [
+#     glob.glob("data/spectra_real_m140_constfield_20241029_110519/*")[5],
+#     glob.glob("data/spectra_real_m140_consteps_20241029_110232/*")[0],
+#     # glob.glob("data/spectra_real_m140_s-1_consteps_20241030_104847/*")[5],
+#     glob.glob("data/spectra_real_m140_taudep_20241029_132506/*")[2]
+# ]
+# parentdir = "m140_compareICs"
+
+paths = [
+    glob.glob("data/spectra_real_m280_constfield_20241029_140034/*")[5],
+    glob.glob("data/spectra_real_m280_consteps_20241029_140005/*")[0],
+    # glob.glob("data/spectra_real_m280_s-1_consteps_20241030_111119/*")[5],
+    glob.glob("data/spectra_real_m280_taudep_20241030_150721/*")[2]
+]
+parentdir = "m280_compareICs"
 
 SAVE = True
 # SAVE = False
 SAVETITLE = parentdir.replace("data/","").replace("/*/","").replace("data_old/","").replace("/*/","")
 
-# COMPARE = True
-COMPARE = False
+COMPARE = True
+# COMPARE = False
 
 FIELD_XLABEL = r"$\alpha$"
 DFIELD_XLABEL = r"$\alpha$"
@@ -204,23 +241,27 @@ DFIELD_YLABEL = r"$n^\mu\partial_\mu\pi^0\ [GeV]$"
 # SPEC_YLABEL = r"$\mathcal{N}\cdot\frac{1}{2\pi p_T}\frac{dN_{coherent}}{dp_Td\eta_p}\ [GeV^{-2}]$"
 SPEC_YLABEL = r"$(2\pi p_T)^{-1}dN_{coherent}/(dp_Td\eta_p)\ [GeV^{-2}]$"
 
-SCALEBYMASS = True
-# SCALEBYMASS = False
+# SCALEBYMASS = True
+SCALEBYMASS = False
 if(SCALEBYMASS):
     FIELD_YLABEL = r"$m\cdot\pi^0\ [GeV^2]$"
-NORMALIZE_SPECS = True
-# NORMALIZE_SPECS = False
+# NORMALIZE_SPECS = True
+NORMALIZE_SPECS = False
 if(NORMALIZE_SPECS):
     SPEC_YLABEL = r"$\mathcal{N}\cdot(2\pi p_T)^{-1}dN_{coherent}/(dp_Td\eta_p)\ [GeV^{-2}]$"
 
+TOBINS = True
+# TOBINS = False
 
 FIGSIZE = (7,7)
 ADJUSTLABELS = False
 AXISLABELSIZE = 20
 TICKLABELSIZE = 15
+LINEWIDTH = 2
+LEGENDSIZE = 10
 
-LINECOLLECTION = True
-# LINECOLLECTION = False
+# LINECOLLECTION = True
+LINECOLLECTION = False
 WITHCMAP = True
 # WITHCMAP = False
 CMAP = LinearSegmentedColormap.from_list("custom", ["blue","red"])
@@ -236,16 +277,19 @@ lines_spec = []
 
 COMPLEX_FIELD = False
 
-LEGEND = False
-LEGENDSIZE = 10
+LEGEND = True
+# LEGEND = False
 # labels = [r"$m=%i\ MeV$"%(m) for m in ms]
 # labels = [r"$a=1/3$",r"$a=1/2$",r"$a=1$",r"$a=2$",r"$a=3$"]
 # labels.reverse()
+# labels = ["1","2","3","4"]
+# labels = [r"Type A, $m=140\ MeV$",r"Type B, $m=140\ MeV$",r"Type C, $m=140\ MeV$"]
+labels = [r"Type A, $m=280\ MeV$",r"Type B, $m=280\ MeV$",r"Type C, $m=280\ MeV$"]
 if(not LEGEND):
     labels = ["" for n in range(len(paths))]
 
-cols = [(t, 0, 1-t) for t in np.linspace(0,1,len(paths),endpoint=True)]
-# cols = ["r", "g", "b", "purple", "cyan"]
+# cols = [(t, 0, 1-t) for t in np.linspace(0,1,len(paths),endpoint=True)]
+cols = ["r", "g", "b","purple", "orange"]
 
 fig_init = plt.figure(figsize=FIGSIZE)
 gs = gridspec.GridSpec(nrows=2, ncols=1, hspace=0)
@@ -293,20 +337,47 @@ for (n,path) in enumerate(paths):
         x_init1,
         y_init1,
         marker="",
-        color=col)
+        color=col,
+        lw=LINEWIDTH)
 
     ax_init2.plot(
         x_init2,
         y_init2,
         marker="",
-        color=col)
-
-    ax_spec.plot(
-        x_spec,
-        y_spec,
-        marker="",
         color=col,
-        label=labels[n])
+        lw=LINEWIDTH)
+
+    if(not TOBINS):
+        ax_spec.plot(
+            x_spec,
+            y_spec,
+            marker="",
+            color=col,
+            label=labels[n],
+            lw=LINEWIDTH)
+    
+    if(TOBINS):
+        idx = np.where(x_spec >= bins_lower[0])[0][0]
+
+        ax_spec.plot(
+            x_spec[:idx],
+            y_spec[:idx],
+            marker="",
+            color=col,
+            label=labels[n],
+            lw=LINEWIDTH)
+
+        x_spec,y_spec = data_to_bins(x_spec[idx:], y_spec[idx:], bins_lower, bins_upper) 
+
+        ax_spec.plot(
+            x_spec,
+            y_spec,
+            color=col,
+            marker="",
+            ls = "--",
+            # label=labels[n],
+            lw=LINEWIDTH)
+
 
     if LINECOLLECTION:
         line_init1 = np.column_stack((x_init1, y_init1))
