@@ -126,8 +126,8 @@ and there are a priori 3 integrals to be evaluated numerically. Making use of bo
 \end{subequations}
 Straightforward substitution of the different formula into each other leads to the central result
 \begin{multline}
-    J(\pm p) =2\pi^2\int_0^\pi\dt\alpha\tau r\Bigg[(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)\Big[J_0(r p_T)\times\big(-Y_0(\tau\omega_T)\pm\imagu J_0(\tau\omega_T)\big)\Big]+\nonumber                                                                                             \\
-                       + \phi(\tau,r)\Big[\tau^\prime\times p_T J_1(r p_T)\times\big(-Y_0(\tau\omega_T)\pm\imagu J_0(\tau\omega_T)\big)+\nonumber                                                                                                                                       \\
+    J(\pm p) =2\pi^2\int_0^{\frac{\pi}{2}}\dt\alpha\tau r\Bigg[(r^\prime\partial_\tau+\tau^\prime\partial_r)\phi(\tau,r)\Big[J_0(r p_T)\times\big(-Y_0(\tau\omega_T)\pm\imagu J_0(\tau\omega_T)\big)\Big]+                                                                                             \\
+                       + \phi(\tau,r)\Big[\tau^\prime\times p_T J_1(r p_T)\times\big(-Y_0(\tau\omega_T)\pm\imagu J_0(\tau\omega_T)\big)+                                                                                                                                       \\
                        \qquad\phantom{+\phi(\tau,r)\Big[}+r^\prime\times J_0(r p_T)\times\omega_T\big(-Y_1(\tau\omega_T)\pm\imagu J_1(\tau\omega_T)\big)\Big]\Bigg]\,.
                        \label{eq:SpectrumFinalFormula}
 \end{multline}
@@ -327,13 +327,13 @@ First, investigate the spectrum of a real scalar field for constant values of th
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_constfield_20240822_161734_init.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_init.png}        
             \end{minipage}
         }
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_constfield_20240822_161734_spec.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_spec.png}        
             \end{minipage}
         }
     \end{minipage}
@@ -345,13 +345,13 @@ Spectra from field configurations of high ratio ${\Big\vert\frac{\text{amplitude
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_constfield_20240822_161734_masses_init.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_init.png}        
             \end{minipage}
         }
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_constfield_20240822_161734_masses_spec.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_spec.png}        
             \end{minipage}
         }
     \end{minipage}
@@ -367,13 +367,13 @@ Next, test the aforementioned $\epsilon=\const$ prescription of defining initial
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240822_135426_init.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_init.png}        
             \end{minipage}
         }
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240822_135426_spec.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_spec.png}        
             \end{minipage}
         }
         \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.140\,\text{GeV}$.}
@@ -390,13 +390,13 @@ As before, let us also change the mass in this scenario. Now, the mass further i
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143119_m226_init.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_init.png}        
             \end{minipage}
         }
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143119_m226_spec.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_spec.png}        
             \end{minipage}
         }
         \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.226\,\text{GeV}$.}
@@ -410,13 +410,13 @@ As before, let us also change the mass in this scenario. Now, the mass further i
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143151_m398_init.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_init.png}        
             \end{minipage}
         }
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143151_m398_spec.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_spec.png}        
             \end{minipage}
         }
         \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.398\,\text{GeV}$.}
@@ -430,13 +430,13 @@ As before, let us also change the mass in this scenario. Now, the mass further i
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143224_m570_init.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_init.png}        
             \end{minipage}
         }
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143224_m570_spec.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_spec.png}        
             \end{minipage}
         }
         \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.570\,\text{GeV}$.}
@@ -450,13 +450,13 @@ As before, let us also change the mass in this scenario. Now, the mass further i
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143253_m742_init.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_init.png}        
             \end{minipage}
         }
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143253_m742_spec.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_spec.png}        
             \end{minipage}
         }
         \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.742\,\text{GeV}$.}
@@ -470,13 +470,13 @@ As before, let us also change the mass in this scenario. Now, the mass further i
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143326_m914_init.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_init.png}        
             \end{minipage}
         }
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143326_m914_spec.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_spec.png}        
             \end{minipage}
         }
         \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=0.914\,\text{GeV}$.}
@@ -490,13 +490,13 @@ As before, let us also change the mass in this scenario. Now, the mass further i
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143341_m1000_init.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_init.png}        
             \end{minipage}
         }
         \debugbox{
             \begin{minipage}{0.4\linewidth}
                 \centering
-                \includegraphics[width=\linewidth]{code/C++/DCCspec/data/images/spectra_real_consteps_20240826_143341_m1000_spec.png}        
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_spec.png}        
             \end{minipage}
         }
         \captionof{figure}{Initial conditions (left) and resulting spectra (right) for constant energy density on the freezeout, using $m_\pi=1\,\text{GeV}$.}
@@ -514,3 +514,51 @@ To summarize the different scales at play in the spectra, we state 3 central obs
 
 \subsection{Other Prescriptions}
 
+
+
+\section{Analytic Parametrization of DCC Spectra}
+
+In the last section we found certain universal features of the spectra generated from our model that are to some extent independent of initial field configurations and must thus depend on the freezeout geometry and the symmetries. We try to find a description to capture the spectra our model produces in terms of only a few parameters.
+
+The starting point for this study is formula \eqref{eq:SpectrumFinalFormula} to compute the spectrum from the condensate field and derivative on the freezeout surface. To make an analytical treatment possible, we simplify the freezeout geometry and consider the freezeout surface to be composed of a section where $\tau=\const$ and a section where $r=\const$ and the fireball shall be contained within a rectangular region ${[0,\mathcal{T}]\times[0,\mathcal{R}]}$ in the ${\tau-r}$-plane Further it can be expected that the relevant part of the spectrum originates from the low wavelength modes of the field, thus we start again with the assumption of constant field and orthogonal derivative.
+
+Start with the portion of the simplified freezeout surface where $\tau\equiv\mathcal{T}=\const$ and some parametrization ${r(\alpha)}$ with the inverse being a function ${\alpha(r)}$. Restricting the fireball radius to $\mathcal{R}$, the integration domain of $\alpha$ is restricted to ${[0,\alpha(\mathcal{R})]}$. Denote the constant value of $\phi$ by $A$ and its orthogonal derivative $\partial_\tau\phi$ by $B$. Note that this is a notion  Use
+\begin{equation}
+    \int_0^{\alpha(\mathcal{R})}\dt\alpha r^\prime r=\int_0^\mathcal{R}\dt rr=\frac{1}{p_T^2}\int_0^{\mathcal{R}p_T}\dt tt
+\end{equation}
+for ${t=rp_T}$.
+
+% \begin{subequations}
+%     \begin{align}
+%         J(\pm p)&=2\pi^2\mathcal{T}\int_0^\frac{\mathcal{R}}{r_{\text{dim}}}\dt\alpha r\Bigg[r_{\text{dim}}B\Big[J_0(r p_T)\times\big(-Y_0(\mathcal{T}\omega_T)\pm\imagu J_0(\mathcal{T}\omega_T)\big)\Big]+\nonumber                                                                                             \\
+%         &\phantom{=}+ A\Big[r_{\text{dim}}\times J_0(r p_T)\times\omega_T\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)\Big]\Bigg]\\\
+%         &=2\pi^2\mathcal{T}\int_0^\mathcal{R}\dt rr\Bigg[B\Big[J_0(r p_T)\times\big(-Y_0(\mathcal{T}\omega_T)\pm\imagu J_0(\mathcal{T}\omega_T)\big)\Big]+\nonumber                                                                                             \\
+%         &\phantom{=}+ A\Big[J_0(r p_T)\times\omega_T\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)\Big]\Bigg]\\
+%         &=2\pi^2\mathcal{T}\frac{1}{p_T^2}\int_0^{\mathcal{R}p_T}\dt tt\Bigg[B\Big[J_0(t)\times\big(-Y_0(\mathcal{T}\omega_T)\pm\imagu J_0(\mathcal{T}\omega_T)\big)\Big]+\nonumber                                                                                             \\
+%         &\phantom{=}+ A\Big[J_0(t)\times\omega_T\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)\Big]\Bigg]
+%     \end{align}
+% \end{subequations}
+
+\begin{subequations}
+    \begin{align}
+        J_{\tau=\mathcal{T}}(\pm p)&=2\pi^2\mathcal{T}\int_0^{\alpha(\mathcal{R})}\dt\alpha r\Bigg[r^\prime B\Big[J_0(r p_T)\times\big(-Y_0(\mathcal{T}\omega_T)\pm\imagu J_0(\mathcal{T}\omega_T)\big)\Big]+\nonumber                                                                                             \\
+        &\phantom{=}+ A\Big[r^\prime\times J_0(r p_T)\times\omega_T\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)\Big]\Bigg]\\\
+        &=2\pi^2\mathcal{T}\int_0^\mathcal{R}\dt rr\Bigg[B\Big[J_0(r p_T)\times\big(-Y_0(\mathcal{T}\omega_T)\pm\imagu J_0(\mathcal{T}\omega_T)\big)\Big]+\nonumber                                                                                             \\
+        &\phantom{=}+ A\Big[J_0(r p_T)\times\omega_T\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)\Big]\Bigg]\\
+        &=2\pi^2\mathcal{T}\frac{1}{p_T^2}\int_0^{\mathcal{R}p_T}\dt tt\Bigg[B\Big[J_0(t)\times\big(-Y_0(\mathcal{T}\omega_T)\pm\imagu J_0(\mathcal{T}\omega_T)\big)\Big]+\nonumber                                                                                             \\
+        &\phantom{=}+ A\Big[J_0(t)\times\omega_T\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)\Big]\Bigg]
+    \end{align}
+\end{subequations}
+
+Using the relation
+\begin{equation}
+    \int\dt xx^{\nu+1}\mathscr{C}_\nu(x)=x^{\nu+1}\mathscr{C}_{\nu+1}(x)
+\end{equation}
+for ${\mathscr{C}_\nu=J_\nu,\,Y_\nu}$ we find the contributions
+\begin{equation}
+    J_{\tau=\mathcal{T}}(\pm p)=2\pi^2\frac{\mathcal{T}\mathcal{R}}{p_T}\Bigg[B\big(-Y_0(\mathcal{T}\omega_T)\pm\imagu J_0(\mathcal{T}\omega_T)\big)+A\times\omega_T\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)\Bigg]J_1(\mathcal{R}p_T)\,.
+\end{equation}
+An analogous computation is performed for the case ${r=\mathcal{R}=\const}$ and yields
+\begin{equation}
+    J_{r=\mathcal{R}}(\pm p)=2\pi^2\frac{\mathcal{T}\mathcal{R}}{\omega_T}\Bigg[BJ_0(\mathcal{R}p_T)+A\times p_TJ_1(\mathcal{R}p_T)\Bigg]\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)\,.
+\end{equation}

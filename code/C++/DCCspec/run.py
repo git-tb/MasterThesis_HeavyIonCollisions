@@ -1023,16 +1023,16 @@ plt.show()
 # spectra = glob.glob("data/spectra_real_m280_taudep_20241029_135948/*/")
 # spectra = glob.glob("data/spectra_real_m280_consteps_20241029_140005/*/")
 # spectra = glob.glob("data/spectra_real_m280_constfield_20241029_140034/*/")
-spectra = glob.glob("data/spectra_real_m280_s-1_constfield_20241030_111128/*")
-spec = spectra[0]
+# spectra = glob.glob("data/spectra_real_m280_s-1_constfield_20241030_111128/*")
+# spec = spectra[0]
 
 # spectra = glob.glob("data/spectra_real_m140_consteps_20241029_110232/*/")
 # spectra = glob.glob("data/spectra_real_m140_taudep_20241029_132506/*/")
-# spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
+spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
 # spectra = glob.glob("data/spectra_real_m140_constfield_20241029_162545/*/")
 # spectra = glob.glob("data/spectra_real_m140_constfield_20241029_163722/*/")
 # spectra = glob.glob("data/spectra_real_m140_s-1_consteps_20241030_104847/*")
-# spec = spectra[-1]
+spec = spectra[0]
 
 # spectra = glob.glob("data/spectra_real_consteps_20240822_135440/*")
 # spectra = glob.glob("data/spectra_real_consteps_20240826_143119_m226/*")
@@ -1118,6 +1118,8 @@ ax_init2.plot(
         ls="-.",
         lw=2,
         marker="")
+
+ax_spec.plot(ps, np.abs(Jps)**2)
 
 line_spec, = ax_spec.plot(x_spec, y_spec,
     label=r"model (particle)",
