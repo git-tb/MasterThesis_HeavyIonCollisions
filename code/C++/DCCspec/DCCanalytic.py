@@ -16,29 +16,33 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 GeVtoIfm = 5.0677
 fmtoIGeV = GeVtoIfm
 m = 0.14
+tau0 = 0.4
 
 def w(m,p):
     return np.sqrt(m**2 + p**2)
 
-def Jp1(p,Tau,R, A,B):
+def JT(p,Tau,R, A,B):
     return 2 * (np.pi**2) * Tau * R * (fmtoIGeV)**2 / p * (
         B * (-spc.y0(Tau * w(m,p) * GeVtoIfm) + 1j * spc.j0(Tau * w(m,p) * GeVtoIfm)) + 
         A * (-spc.y1(Tau * w(m,p) * GeVtoIfm) + 1j * spc.j1(Tau * w(m,p) * GeVtoIfm)) * w(m,p)
     ) * spc.j1(R * p * GeVtoIfm)
 
-def Jp2(p,Tau,R, A,B):
-    return 2 * (np.pi**2) * Tau * R * (fmtoIGeV)**2 / w(m,p) * (
+def JR(p,Tau,R, A,B):
+    return -2 * (np.pi**2) * R * (fmtoIGeV)**2 / w(m,p) * (
         B * spc.j0(R * p * GeVtoIfm) + 
         A * spc.j1(R * p * GeVtoIfm) * p
-    ) * (-spc.y1(Tau * w(m,p) * GeVtoIfm) + 1j * spc.j1(Tau * w(m,p) * GeVtoIfm))
+    ) * (
+        Tau * (-spc.y1(Tau * w(m,p) * GeVtoIfm) + 1j * spc.j1(Tau * w(m,p) * GeVtoIfm)) -
+        tau0 * (-spc.y1(tau0 * w(m,p) * GeVtoIfm) + 1j * spc.j1(tau0 * w(m,p) * GeVtoIfm))
+    )
 
-def specan(p, Tau, R, A1, B1, A2, B2):
-    return 1/(2*np.pi)**3 * np.abs(Jp1(p, Tau, R, A1, B1) + Jp2(p, Tau, R, A2, B2))**2
+def specan(p, Tau, R, AT, BT, AR, BR):
+    return 1/(2*np.pi)**3 * np.abs(JT(p, Tau, R, AT, BT) + JR(p, Tau, R, AR, BR))**2
 
 #%%
 
-spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
-# spectra = glob.glob("data/spectra_real_m140_consteps_20241029_110232/*/")
+# spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
+spectra = glob.glob("data/spectra_real_m140_consteps_20241029_110232/*/")
 # spectra = glob.glob("data/spectra_real_m140_taudep_20241029_132506/*/")
 spec = spectra[0]
 
@@ -53,13 +57,13 @@ plt.show()
 
 df_spec = pd.read_csv(spec+"/spectr.txt", comment="#")
 
-tau0, R0 = 12.2, 8.5
+T0, R0 = 12.2, 8.5
 
 Amax = 0.2
-Bmax = 0.3/10 # value of (n^\mu d_\mu phi)/(typical value of r', tau')
+Bmax = 4/10 # value of (n^\mu d_\mu phi)/(typical value of r', tau')
 
 ps = np.linspace(0,2,500)
-myspec = specan(ps,tau0, R0,0.1,0.1,0.1,0.1)
+myspec = specan(ps,T0, R0,0.1,0.1,0.1,0.1)
 
 fig, ax = plt.subplots()
 figsl = plt.figure()
@@ -74,7 +78,7 @@ sl1 = Slider(
     valmin=0,
     valmax=20,
     label="Tau",
-    valinit=tau0,
+    valinit=T0,
     orientation="vertical"
 )
 
