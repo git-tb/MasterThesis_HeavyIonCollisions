@@ -560,6 +560,7 @@ Using the relation
 for the Besselfunctions ${\mathscr{C}_\nu=J_\nu,\,Y_\nu}$ we find the contribution
 \begin{equation}
     J_{\mathcal{T}}(\pm p)=2\pi^2\frac{\mathcal{T}\mathcal{R}}{p_T}\Bigg[B_{\mathcal{T}}\big(-Y_0(\mathcal{T}\omega_T)\pm\imagu J_0(\mathcal{T}\omega_T)\big)+A_{\mathcal{T}}\times\omega_T\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)\Bigg]J_1(\mathcal{R}p_T)\,.
+    \label{eq:AnalyticSpec_Tconst}
 \end{equation}
 An analogous computation is performed for the case ${r=\mathcal{R}=\const}$ and yields
 \begin{subequations}
@@ -574,4 +575,8 @@ An analogous computation is performed for the case ${r=\mathcal{R}=\const}$ and 
     J_{\mathcal{R}}(\pm p)=-2\pi^2\frac{\mathcal{R}}{\omega_T}\Big[B_{\mathcal{R}}J_0(\mathcal{R}p_T)+A_{\mathcal{R}}\times p_TJ_1(\mathcal{R}p_T)\Big]\times\\
     \times\Big[\mathcal{T}\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)-\tau_0\big(-Y_1(\tau_0\omega_T)\pm\imagu J_1(\tau_0\omega_T)\big)\Big]\,.
 \end{multline}
-The spectrum can now be calculated from the sum ${J(\pm p)=J_{\mathcal{T}}(\pm p)+J_{\mathcal{R}}(\pm p)}$ and leaves the 6 parameters ${\mathcal{T},\mathcal{R},A_{\mathcal{T}},B_{\mathcal{T}},A_{\mathcal{R}},B_{\mathcal{R}}}$ open to be tuned.
+The spectrum can now be calculated from the sum ${J(\pm p)=J_{\mathcal{T}}(\pm p)+J_{\mathcal{R}}(\pm p)}$ and leaves the 6 parameters ${\mathcal{T},\mathcal{R},A_{\mathcal{T}},B_{\mathcal{T}},A_{\mathcal{R}},B_{\mathcal{R}}}$ and the particle mass $m$, implicitly contained within $\omega_T$, open to be tuned.
+
+The low-$p_T$ regime for these spectra are dominated by the contributions ${\propto J_1(\mathcal{R}p_T)/p_T}$ from equation \eqref{eq:AnalyticSpec_Tconst}. A typical length scale of this function is given by the position of the first zero, which is located at ${(\mathcal{R}p_T)_0\simeq 3.83}$. For an effective radius ${\mathcal{R}\approx 8\,\mathrm{fm}}$ of the fireball at freezeout, this is equivalent to a relevant $p_T$-scale of ${\approx 0.09\, \mathrm{GeV}}$. 
+
+This approximation seems to be failing when ${m\gg 1/\mathcal{R}}$. Scaling with mass is not explained by this parametrization.

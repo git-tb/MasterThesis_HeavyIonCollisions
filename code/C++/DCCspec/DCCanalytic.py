@@ -15,19 +15,18 @@ plt.style.use("mplstyles/myclassic_white.mplstyle")
 
 GeVtoIfm = 5.0677
 fmtoIGeV = GeVtoIfm
-m = 0.14
 tau0 = 0.4
 
 def w(m,p):
     return np.sqrt(m**2 + p**2)
 
-def JT(p,Tau,R, A,B):
+def JT(p,m,Tau,R, A,B):
     return 2 * (np.pi**2) * Tau * R * (fmtoIGeV)**2 / p * (
         B * (-spc.y0(Tau * w(m,p) * GeVtoIfm) + 1j * spc.j0(Tau * w(m,p) * GeVtoIfm)) + 
         A * (-spc.y1(Tau * w(m,p) * GeVtoIfm) + 1j * spc.j1(Tau * w(m,p) * GeVtoIfm)) * w(m,p)
     ) * spc.j1(R * p * GeVtoIfm)
 
-def JR(p,Tau,R, A,B):
+def JR(p,m,Tau,R, A,B):
     return -2 * (np.pi**2) * R * (fmtoIGeV)**2 / w(m,p) * (
         B * spc.j0(R * p * GeVtoIfm) + 
         A * spc.j1(R * p * GeVtoIfm) * p
@@ -36,15 +35,17 @@ def JR(p,Tau,R, A,B):
         tau0 * (-spc.y1(tau0 * w(m,p) * GeVtoIfm) + 1j * spc.j1(tau0 * w(m,p) * GeVtoIfm))
     )
 
-def specan(p, Tau, R, AT, BT, AR, BR):
-    return 1/(2*np.pi)**3 * np.abs(JT(p, Tau, R, AT, BT) + JR(p, Tau, R, AR, BR))**2
+def specan(p,m, Tau, R, AT, BT, AR, BR):
+    return 1/(2*np.pi)**3 * np.abs(JT(p,m, Tau, R, AT, BT) + JR(p,m, Tau, R, AR, BR))**2
 
 #%%
 
 # spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
-spectra = glob.glob("data/spectra_real_m140_consteps_20241029_110232/*/")
+# spectra = glob.glob("data/spectra_real_m140_consteps_20241029_110232/*/")
 # spectra = glob.glob("data/spectra_real_m140_taudep_20241029_132506/*/")
-spec = spectra[0]
+# spec = spectra[-1]
+spectra = glob.glob("data_old/spectra_real_constfield_20240822_161734_masses/*/")
+spec = spectra[-1]
 
 df_init1 = pd.read_csv(spec+"/field0.txt",comment="#")
 df_init2 = pd.read_csv(spec+"/field0_deriv.txt",comment="#")
@@ -57,13 +58,13 @@ plt.show()
 
 df_spec = pd.read_csv(spec+"/spectr.txt", comment="#")
 
-T0, R0 = 12.2, 8.5
+T0, R0, m0 = 12.2, 8.5, 0.14
 
-Amax = 0.2
-Bmax = 4/10 # value of (n^\mu d_\mu phi)/(typical value of r', tau')
+Amax = 0.6
+Bmax = 0.6/10 # value of (n^\mu d_\mu phi)/(typical value of r', tau')
 
-ps = np.linspace(0,2,500)
-myspec = specan(ps,T0, R0,0.1,0.1,0.1,0.1)
+ps = 2*(np.linspace(0,1,500))**5
+myspec = specan(ps,m0,T0, R0,0.1,0.1,0.1,0.1)
 
 fig, ax = plt.subplots()
 figsl = plt.figure()
@@ -118,7 +119,7 @@ sl5 = Slider(
     valmin=-Bmax,
     valmax=Bmax,
     label="B1",
-    valinit=1,
+    valinit=0,
     orientation="vertical"
 )
 
@@ -138,14 +139,24 @@ sl7 = Slider(
     valmin=-Bmax,
     valmax=Bmax,
     label="B2",
-    valinit=1,
+    valinit=0,
+    orientation="vertical"
+)
+
+ax8 = figsl.add_axes([0.8, 0.1, 0.03, 0.8])
+sl8 = Slider(
+    ax=ax8,
+    valmin=0,
+    valmax=1,
+    label="m",
+    valinit=m0,
     orientation="vertical"
 )
 
 # The function to be called anytime a slider's value changes
 def update(val):
 
-    myspec = specan(ps,sl1.val, sl2.val,sl4.val, sl5.val, sl6.val, sl7.val)
+    myspec = specan(ps,sl8.val, sl1.val, sl2.val,sl4.val, sl5.val, sl6.val, sl7.val)
     line.set_ydata(np.exp(sl3.val)*myspec)
 
     fig.canvas.draw_idle()
@@ -157,6 +168,7 @@ sl4.on_changed(update)
 sl5.on_changed(update)
 sl6.on_changed(update)
 sl7.on_changed(update)
+sl8.on_changed(update)
 
 plt.show()
 
