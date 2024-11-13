@@ -954,7 +954,7 @@ for key in keys:
 # plt.show()
 plt.close()
 print(newdf)
-newdf.to_csv("./../../../code/Mathematica/data/ExampleFreezeOutCorrected_"+str(factor)+"x.csv",index=False)
+# newdf.to_csv("./../../../code/Mathematica/data/ExampleFreezeOutCorrected_"+str(factor)+"x.csv",index=False)
 
 # %%
 #############################################################

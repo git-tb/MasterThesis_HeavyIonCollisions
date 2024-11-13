@@ -40,12 +40,19 @@ def specan(p,m, Tau, R, AT, BT, AR, BR):
 
 #%%
 
-# spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
+FIGSIZE = (7,7)
+ADJUSTLABELS = False
+AXISLABELSIZE = 20
+TICKLABELSIZE = 15
+LINEWIDTH = 2
+LEGENDSIZE = 10
+
+spectra = glob.glob("data/spectra_real_m140_constfield_20241029_110519/*/")
 # spectra = glob.glob("data/spectra_real_m140_consteps_20241029_110232/*/")
 # spectra = glob.glob("data/spectra_real_m140_taudep_20241029_132506/*/")
+spec = spectra[0]
+# spectra = glob.glob("data_old/spectra_real_constfield_20240822_161734_masses/*/")
 # spec = spectra[-1]
-spectra = glob.glob("data_old/spectra_real_constfield_20240822_161734_masses/*/")
-spec = spectra[-1]
 
 df_init1 = pd.read_csv(spec+"/field0.txt",comment="#")
 df_init2 = pd.read_csv(spec+"/field0_deriv.txt",comment="#")
@@ -66,12 +73,23 @@ Bmax = 0.6/10 # value of (n^\mu d_\mu phi)/(typical value of r', tau')
 ps = 2*(np.linspace(0,1,500))**5
 myspec = specan(ps,m0,T0, R0,0.1,0.1,0.1,0.1)
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=FIGSIZE)
 figsl = plt.figure()
-ax.plot(df_spec["pT"].to_numpy(),df_spec["abs2Re"].to_numpy())
+ax.plot(df_spec["pT"].to_numpy(),df_spec["abs2Re"].to_numpy(),color="b",label=r"Type A, $m=140\ MeV$",marker="",lw=2)
+# ax.plot(pTs_alice, spec_compare)
 
-line, = ax.plot(ps,myspec)
+line, = ax.plot(ps,myspec,color="r",label="analytic parametrization",marker="",lw=2)
 ax.set_yscale("log")
+
+ax.set_xlabel(r"$p_T\ [GeV]$")
+ax.set_ylabel(r"$(2\pi p_T)^{-1}dN_{coherent}/(dp_Td\eta_p)\ [GeV^{-2}]$")
+
+ax.tick_params(axis="both",labelsize=TICKLABELSIZE)
+ax.grid(False,which="both")
+ax.xaxis.set_ticks_position("bottom")
+ax.yaxis.set_ticks_position("left")
+
+ax.legend(fontsize=LEGENDSIZE,fancybox=True, framealpha=0.85,shadow=False)
 
 ax1 = figsl.add_axes([0.1, 0.1, 0.03, 0.8])
 sl1 = Slider(
@@ -169,6 +187,8 @@ sl5.on_changed(update)
 sl6.on_changed(update)
 sl7.on_changed(update)
 sl8.on_changed(update)
+
+fig.tight_layout()
 
 plt.show()
 

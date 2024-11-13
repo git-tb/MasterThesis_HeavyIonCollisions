@@ -471,6 +471,13 @@ ax_init1.tick_params(axis="both",labelsize=TICKLABELSIZE)
 ax_init2.tick_params(axis="both",labelsize=TICKLABELSIZE)
 ax_spec.tick_params(axis="both",labelsize=TICKLABELSIZE)
 
+ax_init1.xaxis.set_ticks_position("bottom")
+ax_init1.yaxis.set_ticks_position("left")
+ax_init2.xaxis.set_ticks_position("bottom")
+ax_init2.yaxis.set_ticks_position("left")
+ax_spec.xaxis.set_ticks_position("bottom")
+ax_spec.yaxis.set_ticks_position("left")
+
 ax_init1.set_xlim(0,np.pi/2)
 ax_init2.set_xlim(0,np.pi/2)
 ax_spec.set_xlim(0,2)
@@ -571,7 +578,88 @@ ax_decayspec.set_xlabel(SPEC_XLABEL_DS)
 fig_decayspec.tight_layout()
 fig_primespec.tight_layout()
 
-fig_primespec.savefig("data/images/decaydecay_inittest_primespec.png")
-fig_decayspec.savefig("data/images/decaydecay_inittest_decayspecs.png")
+# fig_primespec.savefig("images/decaydecay_inittest_primespec.png")
+# fig_decayspec.savefig("images/decaydecay_inittest_decayspecs.png")
 
 plt.show()
+
+# %%
+###############################################################
+###############################################################
+# PLOT FREEZEOUT GEOMETRY
+###############################################################
+###############################################################
+
+ARROW_WIDTH = 0.3
+ARROW_LENGTH = 0.2
+ARROW_OVERHANG = 0.1
+rmax = 11
+taumax = 15
+
+path = "./../../../code/Mathematica/data/ExampleFreezeOutCorrected.csv"
+df = pd.read_csv(path)
+
+fig, ax = plt.subplots(figsize=(7,7))
+
+ax.plot(df["r"].to_numpy(), df["tau"].to_numpy(),
+        marker="",
+        label="exact freezeout geometry")
+ax.hlines(0.4,0,10,color="k",ls="--",lw=2)
+ax.hlines(12.5,0,8.5,color="b",lw=2,ls="--")
+ax.vlines(8.5,0.4,12.5,color="b",lw=2,ls="--")
+
+ax.set_xlim(-ARROW_WIDTH,rmax)
+ax.set_ylim(-ARROW_WIDTH,taumax)
+
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['bottom'].set_visible(False)
+ax.spines['left'].set_visible(False)
+
+# Set bottom and left spines as x and y axes of coordinate system
+ax.spines['bottom'].set_position('zero')
+ax.spines['left'].set_position('zero')
+
+ax.grid(False)
+ax.set_xticks([8.5])
+ax.set_yticks([0.4,12.5])
+ax.set_xticklabels([r"$\mathcal{R}$"])
+ax.set_yticklabels([r"$\tau_0$",r"$\mathcal{T}$"])
+ax.xaxis.set_tick_params(width=2,length=7,direction='out')
+ax.yaxis.set_tick_params(width=2,length=7,direction='out')
+ax.xaxis.set_ticks_position("bottom")
+ax.yaxis.set_ticks_position("left")
+
+ax.set_xlabel(r"$r$",rotation=0,)
+ax.set_ylabel(r"$\tau$",rotation=0)
+
+ax.xaxis.set_label_coords(0.95,0)
+ax.yaxis.set_label_coords(-0.03,0.95)
+
+# ax.plot([0,8.5/2],[0.4,12.5],c="grey",lw=1,marker="")
+# ax.plot([0,8.5],[0.4,12.5],c="grey",lw=2,marker="")
+
+# Draw arrows
+ax.axes.arrow(0,0,rmax,0,
+              color="k",
+              head_width=ARROW_WIDTH,
+              head_length=ARROW_LENGTH,
+              overhang = ARROW_OVERHANG,
+              length_includes_head=True)
+ax.axes.arrow(0,0,0,taumax,
+              color="k",
+              head_width=ARROW_WIDTH*rmax/taumax,
+              head_length=ARROW_LENGTH*taumax/rmax,
+              overhang = ARROW_OVERHANG,
+              length_includes_head=True)
+
+# ax.legend()
+
+fig.tight_layout()
+
+fig.savefig("images/freezeoutsurface_simplified.png")
+
+plt.show()
+
+
+# %%

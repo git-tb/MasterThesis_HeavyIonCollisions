@@ -520,11 +520,11 @@ To summarize the different scales at play in the spectra, we state 3 central obs
 
 In the last section we found certain universal features of the spectra generated from our model that are to some extent independent of initial field configurations and must thus depend on the freezeout geometry and the symmetries. We try to find a description to capture the spectra our model produces in terms of only a few parameters.
 
-The starting point for this study is formula \eqref{eq:SpectrumFinalFormula} to compute the spectrum from the condensate field and derivative on the freezeout surface. To make an analytical treatment possible, we simplify the freezeout geometry and consider the freezeout surface to be composed of a section where $\tau=\const$ and a section where $r=\const$ and the fireball shall be contained within a rectangular region ${[\tau_0,\mathcal{T}]\times[0,\mathcal{R}]}$ in the ${\tau-r}$-plane, where ${\mathcal{T},\mathcal{R}}$ represent the effective extent of the fireball and $\tau_0$ the time after which its fluid dynamic description is considered to be valid. Our convention to parametrize the freezeout surface allows for a simple subdivision.
+The starting point for this study is formula \eqref{eq:SpectrumFinalFormula} to compute the spectrum from the condensate field and derivative on the freezeout surface. To make an analytical treatment possible, we simplify the freezeout geometry and consider the freezeout surface to be composed of a section where $\tau=\const$ and a section where $r=\const$ and the fireball shall be contained within a rectangular region ${[\tau_0,\mathcal{T}]\times[0,\mathcal{R}]}$ in the ${\tau-r}$-plane, where ${\mathcal{T},\mathcal{R}}$ represent the effective extent of the fireball and $\tau_0$ the time after which its fluid dynamic description is considered to be valid. Our convention to parametrize the freezeout surface allows for a simple subdivision
 \begin{equation}
     \int_{\Sigma_{\text{fo}}}\dt\Sigma^\mu(\dots)=\int_0^{\frac{\pi}{2}}\dt\alpha(\dots)=\int_0^{\alpha(\mathcal{T},\mathcal{R})}\dt\alpha(\dots)\Big\vert_{\tau=\mathcal{T}}+\int_{\alpha(\mathcal{T},\mathcal{R})}^{\frac{\pi}{2}}\dt\alpha(\dots)\Big\vert_{r=\mathcal{R}}\,.
 \end{equation}
-We will denote the contributions from each integral by $J_{\mathcal{T}}$ and ${J_{\mathcal{R}}}$ respecitvely.
+with ${\alpha(\mathcal{T},\mathcal{R})=\arctan(\mathcal{T}/\mathcal{R})}$. We will denote the contributions from each integral by $J_{\mathcal{T}}$ and ${J_{\mathcal{R}}}$ respecitvely.
 
 Using constancy of one of the position space variables ${\tau,r}$ on each subinterval drastically simplifies the computations. Further it can be expected that the relevant part of the spectrum originates from the low wavelength modes of the field, thus we start again with the assumption of constant field and orthogonal derivative. We define ${A_\mathcal{T}\defeq\phi\vert_{\tau=\mathcal{T}}}$, ${B_\mathcal{T}\defeq(\partial_\tau\phi)\vert_{\tau=\mathcal{T}}}$ and ${A_\mathcal{R}\defeq\phi\vert_{r=\mathcal{R}}}$, ${B_\mathcal{R}\defeq(\partial_r\phi)\vert_{r=\mathcal{R}}}$. Finally, we will make use of the following simple reparemtrization
 \begin{equation}
@@ -557,7 +557,7 @@ Using the relation
 \begin{equation}
     \int\dt tt^{\nu+1}\mathscr{C}_\nu(t)=t^{\nu+1}\mathscr{C}_{\nu+1}(t)
 \end{equation}
-for the Besselfunctions ${\mathscr{C}_\nu=J_\nu,\,Y_\nu}$ we find the contribution
+for the Bessel functions ${\mathscr{C}_\nu=J_\nu,\,Y_\nu}$ we find the contribution
 \begin{equation}
     J_{\mathcal{T}}(\pm p)=2\pi^2\frac{\mathcal{T}\mathcal{R}}{p_T}\Bigg[B_{\mathcal{T}}\big(-Y_0(\mathcal{T}\omega_T)\pm\imagu J_0(\mathcal{T}\omega_T)\big)+A_{\mathcal{T}}\times\omega_T\big(-Y_1(\mathcal{T}\omega_T)\pm\imagu J_1(\mathcal{T}\omega_T)\big)\Bigg]J_1(\mathcal{R}p_T)\,.
     \label{eq:AnalyticSpec_Tconst}
