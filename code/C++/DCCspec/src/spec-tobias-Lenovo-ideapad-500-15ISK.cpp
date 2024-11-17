@@ -17,7 +17,7 @@
 #include "savedata.h"       // write to file
 #include "processdata.h"    // initial conditions and freezeout functions
                             // this defines the functions tau(), r(), Dtau(), Dr(), utau(), ur() and f0(), Df0()
-#include "constants.h"      // GeV to inverse fm; 1 GeV = 5.0677 (fm)^-1
+#include "constants.h"      // GeV to inverse fm
 #include "cubature.h"
 
 using namespace std::complex_literals;
@@ -207,14 +207,12 @@ int main(int ac, char* av[])
     std::string timestamp = timestamp_sstr.str();
     std::string pathname = "data/spec_"+timestamp;
 
-    // BEFORE CREATING DIRECTORY, SEE IF READ-IN PROCEDURE SUCCEEDS (OTHERWISE, STOP EARLY AND DONT CREATE DIRECTORY)
     std::cout << "[DEBUG] start data processing" << std::endl;
     csvdata mydata = ProcessFreezeoutData();            // THIS SETS TAU, R, DTAU, DR, UTAU, UR
     csvdata initialdata = ProcessInitialData(initdata); // THIS SETS F0, DF0
     std::cout << "[DEBUG] data processing completed" << std::endl;
 
     std::filesystem::create_directories(pathname);
-
     // SAVE FOR INSPECTION
     //  THE RAW SAMPLES
     writeSamplesToFile(pathname+"/tau_samp.txt", mydata.data[0], mydata.data[1],{"alpha","tauRe","tauIm"},{timestamp});
@@ -258,8 +256,7 @@ int main(int ac, char* av[])
 
     // COMPUTE SPECTRUM
     // USING SLIGHTLY OPTIMIZED VERSION FOR ARRAY-LIKE ARGUMENTS
-
-    std::vector<double> ps(Nps); // MOMENTUM GRID
+    std::vector<double> ps(Nps);
     for (int i = 0; i < ps.size(); i++)
         ps[i] = pmin + i * (pmax - pmin) / (Nps - 1);
 
@@ -298,7 +295,7 @@ int main(int ac, char* av[])
         spectr_output << p << "," << std::real(abs2norm) << "," << std::imag(abs2norm) << std::endl;
     };   
 
-    std::vector<std::complex<double>> myspectr = spectr(ps, func, Dfunc,false,spectr_callback); // COMPUTATION HAPPENS HERE
+    std::vector<std::complex<double>> myspectr = spectr(ps, func, Dfunc,false,spectr_callback);
     spectr_output.close();
 
     // ...AND THEN THE ANTI PARTICLE SPECTRUM
@@ -315,7 +312,7 @@ int main(int ac, char* av[])
         spectranti_output << p << "," << std::real(abs2norm) << "," << std::imag(abs2norm) << std::endl;
     };
 
-    std::vector<std::complex<double>> myspectr_anti = spectr(ps, func, Dfunc,true,spectranti_callback); // COMPUTATION HAPPENS HERE
+    std::vector<std::complex<double>> myspectr_anti = spectr(ps, func, Dfunc,true,spectranti_callback);
     spectranti_output.close();
 
     // std::vector<double> myspectr_abs2(myspectr.size());

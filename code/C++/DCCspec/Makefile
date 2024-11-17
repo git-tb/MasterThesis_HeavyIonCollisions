@@ -31,7 +31,7 @@ LIBRARIES += -lhcubature -lpcubature
 
 DYNLINK :=
 
-DYNLINK += -Wl,-rpath=$(PWD)/boost_1_82_0/lib/
+# DYNLINK += -Wl,-rpath=$(PWD)/boost_1_82_0/lib/
 DYNLINK += -Wl,-rpath=$(PWD)/cubature/
 DYNLINK += -Wl,-rpath=$(PWD)/Cuba-4.2.2
 

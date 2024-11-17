@@ -225,8 +225,8 @@ paths = [
 ]
 parentdir = "m280_compareICs"
 
-SAVE = True
-# SAVE = False
+# SAVE = True
+SAVE = False
 SAVETITLE = parentdir.replace("data/","").replace("/*/","").replace("data_old/","").replace("/*/","")
 
 COMPARE = True
@@ -464,7 +464,7 @@ if(ADJUSTLABELS):
 
 xticks = [0,np.pi/8,np.pi/4,3*np.pi/8,np.pi/2]
 xticklabels = [r"$0$",r"$\pi/8$",r"$\pi/4$",r"$3\pi/8$",r"$\pi/2$"]
-ax_init1.set_xticks(xticks, xticklabels)
+ax_init1.set_xticks([],[])
 ax_init2.set_xticks(xticks, xticklabels)
 
 ax_init1.tick_params(axis="both",labelsize=TICKLABELSIZE)
