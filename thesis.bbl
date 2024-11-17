@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.1 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -35,7 +35,7 @@
       \strng{authorfullhash}{9377db4a51f329fd32ffb3f089701302}
       \field{labelalpha}{Oll08}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Relativistic hydrodynamics is essential to our current understanding of nucleus-nucleus collisions at ultrarelativistic energies (current experiments at the Relativistic Heavy Ion Collider, forthcoming experiments at the CERN Large Hadron Collider). This is an introduction to relativistic hydrodynamics for graduate students. It includes a detailed derivation of the equations, and a description of the hydrodynamical evolution of a heavy-ion collisions. Some knowledge of thermodynamics and special relativity is assumed.}
@@ -81,7 +81,7 @@
       \strng{authorfullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
       \field{labelalpha}{Ris22}
       \field{sortinit}{2}
-      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -117,7 +117,7 @@
       \strng{authorfullhash}{15e144c72b0b9d10db00ddc6d37a19e6}
       \field{labelalpha}{Wei08}
       \field{sortinit}{2}
-      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-0-19-852682-7}
@@ -158,7 +158,7 @@
            given={D.},
            giveni={D\bibinitperiod}}}%
         {{hash=a6c7ab84eb895e366d2c115700148b2b}{%
-           family={B{ö}ckmann},
+           family={Böckmann},
            familyi={B\bibinitperiod},
            given={K.},
            giveni={K\bibinitperiod}}}%
@@ -191,7 +191,7 @@
            family={Chevalley},
            familyi={C\bibinitperiod},
            given={J.\bibnamedelimi -L.},
-           giveni={J\bibinitperiod\bibinitdelim \bibinithyphendelim L\bibinitperiod}}}%
+           giveni={J\bibinitperiod\bibinitdelim \bibinithyphendelim \bibinitperiod}}}%
         {{hash=3edfefab2e07308ed384c361e601f002}{%
            family={Eckart},
            familyi={E\bibinitperiod},
@@ -206,7 +206,7 @@
            family={Fabre},
            familyi={F\bibinitperiod},
            given={J.\bibnamedelimi -P.},
-           giveni={J\bibinitperiod\bibinitdelim \bibinithyphendelim P\bibinitperiod}}}%
+           giveni={J\bibinitperiod\bibinitdelim \bibinithyphendelim \bibinitperiod}}}%
         {{hash=60f8a9e7da7c8fcc0a054feb5866e38b}{%
            family={French},
            familyi={F\bibinitperiod},
@@ -263,7 +263,7 @@
            given={R.},
            giveni={R\bibinitperiod}}}%
         {{hash=1a92debf86f151e4f64cda604f8d023b}{%
-           family={M{ü}ller},
+           family={Müller},
            familyi={M\bibinitperiod},
            given={{\relax\bibnamedelimb Th}.},
            giveni={T\bibinitperiod}}}%
@@ -356,7 +356,7 @@
       \strng{authorfullhash}{c6d9a0a30680a693efb0a6eaacf65140}
       \field{labelalpha}{Alp+81}
       \field{sortinit}{4}
-      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{First results from UA5 on charged particle multiplicities from pp interactions at {\textsurd}s = 540 GeV are presented. A value of 27.4 {\textpm} 2.0 is obtained for the mean charged multiplicity {\textlangle}nch{\textrangle} of produced hadrons. This excludes an s14 behaviour of {\textlangle}nch{\textrangle} in going from ISR to Collider energies, but is not in disagreement with an extrapolation using a quadratic fit in ln s to previous lower energy data up to ISR energies.}
@@ -399,7 +399,7 @@
       \strng{authorfullhash}{521260719aa678e55ec9feee0e966779}
       \field{labelalpha}{Bjo83}
       \field{sortinit}{5}
-      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{The space-time evolution of the hadronic matter produced in the central rapidity region in extreme relativistic nucleus-nucleus collisions is described. We find, in agreement with previous studies, that quark-gluon plasma is produced at a temperature {$\greaterequivlnt$}200-300 MeV, and that it should survive over a time scale {$\greaterequivlnt$}5 fm/c. Our description relies on the existence of a flat central plateau and on the applicability of hydrodynamics.}
@@ -442,7 +442,7 @@
       \strng{authorfullhash}{50048509226fe3fdf2310776356e459f}
       \field{labelalpha}{Flo20}
       \field{sortinit}{6}
-      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Lectures on {{Symmetries}}}
@@ -471,7 +471,7 @@
       \strng{authorfullhash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \field{labelalpha}{Koc97}
       \field{sortinit}{7}
-      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This article is an attempt to a pedagogical introduction and review into the elementary concepts of chiral symmetry in nuclear physics. Effective chiral models such as the linear and nonlinear sigma model will be discussed as well as the essential ideas of chiral perturbation theory. Some applications to the physics of ultrarelativistic heavy ion collisions will be presented.}
@@ -527,7 +527,7 @@
       \strng{authorfullhash}{bd0b09f9d4658a6110c7cf3ae280532f}
       \field{labelalpha}{PS95}
       \field{sortinit}{8}
-      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-0-201-50397-5}
@@ -567,7 +567,7 @@
       \strng{authorfullhash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
       \field{labelalpha}{GRB96}
       \field{sortinit}{9}
-      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-3-540-59179-5}
@@ -601,7 +601,7 @@
       \strng{authorfullhash}{eac544595d4b8df6d805de9a237dd921}
       \field{labelalpha}{ABL97}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{We study the various stages of the evolution of chiral condensates disoriented via the ``baked-alaska'' mechanism, in which the condensates are described as the products of external sources localized on the light cone. Our analysis is based on the classical equations of motion of either the linear or the nonlinear sigma model. We use the associated framework of coherent states and, especially, their source functions to make the connection to the distribution functions for the produced particles. We also compare our classical approach with a mean-field calculation which includes a certain class of quantum corrections.}
@@ -659,7 +659,7 @@
       \strng{authorfullhash}{0ede250374fe5868188340c29e64c200}
       \field{labelalpha}{KGF23}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}
@@ -700,7 +700,7 @@
       \strng{authorfullhash}{57f5b607cec3b22885f854f4c4baf257}
       \field{labelalpha}{Tho11}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Lecture {{Notes}} on {{Particle Physics}}, {{Chapter}} "{{Symmetries}} and the {{Quark Model}}"}
