@@ -661,5 +661,192 @@ fig.savefig("images/freezeoutsurface_simplified.png")
 
 plt.show()
 
+#%%
+###############################################################
+###############################################################
+# DISCRETIZE SIGMA RESONANCE
+###############################################################
+###############################################################
 
-# %%
+df_sig600 = pd.read_csv("sigmaresonance600.txt",header=None,sep=" ")
+
+m_sig = df_sig600.iloc[:,0].to_numpy()
+
+imax = np.where(m_sig > 1000)[0][0]
+
+m_sig = m_sig[:imax]
+w_sig = df_sig600.iloc[:,1].to_numpy()[:imax]
+
+m_min, m_max = np.min(m_sig), np.max(m_sig)
+
+### fit spectral function
+popt = np.polyfit(m_sig,w_sig,30)    
+fitfunc = np.poly1d(popt)
+
+xs = np.linspace(m_min,m_max,1000)
+
+# plt.plot(m_sig, w_sig)
+# plt.plot(xs, fitfunc(xs)/scipy.integrate.quad(fitfunc,m_min,m_max)[0])
+plt.show()
+
+### spectral bins
+bins_edges = np.linspace(m_min, m_max, 41, endpoint=True)
+bins_lower = bins_edges[:-1]
+bins_upper = bins_edges[1:]
+bins_x, bins_y = data_to_bins(xs, fitfunc(xs),bins_lower, bins_upper)
+
+bins_y /= np.sum(bins_y)
+plt.plot(bins_x, bins_y)
+print(bins_x.astype(int))
+print(bins_y)
+print("".join(["%d,"%(b) for b in bins_x.astype(int)]))
+print("".join(["%.5f,"%(b) for b in bins_y]))
+
+"""
+[312 329 346 364 381 399 416 434 451 468 486 503 521 538 555 573 590 608
+ 625 643 660 677 695 712 730 747 764 782 799 817 834 851 869 886 904 921
+ 939 956 973 991]
+
+[0.0113022  0.01342601 0.01521784 0.01710376 0.01888684 0.02073581
+ 0.02292558 0.02557391 0.02864946 0.03212066 0.03605239 0.04055638
+ 0.04562848 0.05098363 0.056002   0.05983979 0.0616738  0.06098072
+ 0.05773101 0.05241178 0.04586667 0.03902149 0.03261387 0.02703996
+ 0.02236943 0.01849156 0.01528533 0.0127     0.01070284 0.00916261
+ 0.00781289 0.00639653 0.00491597 0.00372084 0.00318787 0.00316915
+ 0.00296755 0.00237958 0.00227932 0.00211452]
+
+[312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
+
+0.01130,0.01343,0.01522,0.01710,0.01889,0.02074,0.02293,0.02557,0.02865,0.03212,0.03605,0.04056,0.04563,0.05098,0.05600,0.05984,0.06167,0.06098,0.05773,0.05241,0.04587,0.03902,0.03261,0.02704,0.02237,0.01849,0.01529,0.01270,0.01070,0.00916,0.00781,0.00640,0.00492,0.00372,0.00319,0.00317,0.00297,0.00238,0.00228,0.00211,
+"""
+
+#%%
+###############################################################
+###############################################################
+# PLOT DECAY SPECTRA FOR SIGMA RESONANCE
+###############################################################
+###############################################################
+
+# SAVE = True
+SAVE = False
+SAVETITLE = "decay_sigmaresonance_pi_m140"
+
+COMPARE = True
+# COMPARE = False
+
+PSPEC_XLABEL = r"$q_T\ [GeV]$"
+DSPEC_XLABEL = r"$p_T\ [GeV]$"
+
+PSPEC_YLABEL = r"$(2\pi q_T)^{-1}dN_{\sigma}/(dq_Td\eta_q)\ [GeV^{-2}]$"
+DSPEC_YLABEL = r"$(2\pi p_T)^{-1}dN_{\pi}/(dp_Td\eta_p)\ [GeV^{-2}]$"
+
+FIGSIZE = (7,7)
+AXISLABELSIZE = 20
+TICKLABELSIZE = 15
+LINEWIDTH = 2
+LEGENDSIZE = 10
+
+CMAP = LinearSegmentedColormap.from_list("custom", ["blue","red"])
+CMAP_LBWH = [0.025, 0.025, 0.05, 0.45]
+CMAP_LABELSIZE = 15
+CMAP_TICKSIZE = 15
+LC_LABEL = r"$m\ [GeV]$"
+
+folders = glob.glob("data/decayspectra_sigma_20241119_171318_pi_m140/decayspec*")
+# folders = glob.glob("data/decayspectra_sigma_20241119_171318_pi_m280/decayspec*")
+# folders = glob.glob("data/decayspectra_sigma_p5GeV_20241119_171318_pi_m280/decayspec*")
+folders.sort()
+
+masses = np.array([0.31217169, 0.32958506, 0.34699844, 0.36441181, 0.38182519,
+       0.39923856, 0.41665194, 0.43406531, 0.45147869, 0.46889206,
+       0.48630544, 0.50371881, 0.52113219, 0.53854556, 0.55595894,
+       0.57337231, 0.59078569, 0.60819906, 0.62561244, 0.64302581,
+       0.66043919, 0.67785256, 0.69526594, 0.71267931, 0.73009269,
+       0.74750606, 0.76491944, 0.78233281, 0.79974619, 0.81715956,
+       0.83457294, 0.85198631, 0.86939969, 0.88681306, 0.90422644,
+       0.92163981, 0.93905319, 0.95646656, 0.97387994, 0.99129331])
+weights = np.array([0.0113022 , 0.01342601, 0.01521784, 0.01710376, 0.01888684,
+       0.02073581, 0.02292558, 0.02557391, 0.02864946, 0.03212066,
+       0.03605239, 0.04055638, 0.04562848, 0.05098363, 0.056002  ,
+       0.05983979, 0.0616738 , 0.06098072, 0.05773101, 0.05241178,
+       0.04586667, 0.03902149, 0.03261387, 0.02703996, 0.02236943,
+       0.01849156, 0.01528533, 0.0127    , 0.01070284, 0.00916261,
+       0.00781289, 0.00639653, 0.00491597, 0.00372084, 0.00318787,
+       0.00316915, 0.00296755, 0.00237958, 0.00227932, 0.00211452])
+
+lines_ps, lines_ds = [], []
+
+fig_ps, ax_ps = plt.subplots(figsize=(7,7))
+fig_ds, ax_ds = plt.subplots(figsize=(7,7))
+fig_fs, ax_fs = plt.subplots(figsize=(7,7))
+
+x_fs, y_fs = np.zeros(shape=(2,1))
+
+for (idx,(f,m)) in enumerate(list(zip(folders,masses))):
+    df_ps = pd.read_csv(f+"/primespec_interp.txt",comment="#")
+    df_ds = pd.read_csv(f+"/decayspec.txt",comment="#")
+
+    x_ps, y_ps = df_ps["q"],df_ps["primespecRe"]
+    x_ds, y_ds = df_ds["p"],df_ds["finalspecRe"]
+
+    if(len(np.where(np.isnan(y_ds))[0]) == 0):
+        x_fs = x_ds
+        y_fs = y_fs + y_ds * weights[idx]
+
+    line_ps = np.column_stack((x_ps, y_ps))
+    line_ds = np.column_stack((x_ds, y_ds))
+
+    lines_ps.append(line_ps)
+    lines_ds.append(line_ds)
+
+ax_fs.plot(x_fs, y_fs,lw=2,c="b",marker="",label="DCC decay spectrum")
+ax_fs.plot(pT_compare, spec_compare,lw=2,c="k",ls="--",marker="",label=r"ALICE$-$FluiduM")
+
+lc_ps = LineCollection(lines_ps,array=masses,cmap=CMAP)
+lc_ds = LineCollection(lines_ds,array=masses,cmap=CMAP)
+
+ax_ps.add_collection(lc_ps)
+ax_ds.add_collection(lc_ds)
+ax_ps.autoscale_view()
+ax_ds.autoscale_view()
+
+# STYLE
+
+cax = ax_ds.inset_axes(CMAP_LBWH)
+cbar = fig_spec.colorbar(lc_ds, cax=cax)
+cbar.set_label(LC_LABEL, fontsize=CMAP_LABELSIZE)
+cbar.ax.tick_params(labelsize=CMAP_TICKSIZE)
+
+ax_ps.tick_params(axis="both",labelsize=TICKLABELSIZE)
+ax_ds.tick_params(axis="both",labelsize=TICKLABELSIZE)
+ax_fs.tick_params(axis="both",labelsize=TICKLABELSIZE)
+
+ax_ps.xaxis.set_ticks_position("bottom")
+ax_ds.xaxis.set_ticks_position("bottom")
+ax_fs.xaxis.set_ticks_position("bottom")
+ax_ps.yaxis.set_ticks_position("left")
+ax_ds.yaxis.set_ticks_position("left")
+ax_fs.yaxis.set_ticks_position("left")
+
+ax_ps.set_yscale("log")
+ax_ds.set_yscale("log")
+ax_fs.set_yscale("log")
+
+ax_ps.set_xlabel(PSPEC_XLABEL)
+ax_ps.set_ylabel(PSPEC_YLABEL)
+ax_ds.set_xlabel(DSPEC_XLABEL)
+ax_ds.set_ylabel(DSPEC_YLABEL)
+ax_fs.set_xlabel(DSPEC_XLABEL)
+ax_fs.set_ylabel(DSPEC_YLABEL)
+
+ax_ds.grid(False,which="both")
+ax_ps.grid(False,which="both")
+ax_fs.grid(False,which="both")
+
+fig_ds.tight_layout()
+fig_ps.tight_layout()
+fig_fs.tight_layout()
+
+fig_ps.savefig("images/"+SAVETITLE+"_primespec.png")
+fig_ds.savefig("images/"+SAVETITLE+"_decayspecs.png")
+fig_fs.savefig("images/"+SAVETITLE+"_decayspec_weighted.png")

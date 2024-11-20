@@ -233,6 +233,39 @@ for spec in lastspecs:
     subprocess.run(args=["mv",spec,newdir+str(idx)])
 
 #%%
+
+pTmax = 5
+NpT = 500
+files = glob.glob("data/init_real_sigmamasses_consteps_20241119_171318/*")
+files.sort() # sorts normally by alphabetical order
+files.sort(key=len) # sorts by descending length
+masses = [312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
+masses = np.array(masses)/1000
+
+for (m,file) in list(zip(masses,files)):
+    result = subprocess.run(args=[
+        "./bin/spec",
+        "--pTmax=%f"%(pTmax),
+        "--NpT=%d"%(NpT),
+        "--m=%.2f"%(m),
+        "--epsabs=0",
+        "--epsrel=1e-5",
+        "--iter=10000",
+        "--initpath=%s"%(file)
+    ])
+    print(result)
+
+newdir = "data/newspectra"
+idx = 0
+while(os.path.isdir(newdir+str(idx))):
+    idx += 1
+subprocess.run(args=["mkdir",newdir+str(idx)])
+
+lastspecs = glob.glob("data/spec_????????_??????")
+for spec in lastspecs:
+    subprocess.run(args=["mv",spec,newdir+str(idx)])
+
+#%%
 ###############################################################
 ###############################################################
 # PLOT A SINGLE SPECTRUM
@@ -721,23 +754,36 @@ subprocess.run(args=[
 ###############################################################
 ###############################################################
 
-ma, mb, mc = 0.656, 0.14, 0.14
+mb, mc = 0.28, 0.28
+
 pTmax = 2
 NpT = 200
+files = glob.glob("data/spectra_real_sigmamasses_p5GeV_consteps_20241119_171318/*/spectr.txt")
+files.sort() # sorts normally by alphabetical order
+masses = [312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
+masses = np.array(masses)/1000
 
-paths = glob.glob("data/decay_inittest/*/spectr.txt")
-paths.sort()
-
-for primespecpath in paths:
-    subprocess.run(args=[
+for (ma,file) in list(zip(masses,files)):
+    result = subprocess.run(args=[
         "./bin/decay",
         "--ma=%f"%(ma),
         "--mb=%f"%(mb),
         "--mc=%f"%(mc),
         "--pTmax=%f"%(pTmax),
         "--NpT=%d"%(NpT),
-        "--primespecpath=%s"%(primespecpath)
+        "--primespecpath=%s"%(file)
     ])
+    print(result)
+
+newdir = "data/newspectra"
+idx = 0
+while(os.path.isdir(newdir+str(idx))):
+    idx += 1
+subprocess.run(args=["mkdir",newdir+str(idx)])
+
+lastspecs = glob.glob("data/spec_????????_??????")
+for spec in lastspecs:
+    subprocess.run(args=["mv",spec,newdir+str(idx)])
 
 #%%
 ###############################################################
