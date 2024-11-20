@@ -786,20 +786,26 @@ for (idx,(f,m)) in enumerate(list(zip(folders,masses))):
     df_ps = pd.read_csv(f+"/primespec_interp.txt",comment="#")
     df_ds = pd.read_csv(f+"/decayspec.txt",comment="#")
 
-    x_ps, y_ps = df_ps["q"],df_ps["primespecRe"]
-    x_ds, y_ds = df_ds["p"],df_ds["finalspecRe"]
-
-    if(len(np.where(np.isnan(y_ds))[0]) == 0):
-        x_fs = x_ds
-        y_fs = y_fs + y_ds * weights[idx]
+    x_ps, y_ps = df_ps["q"].to_numpy(),df_ps["primespecRe"].to_numpy()
+    x_ds, y_ds = df_ds["p"].to_numpy(),df_ds["finalspecRe"].to_numpy()
 
     line_ps = np.column_stack((x_ps, y_ps))
-    line_ds = np.column_stack((x_ds, y_ds))
+    line_ds = np.column_stack((
+        x_ds[(~np.isnan(y_ds))*(~np.isinf(y_ds))],
+        y_ds[(~np.isnan(y_ds))*(~np.isinf(y_ds))]))
+
+    # y_ds[np.isnan(y_ds)+np.isinf(y_ds)] = 0
+    # y_ds[np.isnan(y_ds)+np.isinf(y_ds)] = 0
+
+    x_fs = x_ds
+    y_fs = y_fs + y_ds * weights[idx]
 
     lines_ps.append(line_ps)
     lines_ds.append(line_ds)
 
-ax_fs.plot(x_fs, y_fs,lw=2,c="b",marker="",label="DCC decay spectrum")
+x_fs = x_fs[(~np.isnan(y_fs))*(~np.isinf(y_fs))]
+y_fs = y_fs[(~np.isnan(y_fs))*(~np.isinf(y_fs))]
+ax_fs.plot(x_fs, y_fs,lw=2,c="b",marker="",label=r"DCC decay spectrum $\sigma\to\pi\pi$")
 ax_fs.plot(pT_compare, spec_compare,lw=2,c="k",ls="--",marker="",label=r"ALICE$-$FluiduM")
 
 lc_ps = LineCollection(lines_ps,array=masses,cmap=CMAP)
@@ -811,6 +817,8 @@ ax_ps.autoscale_view()
 ax_ds.autoscale_view()
 
 # STYLE
+
+ax_fs.legend(fontsize=LEGENDSIZE,fancybox=True, framealpha=0.85,shadow=False)
 
 cax = ax_ds.inset_axes(CMAP_LBWH)
 cbar = fig_spec.colorbar(lc_ds, cax=cax)
