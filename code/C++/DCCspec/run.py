@@ -202,8 +202,8 @@ plt.show()
 ###############################################################
 ###############################################################
 
-pTmax = 2
-NpT = 200
+pTmax = 5
+NpT = 500
 # initpath = "data/init_real_pi_constfield_20240822_161734/init5.csv"
 # initpath = "data/init_real_pi_consteps_20240822_135440/init8.csv"
 initpath = "data/init_real_pi_consteps_20240822_135426/init8.csv"
@@ -236,9 +236,10 @@ for spec in lastspecs:
 
 pTmax = 5
 NpT = 500
-files = glob.glob("data/init_real_sigmamasses_consteps_20241119_171318/*")
-files.sort() # sorts normally by alphabetical order
-files.sort(key=len) # sorts by descending length
+# files = glob.glob("data/init_real_sigmamasses_consteps_20241119_171318/*")
+# files.sort() # sorts normally by alphabetical order
+# files.sort(key=len) # sorts by descending length
+files = 40*["data/init_real_sigma_constfield/init0.csv"]
 masses = [312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
 masses = np.array(masses)/1000
 
@@ -754,11 +755,11 @@ subprocess.run(args=[
 ###############################################################
 ###############################################################
 
-mb, mc = 0.28, 0.28
+mb, mc = 0.14, 0.14
 
 pTmax = 2
 NpT = 200
-files = glob.glob("data/spectra_real_sigmamasses_p5GeV_consteps_20241119_171318/*/spectr.txt")
+files = glob.glob("data/spectra_real_sigma_constfield/*/spectr.txt")
 files.sort() # sorts normally by alphabetical order
 masses = [312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
 masses = np.array(masses)/1000
@@ -781,7 +782,7 @@ while(os.path.isdir(newdir+str(idx))):
     idx += 1
 subprocess.run(args=["mkdir",newdir+str(idx)])
 
-lastspecs = glob.glob("data/spec_????????_??????")
+lastspecs = glob.glob("data/decayspec_????????_??????")
 for spec in lastspecs:
     subprocess.run(args=["mv",spec,newdir+str(idx)])
 

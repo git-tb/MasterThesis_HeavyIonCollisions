@@ -8,6 +8,7 @@ import scipy.interpolate
 from matplotlib import gridspec
 from matplotlib.collections import LineCollection
 from matplotlib.colors import LinearSegmentedColormap
+import scipy.optimize
 
 get_ipython().run_line_magic("matplotlib","qt")
 plt.style.use("mplstyles/myclassic_white.mplstyle")
@@ -515,7 +516,7 @@ plt.show()
 ###############################################################
 ###############################################################
 
-paths = glob.glob("data/decay_inittest/decayspec_*/")
+paths = glob.glob("data_old/decay_inittest/decayspec_*/")
 paths.sort()
 
 fig_decayspec, ax_decayspec = plt.subplots(figsize=(7,7))
@@ -569,6 +570,14 @@ ax_decayspec.set_yscale("log")
 ax_primespec.grid(False, which="both")
 ax_decayspec.grid(False, which="both")
 
+ax_primespec.tick_params(axis="both",labelsize=TICKLABELSIZE)
+ax_decayspec.tick_params(axis="both",labelsize=TICKLABELSIZE)
+
+ax_primespec.xaxis.set_ticks_position("bottom")
+ax_primespec.yaxis.set_ticks_position("left")
+ax_decayspec.xaxis.set_ticks_position("bottom")
+ax_decayspec.yaxis.set_ticks_position("left")
+
 ax_primespec.set_ylabel(SPEC_YLABEL_PS)
 ax_primespec.set_xlabel(SPEC_XLABEL_PS)
 
@@ -578,8 +587,8 @@ ax_decayspec.set_xlabel(SPEC_XLABEL_DS)
 fig_decayspec.tight_layout()
 fig_primespec.tight_layout()
 
-# fig_primespec.savefig("images/decaydecay_inittest_primespec.png")
-# fig_decayspec.savefig("images/decaydecay_inittest_decayspecs.png")
+fig_primespec.savefig("images/decaydecay_inittest_primespec.png")
+fig_decayspec.savefig("images/decaydecay_inittest_decayspecs.png")
 
 plt.show()
 
@@ -664,65 +673,6 @@ plt.show()
 #%%
 ###############################################################
 ###############################################################
-# DISCRETIZE SIGMA RESONANCE
-###############################################################
-###############################################################
-
-df_sig600 = pd.read_csv("sigmaresonance600.txt",header=None,sep=" ")
-
-m_sig = df_sig600.iloc[:,0].to_numpy()
-
-imax = np.where(m_sig > 1000)[0][0]
-
-m_sig = m_sig[:imax]
-w_sig = df_sig600.iloc[:,1].to_numpy()[:imax]
-
-m_min, m_max = np.min(m_sig), np.max(m_sig)
-
-### fit spectral function
-popt = np.polyfit(m_sig,w_sig,30)    
-fitfunc = np.poly1d(popt)
-
-xs = np.linspace(m_min,m_max,1000)
-
-# plt.plot(m_sig, w_sig)
-# plt.plot(xs, fitfunc(xs)/scipy.integrate.quad(fitfunc,m_min,m_max)[0])
-plt.show()
-
-### spectral bins
-bins_edges = np.linspace(m_min, m_max, 41, endpoint=True)
-bins_lower = bins_edges[:-1]
-bins_upper = bins_edges[1:]
-bins_x, bins_y = data_to_bins(xs, fitfunc(xs),bins_lower, bins_upper)
-
-bins_y /= np.sum(bins_y)
-plt.plot(bins_x, bins_y)
-print(bins_x.astype(int))
-print(bins_y)
-print("".join(["%d,"%(b) for b in bins_x.astype(int)]))
-print("".join(["%.5f,"%(b) for b in bins_y]))
-
-"""
-[312 329 346 364 381 399 416 434 451 468 486 503 521 538 555 573 590 608
- 625 643 660 677 695 712 730 747 764 782 799 817 834 851 869 886 904 921
- 939 956 973 991]
-
-[0.0113022  0.01342601 0.01521784 0.01710376 0.01888684 0.02073581
- 0.02292558 0.02557391 0.02864946 0.03212066 0.03605239 0.04055638
- 0.04562848 0.05098363 0.056002   0.05983979 0.0616738  0.06098072
- 0.05773101 0.05241178 0.04586667 0.03902149 0.03261387 0.02703996
- 0.02236943 0.01849156 0.01528533 0.0127     0.01070284 0.00916261
- 0.00781289 0.00639653 0.00491597 0.00372084 0.00318787 0.00316915
- 0.00296755 0.00237958 0.00227932 0.00211452]
-
-[312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
-
-0.01130,0.01343,0.01522,0.01710,0.01889,0.02074,0.02293,0.02557,0.02865,0.03212,0.03605,0.04056,0.04563,0.05098,0.05600,0.05984,0.06167,0.06098,0.05773,0.05241,0.04587,0.03902,0.03261,0.02704,0.02237,0.01849,0.01529,0.01270,0.01070,0.00916,0.00781,0.00640,0.00492,0.00372,0.00319,0.00317,0.00297,0.00238,0.00228,0.00211,
-"""
-
-#%%
-###############################################################
-###############################################################
 # PLOT DECAY SPECTRA FOR SIGMA RESONANCE
 ###############################################################
 ###############################################################
@@ -752,7 +702,9 @@ CMAP_LABELSIZE = 15
 CMAP_TICKSIZE = 15
 LC_LABEL = r"$m\ [GeV]$"
 
-folders = glob.glob("data/decayspectra_sigma_20241119_171318_pi_m140/decayspec*")
+# folders = glob.glob("data/decayspectra_sigma_constfield_pi_m280/decayspec*")
+folders = glob.glob("data/decayspectra_sigma_constfield_pi_m140/decayspec*")
+# folders = glob.glob("data/decayspectra_sigma_20241119_171318_pi_m140/decayspec*")
 # folders = glob.glob("data/decayspectra_sigma_20241119_171318_pi_m280/decayspec*")
 # folders = glob.glob("data/decayspectra_sigma_p5GeV_20241119_171318_pi_m280/decayspec*")
 folders.sort()
@@ -794,8 +746,8 @@ for (idx,(f,m)) in enumerate(list(zip(folders,masses))):
         x_ds[(~np.isnan(y_ds))*(~np.isinf(y_ds))],
         y_ds[(~np.isnan(y_ds))*(~np.isinf(y_ds))]))
 
-    # y_ds[np.isnan(y_ds)+np.isinf(y_ds)] = 0
-    # y_ds[np.isnan(y_ds)+np.isinf(y_ds)] = 0
+    y_ds[np.isnan(y_ds)+np.isinf(y_ds)] = 0
+    y_ds[np.isnan(y_ds)+np.isinf(y_ds)] = 0
 
     x_fs = x_ds
     y_fs = y_fs + y_ds * weights[idx]
@@ -855,6 +807,106 @@ fig_ds.tight_layout()
 fig_ps.tight_layout()
 fig_fs.tight_layout()
 
-fig_ps.savefig("images/"+SAVETITLE+"_primespec.png")
-fig_ds.savefig("images/"+SAVETITLE+"_decayspecs.png")
-fig_fs.savefig("images/"+SAVETITLE+"_decayspec_weighted.png")
+if(SAVE):
+    print("SAVED!")
+    fig_ps.savefig("images/"+SAVETITLE+"_primespec.png")
+    fig_ds.savefig("images/"+SAVETITLE+"_decayspecs.png")
+    fig_fs.savefig("images/"+SAVETITLE+"_decayspec_weighted.png")
+else:
+    print("NOT SAVED!")
+
+
+#%%
+###############################################################
+###############################################################
+# DISCRETIZE SIGMA RESONANCE
+###############################################################
+###############################################################
+
+df_sig600 = pd.read_csv("sigmaresonance600.txt",header=None,sep=" ")
+
+m_sig = df_sig600.iloc[:,0].to_numpy()
+
+imax = np.where(m_sig > 1000)[0][0]
+
+m_sig = m_sig[:imax]
+w_sig = df_sig600.iloc[:,1].to_numpy()[:imax]
+
+m_min, m_max = np.min(m_sig), np.max(m_sig)
+
+def myfitspec(k,g,msig,mpi):
+    c = np.abs(1 - 4*mpi**2/k**2)
+    I0 = 1/(2*np.sqrt(c))*np.log(np.abs(
+        (np.sqrt(c) - 1)/(np.sqrt(c) + 1)
+    ))
+    ReSigK =-3*g**2*k**2/(64*np.pi**2) * (
+        2/3 - c+(c-c**2)*I0
+    )
+    ImSigK = -3*g**2/(32*np.pi) * mpi**2 * (1-4*mpi**2/k**2)**(1/2)
+    return -2*np.pi*ImSigK / ( (k*2 - msig**2 -ReSigK)**2 + ImSigK**2)
+
+def myfit(xs,*allcoeffs):
+    allcoeffs = np.array(allcoeffs)
+    a, x0 = allcoeffs[0:2]
+    coeffs = allcoeffs[2:]
+    xs = np.array(xs)
+    exps = np.arange(len(coeffs))
+    return np.array([np.sum(coeffs*(a*(x-x0))**exps)*np.exp(-a**2*(x-x0)**2) for x in xs])
+
+popt, pcov = scipy.optimize.curve_fit(myfit, m_sig, w_sig,p0=(0.01,600,*np.ones(9)))
+def fitfunc(k):
+    return myfit(k,*popt)
+
+xs = np.linspace(m_min,m_max,1000)
+
+
+fig, ax = plt.subplots(figsize=(7,7))
+
+# ax.plot(m_sig, w_sig)
+# ax.plot(xs, fitfunc(xs))
+
+### spectral bins
+bins_edges = np.linspace(m_min, m_max, 40, endpoint=True)
+bins_lower = bins_edges[:-1]
+bins_upper = bins_edges[1:]
+bins_x, bins_y = data_to_bins(xs, fitfunc(xs),bins_lower, bins_upper)
+
+# bins_y /= np.sum(bins_y)
+
+ax.plot(bins_x, bins_y)
+print(bins_x.astype(int))
+print(bins_y)
+print("".join(["%d,"%(b) for b in bins_x.astype(int)]))
+print("".join(["%.5f,"%(b) for b in bins_y]))
+
+ax.set_xlabel(r"$k\ [MeV]$")
+ax.set_ylabel(r"$S(k^2)\ [Mev^{-2}]$")
+
+ax.tick_params(axis="both",labelsize=TICKLABELSIZE)
+
+ax.xaxis.set_ticks_position("bottom")
+ax.yaxis.set_ticks_position("left")
+
+ax.grid(False,which="both")
+
+fig.tight_layout()
+
+# fig.savefig("images/sigmaresonance_spectral.png")
+
+"""
+[312 329 346 364 381 399 416 434 451 468 486 503 521 538 555 573 590 608
+ 625 643 660 677 695 712 730 747 764 782 799 817 834 851 869 886 904 921
+ 939 956 973 991]
+
+[0.0113022  0.01342601 0.01521784 0.01710376 0.01888684 0.02073581
+ 0.02292558 0.02557391 0.02864946 0.03212066 0.03605239 0.04055638
+ 0.04562848 0.05098363 0.056002   0.05983979 0.0616738  0.06098072
+ 0.05773101 0.05241178 0.04586667 0.03902149 0.03261387 0.02703996
+ 0.02236943 0.01849156 0.01528533 0.0127     0.01070284 0.00916261
+ 0.00781289 0.00639653 0.00491597 0.00372084 0.00318787 0.00316915
+ 0.00296755 0.00237958 0.00227932 0.00211452]
+
+[312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
+
+0.01130,0.01343,0.01522,0.01710,0.01889,0.02074,0.02293,0.02557,0.02865,0.03212,0.03605,0.04056,0.04563,0.05098,0.05600,0.05984,0.06167,0.06098,0.05773,0.05241,0.04587,0.03902,0.03261,0.02704,0.02237,0.01849,0.01529,0.01270,0.01070,0.00916,0.00781,0.00640,0.00492,0.00372,0.00319,0.00317,0.00297,0.00238,0.00228,0.00211,
+"""
