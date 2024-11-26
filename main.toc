@@ -1,0 +1,37 @@
+\contentsline {chapter}{\numberline {1}Background}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Thermodynamic Basics \blx@tocontentsinit {0}\cite {Floerchinger_2016}}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Fluid Dynamic Approach}{5}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Covariant Thermodynamics and Entropy Production}{6}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Derivative Expansion of hydrodynamics \blx@tocontentsinit {0}\cite {Kovtun_2012}}{6}{subsection.1.2.2}%
+\contentsline {subsubsection}{$0$th Order Hydrodynamics}{7}{section*.4}%
+\contentsline {subsubsection}{$1$st Order Hydrodynamics}{8}{section*.5}%
+\contentsline {section}{\numberline {1.3}Heavy Ion Collisions}{10}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Milne Coordinates \blx@tocontentsinit {0}\cite {JaiswalKoch_2015}}{10}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Bjorken Model \blx@tocontentsinit {0}\cite {Ollitrault_2008}}{11}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Blast Wave Model}{14}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Freezout \blx@tocontentsinit {0}\cite {DevetakEtAl_2020}}{15}{subsection.1.3.4}%
+\contentsline {section}{\numberline {1.4}Bose-Einstein Condensation}{15}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Relativistic Bose-Einstein Statistics}{17}{subsection.1.4.1}%
+\contentsline {section}{\numberline {1.5}Particle Physics and Group Theory}{19}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Isospin}{19}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Representations of $SU(3)$}{19}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}From a Field Theory Perspective}{23}{subsection.1.5.3}%
+\contentsline {section}{\numberline {1.6}Chiral Symmetry}{24}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Unequal Flavor Masses}{26}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Quark Condensate}{26}{subsection.1.6.2}%
+\contentsline {subsubsection}{Non-Linear $\sigma $-Model}{26}{section*.7}%
+\contentsline {subsubsection}{Linear $\sigma $-Model}{27}{section*.8}%
+\contentsline {section}{\numberline {1.7}Linear Response Theory}{29}{section.1.7}%
+\contentsline {chapter}{\numberline {2}Calculation of Condensed Field}{32}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Relating Fluid and Pion Fields}{32}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Conserved Currents from Chiral Symmetry}{34}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Expanding around Minimum of Linear $\sigma $-model}{35}{subsection.2.1.2}%
+\contentsline {subsubsection}{Matching to Fluid Variables for the Real Field $\pi ^0$}{36}{section*.10}%
+\contentsline {subsubsection}{Matching to Fluid Variables for the Complex Fields $\pi ^\pm $}{37}{section*.11}%
+\contentsline {section}{\numberline {2.2}Finding the Spectrum at the Detector Surface}{38}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Treating the Freeze Out Field as Source Term???}{38}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Converting Spectra between Coordinate Systems}{38}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Fourier Decomposition on Freeze Out Surface???}{39}{subsection.2.2.3}%
+\contentsline {subsubsection}{Fourier Transform in Adapted Coordinates}{40}{section*.12}%
+\contentsline {subsubsection}{Invariance of Fourier Transform w.r.t. Deformations of the Hypersurface}{41}{section*.13}%
+\contentsline {subsection}{\numberline {2.2.4}Properly Considering all Initial Conditions}{43}{subsection.2.2.4}%

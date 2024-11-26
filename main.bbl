@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.1 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -43,7 +43,7 @@
       \strng{authorfullhash}{be7662b0e34415f3af19ec1a17d544e5}
       \field{labelalpha}{KG07}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{This book develops the basic formalism and theoretical techniques for studying relativistic quantum field theory at high temperature and density. Specific physical theories treated include QED, QCD, electroweak theory, and effective nuclear field theories of hadronic and nuclear matter. Topics covered include: functional integral representation of the partition function, diagrammatic expansions, linear response theory, screening and plasma oscillations, spontaneous symmetry breaking, Goldstone theorem, resummation and hard thermal loops, lattice gauge theory, phase transitions, nucleation theory, quark-gluon plasma, and color superconductivity. Applications to astrophysics and cosmology cover white dwarf and neutron stars, neutrino emissivity, baryon number violation in the early universe, and cosmological phase transitions. Applications to relativistic nucleus-nucleus collisions are also included. The book is written for theorists in elementary particle physics, nuclear physics, astrophysics, and cosmology.}
@@ -95,7 +95,7 @@
       \strng{authorfullhash}{f2f463cf0798d435f6912ff1216276f3}
       \field{labelalpha}{BRS18}
       \field{sortinit}{2}
-      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Heavy ion collisions quickly form a droplet of quark--gluon plasma (QGP) with a remarkably small viscosity. We give an accessible introduction to how to study this smallest and hottest droplet of liquid made on Earth and why it is so interesting. The physics of heavy ion collisions ranges from highly energetic quarks and gluons described by perturbative QCD to a bath of strongly interacting gluons at lower energy scales. These gluons quickly thermalize and form QGP, while the energetic partons traverse this plasma and end in a shower of particles called jets. Analyzing the final particles in various ways allows us to study the properties of QGP and the complex dynamics of multiscale processes in QCD that govern its formation and evolution, providing what is perhaps the simplest form of complex quantum matter that we know of. Much remains to be understood, and throughout the review big open questions are encountered.}
@@ -137,7 +137,7 @@
       \strng{authorfullhash}{50048509226fe3fdf2310776356e459f}
       \field{labelalpha}{Flo16}
       \field{sortinit}{3}
-      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Notes for lectures that introduce students of physics to fluid dynamics. Prepared for a course at Heidelberg university in the summer term 2016.}
@@ -164,7 +164,7 @@
       \strng{authorfullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
       \field{labelalpha}{Ris22}
       \field{sortinit}{4}
-      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -194,7 +194,7 @@
       \strng{authorfullhash}{f42219a9a5146c916490118e8101ec59}
       \field{labelalpha}{Kov12}
       \field{sortinit}{6}
-      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{These are pedagogical lecture notes on hydrodynamic fluctuations in normal relativistic fluids. The lectures discuss correlation functions of conserved densities in thermal equilibrium, interactions of the hydrodynamic modes, an effective action for viscous fluids, and the breakdown of the derivative expansion in hydrodynamics.}
@@ -248,7 +248,7 @@
       \strng{authorfullhash}{ccb06b78341ad5c0e245bbf3de43caf1}
       \field{labelalpha}{JK15}
       \field{sortinit}{7}
-      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Using a viscosity-based survival scale for geometrical perturbations formed in the early stages of relativistic heavy-ion collisions, we model the radial flow velocity during freeze-out. Subsequently, we employ the Cooper-Frye freeze-out prescription, with first-order viscous corrections to the distribution function, to obtain the transverse momentum distribution of particle yields and flow harmonics. For initial eccentricities, we use the results of Monte Carlo Glauber model. We fix the blast-wave model parameters by fitting the transverse momentum spectra of identified particles at the Large Hadron Collider (LHC) and demonstrate that this leads to a fairly good agreement with transverse momentum distribution of elliptic and triangular flow for various centralities. Within this viscous blast-wave model, we estimate the shear viscosity to entropy density ratio \${\textbackslash}eta/s{\textbackslash}simeq 0.24\$ at the LHC.}
@@ -289,7 +289,7 @@
       \strng{authorfullhash}{9377db4a51f329fd32ffb3f089701302}
       \field{labelalpha}{Oll08}
       \field{sortinit}{8}
-      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Relativistic hydrodynamics is essential to our current understanding of nucleus-nucleus collisions at ultrarelativistic energies (current experiments at the Relativistic Heavy Ion Collider, forthcoming experiments at the CERN Large Hadron Collider). This is an introduction to relativistic hydrodynamics for graduate students. It includes a detailed derivation of the equations, and a description of the hydrodynamical evolution of a heavy-ion collisions. Some knowledge of thermodynamics and special relativity is assumed.}
@@ -365,7 +365,7 @@
       \strng{authorfullhash}{becde5c2e0dd91f1b36c7ef691c99356}
       \field{labelalpha}{Dev+20}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Transverse momentum spectra of identified particles produced in heavy-ion collisions at the Large Hadron Collider are described with relativistic fluid dynamics. We perform a systematic comparison of experimental data for pions, kaons and protons up to a transverse momentum of 3 GeV\$/c\$ with calculations using the FluiduM code package to solve the evolution equations of fluid dynamics, the TrENTo model to describe the initial state and the FastReso code to take resonance decays into account. Using data in five centrality classes at the center-of-mass collision energy per nucleon pair \${\textbackslash}sqrt\{s\_{\textbackslash}text\{NN\}\}=2.76{\textbackslash},{\textbackslash}text\{TeV\}\$, we determine systematically the most likely parameters of our theoretical model including the shear and bulk viscosity to entropy ratios, the initialization time, initial density and freeze-out temperature through a global search and quantify their posterior probability. This is facilitated by the very efficient numerical implementation of FluiduM and FastReso. Based on the most likely model parameters we present predictions for the transverse momentum spectra of multi-strange hadrons as well as identified particle spectra from Pb-Pb collisions at \${\textbackslash}sqrt\{s\_{\textbackslash}text\{NN\}\}=5.02{\textbackslash},{\textbackslash}text\{TeV\}\$.}
@@ -434,7 +434,7 @@
       \strng{authorfullhash}{321a91eaadf7cf0c2dcab352780badcd}
       \field{labelalpha}{Che+21}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{In this paper, we investigate the kinetic freeze-out properties in relativistic heavy ion collisions at different collision energies. We present a study of standard Boltzmann-Gibbs blast-wave (BGBW) fits and Tsallis blast-wave (TBW) fits performed on the transverse momentum spectra of identified hadrons produced in Au+Au collisions at collision energies of {\textsurd}sNN=7.7--200 GeV at the Relativistic Heavy Ion Collider (RHIC), and in Pb+Pb collisions at collision energies of {\textsurd}sNN=2.76 and 5.02 TeV at the Large Hadron Collider (LHC). The behavior of strange and multistrange particles is also investigated. We found that the TBW model describes data better than the BGBW one overall, and the contrast is more prominent as the collision energy increases as the degree of nonequilibrium of the produced system is found to increase. From TBW fits, the kinetic freeze-out temperature at the same centrality shows a weak dependence of collision energy between 7.7 and 39 GeV, while it decreases as collision energy continues to increase up to 5.02 TeV. The radial flow is found to be consistent with zero in peripheral collisions at RHIC energies but sizable at LHC energies and central collisions at all RHIC energies. We also observed that the strange hadrons, with higher temperature and similar radial flow, approach equilibrium more quickly from peripheral to central collisions than light hadrons. The dependence of temperature and flow velocity on nonequilibrium parameter (q-1) is characterized by two second-order polynomials. Both a and d{$\xi$} from the polynomials fit, related to the influence of the system bulk viscosity, increase toward lower RHIC energies.}
@@ -488,7 +488,7 @@
       \strng{authorfullhash}{4875e1c9e7b0a3fcffe245694cff014a}
       \field{labelalpha}{Maz+19}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{In the context of ultra-relativistic nuclear collisions, we present a fast method for calculating the final particle spectra after the direct decay of resonances from a Cooper-Frye integral over the freeze-out surface. The method is based on identifying components of the final particle spectrum that transform in an irreducible way under rotations in the fluid-restframe. Corresponding distribution functions can be pre-computed including all resonance decays. Just a few of easily tabulated scalar functions then determine the Lorentz invariant decay spectrum from each space-time point, and simple integrals of these scalar functions over the freeze-out surface determine the final decay products. This by-passes numerically costly event-by-event calculations of the intermediate resonances. The method is of considerable practical use for making realistic data to model comparisons of the identified particle yields and flow harmonics, and for studying the viscous corrections to the freeze-out distribution function.}
@@ -547,7 +547,7 @@
       \strng{authorfullhash}{d63a84d3976f51e3cccc13b11b49d3c3}
       \field{labelalpha}{GdB07}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The Bose-Einstein condensation (BEC) critical temperature in a relativistic ideal Bose gas of identical bosons, with and without the antibosons expected to be pair-produced abundantly at sufficiently hot temperatures, is exactly calculated for all boson number densities, all boson point rest masses, and all temperatures. The Helmholtz free energy at the critical BEC temperature is lower with antibosons, thus implying that omitting antibosons always leads to the computation of a metastable state.}
@@ -586,7 +586,7 @@
       \strng{authorfullhash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \field{labelalpha}{Koc97}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This article is an attempt to a pedagogical introduction and review into the elementary concepts of chiral symmetry in nuclear physics. Effective chiral models such as the linear and nonlinear sigma model will be discussed as well as the essential ideas of chiral perturbation theory. Some applications to the physics of ultrarelativistic heavy ion collisions will be presented.}
@@ -644,7 +644,7 @@
       \strng{authorfullhash}{0ede250374fe5868188340c29e64c200}
       \field{labelalpha}{KGF23}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}
@@ -695,7 +695,7 @@
       \strng{authorfullhash}{eac544595d4b8df6d805de9a237dd921}
       \field{labelalpha}{ABL97}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{We study the various stages of the evolution of chiral condensates disoriented via the ``baked-alaska'' mechanism, in which the condensates are described as the products of external sources localized on the light cone. Our analysis is based on the classical equations of motion of either the linear or the nonlinear sigma model. We use the associated framework of coherent states and, especially, their source functions to make the connection to the distribution functions for the produced particles. We also compare our classical approach with a mean-field calculation which includes a certain class of quantum corrections.}

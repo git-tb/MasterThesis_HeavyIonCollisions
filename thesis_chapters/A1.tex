@@ -11,14 +11,12 @@ Let $f(p^\mu)$ be some distribution function and $F$ its momentum space integral
     \begin{align}
         F&=\int\frac{\dt^4p_{\text{cart}}}{(2\pi)^4}\delta(p^2+m^2)\Theta(p^t)f(p^\mu)\\
         & =\int\frac{\dt p^t}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}\big(\delta(p^t-\omega_{\vec{p}})+\delta(p^t+\omega_{\vec{p}})\big)\Theta(p^t)f(p^\mu) \\
-                                                                                      & =\frac{1}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}f(p^\mu)\big\vert_{p^t=\omega_{\vec{p}}}
-    \end{align}
-    On the other hand
-    \begin{align}
+                                                                                      & =\frac{1}{2\pi}\int\frac{\dt^3p_{\text{cart}}}{(2\pi)^3}\frac{1}{2\omega_{\vec{p}}}f(p^\mu)\big\vert_{p^t=\omega_{\vec{p}}}\\
+    \intertext{On the other hand}
         F&=\int\frac{\dt^4p_{\text{cart}}}{(2\pi)^4}\delta(p^2+m^2)\Theta(p^t)f(p^\mu)\\
         & =\frac{1}{(2\pi)^4}\int_0^\infty \dt p_T\int_0^\infty \dt m_T\int_{-\infty}^\infty \dt\eta_p\int_0^{2\pi}\dt\varphi_pm_T p_T\times\nonumber \\
                                                                                       & \phantom{=}\qquad\times\delta((p_T)^2-(m_T)^2+m^2)f(p^\mu)\,.                                                                                              \\
-        \intertext{Assume $f(p^\mu)=f(p_T,m_T,\eta_p)$ and perform the $\varphi$-integraion as well as $m_T$-integration, where $\omega_T^2=m^2+p_T^2$ to find}
+        \intertext{Assume $f(p^\mu)=f(p_T,m_T,\eta_p)$ and perform the $\varphi_p$-integraion as well as $m_T$-integration, where $\omega_T^2=m^2+p_T^2$ to find}
                                                                                       \dots& =\frac{1}{(2\pi)^3}\int_0^\infty\dt p_T\int_{-\infty}^\infty\dt\eta_p\frac{p_T}{2}f(p^\mu)\big\vert_{m_T=\omega_T}\,,
     \end{align}
     leading to the final result
@@ -36,5 +34,5 @@ The result applies to the case
 \end{equation}
 and $F=N$. This holds for the symmetric range $\eta\in(-\infty,\infty)$. If $f$ is symmetric under ${\eta\to -\eta}$, restricting to $\eta\in[0,\infty)$ we find
 \begin{equation}
-    2\omega_{\vec{p}}\frac{\dt F}{\dt p^x\dt p^y\dt p^z}=\frac{1}{2\pi p_T}\frac{\dt F}{\dt p_T\dt\eta_p}
+    2\omega_{\vec{p}}\frac{\dt F}{\dt p^x\dt p^y\dt p^z}=\frac{1}{2\pi p_T}\frac{\dt F}{\dt p_T\dt\eta_p}\,.
 \end{equation}

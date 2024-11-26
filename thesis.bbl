@@ -61,69 +61,9 @@
       \verb 0708.2433
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/Q3GQCP8T/Ollitrault - 2008 - Relativistic hydrodynamics for heavy-ion collision.pdf;/home/tobias/Zotero/storage/3N4U79HZ/0708.html
+      \verb /home/tobiasb/Zotero/storage/Q3GQCP8T/Ollitrault - 2008 - Relativistic hydrodynamics for heavy-ion collision.pdf;/home/tobiasb/Zotero/storage/3N4U79HZ/0708.html
       \endverb
       \keyw{Nuclear Theory}
-    \endentry
-    \entry{Rischke_2022}{unpublished}{}
-      \name{author}{1}{}{%
-        {{hash=2b3fdab62f2e9fb13097507c3b02ed18}{%
-           family={Rischke},
-           familyi={R\bibinitperiod},
-           given={Dirk\bibnamedelima H.},
-           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-      }
-      \strng{namehash}{2b3fdab62f2e9fb13097507c3b02ed18}
-      \strng{fullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
-      \strng{bibnamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
-      \strng{authorbibnamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
-      \strng{authornamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
-      \strng{authorfullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
-      \field{labelalpha}{Ris22}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{langid}{english}
-      \field{title}{Microscopic {{Foundations}} of {{Relativistic Fluid Dynamics}}}
-      \field{urlday}{19}
-      \field{urlmonth}{3}
-      \field{urlyear}{2024}
-      \field{year}{2022}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/tobias/Zotero/storage/GHDF6WKX/Rischke - Microscopic Foundations of Relativistic Fluid Dyna.pdf
-      \endverb
-    \endentry
-    \entry{Weinberg_2008}{book}{}
-      \name{author}{1}{}{%
-        {{hash=15e144c72b0b9d10db00ddc6d37a19e6}{%
-           family={Weinberg},
-           familyi={W\bibinitperiod},
-           given={Steven},
-           giveni={S\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {New York}%
-      }
-      \list{publisher}{1}{%
-        {Oxford university press}%
-      }
-      \strng{namehash}{15e144c72b0b9d10db00ddc6d37a19e6}
-      \strng{fullhash}{15e144c72b0b9d10db00ddc6d37a19e6}
-      \strng{bibnamehash}{15e144c72b0b9d10db00ddc6d37a19e6}
-      \strng{authorbibnamehash}{15e144c72b0b9d10db00ddc6d37a19e6}
-      \strng{authornamehash}{15e144c72b0b9d10db00ddc6d37a19e6}
-      \strng{authorfullhash}{15e144c72b0b9d10db00ddc6d37a19e6}
-      \field{labelalpha}{Wei08}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{isbn}{978-0-19-852682-7}
-      \field{langid}{english}
-      \field{title}{Cosmology}
-      \field{year}{2008}
     \endentry
     \entry{AlpgardEtAl_1981}{article}{}
       \name{author}{44}{}{%
@@ -355,8 +295,8 @@
       \strng{authornamehash}{4f4866fe1e9970b0e27b42cf583ecc4f}
       \strng{authorfullhash}{c6d9a0a30680a693efb0a6eaacf65140}
       \field{labelalpha}{Alp+81}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{First results from UA5 on charged particle multiplicities from pp interactions at {\textsurd}s = 540 GeV are presented. A value of 27.4 {\textpm} 2.0 is obtained for the mean charged multiplicity {\textlangle}nch{\textrangle} of produced hadrons. This excludes an s14 behaviour of {\textlangle}nch{\textrangle} in going from ISR to Collider energies, but is not in disagreement with an extrapolation using a quadratic fit in ln s to previous lower energy data up to ISR energies.}
@@ -377,7 +317,7 @@
       \verb 10.1016/0370-2693(81)90838-8
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/C5G8AGLQ/Alpgård et al. - 1981 - Charged particle multiplicities at the CERN SPS co.pdf;/home/tobias/Zotero/storage/N6EKFCVS/0370269381908388.html
+      \verb /home/tobiasb/Zotero/storage/C5G8AGLQ/Alpgård et al. - 1981 - Charged particle multiplicities at the CERN SPS co.pdf;/home/tobiasb/Zotero/storage/N6EKFCVS/0370269381908388.html
       \endverb
     \endentry
     \entry{Bjorken_1983}{article}{}
@@ -398,8 +338,8 @@
       \strng{authornamehash}{521260719aa678e55ec9feee0e966779}
       \strng{authorfullhash}{521260719aa678e55ec9feee0e966779}
       \field{labelalpha}{Bjo83}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{The space-time evolution of the hadronic matter produced in the central rapidity region in extreme relativistic nucleus-nucleus collisions is described. We find, in agreement with previous studies, that quark-gluon plasma is produced at a temperature {$\greaterequivlnt$}200-300 MeV, and that it should survive over a time scale {$\greaterequivlnt$}5 fm/c. Our description relies on the existence of a flat central plateau and on the applicability of hydrodynamics.}
@@ -420,7 +360,372 @@
       \verb 10.1103/PhysRevD.27.140
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/SFXF5HAK/Bjorken - 1983 - Highly relativistic nucleus-nucleus collisions Th.pdf
+      \verb /home/tobiasb/Zotero/storage/SFXF5HAK/Bjorken - 1983 - Highly relativistic nucleus-nucleus collisions Th.pdf
+      \endverb
+    \endentry
+    \entry{Rischke_2022}{unpublished}{}
+      \name{author}{1}{}{%
+        {{hash=2b3fdab62f2e9fb13097507c3b02ed18}{%
+           family={Rischke},
+           familyi={R\bibinitperiod},
+           given={Dirk\bibnamedelima H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{fullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{bibnamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{authorbibnamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{authornamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \strng{authorfullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
+      \field{labelalpha}{Ris22}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{title}{Microscopic {{Foundations}} of {{Relativistic Fluid Dynamics}}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/GHDF6WKX/Rischke - Microscopic Foundations of Relativistic Fluid Dyna.pdf
+      \endverb
+    \endentry
+    \entry{Weinberg_2008}{book}{}
+      \name{author}{1}{}{%
+        {{hash=15e144c72b0b9d10db00ddc6d37a19e6}{%
+           family={Weinberg},
+           familyi={W\bibinitperiod},
+           given={Steven},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Oxford university press}%
+      }
+      \strng{namehash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \strng{fullhash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \strng{bibnamehash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \strng{authorbibnamehash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \strng{authornamehash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \strng{authorfullhash}{15e144c72b0b9d10db00ddc6d37a19e6}
+      \field{labelalpha}{Wei08}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-19-852682-7}
+      \field{langid}{english}
+      \field{title}{Cosmology}
+      \field{year}{2008}
+    \endentry
+    \entry{SiemensRasmussen_1979}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c75d861af6cf9d788d90119302e0f3d4}{%
+           family={Siemens},
+           familyi={S\bibinitperiod},
+           given={Philip\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=d6f5a6113c39257b6db3eed5ae0712cc}{%
+           family={Rasmussen},
+           familyi={R\bibinitperiod},
+           given={John\bibnamedelima O.},
+           giveni={J\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \strng{namehash}{0ebeb3a413f755ca0c257396cfbb68a5}
+      \strng{fullhash}{0ebeb3a413f755ca0c257396cfbb68a5}
+      \strng{bibnamehash}{0ebeb3a413f755ca0c257396cfbb68a5}
+      \strng{authorbibnamehash}{0ebeb3a413f755ca0c257396cfbb68a5}
+      \strng{authornamehash}{0ebeb3a413f755ca0c257396cfbb68a5}
+      \strng{authorfullhash}{0ebeb3a413f755ca0c257396cfbb68a5}
+      \field{labelalpha}{SR79}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0031-9007}
+      \field{journaltitle}{Physical Review Letters}
+      \field{langid}{english}
+      \field{month}{4}
+      \field{number}{14}
+      \field{title}{Evidence for a {{Blast Wave}} from {{Compressed Nuclear Matter}}}
+      \field{urlday}{26}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{volume}{42}
+      \field{year}{1979}
+      \field{urldateera}{ce}
+      \field{pages}{880\bibrangedash 883}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.42.880
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/5RHRDABK/Siemens and Rasmussen - 1979 - Evidence for a Blast Wave from Compressed Nuclear Matter.pdf
+      \endverb
+    \endentry
+    \entry{FlorkowskiBroniowski_2004}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=fb6407f382e1fafdc062b1eed7895781}{%
+           family={Florkowski},
+           familyi={F\bibinitperiod},
+           given={Wojciech},
+           giveni={W\bibinitperiod}}}%
+        {{hash=b849329753a56ccefd515da289c50ab9}{%
+           family={Broniowski},
+           familyi={B\bibinitperiod},
+           given={Wojciech},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{669637c0489195d657214d75bc6f95c2}
+      \strng{fullhash}{669637c0489195d657214d75bc6f95c2}
+      \strng{bibnamehash}{669637c0489195d657214d75bc6f95c2}
+      \strng{authorbibnamehash}{669637c0489195d657214d75bc6f95c2}
+      \strng{authornamehash}{669637c0489195d657214d75bc6f95c2}
+      \strng{authorfullhash}{669637c0489195d657214d75bc6f95c2}
+      \field{labelalpha}{FB04}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Popular parameterizations of the freeze-out conditions in relativistic heavy-ion collisions are discussed. Similarities and differences between the blast-wave model and the single-freeze-out model, both used recently to interpret the RHIC data, are outlined. A non-boost-invariant extension of the single-freeze-out model is proposed and applied to describe the recent BRAHMS data.}
+      \field{eprinttype}{arXiv}
+      \field{month}{10}
+      \field{number}{arXiv:nucl-th/0410081}
+      \field{title}{Hydro-Inspired Parameterizations of Freeze-out in Relativistic Heavy-Ion Collisions}
+      \field{urlday}{26}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2004}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.nucl-th/0410081
+      \endverb
+      \verb{eprint}
+      \verb nucl-th/0410081
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/2FJK8QMF/Florkowski and Broniowski - 2004 - Hydro-inspired parameterizations of freeze-out in relativistic heavy-ion collisions.pdf;/home/tobiasb/Zotero/storage/DT5MKD98/0410081.html
+      \endverb
+      \keyw{Nuclear Theory}
+    \endentry
+    \entry{ChenEtAl_2021}{article}{}
+      \name{author}{5}{}{%
+        {{hash=95d25145789eb692784f0e434ed1b801}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Jia},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9c5a0f869704ca6e25b8aa8b167ba3a5}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=cc20ce694b3448d55ece5efa2e6887a0}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={Zebo},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=b3407586a9727da4242aaf6bb4139fff}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Zhangbu},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=b182798c336bebfb4b9120e5cf6a1c2b}{%
+           family={Yi},
+           familyi={Y\bibinitperiod},
+           given={Li},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{26bb640312961d5fc10121ff650f56bc}
+      \strng{fullhash}{321a91eaadf7cf0c2dcab352780badcd}
+      \strng{bibnamehash}{26bb640312961d5fc10121ff650f56bc}
+      \strng{authorbibnamehash}{26bb640312961d5fc10121ff650f56bc}
+      \strng{authornamehash}{26bb640312961d5fc10121ff650f56bc}
+      \strng{authorfullhash}{321a91eaadf7cf0c2dcab352780badcd}
+      \field{labelalpha}{Che+21}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper, we investigate the kinetic freeze-out properties in relativistic heavy ion collisions at different collision energies. We present a study of standard Boltzmann-Gibbs blast-wave (BGBW) fits and Tsallis blast-wave (TBW) fits performed on the transverse momentum spectra of identified hadrons produced in Au+Au collisions at collision energies of {\textsurd}sNN=7.7--200 GeV at the Relativistic Heavy Ion Collider (RHIC), and in Pb+Pb collisions at collision energies of {\textsurd}sNN=2.76 and 5.02 TeV at the Large Hadron Collider (LHC). The behavior of strange and multistrange particles is also investigated. We found that the TBW model describes data better than the BGBW one overall, and the contrast is more prominent as the collision energy increases as the degree of nonequilibrium of the produced system is found to increase. From TBW fits, the kinetic freeze-out temperature at the same centrality shows a weak dependence of collision energy between 7.7 and 39 GeV, while it decreases as collision energy continues to increase up to 5.02 TeV. The radial flow is found to be consistent with zero in peripheral collisions at RHIC energies but sizable at LHC energies and central collisions at all RHIC energies. We also observed that the strange hadrons, with higher temperature and similar radial flow, approach equilibrium more quickly from peripheral to central collisions than light hadrons. The dependence of temperature and flow velocity on nonequilibrium parameter (q-1) is characterized by two second-order polynomials. Both a and d{$\xi$} from the polynomials fit, related to the influence of the system bulk viscosity, increase toward lower RHIC energies.}
+      \field{journaltitle}{Physical Review C}
+      \field{month}{9}
+      \field{number}{3}
+      \field{title}{Nonequilibrium Kinetic Freeze-out Properties in Relativistic Heavy Ion Collisions from Energies Employed at the {{RHIC}} Beam Energy Scan to Those Available at the {{LHC}}}
+      \field{urlday}{26}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{104}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{034901}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevC.104.034901
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/GJ9R5XW3/Chen et al. - 2021 - Nonequilibrium kinetic freeze-out properties in re.pdf;/home/tobiasb/Zotero/storage/XUJHQP7X/PhysRevC.104.html
+      \endverb
+    \endentry
+    \entry{JaiswalKoch_2015}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=3a1d4582f66bf7a06a8b0b922727b2de}{%
+           family={Jaiswal},
+           familyi={J\bibinitperiod},
+           given={Amaresh},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a7f4bf668408cc1902afbb9d1dc0be32}{%
+           family={Koch},
+           familyi={K\bibinitperiod},
+           given={Volker},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \strng{fullhash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \strng{bibnamehash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \strng{authorbibnamehash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \strng{authornamehash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \strng{authorfullhash}{ccb06b78341ad5c0e245bbf3de43caf1}
+      \field{labelalpha}{JK15}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Using a viscosity-based survival scale for geometrical perturbations formed in the early stages of relativistic heavy-ion collisions, we model the radial flow velocity during freeze-out. Subsequently, we employ the Cooper-Frye freeze-out prescription, with first-order viscous corrections to the distribution function, to obtain the transverse momentum distribution of particle yields and flow harmonics. For initial eccentricities, we use the results of Monte Carlo Glauber model. We fix the blast-wave model parameters by fitting the transverse momentum spectra of identified particles at the Large Hadron Collider (LHC) and demonstrate that this leads to a fairly good agreement with transverse momentum distribution of elliptic and triangular flow for various centralities. Within this viscous blast-wave model, we estimate the shear viscosity to entropy density ratio \${\textbackslash}eta/s{\textbackslash}simeq 0.24\$ at the LHC.}
+      \field{eprintclass}{hep-ph, physics:nucl-th}
+      \field{eprinttype}{arXiv}
+      \field{month}{8}
+      \field{number}{arXiv:1508.05878}
+      \field{title}{A Viscous Blast-Wave Model for Relativistic Heavy-Ion Collisions}
+      \field{urlday}{26}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.1508.05878
+      \endverb
+      \verb{eprint}
+      \verb 1508.05878
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/DU24F9FQ/Jaiswal und Koch - 2015 - A viscous blast-wave model for relativistic heavy-.pdf;/home/tobiasb/Zotero/storage/384DYB27/1508.html
+      \endverb
+      \keyw{High Energy Physics - Phenomenology,Nuclear Theory}
+    \endentry
+    \entry{KirchnerEtAl_2023}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=2cdd372b340499f2204a5afd3ef395f6}{%
+           family={Kirchner},
+           familyi={K\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=1bcc77a68e857dea3bb5cb7f10f12e35}{%
+           family={Grossi},
+           familyi={G\bibinitperiod},
+           given={Eduardo},
+           giveni={E\bibinitperiod}}}%
+        {{hash=50048509226fe3fdf2310776356e459f}{%
+           family={Floerchinger},
+           familyi={F\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{0ede250374fe5868188340c29e64c200}
+      \strng{fullhash}{0ede250374fe5868188340c29e64c200}
+      \strng{bibnamehash}{0ede250374fe5868188340c29e64c200}
+      \strng{authorbibnamehash}{0ede250374fe5868188340c29e64c200}
+      \strng{authornamehash}{0ede250374fe5868188340c29e64c200}
+      \strng{authorfullhash}{0ede250374fe5868188340c29e64c200}
+      \field{labelalpha}{KGF23}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}
+      \field{eprintclass}{hep-ph}
+      \field{eprinttype}{arXiv}
+      \field{month}{8}
+      \field{number}{arXiv:2308.10616}
+      \field{title}{Cooper-{{Frye}} Spectra of Hadrons with Viscous Corrections Including Feed down from Resonance Decays}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2024}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.2308.10616
+      \endverb
+      \verb{eprint}
+      \verb 2308.10616
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/YPNHDTEU/Kirchner et al. - 2023 - Cooper-Frye spectra of hadrons with viscous correc.pdf;/home/tobiasb/Zotero/storage/2LG7PLUE/2308.html
+      \endverb
+      \keyw{High Energy Physics - Phenomenology}
+    \endentry
+    \entry{CooperFrye_1974}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0dcc1fd02918bc0ba2e56e4350ccc6c5}{%
+           family={Cooper},
+           familyi={C\bibinitperiod},
+           given={Fred},
+           giveni={F\bibinitperiod}}}%
+        {{hash=bcc17e63625ed362bdbffe4a57ad3d9f}{%
+           family={Frye},
+           familyi={F\bibinitperiod},
+           given={Graham},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{e591dec9895fe56fca029d55b58482f9}
+      \strng{fullhash}{e591dec9895fe56fca029d55b58482f9}
+      \strng{bibnamehash}{e591dec9895fe56fca029d55b58482f9}
+      \strng{authorbibnamehash}{e591dec9895fe56fca029d55b58482f9}
+      \strng{authornamehash}{e591dec9895fe56fca029d55b58482f9}
+      \strng{authorfullhash}{e591dec9895fe56fca029d55b58482f9}
+      \field{labelalpha}{CF74}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We find that the single-particle distribution EdNd3p for an expanding relativistic gas described by a distribution function obeying the Boltzmann transport equation is not of the form of an integral over collective motions of a velocity weight function times a "Lorentz-transformed" rest-frame distribution function. This casts doubt on the algorithms of Milekhin and Hagedorn for determining the single-particle distribution function in their models of particle production. For the hydrodynamic model, the correct algorithm is presented.}
+      \field{journaltitle}{Physical Review D}
+      \field{month}{7}
+      \field{number}{1}
+      \field{title}{Single-Particle Distribution in the Hydrodynamic and Statistical Thermodynamic Models of Multiparticle Production}
+      \field{urlday}{28}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{10}
+      \field{year}{1974}
+      \field{urldateera}{ce}
+      \field{pages}{186\bibrangedash 189}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.10.186
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/X54VTH9J/Cooper und Frye - 1974 - Single-particle distribution in the hydrodynamic a.pdf
       \endverb
     \endentry
     \entry{Floerchinger_2020}{unpublished}{}
@@ -441,8 +746,8 @@
       \strng{authornamehash}{50048509226fe3fdf2310776356e459f}
       \strng{authorfullhash}{50048509226fe3fdf2310776356e459f}
       \field{labelalpha}{Flo20}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Lectures on {{Symmetries}}}
@@ -452,7 +757,7 @@
       \field{year}{2020}
       \field{urldateera}{ce}
       \verb{file}
-      \verb /home/tobias/Zotero/storage/BQKWH9HG/SymmetriesFloerchinger.pdf
+      \verb /home/tobiasb/Zotero/storage/BQKWH9HG/SymmetriesFloerchinger.pdf
       \endverb
     \endentry
     \entry{Koch_1997}{article}{}
@@ -470,8 +775,8 @@
       \strng{authornamehash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \strng{authorfullhash}{a7f4bf668408cc1902afbb9d1dc0be32}
       \field{labelalpha}{Koc97}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This article is an attempt to a pedagogical introduction and review into the elementary concepts of chiral symmetry in nuclear physics. Effective chiral models such as the linear and nonlinear sigma model will be discussed as well as the essential ideas of chiral perturbation theory. Some applications to the physics of ultrarelativistic heavy ion collisions will be presented.}
@@ -496,7 +801,7 @@
       \verb nucl-th/9706075
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/ZUXZA56X/Koch - 1997 - Aspects of Chiral Symmetry.pdf;/home/tobias/Zotero/storage/PLQQEXS3/9706075.html
+      \verb /home/tobiasb/Zotero/storage/ZUXZA56X/Koch - 1997 - Aspects of Chiral Symmetry.pdf;/home/tobiasb/Zotero/storage/PLQQEXS3/9706075.html
       \endverb
       \keyw{Nuclear Experiment,Nuclear Theory}
     \endentry
@@ -526,13 +831,16 @@
       \strng{authornamehash}{bd0b09f9d4658a6110c7cf3ae280532f}
       \strng{authorfullhash}{bd0b09f9d4658a6110c7cf3ae280532f}
       \field{labelalpha}{PS95}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-0-201-50397-5}
       \field{title}{An Introduction to Quantum Field Theory}
       \field{year}{1995}
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/99JYBE6B/Peskin and Schroeder - 1995 - An introduction to quantum field theory.pdf
+      \endverb
       \keyw{Feynman diagrams,Gauge fields (Physics),Quantum field theory,Renormalization (Physics)}
     \endentry
     \entry{GreinerEtAl_1996}{book}{}
@@ -566,8 +874,8 @@
       \strng{authornamehash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
       \strng{authorfullhash}{3c0b4eaade971b7fa9e2b9bd0e2becbb}
       \field{labelalpha}{GRB96}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-3-540-59179-5}
@@ -626,61 +934,7 @@
       \verb hep-ph/9706530
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/N2VVW7QH/Amelino-Camelia et al. - 1997 - Pion Production from Baked-Alaska Disoriented Chir.pdf;/home/tobias/Zotero/storage/DKBU9EJ6/9706530.html
-      \endverb
-      \keyw{High Energy Physics - Phenomenology}
-    \endentry
-    \entry{KirchnerEtAl_2023}{misc}{}
-      \name{author}{3}{}{%
-        {{hash=2cdd372b340499f2204a5afd3ef395f6}{%
-           family={Kirchner},
-           familyi={K\bibinitperiod},
-           given={Andreas},
-           giveni={A\bibinitperiod}}}%
-        {{hash=1bcc77a68e857dea3bb5cb7f10f12e35}{%
-           family={Grossi},
-           familyi={G\bibinitperiod},
-           given={Eduardo},
-           giveni={E\bibinitperiod}}}%
-        {{hash=50048509226fe3fdf2310776356e459f}{%
-           family={Floerchinger},
-           familyi={F\bibinitperiod},
-           given={Stefan},
-           giveni={S\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {arXiv}%
-      }
-      \strng{namehash}{0ede250374fe5868188340c29e64c200}
-      \strng{fullhash}{0ede250374fe5868188340c29e64c200}
-      \strng{bibnamehash}{0ede250374fe5868188340c29e64c200}
-      \strng{authorbibnamehash}{0ede250374fe5868188340c29e64c200}
-      \strng{authornamehash}{0ede250374fe5868188340c29e64c200}
-      \strng{authorfullhash}{0ede250374fe5868188340c29e64c200}
-      \field{labelalpha}{KGF23}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}
-      \field{eprintclass}{hep-ph}
-      \field{eprinttype}{arXiv}
-      \field{month}{8}
-      \field{number}{arXiv:2308.10616}
-      \field{title}{Cooper-{{Frye}} Spectra of Hadrons with Viscous Corrections Including Feed down from Resonance Decays}
-      \field{urlday}{21}
-      \field{urlmonth}{5}
-      \field{urlyear}{2024}
-      \field{year}{2023}
-      \field{urldateera}{ce}
-      \verb{doi}
-      \verb 10.48550/arXiv.2308.10616
-      \endverb
-      \verb{eprint}
-      \verb 2308.10616
-      \endverb
-      \verb{file}
-      \verb /home/tobias/Zotero/storage/YPNHDTEU/Kirchner et al. - 2023 - Cooper-Frye spectra of hadrons with viscous correc.pdf;/home/tobias/Zotero/storage/2LG7PLUE/2308.html
+      \verb /home/tobiasb/Zotero/storage/N2VVW7QH/Amelino-Camelia et al. - 1997 - Pion Production from Baked-Alaska Disoriented Chir.pdf;/home/tobiasb/Zotero/storage/DKBU9EJ6/9706530.html
       \endverb
       \keyw{High Energy Physics - Phenomenology}
     \endentry
@@ -699,8 +953,8 @@
       \strng{authornamehash}{57f5b607cec3b22885f854f4c4baf257}
       \strng{authorfullhash}{57f5b607cec3b22885f854f4c4baf257}
       \field{labelalpha}{Tho11}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Lecture {{Notes}} on {{Particle Physics}}, {{Chapter}} "{{Symmetries}} and the {{Quark Model}}"}

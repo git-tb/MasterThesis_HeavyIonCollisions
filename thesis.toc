@@ -1,55 +1,57 @@
 \contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Conventions}{5}{section.1.1}%
 \contentsline {chapter}{\numberline {2}Fluid Picture in Heavy Ion Collisions}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Fundamentals of Relativistic Fluid Dynamics}{6}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Bjorken Model}{7}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Converting Spectra between Coordinate Systems}{9}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Particle Physics Background}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Bound States of Quarks and Antiquarks}{11}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Linear $\sigma $-Model}{12}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Conserved Currents from Chiral Symmetries}{14}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Particle Spectra from Classical Source}{18}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Canonical Quantization}{18}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Real Scalar Field}{18}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Complex Scalar Field}{20}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Particle Spectra from Classical Sources}{22}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Real Scalar Field}{22}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Complex Scalar Field}{24}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Relation to Coherent State Formalism}{24}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Extracting the Source from the Late Time Field}{26}{subsection.4.2.4}%
-\contentsline {chapter}{\numberline {5}Condensate Spectrum on the Freezeout Surface}{27}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Invariance of Fourier Transform w.r.t. Deformations of the Hypersurface}{27}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Metric on the Freezeout Surface}{29}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Computing the Inner Product}{30}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Models for Initial Data}{32}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Real Fields}{33}{subsection.5.4.1}%
-\contentsline {paragraph}{The Sign of $u^\mu \partial _\mu \varphi $}{33}{section*.2}%
-\contentsline {subsection}{\numberline {5.4.2}Complex Fields}{34}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Condensate Evolution in the Fireball}{35}{subsection.5.4.3}%
-\contentsline {section}{\numberline {5.5}Examplary Spectra}{35}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Constant Initial Conditions}{36}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Constant Energy Density}{37}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Other Prescriptions}{41}{subsection.5.5.3}%
-\contentsline {section}{\numberline {5.6}Analytic Parametrization of DCC Spectra}{41}{section.5.6}%
-\contentsline {chapter}{\numberline {6}Resonance Decays}{44}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Decay Map and Energy Conservation}{44}{section.6.1}%
-\contentsline {paragraph}{Restricting the Integration Domain}{46}{section*.3}%
-\contentsline {section}{\numberline {6.2}Decay Spectra}{48}{section.6.2}%
-\contentsline {paragraph}{Convergence Test}{48}{section*.4}%
-\contentsline {paragraph}{Sensitivity on Initial Conditions}{49}{section*.5}%
-\contentsline {chapter}{\numberline {7}Appendix}{51}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Representation Theory}{51}{section.7.1}%
-\contentsline {paragraph}{Charge Conjugation}{51}{section*.6}%
-\contentsline {subsection}{\numberline {7.1.1}$SU(2)$}{52}{subsection.7.1.1}%
-\contentsline {paragraph}{Tensor Product Representation}{52}{section*.7}%
-\contentsline {subsection}{\numberline {7.1.2}$SU(3)$}{53}{subsection.7.1.2}%
-\contentsline {section}{\numberline {7.2}Converting Spectra Between Coordinate Systems}{53}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Linear $\sigma $-Model}{55}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Currents from Chiral Symmetry}{56}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Canonical Quantization}{57}{section.7.5}%
-\contentsline {subsection}{\numberline {7.5.1}Commutators of $a_{\vec {p}}$, $a_{\vec {q}}^\dagger $}{57}{subsection.7.5.1}%
-\contentsline {subsection}{\numberline {7.5.2}Hamiltonian in Terms of Creation and Annihilation Operators}{58}{subsection.7.5.2}%
-\contentsline {section}{\numberline {7.6}Complex Annihilation and Creation Operators}{59}{section.7.6}%
-\contentsline {section}{\numberline {7.7}Greens Functions of Klein-Gordon Equation}{59}{section.7.7}%
-\contentsline {section}{\numberline {7.8}Gauß Law in Minkowski Space}{61}{section.7.8}%
-\contentsline {section}{\numberline {7.9}Resonance Decay Computation}{63}{section.7.9}%
+\contentsline {section}{\numberline {2.1}Bjorken Model}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Converting Spectra between Coordinate Systems}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Fundamentals of Relativistic Fluid Dynamics}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Fluid${\boldsymbol {u}}$M}{10}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Blast Wave Model \& Cooper-Frye Freezeout}{10}{subsection.2.3.2}%
+\contentsline {chapter}{\numberline {3}Particle Physics Background}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Bound States of Quarks and Antiquarks}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Linear $\sigma $-Model}{14}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Conserved Currents from Chiral Symmetries}{16}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Particle Spectra from Classical Source}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Canonical Quantization}{20}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Real Scalar Field}{20}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Complex Scalar Field}{22}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Particle Spectra from Classical Sources}{24}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Real Scalar Field}{24}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Complex Scalar Field}{26}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Relation to Coherent State Formalism}{26}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Extracting the Source from the Late Time Field}{28}{subsection.4.2.4}%
+\contentsline {chapter}{\numberline {5}Condensate Spectrum on the Freezeout Surface}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Invariance of Fourier Transform w.r.t. Deformations of the Hypersurface}{29}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Metric on the Freezeout Surface}{31}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Computing the Inner Product}{32}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Models for Initial Data}{34}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Real Fields}{35}{subsection.5.4.1}%
+\contentsline {paragraph}{The Sign of $u^\mu \partial _\mu \varphi $}{35}{section*.2}%
+\contentsline {subsection}{\numberline {5.4.2}Complex Fields}{36}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Condensate Evolution in the Fireball}{37}{subsection.5.4.3}%
+\contentsline {section}{\numberline {5.5}Examplary Spectra}{37}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Constant Initial Conditions}{38}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Constant Energy Density}{39}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Other Prescriptions}{43}{subsection.5.5.3}%
+\contentsline {section}{\numberline {5.6}Analytic Parametrization of DCC Spectra}{43}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Resonance Decays}{46}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Decay Map and Energy Conservation}{46}{section.6.1}%
+\contentsline {paragraph}{Restricting the Integration Domain}{48}{section*.3}%
+\contentsline {section}{\numberline {6.2}Decay Spectra}{50}{section.6.2}%
+\contentsline {paragraph}{Convergence Test}{50}{section*.4}%
+\contentsline {paragraph}{Sensitivity on Initial Conditions}{51}{section*.5}%
+\contentsline {chapter}{\numberline {7}Appendix}{53}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Representation Theory}{53}{section.7.1}%
+\contentsline {paragraph}{Charge Conjugation}{53}{section*.6}%
+\contentsline {subsection}{\numberline {7.1.1}$SU(2)$}{54}{subsection.7.1.1}%
+\contentsline {paragraph}{Tensor Product Representation}{54}{section*.7}%
+\contentsline {subsection}{\numberline {7.1.2}$SU(3)$}{55}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Converting Spectra Between Coordinate Systems}{55}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Linear $\sigma $-Model}{57}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Currents from Chiral Symmetry}{58}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Canonical Quantization}{59}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Commutators of $a_{\vec {p}}$, $a_{\vec {q}}^\dagger $}{59}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Hamiltonian in Terms of Creation and Annihilation Operators}{60}{subsection.7.5.2}%
+\contentsline {section}{\numberline {7.6}Complex Annihilation and Creation Operators}{61}{section.7.6}%
+\contentsline {section}{\numberline {7.7}Greens Functions of Klein-Gordon Equation}{61}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Gauß Law in Minkowski Space}{63}{section.7.8}%
+\contentsline {section}{\numberline {7.9}Resonance Decay Computation}{65}{section.7.9}%

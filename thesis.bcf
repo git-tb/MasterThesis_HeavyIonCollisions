@@ -2362,22 +2362,30 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1" intorder="1">Ollitrault_2008</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">Rischke_2022</bcf:citekey>
-    <bcf:citekey order="2" intorder="2">Weinberg_2008</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">Ollitrault_2008</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">AlpgardEtAl_1981</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">Bjorken_1983</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">Floerchinger_2020</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">Koch_1997</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">PeskinSchroeder_1995</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">GreinerEtAl_1996</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">Amelino-CameliaEtAl_1997</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">KirchnerEtAl_2023</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">KirchnerEtAl_2023</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">KirchnerEtAl_2023</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">Weinberg_2008</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">Weinberg_2008</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">Thomson_2011</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">AlpgardEtAl_1981</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">Bjorken_1983</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">Ollitrault_2008</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">Rischke_2022</bcf:citekey>
+    <bcf:citekey order="5" intorder="2">Weinberg_2008</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">SiemensRasmussen_1979</bcf:citekey>
+    <bcf:citekey order="6" intorder="2">FlorkowskiBroniowski_2004</bcf:citekey>
+    <bcf:citekey order="6" intorder="3">ChenEtAl_2021</bcf:citekey>
+    <bcf:citekey order="6" intorder="4">JaiswalKoch_2015</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">KirchnerEtAl_2023</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">KirchnerEtAl_2023</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">CooperFrye_1974</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">KirchnerEtAl_2023</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">Floerchinger_2020</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">Koch_1997</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">PeskinSchroeder_1995</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">GreinerEtAl_1996</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">Amelino-CameliaEtAl_1997</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">KirchnerEtAl_2023</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">KirchnerEtAl_2023</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">KirchnerEtAl_2023</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">Weinberg_2008</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">Weinberg_2008</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">Thomson_2011</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

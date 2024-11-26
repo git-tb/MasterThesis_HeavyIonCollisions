@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.11.15)  17 NOV 2024 21:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.11.15)  26 NOV 2024 15:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1145,7 +1145,11 @@ File: t1qtm.fd 2009/09/25 v1.2 font definition file for T1/qtm
 ))
 \@quotelevel=\count480
 \@quotereset=\count481
- (./thesis.aux)
+ (./thesis.aux
+
+LaTeX Warning: Label `fig:FreezeOutSurface_rtau' multiply defined.
+
+)
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -1296,32 +1300,20 @@ Chapter 2.
 
 ]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[7]
-
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 93.
+(amsmath)                trying to recover with `aligned' on input line 36.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 100.
+(amsmath)                trying to recover with `aligned' on input line 43.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 111.
+(amsmath)                trying to recover with `aligned' on input line 54.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 119.
-
-
-Underfull \vbox (badness 3919) has occurred while \output is active []
-
+(amsmath)                trying to recover with `aligned' on input line 62.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1330,8 +1322,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[8]
-Overfull \hbox (15.02155pt too wide) in paragraph at lines 138--140
+[7]
+Overfull \hbox (15.02155pt too wide) in paragraph at lines 81--83
 \T1/qtm/m/n/12 un-der the above sym-me-try as-sump-tion only de-pend on trans-verse mo-men-tum, $[]$. 
  []
 
@@ -1342,7 +1334,227 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9]) (./thesis_chapters/03.tex
+[8]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[9]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\begingroup' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<let>-command' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@nomath' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\begingroup' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\setbox' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\thinmuskip' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\medmuskip' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\m@ne' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\thickmuskip' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ne' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\setbox' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\tw@' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@tempa' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathchoice' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\displaystyle' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\textstyle' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\scriptstyle' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\scriptscriptstyle' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\endgroup' on input line 172.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 172.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1351,8 +1563,42 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [10]
+
+pdfTeX warning: pdflatex (file ./images/FreezeOutSurface.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/FreezeOutSurface.pdf, id=383, 234.8775pt x 212.795pt>
+File: images/FreezeOutSurface.pdf Graphic file (type pdf)
+<use images/FreezeOutSurface.pdf>
+Package pdftex.def Info: images/FreezeOutSurface.pdf  used on input line 189.
+(pdftex.def)             Requested size: 213.39568pt x 193.33202pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 189.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (12.79999pt too wide) in paragraph at lines 181--190
+[] 
+ []
+
+) (./thesis_chapters/03.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[11 <./images/FreezeOutSurface.pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[12]
 Chapter 3.
-[11
+[13
 
 ]
 Overfull \hbox (48.82838pt too wide) in paragraph at lines 23--24
@@ -1383,7 +1629,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[12]
+[14]
 Overfull \hbox (32.43697pt too wide) in paragraph at lines 64--66
 \T1/qtm/m/n/12 As a note, the sub-group $[]$ of ro-ta-tions of the pion fields fea-tures the $[]$
  []
@@ -1395,7 +1641,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[13]
+[15]
 LaTeX Font Info:    Trying to load font information for U+bbold on input line 83.
  (/usr/share/texlive/texmf-dist/tex/latex/bbold/Ubbold.fd)
 
@@ -1405,7 +1651,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[14]
+[16]
 Overfull \hbox (1.94856pt too wide) in paragraph at lines 143--146
 \T1/qtm/m/n/12 Axial chi-ral sym-me-try is ex-plic-itly bro-ken by non-vanishing fermion masses. If the fermion
  []
@@ -1427,26 +1673,26 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[15]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[16]) (./thesis_chapters/04.tex
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
 [17]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[18]) (./thesis_chapters/04.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[19]
 Chapter 4.
 Package mdframed Info: mdframed works in twoside mode on input line 31.
-[18
+[20
 
 ]
 Package mdframed Info: Not enough space on this page on input line 35.
@@ -1463,22 +1709,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[19]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[20]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
 [21]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1488,6 +1718,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [22]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[23]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[24]
 Overfull \hbox (22.27165pt too wide) in paragraph at lines 214--216
 \T1/qtm/m/n/12 These re-place-ments are of course com-pat-i-ble, con-sid-er-ing that for a real source $[]$.
  []
@@ -1499,7 +1745,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[23]
+[25]
 Overfull \hbox (29.30042pt too wide) in paragraph at lines 227--228
 \T1/qtm/m/n/12 valued scalar field is com-pletely anal-o-gous up to minis-cule changes. The iden-tity $[]$
  []
@@ -1511,34 +1757,32 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[24]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[25]) (./thesis_chapters/05.tex
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
 [26]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[27]) (./thesis_chapters/05.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[28]
 Chapter 5.
-[27
+[29
 
 ]
-
-pdfTeX warning: pdflatex (file ./images/FreezeOutSurface.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<images/FreezeOutSurface.pdf, id=603, 234.8775pt x 212.795pt>
 File: images/FreezeOutSurface.pdf Graphic file (type pdf)
 <use images/FreezeOutSurface.pdf>
 Package pdftex.def Info: images/FreezeOutSurface.pdf  used on input line 52.
 (pdftex.def)             Requested size: 170.71393pt x 154.66367pt.
+
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 52.
@@ -1556,7 +1800,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-14.96202pt}.
 
-[28 <./images/FreezeOutSurface.pdf>]
+[30]
 Overfull \hbox (8.9549pt too wide) in paragraph at lines 68--69
 []\T1/qtm/m/n/12 The freeze-out hy-per-sur-face is parametrized as $\OT1/cmr/m/n/12 ^^F[] = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12 2 \U/bbold/m/n/12 R[]\OMS/cmsy/m/n/12 j\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^\; r\OT1/cmr/m/n/12 ) = (\OML/cmm/m/it/12 ^^\\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; r\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 ))\OMS/cmsy/m/n/12 g$
  []
@@ -1573,7 +1817,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[29]
+[31]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 106.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
@@ -1589,7 +1833,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[30{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+[32{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
 Overfull \hbox (11.90523pt too wide) detected at line 144
 []
  []
@@ -1606,7 +1850,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[31]
+[33]
 Package mdframed Info: mdframed works in twoside mode on input line 162.
 
 Overfull \hbox (0.89929pt too wide) in paragraph at lines 171--176
@@ -1620,7 +1864,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[32]
+[34]
 Package mdframed Info: mdframed works in twoside mode on input line 236.
 
 
@@ -1637,7 +1881,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[33]
+[35]
 Overfull \hbox (12.61356pt too wide) detected at line 287
 []
  []
@@ -1649,23 +1893,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[34]
-<code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_init.png, id=781, 505.89pt x 505.89pt>
+[36]
+<code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_init.png, id=820, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_init.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_init.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_init.png  used on input line 340.
 (pdftex.def)             Requested size: 170.71393pt x 170.7112pt.
-<code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_spec.png, id=783, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_spec.png, id=822, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_spec.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_spec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_spec.png  used on input line 340.
 (pdftex.def)             Requested size: 170.71393pt x 170.7112pt.
-<code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_init.png, id=785, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_init.png, id=824, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_init.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_init.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_init.png  used on input line 358.
 (pdftex.def)             Requested size: 170.71393pt x 170.7112pt.
-<code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_spec.png, id=786, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_spec.png, id=825, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_spec.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_spec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_spec.png  used on input line 358.
@@ -1687,13 +1931,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[35]
-<code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_init.png, id=798, 505.89pt x 505.89pt>
+[37]
+<code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_init.png, id=838, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_init.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_init.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_init.png  used on input line 382.
 (pdftex.def)             Requested size: 170.71393pt x 170.7112pt.
-<code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_spec.png, id=799, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_spec.png, id=839, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_spec.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_spec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_spec.png  used on input line 382.
@@ -1725,13 +1969,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[36 <./code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_init.png> <./code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_spec.png> <./code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_init.png> <./code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_spec.png>]
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_init.png, id=809, 505.89pt x 505.89pt>
+[38 <./code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_init.png> <./code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_spec.png> <./code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_init.png> <./code/C++/DCCspec/images/spectra_real_constfield_20240822_161734_masses_spec.png>]
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_init.png, id=848, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_init.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_init.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_init.png  used on input line 405.
 (pdftex.def)             Requested size: 170.71393pt x 170.7112pt.
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_spec.png, id=810, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_spec.png, id=849, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_spec.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_spec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_spec.png  used on input line 405.
@@ -1758,13 +2002,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[37 <./code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_spec.png>]
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_init.png, id=821, 505.89pt x 505.89pt>
+[39 <./code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240822_135426_spec.png>]
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_init.png, id=859, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_init.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_init.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_init.png  used on input line 425.
 (pdftex.def)             Requested size: 170.71393pt x 170.7112pt.
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_spec.png, id=822, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_spec.png, id=860, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_spec.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_spec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_spec.png  used on input line 425.
@@ -1780,12 +2024,12 @@ Overfull \hbox (30.4248pt too wide) in paragraph at lines 425--426
 [][] 
  []
 
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_init.png, id=823, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_init.png, id=861, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_init.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_init.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_init.png  used on input line 445.
 (pdftex.def)             Requested size: 170.71393pt x 170.7112pt.
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_spec.png, id=824, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_spec.png, id=862, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_spec.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_spec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_spec.png  used on input line 445.
@@ -1811,13 +2055,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[38 <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_spec.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_spec.png>]
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_init.png, id=835, 505.89pt x 505.89pt>
+[40 <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143119_m226_spec.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143151_m398_spec.png>]
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_init.png, id=873, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_init.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_init.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_init.png  used on input line 465.
 (pdftex.def)             Requested size: 170.71393pt x 170.7112pt.
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_spec.png, id=836, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_spec.png, id=874, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_spec.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_spec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_spec.png  used on input line 465.
@@ -1833,12 +2077,12 @@ Overfull \hbox (30.4248pt too wide) in paragraph at lines 465--466
 [][] 
  []
 
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_init.png, id=837, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_init.png, id=875, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_init.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_init.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_init.png  used on input line 485.
 (pdftex.def)             Requested size: 170.71393pt x 170.7112pt.
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_spec.png, id=838, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_spec.png, id=876, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_spec.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_spec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_spec.png  used on input line 485.
@@ -1864,13 +2108,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[39 <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_spec.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_spec.png>]
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_init.png, id=849, 505.89pt x 505.89pt>
+[41 <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143224_m570_spec.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143253_m742_spec.png>]
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_init.png, id=887, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_init.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_init.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_init.png  used on input line 505.
 (pdftex.def)             Requested size: 170.71393pt x 170.7112pt.
-<code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_spec.png, id=850, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_spec.png, id=888, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_spec.png Graphic file (type png)
 <use code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_spec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_spec.png  used on input line 505.
@@ -1897,7 +2141,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[40 <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_spec.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_spec.png>]
+[42 <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143326_m914_spec.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_init.png> <./code/C++/DCCspec/images/spectra_real_consteps_20240826_143341_m1000_spec.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1905,7 +2149,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[41]
+[43]
 Overfull \hbox (37.70256pt too wide) detected at line 564
 [][][]\OML/cmm/m/it/12 J[]\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 ^^F\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 ) = 2\OML/cmm/m/it/12 ^^Y[][][]B[][] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 Y[]\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 T\OML/cmm/m/it/12 ![]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^F \OML/cmm/m/it/12 iJ[]\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 T\OML/cmm/m/it/12 ![]\OT1/cmr/m/n/12 )[] + \OML/cmm/m/it/12 A[] \OMS/cmsy/m/n/12 ^^B \OML/cmm/m/it/12 ![][] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 Y[]\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 T\OML/cmm/m/it/12 ![]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^F \OML/cmm/m/it/12 iJ[]\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 T\OML/cmm/m/it/12 ![]\OT1/cmr/m/n/12 )[][]\OML/cmm/m/it/12 J[]\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 R\OML/cmm/m/it/12 p[]\OT1/cmr/m/n/12 ) \OML/cmm/m/it/12 :
  []
@@ -1917,7 +2161,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[42]
+[44]
 Overfull \hbox (0.16362pt too wide) in paragraph at lines 580--581
 []\T1/qtm/m/n/12 The low-$\OML/cmm/m/it/12 p[]$ \T1/qtm/m/n/12 regime for these spec-tra are dom-i-nated by the con-tri-bu-tions $[]$
  []
@@ -1930,9 +2174,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[43]
+[45]
 Chapter 6.
-[44
+[46
 
 ]
 Overfull \hbox (32.19557pt too wide) in paragraph at lines 32--34
@@ -1946,7 +2190,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[45]
+[47]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1954,13 +2198,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[46]
+[48]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 137.
 See the caption package documentation for explanation.
 
-<code/C++/DCCspec/otherfiles/DecayCalc_IntegrDom.png, id=925, 693.792pt x 433.62pt>
+<code/C++/DCCspec/otherfiles/DecayCalc_IntegrDom.png, id=964, 693.792pt x 433.62pt>
 File: code/C++/DCCspec/otherfiles/DecayCalc_IntegrDom.png Graphic file (type png)
 <use code/C++/DCCspec/otherfiles/DecayCalc_IntegrDom.png>
 Package pdftex.def Info: code/C++/DCCspec/otherfiles/DecayCalc_IntegrDom.png  used on input line 146.
@@ -1987,13 +2231,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[47 <./code/C++/DCCspec/otherfiles/DecayCalc_IntegrDom.png>]
-<code/C++/DCCspec/images/decaydecay_convtest_primespec.png, id=940, 505.89pt x 505.89pt>
+[49 <./code/C++/DCCspec/otherfiles/DecayCalc_IntegrDom.png>]
+<code/C++/DCCspec/images/decaydecay_convtest_primespec.png, id=980, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/decaydecay_convtest_primespec.png Graphic file (type png)
 <use code/C++/DCCspec/images/decaydecay_convtest_primespec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/decaydecay_convtest_primespec.png  used on input line 238.
 (pdftex.def)             Requested size: 192.0548pt x 192.05493pt.
-<code/C++/DCCspec/images/decaydecay_convtest_decayspecs.png, id=941, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/decaydecay_convtest_decayspecs.png, id=981, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/decaydecay_convtest_decayspecs.png Graphic file (type png)
 <use code/C++/DCCspec/images/decaydecay_convtest_decayspecs.png>
 Package pdftex.def Info: code/C++/DCCspec/images/decaydecay_convtest_decayspecs.png  used on input line 238.
@@ -2016,13 +2260,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[48 <./code/C++/DCCspec/images/decaydecay_convtest_primespec.png> <./code/C++/DCCspec/images/decaydecay_convtest_decayspecs.png>]
-<code/C++/DCCspec/images/decaydecay_inittest_primespec.png, id=956, 505.89pt x 505.89pt>
+[50 <./code/C++/DCCspec/images/decaydecay_convtest_primespec.png> <./code/C++/DCCspec/images/decaydecay_convtest_decayspecs.png>]
+<code/C++/DCCspec/images/decaydecay_inittest_primespec.png, id=995, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/decaydecay_inittest_primespec.png Graphic file (type png)
 <use code/C++/DCCspec/images/decaydecay_inittest_primespec.png>
 Package pdftex.def Info: code/C++/DCCspec/images/decaydecay_inittest_primespec.png  used on input line 262.
 (pdftex.def)             Requested size: 192.0548pt x 192.05493pt.
-<code/C++/DCCspec/images/decaydecay_inittest_decayspecs.png, id=957, 505.89pt x 505.89pt>
+<code/C++/DCCspec/images/decaydecay_inittest_decayspecs.png, id=996, 505.89pt x 505.89pt>
 File: code/C++/DCCspec/images/decaydecay_inittest_decayspecs.png Graphic file (type png)
 <use code/C++/DCCspec/images/decaydecay_inittest_decayspecs.png>
 Package pdftex.def Info: code/C++/DCCspec/images/decaydecay_inittest_decayspecs.png  used on input line 262.
@@ -2059,7 +2303,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[49 <./code/C++/DCCspec/images/decaydecay_inittest_primespec.png> <./code/C++/DCCspec/images/decaydecay_inittest_decayspecs.png>])
+[51 <./code/C++/DCCspec/images/decaydecay_inittest_primespec.png> <./code/C++/DCCspec/images/decaydecay_inittest_decayspecs.png>])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2067,7 +2311,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[50]
+[52]
 Chapter 7.
 (./thesis_chapters/A0.tex
 LaTeX Font Info:    Trying to load font information for U+euf on input line 12.
@@ -2082,7 +2326,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 25.
 
-[51
+[53
 
 ]
 
@@ -2092,7 +2336,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[52]
+[54]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 69.
@@ -2109,7 +2353,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[53]) (./thesis_chapters/A2.tex
+[55]) (./thesis_chapters/A2.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1.
@@ -2129,7 +2373,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[54]) (./thesis_chapters/A3.tex
+[56]) (./thesis_chapters/A3.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -2140,7 +2384,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[55]
+[57]
 Overfull \hbox (8.1501pt too wide) detected at line 40
 []
  []
@@ -2152,7 +2396,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[56]
+[58]
 Overfull \hbox (18.98805pt too wide) detected at line 49
 []
  []
@@ -2197,7 +2441,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[57]
+[59]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2205,7 +2449,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[58]
+[60]
 Overfull \hbox (52.86629pt too wide) detected at line 56
 []
  []
@@ -2218,7 +2462,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[59]
+[61]
 Package mdframed Info: mdframed works in twoside mode on input line 18.
 Package mdframed Info: mdframed works in twoside mode on input line 52.
 
@@ -2236,7 +2480,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[60]) (./thesis_chapters/A6.tex
+[62]) (./thesis_chapters/A6.tex
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 32.
@@ -2258,7 +2502,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[61]) (./thesis_chapters/A7.tex
+[63]) (./thesis_chapters/A7.tex
 Overfull \hbox (90.35255pt too wide) detected at line 16
 []
  []
@@ -2274,7 +2518,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[62]
+[64]
 
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 27.
@@ -2286,7 +2530,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[63])
+[65])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2294,9 +2538,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[64]
+[66]
 Overfull \hbox (12.43106pt too wide) in paragraph at lines 63--63
-[]\T1/qtm/m/n/14.4 (p. []37[]): [][]con-ver-sion fac-tor miss-ing! I re-ally used $\OT1/cmr/m/n/14.4 0\OML/cmm/m/it/14.4 :\OT1/cmr/m/n/14.4 1%$ \T1/qtm/m/n/14.4 of $\OT1/cmr/m/n/14.4 0\OML/cmm/m/it/14.4 :\OT1/cmr/m/n/14.4 16 [][] \OMS/cmsy/m/n/14.4 ^^Y
+[]\T1/qtm/m/n/14.4 (p. []39[]): [][]con-ver-sion fac-tor miss-ing! I re-ally used $\OT1/cmr/m/n/14.4 0\OML/cmm/m/it/14.4 :\OT1/cmr/m/n/14.4 1%$ \T1/qtm/m/n/14.4 of $\OT1/cmr/m/n/14.4 0\OML/cmm/m/it/14.4 :\OT1/cmr/m/n/14.4 16 [][] \OMS/cmsy/m/n/14.4 ^^Y
  []
 
 
@@ -2306,49 +2550,60 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[65
+[67
 
 ]
-Overfull \hbox (0.60733pt too wide) in paragraph at lines 66--66
+Overfull \hbox (5.96648pt too wide) in paragraph at lines 66--66
+[]\T1/qtm/m/n/12 Andreas Kirch-ner, Ed-uardo Grossi, and Ste-fan Flo-erchinger. \T1/qtm/m/it/12 Cooper-Frye Spec-
+ []
+
+[68
+
+{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec-sc.enc}]
+Overfull \hbox (1.93933pt too wide) in paragraph at lines 66--66
 []\T1/qtm/m/n/12 Volker Koch. ``As-pects of Chi-ral Sym-me-try''. In: \T1/qtm/m/it/12 In-ter-na-tional Jour-nal of Mod-
  []
 
 
-Overfull \hbox (1.3394pt too wide) in paragraph at lines 66--66
+Overfull \hbox (2.6714pt too wide) in paragraph at lines 66--66
 \T1/qtm/m/n/12 Baked-Alaska Dis-ori-ented Chi-ral Con-den-sate''. In: \T1/qtm/m/it/12 Phys-i-cal Re-view D \T1/qtm/m/n/12 56 (Dec.
  []
 
 
-Overfull \hbox (4.63448pt too wide) in paragraph at lines 66--66
-[]\T1/qtm/m/n/12 Andreas Kirch-ner, Ed-uardo Grossi, and Ste-fan Flo-erchinger. \T1/qtm/m/it/12 Cooper-Frye Spec-
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[66
-
-{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec-sc.enc}] (./thesis.aux)
+[69] (./thesis.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: F7955F3AF39B4B840E839C3B920137E3;9845.
+(rerunfilecheck)             Checksum: FA80B6895C4C36749A9F3C63A788BB5F;10348.
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50756 strings out of 474222
- 1174303 string characters out of 5748732
- 2166240 words of memory out of 5000000
- 71525 multiletter control sequences out of 15000+600000
- 619220 words of font info for 138 fonts, out of 8000000 for 9000
+ 50802 strings out of 474222
+ 1175502 string characters out of 5748732
+ 2166703 words of memory out of 5000000
+ 71553 multiletter control sequences out of 15000+600000
+ 621981 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 107i,20n,110p,1751b,1494s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 107i,20n,110p,1852b,1494s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (66 pages, 5333775 bytes).
+Output written on thesis.pdf (69 pages, 5344274 bytes).
 PDF statistics:
- 1428 PDF objects out of 1440 (max. 8388607)
- 1214 compressed objects within 13 object streams
- 519 named destinations out of 1000 (max. 500000)
- 525 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1480 PDF objects out of 1728 (max. 8388607)
+ 1262 compressed objects within 13 object streams
+ 533 named destinations out of 1000 (max. 500000)
+ 541 words of extra memory for PDF output out of 10000 (max. 10000000)
 
