@@ -282,3 +282,38 @@ where we integrated out the $\delta$-function over $Q$, using $\delta(Q^2-(q^{\p
     q^{\perp,\star}(w)=\sqrt{(1-w^2)\frac{m_a^2p_{a\rightarrow b\vert c}^2}{m_b^2}}
 \end{equation}
 and the condition $Q^2\geq 0$ implies $w\in[-1,1]$.
+
+The process of interest for our scenario is the decay
+\begin{equation}
+    \sigma\to\pi\pi\,.
+\end{equation}
+We need a fixed mass of initial and final particle state in order to perform the above computation. The $\sigma$-meson however is a broad resonance, that is described very poorly by a $\delta$-peak in the mass spectrum. Starting from a free particle propagator ${\propto(p^2+m^2)^{-1}}$ in a QFT, the pole at ${p^2=-m^2}$ is modified when loop corrections induced by interactions in the theory are included,
+\begin{equation}
+    D_{\text{free}}(p;m)=-\frac{1}{p^2+m^2\pm\imagu\epsilon}\to D(p;M)=-\frac{1}{p^2+M^2-\imagu\Im\Pi}\,,
+    \label{eq:1LoopPropCorrection_SelfEnergy}
+\end{equation}
+where $\Pi$ is the self energy, the real part of which is implicitly contained in the mass shift ${m^2\to M^2}$. In the Källen-Lehmann representation, the propagator is written as a weighted sum/integral over free propagators for different $\text{mass}^2$-parameters,
+\begin{equation}
+    D(p;M)=\int_0^\infty\dt\mu^2\rho(\mu^2)D_{\text{free}}(p;\mu)=-\int_0^\infty\dt\mu^2\frac{\rho(\mu^2)}{p^2+\mu^2}
+\end{equation}
+where
+\begin{equation}
+    \rho(\mu^2)=-\frac{1}{\pi}\Im D(p;M)
+\end{equation}
+is the spectral density. In the non-interacting limit one recovers the $\delta$-peak at ${\mu^2=m^2}$ by taking the limit ${\epsilon\to 0}$ on the left side of equation \eqref{eq:1LoopPropCorrection_SelfEnergy}. The self energy $\Pi$ can be calculated perturbatively from loop-integrals. A common approximation is given in terms of the Breit-Wigner parametrization, which assumes a momentum independent value ${\Im\Pi=M\Gamma}$. The constant $\Gamma$ is then called the Breit-Wigner width.
+
+A resonance is typically characterized by the position of a complex pole in the scattering matrix of a given process,
+\begin{equation}
+    \sqrt{s_p}=M_p-\imagu\Gamma_p/2\,.
+\end{equation}
+For very narrow resonances, the Breit-Wigner parametrization mentioned above can be a good estimate and the peak and width of the spectral density are approximately equal to real and imaginary part of the complex pole of the propagator, ${\sqrt{s_p}\approx M-\imagu\Gamma/2}$. The approximation fails for broad resonances where the width is large compared to the distance to a production threshold. In the present example, such a threshold is given by the interaction of the $\sigma$-meson with the pions as the lightest interaction partners, and has the value of ${(\mu^2)_{\text{min}}=2m_\pi^2}$. The spectral density must vanish below this threshold, which is obviously not modelled by the Breit-Wigner form.
+
+A useful and simple parametrization in the proximity of threshold, in the context of the $\sigma\pi\pi$-interaction is given by \cite{GiacosaEtAl_2021}
+\begin{equation}
+    \rho(\mu^2)=-\Im\Big(\frac{1}{\mu^2-M^2+\imagu\tilde{\Gamma}\sqrt{\mu^2-(2m_\pi)^2}}\Big)\Theta\big(\mu^2-(2m_\pi)^2\big)\,.
+\end{equation}
+This distribution is normalized,
+\begin{equation}
+    \int_0^\infty\dt\mu^2\rho(\mu^2)=1\,,
+\end{equation}
+and we shall interprete it as a probability distribution to weigh the spectra computed from the decay ${\sigma\to\pi\pi}$ for different masses $m_\sigma$.

@@ -823,41 +823,56 @@ else:
 ###############################################################
 ###############################################################
 
-df_sig600 = pd.read_csv("sigmaresonance600.txt",header=None,sep=" ")
+# df_sig600 = pd.read_csv("sigmaresonance600.txt",header=None,sep=" ")
 
-m_sig = df_sig600.iloc[:,0].to_numpy()
+# m_sig = df_sig600.iloc[:,0].to_numpy()
 
-imax = np.where(m_sig > 1000)[0][0]
+# imax = np.where(m_sig > 1000)[0][0]
 
-m_sig = m_sig[:imax]
-w_sig = df_sig600.iloc[:,1].to_numpy()[:imax]
+# m_sig = m_sig[:imax]
+# w_sig = df_sig600.iloc[:,1].to_numpy()[:imax]
 
-m_min, m_max = np.min(m_sig), np.max(m_sig)
+# m_min, m_max = np.min(m_sig), np.max(m_sig)
 
-def myfitspec(k,g,msig,mpi):
-    c = np.abs(1 - 4*mpi**2/k**2)
-    I0 = 1/(2*np.sqrt(c))*np.log(np.abs(
-        (np.sqrt(c) - 1)/(np.sqrt(c) + 1)
-    ))
-    ReSigK =-3*g**2*k**2/(64*np.pi**2) * (
-        2/3 - c+(c-c**2)*I0
-    )
-    ImSigK = -3*g**2/(32*np.pi) * mpi**2 * (1-4*mpi**2/k**2)**(1/2)
-    return -2*np.pi*ImSigK / ( (k*2 - msig**2 -ReSigK)**2 + ImSigK**2)
+# def myfitspec(k,g,msig,mpi):
+#     c = np.abs(1 - 4*mpi**2/k**2)
+#     I0 = 1/(2*np.sqrt(c))*np.log(np.abs(
+#         (np.sqrt(c) - 1)/(np.sqrt(c) + 1)
+#     ))
+#     ReSigK =-3*g**2*k**2/(64*np.pi**2) * (
+#         2/3 - c+(c-c**2)*I0
+#     )
+#     ImSigK = -3*g**2/(32*np.pi) * mpi**2 * (1-4*mpi**2/k**2)**(1/2)
+#     return -2*np.pi*ImSigK / ( (k*2 - msig**2 -ReSigK)**2 + ImSigK**2)
 
-def myfit(xs,*allcoeffs):
-    allcoeffs = np.array(allcoeffs)
-    a, x0 = allcoeffs[0:2]
-    coeffs = allcoeffs[2:]
-    xs = np.array(xs)
-    exps = np.arange(len(coeffs))
-    return np.array([np.sum(coeffs*(a*(x-x0))**exps)*np.exp(-a**2*(x-x0)**2) for x in xs])
+# def myfit(xs,*allcoeffs):
+#     allcoeffs = np.array(allcoeffs)
+#     a, x0 = allcoeffs[0:2]
+#     coeffs = allcoeffs[2:]
+#     xs = np.array(xs)
+#     exps = np.arange(len(coeffs))
+#     return np.array([np.sum(coeffs*(a*(x-x0))**exps)*np.exp(-a**2*(x-x0)**2) for x in xs])
 
-popt, pcov = scipy.optimize.curve_fit(myfit, m_sig, w_sig,p0=(0.01,600,*np.ones(9)))
-def fitfunc(k):
-    return myfit(k,*popt)
+# popt, pcov = scipy.optimize.curve_fit(myfit, m_sig, w_sig,p0=(0.01,600,*np.ones(9)))
+# def fitfunc(k):
+#     return myfit(k,*popt)
 
-xs = np.linspace(m_min,m_max,1000)
+mpi = 140
+msigma = 479
+Gam = 2*279
+
+def Delta(s):
+    return 1/(s-msigma**2+1j*Gam*np.sqrt(s-(2*mpi)**2))
+
+def S(k):
+    return -1/np.pi*np.imag(Delta(k**2))
+
+# def spectralfunc(k):
+#     return 1/(k**2-msigma**2+1j*np.sqrt(k**2-2*mpi**2))
+
+m_min, m_max, m_mid = 280, 1500, 600
+xs = np.linspace(m_min,m_max,10000)
+ys = 2*xs*S(xs)
 
 
 fig, ax = plt.subplots(figsize=(7,7))
@@ -866,13 +881,16 @@ fig, ax = plt.subplots(figsize=(7,7))
 # ax.plot(xs, fitfunc(xs))
 
 ### spectral bins
-bins_edges = np.linspace(m_min, m_max, 40, endpoint=True)
+m_section
+bins_edges = np.concatenate((np.linspace(m_min, m_mid, 50, endpoint=False),
+np.linspace(m_mid, m_max, 20, endpoint=True)))
 bins_lower = bins_edges[:-1]
 bins_upper = bins_edges[1:]
-bins_x, bins_y = data_to_bins(xs, fitfunc(xs),bins_lower, bins_upper)
+bins_x, bins_y = data_to_bins(xs, ys,bins_lower, bins_upper)
 
 # bins_y /= np.sum(bins_y)
 
+ax.plot(xs,ys,marker="")
 ax.plot(bins_x, bins_y)
 print(bins_x.astype(int))
 print(bins_y)

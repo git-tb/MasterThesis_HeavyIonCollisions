@@ -42,8 +42,8 @@
       \strng{authornamehash}{be7662b0e34415f3af19ec1a17d544e5}
       \strng{authorfullhash}{be7662b0e34415f3af19ec1a17d544e5}
       \field{labelalpha}{KG07}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{This book develops the basic formalism and theoretical techniques for studying relativistic quantum field theory at high temperature and density. Specific physical theories treated include QED, QCD, electroweak theory, and effective nuclear field theories of hadronic and nuclear matter. Topics covered include: functional integral representation of the partition function, diagrammatic expansions, linear response theory, screening and plasma oscillations, spontaneous symmetry breaking, Goldstone theorem, resummation and hard thermal loops, lattice gauge theory, phase transitions, nucleation theory, quark-gluon plasma, and color superconductivity. Applications to astrophysics and cosmology cover white dwarf and neutron stars, neutrino emissivity, baryon number violation in the early universe, and cosmological phase transitions. Applications to relativistic nucleus-nucleus collisions are also included. The book is written for theorists in elementary particle physics, nuclear physics, astrophysics, and cosmology.}
@@ -61,7 +61,7 @@
       \verb 10.1017/9781009401968
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/AZXXWEYM/Kapusta und Gale - 2007 - Finite-Temperature Field Theory Principles and A.pdf;/media/tobias/data/OneDrive/projects/Heavy Ion Collisions/resources/KapustaGale_2007.pdf;/home/tobias/Zotero/storage/EM3EVWZ4/107906.html
+      \verb /home/tobiasb/Zotero/storage/AZXXWEYM/Kapusta und Gale - 2007 - Finite-Temperature Field Theory Principles and A.pdf;/media/tobias/data/OneDrive/projects/Heavy Ion Collisions/resources/KapustaGale_2007.pdf;/home/tobiasb/Zotero/storage/EM3EVWZ4/107906.html
       \endverb
     \endentry
     \entry{BuszaEtAl_2018}{article}{}
@@ -94,8 +94,8 @@
       \strng{authornamehash}{f2f463cf0798d435f6912ff1216276f3}
       \strng{authorfullhash}{f2f463cf0798d435f6912ff1216276f3}
       \field{labelalpha}{BRS18}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Heavy ion collisions quickly form a droplet of quark--gluon plasma (QGP) with a remarkably small viscosity. We give an accessible introduction to how to study this smallest and hottest droplet of liquid made on Earth and why it is so interesting. The physics of heavy ion collisions ranges from highly energetic quarks and gluons described by perturbative QCD to a bath of strongly interacting gluons at lower energy scales. These gluons quickly thermalize and form QGP, while the energetic partons traverse this plasma and end in a shower of particles called jets. Analyzing the final particles in various ways allows us to study the properties of QGP and the complex dynamics of multiscale processes in QCD that govern its formation and evolution, providing what is perhaps the simplest form of complex quantum matter that we know of. Much remains to be understood, and throughout the review big open questions are encountered.}
@@ -118,7 +118,7 @@
       \verb 10.1146/annurev-nucl-101917-020852
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/XL7NZKAA/Busza et al. - 2018 - Heavy Ion Collisions The Big Picture and the Big .pdf;/media/tobias/data/OneDrive/projects/Heavy Ion Collisions/resources/Busza_2018.pdf;/home/tobias/Zotero/storage/WC4PXTHS/annurev-nucl-101917-020852.html
+      \verb /home/tobiasb/Zotero/storage/XL7NZKAA/Busza et al. - 2018 - Heavy Ion Collisions The Big Picture and the Big .pdf;/media/tobias/data/OneDrive/projects/Heavy Ion Collisions/resources/Busza_2018.pdf;/home/tobiasb/Zotero/storage/WC4PXTHS/annurev-nucl-101917-020852.html
       \endverb
     \endentry
     \entry{Floerchinger_2016}{article}{}
@@ -136,8 +136,8 @@
       \strng{authornamehash}{50048509226fe3fdf2310776356e459f}
       \strng{authorfullhash}{50048509226fe3fdf2310776356e459f}
       \field{labelalpha}{Flo16}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Notes for lectures that introduce students of physics to fluid dynamics. Prepared for a course at Heidelberg university in the summer term 2016.}
@@ -145,7 +145,7 @@
       \field{title}{Lectures on Fluid Dynamics}
       \field{year}{2016}
       \verb{file}
-      \verb /home/tobias/Zotero/storage/948T8VLS/Floerchinger - Lectures on ﬂuid dynamics.pdf
+      \verb /home/tobiasb/Zotero/storage/948T8VLS/Floerchinger - Lectures on ﬂuid dynamics.pdf
       \endverb
     \endentry
     \entry{Rischke_2022}{unpublished}{}
@@ -163,8 +163,8 @@
       \strng{authornamehash}{2b3fdab62f2e9fb13097507c3b02ed18}
       \strng{authorfullhash}{2b3fdab62f2e9fb13097507c3b02ed18}
       \field{labelalpha}{Ris22}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -175,7 +175,7 @@
       \field{year}{2022}
       \field{urldateera}{ce}
       \verb{file}
-      \verb /home/tobias/Zotero/storage/GHDF6WKX/Rischke - Microscopic Foundations of Relativistic Fluid Dyna.pdf
+      \verb /home/tobiasb/Zotero/storage/GHDF6WKX/Rischke - Microscopic Foundations of Relativistic Fluid Dyna.pdf
       \endverb
     \endentry
     \entry{Kovtun_2012}{article}{}
@@ -193,8 +193,8 @@
       \strng{authornamehash}{f42219a9a5146c916490118e8101ec59}
       \strng{authorfullhash}{f42219a9a5146c916490118e8101ec59}
       \field{labelalpha}{Kov12}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{These are pedagogical lecture notes on hydrodynamic fluctuations in normal relativistic fluids. The lectures discuss correlation functions of conserved densities in thermal equilibrium, interactions of the hydrodynamic modes, an effective action for viscous fluids, and the breakdown of the derivative expansion in hydrodynamics.}
@@ -220,7 +220,7 @@
       \verb 1205.5040
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/AF397IQ3/Kovtun - 2012 - Lectures on hydrodynamic fluctuations in relativis.pdf;/home/tobias/Zotero/storage/FNEBUMKC/1205.html
+      \verb /home/tobiasb/Zotero/storage/AF397IQ3/Kovtun - 2012 - Lectures on hydrodynamic fluctuations in relativis.pdf;/home/tobiasb/Zotero/storage/FNEBUMKC/1205.html
       \endverb
       \keyw{High Energy Physics - Theory}
     \endentry
@@ -247,8 +247,8 @@
       \strng{authornamehash}{ccb06b78341ad5c0e245bbf3de43caf1}
       \strng{authorfullhash}{ccb06b78341ad5c0e245bbf3de43caf1}
       \field{labelalpha}{JK15}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Using a viscosity-based survival scale for geometrical perturbations formed in the early stages of relativistic heavy-ion collisions, we model the radial flow velocity during freeze-out. Subsequently, we employ the Cooper-Frye freeze-out prescription, with first-order viscous corrections to the distribution function, to obtain the transverse momentum distribution of particle yields and flow harmonics. For initial eccentricities, we use the results of Monte Carlo Glauber model. We fix the blast-wave model parameters by fitting the transverse momentum spectra of identified particles at the Large Hadron Collider (LHC) and demonstrate that this leads to a fairly good agreement with transverse momentum distribution of elliptic and triangular flow for various centralities. Within this viscous blast-wave model, we estimate the shear viscosity to entropy density ratio \${\textbackslash}eta/s{\textbackslash}simeq 0.24\$ at the LHC.}
@@ -269,7 +269,7 @@
       \verb 1508.05878
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/DU24F9FQ/Jaiswal und Koch - 2015 - A viscous blast-wave model for relativistic heavy-.pdf;/home/tobias/Zotero/storage/384DYB27/1508.html
+      \verb /home/tobiasb/Zotero/storage/DU24F9FQ/Jaiswal und Koch - 2015 - A viscous blast-wave model for relativistic heavy-.pdf;/home/tobiasb/Zotero/storage/384DYB27/1508.html
       \endverb
       \keyw{High Energy Physics - Phenomenology,Nuclear Theory}
     \endentry
@@ -288,8 +288,8 @@
       \strng{authornamehash}{9377db4a51f329fd32ffb3f089701302}
       \strng{authorfullhash}{9377db4a51f329fd32ffb3f089701302}
       \field{labelalpha}{Oll08}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Relativistic hydrodynamics is essential to our current understanding of nucleus-nucleus collisions at ultrarelativistic energies (current experiments at the Relativistic Heavy Ion Collider, forthcoming experiments at the CERN Large Hadron Collider). This is an introduction to relativistic hydrodynamics for graduate students. It includes a detailed derivation of the equations, and a description of the hydrodynamical evolution of a heavy-ion collisions. Some knowledge of thermodynamics and special relativity is assumed.}
@@ -315,7 +315,7 @@
       \verb 0708.2433
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/Q3GQCP8T/Ollitrault - 2008 - Relativistic hydrodynamics for heavy-ion collision.pdf;/home/tobias/Zotero/storage/3N4U79HZ/0708.html
+      \verb /home/tobiasb/Zotero/storage/Q3GQCP8T/Ollitrault - 2008 - Relativistic hydrodynamics for heavy-ion collision.pdf;/home/tobiasb/Zotero/storage/3N4U79HZ/0708.html
       \endverb
       \keyw{Nuclear Theory}
     \endentry
@@ -391,7 +391,7 @@
       \verb 1909.10485
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/MWY47769/Devetak et al. - 2020 - Global fluid fits to identified particle transvers.pdf;/home/tobias/Zotero/storage/DAH46Z4Q/1909.html
+      \verb /home/tobiasb/Zotero/storage/MWY47769/Devetak et al. - 2020 - Global fluid fits to identified particle transvers.pdf;/home/tobiasb/Zotero/storage/DAH46Z4Q/1909.html
       \endverb
       \keyw{High Energy Physics - Phenomenology,Nuclear Experiment,Nuclear Theory}
     \endentry
@@ -454,7 +454,7 @@
       \verb 10.1103/PhysRevC.104.034901
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/GJ9R5XW3/Chen et al. - 2021 - Nonequilibrium kinetic freeze-out properties in re.pdf;/home/tobias/Zotero/storage/XUJHQP7X/PhysRevC.104.html
+      \verb /home/tobiasb/Zotero/storage/GJ9R5XW3/Chen et al. - 2021 - Nonequilibrium kinetic freeze-out properties in re.pdf;/home/tobiasb/Zotero/storage/XUJHQP7X/PhysRevC.104.html
       \endverb
     \endentry
     \entry{MazeliauskasEtAl_2019}{article}{}
@@ -514,7 +514,7 @@
       \verb 1809.11049
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/63D364NP/Mazeliauskas et al. - 2019 - Fast resonance decays in nuclear collisions.pdf;/home/tobias/Zotero/storage/6L5KB5L5/1809.html
+      \verb /home/tobiasb/Zotero/storage/63D364NP/Mazeliauskas et al. - 2019 - Fast resonance decays in nuclear collisions.pdf;/home/tobiasb/Zotero/storage/6L5KB5L5/1809.html
       \endverb
       \keyw{High Energy Physics - Phenomenology,Nuclear Theory}
     \endentry
@@ -567,7 +567,7 @@
       \verb 10.1103/PhysRevLett.99.200406
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/QAM58BA5/Grether et al. - 2007 - Bose-Einstein Condensation in the Relativistic Ide.pdf;/home/tobias/Zotero/storage/4Q7NDDHX/PhysRevLett.99.html
+      \verb /home/tobiasb/Zotero/storage/QAM58BA5/Grether et al. - 2007 - Bose-Einstein Condensation in the Relativistic Ide.pdf;/home/tobiasb/Zotero/storage/4Q7NDDHX/PhysRevLett.99.html
       \endverb
     \endentry
     \entry{Koch_1997}{article}{}
@@ -611,7 +611,7 @@
       \verb nucl-th/9706075
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/ZUXZA56X/Koch - 1997 - Aspects of Chiral Symmetry.pdf;/home/tobias/Zotero/storage/PLQQEXS3/9706075.html
+      \verb /home/tobiasb/Zotero/storage/ZUXZA56X/Koch - 1997 - Aspects of Chiral Symmetry.pdf;/home/tobiasb/Zotero/storage/PLQQEXS3/9706075.html
       \endverb
       \keyw{Nuclear Experiment,Nuclear Theory}
     \endentry
@@ -643,8 +643,8 @@
       \strng{authornamehash}{0ede250374fe5868188340c29e64c200}
       \strng{authorfullhash}{0ede250374fe5868188340c29e64c200}
       \field{labelalpha}{KGF23}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to calculate hadron momentum spectra after feed down from resonance decays in the context of ultra-relativistic heavy ion collisions described by relativistic fluid dynamics is presented. The conceptual setup uses the Cooper-Frye freeze-out integration together with an integral operator describing resonance decays. We provide explicit expressions for the integration over the freeze-out surface for a smooth and symmetric background solution, as well as for linearized perturbations around it. A major advantage of our method is that many integrals can be precomputed independently of a concrete hydrodynamic simulation. Additionally, we examine the influence of adding heavier resonances to the decay chain on the spectrum of pions and show how to include a phase with partial chemical equilibrium in order to separate the chemical from the kinetic freeze-out.}
@@ -665,7 +665,7 @@
       \verb 2308.10616
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/YPNHDTEU/Kirchner et al. - 2023 - Cooper-Frye spectra of hadrons with viscous correc.pdf;/home/tobias/Zotero/storage/2LG7PLUE/2308.html
+      \verb /home/tobiasb/Zotero/storage/YPNHDTEU/Kirchner et al. - 2023 - Cooper-Frye spectra of hadrons with viscous correc.pdf;/home/tobiasb/Zotero/storage/2LG7PLUE/2308.html
       \endverb
       \keyw{High Energy Physics - Phenomenology}
     \endentry
@@ -694,8 +694,8 @@
       \strng{authornamehash}{eac544595d4b8df6d805de9a237dd921}
       \strng{authorfullhash}{eac544595d4b8df6d805de9a237dd921}
       \field{labelalpha}{ABL97}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{We study the various stages of the evolution of chiral condensates disoriented via the ``baked-alaska'' mechanism, in which the condensates are described as the products of external sources localized on the light cone. Our analysis is based on the classical equations of motion of either the linear or the nonlinear sigma model. We use the associated framework of coherent states and, especially, their source functions to make the connection to the distribution functions for the produced particles. We also compare our classical approach with a mean-field calculation which includes a certain class of quantum corrections.}
@@ -720,7 +720,7 @@
       \verb hep-ph/9706530
       \endverb
       \verb{file}
-      \verb /home/tobias/Zotero/storage/N2VVW7QH/Amelino-Camelia et al. - 1997 - Pion Production from Baked-Alaska Disoriented Chir.pdf;/home/tobias/Zotero/storage/DKBU9EJ6/9706530.html
+      \verb /home/tobiasb/Zotero/storage/N2VVW7QH/Amelino-Camelia et al. - 1997 - Pion Production from Baked-Alaska Disoriented Chir.pdf;/home/tobiasb/Zotero/storage/DKBU9EJ6/9706530.html
       \endverb
       \keyw{High Energy Physics - Phenomenology}
     \endentry

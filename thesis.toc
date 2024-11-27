@@ -39,19 +39,19 @@
 \contentsline {section}{\numberline {6.2}Decay Spectra}{50}{section.6.2}%
 \contentsline {paragraph}{Convergence Test}{50}{section*.4}%
 \contentsline {paragraph}{Sensitivity on Initial Conditions}{51}{section*.5}%
-\contentsline {chapter}{\numberline {7}Appendix}{53}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Representation Theory}{53}{section.7.1}%
-\contentsline {paragraph}{Charge Conjugation}{53}{section*.6}%
-\contentsline {subsection}{\numberline {7.1.1}$SU(2)$}{54}{subsection.7.1.1}%
-\contentsline {paragraph}{Tensor Product Representation}{54}{section*.7}%
-\contentsline {subsection}{\numberline {7.1.2}$SU(3)$}{55}{subsection.7.1.2}%
-\contentsline {section}{\numberline {7.2}Converting Spectra Between Coordinate Systems}{55}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Linear $\sigma $-Model}{57}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Currents from Chiral Symmetry}{58}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Canonical Quantization}{59}{section.7.5}%
-\contentsline {subsection}{\numberline {7.5.1}Commutators of $a_{\vec {p}}$, $a_{\vec {q}}^\dagger $}{59}{subsection.7.5.1}%
-\contentsline {subsection}{\numberline {7.5.2}Hamiltonian in Terms of Creation and Annihilation Operators}{60}{subsection.7.5.2}%
-\contentsline {section}{\numberline {7.6}Complex Annihilation and Creation Operators}{61}{section.7.6}%
-\contentsline {section}{\numberline {7.7}Greens Functions of Klein-Gordon Equation}{61}{section.7.7}%
-\contentsline {section}{\numberline {7.8}Gauß Law in Minkowski Space}{63}{section.7.8}%
-\contentsline {section}{\numberline {7.9}Resonance Decay Computation}{65}{section.7.9}%
+\contentsline {chapter}{\numberline {7}Appendix}{54}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Representation Theory}{54}{section.7.1}%
+\contentsline {paragraph}{Charge Conjugation}{54}{section*.6}%
+\contentsline {subsection}{\numberline {7.1.1}$SU(2)$}{55}{subsection.7.1.1}%
+\contentsline {paragraph}{Tensor Product Representation}{55}{section*.7}%
+\contentsline {subsection}{\numberline {7.1.2}$SU(3)$}{56}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Converting Spectra Between Coordinate Systems}{56}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Linear $\sigma $-Model}{58}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Currents from Chiral Symmetry}{59}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Canonical Quantization}{60}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Commutators of $a_{\vec {p}}$, $a_{\vec {q}}^\dagger $}{60}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Hamiltonian in Terms of Creation and Annihilation Operators}{61}{subsection.7.5.2}%
+\contentsline {section}{\numberline {7.6}Complex Annihilation and Creation Operators}{62}{section.7.6}%
+\contentsline {section}{\numberline {7.7}Greens Functions of Klein-Gordon Equation}{62}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Gauß Law in Minkowski Space}{64}{section.7.8}%
+\contentsline {section}{\numberline {7.9}Resonance Decay Computation}{66}{section.7.9}%

@@ -239,9 +239,11 @@ NpT = 500
 # files = glob.glob("data/init_real_sigmamasses_consteps_20241119_171318/*")
 # files.sort() # sorts normally by alphabetical order
 # files.sort(key=len) # sorts by descending length
-files = 40*["data/init_real_sigma_constfield/init0.csv"]
-masses = [312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
-masses = np.array(masses)/1000
+# files = 40*["data/init_real_sigma_constfield/init0.csv"]
+# masses = [312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
+# masses = np.array(masses)/1000
+masses = np.linspace(280,2,100,endpoint=True)
+files = 100*["data/init_real_sigma_constfield/init0.csv"]
 
 for (m,file) in list(zip(masses,files)):
     result = subprocess.run(args=[

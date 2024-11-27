@@ -938,6 +938,59 @@
       \endverb
       \keyw{High Energy Physics - Phenomenology}
     \endentry
+    \entry{GiacosaEtAl_2021}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=41469f9a633a3c6ff2973d50d1cdd189}{%
+           family={Giacosa},
+           familyi={G\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=84b922b1c6116ba9871630f397541b76}{%
+           family={Okopińska},
+           familyi={O\bibinitperiod},
+           given={Anna},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8009a0abe880076f7e181c6e543beda0}{%
+           family={Shastry},
+           familyi={S\bibinitperiod},
+           given={Vanamali},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{c1aa6ad4ef5dc81988b807144e985480}
+      \strng{fullhash}{c1aa6ad4ef5dc81988b807144e985480}
+      \strng{bibnamehash}{c1aa6ad4ef5dc81988b807144e985480}
+      \strng{authorbibnamehash}{c1aa6ad4ef5dc81988b807144e985480}
+      \strng{authornamehash}{c1aa6ad4ef5dc81988b807144e985480}
+      \strng{authorfullhash}{c1aa6ad4ef5dc81988b807144e985480}
+      \field{labelalpha}{GOS21}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{First, we discuss the conditions under which the non-relativistic and relativistic types of the Breit-Wigner energy distributions are obtained. Then, upon insisting on the correct normalization of the energy distribution, we introduce a Flatt{\textbackslash}'\{e\}-like relativistic distribution -- denominated as Sill distribution -- that (i) contains left-threshold effects, (ii) is properly normalized for any decay width, (iii) can be obtained as an appropriate limit in which the decay width is a constant, (iv) is easily generalized to the multi-channel case (v) as well as to a convoluted form in case of a decay chain and -- last but not least -- (vi) is simple to deal with. We compare the Sill distribution to spectral functions derived within specific QFT models and show that it fairs well in concrete examples that involve a fit to experimental data for the \${\textbackslash}rho\$, \$a\_1(1260)\$, and \$K{\textasciicircum}*(982)\$ mesons as well as the \${\textbackslash}Delta(1232)\$ baryon. We also present a study of the \$f\_2(1270)\$ which has more than one possible decay channels. Finally, we discuss the limitations of the Sill distribution using the \$a\_0(980)\$-\$a\_0(1450)\$ and the \$K\_0{\textasciicircum}{\textbackslash}ast(700)\$-\$K\_0{\textasciicircum}{\textbackslash}ast(1430)\$ resonances as examples.}
+      \field{eprinttype}{arXiv}
+      \field{month}{11}
+      \field{number}{arXiv:2106.03749}
+      \field{title}{A Simple Alternative to the {{Breit-Wigner}} Distribution}
+      \field{urlday}{27}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.2106.03749
+      \endverb
+      \verb{eprint}
+      \verb 2106.03749
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/59NU64JI/Giacosa et al. - 2021 - A simple alternative to the Breit-Wigner distribution.pdf;/home/tobiasb/Zotero/storage/TMRK2C3S/2106.html
+      \endverb
+      \keyw{High Energy Physics - Phenomenology,Quantum Physics}
+    \endentry
     \entry{Thomson_2011}{unpublished}{}
       \name{author}{1}{}{%
         {{hash=57f5b607cec3b22885f854f4c4baf257}{%
