@@ -125,11 +125,11 @@ for spec in lastspecs:
 ###############################################################
 ###############################################################
 
-pTmax = 2
-NpT = 200
-m = 0.14
+pTmax = 5
+NpT = 500
+m = 1.5
 
-initpath = "data/init_compl_taudep_20241023_171719/init.csv"
+initpath = "data/init_real_sigma_constfield/init0.csv"
 result = subprocess.run(args=[
         "./bin/spec",
         "--m=%f"%(m),
@@ -206,15 +206,16 @@ pTmax = 5
 NpT = 500
 # initpath = "data/init_real_pi_constfield_20240822_161734/init5.csv"
 # initpath = "data/init_real_pi_consteps_20240822_135440/init8.csv"
-initpath = "data/init_real_pi_consteps_20240822_135426/init8.csv"
-ms = np.linspace(0.14,0.8,10)
+# initpath = "data/init_real_pi_consteps_20240822_135426/init8.csv"
+# initpath =
+ms = np.linspace(0.28,1.5,200)
 
 for m in ms:
     result = subprocess.run(args=[
         "./bin/spec",
         "--pTmax=%f"%(pTmax),
         "--NpT=%d"%(NpT),
-        "--m=%.2f"%(m),
+        "--m=%.4f"%(m),
         "--epsabs=0",
         "--epsrel=1e-5",
         "--iter=10000",
@@ -277,7 +278,8 @@ for spec in lastspecs:
 
 # path = "data/spec_20241023_153952"
 # path = "data/spec_20241023_170656"
-path = "data/spec_20241023_171739"
+path = "data/newspectra0/spec_20241209_124022"
+# path = "data/newspectra0/spec_20241209_121429"
 
 df_field0 = pd.read_csv(path+"/field0.txt",comment="#")
 df_Dfield0 = pd.read_csv(path+"/field0_deriv.txt",comment="#")
@@ -735,10 +737,10 @@ plt.close()
 ###############################################################
 ###############################################################
 
-ma, mb, mc = 0.656, 0.14, 0.14
+ma, mb, mc = 1.5, 0.14, 0.14
 pTmax = 2
 NpT = 200
-primespecpath = "data/decay_convtest/spec_20241009_154507_10GeV/spectr.txt"
+primespecpath = "data/spec_20241202_115843_3/spectr.txt"
 
 subprocess.run(args=[
     "./bin/decay",
@@ -761,12 +763,13 @@ mb, mc = 0.14, 0.14
 
 pTmax = 2
 NpT = 200
-files = glob.glob("data/spectra_real_sigma_constfield/*/spectr.txt")
+files = glob.glob("data/spectra_real_sigma_constfield_20240912/*/spectr.txt")
 files.sort() # sorts normally by alphabetical order
-masses = [312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
-masses = np.array(masses)/1000
+# masses = [312,329,346,364,381,399,416,434,451,468,486,503,521,538,555,573,590,608,625,643,660,677,695,712,730,747,764,782,799,817,834,851,869,886,904,921,939,956,973,991]
+# masses = np.array(masses)/1000
 
-for (ma,file) in list(zip(masses,files)):
+for file in files:
+    ma = float(open(file).readlines()[2].replace('\n','').split("\t")[1])
     result = subprocess.run(args=[
         "./bin/decay",
         "--ma=%f"%(ma),
@@ -797,8 +800,9 @@ for spec in lastspecs:
 
 plt.style.use("mplstyles/myclassic_white.mplstyle")
 
-dir = "decayspec_20241009_170755"
-path = "data/decaydecay_convtest/"+dir+"/"
+path = "data/decayspec_20241202_133848/"
+path = "data/decayspec_20241202_134043/"
+# path = "data/decayspec_20241202_134202/"
 
 fig_decayspec, ax_decayspec = plt.subplots(figsize=(7,7))
 fig_primespec, ax_primespec = plt.subplots(figsize=(7,7))
@@ -836,8 +840,8 @@ ax_decayspec.legend(loc=3,fontsize=15)
 fig_decayspec.tight_layout()
 fig_primespec.tight_layout()
 
-fig_primespec.savefig("data/images/"+dir+"_primespec.png")
-fig_decayspec.savefig("data/images/"+dir+"_decayspec.png")
+# fig_primespec.savefig("data/images/"+dir+"_primespec.png")
+# fig_decayspec.savefig("data/images/"+dir+"_decayspec.png")
 
 plt.show()
 

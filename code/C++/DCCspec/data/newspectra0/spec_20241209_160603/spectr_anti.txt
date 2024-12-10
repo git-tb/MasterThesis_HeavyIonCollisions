@@ -1,0 +1,9 @@
+# 20241209_160603
+# initdata:	data/init_real_sigma_constfield/init0.csv
+# particle mass:	0.29
+# NpT:	500
+# pTmax:	5
+# epsabs:	0
+# epsrel:	1e-05
+# integr iter:	10000
+pT,abs2Re,abs2Im

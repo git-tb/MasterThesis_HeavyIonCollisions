@@ -77,6 +77,8 @@
         "variant": "cpp",
         "strstream": "cpp",
         "shared_mutex": "cpp",
-        "cfenv": "cpp"
+        "cfenv": "cpp",
+        "charconv": "cpp",
+        "format": "cpp"
     }
 }

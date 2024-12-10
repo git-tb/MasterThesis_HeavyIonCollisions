@@ -68,8 +68,8 @@ spec_compare = np.abs(spec_alice - spec_fluidum_piplus)
 ax_diff.plot(pT_compare, spec_compare,label=r"ALICE$-$FluiduM",marker="",c="b",lw=2)
 ax_diff.set_yscale("log")
 
-ax_spec.legend()
-ax_diff.legend()
+ax_spec.legend(fontsize=LEGENDSIZE,fancybox=True, framealpha=0.85,shadow=False)
+ax_diff.legend(fontsize=LEGENDSIZE,fancybox=True, framealpha=0.85,shadow=False)
 
 ax_spec.grid(False, which="both")
 ax_diff.grid(False, which="both")
@@ -165,6 +165,8 @@ parentdir = "data/spectra_real_m140_taudep_20241029_132506/*/"
 # parentdir = "data/spectra_real_m140_s-1_constfield_20241030_102134/*/"
 # parentdir = "data/spectra_real_m140_s-1_consteps_20241030_104847/*/"
 paths = glob.glob(parentdir)
+paths.sort()
+paths.reverse()
 ms = 140*np.ones(len(paths))
 
 # parentdir = "data/spectra_real_m280_taudep_20241029_135948/*/"
@@ -211,27 +213,27 @@ ms = 140*np.ones(len(paths))
 ### \epsconstmasses
 
 # paths = [
-#     glob.glob("data/spectra_real_m140_constfield_20241029_110519/*")[5],
+#     glob.glob("data/spectra_real_m140_constfield_20241029_110519/*")[0],
 #     glob.glob("data/spectra_real_m140_consteps_20241029_110232/*")[0],
 #     # glob.glob("data/spectra_real_m140_s-1_consteps_20241030_104847/*")[5],
-#     glob.glob("data/spectra_real_m140_taudep_20241029_132506/*")[2]
+#     glob.glob("data/spectra_real_m140_taudep_20241029_132506/*")[0]
 # ]
 # parentdir = "m140_compareICs"
 
-paths = [
-    glob.glob("data/spectra_real_m280_constfield_20241029_140034/*")[5],
-    glob.glob("data/spectra_real_m280_consteps_20241029_140005/*")[0],
-    # glob.glob("data/spectra_real_m280_s-1_consteps_20241030_111119/*")[5],
-    glob.glob("data/spectra_real_m280_taudep_20241030_150721/*")[2]
-]
-parentdir = "m280_compareICs"
+# paths = [
+#     glob.glob("data/spectra_real_m280_constfield_20241029_140034/*")[5],
+#     glob.glob("data/spectra_real_m280_consteps_20241029_140005/*")[0],
+#     # glob.glob("data/spectra_real_m280_s-1_consteps_20241030_111119/*")[5],
+#     glob.glob("data/spectra_real_m280_taudep_20241030_150721/*")[2]
+# ]
+# parentdir = "m280_compareICs"
 
 # SAVE = True
 SAVE = False
 SAVETITLE = parentdir.replace("data/","").replace("/*/","").replace("data_old/","").replace("/*/","")
 
-COMPARE = True
-# COMPARE = False
+# COMPARE = True
+COMPARE = False
 
 FIELD_XLABEL = r"$\alpha$"
 DFIELD_XLABEL = r"$\alpha$"
@@ -251,15 +253,15 @@ NORMALIZE_SPECS = False
 if(NORMALIZE_SPECS):
     SPEC_YLABEL = r"$\mathcal{N}\cdot(2\pi p_T)^{-1}dN_{coherent}/(dp_Td\eta_p)\ [GeV^{-2}]$"
 
-TOBINS = True
-# TOBINS = False
+# TOBINS = True
+TOBINS = False
 
 FIGSIZE = (7,7)
 ADJUSTLABELS = False
 AXISLABELSIZE = 20
 TICKLABELSIZE = 15
 LINEWIDTH = 2
-LEGENDSIZE = 10
+LEGENDSIZE = 15
 
 # LINECOLLECTION = True
 LINECOLLECTION = False
@@ -281,11 +283,11 @@ COMPLEX_FIELD = False
 LEGEND = True
 # LEGEND = False
 # labels = [r"$m=%i\ MeV$"%(m) for m in ms]
-# labels = [r"$a=1/3$",r"$a=1/2$",r"$a=1$",r"$a=2$",r"$a=3$"]
+labels = [r"$a=1/3$",r"$a=1/2$",r"$a=1$",r"$a=2$",r"$a=3$"]
 # labels.reverse()
 # labels = ["1","2","3","4"]
 # labels = [r"Type A, $m=140\ MeV$",r"Type B, $m=140\ MeV$",r"Type C, $m=140\ MeV$"]
-labels = [r"Type A, $m=280\ MeV$",r"Type B, $m=280\ MeV$",r"Type C, $m=280\ MeV$"]
+# labels = [r"Type A, $m=280\ MeV$",r"Type B, $m=280\ MeV$",r"Type C, $m=280\ MeV$"]
 if(not LEGEND):
     labels = ["" for n in range(len(paths))]
 
@@ -412,6 +414,7 @@ for (n,path) in enumerate(paths):
             color=col)
 
 if(LINECOLLECTION):
+        # print(float(file.readlines()[3].replace("\n","").split("\t")[1]))
     ax_init1.clear()
     ax_init2.clear()
     ax_spec.clear()
@@ -703,28 +706,50 @@ CMAP_TICKSIZE = 15
 LC_LABEL = r"$m\ [GeV]$"
 
 # folders = glob.glob("data/decayspectra_sigma_constfield_pi_m280/decayspec*")
-folders = glob.glob("data/decayspectra_sigma_constfield_pi_m140/decayspec*")
+folders = glob.glob("data/newspectra1/decayspec*")
 # folders = glob.glob("data/decayspectra_sigma_20241119_171318_pi_m140/decayspec*")
 # folders = glob.glob("data/decayspectra_sigma_20241119_171318_pi_m280/decayspec*")
 # folders = glob.glob("data/decayspectra_sigma_p5GeV_20241119_171318_pi_m280/decayspec*")
 folders.sort()
 
-masses = np.array([0.31217169, 0.32958506, 0.34699844, 0.36441181, 0.38182519,
-       0.39923856, 0.41665194, 0.43406531, 0.45147869, 0.46889206,
-       0.48630544, 0.50371881, 0.52113219, 0.53854556, 0.55595894,
-       0.57337231, 0.59078569, 0.60819906, 0.62561244, 0.64302581,
-       0.66043919, 0.67785256, 0.69526594, 0.71267931, 0.73009269,
-       0.74750606, 0.76491944, 0.78233281, 0.79974619, 0.81715956,
-       0.83457294, 0.85198631, 0.86939969, 0.88681306, 0.90422644,
-       0.92163981, 0.93905319, 0.95646656, 0.97387994, 0.99129331])
-weights = np.array([0.0113022 , 0.01342601, 0.01521784, 0.01710376, 0.01888684,
-       0.02073581, 0.02292558, 0.02557391, 0.02864946, 0.03212066,
-       0.03605239, 0.04055638, 0.04562848, 0.05098363, 0.056002  ,
-       0.05983979, 0.0616738 , 0.06098072, 0.05773101, 0.05241178,
-       0.04586667, 0.03902149, 0.03261387, 0.02703996, 0.02236943,
-       0.01849156, 0.01528533, 0.0127    , 0.01070284, 0.00916261,
-       0.00781289, 0.00639653, 0.00491597, 0.00372084, 0.00318787,
-       0.00316915, 0.00296755, 0.00237958, 0.00227932, 0.00211452])
+masses = []
+for f in folders:
+    with open(f+"/decayspec.txt") as file:
+        masses.append(float(file.readlines()[3].replace("\n","").split("\t")[1]))
+masses = 1000*np.array(masses)
+
+mpi = 140
+
+Mpole = 479
+Gpole = 2* 279
+
+msigma = np.sqrt(1/4 * (16 * mpi**2 + 
+                        np.sqrt(16 * Gpole**2 * Mpole**2 + 
+                                (-16 * mpi**2 - Gpole**2 + 4*Mpole**2)**2)))
+Gam = np.sqrt(1/2 * (16 * mpi**2 + Gpole**2 - 
+     4*  Mpole**2 + np.sqrt(16*Gpole**2 * Mpole**2 + (-16 * mpi**2 - Gpole**2 + 4*Mpole**2)**2)))
+
+def Delta(s):
+    return 1/(s-msigma**2+1j*Gam*np.sqrt(s-(2*mpi)**2))
+
+def S(k):
+    return -1/np.pi*np.imag(Delta(k**2))*(masses<=1000)
+
+weights = 2*masses*S(masses)*np.ptp(masses)/len(masses)
+weights /= np.sum(weights)
+
+fig_weights, ax_weights = plt.subplots(figsize=(7,7))
+ax_weights.plot(masses,weights)
+
+ax_weights.legend(fontsize=LEGENDSIZE,fancybox=True, framealpha=0.85,shadow=False)
+ax_weights.tick_params(axis="both",labelsize=TICKLABELSIZE)
+ax_weights.xaxis.set_ticks_position("bottom")
+ax_weights.yaxis.set_ticks_position("left")
+ax_weights.set_xlabel(r"$\mu$")
+ax_weights.set_ylabel(r"$2\mu\text{d}\mu\rho(\mu^2)$")
+ax_weights.grid(False,which="both")
+fig_weights.tight_layout()
+
 
 lines_ps, lines_ds = [], []
 
@@ -881,9 +906,8 @@ fig, ax = plt.subplots(figsize=(7,7))
 # ax.plot(xs, fitfunc(xs))
 
 ### spectral bins
-m_section
-bins_edges = np.concatenate((np.linspace(m_min, m_mid, 50, endpoint=False),
-np.linspace(m_mid, m_max, 20, endpoint=True)))
+# bins_edges = np.concatenate((np.linspace(m_min, m_mid, 50, endpoint=False),np.linspace(m_mid, m_max, 20, endpoint=True)))
+bins_edges = np.linspace(m_min,m_max,100,endpoint=True)
 bins_lower = bins_edges[:-1]
 bins_upper = bins_edges[1:]
 bins_x, bins_y = data_to_bins(xs, ys,bins_lower, bins_upper)

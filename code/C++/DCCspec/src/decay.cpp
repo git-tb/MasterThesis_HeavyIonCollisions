@@ -11,6 +11,7 @@
 #include <ctime>   // std::time, std::local_time
 #include <iomanip> // std::put_time
 #include <limits>   // signaling NaN
+#include <omp.h>
 
 #include <algorithm>
 #include <iterator>
@@ -117,17 +118,6 @@ std::vector<double> decayspec(
         double vmin(-1);
         double tmin(0);
         double tmax(qmax/Q);
-
-        // double  A(ma*E_abc),
-        //         B(ps[i]*Q),
-        //         C(Q),
-        //         D(ma),
-        //         F(ps[i]),
-        //         G(mb);
-
-        // if(-A*A*D*D + D*D*D*D*(F*F + G*G) >= 0)
-        //     vmin = A*C*(-A + sqrt(F*F + G*G) * sqrt(D*D*D*D*(F*F + G*G)/(A*A)))/
-        //                 (B*sqrt(-A*A*D*D + D*D*D*D*(F*F + G*G)));
             
         if(-E_abc*E_abc + ps[i]*ps[i] + mb*mb >= 0)
             vmin = sqrt(-E_abc*E_abc + ps[i]*ps[i] + mb*mb)/ps[i];
@@ -180,6 +170,7 @@ std::vector<double> decayspec(
             &nregions, &neval, &fail, integral, error, prob);
 
         finalspec[i] = B * integral[0] * Q*Q*ma / (p_abc * M_PI);
+
         callback(ps[i],finalspec[i]);
     }
     return finalspec;
@@ -210,7 +201,7 @@ int main(int ac, char* av[])
         ("NpT", po::value<int>()->default_value(200), "number of sample points within [0,pTmax]")
         ("primespecpath",po::value<std::string>(),"csv file containing primary spectrum")
         ("B", po::value<double>()->default_value(1.0), "branching ratio of the decay")
-        ("Q", po::value<double>()->default_value(1.0), "dimensionless scale (should not influence the result)")
+        ("Q", po::value<double>()->default_value(1.0), "dimensionful pT-scale (should not influence the result)")
         ;
 
     po::variables_map vm;
@@ -298,15 +289,11 @@ int main(int ac, char* av[])
     {
         decayspec_output << p << "," << std::real(value) << "," << std::imag(value) << std::endl;
     }; 
+
     std::vector<double> finalspec = decayspec(ps, primespec,qmax,callback);
-    
-    // std::stringstream qmax_ss, primespec_ss;
-    // qmax_ss << "gmax:\t" << qmax;
-    // primespec_ss << "primespec:\t" << primespecpath;
-    // writeSamplesToFile(pathname+"/decayspec.txt", ps, finalspec, {"p","finalspecRe","finalspecIm"},
+    // for(int i = 0; i < ps.size(); i++)
     // {
-    //     timestamp,
-    //     primespec_ss.str(),
-    //     qmax_ss.str(),
-    // });
+    //     decayspec_output << ps[i] << "," << std::real(finalspec[i]) << "," << std::imag(finalspec[i]) << std::endl;
+    // }
+    decayspec_output.close();
 }

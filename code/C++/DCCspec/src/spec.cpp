@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <ctime>   // std::time, std::local_time
 #include <iomanip> // std::put_time
+#include <omp.h>
 
 #include <algorithm>
 #include <iterator>
@@ -103,12 +104,15 @@ std::vector<std::complex<double>> spectr(
     std::vector<std::complex<double>> result(ps.size());
 
     int KEY(6);
-    gsl_integration_workspace *workspace = gsl_integration_workspace_alloc(ITERATIONS);
     gsl_set_error_handler_off();
 
+    #pragma omp parallel for default(none) shared(callback, result, anti, std::cout, ps, func, Dfunc, myintegrand, myintegrand_anti, EPSABS, EPSREL, ITERATIONS, KEY)
     for (int i = 0; i < ps.size(); i++)
     {
+        #pragma omp critical
         std::cout << i + 1 << " / " << ps.size() << std::endl;
+        
+        gsl_integration_workspace *workspace = gsl_integration_workspace_alloc(ITERATIONS);
 
         double p = ps[i];
 
@@ -141,19 +145,23 @@ std::vector<std::complex<double>> spectr(
         // int status = gsl_integration_qags(&F_re, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, workspace, &result_re, &error_re);
         int status = gsl_integration_qag(&F_re, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, KEY, workspace, &result_re, &error_re);
         if (status)
+            #pragma omp critical
             std::cout << gsl_strerror(status) << " at p = " << myargs.p << " | estimated error (re): " << error_re << std::endl;
 
         // status = gsl_integration_qags(&F_im, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, workspace, &result_im, &error_im);
         status = gsl_integration_qag(&F_im, 0, M_PI_2, EPSABS, EPSREL, ITERATIONS, KEY, workspace, &result_im, &error_im);
         if (status)
+            #pragma omp critical
             std::cout << gsl_strerror(status) << " at p = " << myargs.p << " | estimated error (imag): " << error_im << std::endl;
 
         result[i] = 2 * M_PI * M_PI * (result_re + 1i * result_im);
 
-        callback(ps[i],result[i]);
+        // IN PARALLEL PROCEDURE, THIS SHOULD NOT BE CALLED
+        // callback(ps[i],result[i]);
+    
+        gsl_integration_workspace_free(workspace);
     }
 
-    gsl_integration_workspace_free(workspace);
     return result;
 }
 /* #endregion */
@@ -215,23 +223,23 @@ int main(int ac, char* av[])
     std::filesystem::create_directories(pathname);
     // SAVE FOR INSPECTION
     //  THE RAW SAMPLES
-    writeSamplesToFile(pathname+"/tau_samp.txt", mydata.data[0], mydata.data[1],{"alpha","tauRe","tauIm"},{timestamp});
-    writeSamplesToFile(pathname+"/r_samp.txt", mydata.data[0], mydata.data[2],{"alpha","rRe","rIm"},{timestamp});
-    writeSamplesToFile(pathname+"/Dtau_samp.txt", mydata.data[0], mydata.data[3],{"alpha","DtauRe","DtauIm"},{timestamp});
-    writeSamplesToFile(pathname+"/Dr_samp.txt", mydata.data[0], mydata.data[4],{"alpha","DrRe","DrIm"},{timestamp});
-    writeSamplesToFile(pathname+"/ur_samp.txt", mydata.data[0], mydata.data[5],{"alpha","urRe","urIm"},{timestamp});
-    writeSamplesToFile(pathname+"/utau_samp.txt", mydata.data[0], mydata.data[6],{"alpha","utauRe","utauIm"},{timestamp});
-    {
-        std::vector<std::complex<double>> f0dat, Df0dat;    // REAL AND IMAGINARY PART ARE READ IN AS 2 SEPARATE REAL-VALUED ARRAYS
-                                                            //  BUT SHOULD BE PRINTED AS 1 COMBINED COMPLEX-VALUED ARRAY
-        for(int i  = 0; i < initialdata.data[0].size(); i++)
-        {
-            f0dat.push_back(initialdata.data[1][i] + 1i * initialdata.data[2][i]);
-            Df0dat.push_back(initialdata.data[3][i] + 1i * initialdata.data[4][i]);
-        }
-        writeSamplesToFile(pathname+"/f0_samp.txt", initialdata.data[0], f0dat,{"alpha","f0Re","f0Im"},{timestamp});
-        writeSamplesToFile(pathname+"/Df0_samp.txt", initialdata.data[0], Df0dat,{"alpha","Df0Re","Df0Im"},{timestamp});
-    }
+    // writeSamplesToFile(pathname+"/tau_samp.txt", mydata.data[0], mydata.data[1],{"alpha","tauRe","tauIm"},{timestamp});
+    // writeSamplesToFile(pathname+"/r_samp.txt", mydata.data[0], mydata.data[2],{"alpha","rRe","rIm"},{timestamp});
+    // writeSamplesToFile(pathname+"/Dtau_samp.txt", mydata.data[0], mydata.data[3],{"alpha","DtauRe","DtauIm"},{timestamp});
+    // writeSamplesToFile(pathname+"/Dr_samp.txt", mydata.data[0], mydata.data[4],{"alpha","DrRe","DrIm"},{timestamp});
+    // writeSamplesToFile(pathname+"/ur_samp.txt", mydata.data[0], mydata.data[5],{"alpha","urRe","urIm"},{timestamp});
+    // writeSamplesToFile(pathname+"/utau_samp.txt", mydata.data[0], mydata.data[6],{"alpha","utauRe","utauIm"},{timestamp});
+    // {
+    //     std::vector<std::complex<double>> f0dat, Df0dat;    // REAL AND IMAGINARY PART ARE READ IN AS 2 SEPARATE REAL-VALUED ARRAYS
+    //                                                         //  BUT SHOULD BE PRINTED AS 1 COMBINED COMPLEX-VALUED ARRAY
+    //     for(int i  = 0; i < initialdata.data[0].size(); i++)
+    //     {
+    //         f0dat.push_back(initialdata.data[1][i] + 1i * initialdata.data[2][i]);
+    //         Df0dat.push_back(initialdata.data[3][i] + 1i * initialdata.data[4][i]);
+    //     }
+    //     writeSamplesToFile(pathname+"/f0_samp.txt", initialdata.data[0], f0dat,{"alpha","f0Re","f0Im"},{timestamp});
+    //     writeSamplesToFile(pathname+"/Df0_samp.txt", initialdata.data[0], Df0dat,{"alpha","Df0Re","Df0Im"},{timestamp});
+    // }
 
     // THE INTERPOLATED FUNCTIONS, SAMPLED AT SOME PRESCRIBED RESOLUTION
     int NSAMPLE = 1000;
@@ -242,8 +250,8 @@ int main(int ac, char* av[])
     writeFuncToFile(pathname+"/ur_interp.txt", ur, 0, M_PI / 2.0, NSAMPLE,{"alpha","urRe","urIm"},{timestamp});
     writeFuncToFile(pathname+"/utau_interp.txt", utau, 0, M_PI / 2.0, NSAMPLE,{"alpha","utauRe","utauIm"},{timestamp});
 
-    writeFuncToFile(pathname+"/f0_interp.txt", f0, 0, M_PI / 2.0, NSAMPLE,{"alpha","f0Re","f0Im"},{timestamp});
-    writeFuncToFile(pathname+"/Df0_interp.txt", Df0, 0, M_PI / 2.0, NSAMPLE,{"alpha","Df0Re","Df0Im"},{timestamp});    
+    // writeFuncToFile(pathname+"/f0_interp.txt", f0, 0, M_PI / 2.0, NSAMPLE,{"alpha","f0Re","f0Im"},{timestamp});
+    // writeFuncToFile(pathname+"/Df0_interp.txt", Df0, 0, M_PI / 2.0, NSAMPLE,{"alpha","Df0Re","Df0Im"},{timestamp});    
     
     // DEFINE PION FIELD AND DERIVATIVE ON FREEZOUT SURFACE
     std::function<std::complex<double>(double)> func = [](double alpha)
@@ -268,7 +276,7 @@ int main(int ac, char* av[])
     epsabs_ss << "epsabs:\t" << EPSABS;
     epsrel_ss << "epsrel:\t" << EPSREL;
     iter_ss << "integr iter:\t" << ITERATIONS;
-    mass_ss << "particle mass:\t" << Mparticle;
+    mass_ss << "particle mass:\t" <<  Mparticle;
     std::vector<std::string> comments({   
         timestamp,
         initdata_ss.str(),
@@ -296,6 +304,12 @@ int main(int ac, char* av[])
     };   
 
     std::vector<std::complex<double>> myspectr = spectr(ps, func, Dfunc,false,spectr_callback);
+
+    for (int i = 0; i < ps.size(); i++)
+    {
+        double abs2norm = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr[i]);
+        spectr_output << ps[i] << "," << std::real(abs2norm) << "," << std::imag(abs2norm) << std::endl;
+    }    
     spectr_output.close();
 
     // ...AND THEN THE ANTI PARTICLE SPECTRUM
@@ -313,46 +327,13 @@ int main(int ac, char* av[])
     };
 
     std::vector<std::complex<double>> myspectr_anti = spectr(ps, func, Dfunc,true,spectranti_callback);
+
+    for (int i = 0; i < ps.size(); i++)
+    {
+        double abs2norm = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr_anti[i]);
+        spectranti_output << ps[i] << "," << std::real(abs2norm) << "," << std::imag(abs2norm) << std::endl;
+    }
     spectranti_output.close();
-
-    // std::vector<double> myspectr_abs2(myspectr.size());
-    // for (int i = 0; i < myspectr.size(); i++)
-    //     myspectr_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr[i]);
-
-    // std::vector<double> myspectr_anti_abs2(myspectr_anti.size());
-    // for (int i = 0; i < myspectr_anti.size(); i++)
-    //     myspectr_anti_abs2[i] = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr_anti[i]);
-
-    
-    // std::stringstream initdata_ss, NpT_ss, pTmax_ss, epsabs_ss, epsrel_ss, iter_ss, mass_ss;
-    // initdata_ss << "initdata:\t" << initdata;
-    // NpT_ss << "NpT:\t" << Nps;
-    // pTmax_ss << "pTmax:\t" << pmax;
-    // epsabs_ss << "epsabs:\t" << EPSABS;
-    // epsrel_ss << "epsrel:\t" << EPSREL;
-    // iter_ss << "integr iter:\t" << ITERATIONS;
-    // mass_ss << "particle mass:\t" << Mparticle;
-
-    // writeSamplesToFile(pathname+"/spectr.txt", ps, myspectr_abs2,{"pT","abs2Re","abs2Im"},
-    //     {   timestamp,
-    //         initdata_ss.str(),
-    //         mass_ss.str(),
-    //         NpT_ss.str(),
-    //         pTmax_ss.str(),
-    //         epsabs_ss.str(),
-    //         epsrel_ss.str(),
-    //         iter_ss.str()
-    //     });
-    // writeSamplesToFile(pathname+"/spectr_anti.txt", ps, myspectr_anti_abs2,{"pT","abs2Re","abs2Im"},
-    //     {   timestamp,
-    //         initdata_ss.str(),
-    //         mass_ss.str(),
-    //         NpT_ss.str(),
-    //         pTmax_ss.str(),
-    //         epsabs_ss.str(),
-    //         epsrel_ss.str(),
-    //         iter_ss.str()
-    //     });
 
     return 0;
 }
