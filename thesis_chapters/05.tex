@@ -160,13 +160,24 @@ This can be evaluated numerically, once the shape of the freezeout surface is pr
 
 The goal of this section is to find physically reasonable initial conditions for the condensate field distribution on the freezeout surface. Various approaches seem intuitive:
 \begin{impt}[Possibilies to Fix Initial Data]{impt:InitialData}
-\begin{enumerate}
-    \item Prescribe fields and orhtogonal derivatives directly in the sense of an expansion on the freezeout surface (starting with constants, Gauß modes, etc.).
-    \item Prescribe other physically accessible parameters like energy density $\epsilon$, pressure $p$ or fluid velocity $u^\mu$, and make contact with the fluid simulation.
-    \item Prescribe fields as functions of $(\tau,r)$ during the fireball evolution, followed by restriction on $\Sigma_{\text{fo}}$.
-\end{enumerate}
+    \begin{enumerate}
+        \item[(A)] Define the fields and their derivatives directly in the sense of a truncated parametrization, starting with constant fields.
+        \item[(B)] Make further contact with the fluid theory, by taking relations between the fields and physical properties of the fluid into account, like fluid velocity $u^\mu$, energy density $\epsilon$ or pressure $p$.
+        \item[(C)] Make a guess for the time evolution of the condensate as a function of ${(\tau,r)}$ and evaluate it only on the freezeout surface.
+    \end{enumerate}
 \end{impt}
-Whereas the first approach imposes no constraints at all, some work must be put into the second approach. A key idea to assign physical quantitites of the QGP with the condensate field is by considering the conserved currents derived in section \ref{sec:ConservedCurrentsChirSym}. To be precise, we choose the (approximately) conserved vector and axial currents $J^\mu_{V,A}$ to be parallel to $u^\mu$, the only exceptional 4-vector in the fluid simulation. To simplify the ansatz further, we make the consistent assumption that not only the currents, but all gradients of the fields point in direction of $u^\mu$.
+
+\subsection{Type A}
+
+The first scenario of initial conditions is conceptionally simple by setting
+\begin{equation}
+    \phi\vert_{\Sigma_{\text{fo}}}=\const\qquad\text{and}\qquad\partial_\perp\phi\vert_{\Sigma_{\text{fo}}}=\const\,,
+\end{equation}
+but it has no clear physical interpretation when it comes to the characteristics of the DCC evolution within the fireball. Note especially that we do not set the time derivative or any other directional derivative of the condensate to be constant, but only it's projection on the surface normal. On a slice of constant lab time these two notions are equivalent, but not in this case due to the non-trivial surface geometry. This scenario leaves 2 parameters open to be adjusted.
+
+\subsection{Type B}
+
+A key idea to assign physical quantitites of the QGP with the condensate field is by considering the conserved currents derived in section \ref{sec:ConservedCurrentsChirSym}. To be precise, we choose the (approximately) conserved vector and axial currents $J^\mu_{V,A}$ to be parallel to $u^\mu$, the only exceptional 4-vector in the fluid simulation. To simplify the ansatz further, we make the consistent assumption that not only the currents, but all gradients of the fields point in direction of $u^\mu$.
 
 Making further contact with the fluid description of the QGP, we state here the Lagrangians and canonical energy-momentum tensors ${T^{\mu\nu}=2(\partial\mathscr{L}/\partial g_{\mu\nu})+g^{\mu\nu}\mathscr{L}}$ \cite{Weinberg_2008} for the real fields $\sigma$ and $\pi^0$, as well as the complex fields $\pi^\pm$. Using the expansion of the potential and Lagrangian density close to the vacuum, as performed in section \ref{sec:LinearSigmaModel}, they read
 %%%% MORE DETAIL
@@ -182,17 +193,20 @@ Making further contact with the fluid description of the QGP, we state here the 
         T^{\mu\nu}_{\pi^\pm}&=2(\partial^\mu\pi^+)(\overline{\partial^\nu\pi^+})+g^{\mu\nu}\big(-(\partial_\alpha\pi^+)(\overline{\partial^\alpha\pi^+})-m_\pi^2\pi^+\overline{\pi^+}\big)
     \end{align}
 \end{subequations}
-Following \cite{Weinberg_2008} the energy momentum tensor of a real scalar field $\varphi$ is
+Following \cite{Weinberg_2008} the energy-momentum tensor of a real scalar field $\varphi$ is
 \begin{subequations}
+    \begin{equation}
+        T_\varphi^{\mu\nu}=-g^{\mu\nu}\big[\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)+V(\varphi)\big]+g^{\mu\rho}g^{\nu\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)
+    \end{equation}
+    the field dependent quantities in which relate to energy density $\epsilon$, pressure $p$ and 4-velocity $u^\mu$ in the energy-momentum tensor of an ideal fluid via
     \begin{align}
-        T_\varphi^{\mu\nu}&=-g^{\mu\nu}\big[\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)+V(\varphi)\big]+g^{\mu\rho}g^{\nu\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\\
         \epsilon&=-\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)+V(\varphi)\\
         p&=-\frac{1}{2}g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)-V(\varphi)\\
         u^\mu&=-\big[-g^{\rho\sigma}(\partial_\rho\varphi)(\partial_\sigma\varphi)\big]^{-1/2}g^{\mu\nu}\partial_\nu\varphi
     \end{align}
 \end{subequations}
 
-\subsection{Real Fields}
+\subsubsection{Real Fields}
 \label{sec:FluidFromRealScalar}
 
 Let $\varphi$ be a real scalar field, e.g. ${\varphi\in\{\sigma,\pi^0\}}$. The only availabe $4$-vector in the fluid theory is $u_\mu$. It is thus intuitive to try to identify the real-valued $4$vector ${\partial_\mu\varphi\sim u_\mu}$. Taking the normalization ${u_\mu u^\mu=-1}$ into account, one finds
@@ -228,13 +242,13 @@ with ${\dt^\mu s=(\partial x^\mu)/(\partial\alpha)\dt\alpha\equiv(\tau^\prime,r^
     \dt\chi=\frac{1}{\chi}\dt\epsilon-m_\varphi^2\varphi u_\mu\dt^\mu s
     \label{eq:InitialConditions_ODE}
 \end{equation}
-The solutions $(\varphi,\chi)$ of this ODE have 1 degree of freedom, e.g. the ratio of kinetic energy ${\epsilon_{\text{kin}}=(1/2)\chi^2}$ and ${\epsilon_{\text{pot}}=(1/2)m_\varphi^2\varphi^2}$ at $\alpha=0$. To be precise, choose ${r\in[0,1]}$ and set ${\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon}$ and ${\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon}$ to find initial values $\varphi\vert_{\alpha=0}$ and $\chi\vert_{\alpha=0}$.
+The solutions $(\varphi,\chi)$ of this ODE have 1 degree of freedom, e.g. the ratio of kinetic energy ${\epsilon_{\text{kin}}=(1/2)\chi^2}$ and ${\epsilon_{\text{pot}}=(1/2)m_\varphi^2\varphi^2}$ at $\alpha=0$. To be precise, choose ${r\in[0,1]}$ and set ${\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon}$ and ${\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon}$ to find (up to a sign) initial values $\varphi\vert_{\alpha=0}$ and $\chi\vert_{\alpha=0}$, that fully determine the 2 functions on the freezeout surface.
 
 \paragraph{The Sign of $u^\mu\partial_\mu\varphi$}
 
-At freezeout it seems reasonable to expect a decreasing amplitude of the condensate density in direction of the fluid flow. In order to derive restrictions on the (functional) degrees of freedom from this observation, we make the following general statement:
+The sign of the directional derivative of the field determines whether the condensate density decreses or increases at the moment of freezeout in direction of the fluid flow. We make the following general statement:
 \begin{impt}[Sign of Directional Derivative of $\varphi$]{impt:SignDVarphi}
-    After a step of ${\dt\tau_E>0}$ in eigentime in direction of any 4-vector $v^\mu$ the change in amplitude is
+    After a step of ${\dt\tau_E>0}$ in eigentime in direction of any 4-vector $v^\mu$, the change in amplitude squared is
     \begin{equation}
         \dt(\varphi^2)\sim\varphi\dt\varphi=\varphi(v^\mu\partial_\mu\varphi)\dt\tau_E.
     \end{equation}
@@ -245,9 +259,9 @@ The 4-vector $u^\mu$ is timelike, ${u_\mu u^\mu=-1}$ and future oriented, $u^\ta
 \begin{equation}
     \dt\varphi=\chi u_\mu u^\mu\dt\tau_E=-\chi\dt\tau_E\,.
 \end{equation}
-In this case, ${\varphi\chi>0}$ is the appropiate choice for a decreasing density of the condensate in the locally comoving frame of the fluid. Note further that in the region on the freezeout surface where $r\approx 0$, the normal vector ${\dt\Sigma^\mu}$ is also timelike and future oriented and ${\dt\Sigma^\mu u_\mu<0}$. Therefore the projection ${\dt\Sigma^\mu\partial_\mu\varphi}$ has the opposite sign of $\chi$ in the corresponding range of $\alpha$.
+In this case, ${\varphi\chi\overset{(<)}{>}0}$ is the appropiate choice for a decreasing (increasing) density of the condensate in the locally comoving frame of the fluid. Note further that in the region on the freezeout surface where $r\approx 0$, the normal vector ${\dt\Sigma^\mu}$ is also timelike and future oriented and ${\dt\Sigma^\mu u_\mu<0}$. Therefore the projection ${\dt\Sigma^\mu\partial_\mu\varphi}$ has the opposite sign of $\chi$ in the corresponding range of $\alpha$.
 
-\subsection{Complex Fields}
+\subsubsection{Complex Fields}
 
 Complex fields have an additional real degree of freedom compared to real fields. Let $\phi$ be a complex field, e.g. $\phi\in\{\pi^+,\pi^-\}$, which can be conveniently represented by ${\phi=\sqrt{n}e^{\imagu\theta}}$, by 2 real parameters, a density $n$ and phase $\theta$. In the case of ${\phi=\pi^+}$, instead of the gradient ${\partial_\mu\phi}$, a real valued 4-vector to be identified with the 4-velocity is now the conserved current
 %%%% MORE DETAIL
@@ -263,11 +277,11 @@ Complex fields have an additional real degree of freedom compared to real fields
 \begin{equation}
     \epsilon^{a12}J_V^{a,\mu}=(\partial_\mu\pi^1)\pi^2-(\partial_\mu\pi^2)\pi^1=n(\partial_\mu\theta)
 \end{equation}
-This is precisely the conserved current derived from the $U(1)$ symmetry of phase rotations of $\pi^+$, or equivalently chiral vector rotations that interchange ${\pi^1\leftrightarrow\pi^2}$. The ansatz $J_V^{\mu,a}\sim u^\mu$ implies
+This is precisely the conserved current derived from the $U(1)$ symmetry of phase rotations of $\pi^+$, or equivalently chiral vector rotations that interchange ${\pi^1\leftrightarrow\pi^2}$. The ansatz ${J_V^{a,\mu}\sim u^\mu}$ implies
 \begin{equation}
     u_\mu=\frac{\partial_\mu\theta}{\chi_\theta}\,,\qquad 0<\chi_\theta^2\defeq-(\partial_\mu\theta)(\partial^\mu\theta)
 \end{equation}
-We already considered the more restrictive assumption $(\partial_\mu\pi^a)\sim u_\mu$, that leads to 
+We already considered the more restrictive assumption ${\partial_\mu\pi^a\sim u_\mu}$, that leads to 
 \begin{equation}
     u_\mu=\frac{\partial_\mu\sqrt{n}}{\chi_n}\,,\qquad 0<\chi_n^2\defeq-(\partial_\mu\sqrt{n})(\partial^\mu\sqrt{n})
 \end{equation}
@@ -286,39 +300,38 @@ where the intermediate calculation
         (\partial_\mu\phi)(\partial^\mu\phi^*)&=-\chi_n^2-n\chi_\theta^2
     \end{align}
 \end{subequations}
-is useful. Note how the imaginary part of this tensor is antisymmetric and thus does not contribute upon contraction with a symmetric tensor.
+is useful. Note how the imaginary part of ${(\partial^\mu\phi)(\partial^\nu\phi^*)}$ is antisymmetric and thus does not contribute upon contraction with the symmetric tensor ${g_{\mu\nu}}$, as it is necessary to compute the associated energy density.
 
-There is now an addition degree of freedom ($\chi_\theta$) compared to the real case. There is additional information given by the conserved vector current $J_v^{a,\mu}$. By means of the underlying assumption of parallelity of all gradients with the 4-velocity $u_\mu$, its conservation law reads
-\begin{equation}
-        0=\partial_\mu\big(n(\partial_\mu\theta)\big)=(\partial_\mu n)(\partial_\mu\theta)+n(\partial_\mu\partial^\mu\theta)=-\chi_\theta\chi_n+n\chi_\theta(\partial_\mu u^\mu)+nu^\mu(\partial_\mu\chi_\theta)
-\end{equation}
-Denote the 4-divergence of the 4-velocity by ${D=\partial_\mu u^\mu}$. Proceding as before, imposing ${\dt\epsilon_{s,\phi}=0}$ as well as the just derived identiy
+There is now an addition degree of freedom ($\chi_\theta$) compared to the real case. There is also additional information given by the conserved vector current $J_v^{a,\mu}$. However, even by assuming constant energy density this is not enough to reduce all real function valued degrees of freedom to simple scalar parameters as done previously.
+% By means of the underlying assumption of parallelity of all gradients with the 4-velocity $u_\mu$, its conservation law reads
+% \begin{equation}
+%         0=\partial_\mu\big(n(\partial_\mu\theta)\big)=(\partial_\mu n)(\partial_\mu\theta)+n(\partial_\mu\partial^\mu\theta)=-\chi_\theta\chi_n+n\chi_\theta(\partial_\mu u^\mu)+nu^\mu(\partial_\mu\chi_\theta)\,.
+% \end{equation}
 
 Considering the fact that we have already proposed ways to initialize the real valued fields $\pi^1$, $\pi^2$, we could also simply construct $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$ from these fields. Given $\partial_\mu\pi^{1,2}$, the density of the charged pion fields changes as
 \begin{equation}
     \partial_\mu n=\partial_\mu(\pi^+\pi^-)=\frac{1}{2}\partial_\mu\big((\pi^1)^2+(\pi^2)^2\big)=(\partial_\mu\pi^1)\pi^1+(\partial_\mu\pi^2)\pi^2\,.
 \end{equation}
 
-\subsection{Condensate Evolution in the Fireball}
+\subsection{Type C}
 
-Let us investigate the possibility of an evolution process where the condensate density, i.e. the field amplitudes, rise during the fireball evolution with an easy-to-model ${(\tau,r)}$-dependence. A first guess might be a constant condensate amplitude as a function of the radial coordinate, which increases as a function of $\tau$. For real fields $\varphi$, we state
+Let us investigate the possibility of an evolution process where the condensate density, i.e. the field amplitudes, rise during the fireball evolution with an easy-to-model ${(\tau,r)}$-dependence. To do so, consider a real field that depends on Bjorken time only and increases in amplitude during the fireball evolution, starting at $\tau_0$.  Such a field may have the form 
 \begin{equation}
-    \varphi(\tau,r)=(\tau-\tau_0)\overline{\varphi}
+    \varphi(\tau,r)=\varphi_{\text{max}}\Big(\frac{\tau-\tau_0}{\tau_{\text{max}}-\tau_0}\Big)^a,
+    \label{eq:TauDepFields}
 \end{equation}
-with $\tau_0$ the parameter where the fluid description starts and $\overline{\varphi}$ a constant proportional to (the squareroot of) the energy density contained within the condensate field. This function is clearly only $\tau$-dependent and thus 
+only characterized by a constant $a>0$ characterizing the growth of the condensate field and an amplitude $\varphi_{\text{max}}$ at the end of the lifetime $\tau_{\text{max}}$ of the fireball. This function is only $\tau$-dependent and thus
 \begin{equation}
-    \dt\Sigma^\mu\partial_\mu\varphi=\dt\Sigma^\tau\partial_\tau\varphi=r^\prime\overline{\varphi}\cdot r\tau\,\dt\alpha\dt\eta\dt\varphi
+    (r^\prime\partial_\tau+\tau^\prime\partial_r)\varphi(\tau,r)=r^\prime\frac{a\cdot\varphi_{\text{max}}}{\tau_{\text{max}}-\tau_0}\Big(\frac{\tau-\tau_0}{\tau_{\text{max}}-\tau_0}\Big)^{a-1} \,.
 \end{equation}
-\begin{equation}
-    (r^\prime\partial_\tau+\tau^\prime\partial_r)\varphi(\tau,r)=r^\prime\overline{\varphi}
-\end{equation}
+On the freezeout surface, these functions are evaluated at ${\tau=\tau(\alpha)}$.
 
 \section{Examplary Spectra}
 \label{sec:ExampleSpectra}
 
 This section is aimed towards finding some intuition for the relation between particle mass, initial conditions and resulting spectra.
 
-\subsection{Constant Initial Conditions}
+\subsection{Type A - Constant Fields}
 
 First, investigate the spectrum of a real scalar field for constant values of the field an normal derivative. These have no clear physical motivation and we are only interested in the shape of the spectra, not their absolute values.\\
 \debugbox{
@@ -358,7 +371,7 @@ Spectra from field configurations of high ratio ${\Big\vert\frac{\text{amplitude
 }
 The displayed graphs correspond to particle masses from 0.14 GeV (blue) to 0.8 GeV (red). Together with the scale on which the freezeout surface varies, the particle mass sets the main scale/width of the spectrum, as is evident from the combinations ${rp_T}$ and ${\tau\omega_T}$ appearing in formula \eqref{eq:SpectrumFinalFormula}. An increasing particle mass leads to a wider spectrum and has a similar effect as artificially decreasing the length scale of the freezeout surface.
 
-\subsection{Constant Energy Density}
+\subsection{Type B - Constant Energy Density}
 
 Next, test the aforementioned $\epsilon=\const$ prescription of defining initial data, which yields a 1-parameter family of initial field configurations. As previously described, the free parameter chosen here is the ratio ${r=\epsilon_{\text{pot}}/\epsilon}$ of potential to full energy density at ${\alpha=0}$. The energy density of the condensate is estimated by an arbitrary amount of $0.1\%$ of the energy density ${\epsilon_{\text{hydro}}\approx 0.16\,\mathrm{GeV}/(\mathrm{fm}^3)}$ \todo{conversion factor missing! I really used $0.1\%$ of $0.16\,\mathrm{GeV}^4\approx 130\cdot0.16\,\mathrm{GeV}/(\mathrm{fm}^3)$} of the hydro simulation.\\
 \debugbox{
@@ -503,17 +516,41 @@ As before, let us also change the mass in this scenario. Now, the mass further i
         \label{fig:SpecRealConstEps_m1000}
     \end{minipage}
 }
-With increasing mass, one observers increasing width of the spectrum - as it was already observed and discussed in the last paragraph - as well as a second dominant bump away from $p_T=0\,\text{GeV}$, namely roughly at the particle mass. This fits the expectation of a general Fourier transformation picking up the dominant frequencies present in a field configuration. Requesting ${\epsilon=\const}$ and a hypothetically fixed value of the projection ${u_\mu\dt^\mu s}$, equation \eqref{eq:InitialConditions_ODE} becomes simply a coupled ODE describing harmonic oscillation with frequency $m_\varphi$. Therefore, the Fourier transform has a peak at that frequency, modulated with the effects of the non-trivial hypersurface geometry. The precise way in which the geometry affects this behaviour of the Fourier transform seems to be more dependent on details of the initial conditions as we go to larger masses.
+With increasing mass, one observers increasing width of the spectrum - as it was already observed and discussed in the last paragraph - as well as a second dominant bump away from $p_T=0\,\text{GeV}$, namely roughly at the particle mass. This fits the expectation of a general Fourier transformation picking up the dominant oscillation frequencies present in a field configuration. This can be understood by requesting ${\epsilon=\const}$ and a hypothetically fixed value of the projection ${u_\mu\dt^\mu s}$, after which equation \eqref{eq:InitialConditions_ODE} becomes simply a coupled ODE describing harmonic oscillation with frequency $m_\varphi$. Therefore, the Fourier transform has a peak at that frequency, modulated with the effects of the non-trivial hypersurface geometry. The precise way in which the geometry affects this behaviour of the Fourier transform seems to be more dependent on details of the initial conditions as we go to larger masses. The peak induced by this mechanism is far less relevant in terms of multiplicity than the peak at the origin.
 
-To summarize the different scales at play in the spectra, we state 3 central observations:
+\subsection{Type C - Time Dependent Condensate}
+
+Let us investigate the possibility of the condensate growing in direction of increasing Bjorken time $\tau$, as prescribed by the ansatz \eqref{eq:TauDepFields}. It might be particularly interesting to distinguish different growth scenarios, characterized by their exponential behaviour. This analysis is done in figure \ref{fig:SpecRealTauDep_m140}. Note how all representatives in this class of initial condition start an vanishing field for ${\tau=0}$ ($\alpha=\pi/2$), followed by different growth rates for increasing $\tau$ (decreaing $\alpha$). At low $\alpha$, the time coordinate $\tau$ remains roughly constant, so does the field in this scenario. The comparison shows how the precise growth rate does not influence the low-$p_T$ of the spectrum significantly. As for other types of initical conditions, these spectra also show a significant peak at ${p_T=0\,\text{GeV}}$, followed by a shallower decrease in multiplicity at larger transverse momenta.
+
+\debugbox{
+    \begin{minipage}{\linewidth}
+        \centering
+        \debugbox{
+            \begin{minipage}{0.45\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{./../MasterThesis_HeavyIonCollisions/code/C++/DCCspec/images/spectra_real_m140_taudep_20241029_132506_init.png}        
+            \end{minipage}
+        }
+        \debugbox{
+            \begin{minipage}{0.45\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{./../MasterThesis_HeavyIonCollisions/code/C++/DCCspec/images/spectra_real_m140_taudep_20241029_132506_spec.png}        
+            \end{minipage}
+        }
+        \captionof{figure}{Initial conditions (left)  and resulting spectra (right) for different growth rates of a $\tau$-dependent condensate ${\varphi\propto(\tau-\tau_0)^a}$, using $m_\pi=0.14\,\text{GeV}$.}
+        \label{fig:SpecRealTauDep_m140}
+    \end{minipage}
+}
+
+\subsection{Observations}
+
+This paragraph aims to summarize the insights obtained from the last sections. All of the investigated families of initial conditions leave essentially 1 parameter and the particle mass open to variation. We found that not only the precise parameter choice has little influence on the resulting spectrum, but also the type of initial conditions plays no significant role for the shape of the spectrum. An exception from this statement is the large $p_T$-behaviour of some graphs, especially for the case of larger particle mass in Type B initial conditions. However, since we are only interested in the low $p_T$-regime anyways these differences do not affect our conclusion too much. In the low $p_T$ range of interest we denote a universal shape w.r.t. the variations under investigation. This universality is not to be understood in terms of statistical systems at criticality, but suggests a certain physical reality of the observed phenomenon, as it is not subject to an unnatural amount of fine tuning. We shall characterize the shape of the DCC spectra in terms of a few simple properties:
 \begin{enumerate}
-    \item Independent of initial conditions, the length scale of the freezeout surface set by the variations of $\tau(\alpha)$ and $r(\alpha)$ has an effect of the expected maximum at ${p_T=0\,\text{GeV}}$ in the spectra.
-    \item Also independent of initial conditions, the assumed particle mass acts as an effective scaling factor on the extent of the hypersurface.
-    \item A prominent oscillatory behaviour in the initial conditions induces another peak at roughly the oscillation frequency.
+    \item Each spectrum shows a prominent peak in particle multiplicity at the origin, ${p_T=0\,\mathrm{GeV}}$, followed by a shallower fall-off.
+    \item Independent of initial conditions, the assumed particle mass acts as a scaling factor along the $p_T$-axis, $\text{scale}_{p_T}\sim m$.
+    \item Also independent of initial conditions, the length scale of the freezeout surface set by the variations of $\tau(\alpha)$ and $r(\alpha)$ has a similar, but by dimensionality inverse effect, $\text{scale}_{p_T}\sim 1/r\,,1/\tau$.
+    \item A dominant oscillatory behaviour in the initial conditions induces another peak at roughly the oscillation frequency.
 \end{enumerate}
-
-\subsection{Other Prescriptions}
-
 
 
 \section{Analytic Parametrization of DCC Spectra}

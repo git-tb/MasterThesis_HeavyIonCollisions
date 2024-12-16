@@ -79,7 +79,7 @@ Note how $x^\mu$ and $p^\mu$ in the new coordinate system are not vector compone
 \begin{equation}
     \tilde{f}(p^\mu)=\int\frac{\dt^4p}{(2\pi)^4}f(x^\mu)\exp\big(-\imagu(\tau m_T\cosh(\eta-\eta_p)-rp_T\cos(\varphi-\varphi_p))\big)
 \end{equation}
-of a rotationally and boost invariant function ${f(x^\mu)=f(\tau,r)}$ is therefore independent of the $\eta_p$ and $\varphi_p$ momentum components, as can be easily varified by shifting the integration variables ${\eta\to\eta-\eta_p}$ and ${\varphi\to\varphi+\varphi_p}$ in the above integral. The relativistic dispersion relation ${p^2+m^2=0}$ fixes 1 momentum component, typically ${(p^t)^2=\omega_{\vec{p}}^2\equiv m^2+\vec{p}^2}$ in cartesian coordinates or equivalently ${m_T^2=\omega_T^2\equiv m^2+p_T^2}$ in Bjorken coordinates. As we usually work on-shell, i.e. under validity of this dispersion relation, the spectra computed under the above symmetry assumption only depend on transverse momentum, ${\tilde{f}(p^\mu)=\tilde{f}(p_T)}$.
+of a rotationally and boost invariant function ${f(x^\mu)=f(\tau,r)}$ turns out to be independent of the $\eta_p$ and $\varphi_p$ momentum components, as can be easily varified by shifting the integration variables ${\eta\to\eta+\eta_p}$ and ${\varphi\to\varphi+\varphi_p}$ in the above integral. The relativistic dispersion relation ${p^2+m^2=0}$ fixes 1 momentum component, typically ${(p^t)^2=\omega_{\vec{p}}^2\equiv m^2+\vec{p}^2}$ in cartesian coordinates or equivalently ${m_T^2=\omega_T^2\equiv m^2+p_T^2}$ in Bjorken coordinates. As we usually work on-shell, i.e. under validity of this dispersion relation, the spectra computed under the above symmetry assumption only depend on transverse momentum, ${\tilde{f}(p^\mu)=\tilde{f}(p_T)}$.
 
 
 
@@ -109,11 +109,9 @@ and integrating out the $p^t$-component. The number $N$ of particles counted is 
 \end{equation}
 Note that this result assumes a symmetry under ${\eta\to-\eta}$, constraining $\eta$ to ${[0,\infty)}$, introducing a factor of $1/2$ on the RHS. If the number density with respect to momentum rapidity ${\eta\in(-\infty,\infty)}$ is considered, one should replace ${2\omega_{\vec{p}}\to\omega_{\vec{p}}}$. Both options are of course Lorentz invariant. More detail is found in the Appendix \ref{sec:Apx_ConvertingSpectra}.
 
-
-
 \section{Fundamentals of Relativistic Fluid Dynamics}
 
-If many quantum mechanical particles are involved in the description of a process, finding the exact unitary time evolution of the system state is practically unfeasible. On one hand, explicit analytic expressions for example for eigenstates of the underlying Hamiltonian are rarely accessible, on the other hand numerical algorithms might only scale poorly with the system size, depending on symmetry assumptions etc.
+If many quantum mechanical particles are involved in the description of a process, finding the exact unitary time evolution of the system state is practically unfeasible. On one hand, explicit analytic expressions for example for eigenstates of the underlying Hamiltonian are rarely accessible, on the other hand numerical algorithms might only scale poorly with the system size, depending on symmetry assumptions etc., involving a Hilbert space that scales epxonentially with the number of particles.
 
 The fundamental idea of thermodynamics is to describe systems of many interacting particles with a set of only a few possibly spacetime dependent variables, such as temperature $T(x)$, particle number $N$, system energy $E$ and volume $V$, among others. To do so, a small number of assumptions and fundamental laws are imposed in order to derive statements about observables of the macroscopic systems and how they arise from a statistical mixture of all possible microscopic states the system could occupy. A crucial part of this is the assumption of thermodynamic equilibrium, meaning a systems extensive parameters do not change. \todo{Work out meaning of equilibrium and out of equilibrium processes}
 

@@ -680,8 +680,8 @@ plt.show()
 ###############################################################
 ###############################################################
 
-# SAVE = True
-SAVE = False
+SAVE = True
+# SAVE = False
 SAVETITLE = "decay_sigmaresonance_pi_m140"
 
 COMPARE = True
@@ -697,16 +697,17 @@ FIGSIZE = (7,7)
 AXISLABELSIZE = 20
 TICKLABELSIZE = 15
 LINEWIDTH = 2
-LEGENDSIZE = 10
+LEGENDSIZE = 15
 
 CMAP = LinearSegmentedColormap.from_list("custom", ["blue","red"])
 CMAP_LBWH = [0.025, 0.025, 0.05, 0.45]
+CMAP_LBWH = [0.725, 0.525, 0.05, 0.45]
 CMAP_LABELSIZE = 15
 CMAP_TICKSIZE = 15
-LC_LABEL = r"$m\ [GeV]$"
+LC_LABEL = r"$m_{\sigma}\ [GeV]$"
 
 # folders = glob.glob("data/decayspectra_sigma_constfield_pi_m280/decayspec*")
-folders = glob.glob("data/newspectra1/decayspec*")
+folders = glob.glob("data/decayspectra_sigma_20241119_pi_m140_big/decayspec*")
 # folders = glob.glob("data/decayspectra_sigma_20241119_171318_pi_m140/decayspec*")
 # folders = glob.glob("data/decayspectra_sigma_20241119_171318_pi_m280/decayspec*")
 # folders = glob.glob("data/decayspectra_sigma_p5GeV_20241119_171318_pi_m280/decayspec*")
@@ -720,8 +721,8 @@ masses = 1000*np.array(masses)
 
 mpi = 140
 
-Mpole = 479
-Gpole = 2* 279
+Mpole = 449
+Gpole = 2* 275
 
 msigma = np.sqrt(1/4 * (16 * mpi**2 + 
                         np.sqrt(16 * Gpole**2 * Mpole**2 + 
@@ -733,22 +734,39 @@ def Delta(s):
     return 1/(s-msigma**2+1j*Gam*np.sqrt(s-(2*mpi)**2))
 
 def S(k):
-    return -1/np.pi*np.imag(Delta(k**2))*(masses<=1000)
+    # return -1/np.pi*np.imag(Delta(k**2))*(k<=1000)
+    return -1/np.pi*np.imag(Delta(k**2))
 
 weights = 2*masses*S(masses)*np.ptp(masses)/len(masses)
 weights /= np.sum(weights)
 
 fig_weights, ax_weights = plt.subplots(figsize=(7,7))
-ax_weights.plot(masses,weights)
+# ax_weights.plot(masses,weights,lw=0)
+weightsxs = np.linspace(masses[0],masses[-1], 1000)
+weightsys = S(weightsxs)
+ax_weights.plot(weightsxs, weightsys,marker="")
+ax_weights.ticklabel_format(axis="y",style="sci",scilimits=(0, 0))
+ax_weights.set_xlim(ax_weights.get_xlim()[0],masses[-1])
 
-ax_weights.legend(fontsize=LEGENDSIZE,fancybox=True, framealpha=0.85,shadow=False)
+# ax_weights2 = ax_weights.twinx()
+# weightsxs = np.linspace(masses[0],masses[-1], 1000)
+# weightsys = S(weightsxs)
+# ax_weights2.plot(weightsxs, weightsys,marker="",c='r')
+# ax_weights2.ticklabel_format(axis="y",style="sci",scilimits=(0, 0))
+# ax_weights2.set_ylabel(r"$\rho(\mu^2)$")
+# ax_weights2.yaxis.label.set_color('red')
+
 ax_weights.tick_params(axis="both",labelsize=TICKLABELSIZE)
 ax_weights.xaxis.set_ticks_position("bottom")
 ax_weights.yaxis.set_ticks_position("left")
 ax_weights.set_xlabel(r"$\mu$")
 ax_weights.set_ylabel(r"$2\mu\text{d}\mu\rho(\mu^2)$")
+ax_weights.set_ylabel(r"$\rho(\mu^2)$")
 ax_weights.grid(False,which="both")
 fig_weights.tight_layout()
+
+
+##########################
 
 
 lines_ps, lines_ds = [], []
@@ -837,8 +855,11 @@ if(SAVE):
     fig_ps.savefig("images/"+SAVETITLE+"_primespec.png")
     fig_ds.savefig("images/"+SAVETITLE+"_decayspecs.png")
     fig_fs.savefig("images/"+SAVETITLE+"_decayspec_weighted.png")
+    fig_weights.savefig("images/"+SAVETITLE+"_decayspec_weights.png")
 else:
     print("NOT SAVED!")
+
+plt.show()
 
 
 #%%

@@ -991,6 +991,41 @@
       \endverb
       \keyw{High Energy Physics - Phenomenology,Quantum Physics}
     \endentry
+    \entry{Navasothers_2024}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=25b6d239864c97a90ec8be94cdea417d}{%
+           family={Navas},
+           familyi={N\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \strng{fullhash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \strng{bibnamehash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \strng{authorbibnamehash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \strng{authornamehash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \strng{authorfullhash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \field{labelalpha}{Nav+24}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{number}{3}
+      \field{title}{Review of Particle Physics}
+      \field{volume}{110}
+      \field{year}{2024}
+      \field{pages}{030001}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.110.030001
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/GLP8K7BU/Navas and others - 2024 - Review of particle physics.pdf
+      \endverb
+    \endentry
     \entry{Thomson_2011}{unpublished}{}
       \name{author}{1}{}{%
         {{hash=57f5b607cec3b22885f854f4c4baf257}{%

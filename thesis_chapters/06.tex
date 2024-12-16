@@ -105,7 +105,7 @@ It is instructive to see how this restriction looks like in formula. A priori, t
 \end{equation}
 If we were to perform the multidimensional integration ${\iint\dt t\dt v}$ via nested integrals, this would be sufficient, since we could first perform the $v$-integration over a $t$-dependent range and then integrate over $t$. Unfortunately this performs very poorly on the numeric side due to the iterative subdivision of the exterior integral causing a very large number of numerical evaluations of the interior integral. Instead, efficient multidimensional integration requires us to subdivide the $n$-dimensional integration domain in rectangular subdomains, thus looking for the smallest possible rectangular integration domain is desirable. This is the idea of cubature algorithms.
 
-To do so, we want to find the minimal and maximal values of $t$ and $v$. By the definition ${v=\cos\varphi}$. It is clear that ${v_{\text{max}}=1}$ by noting that ${\lim_{t\to\infty}v_1(t)>1}$. It is also clear that ${u^\star(t,v)>1}$ only if ${v>v_1(t)}$. Thus, in order to find a minimum value of $v$, we need to find the minimum of $v_1(t)$, which is located at
+To do so, we want to find the minimal and maximal values of $t$ and $v$. By definition ${v=\cos\varphi}$ and it is clear that ${v_{\text{max}}=1}$ by noting that ${\lim_{t\to\infty}v_1(t)>1}$. It is also clear that ${u^\star(t,v)>1}$ only if ${v>v_1(t)}$. Thus, in order to find a minimum value of $v$, we need to find the minimum of $v_1(t)$, which is located at
 \begin{equation}
     t^\prime=\frac{m_a\sqrt{(\omega_{p,T})^2-(E^a_{b\vert c})^2}}{QE^a_{b\vert c}}\,,\qquad v_{\text{min}}=v_1(t^\prime)=\frac{\sqrt{(\omega_{p,T})^2-(E^a_{b\vert c})^2}}{p}\,.
     \label{eq:Cubature_vmin}
@@ -236,7 +236,7 @@ In the last paragraphs we argued that one does not need to compute the spectra o
         \label{fig:decayspec_convtest}
     \end{minipage}
 }
-Analyzing figure \ref{fig:decayspec_convtest}, we derive that in order to compute the decay spectrum of the lighter resonance $b$ up to transverse momenta $p_T$, on should compute the spectrum of the heavy reasonance $a$ up to ${q_T>p_T}$. The most prominent feature of the decay spectrum is a plateau in the region ${p_T\in[0,p^a_{b\vert c}]}$. Having spent thoughts on the implications of energy conversation on the details of the computation already, it is easy to give an explanation on the origin of this plateau structure. As we saw in the last chapter, all primary spectra computed here are significantly peaked around ${q_T=0\,\text{GeV}}$. Only for ${p_T< p^a_{b\vert c}}$ or ${\omega_{p,T}>E^a_{b\vert c}}$ can the primary resonance be at rest and the large peak of the pimary spectrum contributes in the decay spectrum. For larger $p_T$, energy conservation requires the primary resonance to have non-vanishing momentum ${q_T>0}$ oriented approximately parallel to the momentum of magnitude ${p_T}$ of the decay product. This is essentially the statement of figure \ref{fig:DecayCalc_IntegrDom}.
+Analyzing figure \ref{fig:decayspec_convtest}, we derive that in order to compute the decay spectrum of the lighter resonance $b$ up to transverse momenta $p_T$, on should compute the spectrum of the heavy reasonance $a$ up to ${q_T>p_T}$. The most prominent feature of the decay spectrum is a plateau in the region ${p_T\in[0,p^a_{b\vert c}]}$. Having spent thoughts on the implications of energy conversation on the details of the computation already, it is easy to give an explanation on the origin of this plateau structure. As we saw in the last chapter, all primary spectra computed here are significantly peaked around ${q_T=0\,\text{GeV}}$. Only for ${p_T< p^a_{b\vert c}}$ or ${\omega_{p,T}<E^a_{b\vert c}}$ can the primary resonance be at rest and the large peak of the pimary spectrum contributes in the decay spectrum. For larger $p_T$, energy conservation requires the primary resonance to have non-vanishing momentum ${q_T>0}$ oriented approximately parallel to the momentum of magnitude ${p_T}$ of the decay product. This is essentially the statement of figure \ref{fig:DecayCalc_IntegrDom}.
 
 \paragraph{Sensitivity on Initial Conditions}
 
@@ -292,7 +292,7 @@ We need a fixed mass of initial and final particle state in order to perform the
     D_{\text{free}}(p;m)=-\frac{1}{p^2+m^2\pm\imagu\epsilon}\to D(p;M)=-\frac{1}{p^2+M^2-\imagu\Im\Pi}\,,
     \label{eq:1LoopPropCorrection_SelfEnergy}
 \end{equation}
-where $\Pi$ is the self energy, the real part of which is implicitly contained in the mass shift ${m^2\to M^2}$. In the Källen-Lehmann representation, the propagator is written as a weighted sum/integral over free propagators for different $\text{mass}^2$-parameters,
+where $\Pi$ is the self energy, the real part of which is implicitly contained in the mass shift ${m^2\to M^2}$. In the Källen-Lehmann representation, the propagator is written as a weighted sum/integral over free propagators for different mass-squared parameters,
 \begin{equation}
     D(p;M)=\int_0^\infty\dt\mu^2\rho(\mu^2)D_{\text{free}}(p;\mu)=-\int_0^\infty\dt\mu^2\frac{\rho(\mu^2)}{p^2+\mu^2}
 \end{equation}
@@ -308,7 +308,7 @@ A resonance is typically characterized by the position of a complex pole in the 
 \end{equation}
 For very narrow resonances, the Breit-Wigner parametrization mentioned above can be a good estimate and the peak and width of the spectral density are approximately equal to real and imaginary part of the complex pole of the propagator, ${\sqrt{s_p}\approx M-\imagu\Gamma/2}$. The approximation fails for broad resonances where the width is large compared to the distance to a production threshold. In the present example, such a threshold is given by the interaction of the $\sigma$-meson with the pions as the lightest interaction partners, and has the value of ${(\mu^2)_{\text{min}}=4m_\pi^2}$. The spectral density must vanish below this threshold, which is obviously not modelled well by the Breit-Wigner form.
 
-A useful and simple parametrization in the proximity of thresholds, in the context of the $\sigma\pi\pi$-interaction is given by \cite{GiacosaEtAl_2021}
+A useful and simple parametrization in the proximity of thresholds, in the context of the $\sigma\pi\pi$-interaction is given in terms of the Sill parametrization \cite{GiacosaEtAl_2021}
 \begin{equation}
     \rho(\mu^2)=-\Im\Big(\frac{1}{\mu^2-M^2+\imagu\tilde{\Gamma}\sqrt{\mu^2-(2m_\pi)^2}}\Big)\Theta\big(\mu^2-(2m_\pi)^2\big)\,.
 \end{equation}
@@ -316,4 +316,27 @@ This distribution is normalized,
 \begin{equation}
     \int_0^\infty\dt\mu^2\rho(\mu^2)=\int_0^\infty 2\mu\dt\mu\rho(\mu^2)=1\,,
 \end{equation}
-and we shall interprete it as a probability distribution, weighing the spectra computed from the decay ${\sigma\to\pi\pi}$ for different masses $m_\sigma=\mu$.
+and we shall interprete it as a probability distribution, weighing the spectra computed from the decay ${\sigma\to\pi\pi}$ for different masses $m_\sigma=\mu$. From the pole coordinates $M_p$ and $\Gamma_p$ the corresponding parameters entering the above parametrization are
+\begin{subequations}
+    \begin{align}
+        M&=\sqrt{\frac{16 m_\pi^2+\sqrt{16\Gamma_p^2M_p^2+(-16 m_\pi^2-\Gamma_p^2+4M_p^2)^2}}{4}}\,,\\
+        \tilde{\Gamma}&=\sqrt{\frac{16 m_\pi^2+\Gamma_p^2-4 M_p^2+\sqrt{16\Gamma_p^2M_p^2+(-16 m_\pi^2-\Gamma_p^2+4M_p^2)^2}}{2}}\,,
+    \end{align}
+\end{subequations}
+which is found by requesting ${\mu^2=s_p}$ to be the complex pole of the full propagator in the chosen parametrization.
+
+There is an ongoing debate about the nature of the $\sigma$-meson. There are multiple resonances, e.g. $f_0(500)$, $f_0(980)$, $f_0(1370)$, etc. that share the same quantum numbers ${I^G(J^{PC})=0^+(0^{++})}$ as the quark-antiquark state ${\overline{\psi}\psi}$ that forms the isospin singlet derived from the group theoretic implications of the approximate $SU(2)$ symmetry between up- and down-quarks. In reality however, it is expected that this two-quark state mixes with other bound states, like four-quark states ("tetraquarks"), hadronic molecules or gluonic states to what is experimentally (indirectly) observed as the $\sigma$-meson. For more detail, see for example the review "Scalar Mesons below 1 GeV" within the Particle Data Booklet (PDG) \cite{Navasothers_2024}. Thus, it is a priori unclear which the correct resonance properties are. We expect the most dominant contribution to the soft pion spectra to arise from the lightest availabe resonance and thus choose the $f_0(500)$ with a pole position, derived from what is called the "most advanced dispersive analyses" \cite{Navasothers_2024} in the PDG, at
+\begin{equation}
+    \sqrt{s_p}=449-\imagu 275\,\text{MeV}\,.
+\end{equation}
+
+
+\debugbox{
+    \begin{minipage}{\linewidth}
+        \centering
+                \centering
+                \includegraphics[width=0.6\linewidth]{code/C++/DCCspec/images/decay_sigmaresonance_pi_m140_decayspec_weights.png}
+        \captionof{figure}{Spectral density function of the $\sigma$-resonance.}
+        \label{fig:spectral_density_sigma}
+    \end{minipage}
+}
