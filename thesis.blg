@@ -1,15 +1,15 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'thesis.blg'
-[45] biber:340> INFO - === Mo Dez 16, 2024, 18:27:55
-[55] Biber.pm:419> INFO - Reading 'thesis.bcf'
-[87] Biber.pm:979> INFO - Found 19 citekeys in bib section 0
-[95] Biber.pm:4419> INFO - Processing section 0
-[102] Biber.pm:4610> INFO - Looking for bibtex file '00_literature.bib' for section 0
-[106] bibtex.pm:1713> INFO - LaTeX decoding ...
-[164] bibtex.pm:1519> INFO - Found BibTeX data source '00_literature.bib'
-[282] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[282] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[282] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[282] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[290] bbl.pm:660> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[297] bbl.pm:763> INFO - Output to thesis.bbl
+[53] biber:340> INFO - === Do Jan  9, 2025, 19:14:09
+[63] Biber.pm:419> INFO - Reading 'thesis.bcf'
+[102] Biber.pm:979> INFO - Found 22 citekeys in bib section 0
+[110] Biber.pm:4419> INFO - Processing section 0
+[116] Biber.pm:4610> INFO - Looking for bibtex file '00_literature.bib' for section 0
+[121] bibtex.pm:1713> INFO - LaTeX decoding ...
+[194] bibtex.pm:1519> INFO - Found BibTeX data source '00_literature.bib'
+[351] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[351] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[351] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[351] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[360] bbl.pm:660> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[367] bbl.pm:763> INFO - Output to thesis.bbl

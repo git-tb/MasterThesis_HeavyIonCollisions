@@ -760,6 +760,170 @@
       \verb /home/tobiasb/Zotero/storage/BQKWH9HG/SymmetriesFloerchinger.pdf
       \endverb
     \endentry
+    \entry{Navasothers_2024}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=25b6d239864c97a90ec8be94cdea417d}{%
+           family={Navas},
+           familyi={N\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \strng{fullhash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \strng{bibnamehash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \strng{authorbibnamehash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \strng{authornamehash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \strng{authorfullhash}{9e02c695d9a57f6e8669b26d9be3e077}
+      \field{labelalpha}{Nav+24}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{number}{3}
+      \field{title}{Review of Particle Physics}
+      \field{volume}{110}
+      \field{year}{2024}
+      \field{pages}{030001}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.110.030001
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/GLP8K7BU/Navas and others - 2024 - Review of particle physics.pdf
+      \endverb
+    \endentry
+    \entry{KoenigsteinGiacosa_2016}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4b23d88736ad751bed13656e4d7c84c5}{%
+           family={Koenigstein},
+           familyi={K\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod}}}%
+        {{hash=41469f9a633a3c6ff2973d50d1cdd189}{%
+           family={Giacosa},
+           familyi={G\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{5729a2a97a1589ad0f834d138fff7d32}
+      \strng{fullhash}{5729a2a97a1589ad0f834d138fff7d32}
+      \strng{bibnamehash}{5729a2a97a1589ad0f834d138fff7d32}
+      \strng{authorbibnamehash}{5729a2a97a1589ad0f834d138fff7d32}
+      \strng{authornamehash}{5729a2a97a1589ad0f834d138fff7d32}
+      \strng{authorfullhash}{5729a2a97a1589ad0f834d138fff7d32}
+      \field{labelalpha}{KG16}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Eur. Phys. J. A}
+      \field{number}{12}
+      \field{title}{Phenomenology of Pseudotensor Mesons and the Pseudotensor Glueball}
+      \field{volume}{52}
+      \field{year}{2016}
+      \field{pages}{356}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1140/epja/i2016-16356-x
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/SS3IPDYF/Koenigstein and Giacosa - 2016 - Phenomenology of pseudotensor mesons and the pseudotensor glueball.pdf
+      \endverb
+      \keyw{anomaly: chiral,glueball: pseudoscalar,ground state,isoscalar,meson: pseudotensor,mixing angle,pseudoscalar meson: nonet,quark antiquark,rho(770),tensor meson}
+    \endentry
+    \entry{GiacosaEtAl_2018}{article}{}
+      \name{author}{3}{}{%
+        {{hash=41469f9a633a3c6ff2973d50d1cdd189}{%
+           family={Giacosa},
+           familyi={G\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=4b23d88736ad751bed13656e4d7c84c5}{%
+           family={Koenigstein},
+           familyi={K\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod}}}%
+        {{hash=06401090ef58b8833ec68ba4963e1fa5}{%
+           family={Pisarski},
+           familyi={P\bibinitperiod},
+           given={Robert\bibnamedelima D.},
+           giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{b266e5161261b8749e9706baca99f573}
+      \strng{fullhash}{b266e5161261b8749e9706baca99f573}
+      \strng{bibnamehash}{b266e5161261b8749e9706baca99f573}
+      \strng{authorbibnamehash}{b266e5161261b8749e9706baca99f573}
+      \strng{authornamehash}{b266e5161261b8749e9706baca99f573}
+      \strng{authorfullhash}{b266e5161261b8749e9706baca99f573}
+      \field{labelalpha}{GKP18}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{number}{9}
+      \field{title}{How the Axial Anomaly Controls Flavor Mixing among Mesons}
+      \field{volume}{97}
+      \field{year}{2018}
+      \field{pages}{091901}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.97.091901
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/BZF42BKY/Giacosa et al. - 2018 - How the axial anomaly controls flavor mixing among mesons.pdf
+      \endverb
+      \keyw{anomaly: axial,effective field theory,effective Lagrangian,flavor: mixing,flavor: violation,meson: mixing,meson: multiplet,multiplet: chiral,symmetry: chiral,symmetry: flavor}
+    \endentry
+    \entry{Park_2022}{article}{}
+      \name{author}{1}{}{%
+        {{hash=590666ceef39ab90246474c4b2b9331f}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Jeong-Hyuck},
+           giveni={J\bibinithyphendelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{590666ceef39ab90246474c4b2b9331f}
+      \strng{fullhash}{590666ceef39ab90246474c4b2b9331f}
+      \strng{bibnamehash}{590666ceef39ab90246474c4b2b9331f}
+      \strng{authorbibnamehash}{590666ceef39ab90246474c4b2b9331f}
+      \strng{authornamehash}{590666ceef39ab90246474c4b2b9331f}
+      \strng{authorfullhash}{590666ceef39ab90246474c4b2b9331f}
+      \field{labelalpha}{Par22}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This lecture note surveys the gamma matrices in general dimensions with arbitrary signatures, the study of which is essential to understand the supersymmetry in the corresponding spacetime. The contents supplement the lecture presented by the author at Modave Summer School in Mathematical Physics, Belgium, June, 2005.}
+      \field{eprintclass}{hep-th}
+      \field{eprinttype}{arXiv}
+      \field{issn}{0374-4884, 1976-8524}
+      \field{journaltitle}{Journal of the Korean Physical Society}
+      \field{month}{7}
+      \field{number}{1}
+      \field{title}{Lecture Note on {{Clifford}} Algebra}
+      \field{urlday}{7}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{volume}{81}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 17}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1007/s40042-022-00493-z
+      \endverb
+      \verb{eprint}
+      \verb 2205.09509
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/EBQV9UJ4/Park - 2022 - Lecture note on Clifford algebra.pdf;/home/tobiasb/Zotero/storage/FBE6P95Q/2205.html
+      \endverb
+      \keyw{High Energy Physics - Theory,Mathematical Physics,Mathematics - Mathematical Physics}
+    \endentry
     \entry{Koch_1997}{article}{}
       \name{author}{1}{}{%
         {{hash=a7f4bf668408cc1902afbb9d1dc0be32}{%
@@ -990,41 +1154,6 @@
       \verb /home/tobiasb/Zotero/storage/59NU64JI/Giacosa et al. - 2021 - A simple alternative to the Breit-Wigner distribution.pdf;/home/tobiasb/Zotero/storage/TMRK2C3S/2106.html
       \endverb
       \keyw{High Energy Physics - Phenomenology,Quantum Physics}
-    \endentry
-    \entry{Navasothers_2024}{article}{}
-      \true{moreauthor}
-      \true{morelabelname}
-      \name{author}{1}{}{%
-        {{hash=25b6d239864c97a90ec8be94cdea417d}{%
-           family={Navas},
-           familyi={N\bibinitperiod},
-           given={S.},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{9e02c695d9a57f6e8669b26d9be3e077}
-      \strng{fullhash}{9e02c695d9a57f6e8669b26d9be3e077}
-      \strng{bibnamehash}{9e02c695d9a57f6e8669b26d9be3e077}
-      \strng{authorbibnamehash}{9e02c695d9a57f6e8669b26d9be3e077}
-      \strng{authornamehash}{9e02c695d9a57f6e8669b26d9be3e077}
-      \strng{authorfullhash}{9e02c695d9a57f6e8669b26d9be3e077}
-      \field{labelalpha}{Nav+24}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Phys. Rev. D}
-      \field{number}{3}
-      \field{title}{Review of Particle Physics}
-      \field{volume}{110}
-      \field{year}{2024}
-      \field{pages}{030001}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1103/PhysRevD.110.030001
-      \endverb
-      \verb{file}
-      \verb /home/tobiasb/Zotero/storage/GLP8K7BU/Navas and others - 2024 - Review of particle physics.pdf
-      \endverb
     \endentry
     \entry{Thomson_2011}{unpublished}{}
       \name{author}{1}{}{%

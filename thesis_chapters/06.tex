@@ -325,11 +325,11 @@ and we shall interprete it as a probability distribution, weighing the spectra c
 \end{subequations}
 which is found by requesting ${\mu^2=s_p}$ to be the complex pole of the full propagator in the chosen parametrization.
 
-There is an ongoing debate about the nature of the $\sigma$-meson. There are multiple resonances, e.g. $f_0(500)$, $f_0(980)$, $f_0(1370)$, etc. that share the same quantum numbers ${I^G(J^{PC})=0^+(0^{++})}$ as the quark-antiquark state ${\overline{\psi}\psi}$ that forms the isospin singlet derived from the group theoretic implications of the approximate $SU(2)$ symmetry between up- and down-quarks. In reality however, it is expected that this two-quark state mixes with other bound states, like four-quark states ("tetraquarks"), hadronic molecules or gluonic states to what is experimentally (indirectly) observed as the $\sigma$-meson. For more detail, see for example the review "Scalar Mesons below 1 GeV" within the Particle Data Booklet (PDG) \cite{Navasothers_2024}. Thus, it is a priori unclear which the correct resonance properties are. We expect the most dominant contribution to the soft pion spectra to arise from the lightest availabe resonance and thus choose the $f_0(500)$ with a pole position, derived from what is called the "most advanced dispersive analyses" \cite{Navasothers_2024} in the PDG, at
+There is an ongoing debate about the nature of the $\sigma$-meson. There are multiple resonances, e.g. $f_0(500)$, $f_0(980)$, $f_0(1370)$, etc. that share the same quantum numbers ${I^G(J^{PC})=0^+(0^{++})}$ as the quark-antiquark state ${\overline{\psi}\psi}$ that forms the isospin singlet derived from the group theoretic implications of the approximate $SU(2)$ symmetry between up- and down-quarks. In reality however, it is expected that this two-quark state mixes with other bound states, like four-quark states ("tetraquarks"), hadronic molecules or gluonic states to what is experimentally (indirectly) observed as the $\sigma$-meson. For more detail, see for example the review "Scalar Mesons below 1 GeV" within the Particle Data Booklet (PDG) \cite{Navasothers_2024}. Thus, it is a priori unclear which the correct resonance properties are. We expect the most dominant contribution to the soft pion spectra to arise from the lightest availabe resonance and thus choose the $f_0(500)$ with a pole position, derived from what is labelled the "most advanced dispersive analyses" \cite{Navasothers_2024} in the PDG, at
 \begin{equation}
     \sqrt{s_p}=449-\imagu 275\,\text{MeV}\,.
 \end{equation}
-
+The resulting spectral density is displayed in figure \ref{fig:spectral_density_sigma}.
 
 \debugbox{
     \begin{minipage}{\linewidth}
@@ -338,5 +338,35 @@ There is an ongoing debate about the nature of the $\sigma$-meson. There are mul
                 \includegraphics[width=0.6\linewidth]{code/C++/DCCspec/images/decay_sigmaresonance_pi_m140_decayspec_weights.png}
         \captionof{figure}{Spectral density function of the $\sigma$-resonance.}
         \label{fig:spectral_density_sigma}
+    \end{minipage}
+}
+
+As described before, the full spectrum of pions induced by the decay of a $\sigma$-condensate shall be described by
+\begin{equation}
+    \omega_{\vec{p}}\frac{\dt N_\pi}{\dt^3p}=\int_{2m_\pi}^\infty\dt\mu 2\mu\rho(\mu^2)\Big(\omega_{\vec{p}}\frac{\dt N_\pi}{\dt^3p}\Big)\Big\vert_{m_\sigma=\mu}\,.
+\end{equation}
+For simplicity, we evaluate this integral in the spirit of a Monte Carlo integration 
+\begin{equation}
+    \int_a^b\dt xf(x)\approx\frac{b-a}{N}\sum_{i=0}^N f(x_i)\,,
+\end{equation}
+where the $x_i$ are sampled from a uniform random distribution of elements in the integration domain. In practice, we sampled the space of masses ${\{\mu\}=[2m_\pi,m_{\sigma,\text{max}}]}$ using $N$ equally spaced sampling points, for which the prefactor ${(b-a)/N}$ becomes just the sample spacing and the above formula resembles the rectangle rule to evaluate an integral as a Riemann sum. Understanding the above computation in terms of Monte Carlo integration is however advantageous, since it allows in principle to adapt the sampling strategy to the curve of interest. For example, for a given spectral density, more points should be sampled in regions of high slope ${\sim\vert\dt\rho/\dt\mu\vert}$ and their contributions in turn reduced by a factor ${\sim\vert\dt\rho/\dt\mu\vert^{-1}}$. Keeping an equidistant sampling rule is conceptionally simpler and the sampling points do not have to be recomputed every time the spectral density is adjusted. We used ${m_{\sigma,\text{max}}=1500\, \text{MeV}}$ and $N=200$ sampling points. 
+
+\debugbox{
+    \begin{minipage}{\linewidth}
+        \centering
+        \debugbox{
+            \begin{minipage}{0.45\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/decay_sigmaresonance_pi_m140_decayspecs.png}        
+            \end{minipage}
+        }
+        \debugbox{
+            \begin{minipage}{0.45\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{code/C++/DCCspec/images/decay_sigmaresonance_pi_m140_decayspec_weighted.png}        
+            \end{minipage}
+        }
+        \captionof{figure}{.}
+        \label{fig:decayspec_inittest}
     \end{minipage}
 }

@@ -1,3 +1,23 @@
+Let ${\psi=\begin{pmatrix}\eta&\xi\end{pmatrix}^T}$ be a Dirac spinor with left- and right-handed Weyl spinors $\eta$ and $\xi$. The Dirac adjoint spinor is given by ${\overline{\psi}\defeq\psi^\dagger\gamma_0}$. In the chiral representation, the $\gamma$-matrices take the form
+\begin{equation}
+    \gamma^0=\begin{pmatrix}
+        0&\mathbb{1}\\
+        \mathbb{1}&0
+    \end{pmatrix}\,,\qquad
+    \gamma^i=\begin{pmatrix}
+            0&\sigma^i\\
+            -\sigma^i&0
+    \end{pmatrix}
+\end{equation}
+where $\sigma^i$ are the usual Pauli matrices. In this representation, the Dirac adjoint spinor is written as ${\overline{\psi}=\begin{pmatrix}\xi^\dagger&\eta^\dagger\end{pmatrix}}$.
+We denote different flavors with an index $a$.
+\begin{subequations}
+    \begin{align}
+        \mathcal{L}&=\imagu\overline{\psi}_a\slashed{D}\psi_a=\imagu\overline{\psi}_a\gamma^\mu\partial_\mu\psi_a=\imagu\psi_a^\dagger\gamma^0\gamma^\mu\partial_\mu\psi_a
+    \end{align}
+\end{subequations}
+
+
 \section{Representation Theory}
 \label{sec:Apdx_RepTheory}
 
@@ -52,16 +72,36 @@ that allow a transition between all states within a multiplet.
 
 The quark basis states ${u=\begin{pmatrix}1&0\end{pmatrix}^T}$ and ${d=\begin{pmatrix}0&1\end{pmatrix}^T}$ belong to the 2-dimensional fundamental representation $\mathbf{2}$ of $SU(2)$. The corresponding quantum number is called isospin $i$, thus we adapt notation ${S\to I}$, etc. In terms of their quantum numbers, up- and down-quark take the form ${u=\ket{\frac{1}{2},\frac{1}{2}}}$ and ${d=\ket{\frac{1}{2},-\frac{1}{2}}}$. Under charge conjugation one finds ${I^\mathcal{C}_x=-I_x}$, ${I^\mathcal{C}_y=I_y}$ and ${I^\mathcal{C}_z=-I_z}$. Therefore the $z$-component of the isospin flips sign, leading to ${\overline{u}=\ket{\frac{1}{2},-\frac{1}{2}}}$ and ${-\overline{d}=\ket{\frac{1}{2},\frac{1}{2}}}$. The "-"-sign in front of the anti-down quark seems like an arbitrary choice, which ensures however the correct transformation behaviour under isospin rotations. For more details, see \cite{Thomson_2011}.
 
+A field state ${\psi=\begin{pmatrix}u&d\end{pmatrix}^T}$ transforms under $SU(2)$ as
+\begin{equation}
+    \psi\to\psi^\prime=\exp(\imagu\alpha_aT_a)\psi\,.
+\end{equation}
+Since $T_a$ in this context are the generators $T_a=\frac{1}{2}\sigma_a$ given by Pauli matrices which besides the algebra mentioned above fulfill
+\begin{equation}
+    \sigma_a\sigma_b=\mathbb{1}\delta_{ab}+\imagu\epsilon_{abc}\sigma_c
+\end{equation}
+and therefore also
+\begin{equation}
+    (\alpha_a\sigma_a)^2=\alpha_a\alpha_b\sigma_a\sigma_b=\alpha_a\alpha_a\mathbb{1}\,,
+\end{equation}
+we find
+\begin{align}
+    \exp(\imagu\alpha_aT_a)&=\sum_{n=0}^\infty\frac{\imagu^n}{n!}\frac{(\alpha_a\sigma_a)^n}{2^n}\\
+    &=\sum_{n=0}^\infty\Bigg[\frac{(-1)^n}{(2n)!}\Big(\frac{\alpha}{2}\Big)^{2n}+\imagu\frac{\alpha_a\sigma_a}{\alpha}\frac{(-1)^n}{(2n+1)!}\Big(\frac{\alpha}{2}\Big)^{2n+1}\Bigg]\\
+    &=\mathbb{1}\cos(\alpha/2)+\imagu\hat{\alpha}_a\sigma_a\sin(\alpha/2)
+\end{align}
+where $\alpha\equiv\sqrt{\alpha_a\alpha_a}$ and $\hat{\alpha}_a=\alpha_a/\alpha$. Antiparticle states are associated to the complex conjugate fields, ${\psi^\mathcal{C}=\begin{pmatrix}\overline{u}&\overline{d}\end{pmatrix}^T}$.
+
 \paragraph{Tensor Product Representation}
 
-Bound states of quarks and antiquarks transform under the tensor product representation $\mathbf{2}\otimes\overline{\mathbf{2}}$ of the fundamental and conjugate representaion of $SU(2)$. Introducing the total isospin operators ${I^{(\text{tot})}_a=I^{(1)}_a\otimes\mathbb{1}^{(2)}+\mathbb{1}^{(1)}\otimes I^{(2)}_a}$, where $\cdot^{(1)}$ and $\cdot^{(2)}$ denote the two factors of the tensor product, the tensor product space can again be spanned by a basis ${\{\ket{i^{(\text{tot})},i^{(\text{tot})}_z}\}}$ of eigenstates of the total isospin operators. Starting from the state ${\ket{\frac{1}{2},\frac{1}{2}}\otimes \ket{\frac{1}{2},\frac{1}{2}}}$ with the highest possible value $i^{(\text{tot})}_{\text{max}}=i^{(\text{tot})}_{z,\text{max}}=1$, one can find all other states $\ket{i^{(\text{tot})}=1,i^{(\text{tot})}_z}$ in the same multiplet by applying $I^{\text{tot}}_-$. These states form the triplet
+Bound states of quarks and antiquarks transform under the tensor product representation $\mathbf{2}\otimes\overline{\mathbf{2}}$ of the fundamental and conjugate representaion of $SU(2)$. Introducing the total isospin operators ${I^{(\text{tot})}_a=I^{(1)}_a\otimes\mathbb{1}^{(2)}+\mathbb{1}^{(1)}\otimes I^{(2)}_a}$, where $\cdot^{(1)}$ and $\cdot^{(2)}$ denote the two factors of the tensor product, the tensor product space can again be spanned by a basis ${\{\ket{i^{(\text{tot})},i^{(\text{tot})}_z}\}}$ of eigenstates of the total isospin operators. Starting from the state ${\ket{\frac{1}{2},\frac{1}{2}}\otimes \ket{\frac{1}{2},\frac{1}{2}}}$ with the highest possible value $i^{(\text{tot})}_{\text{max}}=i^{(\text{tot})}_{z,\text{max}}=1$, one can find all other states $\ket{i^{(\text{tot})}=1,i^{(\text{tot})}_z}$ in the same multiplet by applying $I^{(\text{tot})}_-$. These states form the triplet
 \begin{subequations}
     \begin{equation}
         \pi^+\equiv\ket{1,1}=-u\overline{d}\,,\quad\pi^0\equiv\ket{1,0}=\frac{1}{\sqrt{2}}(u\overline{u}-d\overline{d})\,,\quad\pi^-\equiv\ket{1,-1}=d\overline{u}\,.
     \end{equation}
     By dimensionality of the tensor product it is obvious that 1 basis state is missing. Using orthogonality, the last state is the isospin-0 singlet
     \begin{equation}
-        \sigma\equiv\ket{1,0}=\frac{1}{\sqrt{2}}(u\overline{u}+d\overline{d})\,.
+        \sigma\equiv\ket{0,0}=\frac{1}{\sqrt{2}}(u\overline{u}+d\overline{d})\,.
     \end{equation}
 \end{subequations}
 This treatment is called a decomposition into irreducible subspaces, i.e. subspaces that are invariant under the action of the group.

@@ -317,6 +317,126 @@ plt.show()
 # newdf.to_csv("./../../../code/Mathematica/data/ExampleFreezeOutRectangular.csv",index=False)
 
 #%%
+###
+### COMPUTE A SLIGHTLY LESS RECTANGULAR APPROXIMATION OF THE FREEZEOUT GEOMETRY
+###
+
+from scipy.interpolate import CubicSpline
+from scipy.optimize import curve_fit
+from scipy.integrate import quad
+from scipy.optimize import minimize
+
+df = pd.read_csv("./../../Mathematica/data/ExampleFreezeOutCorrected.csv")
+
+alphas = df["alpha"].to_numpy()
+taus = df["tau"].to_numpy()
+rs = df["r"].to_numpy()
+
+tau = CubicSpline(alphas, taus)
+r = CubicSpline(alphas, rs)
+
+tau0 = tau(np.pi/2)
+
+def d(alpha, *par):
+    R, T, Rtil, Ttil = par[0]
+    if(alpha <= np.arctan2(Rtil,T)):
+        return T/np.cos(alpha)
+    if(alpha <= np.arctan2(R,Ttil)):
+        a = (T-Ttil)/(Rtil-R)
+        b = T - a*Rtil
+        return b /(np.cos(alpha) - a*np.sin(alpha))
+    return R/np.sin(alpha)
+    
+def Dd(alpha, *par):
+    R, T, Rtil, Ttil = par[0]
+    if(alpha <= np.arctan2(Rtil,T)):
+        return np.tan(alpha) * T/np.cos(alpha)
+    if(alpha <= np.arctan2(R,Ttil)):
+        a = (T-Ttil)/(Rtil-R)
+        b = T - a*Rtil
+        return (np.sin(alpha) +a*np.cos(alpha)) * b /(np.cos(alpha) - a*np.sin(alpha))**2
+    return -R/(np.sin(alpha)*np.tan(alpha))
+
+def myfit_tau(alpha, *par):
+    return d(alpha, par) * np.cos(alpha)
+
+def myfit_Dtau(alpha, *par):
+    return Dd(alpha, par) * np.cos(alpha) - d(alpha, par) * np.sin(alpha)
+
+def myfit_r(alpha, *par):
+    return d(alpha, par) * np.sin(alpha)
+
+def myfit_Dr(alpha, *par):
+    return Dd(alpha, par) * np.sin(alpha) + d(alpha, par) * np.cos(alpha)
+
+def local_cost(alpha, R, T, Rtil, Ttil):
+    return (tau(alpha) - tau0 - myfit_tau(alpha, R, T,Rtil, Ttil))**2 + (r(alpha) - myfit_r(alpha, R, T,Rtil, Ttil))**2
+
+def mycost(x):
+    R, T, Rtil, Ttil = x
+    return quad(local_cost, 0, np.pi/2,args=(R,T, Rtil, Ttil))[0]
+
+# FIND OPTIMAL PARAMETERS FOR RECTANGULAR REGION
+result = minimize(mycost, [9, 13, 5, 6])
+popt = result.x
+
+mytaus = np.array([myfit_tau(a,*popt) + tau0 for a in alphas])
+myrs = np.array([myfit_r(a,*popt) for a in alphas])
+
+myDtaus = np.array([myfit_Dtau(a,*popt) for a in alphas])
+myDrs = np.array([myfit_Dr(a,*popt) for a in alphas])
+
+numDtaus = (mytaus[1:] - mytaus[:-1])/(alphas[1]-alphas[0])
+numDrs = (myrs[1:] - myrs[:-1])/(alphas[1]-alphas[0])
+
+dataDtaus = df["Dtau"].to_numpy()
+dataDrs = df["Dr"].to_numpy()
+
+datanumDtaus = (taus[1:] - taus[:-1])/(alphas[1]-alphas[0])
+datanumDrs = (rs[1:] - rs[:-1])/(alphas[1]-alphas[0])
+
+fig, ax = plt.subplots()
+ax.plot(alphas, taus,c="b",marker="",label=r"$\tau$")
+ax.plot(alphas, mytaus,c="b",ls="--",marker="")
+ax.plot(alphas, rs,c="r",marker="",label=r"$r$")
+ax.plot(alphas, myrs,c="r",ls="--",marker="")
+ax.legend()
+plt.show()
+
+fig, ax = plt.subplots()
+ax.plot(alphas[:-1], numDtaus,c="b",marker="",label=r"$D\tau$, finite diff")
+ax.plot(alphas, myDtaus,c="b",ls="--",marker="",label=r"$D\tau$, analytic")
+ax.plot(alphas[:-1], datanumDtaus,c="b",ls="--",marker="x",label=r"$D\tau$, data finite diff")
+ax.plot(alphas, dataDtaus,c="b",ls="-.",marker="",label=r"$D\tau$, data")
+
+ax.plot(alphas[:-1], numDrs,c="r",marker="",label=r"$Dr$, finite diff")
+ax.plot(alphas, myDrs,c="r",ls="--",marker="",label=r"$Dr$, analytic")
+ax.plot(alphas[:-1], datanumDrs,c="r",ls="--",marker="x",label=r"$Dr$, data finite diff")
+ax.plot(alphas, dataDrs,c="r",ls="-.",marker="",label=r"$Dr$, data")
+ax.legend()
+plt.show()
+
+fig, ax = plt.subplots()
+ax.plot(rs,taus,marker="",label="exact FO geometry",c="b")
+ax.plot(myrs, mytaus,marker="",label="approximated FO geometry",c="r")
+ax.legend()
+plt.show()
+
+# AND SAVE
+
+newdf = pd.DataFrame()
+keys = df.keys()
+
+newdf["alpha"] = alphas
+newdf["tau"] = mytaus
+newdf["r"] = myrs
+newdf["Dtau"] = myDtaus
+newdf["Dr"] = myDrs
+newdf["ur"] = df["ur"]
+newdf["utau"] = df["utau"]
+newdf.to_csv("./../../../code/Mathematica/data/ExampleFreezeOutLessRectangular.csv",index=False)
+
+#%%
 
 # CALCULATE CORRESPONDING FIELDS WHERE phi = const AND D_phi = const RESPECTIVELY
 
