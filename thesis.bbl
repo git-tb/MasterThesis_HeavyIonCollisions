@@ -795,6 +795,56 @@
       \verb /home/tobiasb/Zotero/storage/GLP8K7BU/Navas and others - 2024 - Review of particle physics.pdf
       \endverb
     \endentry
+    \entry{Schaffner-BielichRandrup_1999}{article}{}
+      \name{author}{2}{}{%
+        {{hash=2b60a2d7d43f6d3a2d5f112be27a558c}{%
+           family={{Schaffner-Bielich}},
+           familyi={S\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5f1f11ca709540736e813a7fd50a0836}{%
+           family={Randrup},
+           familyi={R\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{bf7acf03d5953c9db28c228089d9ba82}
+      \strng{fullhash}{bf7acf03d5953c9db28c228089d9ba82}
+      \strng{bibnamehash}{bf7acf03d5953c9db28c228089d9ba82}
+      \strng{authorbibnamehash}{bf7acf03d5953c9db28c228089d9ba82}
+      \strng{authornamehash}{bf7acf03d5953c9db28c228089d9ba82}
+      \strng{authorfullhash}{bf7acf03d5953c9db28c228089d9ba82}
+      \field{labelalpha}{SR99}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The SU(3) extension of the linear sigma model is employed to elucidate the effect of including strangeness on the formation of disoriented chiral condensates. By means of a Hartree factorization, approximate dispersion relations for the 18 scalar and pseudoscalar meson species are derived and their self-consistent solution makes it possible to trace out the thermal path of the two order parameters as well as delineate the region of instability within which spontaneous pair creation becomes possible. The results depend significantly on the employed sigma mass, with the highest values yielding the largest regions of instability. An approximate solution of the equations of motion for the order parameter in scenarios emulating uniform scaling expansions show that even with a rapid quench only the pionic modes grow unstable. Nevertheless, the rapid and oscillatory relaxation of the order parameters leads to enhanced production of both pions and (to a lesser degree) kaons.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{0556-2813, 1089-490X}
+      \field{journaltitle}{Physical Review C}
+      \field{month}{6}
+      \field{number}{6}
+      \field{title}{{{DCC}} Dynamics with the {{SU}}(3) Linear Sigma Model}
+      \field{urlday}{8}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{volume}{59}
+      \field{year}{1999}
+      \field{urldateera}{ce}
+      \field{pages}{3329\bibrangedash 3342}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1103/PhysRevC.59.3329
+      \endverb
+      \verb{eprint}
+      \verb nucl-th/9812032
+      \endverb
+      \verb{file}
+      \verb /home/tobiasb/Zotero/storage/5AMPEFHD/Schaffner-Bielich and Randrup - 1999 - DCC dynamics with the SU(3) linear sigma model.pdf;/home/tobiasb/Zotero/storage/SQ3QYX8V/9812032.html
+      \endverb
+      \keyw{High Energy Physics - Phenomenology,Nuclear Theory}
+    \endentry
     \entry{KoenigsteinGiacosa_2016}{article}{}
       \name{author}{2}{}{%
         {{hash=4b23d88736ad751bed13656e4d7c84c5}{%

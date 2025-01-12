@@ -147,20 +147,23 @@ Instead of handling the higher order interactions in terms of the quark fields d
 
 The relation between bosonic fields and quark bilinears can be illustrated by studying the quark matrix
 \begin{equation}
-    \Phi_{ij}\sim\overline{\psi}_{i+}\psi_{j-}\equiv\frac{1}{2}(\overline{\psi}_i\psi_j+\imagu\overline{\psi}_i\imagu\gamma_5\psi_j)\,.
+    \Phi_{ij}=\overline{\psi}_{i+}\psi_{j-}\equiv\frac{1}{2}(\overline{\psi}_i\psi_j+\imagu\overline{\psi}_i\imagu\gamma_5\psi_j)\,.
+    \label{eq:QuarkMatrixDef}
 \end{equation}
 Like any complex $N_f\times N_f$-matrix, $\Phi$ can be written as a linear combination
 \begin{equation}
-    \Phi=\Sigma+\imagu\Pi=\sum_a(\sigma^a+\imagu \pi^a)T^a
+    \Phi=\Sigma+\imagu\Pi=\sum_{A=0}^{N_f^2-1}(s^A+\imagu p^A)T^A
+    \label{eq:QuarkMatrixExpansion}
 \end{equation}
-of a basis of $N_f^2$ hermitian generators. These include precisely the $N_f^2-1$ traceless hermitian generators $\tau^a$ of the algebra $\mathfrak{su}(N_f)$, and a generator $\propto\mathbb{1}_{N_f\times N_f}$. The expansion coefficients can be split into scalar fields $\sigma^a$ and pseudoscalar fields $\pi^a$ and are summarized in the matrices $\Sigma$ and $\Pi$. As an example, for $N_f=3$ flavors the scalar and pseudoscalar nonets take the form
+of a basis of $N_f^2$ hermitian generators $T^A$. These include precisely the $N_f^2-1$ traceless hermitian generators $T^a$, ${a=1,\dots N_f^2-1}$, of the algebra $\mathfrak{su}(N_f)$, and one generator $T^0=\mathbb{1}/\sqrt{2N_f}$ proportional to the identity matrix. The expansion coefficients can be split into real scalar fields $s^A$ and real pseudoscalar fields $p^A$ and are summarized in the matrices $\Sigma$ and $\Pi$. As an example, for $N_f=3$ flavors the scalar and pseudoscalar nonets take the form \cite{Schaffner-BielichRandrup_1999}
 \begin{subequations}
     \begin{equation}
         \Sigma=\begin{pmatrix}
-            \frac{1}{2}(\sigma+a_0^0)&a_0^+&K^{*+}\\
+            \frac{1}{\sqrt{2}}(\sigma+a_0^0)&a_0^+&K^{*+}\\
             a_0^-&\frac{1}{\sqrt{2}}(\sigma-a_0^0)&K^{*0}\\
             K^{*-}&\overline{K}^{*0}&\zeta
         \end{pmatrix}\,,
+        \label{eq:QuarkMatrixSU3_scalar}
     \end{equation}
     \begin{equation}
         \Pi=\begin{pmatrix}
@@ -168,7 +171,9 @@ of a basis of $N_f^2$ hermitian generators. These include precisely the $N_f^2-1
             \pi^-&-\frac{1}{\sqrt{2}}\pi^0+\frac{1}{\sqrt{6}}\eta_8+\frac{1}{\sqrt{3}}\eta_0&K^0\\
             K^-&\overline{K}^0&-\frac{2}{\sqrt{6}}\eta_8+\frac{1}{\sqrt{3}}\eta_0
         \end{pmatrix}\,.
+        \label{eq:QuarkMatrixSU3_pseudoscalar}
     \end{equation}
+    \label{eq:QuarkMatrixSU3}
 \end{subequations}
 
 The above construction yields only Lorentz (pseudo)scalars. In general, quark bilinears $\overline{\psi}\Gamma\psi$ are constructed by choosing $\Gamma$ to be a certain linear combination of products of ${\{\mathbb{1},\gamma^5,\gamma^\mu,\partial_\mu\}}$. The resulting objects can be Lorentz vectors or higher rank tensors and besides their flavor structure be categorized by spin and angular momentum. This leads to the notion of (pseudo)vectors, (pseudo)tensors etc. that are listed in the PDG. Discussions about the relation of chiral symmetry and the classification of hadrons, their quark content and transformation behaviour can be found in \cite{KoenigsteinGiacosa_2016,GiacosaEtAl_2018}.
@@ -247,7 +252,7 @@ The quotient is essentially due to the fact that all ${U(1)}$ elements ${\exp(k\
 \begin{equation}
     G_\chi=U_V(1)\times U_A(1)\times SU_V(N_f)\times SU_A(N_f)\,,
 \end{equation}
-up to the ambiguity mentioned above, which is irrelevant on the level of the Lie algebra elements.
+up to the ambiguity mentioned above, which is irrelevant on the level of the Lie algebra elements. It is worth mentioning that despite the $U_A(1)$ being a symmetry on the level of the Lagrangian and the classical field theory in absence of quark masses, it is broken by an anomaly in the quantum field theory.
 
 Due to the additional structure, another peculiarity arises. If different fermion flavors have different masses, flavor rotations are only an approximate symmetry, depending on the mass differences compared to relevant energy scales of the system. In formula, denoting the sum over flavor indices explicitly, a mass term ${\sim\overline{\psi}_am_{ab}\psi_b}$ with a diagonal mass matrix $m_{ab}$ transforms as
 \begin{equation}
@@ -258,7 +263,108 @@ Due to the additional structure, another peculiarity arises. If different fermio
 % \end{equation}
 with ${U\in SU(N_f)}$ and is only invariant if the mass matrix is proportional to the identity in flavor space, ${m_{ab}=m\delta_{ab}}$. For reasons that b Different flavor masses break the vector symmetry ${SU_V(N_f)\times U_V(1)}$ further down to ${U_V(1)^{N_f}}$.
 
-Let us illustrate the transformation behaviour of the quarks and composite fields under the group of chiral rotations, following \cite{Koch_1997}. To do so, we restrict ourselves to $N_f=2$ quark flavors, keeping only the first two columns of \todo{HIER WEITER SCHREIBEN}. Instead of considering the spinor components, we make use of the properties of the $\gamma_5$-matrix to rewrite the transformations equivalently in terms of the full spinors.
+\paragraph{Chiral Transformations in Detail}\mbox{}\\
+
+Let us illustrate the transformation behaviour of the quarks and composite fields under the group of chiral rotations, following \cite{Koch_1997}.
+
+Recall the quark matrix \eqref{eq:QuarkMatrixDef} and see how the expansion coefficients $s^A$, $p^A$ transform under chiral transformations. Note the difference between lower case indices ${a=1,\dots N_f^2-1}$ and ${A=0,\dots N_f^2-1}$. In terms of the generators $T^a\in\mathfrak{su}(N_f)$, special unitary matrices $U\in SU(N_f)$ are parametrized as $(U_\pm)_{ij}=(e^{-\imagu\alpha_\pm^a T^a})_{ij}$ and correspondingly $(U^\dagger_\pm)_{ij}=(e^{\imagu\alpha_\pm^a T^a})_{ij}$. From
+\begin{subequations}
+    \begin{equation}
+        T^aT^b=\frac{1}{2N_f}\delta^{ab}\mathbb{1}+\frac{1}{2}\sum(\imagu f^{abc}+d^{abc})T^c\,,\quad f^{abc}\;\text{total. a.-sym.,}\;d^{abc}\;\text{total. sym.}
+    \end{equation}
+    one derives
+    \begin{align}
+        [T^a,T^b]&=\imagu f^{abc}T^c\,,\\
+        \{T^a,T^b\}&=\frac{1}{N}\delta^{ab}+\sum_cd^{abc}T^c\,,\\
+        \Tr[T^AT^B]&=\frac{1}{2}\delta^{AB}\,,
+    \end{align}
+\end{subequations}
+which also fixes the normalization of all $T^A$. We can use this to extract the expansion coefficients of the quark matrix \eqref{eq:QuarkMatrixExpansion} via
+\begin{equation}
+    s^A=\Tr[{\Phi+\Phi^\dagger}T^A]\,,\quad p^A=-\imagu\Tr[(\Phi-\Phi^\dagger)T^A]\,.
+\end{equation}
+
+We shall now compute how these fields transform under chiral transformations, given the form of pure phase rotations
+\begin{subequations}
+    \begin{align}
+        &  & U_\pm(1): &  & \psi_{i\pm}             & \mapsto e^{-\imagu\alpha_\pm}\psi_{i\pm}                                               &  \overline{\psi}_{i\pm}&\mapsto\overline{\psi}_{i\pm}e^{\imagu\alpha_\pm}     &&                              \\
+        &  & &  & \Phi_{ij}&\mapsto\Phi_{ij}e^{\imagu(\alpha_+-\alpha_-)}                                              &  (\Phi^\dagger)_{ij}&\mapsto(\Phi^\dagger)_{ij}e^{-\imagu(\alpha_+-\alpha_-)}     &&\\
+        \intertext{and flavor mixing rotations}
+        &  & SU_\pm(N_f): &  & \psi_{i\pm}             & \mapsto (U_\pm)_{ij}\psi_{j\pm}                                               &  \overline{\psi}_{i\pm}&\mapsto\overline{\psi}_{j\pm}(U^\dagger_\pm)_{ji}     &&                              \\
+        &  & &  & \Phi_{ij}& \mapsto(U_-)_{il}\Phi_{lk}(U^\dagger_+)_{kj}                                               &  (\Phi^\dagger)_{ij}&\mapsto(U_+)_{il}(\Phi^\dagger)_{lk}(U^\dagger_-)_{kj}     &&
+    \end{align}
+\end{subequations}
+In the case of $U_V(1)$ we set $\alpha_-=\alpha_+$ and the transformation becomes trivial,
+\begin{subequations}
+    \begin{align}
+        &  & U_V(1): &  & s^A& \mapsto s^A&&&\\
+        &  &&  &p^A& \mapsto p^A&&&
+    \end{align}
+\end{subequations}
+In the case of $U_A(1)$ we set $\alpha_-=-\alpha_+=\alpha$.
+\begin{subequations}
+    \begin{align}
+        &  & U_A(1): &  & s^A& \mapsto \Tr[(\Phi e^{2\imagu\alpha}+\Phi^\dagger e^{-2\imagu\alpha})T^A]&&&\\
+        &  &&  & & = \Tr[(\Phi (1+2\imagu\alpha)+\Phi^\dagger (1-2\imagu\alpha))T^A]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  & & = \Tr[(\Phi+\Phi^\dagger)T^A]+2\imagu\alpha\Tr[(\Phi-\Phi^\dagger)T^A]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  & & = s^A-\alpha p^A+\mathcal{O}(\alpha^2)&&&\\
+        &  & &  & p^A& \mapsto -\imagu\Tr[(\Phi e^{2\imagu\alpha}-\Phi^\dagger e^{-2\imagu\alpha})T^A]&&&\\
+        &  &&  & & = -\imagu\Tr[(\Phi (1+2\imagu\alpha)-\Phi^\dagger (1-2\imagu\alpha))T^A]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  & & = \imagu\Tr[(\Phi-\Phi^\dagger)T^A]+2\alpha\Tr[(\Phi+\Phi^\dagger)T^A]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  & & = p^A+\alpha s^A+\mathcal{O}(\alpha^2)&&&
+    \end{align}
+\end{subequations}
+In the case of $SU_V(N_f)$ transformations, we set ${U_-=U_+=U\equiv e^{-\imagu\alpha^aT^a}}$.
+\begin{subequations}
+    \begin{align}
+        &  & SU_V(N_f): &  & s^A& \mapsto \Tr[U(\Phi+\Phi^\dagger)U^\dagger T^A]&&&\\
+        &  &&  && = \Tr[(\Phi+\Phi^\dagger)U^\dagger T^AU]&&&\\
+        &  &&  &s^0& \mapsto s^0&&&\\
+        &  &&  &s^a&\mapsto \Tr[(\Phi+\Phi^\dagger)(\mathbb{1}+\imagu\alpha^bT^b) T^a(\mathbb{1}-\imagu\alpha^cT^c)]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  &&=s^a+\imagu\alpha^b\Tr[(\Phi+\Phi^\dagger)[T^a,T^b]]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  &&=s^a+\alpha^bf^{abc}\Tr[(\Phi+\Phi^\dagger)T^c]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  &&=s^a+\alpha^bf^{abc}s^c+\mathcal{O}(\alpha^2)&&&\\
+        &  & &  & p^A& \mapsto -\imagu\Tr[U(\Phi-\Phi^\dagger)U^\dagger T^A]&&&\\
+        &  &&  && = -\imagu\Tr[(\Phi-\Phi^\dagger)U^\dagger T^AU]&&&\\
+        &  &&  &p^0& \mapsto p^0&&&\\
+        &  &&  &p^a&\mapsto \imagu\Tr[(\Phi-\Phi^\dagger)(\mathbb{1}+\imagu\alpha^bT^b) T^a(\mathbb{1}-\imagu\alpha^cT^c)]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  &&\overset{(\dots)}{=}p^a+\alpha^bf^{abc}p^c+\mathcal{O}(\alpha^2)&&&
+    \end{align}
+\end{subequations}
+In the case of $SU_A(N_f)$ transformations, we set ${U_-^\dagger=U_+=U\equiv e^{-\imagu\alpha^aT^a}}$.
+\begin{subequations}
+    \begin{align}
+        &  & SU_A(N_f): &  & s^A& \mapsto \Tr[(U^\dagger\Phi U^\dagger+U\Phi^\dagger U)T^A]&&&\\
+        &  &&  && = \Tr[\Phi U^\dagger T^AU^\dagger]+\Tr[\Phi^\dagger U T^AU]&&&\\
+        &  &&  && \;\;\vdots\qquad U^\dagger T^AU^\dagger=T^A+\imagu\alpha^b\{T^b,T^A\}+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  && \;\;\vdots\qquad U T^AU\phantom{^\dagger\dagger}=T^A-\imagu\alpha^b\{T^b,T^A\}+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  && = \mathrlap{\Tr[(\Phi+\Phi^\dagger)T^A]+\imagu\alpha^b\Tr[(\Phi-\Phi^\dagger)\{T^b,T^A\}]+\mathcal{O}(\alpha^2)}&&&\\
+        &  &&  &s^0& \mapsto s^0+2\alpha^b/\sqrt{2N_f}\imagu\Tr[(\Phi-\Phi^\dagger)T^b]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  && = s^0-2\alpha^b/\sqrt{2N_f}p^b+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  &s^a&\mapsto s^a+\imagu\alpha^b\Tr[(\Phi-\Phi^\dagger)(\delta^{ab}\mathbb{1}/N_f+d^{abc}T^c)]+\mathcal{O}(\alpha^2)&\\
+        &  &&  &&= s^a+\imagu\alpha^b\delta^{ab}\sqrt{2/N_f}\Tr[(\Phi-\Phi^\dagger)T^0]-\alpha^bd^{abc}p^c+\mathcal{O}(\alpha^2)&\\
+        &  &&  &&= s^a-\alpha^b\delta^{ab}\sqrt{2/N_f}p^0-\alpha^bd^{abc}p^c+\mathcal{O}(\alpha^2)&\\
+        &  & &  & p^A& \mapsto -\imagu\Tr[\Phi U^\dagger T^AU^\dagger]+\imagu\Tr[\Phi^\dagger U T^AU]&&&\\
+        &  &&  && \mathrlap{= -\imagu\Tr[(\Phi-\Phi^\dagger)T^A]+\alpha^b\Tr[(\Phi+\Phi^\dagger)\{T^b,T^A\}]+\mathcal{O}(\alpha^2)}&&&\\
+        &  &&  &p^0& \mapsto p^0+2\alpha^b/\sqrt{2N_f}\Tr[(\Phi+\Phi^\dagger)T^b]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  && = p^0+2\alpha^b/\sqrt{2N_f}s^b+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  &p^a&\mapsto p^a+\alpha^b\Tr[(\Phi+\Phi^\dagger)(\delta^{ab}\mathbb{1}/N_f+d^{abc}T^c)]+\mathcal{O}(\alpha^2)&&&\\
+        &  &&  &&= p^a+\alpha^b\delta^{ab}\sqrt{2/N_f}s^0+\alpha^bd^{abc}s^c+\mathcal{O}(\alpha^2)&&&
+    \end{align}
+\end{subequations}
+
+\begin{subequations}
+    \begin{align}
+        &  & U_V(1): &  & s^A            & \mapsto s^A & p^A & \mapsto p^A              &  & \\
+         &  & U_A(1): &  & s^A            & \mapsto s^A-\alpha p^A                                                              & p^A & \mapsto p^A+\alpha s^A &  & \\
+         &  & SU_V(N_f): &  & s^0            & \mapsto s^0                                                    & p^0 & \mapsto p^0               &  & \\
+         &  & SU_V(N_f): &  & s^a            & \mapsto s^a+\alpha^bf^{abc}s^c                                                    & p^a & \mapsto p^a+\alpha^bf^{abc}p^c               &  & \\
+         &  & SU_A(N_f): &  & s^0& \mapsto s^0-\alpha^b\sqrt{2/N_f}p^b& p^0 & \mapsto p^0+\alpha^b\sqrt{2/N_f}s^b &  & \\
+         &  &  &  & s^a& \mapsto s^a-\alpha^a\sqrt{2/N_f}p^0-\alpha^bd^{abc}p^c& p^a & \mapsto p^a+\alpha^a\sqrt{2/N_f}s^0+\alpha^bd^{abc}s^c &  & 
+    \end{align}
+\end{subequations}
+
+Instead of considering the spinor components, we make use of the properties of the $\gamma_5$-matrix to rewrite the transformations equivalently in terms of the full spinors.
 \begin{subequations}
     \begin{align}
          &  & U_V(1): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\alpha}\psi                                             &  \overline{\psi}&\mapsto\overline{\psi}e^{\frac{\imagu}{2}\alpha}     &&                              \\
