@@ -143,44 +143,8 @@ introducing terms like ${(\overline{\psi}\psi)^2}$, ${(\overline{\psi}\gamma^5\p
 
 Instead of handling the higher order interactions in terms of the quark fields directly, the theory can be bosonized by means of a Hubbard-Stratonovich transformation, replacing fermion bilinears with auxiliary bosonic fields and correspondingly the higher quark interactions with Yukawa type interactions between the boson and fermion fields as well as self interactions of the boson fields. This procedure is especially useful in the low energy limit due to the occurence of confinement in QCD. Confinement is a non-perturbative aspect of QCD, studied usually in lattice gauge theory simulation, which leads to the absence of free quark fields and instead the formation of bound quark-antiquark states at low energy. Subsequently, these bound states become the relevant degrees of freedom of the theory and it suffices to study effective models of the bosonic fields instead of full QCD. 
 
-\section{Quark Matrix}
 
-The relation between bosonic fields and quark bilinears can be illustrated by studying the quark matrix
-\begin{equation}
-    \Phi_{ij}=\overline{\psi}_{i+}\psi_{j-}\equiv\frac{1}{2}(\overline{\psi}_i\psi_j+\imagu\overline{\psi}_i\imagu\gamma_5\psi_j)\,.
-    \label{eq:QuarkMatrixDef}
-\end{equation}
-Like any complex $N_f\times N_f$-matrix, $\Phi$ can be written as a linear combination
-\begin{equation}
-    \Phi=\Sigma+\imagu\Pi=\sum_{A=0}^{N_f^2-1}(s^A+\imagu p^A)T^A
-    \label{eq:QuarkMatrixExpansion}
-\end{equation}
-of a basis of $N_f^2$ hermitian generators $T^A$. These include precisely the $N_f^2-1$ traceless hermitian generators $T^a$, ${a=1,\dots N_f^2-1}$, of the algebra $\mathfrak{su}(N_f)$, and one generator $T^0=\mathbb{1}/\sqrt{2N_f}$ proportional to the identity matrix. The expansion coefficients can be split into real scalar fields $s^A$ and real pseudoscalar fields $p^A$ and are summarized in the matrices $\Sigma$ and $\Pi$. As an example, for $N_f=3$ flavors the scalar and pseudoscalar nonets take the form \cite{Schaffner-BielichRandrup_1999}
-\begin{subequations}
-    \begin{equation}
-        \Sigma=\begin{pmatrix}
-            \frac{1}{\sqrt{2}}(\sigma+a_0^0)&a_0^+&K^{*+}\\
-            a_0^-&\frac{1}{\sqrt{2}}(\sigma-a_0^0)&K^{*0}\\
-            K^{*-}&\overline{K}^{*0}&\zeta
-        \end{pmatrix}\,,
-        \label{eq:QuarkMatrixSU3_scalar}
-    \end{equation}
-    \begin{equation}
-        \Pi=\begin{pmatrix}
-            \frac{1}{\sqrt{2}}\pi^0+\frac{1}{\sqrt{6}}\eta_8+\frac{1}{\sqrt{3}}\eta_0&\pi^+&K^+\\
-            \pi^-&-\frac{1}{\sqrt{2}}\pi^0+\frac{1}{\sqrt{6}}\eta_8+\frac{1}{\sqrt{3}}\eta_0&K^0\\
-            K^-&\overline{K}^0&-\frac{2}{\sqrt{6}}\eta_8+\frac{1}{\sqrt{3}}\eta_0
-        \end{pmatrix}\,.
-        \label{eq:QuarkMatrixSU3_pseudoscalar}
-    \end{equation}
-    \label{eq:QuarkMatrixSU3}
-\end{subequations}
-
-The above construction yields only Lorentz (pseudo)scalars. In general, quark bilinears $\overline{\psi}\Gamma\psi$ are constructed by choosing $\Gamma$ to be a certain linear combination of products of ${\{\mathbb{1},\gamma^5,\gamma^\mu,\partial_\mu\}}$. The resulting objects can be Lorentz vectors or higher rank tensors and besides their flavor structure be categorized by spin and angular momentum. This leads to the notion of (pseudo)vectors, (pseudo)tensors etc. that are listed in the PDG. Discussions about the relation of chiral symmetry and the classification of hadrons, their quark content and transformation behaviour can be found in \cite{KoenigsteinGiacosa_2016,GiacosaEtAl_2018}.
-
-
-
-\section{Conserved Currents from Chiral Symmetries}
+\section{Chiral Symmetry}
 \label{sec:ConservedCurrentsChirSym}
 
 A 4-component Dirac spinor ${\psi=\begin{pmatrix}\eta&\xi\end{pmatrix}}^T$ is composed of two 2-component Weyl spinors $\eta$ and $\xi$ that transform under conjugate representations of the Lorentz group and are called left-handed and right-handed Weyl spinors respectively. Complex phase rotations of these Weyl spinors lead to another set of symmetries of QCD, called chiral symmetries. The set of chiral transformations is given by the product of left-handed phase rotations ${U_-(1)}$ (or ${U_{\text{L}}(1)}$) and right handed phase rotations ${U_+(1)}$ (or ${U_{\text{R}}(1)}$). It can be equivalently expressed as the product of simultaneous phase rotations of both left- and right-handed components by an equal angle, together with simultaneous phase rotations by opposite angles, leading to the notion of vector and axial transformations.
@@ -263,25 +227,60 @@ Due to the additional structure, another peculiarity arises. If different fermio
 % \end{equation}
 with ${U\in SU(N_f)}$ and is only invariant if the mass matrix is proportional to the identity in flavor space, ${m_{ab}=m\delta_{ab}}$. For reasons that b Different flavor masses break the vector symmetry ${SU_V(N_f)\times U_V(1)}$ further down to ${U_V(1)^{N_f}}$.
 
+
+\section{Quark Matrix}
+
+The relation between bosonic fields and quark bilinears can be illustrated by studying the quark matrix
+\begin{equation}
+    \Phi_{ij}=\overline{\psi}_{j+}\psi_{i-}\,,\quad (\Phi^\dagger)_{ij}=\overline{\psi}_{j-}\psi_{i+}\,.
+    \label{eq:QuarkMatrixDef}
+\end{equation}
+Like any complex $N_f\times N_f$-matrix, $\Phi$ can be written as a linear combination
+\begin{equation}
+    \Phi=\Sigma+\imagu\Pi=\sum_{A=0}^{N_f^2-1}(s^A+\imagu p^A)T^A
+    \label{eq:QuarkMatrixExpansion}
+\end{equation}
+of a basis of $N_f^2$ hermitian generators $T^A$. These include precisely the $N_f^2-1$ traceless hermitian generators $T^a$, ${a=1,\dots N_f^2-1}$, of the algebra $\mathfrak{su}(N_f)$, and one generator $T^0=\mathbb{1}/\sqrt{2N_f}$ proportional to the identity matrix. The expansion coefficients can be split into real scalar fields $s^A$ and real pseudoscalar fields $p^A$ and are summarized in the matrices $\Sigma$ and $\Pi$. As an example, for $N_f=3$ flavors the scalar and pseudoscalar nonets take the form \cite{Schaffner-BielichRandrup_1999}
+\begin{subequations}
+    \begin{equation}
+        \Sigma=\begin{pmatrix}
+            \frac{1}{\sqrt{2}}(\sigma+a_0^0)&a_0^+&K^{*+}\\
+            a_0^-&\frac{1}{\sqrt{2}}(\sigma-a_0^0)&K^{*0}\\
+            K^{*-}&\overline{K}^{*0}&\zeta
+        \end{pmatrix}\,,
+        \label{eq:QuarkMatrixSU3_scalar}
+    \end{equation}
+    \begin{equation}
+        \Pi=\begin{pmatrix}
+            \frac{1}{\sqrt{2}}\pi^0+\frac{1}{\sqrt{6}}\eta_8+\frac{1}{\sqrt{3}}\eta_0&\pi^+&K^+\\
+            \pi^-&-\frac{1}{\sqrt{2}}\pi^0+\frac{1}{\sqrt{6}}\eta_8+\frac{1}{\sqrt{3}}\eta_0&K^0\\
+            K^-&\overline{K}^0&-\frac{2}{\sqrt{6}}\eta_8+\frac{1}{\sqrt{3}}\eta_0
+        \end{pmatrix}\,.
+        \label{eq:QuarkMatrixSU3_pseudoscalar}
+    \end{equation}
+    \label{eq:QuarkMatrixSU3}
+\end{subequations}
+
+The above construction yields only Lorentz (pseudo)scalars. In general, quark bilinears $\overline{\psi}\Gamma\psi$ are constructed by choosing $\Gamma$ to be a certain linear combination of products of ${\{\mathbb{1},\gamma^5,\gamma^\mu,\partial_\mu\}}$. The resulting objects can be Lorentz vectors or higher rank tensors and besides their flavor structure be categorized by spin and angular momentum. This leads to the notion of (pseudo)vectors, (pseudo)tensors etc. that are listed in the PDG. Discussions about the relation of chiral symmetry and the classification of hadrons, their quark content and transformation behaviour can be found in \cite{KoenigsteinGiacosa_2016,GiacosaEtAl_2018}.
+
 \paragraph{Chiral Transformations in Detail}\mbox{}\\
 
-Let us illustrate the transformation behaviour of the quarks and composite fields under the group of chiral rotations, following \cite{Koch_1997}.
-
-Recall the quark matrix \eqref{eq:QuarkMatrixDef} and see how the expansion coefficients $s^A$, $p^A$ transform under chiral transformations. Note the difference between lower case indices ${a=1,\dots N_f^2-1}$ and ${A=0,\dots N_f^2-1}$. In terms of the generators $T^a\in\mathfrak{su}(N_f)$, special unitary matrices $U\in SU(N_f)$ are parametrized as $(U_\pm)_{ij}=(e^{-\imagu\alpha_\pm^a T^a})_{ij}$ and correspondingly $(U^\dagger_\pm)_{ij}=(e^{\imagu\alpha_\pm^a T^a})_{ij}$. From
+Let us see how the expansion coefficients $s^A$, $p^A$ transform under chiral transformations. Note the difference between lower case indices ${a=1,\dots N_f^2-1}$ and ${A=0,\dots N_f^2-1}$. In terms of the generators $T^a\in\mathfrak{su}(N_f)$, special unitary matrices $U\in SU(N_f)$ are parametrized as $(U_\pm)_{ij}=(e^{-\imagu\alpha_\pm^a T^a})_{ij}$ and correspondingly $(U^\dagger_\pm)_{ij}=(e^{\imagu\alpha_\pm^a T^a})_{ij}$. From
 \begin{subequations}
     \begin{equation}
         T^aT^b=\frac{1}{2N_f}\delta^{ab}\mathbb{1}+\frac{1}{2}\sum(\imagu f^{abc}+d^{abc})T^c\,,\quad f^{abc}\;\text{total. a.-sym.,}\;d^{abc}\;\text{total. sym.}
     \end{equation}
     one derives
-    \begin{align}
-        [T^a,T^b]&=\imagu f^{abc}T^c\,,\\
-        \{T^a,T^b\}&=\frac{1}{N}\delta^{ab}+\sum_cd^{abc}T^c\,,\\
-        \Tr[T^AT^B]&=\frac{1}{2}\delta^{AB}\,,
-    \end{align}
+    \begin{gather}
+        [T^a,T^b]=\imagu f^{abc}T^c\,,\qquad
+        \{T^a,T^b\}=\frac{1}{N}\delta^{ab}+\sum_cd^{abc}T^c\,,\\
+        \Tr[T^AT^B]=\frac{1}{2}\delta^{AB}\,,
+    \end{gather}
 \end{subequations}
 which also fixes the normalization of all $T^A$. We can use this to extract the expansion coefficients of the quark matrix \eqref{eq:QuarkMatrixExpansion} via
 \begin{equation}
-    s^A=\Tr[{\Phi+\Phi^\dagger}T^A]\,,\quad p^A=-\imagu\Tr[(\Phi-\Phi^\dagger)T^A]\,.
+    s^A=\Tr[(\Phi+\Phi^\dagger)T^A]\,,\quad p^A=-\imagu\Tr[(\Phi-\Phi^\dagger)T^A]\,.
+    \label{eq:ScalarsFromQuarkMatrix}
 \end{equation}
 
 We shall now compute how these fields transform under chiral transformations, given the form of pure phase rotations
@@ -364,7 +363,65 @@ In the case of $SU_A(N_f)$ transformations, we set ${U_-^\dagger=U_+=U\equiv e^{
     \end{align}
 \end{subequations}
 
-Instead of considering the spinor components, we make use of the properties of the $\gamma_5$-matrix to rewrite the transformations equivalently in terms of the full spinors.
+We can also find expressions for the scalar and pseudoscalar fields $s^A$ and $p^A$ by explicitly substituting the quark matrix \eqref{eq:QuarkMatrixDef} and its flavor conjugate. One easily finds
+\begin{subequations}
+    \begin{align}
+        (\Phi+\Phi^\dagger)_{ij}&=\overline{\psi}_{j+}\psi_{i-}+\overline{\psi}_{j-}\psi_{i+}\\
+        &=\overline{\psi}_j(P_-+P_+)\psi_i\\
+        &=\overline{\psi}_j\psi_i\\
+        (\Phi-\Phi^\dagger)_{ij}&=\overline{\psi}_{j+}\psi_{i-}-\overline{\psi}_{j-}\psi_{i+}\\
+        &=\overline{\psi}_j(P_--P_+)\psi_i\\
+        &=-\overline{\psi}_j\gamma^5\psi_i
+    \end{align}
+\end{subequations}
+and therefore equation \eqref{eq:ScalarsFromQuarkMatrix} becomes
+\begin{equation}
+    s^A=\overline{\psi}_j\psi_i(T^A)_{ji}\equiv\overline{\psi}T^A\psi\,,\quad p^A=\imagu\overline{\psi}_j\gamma^5\psi_i(T^A)_{ji}=\imagu\overline{\psi}\gamma^5T^A\psi\,,
+\end{equation}
+reflecting explicitly the scalar and pseudascalar nature of $s^A$ and $p^A$ respectively.
+
+\paragraph{The Case $N_f=2$}\mbox{}\\
+
+Let us consider $N_f=2$ quark flavors, such that the matrices $T^A$ take the form
+\begin{equation}
+    T^0=\frac{1}{2}\mathbb{1}\,,\quad T^a=\frac{1}{2}\tau^a\,,
+\end{equation}
+where $\tau^a$ are the Pauli matrices. For the scalar and pseudoscalar mesons, we limit ourselves to the components $s^0\equiv 2\sigma$ and $p^a\equiv 2\pi^a$, where we introduced the $\sigma$-meson and the 3 pion fields $\pi^a$. The prefactors are purely conventional and lead to the somewhat familiar expressions
+\begin{equation}
+    \sigma=\overline{\psi}\psi\,,\quad \pi^a=\imagu\overline{\psi}\gamma^5\tau^a\psi\,.
+\end{equation}
+The $\sigma$-meson in this picture forms a scalar singlet state w.r.t. the $SU(2)$ flavor group, whereas the pions form a pseudoscalar triplet. Considering the above transformation laws, it is clear that $U_V(1)$, $SU_V(N_f)$ and $SU_A(N_f)$ only mix the $\sigma$ with the pions, but leave all other scalar and pseudascalar fields consistently $0$ that we neglected anyways with our restriction. Only the $U_A(1)$ would introduce a pseudoscalar singlet state $p^0$ and 3 scalar multiplet states $s^a$, that we did not take into account. However, as mentioned earlier the $U_A(1)$ is broken by an anomaly in the QFT and we can thus choose to disregard it as a symmetry of our system.
+\begin{subequations}
+    \begin{align}
+        &  & U_V(1): &  & \sigma & \mapsto\sigma               & \pi_a            & \mapsto\pi_a & & \\
+        &  & SU_V(N_f): &  & \sigma & \mapsto\sigma               & \pi_a            & \mapsto\pi_a+\epsilon_{abc}\alpha_b\pi_c                                                    & & \\
+        &  & SU_A(N_f): &  & \sigma & \mapsto\sigma-\alpha_a\pi_a & \pi_a            & \mapsto\pi_a+\alpha_a\sigma                                                                 & & 
+    \end{align}
+\end{subequations}
+The quark matrix now takes the form
+\begin{equation}
+    \Phi=\begin{pmatrix}
+        \sigma+\imagu\pi^0&\imagu\pi^1+\pi^2\\
+        \imagu\pi^1+\pi^2&\sigma-\imagu\pi^0
+    \end{pmatrix}\equiv
+    \begin{pmatrix}
+        \sigma+\imagu\pi^0&\sqrt{2}\imagu\pi^+\\
+        \sqrt{2}\imagu\pi^-&\sigma-\imagu\pi^0
+    \end{pmatrix}\,,
+\end{equation}
+where the change to the charge basis of $\mathfrak{su}(N)$ leads to the introduction of charged pions ${\pi^\pm=(\pi^1\mp\pi^2)/\sqrt{2}}$.
+
+Having found the infinitesimal transformaiton behvaiour of the fields, we can compute the Noether currents. These are conserved or approximately conserved, depending on the assumptions imposed on the model. In total, there are 3 vector currents $J_V^{a,\mu}$ and 3 axial currents $J_A^{a,\mu}$, which take the form
+\begin{equation}
+    J_V^{a,\mu}=\epsilon^{abc}(\partial^\mu\pi^b)\pi^c\,,\qquad J_A^{a,\mu}=(\partial^\mu\sigma)\pi^a-(\partial^\mu\pi^a)\sigma\,.
+\end{equation}
+Using the projection $\epsilon^{abc}J_V^{a,\mu}=(\partial^\mu\pi^b)\pi^c-(\partial^\mu\pi^c)\pi^b$, the conserved currents can also be stated as
+\begin{equation}
+    J^\mu[\phi_1,\phi_2]=\phi_1\overset{\leftrightarrow}{\partial^\mu}\phi_2\,,\qquad\text{where}\,\phi_{1}\neq\phi_2\,,\,\phi_{1,2}\in\{\sigma,\pi^0,\pi^1,\pi^2\}\,.
+\end{equation}
+This looks strinkingly similar to the conservation of the current described in the next section \eqref{subsec:FourierDeformHypersurface}, making use of the Klein-Gordon equation for fields of equal masses. \todo{The $U(1)$-current vanishes in terms of pions and $\sigma$-fields. What about quark fields?}
+
+\cite{Koch_1997} Instead of considering the spinor components, we make use of the properties of the $\gamma_5$-matrix to rewrite the transformations equivalently in terms of the full spinors.
 \begin{subequations}
     \begin{align}
          &  & U_V(1): &  & \psi             & \mapsto e^{-\frac{\imagu}{2}\alpha}\psi                                             &  \overline{\psi}&\mapsto\overline{\psi}e^{\frac{\imagu}{2}\alpha}     &&                              \\
@@ -387,18 +444,6 @@ Instead of considering the spinor components, we make use of the properties of t
     \end{align}
 \end{subequations}
 with $U=\exp\big(-\frac{\imagu}{2}\alpha^a\tau^a)$.
-
-Having found the infinitesimal transformaiton behvaiour of the fields, we can compute the Noether currents. These are conserved or approximately conserved, depending on the assumptions imposed on the model. In total, there are 3 vector currents $J_V^{a,\mu}$ and 3 axial currents $J_A^{a,\mu}$, which take the form
-\begin{equation}
-    J_V^{a,\mu}=\epsilon^{abc}(\partial^\mu\pi^b)\pi^c\,,\qquad J_A^{a,\mu}=(\partial^\mu\sigma)\pi^a-(\partial^\mu\pi^a)\sigma\,.
-\end{equation}
-Using the projection $\epsilon^{abc}J_V^{a,\mu}=(\partial^\mu\pi^b)\pi^c-(\partial^\mu\pi^c)\pi^b$, the conserved currents can also be stated as
-\begin{equation}
-    J^\mu[\phi_1,\phi_2]=\phi_1\overset{\leftrightarrow}{\partial^\mu}\phi_2\,,\qquad\text{where}\,\phi_{1}\neq\phi_2\,,\,\phi_{1,2}\in\{\sigma,\pi^0,\pi^1,\pi^2\}\,.
-\end{equation}
-This looks strinkingly similar to the conservation of the current described in the next section \eqref{subsec:FourierDeformHypersurface}, making use of the Klein-Gordon equation for fields of equal masses. \todo{The $U(1)$-current vanishes in terms of pions and $\sigma$-fields. What about quark fields?}
-
-
 
 % \section{Expanding around Minimum of Linear $\sigma$-model}
 
@@ -456,23 +501,26 @@ This looks strinkingly similar to the conservation of the current described in t
 
 
     
-\section{Linear $\sigma$-Model}
+\section{Linear $\sigma$-Model and the Chiral Condensate}
 \label{sec:LinearSigmaModel}
 
-An effective field theory in this case is given by the linear $\sigma$-model
+An effective field theory for the meson fields is now constructed phenomenologically by including fully contracted Lorentz scalar that are invariant under the desired symmetries in the action. A frequently used candidate in the context of the chiral condensate is the so called linear $\sigma$ model (LSM)
+\begin{equation}
+    \mathscr{L}_{\text{LSM}}=-\frac{1}{4}\Tr\Big[(\partial_\mu\Phi)(\partial^\mu\Phi^\dagger)\Big]+\frac{1}{4}\mu^2\Tr\Big[\Phi\Phi^\dagger\Big]-\frac{1}{16}\lambda^2\Big(\Tr\Big[\Phi\Phi^\dagger\Big]\Big)^2+\frac{h}{4}\Tr\Big[\Phi+\Phi^\dagger\Big]
+\end{equation}
+or equivalently in terms of the (pseudo)scalar fields
 \begin{multline}
-    \mathscr{L}_{\text{LSM}}=\mathscr{L}_{\text{kin}}-V(\sigma,\vec{\pi})\\
-    =-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}(\partial_\mu\vec{\pi})(\partial^\mu\vec{\pi})
+    \mathscr{L}_{\text{LSM}}=-\frac{1}{2}(\partial_\mu\sigma)(\partial^\mu\sigma)-\frac{1}{2}(\partial_\mu\vec{\pi})(\partial^\mu\vec{\pi})+\\
     +\frac{1}{2}\mu^2(\sigma^2+\vec{\pi}^2)-\frac{\lambda}{4}(\sigma^2+\vec{\pi}^2)^2+h\sigma\,,
     \label{eq:LinearSigmaModelLagrangian}
 \end{multline}
-containing a kinetic part $\mathscr{L}_{\text{kin}}$ with derivatives and the potential $V(\sigma,\vec{\pi})$ depending on the field amplitudes. $\mu^2$, $\lambda$ and $h$ are model parameters, that can be related to physical observables.
+the first line of which contains the kinetic part $\mathscr{L}_{\text{kin}}$ and the second line the potential $V(\sigma,\vec{\pi})$. $\mu^2$, $\lambda$ and $h$ are model parameters, that can be related to physical observables.
 
-The above Lagrangian is invariant under $SO(4)$ rotations of the real 4-component vector ${(\sigma,\vec{\pi})}$, up to terms of order ${\mathcal{O}(h^1)}$. This symmetry reflects the approximate $SU_f(2)$ symmetry, which is however broken by a slight difference ${m_u\neq m_d}$ in the quark masses. As this difference is much smaller than the relevant scales at play, it can usually be treated as an expansion parameter. We will do so in the following.
+The above Lagrangian is invariant under $SO(4)$ rotations of the real 4-component vector ${(\sigma,\vec{\pi})}$, up to terms of order ${\mathcal{O}(h^1)}$. This symmetry reflects the approximate $SU_f(2)$ symmetry, the axial part of which is explicitly broken by the term $\propto h$ reflecting non-vanishing quark masses $m_{u,d}$. As this symmetry breaking is much smaller than the relevant scales at play, it can usually be treated in the spirit of an expansion. We will do so in the following.
 
 In the limit ${h\to0}$ the theory described by the Lagrangian \eqref{eq:LinearSigmaModelLagrangian} is a prototypical example for spontaneous symmetry breaking. At sufficiently low temperatures the parameters satisfy ${\mu^2>0}$ and ${\lambda>0}$ leading to the well known Mexican hat potential with the characteristic shape in field space. It features a manifold of equivalent vacua, determined by $\sigma^2+\vec{\pi}^2=f_\pi^2$ with the pion decay constant ${f_\pi=\mu/\sqrt{\lambda}}$. Fluctuations single out one of the possible vacuum states, conventionally chosen to be $(\sigma,\vec{\pi})=(f_\pi,\vec{0})$. This choice is essentially random, coining the term spontaneous symmetry breaking. The vacuum itself is not invariant under the full symmetry group of $SO(4)$ rotations of the model. Instead, the vacuum is only invariant under the subgroup ${SO(3)\subset SO(4)}$, that keeps 1 axis in field space fixed. With the choice above, these are all the rotations of the 3-component vector $\vec{\pi}$ of the pion fields. Out of the 6 generators of $SO(4)$ rotations, 3 are broken by the spontaneous choice of vacuum, namely the generators of rotations that interchange the $\sigma$-field with 1 pion field $\pi^a$. According to the Nambu-Goldstone theorem, there must be an equal number of massless excitations on top of the vacuum state, called Nambu-Goldstone bosons. In the present theory, these are the 3 pion fields $\pi^a$. We will come back to this observation soon.
 
-The conventional choice of the vacuum ${(\sigma,\vec{\pi})=(f_\pi,0)}$ becomes reasonable, once the symmetry breaking term $h>0$ is considered. It favors the excitation in $\sigma$-direction, yielding a unique vacuum at ${\sigma=v\equiv f_\pi+h/(2\mu^2)+\mathcal{O}(h^2)}$ and $\vec{\pi}=0$. The non-vanishing vacuum expectation value $v$ of ${\sigma\sim\overline{\psi}\psi}$ due to spontaneous symmetry breaking is called the chiral condensate.
+The conventional choice of the vacuum ${(\sigma,\vec{\pi})=(f_\pi,0)}$ becomes reasonable, once the symmetry breaking term $h>0$ is considered. It favors the excitation in $\sigma$-direction, yielding a unique vacuum at ${\sigma=v\equiv f_\pi+h/(2\mu^2)+\mathcal{O}(h^2)}$ and $\vec{\pi}=0$. The non-vanishing vacuum expectation value $v$ of ${\sigma=\overline{\psi}\psi}$ due to spontaneous symmetry breaking is called the chiral condensate. Just like confinement, the existence of such a condensate that spontaneously breaks chiral symmetry at low temperature and density is a non-perturbative effect of QCD. It is related, but not necessarily equivalent to the phenomenon of confinement \cite{EvansRigatos_2021}. It justifies the use of such a simplified model, since spontaneous breaking and restoration of chiral symmetry can be captured through the temperature and density dependence of the model parameters.
 
 The expansion of the linear $\sigma$-model around the vacuum is performed in the Appendix \ref{sec:Apx_LinearSigmaExpansion}. For small excitations on top of the vacuum, working to quadratic order in the fields is justified. Neglecting a constant offset, the potential reads
 \begin{equation}
@@ -485,10 +533,6 @@ with the mass terms given by
 \end{equation}
 Unlike the squared curvature mass ${-\mu^2}$ of the potential appearing in the $SO(4)$-symmetric Lagrangian \ref{eq:LinearSigmaModelLagrangian}, the squared mass terms in \eqref{eq:LinearSigmaExpansion_Masses} are positive and the corresponding excitations can nicely be interpreted as free relativistic particles. We find further, that in the limit $h\to 0$ the pions are indeed massless, in accordance with the Nambu-Goldstone theorem for the spontaneously broken $SO(4)$-symmetry. 
 
-What is measured in experiment are not the 3 real valued pion fields $\pi^a$, but rather the neutral pion $\pi^0$ and 2 charged pions $\pi^\pm=(1/\sqrt{2})(\pi^1\mp\imagu\pi^2)$. One immediately finds 
-\begin{equation}
-    (\pi^1)^2+(\pi^2)^2=\abs{\pi^+}^2+\abs{\pi^-}^2=2\pi^+\pi^-\equiv 2\pi^+\overline{\pi^+}
-\end{equation}
 As a note, the subgroup ${SO(3)\subset SO(4)}$ of rotations of the pion fields features the ${SO(2)\simeq U(1)}$ subgroup of symmetry transformations
 \begin{equation}
     \begin{pmatrix}
@@ -504,16 +548,3 @@ As a note, the subgroup ${SO(3)\subset SO(4)}$ of rotations of the pion fields f
         \qquad\iff\qquad\pi^\pm\mapsto e^{\pm\imagu\alpha}\pi^\pm\,.
 \end{equation}
 Note also that $\pi^-=\overline{\pi^+}$.
-
-Finally, the linear $\sigma$-model is often stated in terms of a combined matrix-valued field
-\begin{equation}
-    \Phi=\sigma\mathbb{1}+\imagu\pi^a\tau^a=\begin{pmatrix}
-        \sigma+\imagu\pi^0 & \sqrt{2}\pi^+      \\
-        \sqrt{2}\pi^-      & \sigma-\imagu\pi^0
-    \end{pmatrix}
-\end{equation}
-where $\tau^a$, ${a\in\{0,1,2\}}$ are the Pauli matrices. Using ${(\tau^a)^\dagger=\tau^a}$, ${\Tr(\tau^a\tau^b)=2\delta^{ab}}$ and ${\Tr(\tau^a)=0}$ one immediately finds for example ${\Tr(\Phi^\dagger\Phi)=2(\sigma^2+\pi^a\pi^a)}$ and the linear $\sigma$-model Lagrangian \eqref{eq:LinearSigmaModelLagrangian} can easily be shown to be equivalent to
-\begin{equation}
-    \mathscr{L}=-\frac{1}{4}\Tr\big[(\partial_\mu\Phi^\dagger)(\partial_\mu\Phi\big)]-\Bigg(-\frac{1}{4}\mu^2\Tr\big[\Phi^\dagger\Phi\big]+\frac{\lambda}{8}\Big(\Tr\big[\Phi^\dagger\Phi\big]\Big)^2-\frac{h}{4}\Tr\big[\Phi^\dagger+\Phi\big]\Bigg)\,.
-    \label{eq:Lagrangian_LinearSigma2}
-\end{equation}

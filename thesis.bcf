@@ -2377,23 +2377,24 @@
     <bcf:citekey order="10" intorder="1">KirchnerEtAl_2023</bcf:citekey>
     <bcf:citekey order="11" intorder="1">Floerchinger_2020</bcf:citekey>
     <bcf:citekey order="12" intorder="1">Navasothers_2024</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">Schaffner-BielichRandrup_1999</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">KoenigsteinGiacosa_2016</bcf:citekey>
-    <bcf:citekey order="14" intorder="2">GiacosaEtAl_2018</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">Park_2022</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">Park_2022</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">Schaffner-BielichRandrup_1999</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">KoenigsteinGiacosa_2016</bcf:citekey>
+    <bcf:citekey order="15" intorder="2">GiacosaEtAl_2018</bcf:citekey>
     <bcf:citekey order="16" intorder="1">Koch_1997</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">PeskinSchroeder_1995</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">GreinerEtAl_1996</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">Amelino-CameliaEtAl_1997</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">KirchnerEtAl_2023</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">EvansRigatos_2021</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">PeskinSchroeder_1995</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">GreinerEtAl_1996</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">Amelino-CameliaEtAl_1997</bcf:citekey>
     <bcf:citekey order="21" intorder="1">KirchnerEtAl_2023</bcf:citekey>
     <bcf:citekey order="22" intorder="1">KirchnerEtAl_2023</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">Weinberg_2008</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">KirchnerEtAl_2023</bcf:citekey>
     <bcf:citekey order="24" intorder="1">Weinberg_2008</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">GiacosaEtAl_2021</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">Navasothers_2024</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">Weinberg_2008</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">GiacosaEtAl_2021</bcf:citekey>
     <bcf:citekey order="27" intorder="1">Navasothers_2024</bcf:citekey>
-    <bcf:citekey order="28" intorder="1">Thomson_2011</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">Navasothers_2024</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">Thomson_2011</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
