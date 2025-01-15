@@ -1,9 +1,11 @@
 CXX       := g++
 CXX_FLAGS := -std=c++2a
-# CXX_FLAGS += -g
-CXX_FLAGS += -O3
-CXX_FLAGS += -DNDEBUG
+CXX_FLAGS += -g
+# CXX_FLAGS += -O3
+# CXX_FLAGS += -DNDEBUG
 CXX_FLAGS += -fopenmp
+CXX_FLAGS += -Wall
+CXX_FLAGS += -Wno-sign-compare
 
 EXE 	:= NO_EXECUTBALE_SPECIFIED
 BIN     := bin
@@ -40,7 +42,7 @@ run:
 	./$(BIN)/$(EXE) $(ARGS)
 
 build:
-	$(CXX) $(CXX_FLAGS) $(INCLUDE) $(SRC)/$(EXE).cpp -o $(BIN)/$(EXE) $(DIRLIBRARIES) $(LIBRARIES) $(DYNLINK)
+	$(CXX) $(CXX_FLAGS) $(INCLUDE) -o $(BIN)/$(EXE) $(SRC)/$(EXE).cpp $(DIRLIBRARIES) $(LIBRARIES) $(DYNLINK)
 
 checklibs:
 	ldd ./bin/$(EXE)

@@ -14,6 +14,37 @@ struct csvdata
 };
 csvdata readcsv(std::string source, std::string delimiter = ",", bool has_header = true, bool transpose = true)
 {
+    /*
+        reads a csv file in the following format
+
+        \
+            # comment
+            # comment
+            # comment
+            title1,title2,title3
+            0.1,5.1,2.3
+            0.2,5.7,1.8
+            0.3,5.5,1.9
+            ...
+            0.9,4.7,3.2
+        \
+
+        and returns an object of type csvdata where
+
+            csvdata.header = {title1,title2,title3} (empty if has_header == false and no header line exists)
+            csvdata.data = {{0.1,5.1,2.3},
+                            {0.2,5.7,1.8},
+                            {0.3,5.5,1.9},
+                            {...},
+                            {0.9,4.7,3.2}   }
+
+        If transpose == true, the data vector is instead ordered as
+
+            csvdata.data = {    {0.1,0.2,0.3,...,0.9},
+                                {5.1,5.7,5.5,...,4.7},
+                                {2.3,1.8,1.9,...,3.2}   } 
+    */
+
     std::ifstream input(source);
 
     if (!input.is_open())
@@ -61,7 +92,6 @@ csvdata readcsv(std::string source, std::string delimiter = ",", bool has_header
 
     if (transpose)
     {
-        // transpose the data
         std::vector<std::vector<double>> transposeddata(mydata.data[0].size());
         for (int i = 0; i < mydata.data[0].size(); i++)
         {
