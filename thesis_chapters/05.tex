@@ -213,12 +213,12 @@ Let $\varphi$ be a real scalar field, e.g. ${\varphi\in\{\sigma,\pi^0\}}$. The o
 \begin{equation}
     u_\mu=\frac{\partial_\mu\varphi}{\chi}\,,\qquad0<\chi^2\defeq-(\partial_\mu\varphi)(\partial^\mu\varphi)\,.
 \end{equation}
-This does not restrict the initial data enough to uniquely specify the resulting spectrum. We are left to prescribe two functions on the freezeout surface, namely $\varphi\vert_{\Sigma_{\text{fo}}}$ and $\chi\vert_{\Sigma_{\text{fo}}}$. This ansatz together with the result from \ref{sec:FOSurfaceMetric} yields for the normal projection of the field derivative
+This does not restrict the initial data enough to uniquely specify the resulting spectrum. We are left to prescribe two functions on the freezeout surface, namely $\varphi\vert_{\Sigma_{\text{fo}}}$ and $\chi\vert_{\Sigma_{\text{fo}}}$. This ansatz together with the result from section \ref{sec:FOSurfaceMetric} yields for the normal projection of the field derivative
 \begin{equation}
     \dt\Sigma^\mu\partial_\mu\varphi=\chi(r^\prime u_\tau+\tau^\prime u_r)\cdot r\tau\,\dt\alpha\dt\eta\dt\varphi\,.
 \end{equation}
 
-To restrict initial data further in a physically meaningful way, from the fluid theory we could try to match the energy density of the hypothetical superfluid
+To restrict initial data further in a physically meaningful way, from the fluid theory we could try to prescribe the energy density of the hypothetical superfluid
 %%%% MORE DETAIL
 %%%% MORE DETAIL
 %%%% MORE DETAIL
@@ -234,15 +234,15 @@ To restrict initial data further in a physically meaningful way, from the fluid 
 \end{equation}
 which changes along the freezeout surface as
     \begin{equation}
-        \dt\epsilon=m_\varphi^2\varphi\dt\varphi+\chi\dt\chi=m_\varphi^2\varphi(\partial_\mu\varphi)\dt^\mu s+\chi\dt\chi=m_\varphi^2\varphi(\chi u_\mu)\dt^\mu s+\chi\dt\chi\,,
+        \dt\epsilon_{\varphi}=m_\varphi^2\varphi\dt\varphi+\chi\dt\chi=m_\varphi^2\varphi(\partial_\mu\varphi)\dt^\mu s+\chi\dt\chi=m_\varphi^2\varphi(\chi u_\mu)\dt^\mu s+\chi\dt\chi\,,
     \end{equation}
 with ${\dt^\mu s=(\partial x^\mu)/(\partial\alpha)\dt\alpha\equiv(\tau^\prime,r^\prime)\dt\alpha}$ the displacement vector on the freezeout surface. For this prescription, the solution $\varphi$ on the freezout surface thus needs to fulfill the ODE
 \begin{equation}
     \dt\varphi=\chi u_\mu\dt^\mu s\,,\quad
-    \dt\chi=\frac{1}{\chi}\dt\epsilon-m_\varphi^2\varphi u_\mu\dt^\mu s
+    \dt\chi=\frac{1}{\chi}\dt\epsilon_\varphi-m_\varphi^2\varphi u_\mu\dt^\mu s\,.
     \label{eq:InitialConditions_ODE}
 \end{equation}
-The solutions $(\varphi,\chi)$ of this ODE have 1 degree of freedom, e.g. the ratio of kinetic energy ${\epsilon_{\text{kin}}=(1/2)\chi^2}$ and ${\epsilon_{\text{pot}}=(1/2)m_\varphi^2\varphi^2}$ at $\alpha=0$. To be precise, choose ${r\in[0,1]}$ and set ${\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon}$ and ${\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon}$ to find (up to a sign) initial values $\varphi\vert_{\alpha=0}$ and $\chi\vert_{\alpha=0}$, that fully determine the 2 functions on the freezeout surface.
+If $\epsilon_\varphi(\alpha)$ and thus $\dt\epsilon_\varphi$ is known, the solutions $(\varphi,\chi)$ of this ODE have 1 degree of freedom, e.g. the ratio of kinetic energy ${\epsilon_{\text{kin}}=(1/2)\chi^2}$ and ${\epsilon_{\text{pot}}=(1/2)m_\varphi^2\varphi^2}$ at $\alpha=0$. To be precise, choose ${r\in[0,1]}$ and set ${\epsilon_{\text{pot}}\big\vert_{\alpha=0}=r\epsilon}$ and ${\epsilon_{\text{kin}}\big\vert_{\alpha=0}=(1-r)\epsilon}$ to find (up to a sign) initial values $\varphi\vert_{\alpha=0}$ and $\chi\vert_{\alpha=0}$, that fully determine the 2 functions on the freezeout surface.
 
 \paragraph{The Sign of $u^\mu\partial_\mu\varphi$}
 

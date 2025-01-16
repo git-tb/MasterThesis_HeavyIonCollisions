@@ -58,20 +58,42 @@ std::complex<double> (*myintegrand)(double, void*) = [](double alpha, void* para
     /*
         returns the full integrand at given alpha with the factor of 2*pi^2
     */
-    intargs args = *(struct intargs *)params;
-    double  m(args.m),
-            pT(args.pT),
+
+    // intargs args = *(struct intargs *)params;
+    // double  m(args.m),
+    //         pT(args.pT),
+    //         wT(omega(pT,m)),
+    //         r(args.fo.r(alpha)       * fmtoIGeV),
+    //         Dr(args.fo.Dr(alpha)     * fmtoIGeV),
+    //         tau(args.fo.tau(alpha)   * fmtoIGeV),
+    //         Dtau(args.fo.Dtau(alpha) * fmtoIGeV);
+
+    // double pm = (args.anti ? -1.0 : +1.0);
+    // return 2 * M_PI * M_PI * r * tau * (
+    //     args.Dfunc(alpha) * (
+    //                     J0(r*pT) * ( -Y0(tau*wT) + pm * 1i * J0(tau*wT))
+    //     ) +
+    //     args.func(alpha) * (
+    //         Dtau*pT *   J1(r*pT) * ( -Y0(tau*wT) + pm * 1i * J0(tau*wT)) +
+    //         Dr*wT *     J0(r*pT) * ( -Y1(tau*wT) + pm * 1i * J1(tau*wT))
+    //     )
+    // );
+
+    intargs* args = (struct intargs *)params;
+    double  m(args->m),
+            pT(args->pT),
             wT(omega(pT,m)),
-            r(args.fo.r(alpha)       * fmtoIGeV),
-            Dr(args.fo.Dr(alpha)     * fmtoIGeV),
-            tau(args.fo.tau(alpha)   * fmtoIGeV),
-            Dtau(args.fo.Dtau(alpha) * fmtoIGeV);
-    double pm = (args.anti ? -1.0 : +1.0);
+            r(args->fo.r(alpha)       * fmtoIGeV),
+            Dr(args->fo.Dr(alpha)     * fmtoIGeV),
+            tau(args->fo.tau(alpha)   * fmtoIGeV),
+            Dtau(args->fo.Dtau(alpha) * fmtoIGeV);
+
+    double pm = (args->anti ? -1.0 : +1.0);
     return 2 * M_PI * M_PI * r * tau * (
-        args.Dfunc(alpha) * (
+        args->Dfunc(alpha) * (
                         J0(r*pT) * ( -Y0(tau*wT) + pm * 1i * J0(tau*wT))
         ) +
-        args.func(alpha) * (
+        args->func(alpha) * (
             Dtau*pT *   J1(r*pT) * ( -Y0(tau*wT) + pm * 1i * J0(tau*wT)) +
             Dr*wT *     J0(r*pT) * ( -Y1(tau*wT) + pm * 1i * J1(tau*wT))
         )

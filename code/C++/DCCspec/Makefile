@@ -1,7 +1,8 @@
 CXX       := g++
 CXX_FLAGS := -std=c++2a
 CXX_FLAGS += -g
-# CXX_FLAGS += -O3
+# CXX_FLAGS += -pg
+# CXX_FLAGS += -O2
 # CXX_FLAGS += -DNDEBUG
 CXX_FLAGS += -fopenmp
 CXX_FLAGS += -Wall
