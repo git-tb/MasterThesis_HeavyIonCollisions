@@ -1,0 +1,13 @@
+### Start Fri Jan 17 10:54:32 2025
+# /usr/bin/gp-archive -n -a on --outfile /home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archive.log /home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er
+Copying `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/bin/specV2'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/specV2_77S25S3OYJ3'
+Copying `/usr/lib/x86_64-linux-gnu/libc.so.6'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/libc.so.6_dnWuQRcLhw9'
+Copying `/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/libstdc++.so.6.0.33_dnWuQRcLhw9'
+Copying `/usr/lib/x86_64-linux-gnu/libgsl.so.27.0.0'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/libgsl.so.27.0.0_dnWuQRcLhw9'
+Copying `/usr/lib/x86_64-linux-gnu/libgslcblas.so.0.0.0'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/libgslcblas.so.0.0.0_dnWuQRcLhw9'
+Copying `/usr/lib/x86_64-linux-gnu/libgcc_s.so.1'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/libgcc_s.so.1_dnWuQRcLhw9'
+Copying `/usr/lib/x86_64-linux-gnu/libm.so.6'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/libm.so.6_dnWuQRcLhw9'
+Copying `/usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.83.0'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/libboost_program_options.so.1.83.0_dnWuQRcLhw9'
+Copying `/usr/lib/x86_64-linux-gnu/gprofng/libgp-collector.so'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/libgp-collector.so_1doggXvug9f'
+Copying `/usr/lib/x86_64-linux-gnu/gprofng/libgp-heap.so'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/libgp-heap.so_1doggXvug9f'
+Copying `/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2'  to `/home/tobiasb/OneDrive/projects/MasterThesis_HeavyIonCollisions/code/C++/DCCspec/test.2.er/archives/ld-linux-x86-64.so.2_dnWuQRcLhw9'

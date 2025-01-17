@@ -1,5 +1,6 @@
 #include <iostream>
-#include <cmath>
+#include <cmath>    // bessel function std::cyl_bessel_j, std::cyl_neumann
+                    // but also j0, j1, y0, y1 via <math.h>
 #include <complex>
 #include <functional>
 #include <gsl/gsl_errno.h>
@@ -47,10 +48,14 @@ struct intargs {
 };
 
 double omega(double p, double m) { return sqrt(p * p + m * m); }
-double J0(double x) { return std::cyl_bessel_j(0, x); }
-double J1(double x) { return std::cyl_bessel_j(1, x); }
-double Y0(double x) { return std::cyl_neumann(0, x); }
-double Y1(double x) { return std::cyl_neumann(1, x); }
+// double J0(double x) { return std::cyl_bessel_j(0, x); }
+// double J1(double x) { return std::cyl_bessel_j(1, x); }
+// double Y0(double x) { return std::cyl_neumann(0, x); }
+// double Y1(double x) { return std::cyl_neumann(1, x); }
+double J0(double x) { return j0(x); }
+double J1(double x) { return j1(x); }
+double Y0(double x) { return y0(x); }
+double Y1(double x) { return y1(x); }
 
 // GSL_FUNCTION (NEEDED BY GSL INTEGRATORS) CANNOT BE INITIALIZED WITH STD::FUNCTION OBJECTS,
 //  FUNCTION POINTERS SEEM TO WORK, SO WE USE THOSE FUNCTION POINTERS (*integrand)
@@ -58,7 +63,7 @@ std::complex<double> (*myintegrand)(double, void*) = [](double alpha, void* para
     /*
         returns the full integrand at given alpha with the factor of 2*pi^2
     */
-
+ 
     // intargs args = *(struct intargs *)params;
     // double  m(args.m),
     //         pT(args.pT),
@@ -78,6 +83,14 @@ std::complex<double> (*myintegrand)(double, void*) = [](double alpha, void* para
     //         Dr*wT *     J0(r*pT) * ( -Y1(tau*wT) + pm * 1i * J1(tau*wT))
     //     )
     // );
+
+    /*
+    THIS WORKS, BUT IS SLOW BECAUSE THE POINTER IS DEREFERENCED (*) AND A COPY OF THE UNDERLYING
+    PARAMETER OBJECT - CONTAINING THE INTERPOLATING FUNCTION FROM THE FREEZEOUT SURFACE - IS 
+    CREATED AT EVERY FUNCTION CALL. ITS BETTER TO KEEP ONLY THE POINTER.
+
+    WE KEEP THE ABOVE CODE IN CASE WE NOTICE PROBLEMS WITH THE POINTER USAGE.
+    */
 
     intargs* args = (struct intargs *)params;
     double  m(args->m),
@@ -101,7 +114,7 @@ std::complex<double> (*myintegrand)(double, void*) = [](double alpha, void* para
 };
 /* #endregion */
 
-/* #region SPECTRUM COMPUTATION FOR LIST OF P-VALUES */
+/* #region SPECTRUM COMPUTATION FOR LIST OF PT-VALUES */
 std::vector<std::complex<double>> spectr_Jp(
     std::vector<double> pTs,
     double m,

@@ -79,6 +79,9 @@
         "shared_mutex": "cpp",
         "cfenv": "cpp",
         "charconv": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "numbers": "cpp",
+        "semaphore": "cpp",
+        "stdfloat": "cpp"
     }
 }

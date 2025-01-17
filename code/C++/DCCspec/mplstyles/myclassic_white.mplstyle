@@ -362,7 +362,7 @@ contour.negative_linestyle :  dashed # dashed | solid
 contour.corner_mask : True
 
 # errorbar props
-errorbar.capsize: 3
+errorbar.capsize: 2.5
 
 # scatter props
 scatter.marker: .
