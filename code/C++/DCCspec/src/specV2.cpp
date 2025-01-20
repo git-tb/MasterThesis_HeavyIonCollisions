@@ -245,7 +245,6 @@ int main(int ac, char* av[])
                 freezeoutpath   = vm["freezeoutpath"].as<std::string>(),
                 parentdir       = vm["parentdir"].as<std::string>();
     bool savegeometry           = vm["savegeometry"].as<bool>();
-
     DEBUGMSG("command line processing completed");
     /* #endregion */
 

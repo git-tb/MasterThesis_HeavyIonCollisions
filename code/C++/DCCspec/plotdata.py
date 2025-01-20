@@ -253,9 +253,10 @@ fig_spec.show()
 ######### PLOT COMP FIELDS WITH VARYING RELPHASE ############
 #############################################################
 
-parentdir = "Data/spec_comp_constfield_m140_varphase_20250116_120129"
-parentdir = "Data/spec_comp_constfield_m140_varphase_20250117_181049"
-parentdir = "Data/spec_comp_constfield_m140_varphase_20250117_181304"
+# parentdir = "Data/spec_comp_constfield_m140_varphase_20250116_120129"
+# parentdir = "Data/spec_comp_constfield_m140_varphase_20250117_181049"
+# parentdir = "Data/spec_comp_constfield_m140_varphase_20250117_181304"
+# parentdir = "Data/spec_comp_constfield_m140_varphase_20250120_094422"
 folders = sorted(glob.glob(parentdir+"/*/"))
 
 SAVE = False
