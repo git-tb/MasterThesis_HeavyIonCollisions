@@ -20,7 +20,6 @@
 #include "freezeout.h"      // freezeout geometry
 #include "initdata.h"       // initial data for condensate field
 #include "constants.h"      // GeV to inverse fm,...
-#include "cubature.h"
 
 #include "debugmsg.h"
 
@@ -48,7 +47,7 @@ struct intargs {
 };
 
 double omega(double p, double m) { return sqrt(p * p + m * m); }
-// double J0(double x) { return std::cyl_bessel_j(0, x); }
+// double J0(double x) { return std::cyl_bessel_j(0, x); } // THESE SEEM TO BE UNOPTIMIZED FOR INTEGER ORDER AND ARE SLOWER BY A FACTOR OF ~10 COMPARED TO THE ALTERNATIVE j0,j1,y0,y1
 // double J1(double x) { return std::cyl_bessel_j(1, x); }
 // double Y0(double x) { return std::cyl_neumann(0, x); }
 // double Y1(double x) { return std::cyl_neumann(1, x); }
@@ -63,7 +62,14 @@ std::complex<double> (*myintegrand)(double, void*) = [](double alpha, void* para
     /*
         returns the full integrand at given alpha with the factor of 2*pi^2
     */
- 
+
+    /*
+    THE FOLLOWING WORKS, BUT IS SLOW BECAUSE THE POINTER IS DEREFERENCED (*) AND A COPY OF THE UNDERLYING
+    PARAMETER OBJECT - CONTAINING THE INTERPOLATING FUNCTION FROM THE FREEZEOUT SURFACE - IS 
+    CREATED AT EVERY FUNCTION CALL. ITS BETTER TO KEEP ONLY THE POINTER.
+
+    WE KEEP THE CODE IN THE COMMENT JUST IN CASE WE NOTICE PROBLEMS WITH THE POINTER USAGE.
+    */ 
     // intargs args = *(struct intargs *)params;
     // double  m(args.m),
     //         pT(args.pT),
@@ -84,14 +90,7 @@ std::complex<double> (*myintegrand)(double, void*) = [](double alpha, void* para
     //     )
     // );
 
-    /*
-    THIS WORKS, BUT IS SLOW BECAUSE THE POINTER IS DEREFERENCED (*) AND A COPY OF THE UNDERLYING
-    PARAMETER OBJECT - CONTAINING THE INTERPOLATING FUNCTION FROM THE FREEZEOUT SURFACE - IS 
-    CREATED AT EVERY FUNCTION CALL. ITS BETTER TO KEEP ONLY THE POINTER.
-
-    WE KEEP THE ABOVE CODE IN CASE WE NOTICE PROBLEMS WITH THE POINTER USAGE.
-    */
-
+    // AGAIN, THIS TIME WITH THE APPROPRIATE POINTER USAGE
     intargs* args = (struct intargs *)params;
     double  m(args->m),
             pT(args->pT),
@@ -192,8 +191,15 @@ std::vector<std::complex<double>> spectr_Jp(
 
 int main(int ac, char* av[])
 {
-    /* #region COMMAND LINE OPTIONS */
-    // DECLARE SUPPORTED OPTIONS
+
+    // SET UP DEFAULT DIRECTORY NAME TO SAVE TO
+    std::time_t t = std::time(nullptr);
+    std::tm tm = *std::localtime(&t);
+    std::stringstream timestamp_sstr;
+    timestamp_sstr << std::put_time(&tm, "%Y%m%d_%H%M%S");
+    std::string timestamp = timestamp_sstr.str();
+
+    // DECLARE SUPPORTED COMMAND LINE OPTIONS
     namespace po = boost::program_options;
     po::options_description desc(   "//================================================================= \\\\\n"
                                     "|| This program computes the pT-spectrum of particles associated    ||\n"
@@ -216,6 +222,9 @@ int main(int ac, char* av[])
         ("iter",            po::value<int>()->default_value(1e4),       "maximum integration iterations")
         ("parentdir",       po::value<std::string>()->default_value("Data"),
             "data folder, in which a subfolder for the results is created")
+        ("foldername",      po::value<std::string>()->default_value("spec_"+timestamp),
+            "target folder for this computation. default is a timestamp 'spec_YYmmdd_HHMMSS', this might be insufficient "
+            "if files are created within a second")
         ("savegeometry",    po::bool_switch()->default_value(false),    "flag only for debugging, save the freezeout geometry");
 
     po::variables_map vm;
@@ -243,24 +252,18 @@ int main(int ac, char* av[])
         iter                    = vm["iter"].as<int>();
     std::string initpath        = vm["initpath"].as<std::string>(),
                 freezeoutpath   = vm["freezeoutpath"].as<std::string>(),
-                parentdir       = vm["parentdir"].as<std::string>();
+                parentdir       = vm["parentdir"].as<std::string>(),
+                foldername      = vm["foldername"].as<std::string>();
     bool savegeometry           = vm["savegeometry"].as<bool>();
     DEBUGMSG("command line processing completed");
-    /* #endregion */
-
-    // CREATE DIRECTORY TO SAVE FILES
-    std::time_t t = std::time(nullptr);
-    std::tm tm = *std::localtime(&t);
-    std::stringstream timestamp_sstr;
-    timestamp_sstr << std::put_time(&tm, "%Y%m%d_%H%M%S");
-    std::string timestamp = timestamp_sstr.str();
-    std::string pathname = parentdir+"/spec_"+timestamp;
 
     DEBUGMSG("start data processing");
     freezeoutData foDat = ProcessFreezeoutData(freezeoutpath);
     initData initDat    = ProcessInitialData(initpath);
     DEBUGMSG("data processing completed");
 
+    // CREATE DIRECTORY TO SAVE FILES
+    std::string pathname = parentdir+"/"+foldername;
     std::filesystem::create_directories(pathname);
 
     // DEFINE CONDENSATE FIELD AND DERIVATIVE ON FREEZOUT SURFACE
@@ -283,11 +286,6 @@ int main(int ac, char* av[])
         writeFuncToFile(pathname+"/ur_interp.txt",  foDat.foFunc.ur, 0, M_PI / 2.0, NSAMPLE,{"alpha","urRe","urIm"},{timestamp});
         writeFuncToFile(pathname+"/utau_interp.txt",foDat.foFunc.utau, 0, M_PI / 2.0, NSAMPLE,{"alpha","utauRe","utauIm"},{timestamp}); 
     }  
-
-    // COMPUTE SPECTRUM
-    std::vector<double> pTs(NpT);
-    for (int i = 0; i < pTs.size(); i++)
-        pTs[i] = pTmin + i * (pTmax - pTmin) / (NpT - 1);
 
     // WRITE TO FILE DURING COMPUTATION, THEREFORE PREPARE THE FILE HERE
     std::stringstream initdata_ss, geometry_ss, NpT_ss, pTmax_ss, epsabs_ss, epsrel_ss, iter_ss, mass_ss;
@@ -312,6 +310,12 @@ int main(int ac, char* av[])
     });
     std::vector<std::string> headers({"pT","abs2Re","abs2Im"});
 
+
+    // COMPUTE SPECTRUM
+    std::vector<double> pTs(NpT);
+    for (int i = 0; i < pTs.size(); i++)
+        pTs[i] = pTmin + i * (pTmax - pTmin) / (NpT - 1);
+
     // =======================================
     // START WITH THE PARTICLE SPECTRUM
     std::string spectr_path = pathname+"/spectr.txt";
@@ -334,11 +338,12 @@ int main(int ac, char* av[])
     //  ALL VALUES ARE COMPUTED. DATA IS LOST WHEN THE PROGRAM CRASHES IN BETWEEN, BUT THE COMPUTATION IS MUCH
     //  FASTER ANYWAYS, SO WE DONT CARE.
     std::function<void(double,std::complex<double>)> spectr_callback = [&spectr_output](double p, std::complex<double> value) {
-        double abs2norm = (1 / std::pow(2 * M_PI, 3)) * std::norm(value);
+        double abs2norm = 0.5 * (1 / std::pow(2 * M_PI, 3)) * std::norm(value);
         spectr_output << p << "," << std::real(abs2norm) << "," << std::imag(abs2norm) << std::endl;
     };   
 
     // CENTRAL COMPUTATION (PARTICLE SPECTRUM) HAPPENS HERE
+    //  THIS COMPUTES J(p). THE SPECTRUM IS GIVEN BY (1/2)*(1/(2PI)^3)*|J(p)|^2.
     std::vector<std::complex<double>> myspectr = spectr_Jp( pTs,
                                                             mParticle,
                                                             func,
@@ -352,7 +357,7 @@ int main(int ac, char* av[])
 
     #ifdef _OPENMP
     for (int i = 0; i < pTs.size(); i++) {
-        double abs2norm = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr[i]);
+        double abs2norm = 0.5 * (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr[i]);
         spectr_output << pTs[i] << "," << std::real(abs2norm) << "," << std::imag(abs2norm) << std::endl;
     }    
     #endif
@@ -376,11 +381,12 @@ int main(int ac, char* av[])
     // (((SAME COMMENT ABOUT SERIAL AND PARALLEL EXECUTION...)))
     // ...
     std::function<void(double,std::complex<double>)> spectranti_callback = [&spectranti_output](double p, std::complex<double> value) {
-        double abs2norm = (1 / std::pow(2 * M_PI, 3)) * std::norm(value);
+        double abs2norm = 0.5 * (1 / std::pow(2 * M_PI, 3)) * std::norm(value);
         spectranti_output << p << "," << std::real(abs2norm) << "," << std::imag(abs2norm) << std::endl;
     };
 
     // CENTRAL COMPUTATION (ANTIPARTICLE SPECTRUM) HAPPENS HERE
+    //  THIS COMPUTES J(-p). THE SPECTRUM IS GIVEN BY (1/2)*(1/(2PI)^3)*|J(-p)|^2.
     std::vector<std::complex<double>> myspectr_anti = spectr_Jp(pTs,
                                                                 mParticle,
                                                                 func,
@@ -395,7 +401,7 @@ int main(int ac, char* av[])
     #ifdef _OPENMP
     for (int i = 0; i < pTs.size(); i++)
     {
-        double abs2norm = (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr_anti[i]);
+        double abs2norm = 0.5 * (1 / std::pow(2 * M_PI, 3)) * std::norm(myspectr_anti[i]);
         spectranti_output << pTs[i] << "," << std::real(abs2norm) << "," << std::imag(abs2norm) << std::endl;
     }
     #endif

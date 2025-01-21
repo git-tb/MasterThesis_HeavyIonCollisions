@@ -204,6 +204,14 @@ std::vector<double> decayspec(
 
 int main(int ac, char* av[])
 {
+
+    // SET UP DEFAULT DIRECTORY NAME TO SAVE TO
+    std::time_t t = std::time(nullptr);
+    std::tm tm = *std::localtime(&t);
+    std::stringstream timestamp_sstr;
+    timestamp_sstr << std::put_time(&tm, "%Y%m%d_%H%M%S");
+    std::string timestamp = timestamp_sstr.str();
+
     /* #region COMMAND LINE OPTIONS */
     // DECLARE SUPPORTED OPTIONS
     namespace po = boost::program_options;
@@ -226,6 +234,9 @@ int main(int ac, char* av[])
         ("primespecpath",po::value<std::string>(),"csv file containing primary spectrum")
         ("parentdir",       po::value<std::string>()->default_value("Data"),
             "data folder, in which a subfolder for the results is created")
+         ("foldername",      po::value<std::string>()->default_value("decay_"+timestamp),
+            "target folder for this computation. default is a timestamp 'decay_YYmmdd_HHMMSS', this might be insufficient "
+            "if files are created within a second")
         ("B", po::value<double>()->default_value(1.0), "branching ratio of the decay")
         ("Q", po::value<double>()->default_value(1.0), "dimensionful pT-scale (should not influence the result)")
         ;
@@ -252,22 +263,15 @@ int main(int ac, char* av[])
     int NpTs                    = vm["NpT"].as<int>(),
         iter                    = vm["iter"].as<int>();
     std::string primespecpath   = vm["primespecpath"].as<std::string>(),
-                parentdir       = vm["parentdir"].as<std::string>();
+                parentdir       = vm["parentdir"].as<std::string>(),
+                foldername      = vm["foldername"].as<std::string>();
     double  p_abc               = 1/(2*ma) * sqrt( (pow(ma+mb,2)-pow(mc,2)) * (pow(ma-mb,2)-pow(mc,2)) ),
             E_abc               = sqrt(mb*mb + p_abc*p_abc);
     DEBUGMSG("command line processing completed");
     /* #endregion */
 
-    // CREATE DIRECTORY TO SAVE FILES
-    std::time_t t = std::time(nullptr);
-    std::tm tm = *std::localtime(&t);
-    std::stringstream timestamp_sstr;
-    timestamp_sstr << std::put_time(&tm, "%Y%m%d_%H%M%S");
-    std::string timestamp = timestamp_sstr.str();
-    std::string pathname = parentdir+"/decayspec_"+timestamp;
-    // std::filesystem::create_directories(pathname); // create later, such that in case of read-in error & abort no empty directory is created
-
     // INTERPOLATE PRIMESPEC FROM DATA
+    DEBUGMSG("start data processing");
     csvdata primespecdata = readcsv(primespecpath);
     std::vector<double> x(primespecdata.data[0]);
     std::vector<double> y(primespecdata.data[1]);
@@ -281,9 +285,13 @@ int main(int ac, char* av[])
         std::move(x),
         std::move(log10y));
     std::function<double(double)> primespec = [&](double p){ return pow(10, logspecspline(p)); };
+    DEBUGMSG("data processing completed");
+
+    // CREATE DIRECTORY TO SAVE FILES
+    std::string pathname = parentdir+"/"+foldername;
+    std::filesystem::create_directories(pathname); // CREATE DIRECTORY HERE
 
     int NSAMPLE(1000);
-    std::filesystem::create_directories(pathname); // CREATE DIRECTORY HERE
     writeFuncToFile(pathname+"/primespec.txt", primespec, qmin, qmax, NSAMPLE, {"q","primespecRe","primespecIm"},{timestamp});
 
     // AGAIN, WRITE TO FILE DURING COMPUTATION, SO PREPARE THE FILE BEFOREHAND

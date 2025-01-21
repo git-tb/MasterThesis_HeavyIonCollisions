@@ -83,8 +83,6 @@ fig_diff.tight_layout()
 
 if(SAVE):
     print("SAVED!")
-    fig_spec.savefig("Images/FluidumAliceCompare.png",dpi=150)
-    fig_diff.savefig("Images/FluidumAliceDiff.png",dpi=150)
 else:
     print("NOT SAVED!")
 
@@ -96,10 +94,11 @@ fig_diff.show()
 ######### PLOT 1-PARAMETER FAMILY OF REAL FIELDS ############
 #############################################################
 
-# parentdir = "Data/spec_real_constfield_m140_20250116_115949"
+# parentdir = "Data/decay_real_constfield_m600_varPT"
 # parentdir = "Data/spec_real_consteps_m140_20250117_113521"
 # parentdir = "Data/spec_real_consteps_varm_20250116_114850"
-parentdir = "Data/spec_real_taudep_m140_20250117_162422"
+# parentdir = "Data/spec_real_taudep_m140_20250117_162422"
+parentdir = "Data/spec_real_constfield_varm"
 folders = sorted(glob.glob(parentdir+"/*/"))
 
 SAVE = False
@@ -125,8 +124,8 @@ CMAP_LBWH = [0.025, 0.025, 0.05, 0.45]
 CMAP_LABELSIZE = 20
 CMAP_TICKSIZE = 15
 
-LABELBYMASS = False
-# LABELBYMASS = True
+# LABELBYMASS = False
+LABELBYMASS = True
 
 # COMPARE = False
 COMPARE = True
@@ -231,7 +230,6 @@ ax_spec.tick_params(bottom=True,left=True,top=True,right=True)
 
 ax_init_f.set_xlim(0,np.pi/2)
 # ax_init_df.set_xlim(0,np.pi/2)
-ax_spec.set_xlim(0,2)
 
 ax_init_f.grid(False,which="both")
 ax_init_df.grid(False,which="both")
@@ -255,7 +253,7 @@ fig_spec.show()
 
 # parentdir = "Data/spec_comp_constfield_m140_varphase_20250116_120129"
 # parentdir = "Data/spec_comp_constfield_m140_varphase_20250117_181049"
-# parentdir = "Data/spec_comp_constfield_m140_varphase_20250117_181304"
+parentdir = "Data/spec_comp_constfield_m140_varphase_20250117_181304"
 # parentdir = "Data/spec_comp_constfield_m140_varphase_20250120_094422"
 folders = sorted(glob.glob(parentdir+"/*/"))
 
@@ -285,8 +283,6 @@ CMAP = LinearSegmentedColormap.from_list("custom", [(0,0,1,0.6),(1,0,0,0.6)])
 CMAP_LBWH = [0.025, 0.025, 0.05, 0.45]
 CMAP_LABELSIZE = 20
 CMAP_TICKSIZE = 15
-
-
 
 phases = np.zeros(len(folders))
 LC_ARRAY = phases
@@ -413,7 +409,6 @@ xticklabels = ax_spec.get_xticklabels()
 xticklabels[-1] = ""
 ax_spec.set_xticks(xticks,xticklabels)
 
-
 ax_init_f_re.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
 ax_init_f_im.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
 ax_init_df_re.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
@@ -421,12 +416,12 @@ ax_init_df_im.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
 ax_spec.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
 ax_spec_anti.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
 
-ax_init_f_re.tick_params(bottom=False,left=True,top=True,right=True)
-ax_init_f_im.tick_params(bottom=False,left=True,top=True,right=True)
-ax_init_df_re.tick_params(bottom=True,left=True,top=True,right=True)
-ax_init_df_im.tick_params(bottom=True,left=True,top=True,right=True)
-ax_spec.tick_params(bottom=True,left=True,top=True,right=True)
-ax_spec_anti.tick_params(bottom=True,left=True,top=True,right=True)
+ax_init_f_re.tick_params(bottom=False,left=True,top=True,right=False)
+ax_init_f_im.tick_params(bottom=False,left=False,top=True,right=True)
+ax_init_df_re.tick_params(bottom=True,left=True,top=True,right=False)
+ax_init_df_im.tick_params(bottom=True,left=False,top=True,right=True)
+ax_spec.tick_params(bottom=True,left=True,top=True,right=False)
+ax_spec_anti.tick_params(bottom=True,left=False,top=True,right=True)
 
 ax_init_f_re.set_xlim(0,np.pi/2)
 ax_init_f_re.set_xlim(0,np.pi/2)
@@ -450,3 +445,279 @@ else:
 
 fig_init.show()
 fig_spec.show()
+
+# %%
+#############################################################
+######### PLOT PRIMARY VS DECAY SPECTRA ############
+#############################################################
+
+# parentdir = "Data/decay_real_constfield_m600_varPT"
+parentdir = "Data/decay_real_constfield_varm"
+folders = sorted(glob.glob(parentdir+"/*/"))
+
+SAVE = False
+# SAVE = True
+
+FIGSIZE = (7,7)
+LINEWIDTH = 1.5
+TICKLABELSIZE = 20
+AXISLABELSIZE = 25 
+TICKSIZE = 10
+TICKWIDTH = 2
+
+PRIMESPEC_XLABEL = r"$q_T\ [GeV]$"
+DECAYSPEC_XLABEL = r"$p_T\ [GeV]$"
+
+PRIMESPEC_YLABEL = r"$(2\pi q_T)^{-1}dN_a/(dq_Td\eta_q)\ [GeV^{-2}]$"
+DECAYSPEC_YLABEL = r"$(2\pi p_T)^{-1}dN_b/(dp_Td\eta_p)\ [GeV^{-2}]$"
+
+CMAP = LinearSegmentedColormap.from_list("custom", [(0,0,1,0.6),(1,0,0,0.6)])
+# CMAP = LinearSegmentedColormap.from_list("custom", [(0,0,1),(1,0,0)])
+CMAP_LBWH = [0.025, 0.025, 0.05, 0.45]
+CMAP_LABELSIZE = 20
+CMAP_TICKSIZE = 15
+
+COMPARE = False
+# COMPARE = True
+LS_COMPARE = "-"
+
+# LABELLC = False
+LABELLC = True
+
+LC_ARRAY = np.arange(len(folders))
+masses = np.zeros(len(folders))
+qTmaxs = np.zeros(len(folders))
+if(LABELLC):
+    LC_ARRAY = masses
+    LC_LABEL = r"$m_a\ [GeV]$"
+    # LC_ARRAY = qTmaxs
+    # LC_LABEL = r"$q_{T,\text{max}}\ [GeV]$"
+
+fig_primespec, ax_primespec = plt.subplots(figsize=FIGSIZE)
+fig_decayspec, ax_decayspec = plt.subplots(figsize=FIGSIZE)
+
+lines_primespec = []
+lines_decayspec = []
+
+cols = [(t, 0, 1-t) for t in np.linspace(0,1,len(folders),endpoint=True)]
+for (n,folder) in enumerate(folders):
+    with open(folder+"decayspec.txt") as file:
+        mylines = file.readlines()
+        masses[n] = float(mylines[3].replace("# ma:\t",""))
+        qTmaxs[n] = float(mylines[2].replace("# qmax:\t",""))
+
+    df_primespec = pd.read_csv(folder+"primespec.txt",comment="#") 
+    df_decayspec = pd.read_csv(folder+"decayspec.txt",comment="#") 
+
+    qT = df_primespec["q"].to_numpy()
+    pT = df_decayspec["p"].to_numpy()
+
+    primespec = df_primespec["primespecRe"].to_numpy()
+    decayspec = df_decayspec["finalspecRe"].to_numpy()
+
+    col = cols[n]
+
+    line_primespec = np.column_stack((qT, primespec))
+    line_decayspec = np.column_stack((pT, decayspec))
+
+    lines_primespec.append(line_primespec)
+    lines_decayspec.append(line_decayspec)
+    
+lc_primespec = LineCollection(lines_primespec,array=LC_ARRAY,cmap=CMAP,linewidths=LINEWIDTH)
+lc_decayspec = LineCollection(lines_decayspec,array=LC_ARRAY,cmap=CMAP,linewidths=LINEWIDTH)
+
+ax_primespec.add_collection(lc_primespec)
+ax_decayspec.add_collection(lc_decayspec)
+
+ax_primespec.autoscale_view()
+ax_decayspec.autoscale_view()
+
+if(COMPARE):
+    ax_decayspec.plot(pT_compare, spec_compare,lw=2*LINEWIDTH,label=r"ALICE$-$FluiduM",c="k",ls=LS_COMPARE,marker="")
+
+if(LABELBYMASS):
+    cax = ax_decayspec.inset_axes(CMAP_LBWH)
+    cbar = fig_decayspec.colorbar(lc_decayspec, cax=cax)
+    cbar.set_label(LC_LABEL, fontsize=CMAP_LABELSIZE)
+    cbar.ax.tick_params(labelsize=CMAP_TICKSIZE)
+
+ax_primespec.set_yscale("log")
+ax_decayspec.set_yscale("log")
+
+ax_primespec.set_xlabel(PRIMESPEC_XLABEL, fontsize=AXISLABELSIZE)
+ax_decayspec.set_xlabel(DECAYSPEC_XLABEL, fontsize=AXISLABELSIZE)
+
+ax_primespec.set_ylabel(PRIMESPEC_YLABEL, fontsize=AXISLABELSIZE)
+ax_decayspec.set_ylabel(DECAYSPEC_YLABEL, fontsize=AXISLABELSIZE)
+
+ax_primespec.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
+ax_decayspec.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
+
+ax_primespec.tick_params(bottom=True,left=True,top=True,right=True)
+ax_decayspec.tick_params(bottom=True,left=True,top=True,right=True)
+
+ax_primespec.grid(False,which="both")
+ax_decayspec.grid(False,which="both")
+
+fig_primespec.tight_layout()
+fig_decayspec.tight_layout()
+
+if(SAVE):
+    print("SAVED!")
+else:
+    print("NOT SAVED!")
+
+fig_primespec.show()
+fig_decayspec.show()
+
+# %%
+#############################################################
+######### PLOT WEIGHTED SIGMA RESONANCE DECAY SPEC ############
+#############################################################
+
+parentdir = "Data/decay_real_constfield_varm"
+folders = sorted(glob.glob(parentdir+"/*/"))
+
+SAVE = False
+# SAVE = True
+
+FIGSIZE = (7,7)
+LINEWIDTH = 1.5
+TICKLABELSIZE = 20
+AXISLABELSIZE = 25 
+TICKSIZE = 10
+TICKWIDTH = 2
+
+DECAYSPEC_XLABEL = r"$p_T\ [GeV]$"
+DECAYSPEC_YLABEL = r"$(2\pi p_T)^{-1}dN_{\pi^\pm}/(dp_Td\eta_p)\ [GeV^{-2}]$"
+
+FULLSPEC_YLABEL = r"$(2\pi p_T)^{-1}dN/(dp_Td\eta_p)\ [GeV^{-2}]$"
+FULLSPEC_LEGEND = r"decay spectrum"+"\n"+r"from $\sigma\to\pi\pi$"
+
+WEIGHTS_XLABEL = r"$k\ [GeV]$"
+WEIGHTS_YLABEL = r"$S(k)\ [GeV^{-2}]$"
+WEIGHTS_LEGEND = r"spectral density"+"\n"+r"of the $f_0(500)$"
+
+CMAP = LinearSegmentedColormap.from_list("custom", [(0,0,1,0.6),(1,0,0,0.6)])
+# CMAP = LinearSegmentedColormap.from_list("custom", [(0,0,1),(1,0,0)])
+CMAP_LBWH = [0.025, 0.025, 0.05, 0.45]
+CMAP_LABELSIZE = 20
+CMAP_TICKSIZE = 15
+
+# COMPARE = False
+COMPARE = True
+LS_COMPARE = "-"
+
+# LABELLC = False
+LABELLC = True
+
+LC_ARRAY = np.arange(len(folders))
+masses = np.zeros(len(folders))
+if(LABELLC):
+    LC_ARRAY = masses
+    LC_LABEL = r"$m_\sigma\ [GeV]$"
+
+### EXTRACT MASSES FOR EACH SPECTRUM
+for (n,folder) in enumerate(folders):
+    with open(folder+"decayspec.txt") as file:
+        mylines = file.readlines()
+        masses[n] = float(mylines[3].replace("# ma:\t",""))
+
+### COMPUTE SPECTRAL WEIGHTS OF SIGMA RESONANCE
+mpi = 0.14
+
+Mpole = 0.449
+Gpole = 2* 0.275
+
+msigma = np.sqrt(1/4 * (16 * mpi**2 + 
+                        np.sqrt(16 * Gpole**2 * Mpole**2 + 
+                                (-16 * mpi**2 - Gpole**2 + 4*Mpole**2)**2)))
+Gam = np.sqrt(1/2 * (16 * mpi**2 + Gpole**2 - 
+     4*  Mpole**2 + np.sqrt(16*Gpole**2 * Mpole**2 + (-16 * mpi**2 - Gpole**2 + 4*Mpole**2)**2)))
+
+def Delta(s):
+    return 1/(s-msigma**2+1j*Gam*np.sqrt(s-(2*mpi)**2))
+
+def S(k):
+    # return -1/np.pi*np.imag(Delta(k**2))*(k<=1)
+    return -1/np.pi*np.imag(Delta(k**2))
+
+weights = 2*masses*S(masses)*np.ptp(masses)/len(masses)
+weights /= np.sum(weights)
+
+fig_weights, ax_weights = plt.subplots(figsize=FIGSIZE)
+ax_weights.plot([0.28,*masses],S(np.array([0.28,*masses])),c="b",lw=2*LINEWIDTH,marker="",label=WEIGHTS_LEGEND)
+ax_weights.legend(fontsize=LEGENDSIZE,fancybox=True, framealpha=0.85,shadow=False)
+
+ax_weights.set_xlabel(WEIGHTS_XLABEL, fontsize=AXISLABELSIZE)
+ax_weights.set_ylabel(WEIGHTS_YLABEL, fontsize=AXISLABELSIZE)
+ax_weights.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
+ax_weights.tick_params(bottom=True,left=True,top=True,right=True)
+ax_weights.grid(False,which="both")
+fig_weights.tight_layout()
+
+### GO TO PLOTTING
+fig_fullspec, ax_fullspec = plt.subplots(figsize=FIGSIZE)
+fig_decayspec, ax_decayspec = plt.subplots(figsize=FIGSIZE)
+
+lines_decayspec = []
+xs_fullspec, ys_fullspec = np.zeros(shape=(2,1))
+
+for (n,folder) in enumerate(folders):
+    df_decayspec = pd.read_csv(folder+"decayspec.txt",comment="#")
+
+    pT = df_decayspec["p"].to_numpy()
+    decayspec = df_decayspec["finalspecRe"].to_numpy()
+
+    line_decayspec = np.column_stack((pT, decayspec))
+    lines_decayspec.append(line_decayspec)
+
+    xs_fullspec = pT
+    ys_fullspec = ys_fullspec + weights[n] * decayspec
+
+lc_decayspec = LineCollection(lines_decayspec,array=LC_ARRAY,cmap=CMAP,linewidths=LINEWIDTH)
+ax_decayspec.add_collection(lc_decayspec)
+ax_decayspec.autoscale_view()
+
+ax_fullspec.plot(xs_fullspec, ys_fullspec,lw=2*LINEWIDTH,c="b",marker="",label=FULLSPEC_LEGEND)
+ax_fullspec.set_xlim(np.min(xs_fullspec),np.max(xs_fullspec))
+
+if(COMPARE):
+    ax_fullspec.plot(pT_compare, spec_compare,lw=2*LINEWIDTH,label=r"ALICE$-$FluiduM",c="k",ls=LS_COMPARE,marker="")
+ax_fullspec.legend(fontsize=LEGENDSIZE,fancybox=True, framealpha=0.85,shadow=False)
+
+if(LABELBYMASS):
+    cax = ax_decayspec.inset_axes(CMAP_LBWH)
+    cbar = fig_decayspec.colorbar(lc_decayspec, cax=cax)
+    cbar.set_label(LC_LABEL, fontsize=CMAP_LABELSIZE)
+    cbar.ax.tick_params(labelsize=CMAP_TICKSIZE)
+
+ax_fullspec.set_yscale("log")
+ax_decayspec.set_yscale("log")
+
+ax_fullspec.set_xlabel(DECAYSPEC_XLABEL, fontsize=AXISLABELSIZE)
+ax_decayspec.set_xlabel(DECAYSPEC_XLABEL, fontsize=AXISLABELSIZE)
+
+ax_fullspec.set_ylabel(FULLSPEC_YLABEL, fontsize=AXISLABELSIZE)
+ax_decayspec.set_ylabel(DECAYSPEC_YLABEL, fontsize=AXISLABELSIZE)
+
+ax_fullspec.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
+ax_decayspec.tick_params(size=TICKSIZE,width=TICKWIDTH,labelsize=TICKLABELSIZE)
+
+ax_fullspec.tick_params(bottom=True,left=True,top=True,right=True)
+ax_decayspec.tick_params(bottom=True,left=True,top=True,right=True)
+
+ax_fullspec.grid(False,which="both")
+ax_decayspec.grid(False,which="both")
+
+fig_fullspec.tight_layout()
+fig_decayspec.tight_layout()
+
+if(SAVE):
+    print("SAVED!")
+else:
+    print("NOT SAVED!")
+
+fig_weights.show()
+fig_fullspec.show()
+fig_decayspec.show()
