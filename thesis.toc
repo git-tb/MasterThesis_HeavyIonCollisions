@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {2.2}Converting Spectra between Coordinate Systems}{8}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Fundamentals of Relativistic Fluid Dynamics}{9}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Fluid${\boldsymbol {u}}$M}{10}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Blast Wave Model \& Cooper-Frye Freezeout}{10}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.2}Blast Wave Model \& Cooper-Frye Freezeout}{11}{subsection.2.3.2}%
 \contentsline {chapter}{\numberline {3}Particle Physics Background}{13}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Bound States of Quarks and Antiquarks}{13}{section.3.1}%
 \contentsline {section}{\numberline {3.2}QCD and Effective Theories}{14}{section.3.2}%

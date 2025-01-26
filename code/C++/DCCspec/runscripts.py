@@ -18,18 +18,24 @@ import datetime
 pTmax = 2
 NpT = 200
 
-parentdir = "Data/init_real_constfield_m140_20250116_115949"
+# parentdir = "Data/init_real_constfield_m140_20250116_115949"
+# parentdir = "Data/init_real_constfield_m280_20250122_110401"
+# parentdir = "Data/init_real_constfield_m420_20250122_111331"
 # parentdir = "Data/init_comp_constfield_m140_varphase_20250116_120129"
 # parentdir = "Data/init_comp_constfield_m140_varphase_20250117_181049"
 # parentdir = "Data/init_comp_constfield_m140_varphase_20250117_181304"
 # parentdir = "Data/init_comp_constfield_m140_varphase_20250120_094422"
 # parentdir = "Data/init_real_consteps_m140_20250117_113521"
+# parentdir = "Data/init_real_consteps_m280_20250122_110422"
+# parentdir = "Data/init_real_consteps_m420_20250122_111354"
 # parentdir = "Data/init_real_consteps_varm_20250116_114850"
 # parentdir = "Data/init_real_taudep_m140_20250117_162422"
+# parentdir = "Data/init_real_taudep_m280_20250122_110439"
+# parentdir = "Data/init_real_taudep_m420_20250122_111415"
 initfiles = sorted(glob.glob(parentdir+"/*.csv"))
 
 # define masses by hand...
-masses = 0.14 * np.ones(len(initfiles))
+masses = 0.28 * np.ones(len(initfiles))
 
 # ...or read from each file
 for (i,file) in enumerate(initfiles):
